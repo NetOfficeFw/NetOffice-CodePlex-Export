@@ -1,0 +1,38 @@
+<div class="wikidoc">
+<p>What is currently missing in the NetOffice Tools:<br>
+(This is what you never can find an a documenation from a comercial contributor)<br>
+<br>
+- a visual (Ribbon)UI designer (currently work straight for it)<br>
+- a COM Shim feature(currently looking for C&#43;&#43; experts – i have a solution but its not professional)</p>
+<p><br>
+Introduction:</p>
+<p>MS-Office Applications use the IDTExtensibility2 interface for addins. And this interface is all what MS-Office is known from any addin there has been loaded.<br>
+This is regardless from any framework/technology you want use(VSTO/Interop/NetOffice).<br>
+&nbsp; <br>
+Here you can find the declaration of IDTExtensibility2:<br>
+</p>
+<p><a title="https://msdn.microsoft.com/de-de/library/extensibility.idtextensibility2.aspx" href="https://msdn.microsoft.com/de-de/library/extensibility.idtextensibility2.aspx">https://msdn.microsoft.com/de-de/library/extensibility.idtextensibility2.aspx</a><br>
+<br>
+If you want to develope a simple addin for MS-Office, then create a class that implement these interface(its avaialbe in envdteXXX from GAC) and register your assembly for COM.<br>
+(In .Net you have to give some annotations/attributes for your implementation class, its a COM thing, i dont want explain this any further - *hurt me because ‘im a former COM MVP)Then make sure to publish your COM compontent trough the registry and create some
+ keys in Software/Office/%MyOfficeApplication%/Addins – and thats it! This is what we do few years ago in VB6 (i call it the unmanaged years – and VB6 spend some designers to help here)<br>
+<br>
+This is what NetOffice is about for the early years. Writing Addins and implement the IDTExtensibility2 interface. It works good but in comparsion to VSTO you have to write so many infrastructure code and its not leightweight. I spend a lot of time to see what
+ makes VSTO better and realize all VSTO-based addins inherites from a base class that implements the IDTExtensibility2 for you and give you more service. (you dont see the base class in VSTO while development but you can see it in .Net Reflector/IL Spy). What
+ a great idea! 10 months later – the NetOffice Tools in V 1.0 was born with an own base class(COMAddin) that is similar as possible to VSTO and give you a chance to create a simple addin in a simple way but make sure you dont lost any possibilites at –design
+ and runtime.<br>
+<br>
+<br>
+Please keep in your mind: NetOffice Tools is designed to create Office Addins easier but may some sub-features can be helpful in external automation projects.<br>
+<br>
+<br>
+Using the NetOffice Tools to create a simple COM Addin:<br>
+<br>
+You have to inherit from COMAddin. Each Office application use its own NetOffice tools namespace for example its&quot; “NetOffice.ExcelApi.Tools” for MS-Excel. All the different tools use a common NetOffice.Tools core. (You can use some services here to create a
+ super-addin that is loaded in multiple applications) . The well known methods from IDTExtensibility2 was now available as events, 1:1 to VSTO. Moreover you find a NetOffice-managed Application Property for your host application.&nbsp; At last we need the COMAddin
+ attribute and the ProgID and the Guid attribute(because regasm dont care for a typedescriptor *grmpf*) Make sure the Guid is unique and the prog id is it also . At these time, NetOffice want handle the whole infrastructure COM Register/Unregister code for
+ you.</p>
+<p>&nbsp;</p>
+<p>Using the NetOffice Tools<br>
+%i have to sleep now%</p>
+</div><div class="ClearBoth"></div>

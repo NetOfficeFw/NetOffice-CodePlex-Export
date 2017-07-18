@@ -1,0 +1,22 @@
+<div class="wikidoc">
+<p align="justify"><font size="3"><font face="Verdana"><strong>Tutorial09 – Eine laufende Anwendung mit NetOffice automatisieren</strong>
+<br>
+<br>
+In vielen Situation ist es notwendig eine bereits laufende Office Anwendung zu automatisieren. Dies betrifft typischerweise Addins. NetOffice bietet Ihnen einige Codebeispiele sowohl für externe als auch interne Automatisierung(Addins) die Ihnen aufzeigen wie
+ dies zu erreichen ist jedoch wird dies in der Fülle der Beispielmodule gerne übersehen. Das folgende Codespiel zeigt Ihnen wie Sie eine laufende Instanz nachträglich mit NetOffice automatiseren:&#160;
+<br>
+</font></font><span style="text-decoration:underline"><br>
+<font size="3" face="Verdana">Listing 1.0</font></span></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana"><span style="color:green">// we create a native Excel proxy </span>
+Type excelType = Type.GetTypeFromProgID(<span style="color:#a31515">&quot;Excel.Application&quot;</span>); 
+<span style="color:blue">object</span> excelProxy = Activator.CreateInstance(excelType); 
+
+</font></font><font size="3"><font face="Verdana"><span style="color:green">// we create an Excel Application object with the proxy as parameter, <br>// excel is now under control by NetOffice </span>
+Excel.Application excelApplication = <span style="color:blue">new</span> Excel.Application(<span style="color:blue">null</span>, excelProxy); 
+
+excelApplication.Quit(); 
+excelApplication.Dispose();</font></font></pre>
+</div>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

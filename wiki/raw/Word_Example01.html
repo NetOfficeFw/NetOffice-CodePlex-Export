@@ -1,0 +1,55 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*  
+    create a document write text and save with Word 
+    taken from Example01.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example01Main()
+{
+   <span style="color:green">// start word and turn off msg boxes</span>
+   Word.Application wordApplication = <span style="color:blue">new</span> Word.Application();
+   wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
+
+   <span style="color:green">// add a new document</span>
+   Word.Document newDocument = wordApplication.Documents.Add();
+
+   <span style="color:green">// insert some text</span>
+   wordApplication.Selection.TypeText(<span style="color:#a31515">&quot;This text is written by NetOffice&quot;</span>);
+
+   wordApplication.Selection.HomeKey(WdUnits.wdLine, WdMovementType.wdExtend);
+   wordApplication.Selection.Font.Color = WdColor.wdColorSeaGreen;
+   wordApplication.Selection.Font.Bold = 1;
+   wordApplication.Selection.Font.Size = 18;
+
+   <span style="color:green">// save the document</span>
+   <span style="color:blue">string</span> fileExtension = GetDefaultExtension(wordApplication);
+   <span style="color:blue">object</span> documentFile = <br>          <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}\\Example01{1}&quot;</span>, Application.StartupPath, fileExtension);
+   newDocument.SaveAs(documentFile);
+
+   <span style="color:green">// close word and dispose reference</span>
+   wordApplication.Quit();
+   wordApplication.Dispose();
+
+   FinishDialog fDialog = <span style="color:blue">new</span> FinishDialog(<span style="color:#a31515">&quot;Document saved.&quot;</span>, documentFile.ToString());
+   fDialog.ShowDialog(<span style="color:blue">this</span>);
+}
+
+<span style="color:blue">#region</span> Helper
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> returns the valid file extension for the instance. for example &quot;.doc&quot; or &quot;.docx&quot;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;application&quot;&gt;</span><span style="color:green">the instance&lt;/param&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">the extension&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">string</span> GetDefaultExtension(Word.Application application)
+{
+   <span style="color:blue">double</span> version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);
+   <span style="color:blue">if</span> (version &gt;= 12.00)
+       <span style="color:blue">return</span> <span style="color:#a31515">&quot;.docx&quot;</span>;
+   <span style="color:blue">else</span>
+       <span style="color:blue">return</span> <span style="color:#a31515">&quot;.doc&quot;</span>;
+}
+
+<span style="color:blue">#endregion</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

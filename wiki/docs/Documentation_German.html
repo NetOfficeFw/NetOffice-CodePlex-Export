@@ -1,0 +1,269 @@
+<div class="wikidoc">
+<p align="justify"><strong><font size="3" face="Verdana">Warum NetOffice?&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+</font><a href="http://netoffice.codeplex.com/documentation"><font size="3" face="Verdana">english</font></a><font size="3" face="Verdana"> |
+</font><a href="http://netoffice.codeplex.com/wikipage?title=Documentation_German"></a><font size="3" face="Verdana">deutsch
+<br>
+</font></strong><br>
+<font size="3" face="Verdana">Die herkömlichen Methoden für den Zugriff auf Microsoft Office in .NET sind die Primary Interop Assemblies und VSTO. Beide Zugriffsmethoden beinhalten jedoch verschiedene Nachteile.</font></p>
+<ul>
+<li>
+<div align="justify"><font size="3" face="Verdana">sie funktionieren nur mit einer oder bestimmten Office Versionen&#160;
+</font></div>
+</li><li>
+<div align="justify"><font size="3" face="Verdana">sie verursachen Probleme bei der Weitergabe bzw. Installation auf anderen Systemen&#160;
+</font></div>
+</li><li>
+<div align="justify"><font size="3" face="Verdana">sie bieten keinen Schutzmechanismus bei der Verwaltung von COM Proxies
+</font></div>
+</li></ul>
+<p align="justify"><font size="3" face="Verdana">NetOffice eliminiert diese Nachteile und bleibt dabei ein 1:1 Wrapper der syntaktisch und semantisch identisch zu den Interop Assemblies ist.
+<br>
+<br>
+<br>
+</font><strong><font size="3" face="Verdana">Wie funktioniert NetOffice? <br>
+</font></strong></p>
+<p align="justify"><font size="3" face="Verdana">NetOffice verwendet für den Zugriff ausschliesslich
+</font><a href="http://en.wikipedia.org/wiki/Late_binding"><font size="3" face="Verdana">LateBinding</font></a><font size="3" face="Verdana"> Calls via COM Interop, ohne jedoch den Komfort und Einfachheit von EarlyBind Aufrufen einzubüßen. Durch die schlanke
+ Architektur und effizientes Design ist dieser Weg nur sehr geringfügig langsamer als sogenannte EarlyBind Aufrufe in .NET(max 10%). Events werden in NetOffice über eine Technik realisiert die der Autor Dynamic EarlyBinding nennt. Mehr dazu in der
+</font><a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_German"><font size="3" face="Verdana">technischen Dokumentation</font></a><font size="3" face="Verdana">.</font></p>
+<p align="justify"><font size="3" face="Verdana"></font></p>
+<p align="justify"><strong><font size="3" face="Verdana">NetOffice beinhaltet 16 Assemblies. Warum und welche Assemblies brauche ich für meine gewünschte Office Anwendung?</font></strong></p>
+<p align="justify"><font size="3" face="Verdana">Alle Office Anwendungen benutzen Typen die in anderen Komponenten/Typenbibliotheken definiert sind. Diese abhängigen TypenBibliotheken liegen daher als eigenständiges Assembly bei. Jedes Assembly benötigt darüber
+ hinaus die NetOffice.dll Assembly. Eine Übersicht welche Office Anwendung welche zusätzlichen Assemblies einbindet finden Sie hier.
+<br>
+</font><u><br>
+<font size="3" face="Verdana">Deployment Table:</font></u><font size="3" face="Verdana">
+</font></p>
+<div align="justify">
+<table border="1" cellspacing="0" cellpadding="5" width="400">
+<tbody>
+<tr>
+<td valign="top" width="200"><strong><font size="3" face="Verdana">Office Anwendung</font></strong></td>
+<td valign="top" width="200"><strong><font size="3" face="Verdana">Abhängigkeiten</font></strong></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana">ExcelApi.dll</font></td>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">OfficeApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">VBIDEApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">NetOffice.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana">WordApi.dll</font></td>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">OfficeApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">VBIDEApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">NetOffice.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana">OutlookApi.dll </font>
+</td>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">OfficeApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">NetOffice.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana">PowerPointApi.dll</font></td>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">OfficeApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">VBIDEApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">NetOffice.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana">AccessApi.dll</font></td>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">OfficeApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">DAOApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">VBIDEApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">ADODBApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">OWC10Api.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">MSDATASRCApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">MSComctlLibApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">NetOffice.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana">MSProjectApi.dll</font></td>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">OfficeApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">MSHTMLApi.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">NetOffice.dll</font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana">VisioApi.dll</font></td>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+</tr>
+<tr>
+<td valign="top" width="200"><font size="3" face="Verdana"></font></td>
+<td valign="top" width="200"><font size="3" face="Verdana">NetOffice.dll</font></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p align="justify"><br>
+<br>
+<font size="3" face="Verdana"><strong>Was muss ich tun um NetOffice mit meiner Anwendung auszuliefern?</strong></font></p>
+<p align="justify"><font size="3" face="Verdana">Nichts, ausser die benötigten Assemblies auf das Zielsystem zu kopieren. Es ist keine Registrierung oder ähnliches notwendig. Falls Sie ein COM Addin erstellen möchten, muss dieses jedoch auf dem Zielsystem für
+ COM registriert werden. In vielen Setup Projekten, z.B. Windows Installer oder InstallShield, können Sie die Registrierung Ihres COM Addins automatisch vornehmen lassen. Visual Studio erledigt diese Registrierung autmatisch für Sie während des kompilierens
+ wenn Sie die Option 'Register for COM Interop' aktivieren. <br>
+</font><strong><br>
+<br>
+<font size="3" face="Verdana">COM Addins funktionieren ebenfalls versionsunabhängig?
+<br>
+</font></strong><br>
+<font size="3" face="Verdana">Ja, dies ist eine besondere Stärke von NetOffice. Beispiele dazu für alle Office Anwendungen finden Sie unter den Projektbeispielen. Sie müssen jedoch möglicherweise 2 Versionen Ihres COM Addins zur Verfügung stellen wenn Sie 32
+ Bit und 64 Bit Office Anwendungen unterstützen möchten. <br>
+</font><strong><br>
+<br>
+</strong><font size="3"><font face="Verdana"><strong>Funktioniert NetOffice auf verschiedenen Plattformen(32/64 Bit)?
+<br>
+<br>
+</strong>Sie können in allen Szenarien die NetOffice AnyCPU Assemblies verwenden, unabhängig davon ob Sie für eine 32Bit Office Anwendung oder eine 64 Bit Office Anwendung entwickeln, auch unabhängig davon auf welcher Platform diese installiert ist. Ein weiterer
+ Vorteil zu den Interop Assemblies oder VSTO bei denen Sie plattformspezifische Binaries verwenden müssen.
+</font></font><u><br>
+<br>
+<font size="3" face="Verdana">Hinweis für die plattformunabhängige Entwicklung</font></u><font size="3" face="Verdana">:&#160;
+<br>
+Wenn ihr Assembly eine Standalone Anwendung(.exe) ist oder von einer solchen geladen wird können Sie Ihr erstelltes Assembly bedenkenlos als AnyCPU kompilieren. Wenn Ihr Assembly ein COMAddin ist das von einer Office 32 Bit Anwendung geladen wird können Sie
+ Ihr erstelltes Assembly ebenfalls als AnyCPU kompilieren. <br>
+<br>
+Wenn Sie ein COMAddin entwickeln das von einer Office 64Bit Anwendung geladen wird müssen Sie ihr Assembly als x64 kompilieren. Fallweise müssen Sie ein zweites x64 kompiliertes COMAddin zur Verfügung stellen wenn Sie 32Bit und 64Bit Office Anwendungen unterstützen
+ möchten. Anmerkung: Egal ob Sie NetOffice, die Interop Assemblies oder VSTO verwenden müssen Sie ein COMAddin für 64Bit Office Anwendungen immer als x64 kompilieren da eine 64Bit Anwendung nur 64Bit Dll's laden kann. Sofern Sie auf Ihrem Entwicklungssystem
+ ein 64Bit Office zum Test verwenden und ein COMAddin entwickeln(d.h. Ihr Assembly als x64 kompilieren) und ihr COMAddin während der Kompilierung registrieren wollen(Register for COM Interop) müssen Sie beachten das manche Visual Studio Versionen in diesem
+ Fall leider die die 32Bit Registrierung aufrufen und Sie den folgenden Fehler erhalten.</font></p>
+<p align="justify"><font size="3"><font face="Verdana"><strong>&quot;File &lt;path to assembly&gt; is not a valid assembly&quot;.</strong>
+<br>
+Einen Workarround von Microsoft lesen Sie dazu hier: <br>
+</font></font><a href="http://support.microsoft.com/kb/956933"><font size="3" face="Verdana">http://support.microsoft.com/kb/956933</font></a><font size="3" face="Verdana">
+<br>
+</font><strong><br>
+<br>
+<font size="3" face="Verdana">Wie migriere ich meine Interop Assembly oder VBA Lösung zu NetOffice?
+<br>
+</font></strong><u><br>
+<font size="3" face="Verdana">Für Interop Lösungen</font></u><font size="3" face="Verdana">: Ändern Sie die Referenzen sowie du using bzw import Anweisungen. Fallweise müssen sie eine minimale Anpassung beim abbonieren von Events vornehmen.
+<em>Marshal.ReleaseComObject</em> Aufrufe ersetzen Sie durch den Auruf der Methode
+<em>Dispose</em> das ihnen jedes Objekt in NetOffice bietet oder löschen die entsprechende Codezeile da NetOffice alle COM Proxies für Sie verwaltet. Lesen zu dazu bitte die technische Dokumentation:
+</font><a href="http://netoffice.codeplex.com/wikipage?title=TutorialOverview_DE"><font size="3" face="Verdana">COM Proxy Management verstehen</font></a><font size="3" face="Verdana">.
+<br>
+</font><u><br>
+<font size="3" face="Verdana">Für VBA Lösungen</font></u><font size="3" face="Verdana">: Entwickler die VBA Lösungen zu VB.NET und NetOffice portieren müssen beachten das VB.NET zwar syntaktisch sehr kompatibel zu VBA ist, jedoch auch konzeptionelle Unterschiede
+ aufweist das für .NET unerfahrende Entwickler in jedem Fall zusätzlichen Lernaufwand bedeutet. Sofern Sie über gute Kentnisse in VBA und VB.NET verfügen werden Sie keine Probleme haben Ihre Lösung zu NetOffice zu migrieren.
+</font><a href="http://www.sysmod.com"><font size="3" face="Verdana">Patrick O'Beirne</font></a><font size="3" face="Verdana"> hat als unerfahrender .NET Entwickler eine VBA Lösung mit mehr als 13.000 Codezeilen zu NetOffice portiert und seine Erfahrungen dazu
+ festgehalten. Dokument1: </font><a href="http://netoffice.codeplex.com/Migrating%20Excel%20VBA%20Add-in%20to%20VB.Net[1].docx"><font size="3" face="Verdana">Migrating Excel VBA Add-in to VB.Net[1].docx</font></a><font size="3" face="Verdana">&#160; Dokument
+ 2: </font><a href="http://netoffice.codeplex.com/releases/view/70943#DownloadId=375456"><font size="3" face="Verdana">Migrating Excel VBA Add-in to VB.Net[2].docx</font></a><font size="3" face="Verdana">
+<br>
+</font><strong><br>
+<br>
+<font size="3" face="Verdana">COM Proxy Verwaltung </font></strong></p>
+<p align="justify"><font size="3" face="Verdana">Wenn sie Office Anwendungen also COM Server via .NET ansprechen erhalten sie statt echter Objekte sogenannte COM Proxies. Um dem COM Server zu signalisieren das sie diesen nicht mehr benötigen müssen diesen mittels
+ einer </font><a href="http://msdn.microsoft.com/en-us/library/system.runtime.interopservices.marshal.releasecomobject.aspx"><font size="3" face="Verdana">speziellen Funkion</font></a><font size="3" face="Verdana"> wieder freigeben. Dies gilt sowohl für VSTO
+ als auch für die Interop Assemblies. <br>
+<br>
+Aufgrund dieses Umstandes dürfen Sie hier deshalb keine Objekte implizit und keine Enumeratoren direkt verwenden da Sie diese später nicht mehr freigeben können. In anderen Worten, sie müssen den Enumerator einer Instanz zuerst in einer lokalen Variale speichern
+ um diesen später wieder freigeben zu können. <br>
+<br>
+In NetOffice bietet Ihnen jedes Objekt die Methode <em>Dispose()</em> wenn sie es nicht mehr benötigen. Alle Klassen in NetOffice implementieren das
+<em>IDisposable</em> Interface und bieten darüber die Methode Dispose() an. Sie müssen jedoch nicht für jedes verwendetes Objekt
+<em>Dispose()</em> aufrufen und dürfen auch Objekte implizit und Enumerator direkt verwenden ohne sich um die Freigabe sorgen zu müssen. NetOffice speichert erzeugte Proxies in einer eigenen Tabelle und gibt diese frei wenn sie es festlegen oder ein übergeordnetes
+ Objekt freigegeben wird. Mehr dazu in der </font><a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_German"><font size="3" face="Verdana">technischen Dokumentation</font></a><font size="3" face="Verdana"> und
+</font><a href="http://netoffice.codeplex.com/wikipage?title=TutorialOverview_DE"><font size="3" face="Verdana">Tutorial01</font></a><font size="3" face="Verdana">.
+<br>
+<br>
+</font></p>
+<p align="justify"><font size="3"><font face="Verdana"><strong>Unbekannte und variante Typen&#160;
+<br>
+</strong><br>
+Viele Office Anwendungen beinhalten Properties, Rückgabewerte oder Parameter deren Typ zur Entwicklungszeit nicht feststeht und sich zur Laufzeit je nach Context ändern kann. Hier wird unterschieden zwischen unbekannten COM Proxies und dem Datentyp Variant
+ der seine Wurzeln in Visual Basic for Applications(VBA) hat. <br>
+<br>
+Unbekannte COM Proxies werden in NetOffice durch den Typ <em>object</em> representiert. Sie können einen anonymen COM Proxy jedoch zur Laufzeit problemlos in den tatsächlichen Typ umwandeln und als VB Entwickler das in der Sprache integrierte LateBinding Feature
+ nutzen. <br>
+&#160; <br>
+Der Datentyp Variant dient in VBA dazu zur Laufzeit jeden beliebigen Typ anzunehmen zu können sowohl einen COM Proxy als auch einen skalaren Datentyp wie bool oder int. In NetOffice wird ebenfalls der Typ
+<em>Variant</em> durch den Typ <em>object</em> ersetzt. Wenn ein <em>Variant</em> Property zur Laufzeit ein COM Proxy ist erhalten Sie ein Objekt der entsprechenden NetOffice Wrapper Klasse andernfalls den entsprechenden skalaren Datentyp. Mehr dazu in der
+</font></font><a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_German"><font size="3" face="Verdana">technischen Dokumentation</font></a><font size="3" face="Verdana"> und
+</font><a href="http://netoffice.codeplex.com/wikipage?title=TutorialOverview_DE"><font size="3" face="Verdana">Tutorial06</font></a><font size="3" face="Verdana">.
+</font></p>
+<p align="justify"><br>
+<font size="3"><font face="Verdana"><strong>Wenn NetOffice alle Office Versionen unterstützt, wie erkenne ich welche Office Version welche Funktionalität anbietet?
+<br>
+&#160;</strong> <br>
+Alle Klassen,Properties, Methoden, Enums etc. sind mit XML Dokumenation und einem speziellen Attribut ausgestattet das aufzeigt welche OfficeVersion(en) diese Entität unterstützen. Sie bekommen diese Information zur Entwicklungszeit auch im IntelliSense angezeigt.
+ Darüber hinaus ist es möglich ein erstelltes Assembly das NetOffice verwendet mit der
+</font></font><a href="http://netoffice.codeplex.com/wikipage?title=DeveloperToolbox_German"><font size="3" face="Verdana">NetOffice.DeveloperToolbox</font></a><font size="3" face="Verdana"> darauf zu prüfen welche Office Versionen es faktisch verwendet. Nutzen
+ Sie diese Möglichkeit bevor Sie ihr Assembly ausliefern um sicher zu stellen das ihr Programm mit den Office Versionen funktioniert die sie(oder ihr Kunde) festgelegt haben.
+<br>
+</font><font size="3"><font face="Verdana">&#160; <br>
+<u>Screenshot: IntelliSense Unterstützung in C# für Versionsinformation eines Property.</u>
+<br>
+<strong><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=376187"><img title="IntelliSenseCSharp" border="0" alt="IntelliSenseCSharp" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=376188" width="706" height="265"></a>
+</strong></font></font></p>
+<p align="justify"><font size="3" face="Verdana"></font></p>
+<p align="justify"><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

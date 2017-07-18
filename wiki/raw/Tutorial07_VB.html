@@ -1,0 +1,40 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' taken from Tutorial07.vbproj</span>
+<span style="color:green">'</span>
+<span style="color:green">' The static class LateBindingApi.Core.Invoker is the low level interface from <br>' NetOffice to access a COM Server.</span>
+<span style="color:green">' This example shows you an example how to use it.</span>
+<span style="color:green">' </span>
+<span style="color:green">' See reference chapter4 in <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English">technical documentation</a> for further info.</span>
+<span style="color:green">'</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Tutorial07Main()
+
+        <span style="color:green">'Initialize Api COMObject Support</span>
+        LateBindingApi.Core.Factory.Initialize()
+
+        <span style="color:green">' start application</span>
+        <span style="color:blue">Dim</span> application <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+        application.DisplayAlerts = <span style="color:blue">False</span>
+
+        <span style="color:green">' create new Workbook</span>
+        <span style="color:blue">Dim</span> book <span style="color:blue">As</span> Excel.Workbook = application.Workbooks.Add()
+
+        <span style="color:blue">Dim</span> sheet <span style="color:blue">As</span> Excel.Worksheet = application.Workbooks(1).Worksheets(1)
+        <span style="color:blue">Dim</span> sampleRange <span style="color:blue">As</span> Excel.Range = sheet.Cells(1, 1)
+
+        <span style="color:green">' we set the COMVariant ColorIndex from Font of ouer sample range with <br>        ' the invoker class</span>
+        Invoker.PropertySet(sampleRange.Font, <span style="color:#a31515">&quot;ColorIndex&quot;</span>, 1)
+
+        <span style="color:green">' creates a native unmanaged ComProxy with the invoker</span>
+        <span style="color:blue">Dim</span> comProxy <span style="color:blue">As</span> <span style="color:blue">Object</span> = Invoker.PropertyGet(application, <span style="color:#a31515">&quot;Workbooks&quot;</span>)
+        Marshal.ReleaseComObject(comProxy)
+
+        application.Quit()
+        application.Dispose()
+
+        MessageBox.Show(<span style="color:blue">Me</span>, <span style="color:#a31515">&quot;Done!&quot;</span>, <span style="color:blue">Me</span>.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

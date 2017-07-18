@@ -1,0 +1,70 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   using events in Excel
+   taken from Example08.cs
+*/</span>
+<span style="color:blue">public</span> <span style="color:blue">void</span> Example08Main()
+{ 
+   <span style="color:green">// start excel and turn off msg boxes</span>
+   Excel.Application excelApplication = <span style="color:blue">new</span> Excel.Application();
+   excelApplication.DisplayAlerts = <span style="color:blue">false</span>;
+   excelApplication.Visible = <span style="color:blue">true</span>;
+
+   <span style="color:green">/*
+   we register some events. note: the event trigger was called from excel, <br>   means an other Thread. remove the Quit() call below and check out <br>   more events if you want. you can get event notifys from various objects: <br>   Application or Workbook or Worksheet for example
+   */</span>
+
+   excelApplication.NewWorkbookEvent &#43;= <br>   <span style="color:blue">new</span> Application_NewWorkbookEventHandler(Application_NewWorkbook);
+   <br>   excelApplication.WorkbookBeforeCloseEvent &#43;= <br>   <span style="color:blue">new</span> Application_WorkbookBeforeCloseEventHandler(Application_WorkbookBeforeClose);
+   <br>   excelApplication.WorkbookActivateEvent &#43;= <br>   <span style="color:blue">new</span> Application_WorkbookActivateEventHandler(Application_WorkbookActivate);
+   <br>   excelApplication.WorkbookDeactivateEvent &#43;= <br>   <span style="color:blue">new</span> Application_WorkbookDeactivateEventHandler(Application_WorkbookDeactivate);
+   <br>   excelApplication.SheetActivateEvent &#43;= <br>   <span style="color:blue">new</span> Application_SheetActivateEventHandler(Application_SheetActivateEvent);<br>
+   excelApplication.SheetDeactivateEvent &#43;= <br>   <span style="color:blue">new</span> Application_SheetDeactivateEventHandler(Application_SheetDeactivateEvent);
+
+   <span style="color:green">// add a new workbook add a sheet and close</span>
+   Excel.Workbook workBook = excelApplication.Workbooks.Add();
+   workBook.Worksheets.Add();
+   workBook.Close();
+
+   excelApplication.Quit();
+   excelApplication.Dispose();
+}
+
+<span style="color:blue">void</span> Application_SheetDeactivateEvent(COMObject Sh)
+{
+   Console.WriteLine(<span style="color:#a31515">&quot;Event SheetDeactivate called&quot;</span>);
+   Sh.Dispose();
+}
+
+<span style="color:blue">void</span> Application_SheetActivateEvent(COMObject Sh)
+{
+   Console.WriteLine(<span style="color:#a31515">&quot;Event SheetActivate called&quot;</span>);
+   Sh.Dispose();
+}
+
+<span style="color:blue">void</span> Application_NewWorkbook(Excel.Workbook Wb)
+{
+   Console.WriteLine(<span style="color:#a31515">&quot;Event NewWorkbook called&quot;</span>);
+   Wb.Dispose();
+}
+
+<span style="color:blue">void</span> Application_WorkbookBeforeClose(Excel.Workbook Wb, <span style="color:blue">ref</span> <span style="color:blue">bool</span> Cancel)
+{
+   Console.WriteLine(<span style="color:#a31515">&quot;Event WorkbookBeforeClose called&quot;</span>);
+   Wb.Dispose();
+}
+
+<span style="color:blue">void</span> Application_WorkbookActivate(Excel.Workbook Wb)
+{
+   Console.WriteLine(<span style="color:#a31515">&quot;Event WorkbookActivate called&quot;</span>);
+   Wb.Dispose();
+}
+
+<span style="color:blue">void</span> Application_WorkbookDeactivate(Excel.Workbook Wb)
+{  
+   Console.WriteLine(<span style="color:#a31515">&quot;Event WorkbookDeactivate called&quot;</span>);
+   Wb.Dispose();
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

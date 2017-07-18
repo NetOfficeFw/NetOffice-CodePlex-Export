@@ -1,0 +1,123 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' Font Attributes and Alignment for Cells in Excel</span>
+<span style="color:green">' taken from Example02.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example02Main
+
+ <span style="color:green">' start excel and turn off msg boxes</span>
+ <span style="color:blue">Dim</span> excelApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+ excelApplication.DisplayAlerts = <span style="color:blue">False</span>
+
+ <span style="color:green">' add a new workbook</span>
+ <span style="color:blue">Dim</span> workBook <span style="color:blue">As</span> Excel.Workbook = excelApplication.Workbooks.Add()
+ <span style="color:blue">Dim</span> workSheet <span style="color:blue">As</span> Excel.Worksheet = workBook.Worksheets(1)
+
+ <span style="color:green">' font action</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A1&quot;</span>).Value = <span style="color:#a31515">&quot;Arial Size:8 Bold Italic Underline&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A1&quot;</span>).Font.Name = <span style="color:#a31515">&quot;Arial&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A1&quot;</span>).Font.Size = 8
+ workSheet.Range(<span style="color:#a31515">&quot;A1&quot;</span>).Font.Bold = <span style="color:blue">True</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A1&quot;</span>).Font.Italic = <span style="color:blue">True</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A1&quot;</span>).Font.Underline = <span style="color:blue">True</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A1&quot;</span>).Font.Color = Color.Violet.ToArgb()
+
+ workSheet.Range(<span style="color:#a31515">&quot;A3&quot;</span>).Value = <span style="color:#a31515">&quot;Times New Roman Size:10&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A3&quot;</span>).Font.Name = <span style="color:#a31515">&quot;Times New Roman&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A3&quot;</span>).Font.Size = 10
+ workSheet.Range(<span style="color:#a31515">&quot;A3&quot;</span>).Font.Color = Color.Orange.ToArgb()
+
+ workSheet.Range(<span style="color:#a31515">&quot;A5&quot;</span>).Value = <span style="color:#a31515">&quot;Comic Sans MS Size:12 WrapText&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A5&quot;</span>).Font.Name = <span style="color:#a31515">&quot;Comic Sans MS&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A5&quot;</span>).Font.Size = 12
+ workSheet.Range(<span style="color:#a31515">&quot;A5&quot;</span>).WrapText = <span style="color:blue">True</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A5&quot;</span>).Font.Color = Color.Navy.ToArgb()
+
+ <span style="color:green">' HorizontalAlignment</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A7&quot;</span>).Value = <span style="color:#a31515">&quot;xlHAlignLeft&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A7&quot;</span>).HorizontalAlignment = XlHAlign.xlHAlignLeft
+
+ workSheet.Range(<span style="color:#a31515">&quot;B7&quot;</span>).Value = <span style="color:#a31515">&quot;xlHAlignCenter&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;B7&quot;</span>).HorizontalAlignment = XlHAlign.xlHAlignCenter
+
+ workSheet.Range(<span style="color:#a31515">&quot;C7&quot;</span>).Value = <span style="color:#a31515">&quot;xlHAlignRight&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;C7&quot;</span>).HorizontalAlignment = XlHAlign.xlHAlignRight
+
+ workSheet.Range(<span style="color:#a31515">&quot;D7&quot;</span>).Value = <span style="color:#a31515">&quot;xlHAlignJustify&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;D7&quot;</span>).HorizontalAlignment = XlHAlign.xlHAlignJustify
+
+ workSheet.Range(<span style="color:#a31515">&quot;E7&quot;</span>).Value = <span style="color:#a31515">&quot;xlHAlignDistributed&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;E7&quot;</span>).HorizontalAlignment = XlHAlign.xlHAlignDistributed
+
+ <span style="color:green">' VerticalAlignment</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A9&quot;</span>).Value = <span style="color:#a31515">&quot;xlVAlignTop&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;A9&quot;</span>).VerticalAlignment = XlVAlign.xlVAlignTop
+
+ workSheet.Range(<span style="color:#a31515">&quot;B9&quot;</span>).Value = <span style="color:#a31515">&quot;xlVAlignCenter&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;B9&quot;</span>).VerticalAlignment = XlVAlign.xlVAlignCenter
+
+ workSheet.Range(<span style="color:#a31515">&quot;C9&quot;</span>).Value = <span style="color:#a31515">&quot;xlVAlignBottom&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;C9&quot;</span>).VerticalAlignment = XlVAlign.xlVAlignBottom
+
+ workSheet.Range(<span style="color:#a31515">&quot;D9&quot;</span>).Value = <span style="color:#a31515">&quot;xlVAlignDistributed&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;D9&quot;</span>).VerticalAlignment = XlVAlign.xlVAlignDistributed
+
+ workSheet.Range(<span style="color:#a31515">&quot;E9&quot;</span>).Value = <span style="color:#a31515">&quot;xlVAlignJustify&quot;</span>
+ workSheet.Range(<span style="color:#a31515">&quot;E9&quot;</span>).VerticalAlignment = XlVAlign.xlVAlignJustify
+
+ <span style="color:green">' setup rows and columns</span>
+ workSheet.Columns(1).AutoFit()
+ workSheet.Columns(2).ColumnWidth = 25
+ workSheet.Columns(3).ColumnWidth = 25
+ workSheet.Columns(4).ColumnWidth = 25
+ workSheet.Columns(5).ColumnWidth = 25
+ workSheet.Rows(9).RowHeight = 25
+
+ <span style="color:green">' save the book </span>
+ <span style="color:blue">Dim</span> fileExtension <span style="color:blue">As</span> <span style="color:blue">String</span> = GetDefaultExtension(excelApplication)
+ <span style="color:blue">Dim</span> workbookFile <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}\Example02{1}&quot;</span>, _<br>                            Application.StartupPath, fileExtension)<br>
+ workBook.SaveAs(workbookFile, Missing.Value, Missing.Value, Missing.Value, _<br>             Missing.Value, Missing.Value, XlSaveAsAccessMode.xlExclusive)
+
+ <span style="color:green">' close excel and dispose reference</span>
+ excelApplication.Quit()
+ excelApplication.Dispose()
+
+ <span style="color:blue">Dim</span> fDialog <span style="color:blue">As</span> <span style="color:blue">New</span> FinishDialog(<span style="color:#a31515">&quot;Workbook saved.&quot;</span>, workbookFile)
+ fDialog.ShowDialog(<span style="color:blue">Me</span>)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:green">''' &lt;summary&gt;</span>
+<span style="color:green">''' Translate a color to double</span>
+<span style="color:green">''' &lt;/summary&gt;</span>
+<span style="color:green">''' &lt;param name=&quot;color&quot;&gt;expression to convert&lt;/param&gt;</span>
+<span style="color:green">''' &lt;returns&gt;color&lt;/returns&gt;</span>
+<span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> ToDouble(<span style="color:blue">ByVal</span> color <span style="color:blue">As</span> System.Drawing.Color) <span style="color:blue">As</span> <span style="color:blue">Double</span>
+
+  <span style="color:blue">Dim</span> returnValue <span style="color:blue">As</span> <span style="color:blue">UInteger</span> = color.B
+  returnValue = returnValue &lt;&lt; 8
+  returnValue &#43;= color.G
+  returnValue = returnValue &lt;&lt; 8
+  returnValue &#43;= color.R
+<span style="color:blue">  Return</span> returnValue
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span>
+
+<span style="color:green">''' &lt;summary&gt;</span>
+<span style="color:green">''' returns the valid file extension for the instance. for example &quot;.xls&quot; or &quot;.xlsx&quot;</span>
+<span style="color:green">''' &lt;/summary&gt;</span>
+<span style="color:green">''' &lt;param name=&quot;application&quot;&gt;the instance&lt;/param&gt;</span>
+<span style="color:green">''' &lt;returns&gt;the extension&lt;/returns&gt;</span>
+<span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> GetDefaultExtension(<span style="color:blue">ByVal</span> app <span style="color:blue">As</span> Excel.Application) <span style="color:blue">As</span> <span style="color:blue">String</span>
+
+<span style="color:blue">  Dim</span> version <span style="color:blue">As</span> <span style="color:blue">Double</span> = Convert.ToDouble(app.Version, CultureInfo.InvariantCulture)<br>  <span style="color:blue">If</span> (version &gt;= 120.0) <span style="color:blue">Then</span>
+    <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.xlsx&quot;</span>
+  <span style="color:blue">Else</span>
+    <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.xls&quot;</span>
+  <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

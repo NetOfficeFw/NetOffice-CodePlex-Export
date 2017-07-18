@@ -1,0 +1,41 @@
+<div class="wikidoc">
+<p><strong><font size="3" face="Verdana">Tutorial08 - NetOffice LowLevel API </font>
+</strong></p>
+<p align="justify"><font size="3" face="Verdana">Wenn Sie simultan für mehrere Office Anwendungen entwicklen, z.B. ein Addin für mehrere Office Anwendungen müssen benötigen Sie fallweise einen LateBinding Mechanismus. Die statische Invoker Klasse von NetOffice
+ stellt in diesem Fall wichtige Hilfe dar. Betrachten Sie dazu folgendes Codebeispiel:</font></p>
+<p><span style="text-decoration:underline"><font size="3" face="Verdana">Listing 1.0</font></span></p>
+<div style="background-color:white; color:black">
+<pre><font size="3" face="Verdana">Excel.Range sampleRange = GetRange(); 
+
+<span style="color:green">// we set the Variant ColorIndex from Font </span>
+<span style="color:green">// in this sample with the invoker class </span>
+Invoker.PropertySet(sampleRange.Font, <span style="color:#a31515">&quot;ColorIndex&quot;</span>, 1); 
+
+</font><font size="3"><font face="Verdana"><span style="color:green">// creates a native unamanaged ComProxy<br>// with the invoker and release immediately </span>
+<span style="color:blue">object</span> comProxy = Invoker.PropertyGet(application, <span style="color:#a31515">&quot;Workbooks&quot;</span>); 
+Marshal.ReleaseComObject(comProxy);</font></font></pre>
+</div>
+<p align="justify"><font size="3" face="Verdana">Der NetOffice Invoker bietet in speziellen Situationen eine wichtige Hilfe um LateBinding komfortabel zu nutzen. Die Invoker Klasse bietet Ihnen als wichtigste Methoden:</font></p>
+<table border="0" cellspacing="0" cellpadding="2" width="488">
+<tbody>
+<tr>
+<td valign="top" width="153"><font size="3" face="Verdana">Method</font></td>
+<td valign="top" width="333"><font size="3" face="Verdana">Methode ohne Rückgabewert</font></td>
+</tr>
+<tr>
+<td valign="top" width="153"><font size="3" face="Verdana">MethodReturn</font></td>
+<td valign="top" width="333"><font size="3" face="Verdana">Methode mit Rückgabewert</font></td>
+</tr>
+<tr>
+<td valign="top" width="153"><font size="3" face="Verdana">PropertyGet</font></td>
+<td valign="top" width="333"><font size="3" face="Verdana">Property abfragen</font></td>
+</tr>
+<tr>
+<td valign="top" width="153"><font size="3" face="Verdana">PropertySet</font></td>
+<td valign="top" width="333"><font size="3" face="Verdana">Property festlegen</font></td>
+</tr>
+</tbody>
+</table>
+<p><font size="3" face="Verdana">Visual Basic Entwickler können fallweise auch die integrierte Unterstützung für LateBinding nutzen.</font></p>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

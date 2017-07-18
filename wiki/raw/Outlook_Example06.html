@@ -1,0 +1,52 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   using events in Outlook
+   taken from Example06.cs
+*/</span>
+<span style="color:blue">public</span> <span style="color:blue">partial</span> <span style="color:blue">class</span> Form1 : Form
+{
+<span style="color:blue"><font color="#000000">   </font>private</span> <span style="color:blue">delegate</span> <span style="color:blue">void</span> UpdateEventTextDelegate(<span style="color:blue">string</span> Message);
+   UpdateEventTextDelegate _updateDelegate;
+
+   <span style="color:blue">public</span> Form1()
+   {
+      InitializeComponent();
+      _updateDelegate = <span style="color:blue">new</span> UpdateEventTextDelegate(UpdateTextbox);
+   }
+
+   <span style="color:blue">private</span> <span style="color:blue">void</span> button1_Click(<span style="color:blue">object</span> sender, EventArgs e)
+   {
+      <span style="color:green">// start outlook</span>
+      Outlook.Application outlookApplication = <span style="color:blue">new</span> Outlook.Application();
+
+      Outlook.MailItem mailItem = <br>         outlookApplication.CreateItem(OlItemType.olMailItem) <span style="color:blue">as</span> Outlook.MailItem;
+      <br>      mailItem.CloseEvent &#43;= <br>         <span style="color:blue">new</span> NetOffice.OutlookApi.MailItem_CloseEventHandler(mailItem_CloseEvent);
+
+      /<span style="color:green">/ BodyFormat is not available in Outlook 2000</span>
+      <span style="color:green">// we check at runtime is property is available</span>
+      <span style="color:blue">if</span>(mailItem.EntityIsAvailable(<span style="color:#a31515">&quot;BodyFormat&quot;</span>))
+         mailItem.BodyFormat = OlBodyFormat.olFormatPlain;
+
+      mailItem.Body    = <span style="color:#a31515">&quot;dont type google into google.&quot;</span>;
+      mailItem.Subject = <span style="color:#a31515">&quot;Hello there&quot;</span>;
+      mailItem.Display();
+      mailItem.Close(OlInspectorClose.olDiscard);
+   
+      <span style="color:green">// close outlook and dispose</span>
+      outlookApplication.Quit();
+      outlookApplication.Dispose();
+    }
+
+    <span style="color:blue">void</span> mailItem_CloseEvent(<span style="color:blue">ref</span> <span style="color:blue">bool</span> Cancel)
+    {
+       textBoxEvents.BeginInvoke(_updateDelegate, <span style="color:blue">new</span> <span style="color:blue">object</span>[] { <span style="color:#a31515">&quot;Event Close called.&quot;</span> });
+    }
+
+    <span style="color:blue">private</span> <span style="color:blue">void</span> UpdateTextbox(<span style="color:blue">string</span> message)
+    {
+       textBoxEvents.AppendText(message &#43; <span style="color:#a31515">&quot;\r\n&quot;</span>);
+    }
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

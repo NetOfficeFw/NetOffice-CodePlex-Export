@@ -1,0 +1,68 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' Dialogs in Excel</span>
+<span style="color:green">' taken from Example06.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example06Main()
+
+<span style="color:green"> ' start excel and turn off msg boxes</span>
+ <span style="color:blue">Dim</span> excelApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+ excelApplication.DisplayAlerts = <span style="color:blue">False</span>
+
+ <span style="color:green">'dont show dialogs with an invisible excel</span>
+ excelApplication.Visible = <span style="color:blue">True</span>
+
+ <span style="color:green">' add a new workbook</span>
+ <span style="color:blue">Dim</span> workBook <span style="color:blue">As</span> Excel.Workbook = excelApplication.Workbooks.Add()
+ <span style="color:blue">Dim</span> workSheet <span style="color:blue">As</span> Excel.Worksheet = workBook.Worksheets(1)
+
+ <span style="color:green">'show selected window and display user clicks ok or cancel</span>
+ <span style="color:blue">Dim</span> returnValue <span style="color:blue">As</span> <span style="color:blue">Boolean</span>
+ <span style="color:blue">Dim</span> radioSelectButton <span style="color:blue">As</span> RadioButton = GetSelectedRadioButton()
+
+ <span style="color:blue">Select</span> <span style="color:blue">Case</span> radioSelectButton.Text
+
+ <span style="color:blue">Case</span> <span style="color:#a31515">&quot;xlDialogAddinManager&quot;</span>
+
+  returnValue = excelApplication.Dialogs(XlBuiltInDialog.xlDialogAddinManager).Show()
+
+ <span style="color:blue">Case</span> <span style="color:#a31515">&quot;xlDialogFont&quot;</span>
+
+  returnValue = excelApplication.Dialogs(XlBuiltInDialog.xlDialogFont).Show()
+
+ <span style="color:blue">Case</span> <span style="color:#a31515">&quot;xlDialogEditColor&quot;</span>
+
+  returnValue = excelApplication.Dialogs(XlBuiltInDialog.xlDialogEditColor).Show()
+
+<span style="color:blue"><font color="#000000"> </font>Case</span> <span style="color:#a31515">&quot;xlDialogGallery3dBar&quot;</span>
+
+  returnValue = excelApplication.Dialogs(XlBuiltInDialog.xlDialogGallery3dBar).Show()
+
+ <span style="color:blue">Case</span> <span style="color:#a31515">&quot;xlDialogSearch&quot;</span>
+
+  returnValue = excelApplication.Dialogs(XlBuiltInDialog.xlDialogSearch).Show()
+
+ <span style="color:blue">Case</span> <span style="color:#a31515">&quot;xlDialogPrinterSetup&quot;</span>
+
+  returnValue = excelApplication.Dialogs(XlBuiltInDialog.xlDialogPrinterSetup).Show()
+
+ C<span style="color:blue">ase</span> <span style="color:#a31515">&quot;xlDialogFormatNumber&quot;</span>
+
+  returnValue = excelApplication.Dialogs(XlBuiltInDialog.xlDialogFormatNumber).Show()
+
+ <span style="color:blue">Case</span> <span style="color:#a31515">&quot;xlDialogApplyStyle&quot;</span>
+
+  returnValue = excelApplication.Dialogs(XlBuiltInDialog.xlDialogApplyStyle).Show()
+
+ <span style="color:blue">End</span> <span style="color:blue">Select</span>
+
+ <span style="color:blue">Dim</span> message <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;The dialog returns {0}.&quot;</span>, returnValue)
+ MessageBox.Show(<span style="color:blue">Me</span>, message, <span style="color:blue">Me</span>.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+ <span style="color:green">' close excel and dispose reference</span>
+ excelApplication.Quit()
+ excelApplication.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,46 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   create ole chart object with PowerPoint
+   taken from Example05.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example05Main()
+{
+   <span style="color:green">// start powerpoint </span>
+   PowerPoint.Application powerApplication = <span style="color:blue">new</span> PowerPoint.Application();
+
+   <span style="color:green">// add a new presentation with one new slide</span>
+   PowerPoint.Presentation presentation = powerApplication.Presentations.Add(<br>                                                               MsoTriState.msoTrue);
+   PowerPoint.Slide slide = presentation.Slides.Add(1, PpSlideLayout.ppLayoutBlank);
+            
+   <span style="color:green">// add a chart</span>
+   slide.Shapes.AddOLEObject(120, 111, 480, 320, <span style="color:#a31515">&quot;MSGraph.Chart&quot;</span>, <span style="color:#a31515">&quot;&quot;</span>, <br>                             MsoTriState.msoFalse, <span style="color:#a31515">&quot;&quot;</span>, 0, <span style="color:#a31515">&quot;&quot;</span>, MsoTriState.msoFalse); 
+
+   <span style="color:green">// save the document</span>
+   <span style="color:blue">string</span> fileExtension = GetDefaultExtension(powerApplication);
+   <span style="color:blue">string</span> documentFile = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}\\Example05{1}&quot;</span>, <br>                                        Application.StartupPath,<br>                                        fileExtension);
+   <br>   presentation.SaveAs(documentFile,<br>                       PpSaveAsFileType.ppSaveAsDefault,<br>                       MsoTriState.msoTrue);
+
+   <span style="color:green">// close power point and dispose reference</span>
+   powerApplication.Quit();
+   powerApplication.Dispose();
+
+   FinishDialog fDialog = <span style="color:blue">new</span> FinishDialog(<span style="color:#a31515">&quot;Presentation saved.&quot;</span>, documentFile);
+   fDialog.ShowDialog(<span style="color:blue">this</span>);
+}
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> returns the valid file extension for the instance. for example &quot;.ppt&quot; or &quot;.pptx&quot;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;application&quot;&gt;</span><span style="color:green">the instance&lt;/param&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">the extension&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">string</span> GetDefaultExtension(PowerPoint.Application application)
+{
+   <span style="color:blue">double</span> Version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);
+   <span style="color:blue">if</span> (Version &gt;= 12.00)
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.pptx&quot;</span>;
+   <span style="color:blue">else</span>
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.ppt&quot;</span>;
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

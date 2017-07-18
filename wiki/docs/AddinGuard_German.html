@@ -1,0 +1,23 @@
+<div class="wikidoc">
+<p><u><strong>Was tut der Addin Guard für Sie? <br>
+<br>
+</strong></u></p>
+<p align="justify">Wenn Sie ein ComAddin für Office entwickeln stehen Sie möglicherweise vor dem Problem das Sie sich nicht sicher sind ob ihr Addin ordnungsgemäß geladen wird. Bei auftretenden Fehlern ändern Office Anwendungern das Ladeverhalten von Addins
+ oder verschieben diese in den Bereich 'Deaktivierte Elemente'. Oftmals bekommen Sie als Entwickler davon jedoch nichts mit. Addin Guard kann Sie informieren wenn ein neues Addin registriert oder ein bestehendes gelöscht wird oder auch wenn sich das Ladeverhalten
+ eines Addins ändert oder es von Office als deaktiviertes Element markiert wird.</p>
+<blockquote></blockquote>
+<strong><u>Screenshot</u></strong>
+<p></p>
+<p><strong><u></u></strong>&#160;<a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=294405"><img title="AddinGuard" border="0" alt="AddinGuard" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=294406" width="820" height="486" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></a>
+</p>
+<p align="justify"><strong><u>Möglichkeiten und Einstellungen im Detail <br>
+<br>
+</u></strong>Im linken Bereich finden Sie alle COMAddins und deaktivierte Elemente geordnet nach Office-Anwendung. Klicken Sie auf ein Element für detailierte Informationen. Im rechten oberen Bereich können Sie den Addin Guard aktvieren.
+<br>
+<br>
+Option: LoadBehavior bei Änderung von 3 auf 2 zurücksetzen.</p>
+<p align="justify">Sofern sich das Ladeverhalten ihres Addins von 3(Load at Startup) zu 2(Load on Demand) ändert passiert dies meist durch die Office Anwendung weil ein Fehler aufgetreten ist. Addin Guard kann diesen Wert automatisch für Sie zurücksetzen. Sie
+ erhalten in diesem Fall eine Nachricht(MessageBox oder TrayBallon) das der Wert wiederhergestellt wurde.</p>
+<p align="justify">Im rechten mittleren Bereich haben Sie die Möglichkeit einzustellen ob Sie sich via MessageBox oder Tray-Ballon benachrichtigen lassen möchten. Der darunter liegende Bereich 'Letze Meldungen' protokolliert für Sie die zuletzt angezeigten
+ Nachrichten. Im letzten unteren Bereich sehen Sie detalierte Informationen d.h Registry-Werte für ein COMAddin oder oder Datei-Informationen für ein deaktiviertes Element.</p>
+</div><div class="ClearBoth"></div>

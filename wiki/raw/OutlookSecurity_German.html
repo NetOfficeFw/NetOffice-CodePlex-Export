@@ -1,0 +1,38 @@
+<div class="wikidoc">
+<p align="justify"><span style="text-decoration:underline"><strong>Was tut Outlook Security für Sie?
+<br>
+<br>
+</strong></span>Wenn Sie Microsoft Outlook via COM automatisieren wird Ihnen oder Ihrem Anwender möglicherweise ein Dialog angezeigt der Sie aufordert den Zugriff zu autorisieren. Ob Ihnen dieser Dialog angezeit wird hängt davon ab auf welchen Teil des Outlook
+ Objektmodells Sie zugreifen. Geschützt werden unter anderem spezifische Kontaktdaten sowie das versenden und empfangen von E-Mails. Je nach Art und Häufigkeit des Zugriffs kann dies als ausgesprochen störend empfunden werden und verhindert zusätzlich die unbeaufsichtige
+ Automatisierung(Microsoft rät von unbeausichtigter Office Automatisierung ausdrücklich ab, in der Praxis wird sie jedoch trotzdem praktiziert). Die Outlook Security Komponente unterdrückt diesen Dialog für Sie und ermöglicht damit neben einem geringeren Stress-Faktor
+ auch automatiserte Tests Ihres Addins. Mit Einführung dieses Sicherheits-Features im Jahr 2002 wurde unter Outlook Entwicklern sehr schnell ein Tool mit dem Namen 'ClickYes' populär das im Hintergrund ausgeführt wird und den Sicherheitsdialog automatisch bestätigt.
+ Die Outlook Security Komponente der Developer Toolbox arbeitet nach dem gleichen Prinzp wie das Programm 'ClickYes' und übernimmt das bestätigen dieses Dialogs automatisch. Ein Vorteil von Outlook Security gegenüber 'ClickYes' ist das Outlook Security auf
+ anderen System nicht mitinstalliert werden muss. Die eigentliche Funktionalität befindet sich, seperat, in dem Assembly NetOffice.OutlookSecurity.dll . Wie Sie diese Komponente nutzen damit ihr Assembly seine eigene ClickYes Funktionaliät direkt beinhaltet
+ lesen Sie weiter unten. Anmerkung: Outlook bietet je nach Version einige Möglichkeiten diesen Dialog für Ihr Assembly nicht anzuzeigen. Prüfen Sie diese Optionen bevor Sie sich für Outlook Security entscheiden.</p>
+<p><strong><span style="text-decoration:underline">Screenshot</span></strong></p>
+<p><strong><span style="text-decoration:underline"><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=294407"><img title="OutlookSecurity" border="0" alt="OutlookSecurity" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=294408" width="820" height="486" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></a>&#160;</span></strong></p>
+<p><strong><span style="text-decoration:underline"></span></strong></p>
+<p><strong><span style="text-decoration:underline">Möglichkeiten und Einstellungen im Detail
+<br>
+</span><br>
+</strong>Sie aktivieren Outlook Security über die Checkbox 'Unterdrückung eingeschaltet'.
+<br>
+Um unteren Bereich finden Sie ein Protokoll über die letzten Aktionen.</p>
+<p><strong><span style="text-decoration:underline">NetOffice.OutlookSecurity.dll in eigenen Assemblies verwenden
+<br>
+</span></strong><br>
+Binden Sie das Assembly über 'Verweise' in Ihr Projekt oder kopieren Sie den Quellcode in Ihr Projekt.
+<br>
+Das Assembly finden Sie im Anwendungsverzeichniss der NetOffice Developer Toolbox. Den Quellcode finden Sie im Ordner Source.
+<br>
+Die Aktivierung gestaltet sich denkbar einfach: <br>
+<br>
+Beispielaktivierung in C#</p>
+<div style="background-color:white; color:black">
+<pre><span style="color:blue">public</span> <span style="color:blue">void</span> Foo() 
+{ 
+    NetOffice.OutlookSecurity.Supress.Enabled = <span style="color:blue">true</span>; 
+}</pre>
+</div>
+<p>Denken Sie bitte daran diese Funktionalität beim beenden Ihres Programms wieder zu deaktivieren.</p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,114 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:blue">Module</span> Module1
+
+    <span style="color:blue">Sub</span> Main()
+
+        Console.WriteLine(<span style="color:#a31515">&quot;Visual Basic LateBinding Performance Test - 15000 Cells.&quot;</span>)
+        Console.WriteLine(<span style="color:#a31515">&quot;Write simple text, change Font, NumberFormat, WrapText and add a comment.&quot;</span>)
+
+        <span style="color:green">'  start excel, and get a new sheet reference</span>
+        <span style="color:blue">Dim</span> excelApplication <span style="color:blue">As</span> <span style="color:blue">Object</span> = CreateExcelApplication()
+        <span style="color:blue">Dim</span> books <span style="color:blue">As</span> <span style="color:blue">Object</span> = excelApplication.Workbooks
+        <span style="color:blue">Dim</span> book <span style="color:blue">As</span> <span style="color:blue">Object</span> = books.Add()
+        <span style="color:blue">Dim</span> sheets <span style="color:blue">As</span> <span style="color:blue">Object</span> = book.Worksheets
+        <span style="color:blue">Dim</span> sheet <span style="color:blue">As</span> <span style="color:blue">Object</span> = sheets.Add()
+
+        <span style="color:green">' do test 10 times</span>
+        <span style="color:blue">Dim</span> comReferencesList <span style="color:blue">As</span> <span style="color:blue">New</span> List(Of MarshalByRefObject)
+        <span style="color:blue">Dim</span> timeElapsedList <span style="color:blue">As</span> <span style="color:blue">New</span> List(Of TimeSpan)
+
+        <span style="color:blue">For</span> i = 1 <span style="color:blue">To</span> 10
+
+            sheet.UsedRange.ClearComments()
+            <span style="color:blue">Dim</span> timeStart <span style="color:blue">As</span> DateTime = DateTime.Now
+            <span style="color:blue">For</span> y = 1 <span style="color:blue">To</span> 15000
+
+                <span style="color:blue">Dim</span> rangeAdress <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:#a31515">&quot;$A&quot;</span> &#43; y.ToString()
+                <span style="color:blue">Dim</span> cellRange <span style="color:blue">As</span> <span style="color:blue">Object</span> = sheet.Range(rangeAdress)
+                cellRange.Value = <span style="color:#a31515">&quot;value&quot;</span>
+                <span style="color:blue">Dim</span> font <span style="color:blue">As</span> <span style="color:blue">Object</span> = cellRange.Font
+                font.Name = <span style="color:#a31515">&quot;Verdana&quot;</span>
+                cellRange.NumberFormat = <span style="color:#a31515">&quot;@&quot;</span>
+                cellRange.WrapText = <span style="color:blue">True</span>
+                <span style="color:blue">Dim</span> sampleComment <span style="color:blue">As</span> <span style="color:blue">Object</span> = cellRange.AddComment(<span style="color:#a31515">&quot;Sample Comment&quot;</span>)
+                comReferencesList.Add(font)
+                comReferencesList.Add(cellRange)
+
+            <span style="color:blue">Next</span>
+            <span style="color:blue">Dim</span> timeElapsed <span style="color:blue">As</span> TimeSpan = DateTime.Now - timeStart
+
+            <span style="color:green">' display info and dispose references</span>
+            Console.WriteLine(<span style="color:#a31515">&quot;Time Elapsed: {0}&quot;</span>, timeElapsed)
+            timeElapsedList.Add(timeElapsed)
+            <span style="color:blue">For</span> <span style="color:blue">Each</span> item <span style="color:blue">As</span> <span style="color:blue">Object</span> <span style="color:blue">In</span> comReferencesList
+                Marshal.ReleaseComObject(item)
+            <span style="color:blue">Next</span>
+            comReferencesList.Clear()
+
+        <span style="color:blue">Next</span>
+
+        <span style="color:green">' display info &amp; log to file</span>
+        <span style="color:blue">Dim</span> timeAverage <span style="color:blue">As</span> TimeSpan = AppendResultToLogFile(timeElapsedList, <span style="color:#a31515">&quot;Test3-VBLateBinding.log&quot;</span>)
+        Console.WriteLine(<span style="color:#a31515">&quot;Time Average: {0}{1}Press any key...&quot;</span>, timeAverage, Environment.NewLine)
+        Console.Read()
+
+        <span style="color:green">' release &amp; quit</span>
+        Marshal.ReleaseComObject(sheet)
+        Marshal.ReleaseComObject(sheets)
+        Marshal.ReleaseComObject(book)
+        Marshal.ReleaseComObject(books)
+
+        excelApplication.Quit()
+        Marshal.ReleaseComObject(excelApplication)
+
+    <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+    <span style="color:green">''' &lt;summary&gt;</span>
+    <span style="color:green">''' creates a new excel application</span>
+    <span style="color:green">''' &lt;/summary&gt;</span>
+    <span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+    <span style="color:blue">Function</span> CreateExcelApplication() <span style="color:blue">As</span> <span style="color:blue">Object</span>
+
+        <span style="color:blue">Dim</span> excelApplication <span style="color:blue">As</span> <span style="color:blue">Object</span> = CreateObject(<span style="color:#a31515">&quot;Excel.Application&quot;</span>)
+        excelApplication.DisplayAlerts = <span style="color:blue">False</span>
+        excelApplication.Interactive = <span style="color:blue">False</span>
+        excelApplication.ScreenUpdating = <span style="color:blue">False</span>
+        <span style="color:blue">Return</span> excelApplication
+
+    <span style="color:blue">End</span> <span style="color:blue">Function</span>
+
+    <span style="color:green">''' &lt;summary&gt;</span>
+    <span style="color:green">''' writes list items to a logile and append average of items at the end</span>
+    <span style="color:green">''' &lt;/summary&gt;</span>
+    <span style="color:green">''' &lt;param name=&quot;timeElapsedList&quot;&gt;a list with log results&lt;/param&gt;</span>
+    <span style="color:green">''' &lt;param name=&quot;fileName&quot;&gt;name of logfile in current assembly folder&lt;/param&gt;</span>
+    <span style="color:green">''' &lt;returns&gt;average of timeElapsedList&lt;/returns&gt;</span>
+    <span style="color:blue">Function</span> AppendResultToLogFile(<span style="color:blue">ByVal</span> timeElapsedList <span style="color:blue">As</span> List(Of TimeSpan), <span style="color:blue">ByVal</span> fileName <span style="color:blue">As</span> <span style="color:blue">String</span>) <span style="color:blue">As</span> TimeSpan
+
+        <span style="color:blue">Dim</span> timeSummary <span style="color:blue">As</span> TimeSpan = TimeSpan.Zero
+        <span style="color:blue">Dim</span> logFile <span style="color:blue">As</span> <span style="color:blue">String</span> = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.<span style="color:blue">Assembly</span>.GetEntryAssembly().Location), fileName)
+
+        <span style="color:blue">If</span> (System.IO.File.Exists(logFile)) <span style="color:blue">Then</span>
+            System.IO.File.Delete(logFile)
+        <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+        <span style="color:blue">For</span> <span style="color:blue">Each</span> item <span style="color:blue">As</span> TimeSpan <span style="color:blue">In</span> timeElapsedList
+
+            timeSummary &#43;= item
+            <span style="color:blue">Dim</span> logFileAppend <span style="color:blue">As</span> <span style="color:blue">String</span> = item.ToString() &#43; Environment.NewLine
+            System.IO.File.AppendAllText(logFile, logFileAppend, System.Text.Encoding.UTF8)
+
+        <span style="color:blue">Next</span>
+
+        <span style="color:blue">Dim</span> timeAverage <span style="color:blue">As</span> TimeSpan = TimeSpan.FromTicks(timeSummary.Ticks / timeElapsedList.<span style="color:blue">Count</span>)
+        System.IO.File.AppendAllText(logFile, <span style="color:#a31515">&quot;Time Average: &quot;</span> &#43; timeAverage.ToString(), System.Text.Encoding.UTF8)
+        <span style="color:blue">Return</span> timeAverage
+
+    <span style="color:blue">End</span> <span style="color:blue">Function</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Module</span>
+
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

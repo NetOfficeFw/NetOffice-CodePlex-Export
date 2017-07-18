@@ -1,0 +1,59 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*  
+   using events in Word
+   taken from Example06.cs
+*/</span> 
+<span style="color:blue">public</span> <span style="color:blue">partial</span> <span style="color:blue">class</span> Form1 : Form
+{
+   <span style="color:blue">private</span> <span style="color:blue">delegate</span> <span style="color:blue">void</span> UpdateEventTextDelegate(<span style="color:blue">string</span> Message);
+   UpdateEventTextDelegate _updateDelegate;
+
+   <span style="color:blue">public</span> Form1()
+   {
+       InitializeComponent();
+       _updateDelegate = <span style="color:blue">new</span> UpdateEventTextDelegate(UpdateTextbox);
+   }
+
+   <span style="color:blue">private</span> <span style="color:blue">void</span> button1_Click(<span style="color:blue">object</span> sender, EventArgs e)
+   {
+       <span style="color:green">// start word and turn off msg boxes</span>
+       Word.Application wordApplication = <span style="color:blue">new</span> Word.Application();
+       wordApplication.DisplayAlerts = NetOffice.WordApi.Enums.WdAlertLevel.wdAlertsNone; 
+
+       <span style="color:green">/*
+       we register some events. note: the event trigger was called from word, <br>       means an other Thread
+       */</span>
+       wordApplication.NewDocumentEvent &#43;= 
+<span style="color:blue"><font color="#000000">       </font>new</span> NetOffice.WordApi.Application_NewDocumentEventHandler(<br>                                               word_NewDocumentEvent);
+       wordApplication.DocumentBeforeCloseEvent &#43;= 
+<span style="color:blue"><font color="#000000">       </font>new</span> NetOffice.WordApi.Application_DocumentBeforeCloseEventHandler(<br>                                               word_DocumentBeforeCloseEvent);
+
+       <span style="color:green">// add new document and close</span>
+       Word.Document document = wordApplication.Documents.Add();
+       document.Close();
+       
+       <span style="color:green">// close word and dispose reference</span>
+       wordApplication.Quit();
+       wordApplication.Dispose();
+   }
+
+   <span style="color:blue">void</span> word_DocumentBeforeCloseEvent(NetOffice.WordApi.Document Doc, <span style="color:blue">ref</span> <span style="color:blue">bool</span> Cancel)
+   {
+       textBoxEvents.BeginInvoke(_updateDelegate, <br>                                 <span style="color:blue">new</span> <span style="color:blue">object</span>[] { <span style="color:#a31515">&quot;Event DocumentBeforeClose called.&quot;</span> });
+       Doc.Dispose();
+   }
+
+   <span style="color:blue">void</span> word_NewDocumentEvent(NetOffice.WordApi.Document Doc)
+   {
+       textBoxEvents.BeginInvoke(_updateDelegate, <br>                                 <span style="color:blue">new</span> <span style="color:blue">object</span>[] { <span style="color:#a31515">&quot;Event NewDocumentEvent called.&quot;</span> });
+       Doc.Dispose();
+   }
+
+   <span style="color:blue">private</span> <span style="color:blue">void</span> UpdateTextbox(<span style="color:blue">string</span> message)
+   {
+       textBoxEvents.AppendText(message &#43; <span style="color:#a31515">&quot;\r\n&quot;</span>);
+   }
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

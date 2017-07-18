@@ -1,0 +1,32 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' list all contacts in outlook</span>
+<span style="color:green">' taken from Example05.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example05Main()
+
+<span style="color:green"><font color="#000000">   </font>' start outlook</span>
+   <span style="color:blue">Dim</span> outlookApplication = <span style="color:blue">New</span> Outlook.Application()
+
+   <span style="color:green">' enum contacts </span>
+   <span style="color:blue">Dim</span> contactFolder <span style="color:blue">As</span> Outlook.MAPIFolder = _<br>       outlookApplication.Session.GetDefaultFolder(OlDefaultFolders.olFolderContacts)
+
+   <span style="color:blue">For</span> index <span style="color:blue">As</span> <span style="color:blue">Integer</span> = 1 <span style="color:blue">To</span> contactFolder.Items.<span style="color:blue">Count</span>
+
+      <span style="color:blue">If</span> (TypeName(contactFolder.Items(index)) = <span style="color:#a31515">&quot;ContactItem&quot;</span>) <span style="color:blue">Then</span>
+
+         <span style="color:blue">Dim</span> contact <span style="color:blue">As</span> Outlook.ContactItem = contactFolder.Items(index)
+         <span style="color:blue">Dim</span> listItem <span style="color:blue">As</span> ListViewItem = listView1.Items.Add(index.ToString())
+         listItem.SubItems.Add(contact.CompanyAndFullName)
+
+      <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+   <span style="color:blue">Next</span> index
+
+   <span style="color:green">'close outlook and dispose</span>
+   outlookApplication.Quit()
+   outlookApplication.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

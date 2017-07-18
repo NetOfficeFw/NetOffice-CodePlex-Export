@@ -1,0 +1,39 @@
+<div class="wikidoc">
+<p><font size="3"><font face="Verdana"><strong>Question</strong>: </font></font><font size="3"><font face="Verdana"><strong>My programming language does not support properties with parameters ?
+<br>
+&#160;</strong> <br>
+<u><strong>Answer</strong>:</u> </font></font></p>
+<p align="justify"><font size="3" face="Verdana">NetOffice change all parametrized properties to methods. Use parametrized properties just in the same way as before with the Interop Assemblies or VBA. C# developers doesnt have to use the ugly “get_” or “set”
+ overloads in NetOffice. The “get_” and “set&quot;_” overloads exists in NetOffice too but hidden in Intellisense as compatibility workarround to make it easier moving an interop assembly solution to NetOffice.
+<br>
+</font><strong><strong><br>
+<br>
+<font size="3" face="Verdana">Question</font></strong></strong><font size="3" face="Verdana">:
+</font><font size="3"><font face="Verdana"><strong>My programming language does not support optional parameters ?&#160;
+<br>
+<br>
+<u>Answer</u></strong><u>:</u> </font></font></p>
+<p align="justify"><font size="3" face="Verdana">NetOffice doesnt use optional parameters and goes a different way with additional overloads depending on the count of optional parameters. As example for a property with 2 optional parameters NetOffice spend
+ 3 overloads for the property. <br>
+</font><strong><strong><br>
+<br>
+<font size="3" face="Verdana">Question</font></strong></strong><font size="3" face="Verdana">:
+</font><font size="3"><font face="Verdana"><strong>Do I have access to the native COM Proxies ?
+<br>
+<br>
+</strong><strong><strong><u>Answer</u></strong></strong><u>:</u> </font></font></p>
+<p align="justify"><font size="3" face="Verdana">Yes, every object implements the property
+<em>UnderlyingObject</em>. be carefull here! <br>
+</font><strong><strong><br>
+<br>
+<font size="3" face="Verdana">Question</font></strong></strong><font size="3"><font face="Verdana">:
+<strong>I work with Office versions in different languages on different systems. </strong>
+</font></font><strong><font size="3" face="Verdana">How can I change the ThreadCulture?
+<br>
+</font></strong><u><strong><strong><br>
+<font size="3" face="Verdana">Answer</font></strong></strong><font size="3" face="Verdana">:</font></u><font size="3" face="Verdana">
+</font></p>
+<p align="justify"><font size="3" face="Verdana">Change the culture at your will:
+<em>NetOffice.Settings.ThreadCulture</em> The default is &quot;en-us&quot;.</font></p>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

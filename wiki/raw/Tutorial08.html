@@ -1,0 +1,38 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">/* taken from Tutorial08.csproj
+   Any object in NetOffice implements a special method too see at runtime a specified property or method is available<br>   This very important because not any property or method is available in any office version
+
+   bool EntityIsAvailable(string name);
+   bool EntityIsAvailable(string name, SupportEntityType searchType);
+
+   This example shows you how to use.
+
+   See chapter8 in technical documentation for further info.
+*/</span>
+
+<span style="color:blue">void</span> Foo()
+{
+   <span style="color:green">// Initialize NetOffices</span>
+   LateBindingApi.Core.Factory.Initialize();
+
+   <span style="color:green">// create new instance</span>
+   Excel.Application application = <span style="color:blue">new</span> Excel.Application();
+            
+   <span style="color:green">// check for support at runtime</span>
+   <span style="color:blue">bool</span> enableLivePreviewSupport = application.EntityIsAvailable(<span style="color:#a31515">&quot;EnableLivePreview&quot;</span>);
+   <span style="color:blue">bool</span> openDatabaseSupport = application.Workbooks.EntityIsAvailable(<span style="color:#a31515">&quot;OpenDatabase&quot;</span>);
+
+   <span style="color:blue">string</span> result = <span style="color:#a31515">&quot;Excel Runtime Check: &quot;</span> &#43; Environment.NewLine;
+   result &#43;= <span style="color:#a31515">&quot;Support EnableLivePreview: &quot;</span> &#43; enableLivePreviewSupport.ToString() &#43; Environment.NewLine;
+   result &#43;= <span style="color:#a31515">&quot;Support OpenDatabase:      &quot;</span> &#43; openDatabaseSupport.ToString() &#43; Environment.NewLine;
+
+   richTextBoxResult.Text = result;
+
+   <span style="color:green">// quit and dispose</span>
+   application.Quit();
+   application.Dispose();
+}
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,194 @@
+<div class="wikidoc">
+<blockquote>
+<p align="justify"><font size="3"><font face="Verdana"><strong>Tutorial11 – Weitergabe von Automation Addins
+<br>
+<br>
+</strong>Sofern Sie bereits Erfahrungen mit der Weitergabe von eigenen Lösungen haben die auf den Interop Assemblies von Microsoft beruhen, ist die gute Nachricht für Sie das NetOffice sich auch hier nicht anders verhält und Sie bereits über das notwendige
+ Know-How verfügen eine auf NetOffice basierende Lösungen zu verteilen. <br>
+<br>
+Das folgende Tutorial geht auf die 2 gängiggen Wege ein –managed- Automation Addins für Office zu verteilen. 1.) Manuelle Weitergabe und 2.) Weitergabe als .MSI Paket.
+<br>
+<br>
+</font></font><font size="3"><font face="Verdana"><span style="text-decoration:underline">Manuelle Weitergabe ohne Installationspaket(.msi)
+<br>
+</span><br>
+Wenn Sie ein Automation Addin Projekt mit NetOffice oder den Interop Assemblies erstellen und kompilieren ist dieses Addin bereits für ihre Office Anwendung verfügbar bzw. wird geladen. Im Verlauf der Kompilierung wird die notwendige Registrierung automatisch
+ vorgenommen. Verantwortlich ist das dafür die Projekteinstellung für COM Interop registrieren. Visual Studio ruft dafür das .NET Konsolenprogramm Regasm.exe auf und übergibt den Pfad zu ihrem Assembly. Regasm.exe analysiert nun ihr Assembly und trägt für COM
+ relevante Einträge in die Windows-Registrierung ein. Sie können innerhalb ihres Addins 2 spezielle statische Funktionen definieren die von Regasm.exe jeweils bei der Registrierung und bei der Deregistrierung aufgerufen werden.
+<br>
+<br>
+Sie müssen diese beiden statischen Funktionen sogar definieren da Regasm.exe ihnen nicht alle Arbeit abnimmt. Automation Addins müssen sich im Registrierungsschlüssel ihrer gewünschten Office Anwendung eintragen. Für Regasm.exe ist ihr Addin einfach nur eine
+ COM Komponente, nicht mehr&#160; aber auch nicht weniger. Das Eintragen der wichtigen Schlüssel für MS-Office müssen Sie also in diesen Funktionen selbst vornehmen. Betrachten wir hierzu ein kurzes Beispiel-Listing für die Register/UnregisterMethoden:</font></font></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana">&lt;ComRegisterFunctionAttribute()&gt; _ 
+<span style="color:blue">Public</span> <span style="color:blue">Shared</span> <span style="color:blue">Sub</span> RegisterFunction(<span style="color:blue">ByVal</span> type <span style="color:blue">As</span> Type) 
+<span style="color:blue">Try</span> 
+   <span style="color:green">' add codebase value </span>
+   <span style="color:blue">Dim</span> thisAssembly <span style="color:blue">As</span> <span style="color:blue">Assembly</span> = <span style="color:blue">Assembly</span>.GetAssembly(<span style="color:blue">GetType</span>(Addin)) 
+   <span style="color:blue">Dim</span> key <span style="color:blue">As</span> RegistryKey = Registry.ClassesRoot.CreateSubKey( _ 
+   <span style="color:#a31515">&quot;CLSID\\{&quot;</span> &#43; type.GUID.ToString().ToUpper() &#43; <span style="color:#a31515">&quot;}\\InprocServer32\\1.0.0.0&quot;</span>) 
+   key.SetValue(<span style="color:#a31515">&quot;CodeBase&quot;</span>, thisAssembly.CodeBase) 
+   key.Close() 
+
+   key = Registry.ClassesRoot.CreateSubKey( _ 
+   <span style="color:#a31515">&quot;CLSID\\{&quot;</span> &#43; type.GUID.ToString().ToUpper() &#43; <span style="color:#a31515">&quot;}\\InprocServer32&quot;</span>) 
+   key.SetValue(<span style="color:#a31515">&quot;CodeBase&quot;</span>, thisAssembly.CodeBase) 
+   key.Close()           
+
+   <span style="color:green">' register addin in Excel </span>
+   Registry.CurrentUser.CreateSubKey( _ 
+   <span style="color:#a31515">&quot;Software\Microsoft\Office\Excel\Addins\DeploymentSampleVB.Addin&quot;</span>) 
+   <span style="color:blue">Dim</span> regKeyExcel <span style="color:blue">As</span> RegistryKey = Registry.CurrentUser.OpenSubKey( _ 
+   <span style="color:#a31515">&quot;Software\Microsoft\Office\Excel\Addins\DeploymentSampleVB.Addin&quot;</span>, <span style="color:blue">true</span>) 
+   regKeyExcel.SetValue(<span style="color:#a31515">&quot;LoadBehavior&quot;</span>, Convert.ToInt32(3)) 
+   regKeyExcel.SetValue(<span style="color:#a31515">&quot;FriendlyName&quot;</span>, <span style="color:#a31515">&quot;DeploymentSampleVB&quot;</span>) 
+   regKeyExcel.SetValue(<span style="color:#a31515">&quot;Description&quot;</span>, _<br>       <span style="color:#a31515">&quot;NetOffice Beispiel für die Weitergabe eines Automation Addin&quot;</span>) 
+   regKeyExcel.Close() 
+
+  <span style="color:blue">Catch</span> ex <span style="color:blue">As</span> Exception 
+
+   <span style="color:blue">Dim</span> details <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format( _<br>                   <span style="color:#a31515">&quot;{1}{1}Details:{1}{1}{0}&quot;</span>, ex.Message, Environment.NewLine) 
+   MessageBox.Show(<span style="color:#a31515">&quot;An error occured.&quot;</span> &#43; details, <span style="color:#a31515">&quot;Error&quot;</span>, _<br>                   MessageBoxButtons.OK, MessageBoxIcon.<span style="color:blue">Error</span>) 
+
+  <span style="color:blue">End</span> <span style="color:blue">Try</span> 
+<span style="color:blue">End</span> <span style="color:blue">Sub</span> 
+
+&lt;ComUnregisterFunctionAttribute()&gt; _ 
+<span style="color:blue">Public</span> <span style="color:blue">Shared</span> <span style="color:blue">Sub</span> UnregisterFunction(<span style="color:blue">ByVal</span> type <span style="color:blue">As</span> Type) 
+ <span style="color:blue">Try</span> 
+
+   Registry.ClassesRoot.DeleteSubKey( _ 
+   <span style="color:#a31515">&quot;CLSID\\{&quot;</span> &#43; type.GUID.ToString().ToUpper() &#43; <span style="color:#a31515">&quot;}\\Programmable&quot;</span>, <span style="color:blue">False</span>) 
+   <span style="color:green">' unregister addin in office </span>
+   Registry.CurrentUser.DeleteSubKey( _ 
+   <span style="color:#a31515">&quot;Software\Microsoft\Office\Excel\Addins\DeploymentSampleVB.Addin&quot;</span>) 
+ <br> <span style="color:blue">Catch</span> throwedException <span style="color:blue">As</span> Exception 
+
+   <span style="color:blue">Dim</span> details <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format( _ 
+   <span style="color:#a31515">&quot;{1}{1}Details:{1}{1}{0}&quot;</span>, throwedException.Message, Environment.NewLine) 
+   MessageBox.Show(<span style="color:#a31515">&quot;An error occured.&quot;</span> &#43; details, <span style="color:#a31515">&quot;Error&quot;</span>, _ 
+                 MessageBoxButtons.OK, MessageBoxIcon.<span style="color:blue">Error</span>) 
+
+ <span style="color:blue">End</span> <span style="color:blue">Try</span> 
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></font></font></pre>
+</div>
+<p align="justify"><br>
+<font size="3" face="Verdana">Sie können erkennen das wir die entsprechenden Schlüssel selbst erstellen und wieder löschen. Dieses Verfahren bezeichnet man daher auch als Selbstregistrierung. Sie können auch erkennen das wir einen Codebase Eintrag vornehmen.
+ Dieser ist immer dann nötig wenn Ihr Assembly nicht im GAC installiert wird, andernfalls können Sie auf den Codebase Eintrag verzichten. Fazit: Was Sie bei der manuellen Weitergabe auf andere Systeme im wesentlichen tun müssen ist das Tool Regasm.exe aufzurufen
+ und ihren Register/Unregister Methoden entprechend vorzubereiten. In der folgenden Übersicht sehen Sie eine kurze Tabelle für die typischen Einträge eines Automation Addins:
+<br>
+<br>
+HKEY_CURRENT_USER\Software\Microsoft\Office\&lt;Ihrer_Office_Anwendung&gt;\Addins\&lt;ProgID_Ihrer Addin_Klasse&gt;</font></p>
+<table border="0" cellspacing="0" cellpadding="2" width="719">
+<tbody>
+<tr>
+<td valign="top" width="133"><font size="3" face="Verdana">DWORD</font></td>
+<td valign="top" width="133"><font size="3" face="Verdana">LoadBehavior</font></td>
+<td valign="top" width="451"><font size="3" face="Verdana">Definiert das Ladeverhalten des Addins</font></td>
+</tr>
+<tr>
+<td valign="top" width="133"><font size="3" face="Verdana">REG_SZ</font></td>
+<td valign="top" width="133"><font size="3" face="Verdana">FriendlyName</font></td>
+<td valign="top" width="451"><font size="3" face="Verdana">Der angezeigte Name des Addins</font></td>
+</tr>
+<tr>
+<td valign="top" width="133"><font size="3" face="Verdana">REG_SZ</font></td>
+<td valign="top" width="133"><font size="3" face="Verdana">Description</font></td>
+<td valign="top" width="451"><font size="3" face="Verdana">Eine zustätzliche Kurzbeschreibung des Addins</font></td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<a href="http://msdn.microsoft.com/de-de/library/bb386106.aspx"><font size="3" face="Verdana">MSDN Library: Registrierungseinträge für Add-Ins auf Anwendungsebene</font></a></p>
+<p align="justify"><br>
+<br>
+<font size="3"><font face="Verdana"><span style="text-decoration:underline">Weitergabe als Installationspaket(.msi)
+<br>
+<br>
+</span>Für die Weitergabe als .MSI Paket empfiehlt sich in Visual Studio ein Setup Projekt zu erstellen. Klicken Sie dazu auf die Schaltfläche Neues Projekt hinzufügen innerhalb Ihrer Solution. Im nächsten Schritt müssen Sie die Projektausgabe Ihres AutomationAddin
+ Projekts dem Setup Projekt hinzufügen. Klicken Sie dazu auf die Schaltfläche Hinuzfügen/Projektausgabe und wählen Ihr AutomationAddin Projekt. Die notwendige Registrierung die wie oben erklärt durch Regasm.exe vorgenommen entfällt hier da der Windows-Installer
+ sich darum kümmert. Hierzu müssen Sie die Registereigenschaft für die zu installierende Projektausgabe auf den Wert vsdrpCOM setzen. Dieses Verfahren hat leider den Nachteil das der Windows Installer nicht die oben beschrieben Register Funktionen aufruft.
+ Sie müssen die Registrierungsschlüssel für Ihre Office Anwendungung in Ihrem Setup Projekt extra definieren damit das Addin während der Installation eingetragen wird. Wie dies geht sehen Sie weiter unten.
+<br>
+<br>
+Sie müssen ausserdem dafür sorgen der Codebase Eintrag vorgenommen wird, andernfalls muss das Assembly im GAC installiert werden. Wichtig: Für eine Registrierung im GAC benötigt Ihr Assembly einen starken Namen. Zuerst müssen Sie den GAC Ordner innerhalb ihres
+ Setups definieren. Wechseln Sie dazu in der Ansicht ins Dateisystem. Klicken Sie auf die Schaltfläche Speziellen Ordner hinzufügen und wählen Sie Cacheordner für globale Assembly. Wechseln Sie nun die Eigenschaften der Projektausgabe und setzen Sie den Wert
+ Folder auf den eben hinzugefügten Ordner Cacheordner für globale Assembly. Um die erforderlichen Registrierungswerte für Office zu erstellen wechseln Sie in der Ansicht zu Registrierung und definieren die Schlüssel HKEY_CURRENT_USER\Software\Microsoft\Office\OfficeAnwendung\Addins\IhrAddin
+ mit den erforderlichen Werten. <br>
+<br>
+</font></font><font size="3"><font face="Verdana"><strong>Exemplarisches Vorgehen für das erstellen eines vollständigen Setup Projekts
+<br>
+</strong><br>
+In der folgenden Veranschaulichung wird ein vollständiges Setup Projekt für ein Automation AddIn erstellt das im GAC registriert wird und von Microsoft Excel geladen werden soll.
+<br>
+<br>
+</font></font><a href="http://netoffice.codeplex.com/releases/view/70943#DownloadId=372665"><font size="3" face="Verdana">Download Beispielprojekt</font></a></p>
+<p><font size="3"><font face="Verdana"><u>Schritt 1</u>: Hinzufügen des Setup Projekts zum Addin Projekt
+<br>
+<br>
+</font></font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372635"><font size="3" face="Verdana"><img title="Deploy1_DE_VB" border="0" alt="Deploy1_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372636" width="686" height="459" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">&#160;
+<br>
+<br>
+</font></p>
+<p><br>
+<font size="3"><font face="Verdana"><u>Schritt 2</u>: Hinzufügen der Projektausgabe des Addin Projekts zum Setup Projekt
+<br>
+<br>
+</font></font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372690"><font size="3" face="Verdana"><img title="Deploy2_DE_VB" border="0" alt="Deploy2_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372691" width="341" height="224" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">
+</font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372692"><font size="3" face="Verdana"><img title="Deploy3_DE_VB" border="0" alt="Deploy3_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372693" width="192" height="224" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">&#160;
+<br>
+&#160; <br>
+<br>
+<br>
+<u>Schritt 3</u>: Bekanntmachen des GAC Ordners <br>
+<br>
+</font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372641"><font size="3" face="Verdana"><img title="Deploy4_DE_VB" border="0" alt="Deploy4_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372642" width="685" height="336" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">&#160;&#160;
+<br>
+</font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372643"><font size="3" face="Verdana"><img title="Deploy5_DE_VB" border="0" alt="Deploy5_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372644" width="686" height="516" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">&#160;
+<br>
+<br>
+<br>
+<u>Schritt 4</u>: GAC Ordner als Installationsziel für ihr Addin angeben <br>
+<br>
+</font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372645"><font size="3" face="Verdana"><img title="Deploy6_DE_VB" border="0" alt="Deploy6_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372646" width="693" height="593" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">&#160;
+<br>
+<br>
+<br>
+<br>
+<u>Schritt 5</u>: Registrierung für COM festlegen <br>
+<br>
+</font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372647"><font size="3" face="Verdana"><img title="Deploy7_DE_VB" border="0" alt="Deploy7_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372648" width="282" height="449" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">&#160;&#160;
+<br>
+<br>
+<br>
+<u>Schritt 6</u>: Registrierungsschlüssel definieren <br>
+<br>
+</font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372649"><font size="3" face="Verdana"><img title="Deploy8_DE_VB" border="0" alt="Deploy8_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372650" width="687" height="331" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">&#160;&#160;
+<br>
+</font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372651"><font size="3" face="Verdana"><img title="Deploy9_DE_VB" border="0" alt="Deploy9_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372652" width="690" height="296" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">&#160;&#160;
+<br>
+<br>
+<br>
+<br>
+<u>Schritt 7</u>: Projekt erstellen</font></p>
+<p><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372653"><font size="3" face="Verdana"><img title="Deploy10_DE_VB" border="0" alt="Deploy10_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372654" width="695" height="482" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">&#160;&#160;
+<br>
+<br>
+<br>
+</font></p>
+<p align="justify"><font size="3"><font face="Verdana"><u>Schritt 8</u>: Das Setup Projekt stellt fest das die generierte Typenbibliothek(COM) im GAC nicht installierbar ist. Die Typenbibliothek wird von der Installation ausgeschlossen da sie zur Laufzeit nicht
+ benötigt wird. <br>
+<br>
+</font></font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372657"><font size="3" face="Verdana"><img title="Deploy11_DE_VB" border="0" alt="Deploy11_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372658" width="698" height="450" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">
+<br>
+</font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372659"><font size="3" face="Verdana"><img title="Deploy12_DE_VB" border="0" alt="Deploy12_DE_VB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=372660" width="700" height="454" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3" face="Verdana">
+</font></p>
+<p align="justify"><font size="3" face="Verdana">&#160; <br>
+Klicken Sie erneut auf die Schaltfläche “Erstellen” um erfolgreich ein Setup Projekt für Ihre Anwendung zu erstellen. Im Ausgabeverzeichniss werden Sie eine .msi Datei und eine .exe Datei vorfinden. Die .exe Datei hat die Aufgabe zu prüfen ob die richtige Windows
+ Installer Runtime auf dem Zielsystem installiert ist. Wenn dies der Fall ist wird die .exe Datei die .msi Datei zur Ausführung bringen, andernfalls den Download und die Installation der korrekten Windows Installer Runtime anbieten und danach Ihr Installationspaket(.msi
+ Datei) zur Ausführung bringen. <br>
+<br>
+</font><a href="http://netoffice.codeplex.com/releases/view/70943#DownloadId=372665"><font size="3" face="Verdana">Download Beispielprojekt</font></a></p>
+</blockquote>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

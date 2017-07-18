@@ -1,0 +1,102 @@
+<div class="wikidoc">
+<p><font size="2"><font face="Verdana">Der Tools Namespace in NetOffice bietet hilfreiche Erweiterungen für die Addin Entwicklung die dabei helfen notwendigen und wiederkehrenden Code (auch Gerüstcode genannt) auf ein Minimum zu reduzieren bzw. vollends einzusparen.
+ Neben dem NetOffice.Tools Namespace verfügt jede Anwendung über ihren eigenen Tools Namespace z.B. NetOffice.ExcelApi.Tools für Microsoft Excel.&#160;
+<br>
+<br>
+</font><font face="Verdana"><font size="3"><strong>Schnelleinstieg – Ein COMAddin für MS-Excel
+<br>
+</strong></font><br>
+Listing 1.0 <br>
+<br>
+using NetOffice.Tools; <br>
+using NetOffice.ExcelApi.Tools;</font></font></p>
+<p><font size="2" face="Verdana">[ProgId(&quot;MyCompany.ExcelAddin&quot;), GuidAttribute(&quot;56F843AD-ECB8-45D6-9E33-C0928BD2FB03&quot;)]
+<br>
+[COMAddin(&quot;My Excel Tools Addin&quot;, &quot;This is a sample Addin&quot;, 3)]
+<br>
+public class ThisAddin : COMAddin <br>
+{ <br>
+<br>
+} <br>
+<br>
+Dieser kurze Beispielcode erstellt ein voll funktionsfähiges Addin für MS-Excel. Wenn Sie bereits COM Addins für Office entwickelt haben sind Ihnen das GuidAttribute und das ProgID Attribute sicherlich vertraut. Das Konzept im Tools Namespace von NetOffice
+ greift diesen Attribut basierten Ansatz auf und stellt weitere Attribute zur Verfügung. Ausserdem müssen Sie von der abstrakten Basisklasse COMAddin erben. Die folgende Tabelle zeigt auf welche Attribute Sie auf Ihr Addin anwenden können.
+<br>
+</font></p>
+<p><font size="2" face="Verdana">Name – obligatorisch – Beschreibung <br>
+<br>
+COMAddin – Ja – Dieses Attribute bestimmt mit welchen Werten Ihr Addin innerhalb der Office Anwendung registriert wird. Konkret handelt es sich damit umd die notwendigen Werte im Addins Registry Key der Office Anwendung.
+<br>
+<br>
+Name – Anzeigename für Ihr Addin, <br>
+Description – Optionale Beschreibung, <br>
+LoadBehavior – Ladeverhalten z.B. 3 für LoadAtStartup <br>
+<br>
+RegistryLocationAttribute – Nein – Dieses Attribute bestimmt ob das Addin systemweit oder nur für einen Benutzer registriert werden soll. In der Voreinstellung wird das Addin im Bereich HKEY_CURRENT_USER registriert. Sie können mit diesem Attribute diese Voreinstellung
+ übergehen und HKEY_LOCAL_MACHINE auswählen. Beachten Sie das&#160; in diesem Fall für die Registrierung erhöhte Ausführungsrechte benötigt werden.</font></p>
+<p><br>
+<font size="2"><font face="Verdana">CustomUIAttribute – Nein – Wenn Sie die Ribbon Oberfläche einer Office Anwendung erweitern möchten können Sie hier den Pfad zu einer eingebetteten XML Datei innerhalb ihres Assemblies angeben. Alternativ können Sie die Methode
+ GetCustomUI der Bassisklasse COMAddin überschreiben. <br>
+<br>
+<br>
+</font><font face="Verdana"><font size="3"><strong>OnConnection und Co - Wo sind meine Ereignisse?
+<br>
+</strong></font><br>
+Üblicherweise kommuniziert eine Office Anwendung mit seinen Addins über das IExtensibility2 Interface. Die Methoden von IExtensibility2 stehen Ihnen als Events zur Verfügung die Sie wahlweise nutzen können. Betrachten Sie dazu folgenden Beispielcode:
+<br>
+</font></font></p>
+Listing 2.0 <br>
+<p><font size="2"><font face="Verdana">using NetOffice.Tools; <br>
+using NetOffice.ExcelApi.Tools;</font></font></p>
+<p><font size="2" face="Verdana">[ProgId(&quot;MyCompany.ExcelAddin&quot;), GuidAttribute(&quot;56F843AD-ECB8-45D6-9E33-C0928BD2FB03&quot;)]
+<br>
+[COMAddin(&quot;My Excel Tools Addin&quot;, &quot;This is a sample Addin&quot;, 3)]
+<br>
+public class ThisAddin : COMAddin <br>
+{ <br>
+&#160;&#160;&#160;&#160;&#160; </font>public ThisAddin() <br>
+&#160;&#160;&#160;&#160;&#160;&#160; { <br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; this.OnConnection &#43;= new OnConnectionEventHandler(ThisAddin_OnConnection);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; this.OnStartupComplete &#43;= new OnStartupCompleteEventHandler(ThisAddin_OnStartupComplete);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160; void ThisAddin_OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; { </p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; void ThisAddin_OnStartupComplete(ref Array custom)
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160; { <br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+<p>} <br>
+<br>
+Hinweis: Typischerweise würden Sie den Application Parameter in OnConnection jetzt lokal speichern. Dies ist jedoch nicht notwendig da die Basisklasse dies bereits für Sie erledigt hat. Nutzen Sie für den Zugriff auf die Host Anwendung das Property Application.
+<br>
+</p>
+<font face="Verdana"><font size="3"><strong>Weitergabe – Registrierung richtig steuern
+<br>
+</strong></font></font>
+<p>Für die Registrierung/Deregistrierung von COM Addins stellen Sie normalerweise 2 statische Methoden zur Verfügung die Sie mit speziellen Attributen markieren. Während der Installation/De-Installation/Kompilierung ihres Addins werden diese Methoden aufgerufen
+ und das Addin nimmt weite Teile seiner Registrierung in der Windows Registry selbst vor. Durch die Verwendung des COMAddin Attributes ist es nicht zwingend erforderlich das Sie Code für die Registrierung/Deregistrierung hinzufügen. Sie können den automatischen
+ Registrierungsvorgang aber wahlweise übergehen oder ergänzen.&#160; <br>
+<br>
+In den NetOffice Tools stehen Ihnen ebenfalls 2 Attribute zur Verfügung, RegisterFunction und UnRegisterFunction. Betrachten Sie dazu folgenden Beispielcode:</p>
+<p><br>
+[RegisterFunction(RegisterMode.CallAfter)] <br>
+public void OnRegister(RegisterCall callType) <br>
+{ <br>
+}</p>
+[UnRegisterFunction(RegisterMode.CallAfter)] <br>
+public void OnUnRegister(RegisterCall callType) <br>
+{ <br>
+}
+<p><br>
+<font face="Verdana"><font size="3"><strong><br>
+Irgendwo ist e</strong></font></font><font face="Verdana"><font size="3"><strong>in Fehler ist aufgetreten – Was nun?
+<br>
+</strong></font></font><font face="Verdana"><font size="3"><strong><br>
+<br>
+Custom Taskpanes erstellen – Die Schnelleinführung <br>
+</strong></font></font></p>
+</div><div class="ClearBoth"></div>

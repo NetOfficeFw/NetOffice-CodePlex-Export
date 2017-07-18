@@ -1,0 +1,42 @@
+<div class="wikidoc">
+<p><span style="font-family:verdana"><span style="font-size:small"><strong>Tutorial12 – Globals in NetOffice verwenden&#160;
+<br>
+<br>
+</strong>Als VB oder VBA Entwickler kennen Sie möglicherweise die sogenannten Globals. Hierbei handelt es sich um ein Hilfsmodul das es Ihnen ermöglicht häufig benutze Funktionen oder Eigenschaften besonders einfach aufzurufen. In NetOffice ist diese Funktionalität
+ für jede Office Anwendung in einem speziellen Modul implementiert. Betrachten Sie dazu folgendes Beispiel in MS-Excel:&#160;
+<br>
+<br>
+</span></p>
+<div style="background-color:white; color:black">
+<pre><span style="color:blue">Imports</span> Excel = NetOffice.ExcelApi 
+<span style="color:blue">Imports</span> NetOffice.ExcelApi.GlobalHelperModules.GlobalModule 
+
+<span style="color:blue">Public</span> <span style="color:blue">Class</span> SampleClass 
+
+  <span style="color:blue">Public</span> <span style="color:blue">Sub</span> Foo() 
+
+      <span style="color:green">' start excel and add a new workbook </span>
+      <span style="color:blue">Dim</span> application <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application() 
+      application.Visible = <span style="color:blue">False</span> 
+      application.DisplayAlerts = <span style="color:blue">False</span> 
+      application.Workbooks.Add() 
+
+      <span style="color:green">' GlobalModule contains the well known globals and is </span>
+      <span style="color:green">' located in NetOffice.ExcelApi.GlobalHelperModules </span>
+      <span style="color:green">' see the imports statement </span>
+      ActiveCell.Value = <span style="color:#a31515">&quot;ActiveCellValue&quot;</span> 
+    
+      <span style="color:green">' close and dispose excel </span>
+      application.Quit() 
+      application.Dispose() 
+
+  <span style="color:blue">End</span> <span style="color:blue">Sub</span> 
+
+<span style="color:blue">End</span> <span style="color:blue">Class</span></pre>
+</div>
+<span style="font-family:verdana"><span style="font-size:small">
+<p><span style="font-size:small"><span style="font-family:verdana"><span style="font-size:small">In diesem Beispiel wird die derzeit aktive Zelle(ActiveCell) mit einem Wert beschrieben. Der Zugriff auf die Zelle erfolgt dabei über das
+<em>GlobalModule</em> aus dem <em>GlobalHelperModules</em> Namespace. </span></span></span></p>
+</span></span></span>
+<p></p>
+</div><div class="ClearBoth"></div>

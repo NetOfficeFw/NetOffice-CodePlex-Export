@@ -1,0 +1,129 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' using Numberformats in Excel</span>
+<span style="color:green">' taken from Example03.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example03Main()
+
+  <span style="color:green">' start excel and turn off msg boxes</span>
+  <span style="color:blue">Dim</span> excelApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+  excelApplication.DisplayAlerts = <span style="color:blue">False</span>
+
+  <span style="color:green">' add a new workbook</span>
+  <span style="color:blue">Dim</span> workBook <span style="color:blue">As</span> Excel.Workbook = excelApplication.Workbooks.Add()
+  <span style="color:blue">Dim</span> workSheet <span style="color:blue">As</span> Excel.Worksheet = workBook.Worksheets(1)
+
+  <span style="color:green">' /* some kind of numerics */</span>
+
+  <span style="color:green">'  the given thread culture in all latebinding calls are stored <br>  <span style="color:green">'</span>  in NetOffice.Settings. you can change the culture. default is en-us</span>
+  <span style="color:blue">Dim</span> cultureInfo <span style="color:blue">As</span> CultureInfo = NetOffice.Settings.ThreadCulture
+  <span style="color:blue">Dim</span> Pattern1 <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;0{0}00&quot;</span>, _<br>                           cultureInfo.NumberFormat.CurrencyDecimalSeparator)
+  <span style="color:blue">Dim</span> Pattern2 <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;#{1}##0{0}00&quot;</span>, _<br>                           cultureInfo.NumberFormat.CurrencyDecimalSeparator, _<br>                           cultureInfo.NumberFormat.CurrencyGroupSeparator)
+
+  workSheet.Range(<span style="color:#a31515">&quot;A1&quot;</span>).Value = <span style="color:#a31515">&quot;Type&quot;</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B1&quot;</span>).Value = <span style="color:#a31515">&quot;Value&quot;</span>
+  workSheet.Range(<span style="color:#a31515">&quot;C1&quot;</span>).Value = <span style="color:#a31515">&quot;Formatted &quot;</span> &#43; Pattern1
+  workSheet.Range(<span style="color:#a31515">&quot;D1&quot;</span>).Value = <span style="color:#a31515">&quot;Formatted &quot;</span> &#43; Pattern2
+
+  <span style="color:blue">Dim</span> integerValue <span style="color:blue">As</span> <span style="color:blue">Integer</span> = 532234
+  workSheet.Range(<span style="color:#a31515">&quot;A3&quot;</span>).Value = <span style="color:#a31515">&quot;Integer&quot;</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B3&quot;</span>).Value = integerValue
+  workSheet.Range(<span style="color:#a31515">&quot;C3&quot;</span>).Value = integerValue
+  workSheet.Range(<span style="color:#a31515">&quot;C3&quot;</span>).NumberFormat = Pattern1
+  workSheet.Range(<span style="color:#a31515">&quot;D3&quot;</span>).Value = integerValue
+  workSheet.Range(<span style="color:#a31515">&quot;D3&quot;</span>).NumberFormat = Pattern2
+
+  <span style="color:blue">Dim</span> doubleValue <span style="color:blue">As</span> <span style="color:blue">Double</span> = 23172.64
+  workSheet.Range(<span style="color:#a31515">&quot;A4&quot;</span>).Value = <span style="color:#a31515">&quot;double&quot;</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B4&quot;</span>).Value = doubleValue
+  workSheet.Range(<span style="color:#a31515">&quot;C4&quot;</span>).Value = doubleValue
+  workSheet.Range(<span style="color:#a31515">&quot;C4&quot;</span>).NumberFormat = Pattern1
+  workSheet.Range(<span style="color:#a31515">&quot;D4&quot;</span>).Value = doubleValue
+  workSheet.Range(<span style="color:#a31515">&quot;D4&quot;</span>).NumberFormat = Pattern2
+
+  <span style="color:blue">Dim</span> floatValue <span style="color:blue">As</span> <span style="color:blue">Single</span> = 84345.9141F
+  workSheet.Range(<span style="color:#a31515">&quot;A5&quot;</span>).Value = <span style="color:#a31515">&quot;float&quot;</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B5&quot;</span>).Value = floatValue
+  workSheet.Range(<span style="color:#a31515">&quot;C5&quot;</span>).Value = floatValue
+  workSheet.Range(<span style="color:#a31515">&quot;C5&quot;</span>).NumberFormat = Pattern1
+  workSheet.Range(<span style="color:#a31515">&quot;D5&quot;</span>).Value = floatValue
+  workSheet.Range(<span style="color:#a31515">&quot;D5&quot;</span>).NumberFormat = Pattern2
+
+  <span style="color:blue">Dim</span> decimalValue <span style="color:blue">As</span> <span style="color:blue">Decimal</span> = 7251231.313367
+  workSheet.Range(<span style="color:#a31515">&quot;A6&quot;</span>).Value = <span style="color:#a31515">&quot;Decimal&quot;</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B6&quot;</span>).Value = decimalValue
+  workSheet.Range(<span style="color:#a31515">&quot;C6&quot;</span>).Value = decimalValue
+  workSheet.Range(<span style="color:#a31515">&quot;C6&quot;</span>).NumberFormat = Pattern1
+  workSheet.Range(<span style="color:#a31515">&quot;D6&quot;</span>).Value = decimalValue
+  workSheet.Range(<span style="color:#a31515">&quot;D6&quot;</span>).NumberFormat = Pattern2
+
+  workSheet.Range(<span style="color:#a31515">&quot;A9&quot;</span>).Value = <span style="color:#a31515">&quot;DateTime&quot;</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B10&quot;</span>).Value = cultureInfo.DateTimeFormat.FullDateTimePattern
+  workSheet.Range(<span style="color:#a31515">&quot;C10&quot;</span>).Value = cultureInfo.DateTimeFormat.LongDatePattern
+  workSheet.Range(<span style="color:#a31515">&quot;D10&quot;</span>).Value = cultureInfo.DateTimeFormat.ShortDatePattern
+  workSheet.Range(<span style="color:#a31515">&quot;E10&quot;</span>).Value = cultureInfo.DateTimeFormat.LongTimePattern
+  workSheet.Range(<span style="color:#a31515">&quot;F10&quot;</span>).Value = cultureInfo.DateTimeFormat.ShortTimePattern
+
+  <span style="color:green">' DateTime</span>
+  <span style="color:blue">Dim</span> dateTimeValue <span style="color:blue">As</span> DateTime = DateTime.Now
+  workSheet.Range(<span style="color:#a31515">&quot;B11&quot;</span>).Value = dateTimeValue
+  workSheet.Range(<span style="color:#a31515">&quot;B11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.FullDateTimePattern
+
+  workSheet.Range(<span style="color:#a31515">&quot;C11&quot;</span>).Value = dateTimeValue
+  workSheet.Range(<span style="color:#a31515">&quot;C11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.LongDatePattern
+
+  workSheet.Range(<span style="color:#a31515">&quot;D11&quot;</span>).Value = dateTimeValue
+  workSheet.Range(<span style="color:#a31515">&quot;D11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.ShortDatePattern
+
+  workSheet.Range(<span style="color:#a31515">&quot;E11&quot;</span>).Value = dateTimeValue
+  workSheet.Range(<span style="color:#a31515">&quot;E11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.LongTimePattern
+
+  workSheet.Range(<span style="color:#a31515">&quot;F11&quot;</span>).Value = dateTimeValue
+  workSheet.Range(<span style="color:#a31515">&quot;F11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.ShortTimePattern
+
+  <span style="color:green">' string</span>
+  workSheet.Range(<span style="color:#a31515">&quot;A14&quot;</span>).Value = <span style="color:#a31515">&quot;String&quot;</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B14&quot;</span>).Value = <span style="color:#a31515">&quot;This is a sample String&quot;</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B14&quot;</span>).NumberFormat = <span style="color:#a31515">&quot;@&quot;</span>
+
+  <span style="color:green">' number as string</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B15&quot;</span>).Value = <span style="color:#a31515">&quot;42&quot; <span style="color:green">' :-) </span></span>
+  workSheet.Range(<span style="color:#a31515">&quot;B15&quot;</span>).NumberFormat = <span style="color:#a31515">&quot;@&quot;</span>
+
+  <span style="color:green">' set colums</span>
+  workSheet.Columns(1).AutoFit()
+  workSheet.Columns(2).AutoFit()
+  workSheet.Columns(3).AutoFit()
+  workSheet.Columns(4).AutoFit()
+
+  <span style="color:green">' save the book </span>
+  <span style="color:blue">Dim</span> fileExtension <span style="color:blue">As</span> <span style="color:blue">String</span> = GetDefaultExtension(excelApplication)
+  <span style="color:blue">Dim</span> workbookFile <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}\Example03{1}&quot;</span>, _<br>                              Application.StartupPath, fileExtension)<br>
+  workBook.SaveAs(workbookFile, Missing.Value, Missing.Value, Missing.Value, _<br>                        Missing.Value, Missing.Value, XlSaveAsAccessMode.xlExclusive)
+
+  <span style="color:green">' close excel and dispose reference</span>
+  excelApplication.Quit()
+  excelApplication.Dispose()
+
+  <span style="color:blue">Dim</span> fDialog <span style="color:blue">As</span> <span style="color:blue">New</span> FinishDialog(<span style="color:#a31515">&quot;Workbook saved.&quot;</span>, workbookFile)
+  fDialog.ShowDialog(<span style="color:blue">Me</span>)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:green">''' &lt;summary&gt;</span>
+<span style="color:green">''' returns the valid file extension for the instance. for example &quot;.xls&quot; or &quot;.xlsx&quot;</span>
+<span style="color:green">''' &lt;/summary&gt;</span>
+<span style="color:green">''' &lt;param name=&quot;application&quot;&gt;the instance&lt;/param&gt;</span>
+<span style="color:green">''' &lt;returns&gt;the extension&lt;/returns&gt;</span>
+<span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> GetDefaultExtension(<span style="color:blue">ByVal</span> app <span style="color:blue">As</span> Excel.Application) <span style="color:blue">As</span> <span style="color:blue">String</span>
+
+  <span style="color:blue">Dim</span> version <span style="color:blue">As</span> <span style="color:blue">Double</span> = Convert.ToDouble(app.Version, CultureInfo.InvariantCulture)<br>  <span style="color:blue">If</span> (version &gt;= 12.0) <span style="color:blue">Then</span>
+    <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.xlsx&quot;</span>
+  <span style="color:blue">Else</span>
+    <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.xls&quot;</span>
+  <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

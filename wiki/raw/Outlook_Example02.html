@@ -1,0 +1,28 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">/*
+   create new task item in Outlook
+   taken from Example02.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example02Main()
+{  
+   <span style="color:green">// start outlook </span>
+   Outlook.Application outlookApplication = <span style="color:blue">new</span> Outlook.Application();
+
+   <span style="color:green">// create a new TaskItem.</span>
+   Outlook.TaskItem newTask =<br>            outlookApplication.CreateItem(OlItemType.olTaskItem) <span style="color:blue">as</span> Outlook.TaskItem;
+
+   <span style="color:green">// configure the task at hand and save it.</span>
+   newTask.Subject = <span style="color:#a31515">&quot;NetOffice Sample Task&quot;</span>;   <br>   newTask.Body    = <span style="color:#a31515">&quot;The Task is created by NetOffice Outlook Example02.cs&quot;</span>;
+   newTask.DueDate = DateTime.Now;
+   newTask.Importance = OlImportance.olImportanceHigh;
+   
+   newTask.Save();
+           
+   <span style="color:green">// close outlook and dispose</span>
+   outlookApplication.Quit();
+   outlookApplication.Dispose();
+}
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,42 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/* taken from Tutorial05.csproj
+COMObject is the common base type for all objects in NetOffice which are based on <br>CoClasses or Interfaces and also the type for anonymous COM Proxies at design time. <br>This example shows you how to use.
+See chapter1 and chapter2 in <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English">technical documentation</a> for further info.
+*/</span>
+
+<span style="color:blue">private</span> <span style="color:blue">void</span> Tutorial05Main()
+{
+            <span style="color:green">// Initialize Api COMObject Support</span>
+            LateBindingApi.Core.Factory.Initialize();
+
+            <span style="color:green">// start application</span>
+            Excel.Application application = <span style="color:blue">new</span> Excel.Application();
+            application.DisplayAlerts = <span style="color:blue">false</span>;
+
+            <span style="color:green">// create new Workbook</span>
+            Excel.Workbook book = application.Workbooks.Add();
+
+            <span style="color:green">// ActiveSheet is defined as unkown Proxy in Excel Type Library, it can <br>            // have multiple types at runtime</span> <span style="color:green">but its always a COM Proxy, never a <br>            // scalar type like bool or int. </span><span style="color:green">In VBA oder PIA its converted to object, <br>            // in NetOffice its represents as COMObject</span>
+            <span style="color:green">// All NetOffice classes inherited COMObject</span>
+            COMObject sheet = application.ActiveSheet;
+            <span style="color:blue">if</span> (sheet <span style="color:blue">is</span> Excel.Worksheet)
+            {
+                Excel.Worksheet activeSheet = (Excel.Worksheet)sheet;
+            }
+
+            <span style="color:green">// 3 basic properties of COMObject</span>
+            <span style="color:blue">object</span> proxy          = sheet.UnderlyingObject;
+            <span style="color:blue">string</span> proxyClassName = sheet.UnderlyingTypeName;
+            <span style="color:blue">bool</span>   isDisposed     = sheet.IsDisposed;
+ 
+            application.Quit();
+            application.Dispose();
+
+            MessageBox.Show(<span style="color:blue">this</span>, <span style="color:#a31515">&quot;Done!&quot;</span>, <span style="color:blue">this</span>.Text, MessageBoxButtons.OK, <br>                                                     MessageBoxIcon.Information);
+}</pre>
+</div>
+<p>&nbsp;&nbsp; <br>
+&nbsp;&nbsp; See next: <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial06">
+Tutorial06 - Understand Variant Type</a></p>
+</div><div class="ClearBoth"></div>

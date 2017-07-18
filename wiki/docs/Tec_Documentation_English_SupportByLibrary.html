@@ -1,0 +1,293 @@
+<div class="wikidoc">
+<p>Given the fact that NetOffice supports all recent versions of Office, a mechanism for determining at designtime and runtime&nbsp;which versions support the functionality in question&nbsp;is needed. Therefore, all entities in NetOffice are annotated with
+ the&nbsp;SupportByLibrary attribute and XML source documentation. Take a look at the following code excerpt:</p>
+<div style="color:black; background-color:white">
+<pre><span style="color:gray">///</span><span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> DispatchInterface _Application SupportByLibrary Excel, 09,10,11,12,14</span>
+<span style="color:gray">///</span><span style="color:gray">&lt;/summary&gt;</span>
+[SupportByLibrary(<span style="color:#a31515">&quot;Excel&quot;</span>, 09,10,11,12,14)]
+[EntityTypeAttribute(EntityType.IsDispatchInterface)]
+<span style="color:blue">public</span> <span style="color:blue">class</span> _Application : COMObject
+{
+	<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+	<span style="color:gray">///</span><span style="color:green"> SupportByLibrary Excel 09, 10, 11, 12, 14</span>
+	<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+	[SupportByLibrary(<span style="color:#a31515">&quot;Excel&quot;</span>, 09,10,11,12,14)]
+	<span style="color:blue">public</span> <span style="color:blue">bool</span> Visible { <span style="color:blue">get</span>; <span style="color:blue">set</span>; }
+
+	<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+	<span style="color:gray">///</span><span style="color:green"> SupportByLibrary Excel 12, 14</span>
+	<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+	[SupportByLibrary(<span style="color:#a31515">&quot;Excel&quot;</span>, 12,14)]
+	<span style="color:blue">public</span> <span style="color:blue">bool</span> EnableLivePreview { <span style="color:blue">get</span>; <span style="color:blue">set</span>; }
+
+	<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+	<span style="color:gray">///</span><span style="color:green"> SupportByLibrary Excel 14</span>
+	<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+	[SupportByLibrary(<span style="color:#a31515">&quot;Excel&quot;</span>, 14)]
+	<span style="color:blue">public</span> <span style="color:blue">bool</span> PrintCommunication { <span style="color:blue">get</span>; <span style="color:blue">set</span>; }
+}
+
+</pre>
+</div>
+<p>You can see that the class _Application is present in all supported versions, just like its property Visible. The property EnableLivePreview is only offered in versions 12 and 14, the property PrintCommunication only in version 14. All Classes, Properties,
+ Methoden, Enums, Enum Values, etc. are annotated this way. When you have created an assembly which is using NetOffice, you can check your assembly with the tool
+<a href="http://netoffice.codeplex.com/wikipage?title=DeveloperToolbox_English">NetOffice.DeveloperToolbox</a> with which Office versions your assembly is compatible.</p>
+<p>Following you can see an Overview of the different version attributes.</p>
+<table border="0" cellspacing="0" cellpadding="2" width="587">
+<tbody>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Version</td>
+<td width="66" valign="top">Attribute</td>
+<td width="283" valign="top">Type Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">Office</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Office 2000</td>
+<td width="66" valign="top">09</td>
+<td width="283" valign="top">Microsoft Office&nbsp;&nbsp; 9.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Office 2002</td>
+<td width="66" valign="top">10</td>
+<td width="283" valign="top">Microsoft Office&nbsp; 10.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Office 2003</td>
+<td width="66" valign="top">11</td>
+<td width="283" valign="top">Microsoft Office&nbsp; 11.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Office 2007</td>
+<td width="66" valign="top">12</td>
+<td width="283" valign="top">Microsoft Office&nbsp; 12.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Office 2010</td>
+<td width="66" valign="top">14</td>
+<td width="283" valign="top">Microsoft Office&nbsp; 14.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">Excel</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Excel 2000</td>
+<td width="66" valign="top">09</td>
+<td width="283" valign="top">Microsoft Excel&nbsp; 9.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Excel 2002</td>
+<td width="66" valign="top">10</td>
+<td width="283" valign="top">Microsoft Excel&nbsp; 10.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Excel 2003</td>
+<td width="66" valign="top">11</td>
+<td width="283" valign="top">Microsoft Excel&nbsp; 11.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Excel 2007</td>
+<td width="66" valign="top">12</td>
+<td width="283" valign="top">Microsoft Excel&nbsp; 12.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Excel 2010</td>
+<td width="66" valign="top">14</td>
+<td width="283" valign="top">Microsoft Excel&nbsp; 14.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">Word</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Word 2000</td>
+<td width="66" valign="top">09</td>
+<td width="283" valign="top">Microsoft Word&nbsp; 9.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Word 2002</td>
+<td width="66" valign="top">10</td>
+<td width="283" valign="top">Microsoft Word 10.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Word 2003</td>
+<td width="66" valign="top">11</td>
+<td width="283" valign="top">Microsoft Word 11.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Word 2007</td>
+<td width="66" valign="top">12</td>
+<td width="283" valign="top">Microsoft Word 12.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Word 2010</td>
+<td width="66" valign="top">14</td>
+<td width="283" valign="top">Microsoft Word 14.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">Outlook</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Outlook 2000</td>
+<td width="66" valign="top">09</td>
+<td width="283" valign="top">Microsoft Outlook&nbsp; 9.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Outlook 2002</td>
+<td width="66" valign="top">10</td>
+<td width="283" valign="top">Microsoft Outlook 10.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Outlook 2003</td>
+<td width="66" valign="top">11</td>
+<td width="283" valign="top">Microsoft Outlook 11.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Outlook 2007</td>
+<td width="66" valign="top">12</td>
+<td width="283" valign="top">Microsoft Outlook 12.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Outlook 2010</td>
+<td width="66" valign="top">14</td>
+<td width="283" valign="top">Microsoft Outlook 14.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">PowerPoint</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">PowerPoint 2000</td>
+<td width="66" valign="top">09</td>
+<td width="283" valign="top">Microsoft PowerPoint&nbsp; 9.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">PowerPoint 2002</td>
+<td width="66" valign="top">10</td>
+<td width="283" valign="top">Microsoft PowerPoint 10.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">PowerPoint 2003</td>
+<td width="66" valign="top">11</td>
+<td width="283" valign="top">Microsoft PowerPoint 11.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">PowerPoint 2007</td>
+<td width="66" valign="top">12</td>
+<td width="283" valign="top">Microsoft PowerPoint 12.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">PowerPoint 2010</td>
+<td width="66" valign="top">14</td>
+<td width="283" valign="top">Microsoft PowerPoint 14.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">Access</td>
+<td width="128" valign="top">&nbsp;</td>
+<td width="66" valign="top">&nbsp;</td>
+<td width="283" valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Access 2000</td>
+<td width="66" valign="top">09</td>
+<td width="283" valign="top">Microsoft Access&nbsp; 9.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Access 2002</td>
+<td width="66" valign="top">10</td>
+<td width="283" valign="top">Microsoft Access 10.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Access 2003</td>
+<td width="66" valign="top">11</td>
+<td width="283" valign="top">Microsoft Access 11.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Access 2007</td>
+<td width="66" valign="top">12</td>
+<td width="283" valign="top">Microsoft Access 12.0 Object Library</td>
+</tr>
+<tr>
+<td width="108" valign="top">&nbsp;</td>
+<td width="128" valign="top">Access 2010</td>
+<td width="66" valign="top">14</td>
+<td width="283" valign="top">Microsoft Access 14.0 Object Library</td>
+</tr>
+</tbody>
+</table>
+</div><div class="ClearBoth"></div>

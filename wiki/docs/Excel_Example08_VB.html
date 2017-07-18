@@ -1,0 +1,88 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' using events in Excel</span>
+<span style="color:green">' taken from Example08.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example08Main()
+
+ <span style="color:green">' start excel and turn off msg boxes</span>
+ <span style="color:blue">Dim</span> excelApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+ excelApplication.DisplayAlerts = <span style="color:blue">False</span>
+
+ <span style="color:green">' we register some events. note: the event trigger was called from excel,  <br> ' means an other Thread. you can get event notifys from various objects:</span>
+ <span style="color:green">' Application or Workbook or Worksheet for example</span>
+ <span style="color:blue">Dim</span> newWorkbookHandler <span style="color:blue">As</span> Excel.Application_NewWorkbookEventHandler = _<br>                                 <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.excelApplication_NewWorkbook
+ <span style="color:blue">AddHandler</span> excelApplication.NewWorkbookEvent, newWorkbookHandler
+
+ <span style="color:blue">Dim</span> beforeCloseHandler <span style="color:blue">As</span> Excel.Application_WorkbookBeforeCloseEventHandler = _<br>                                 <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.excelApplication_WorkbookBeforeClose
+ <span style="color:blue">AddHandler</span> excelApplication.WorkbookBeforeCloseEvent, beforeCloseHandler
+
+ <span style="color:blue">Dim</span> workbookActivateHandler <span style="color:blue">As</span> Excel.Application_WorkbookActivateEventHandler = _<br>                                 <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.excelApplication_WorkbookActivate
+ <span style="color:blue">AddHandler</span> excelApplication.WorkbookActivateEvent, workbookActivateHandler
+
+ <span style="color:blue">Dim</span> workbookDeactivateHandler <span style="color:blue">As</span> Excel.Application_WorkbookDeactivateEventHandler = _<br>                                <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.excelApplication_WorkbookDeactivate
+ <span style="color:blue">AddHandler</span> excelApplication.WorkbookDeactivateEvent, workbookDeactivateHandler
+
+ <span style="color:blue">Dim</span> sheetActivateHandler <span style="color:blue">As</span> Excel.Application_SheetActivateEventHandler = _<br>                                <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.excelApplication_SheetActivateEvent
+ <span style="color:blue">AddHandler</span> excelApplication.SheetActivateEvent, sheetActivateHandler
+
+ <span style="color:blue">Dim</span> sheetDeactivateHandler <span style="color:blue">As</span> Excel.Application_SheetDeactivateEventHandler = _<br>                                <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.excelApplication_SheetDeactivateEvent
+ <span style="color:blue">AddHandler</span> excelApplication.SheetDeactivateEvent, sheetDeactivateHandler
+
+ <span style="color:green">' add a new workbook add a sheet and close</span>
+ <span style="color:blue">Dim</span> workBook <span style="color:blue">As</span> Excel.Workbook = excelApplication.Workbooks.Add()
+ <span style="color:blue">Dim</span> workSheet <span style="color:blue">As</span> Excel.Worksheet = workBook.Worksheets(1)
+ workBook.Close()
+
+ excelApplication.Quit()
+ excelApplication.Dispose()<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> excelApplication_SheetDeactivateEvent(<span style="color:blue">ByVal</span> Sh <span style="color:blue">As</span> COMObject)
+
+ textBoxEvents.BeginInvoke(_updateDelegate, _<br>                 <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event SheetDeactivate called.&quot;</span>})
+ Sh.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> excelApplication_SheetActivateEvent(<span style="color:blue">ByVal</span> Sh <span style="color:blue">As</span> COMObject)
+
+ textBoxEvents.BeginInvoke(_updateDelegate, _<br>                 <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event SheetActivate called.&quot;</span>})
+ Sh.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> excelApplication_NewWorkbook(<span style="color:blue">ByVal</span> Wb <span style="color:blue">As</span> Excel.Workbook)
+
+ textBoxEvents.BeginInvoke(_updateDelegate, _<br>                   <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event NewWorkbook called.&quot;</span>})
+ Wb.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> excelApplication_WorkbookBeforeClose(<span style="color:blue">ByVal</span> Wb <span style="color:blue">As</span> Excel.Workbook, _<br>                                                           <span style="color:blue">ByRef</span> Cancel <span style="color:blue">As</span> <span style="color:blue">Boolean</span>)
+
+ textBoxEvents.BeginInvoke(_updateDelegate, _<br>             <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event WorkbookBeforeClose called.&quot;</span>})
+ Wb.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> excelApplication_WorkbookActivate(<span style="color:blue">ByVal</span> Wb <span style="color:blue">As</span> Excel.Workbook)
+
+ textBoxEvents.BeginInvoke(_updateDelegate, _<br>                 <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event WorkbookActivate called.&quot;</span>})
+ Wb.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> excelApplication_WorkbookDeactivate(<span style="color:blue">ByVal</span> Wb <span style="color:blue">As</span> Excel.Workbook)
+
+ textBoxEvents.BeginInvoke(_updateDelegate, _<br>                <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event WorkbookDeactivate called.&quot;</span>})
+ Wb.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> UpdateTextbox(<span style="color:blue">ByVal</span> message <span style="color:blue">As</span> <span style="color:blue">String</span>)
+
+ textBoxEvents.AppendText(message &amp; vbNewLine)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

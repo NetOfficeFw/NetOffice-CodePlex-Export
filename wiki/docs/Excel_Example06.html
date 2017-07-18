@@ -1,0 +1,79 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   Dialogs in Excel
+   taken Example06.cs
+*/</span>
+<span style="color:blue">public</span> <span style="color:blue">void</span> Example06Main()
+{
+   <span style="color:green">// start excel and turn off msg boxes</span>
+   Excel.Application excelApplication = <span style="color:blue">new</span> Excel.Application();
+   excelApplication.DisplayAlerts = <span style="color:blue">false</span>;
+            
+   <span style="color:green">// dont show dialogs with an invisible excel</span>
+   excelApplication.Visible = <span style="color:blue">true</span>;
+
+   <span style="color:green">// add a new workbook</span>
+   Excel.Workbook workBook = application.Workbooks.Add();
+   Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];
+
+   <span style="color:green">// show selected window and display user clicks ok or cancel</span>
+   <span style="color:blue">bool</span> returnValue = <span style="color:blue">false</span>;
+   
+   <span style="color:blue">string</span> dialog = <span style="color:#a31515">&quot;xlDialogAddinManager&quot;</span>; <span style="color:green">// change here if you want,<br>                                           // it's a button selection in example06.cs</span>
+   <span style="color:blue">switch</span> (dialog)
+   {
+      <span style="color:blue">case</span> <span style="color:#a31515">&quot;xlDialogAddinManager&quot;</span>:
+         
+       returnValue = application.Dialogs[XlBuiltInDialog.xlDialogAddinManager].Show();
+       <span style="color:blue">break</span>;
+      
+      <span style="color:blue">case</span> <span style="color:#a31515">&quot;xlDialogFont&quot;</span>:
+
+       returnValue = application.Dialogs[XlBuiltInDialog.xlDialogFont].Show();
+       <span style="color:blue">break</span>;
+
+      <span style="color:blue">case</span> <span style="color:#a31515">&quot;xlDialogEditColor&quot;</span>:
+
+       returnValue = application.Dialogs[XlBuiltInDialog.xlDialogEditColor].Show();
+       <span style="color:blue">break</span>;
+
+      <span style="color:blue">case</span> <span style="color:#a31515">&quot;xlDialogGallery3dBar&quot;</span>:
+
+       returnValue = application.Dialogs[XlBuiltInDialog.xlDialogGallery3dBar].Show();
+       <span style="color:blue">break</span>;
+
+      <span style="color:blue">case</span> <span style="color:#a31515">&quot;xlDialogSearch&quot;</span>:
+
+       returnValue = excelApplication.Dialogs[XlBuiltInDialog.xlDialogSearch].Show();
+       <span style="color:blue">break</span>;
+
+      <span style="color:blue">case</span> <span style="color:#a31515">&quot;xlDialogPrinterSetup&quot;</span>:
+
+       returnValue = application.Dialogs[XlBuiltInDialog.xlDialogPrinterSetup].Show();
+       <span style="color:blue">break</span>;
+
+      <span style="color:blue">case</span> <span style="color:#a31515">&quot;xlDialogFormatNumber&quot;</span>:
+
+       returnValue = application.Dialogs[XlBuiltInDialog.xlDialogFormatNumber].Show();
+       <span style="color:blue">break</span>;
+
+      <span style="color:blue">case</span> <span style="color:#a31515">&quot;xlDialogApplyStyle&quot;</span>:
+
+       returnValue = application.Dialogs[XlBuiltInDialog.xlDialogApplyStyle].Show();
+       <span style="color:blue">break</span>;<br>
+     <span style="color:blue">default</span>:
+         <span style="color:blue">throw</span> (<span style="color:blue">new</span> ArgumentOutOfRangeException(<span style="color:#a31515">&quot;Unkown dialog selected.&quot;</span>));
+
+   }
+
+   <span style="color:blue">string</span> message = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;The dialog returns {0}.&quot;</span>, returnValue);
+   MessageBox.Show(<span style="color:blue">this</span>, message, <span style="color:blue">this</span>.Text, <br>                           MessageBoxButtons.OK, MessageBoxIcon.Information);
+  
+   <span style="color:green">// close excel and dispose reference</span>
+   application.Quit();
+   application.Dispose();
+}
+        </pre>
+</div>
+</div><div class="ClearBoth"></div>

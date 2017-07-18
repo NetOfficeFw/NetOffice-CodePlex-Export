@@ -1,0 +1,51 @@
+<div class="wikidoc">
+<p><strong><font size="3" face="Verdana">Tutorial06 - Verwenden des Datentyp Variant
+</font></strong></p>
+<p align="justify"><font size="3" face="Verdana">Viele Office Anwendungen beinhalten den Datentyp Variant der seine Wurzeln in Visual Basic for Applications(VBA) hat. Dieser kann zur Laufzeit jeden beliebigen anderen Typ annehmen, jedoch wird er von den allermeisten
+ .NET Sprachen nicht unterstützt. In NetOffice wird der Variant Datentyp durch den Typ Object ersetzt. Dies bedeutet jedoch nicht das Sie die COM Proxy Verwaltung verlieren. Sofern es sich bei Variants zur Laufzeit um einen COM Proxy handelt erhalten Sie von
+ NetOffice eine Instanz der korrespondierenden Wrapper Klasse andernfalls den entsprechenden skalaren Datentyp z.B. bool oder int. Der Grund für die vielfache Verwendung von Variants in Office ist in den meisten Fällen die Zuweisung, insbesondere für VBA Entwickler,
+ zu vereinfachen. Betrachten Sie dazu folgendes Codebeispiel in MS-Excel&#160; und NetOffice:</font></p>
+<p><span style="text-decoration:underline"><font size="3" face="Verdana">Listing 1.0</font></span></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana"><span style="color:blue">Dim</span> style <span style="color:blue">As</span> Excel.Style = worksheet.Styles.Add(<span style="color:#a31515">&quot;myNewStyle&quot;</span>)
+style.Font.Bold = <span style="color:blue">True</span> 
+style.Font.Size = 14 
+
+<span style="color:blue">Dim</span> range <span style="color:blue">As</span> Excel.Range = workSheet.Range(<span style="color:#a31515">&quot;A100:C300&quot;</span>)
+range.Style = style</font></font></pre>
+</div>
+<p align="justify"><font size="3" face="Verdana">Sie können erkennen das wir ein neues Style Objekt erstellen, 2 Properties setzen und diesen Style einer Range zuweisen. Das Style Property der Range Klasse ist einVariant also vom Typ Object. Excel erlaubt es
+ uns daher auch folgende Zuweisung</font></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana">range.Style = <span style="color:#a31515">&quot;myNewStyle&quot;</span></font></font></pre>
+</div>
+<p align="justify"><font size="3" face="Verdana">Excel hat das erstellte Style Objekt in einer eigenen Auflistung gespeichert und kann bei einer Zuweisung entsprechend reagieren. Wenn Sie einen String zuweisen statt einem Style Objekt wird Excel in seiner internen
+ Auflistung nach einem Style mit diesem Namen suchen den Style auf die Range anwenden. Wenn Sie das Style Property der Range abrufen werden Sie immer ein
+<em>Excel.Style</em> Objekt erhalten. Variants dienen vor allem der flexiblen Zuweisung von Eigenschaften. Leider schaffen sie für den Entwickler zur Entwicklungszeit manchmal einige Verwirrung da dieser die Information um welchen Typ es sich eigentlich handelt
+ der Dokumentation entnehmen muss. In einigen Fällen werden Variants auch verwendet wenn sich der Typ eines Property je nach Kontext der Situation ändern kann. Ein gutes Beispiel dafür ist das Selection Property von Excel.Application. Betrachten Sie dazu folgendes
+ Codebeispiel:</font></p>
+<p><font size="3"><font face="Verdana"><span style="text-decoration:underline">Listing 1.1</span>
+<br>
+<br>
+</font></font></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana"><span style="color:blue">If</span> TypeName(application.Selection) = <span style="color:#a31515">&quot;Worksheet&quot;</span> <span style="color:blue">Then</span>
+ 
+   <span style="color:blue">Dim</span> sheet <span style="color:blue">As</span> Excel.Worksheet = application.Selection
+ 
+<span style="color:blue">ElseIf</span> TypeName(application.Selection) = <span style="color:#a31515">&quot;Range&quot;</span> <span style="color:blue">Then</span>
+ 
+   <span style="color:blue">Dim</span> range <span style="color:blue">As</span> Excel.Range  = application.Selection
+
+<span style="color:blue">ElseIf</span> <span style="color:blue">Not</span> TypeName(application.Selection) = <span style="color:#a31515">&quot;COMObject&quot;</span> <span style="color:blue">Then</span>
+ 
+   <span style="color:green">' selection is no COM Object means a </span>
+   <span style="color:green">' native scalar type like bool or int</span>
+
+<span style="color:blue">End</span> <span style="color:blue">If</span></font></font></pre>
+</div>
+<p align="justify"><br>
+<font size="3" face="Verdana">Wichtig für Sie zu wissen ist das NetOffice sich nicht anders verhält als EarlyBind Lösungen wie die
+<em>MS Interop Assemblies </em>und Sie niemals befürchten das COM Proxies in der Verwaltung von NetOffice übersehen werden.</font></p>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

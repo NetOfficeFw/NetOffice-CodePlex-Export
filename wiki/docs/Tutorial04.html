@@ -1,0 +1,115 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">/* taken from Tutorial04.csproj
+Sometimes it is very useful to know the count of open COM Proxies in your application.
+NetOffice offers you a static property and notification event for this.
+
+   <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Invoker">int LateBindingApi.Core.Factory.ProxyCount;
+</a>and       
+   <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Invoker">event LateBindingApi.Core.Factory.ProxyCountChanged;
+</a>
+This example shows you how to use them.
+
+See chapter5 in technical documentation for further info.
+*/</span>
+
+   Excel.Application _application;
+
+   <span style="color:blue">public</span> Form1()
+   {
+      InitializeComponent();
+
+      <span style="color:green">// Initialize Api COMObject Support </span>
+      LateBindingApi.Core.Factory.Initialize();
+
+      LateBindingApi.Core.Factory.ProxyCountChanged &#43;= <span style="color:blue">new</span> Factory.ProxyCountChangedHandler(Factory_ProxyCountChanged);
+   }
+    
+   <span style="color:blue">void</span> Factory_ProxyCountChanged(<span style="color:blue">int</span> proxyCount)
+   {
+       <span style="color:blue">if</span> (labelProxyCount.InvokeRequired)
+       {
+           labelProxyCount.Tag = proxyCount.ToString();
+	  labelProxyCount.Invoke(<span style="color:blue">new</span> MethodInvoker(UpdateLabel));
+       }
+       <span style="color:blue">else</span>
+           labelProxyCount.Text = proxyCount.ToString();
+   }
+
+   <span style="color:blue">private</span> <span style="color:blue">void</span> buttonExcel_Click(<span style="color:blue">object</span> sender, EventArgs e)
+   {
+       <span style="color:blue">if</span> (<span style="color:blue">null</span> == _application)
+       {
+           <span style="color:green">// start application</span>
+           _application = <span style="color:blue">new</span> Excel.Application();
+           _application.DisplayAlerts = <span style="color:blue">false</span>;
+           buttonExcel.Text = <span style="color:#a31515">&quot;Quit Excel&quot;</span>;
+           buttonWorkbook.Enabled = <span style="color:blue">true</span>;
+           buttonAddins.Enabled = <span style="color:blue">true</span>;
+           buttonAddRemoveWorkbook.Enabled = <span style="color:blue">true</span>;
+       }
+       <span style="color:blue">else</span>
+       {
+           _application.Quit();
+           _application.Dispose();
+           _application = <span style="color:blue">null</span>;
+           buttonExcel.Text = <span style="color:#a31515">&quot;Start Excel&quot;</span>;
+           buttonWorkbook.Enabled = <span style="color:blue">false</span>;
+           buttonAddins.Enabled = <span style="color:blue">false</span>;
+           buttonAddRemoveWorkbook.Enabled = <span style="color:blue">false</span>;
+        }
+   }
+
+   <span style="color:blue">private</span> <span style="color:blue">void</span> buttonWorkbook_Click(<span style="color:blue">object</span> sender, EventArgs e)
+   {
+        <span style="color:green">// 2 new proxies, the workbooks proxy(implicit) and the new workbook from Add()</span>
+        <span style="color:blue">if</span> (<span style="color:blue">null</span> != _application)
+           _application.Workbooks.Add();
+   }
+
+   <span style="color:blue">private</span> <span style="color:blue">void</span> buttonAddins_Click(<span style="color:blue">object</span> sender, EventArgs e)
+   {
+       <span style="color:blue">if</span> (<span style="color:blue">null</span> != _application)
+       {
+           <span style="color:green">// 1 new enumerator proxy and 1 new proxy for any Addin</span>
+           <span style="color:blue">foreach</span> (Excel.AddIn item <span style="color:blue">in</span> _application.AddIns)
+              Console.WriteLine(item.Name);
+       }
+   }
+
+   <span style="color:blue">private</span> <span style="color:blue">void</span> buttonAddRemoveWorkbook_Click(<span style="color:blue">object</span> sender, EventArgs e)
+   {
+       <span style="color:green">// add a new worbook and a new worksheet to the workbook</span>
+       <span style="color:green">// the worksheet is a child proxy from worbook, after dispose the workbook</span>
+       <span style="color:green">// creates 4 new proxies</span>
+       <span style="color:green">// the open proxy count is the same as before</span>
+
+       <span style="color:blue">int</span> proxyCount = LateBindingApi.Core.Factory.ProxyCount;
+
+       Excel.Workbook book = _application.Workbooks.Add();
+       book.Worksheets.Add();
+
+       <span style="color:blue">int</span> proxyCountAfterCreate = LateBindingApi.Core.Factory.ProxyCount;
+
+       <span style="color:green">// dispose all child instances from application</span>
+       _application.DisposeChildInstances();
+
+       <span style="color:blue">int</span> proxyCountAfterDispose = LateBindingApi.Core.Factory.ProxyCount;
+
+       <span style="color:blue">string</span> message = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;Method creates a new Workbook with 1 new Worksheet\r\n&quot;</span> &#43;
+                                           <span style="color:#a31515">&quot;ProxyCount before create is {0}\r\n&quot;</span> &#43;
+                                           <span style="color:#a31515">&quot;ProxyCount after create is {1}\r\n&quot;</span> &#43;
+                                           <span style="color:#a31515">&quot;ProxyCount after dispose Workbook is {2}&quot;</span>, proxyCount, proxyCountAfterCreate, proxyCountAfterDispose);
+
+       MessageBox.Show(message, <span style="color:blue">this</span>.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+   }
+
+   <span style="color:blue">private</span> <span style="color:blue">void</span> UpdateLabel()
+   {
+       labelProxyCount.Text = labelProxyCount.Tag <span style="color:blue">as</span> <span style="color:blue">string</span>; 
+   }
+
+</pre>
+</div>
+<pre>See next: <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial05">Tutorial05 - Understanding COMObject</a></pre>
+</div><div class="ClearBoth"></div>

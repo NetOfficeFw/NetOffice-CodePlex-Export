@@ -1,0 +1,61 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">' create a document write text and save in Word</span>
+<span style="color:green">' taken from Example01.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example01Main()
+
+   <span style="color:green">' start word and turn off msg boxes</span>
+   <span style="color:blue">Dim</span> wordApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Word.Application
+   wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone
+
+   <span style="color:green">' add a new document</span>
+   <span style="color:blue">Dim</span> newDocument <span style="color:blue">As</span> Word.Document
+   newDocument = wordApplication.Documents.Add()
+
+   <span style="color:green">'insert some text</span>
+   wordApplication.Selection.TypeText(<span style="color:#a31515">&quot;This text is written by NetOffice&quot;</span>)
+
+   wordApplication.Selection.HomeKey(WdUnits.wdLine, WdMovementType.wdExtend)
+   wordApplication.Selection.Font.Color = WdColor.wdColorSeaGreen
+   wordApplication.Selection.Font.Bold = 1
+   wordApplication.Selection.Font.Size = 18
+
+   wordApplication.Selection.HomeKey()
+
+   <span style="color:green">' save the document</span>
+   <span style="color:blue">Dim</span> fileExtension <span style="color:blue">As</span> <span style="color:blue">String</span> = GetDefaultExtension(wordApplication)
+   <span style="color:blue">Dim</span> documentFile <span style="color:blue">As</span> <span style="color:blue">String</span> = _   <br>   <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}\Example01{1}&quot;</span>, Application.StartupPath, fileExtension)
+   newDocument.SaveAs(documentFile)
+
+   <span style="color:green">' close word and dispose reference</span>
+   wordApplication.Quit()
+   wordApplication.Dispose()
+
+   <span style="color:blue">Dim</span> fDialog <span style="color:blue">As</span> <span style="color:blue">New</span> FinishDialog(<span style="color:#a31515">&quot;Document saved.&quot;</span>, documentFile)
+   fDialog.ShowDialog(<span style="color:blue">Me</span>)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">#Region</span> <span style="color:#a31515">&quot;Helper&quot;</span>
+
+<span style="color:green">''' &lt;summary&gt;</span>
+<span style="color:green">''' returns the valid file extension for the instance. for example &quot;.doc&quot; or &quot;.docx&quot;</span>
+<span style="color:green">''' &lt;/summary&gt;</span>
+<span style="color:green">''' &lt;param name=&quot;application&quot;&gt;the instance&lt;/param&gt;</span>
+<span style="color:green">''' &lt;returns&gt;the extension&lt;/returns&gt;</span>
+<span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> GetDefaultExtension(<span style="color:blue">ByVal</span> application <span style="color:blue">As</span> Word.Application) <span style="color:blue">As</span> <span style="color:blue">String</span>
+
+   <span style="color:blue">Dim</span> version <span style="color:blue">As</span> <span style="color:blue">Double</span> = _<br>       Convert.ToDouble(application.Version, CultureInfo.InvariantCulture)   <br>   <br>   <span style="color:blue">If</span> (version &gt;= 12.0) <span style="color:blue">Then</span>
+      <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.docx&quot;</span>
+   <span style="color:blue">Else</span>
+      <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.doc&quot;</span>
+   <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span>
+
+<span style="color:blue">#End Region</span>
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

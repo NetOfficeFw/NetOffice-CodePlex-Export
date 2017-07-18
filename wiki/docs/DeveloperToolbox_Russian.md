@@ -1,0 +1,12 @@
+#### Developer Toolbox
+Developer Toolbox - это программа для разработчиков .NET, создающих решения на базе Microsoft Office. Программа содержит следующие средства:
+
+|[Office Compatibility](OfficeCompatibility_Russian)|Проверка совместимости ваших сборок с разными версиями MS Office|
+|[Application Observer](ApplicationObserver_Russian)|Обозреватель запущенных приложений MS Office|
+|[Registry Editor](RegistryEditor_Russian)|Клон "Редактора реестра" для разделов приложений MS Office|
+|[Addin Guard](AddinGuard_Russian)|Параметры загрузки надстроек COM|
+|Outlook Security|Скрытие диалога безопасности Outlook|
+|Office UI|Поиск и удаление нерабочих элементов интерфейса приложений Office|
+|[Project Wizard](ProjectWizard_RU)|Мастер создания проекта Visual Studio Express|
+
+![](DeveloperToolbox_Russian_http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=369835)

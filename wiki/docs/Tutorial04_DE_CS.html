@@ -1,0 +1,28 @@
+<div class="wikidoc">
+<p><strong><font size="3" face="Verdana">Tutorial04 - COM Proxy Management für Objekte die Ereignisse auslösen
+</font></strong></p>
+<p align="justify"><font size="3" face="Verdana">Das COMProxy Management für Objekte die Ereignisse auslösen funktioniert in NetOffice nicht anders als das was Sie bisher kennen. Jedoch gibt es eine wichtigen Umstand über den Sie sich im klaren sein sollten
+ um kein unbeabsichtigtes Verhalten herbeizuführen.</font></p>
+<p><font size="3" face="Verdana">Betrachten Sie dazu folgenden Beispielcode:</font></p>
+<p><span style="text-decoration:underline"><font size="3" face="Verdana">Listing 1.0</font></span></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana"><span style="color:blue">public</span> <span style="color:blue">void</span> SampleFunction() 
+{ 
+     _application.DocumentBeforeCloseEvent &#43;= 
+     <span style="color:blue">new</span> Word.Application_DocumentBeforeCloseEventHandler(DocumentBeforeCloseEvent); 
+} 
+
+
+<span style="color:blue">void</span> DocumentBeforeCloseEvent(NetOffice.WordApi.Document Doc, <span style="color:blue">ref</span> <span style="color:blue">bool</span> Cancel) 
+{ 
+     Doc.Dispose();     
+}</font></font></pre>
+</div>
+<p align="justify"><font size="3" face="Verdana">Sie können erkenen das wir im EventTrigger
+<em>DocumentBeforeCloseEvent</em> einen Document Proxy übergeben bekommen. Dieser Parameter wird im COM Proxy Baum dem Application Objekt untergordnet. Jedoch ist es empfehlenswert COM Proxy Parameter am Ende eines EventTrigger immer freizugeben. Fallweise
+ werden Ereignisse von Office sehr oft ausgelöst und die Anzahl an COM Proxies steigt dadurch unkontrolliert. Geben Sie COM Proxy Parameter am Ende eines Event Trigger immer mittels
+<em>Dispose()</em> frei! Zusätzlich bietet Ihnen die Methoden <em>Dispose</em> und
+<em>DisposeChildInstances</em> eine Überladung an. <em>Dispose(bool disposeEventBinding)</em> und
+<em>DisposeChildInstances(bool DisposeEventBinding)</em>. Sie können diese Überladung nutzen um COM Proxies freizugeben ohne das weiterleiten der Ereignisse zu stoppen.</font></p>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

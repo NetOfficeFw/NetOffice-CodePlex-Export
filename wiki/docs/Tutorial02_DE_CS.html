@@ -1,0 +1,34 @@
+<div class="wikidoc">
+<p><strong><font size="3" face="Verdana">Tutorial02 - COM Proxy Management besser steuern
+</font></strong></p>
+<p align="justify"><font size="3" face="Verdana">In Tutorial01 haben Sie gelernt was zu beachten ist wenn Sie COM Proxies verwenden und wie Sie Dispose() nutzen um Objekte, so wie deren Kinder, freizugeben. Um das COM Proxy Management zu erleichtern und Ihren
+ Code zur Verwaltung so klein als möglich zu halten bietet NetOffice in allen Objekten eine weitere Methode an:</font></p>
+<p><em><font size="3" face="Verdana">void DisposeChildInstances();</font></em></p>
+<p align="justify"><font size="3" face="Verdana">Mit dieser Methode sind Sie in der Lage nur die Proxies freizugeben die über das Objekt erzeugt wurden ohne das Objekt selbst freizugeben. Betrachten Sie dazu folgendes Beispiel:</font></p>
+<p><span style="text-decoration:underline"><font size="3" face="Verdana">Listing 1.0
+<br>
+<br>
+</font></span></p>
+<div style="background-color:white; color:black">
+<pre><font size="3" face="Verdana">Excel.Application application = <span style="color:blue">new</span> Excel.Application(); 
+<span style="color:blue">foreach</span>(Office.COMAddin addin <span style="color:blue">in</span> application.COMAddins) 
+{ 
+   Console.WriteLine(addin.Name); 
+}<br>application.DisposeChildInstances(); </font></pre>
+</div>
+<p><br>
+<font size="3" face="Verdana">Der erzeugte COM Proxy Baum in der grafischen Darstellung.</font></p>
+<p><font size="3" face="Verdana">- application <br>
+&#160;&#160;&#160;&#160;&#160; -COMAdins <br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; -Enumerator&#160; <br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; - COMAddin
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; - COMAddin
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; - COMAddin</font></p>
+<p align="justify"><font size="3" face="Verdana">Im Beispielcode können Sie erkennen das wir das COMAddins Property direkt verwenden ohne es in einer lokalen Variable zu speichern. Wenn Sie nach dem durchlaufen der COMAddins Auflistung alle Proxies bis auf
+ application freigeben wollen können Sie dies mit <em>Dispose()</em> nur dann erreichen wenn Sie ihre Application selbst verwerfen. Die Methode
+<em>DisposeChildInstances()</em> schafft hier die notwendige Abhilfe. Durch den Aufruf von
+<em>DisposeChildInstances()</em> des application Objekts sind nun alle COM Proxies bis auf das application Objekt selbst freigegeben. In Tutorial03 lernen Sie wie Sie Anzahl der COM Proxies innerhalb Ihrer Anwendung überwachen.</font></p>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

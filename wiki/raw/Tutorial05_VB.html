@@ -1,0 +1,43 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' taken from Tutorial05.vbproj</span>
+<span style="color:green">'</span>
+<span style="color:green">' COMObject is the common base type for all objects in NetOffice which are based <br>' on CoClasses or Interfaces</span><span style="color:green"> and also the type for anonymous COM Proxies at <br>' design time. This example shows you how to use.</span>
+<span style="color:green">'</span>
+<span style="color:green">' See chapter1 and chapter2 in <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English">technical documentation</a> for further info.</span>
+<span style="color:green">'</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Tutorial05Main()
+
+        <span style="color:green">' Initialize Api COMObject Support</span>
+        LateBindingApi.Core.Factory.Initialize()
+
+        <span style="color:green">' start application</span>
+        <span style="color:blue">Dim</span> application <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+        application.DisplayAlerts = <span style="color:blue">False</span>
+
+        <span style="color:blue">Dim</span> book <span style="color:blue">As</span> Excel.Workbook = application.Workbooks.Add()
+
+        <span style="color:green">' ActiveSheet is defined as unkown Proxy in Excel Type Library, it can <br>        ' have multiple times at runtime</span> <span style="color:green">but its always a COM Proxy, never a <br>        ' scalar type like bool or int. </span>
+        <span style="color:green">' In VBA or PIA its converted to object, in NetOffice its represents <br>        ' as COMObject</span><span style="color:green">. All NetOffice classes inherited COMObject</span>
+        <span style="color:blue">Dim</span> sheet <span style="color:blue">As</span> COMObject = application.ActiveSheet
+        <span style="color:blue">If</span> (TypeName(sheet) = <span style="color:#a31515">&quot;Worksheet&quot;</span>) <span style="color:blue">Then</span>
+            <span style="color:blue">Dim</span> activeSheet <span style="color:blue">As</span> Excel.Worksheet = sheet
+        <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+        <span style="color:green">'3 basic properties of COMObject</span>
+        <span style="color:blue">Dim</span> proxy <span style="color:blue">As</span> <span style="color:blue">Object</span> = sheet.UnderlyingObject
+        <span style="color:blue">Dim</span> proxyClassName <span style="color:blue">As</span> <span style="color:blue">String</span> = sheet.UnderlyingTypeName
+        <span style="color:blue">Dim</span> isDisposed <span style="color:blue">As</span> <span style="color:blue">Boolean</span> = sheet.IsDisposed
+
+        application.Quit()
+        application.Dispose()
+
+        MessageBox.Show(<span style="color:blue">Me</span>, <span style="color:#a31515">&quot;Done!&quot;</span>, <span style="color:blue">Me</span>.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp; See next: <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial06_VB">
+Tutorial06 - Understand Variant Type</a></p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,52 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre> <span style="color:blue">Sub</span> Main()
+
+<span style="color:green">'  NetOffice gives you as additional service a debug console.</span>
+<span style="color:green">'  Essential NetOffice system steps and any occured exception related with</span>
+<span style="color:green">'  your office application(or NetOffice himself maybe) are stored here. <br><span style="color:green">'  </span>if an error occureed and you need help, please use the NetOffice discussion board:</span>
+<span style="color:green">'  <a href="http://netoffice.codeplex.com/discussions">http://netoffice.codeplex.com/discussions</a><br></span><span style="color:green"><span style="color:green">'</span>  describe your problem and post the content of the DebugConsole as below your message.</span>
+<span style="color:green">'  the following infos are also helpful: operating system 32 or 64 bit, <br><span style="color:green">'</span>  office version 32 or 64 bit, assembly runs as administrator or not</span>
+<span style="color:green">'</span>
+<span style="color:green">'  the following options are available</span>
+<span style="color:green">' </span>
+<span style="color:green">'   ConsoleMode.None       = Console is deactivated (default)</span>
+<span style="color:green">'   ConsoleMode.Console    = redirect all messages to System.Console<br></span><span style="color:green">'   ConsoleMode.Trace      = redirect all messages to System.Diagnostics.Trace</span>
+<span style="color:green">'   ConsoleMode.MemoryList = keep all messages in memory. use DebugConsole.Messages and<br><span style="color:green">'                           </span> DebugConsole.ClearMessagesList() with these option</span>
+<span style="color:green">'   ConsoleMode.LogFile    = writes all messages immediately to a file. <br><span style="color:green">'</span>                            you have to set DebugConsole.FileName before use</span>
+
+        <span style="color:blue">Dim</span> application <span style="color:blue">As</span> Excel.Application = <span style="color:blue">Nothing</span>
+        <span style="color:blue">Try</span>
+
+            <span style="color:green">' create excel instance</span>
+            application = <span style="color:blue">New</span> Excel.Application()
+
+            <span style="color:green">' activate the DebugConsole. the default value is: ConsoleMode.None</span>
+            DebugConsole.Mode = ConsoleMode.MemoryList
+
+            <span style="color:green">' create excel instance</span>
+            application = <span style="color:blue">New</span> NetOffice.ExcelApi.Application()
+            application.DisplayAlerts = <span style="color:blue">False</span>
+
+            <span style="color:green">' we open a non existing file to produce an error</span>
+            application.Workbooks.Open(<span style="color:#a31515">&quot;z:\\NotExistingFile.exe&quot;</span>)
+
+        <span style="color:blue">Catch</span> ex <span style="color:blue">As</span> Exception<br><br>            Console.WriteLine(<span style="color:#a31515">&quot;Error: NetOffice DebugConsole content below&quot;</span>)
+
+            <span style="color:blue">For</span> <span style="color:blue">Each</span> item <span style="color:blue">As</span> <span style="color:blue">String</span> <span style="color:blue">In</span> DebugConsole.Messages
+                Console.WriteLine(item)
+            <span style="color:blue">Next</span>  
+
+            Console.ReadKey()
+
+        <span style="color:blue">Finally</span>
+
+            <span style="color:green">' quit and dispose</span>
+            application.Quit()
+            application.Dispose()
+
+        <span style="color:blue">End</span> <span style="color:blue">Try</span>
+
+    <span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

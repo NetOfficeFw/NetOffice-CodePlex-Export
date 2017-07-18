@@ -1,0 +1,57 @@
+<div class="wikidoc">
+<p><strong><font size="3" face="Verdana">Tutorial03 - Die Anzahl an COM Proxies innerhalb der Anwendung überwachen
+</font></strong></p>
+<p align="justify"><font size="3" face="Verdana">In vielen Situation kann es nützlich für Sie sein zu wissen wieviele COM Proxies Ihre Anwendung derzeit vom COM Server(Office) bezieht. Grundsätzlich ist es ratsam die Anzahl COM Proxies immer so gering als möglich
+ zu halten um den COM Server nicht unnötig zu belasten. NetOffice stellt Ihnen daher Möglichkeiten zur Verfügung die Anzahl der COM Proxies im Auge zu behalten. Die erste von 2 Möglichkeiten ist das ProxyCount Property.</font></p>
+<p><em><font size="3" face="Verdana">int NetOffice.Factory.ProxyCount { get; };</font></em></p>
+<p align="justify"><font size="3" face="Verdana">Sie können dieses Property jederzeit abrufen um die Anzahl offener Proxies zu ermitteln.
+<br>
+Die zweite Möglichkeit ist das <em>ProxyCountChanged</em> Ereigniss.</font></p>
+<p align="justify"><font size="3"><font face="Verdana"><em>public static event ProxyCountChangedHandler NetOffice.Factory.ProxyCountChanged;
+</em><br>
+<br>
+Sie können dieses Event abbonieren um sich bei einer Erhöhung oder Erniedrigung der Anzahl COM Proxies benachrichtigen zu lassen. Sie müssen jedoch beachten das der Aufruf des Ereignisses möglicherweise aus einem anderen Thread erfolgt. Dies geschieht immer
+ dann wenn sich die Anzahl COM Proxies aufgrund eines Ereigniss Triggers(z.B. das WorkBookOpen Event) geändert hat. Sollten Sie das
+<em>ProxyCountChanged</em> Event abboniert haben und innerhalb ihres <em>ProxyCountChanged</em> Event Triggers schreibend auf Controls ihrer UI zugreifen, z.B: um die Azahl der Proxies anzuzeigen, müssen Sie in diesem Fall ein sogenanntes
+<em>Invoke </em>ausführen. Der folgende Beispielcode verdeutlicht die sichere Nutzung des
+<em>ProxyCountChanged </em>Ereignisses.</font></font></p>
+<p><span style="text-decoration:underline"><font size="3" face="Verdana">Listing 1.0</font></span></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana"><span style="color:blue">class</span> SampleForm : Form 
+{ 
+    <span style="color:blue">public</span> SampleForm() 
+    { 
+        InitializeComponent(); 
+
+        <span style="color:green">// Das Event <span style="color:green">ProxyCountChangedEvent abbonieren </span></span>
+        NetOffice.ProxyCountChanged &#43;= 
+        <span style="color:blue">new</span> ProxyCountChangedHandler(ProxyCountChanged); 
+    } 
+
+    <span style="color:blue">void</span> ProxyCountChanged(<span style="color:blue">int</span> proxyCount) 
+    { 
+         <span style="color:blue">if</span> (labelProxyCount.InvokeRequired) 
+         { 
+            <span style="color:green">// wir benötigen ein Invoke da der Aufruf aus </span>
+            <span style="color:green">// einem anderen Thread erfolgt ist </span>
+            labelProxyCount.Tag = proxyCount.ToString(); 
+            labelProxyCount.Invoke(<span style="color:blue">new</span> MethodInvoker(UpdateLabel)); 
+         } 
+         <span style="color:blue">else</span> 
+         { 
+            <span style="color:green">// wir benötigen kein Invoke und können</span>
+            <span style="color:green">// direkt auf unser Label zugreifen </span>
+            labelProxyCount.Text = proxyCount.ToString(); 
+         } 
+   } 
+
+    <span style="color:green">// unsere invoke methode die innerhalb des</span>
+    <span style="color:green">// UI Threads ausgeführt wird </span>
+    <span style="color:blue">private</span> <span style="color:blue">void</span> UpdateLabel() 
+    { 
+            labelProxyCount.Text = labelProxyCount.Tag <span style="color:blue">as</span> <span style="color:blue">string</span>; 
+    } 
+} </font></font></pre>
+</div>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,109 @@
+<div class="wikidoc">
+<p><font size="3"><font face="Verdana"><strong>Tutorial10 – Einstellungen in NetOffice
+<br>
+</strong><br>
+Im folgenden Abschnitt finden Sie eine Beschreibung der statischen Klasse <em>NetOffice.Settings</em></font></font></p>
+<p><em><font size="3" face="Verdana"></font></em></p>
+<div>
+<table border="1" cellspacing="0" cellpadding="5" width="730">
+<tbody>
+<tr>
+<td valign="top" width="279"><font size="3" face="Verdana">Name</font></td>
+<td valign="top" width="373"><font size="3" face="Verdana">Beschreibung</font></td>
+<td valign="top" width="76"><font size="3" face="Verdana">Default</font></td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3" face="Verdana">&#160;&#160; </font></td>
+<td valign="top" width="373"><font size="3" face="Verdana">&#160;&#160; </font></td>
+<td valign="top" width="76"><font size="3" face="Verdana">&#160;&#160; </font></td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3" face="Verdana">CultureInfo ThreadCulture
+<br>
+<br>
+</font></td>
+<td valign="top" width="373"><font size="3" face="Verdana">Legt die Thread Culture für die Kommunikation mit Office fest</font></td>
+<td valign="top" width="76"><font size="3" face="Verdana">en-us</font></td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3"><font face="Verdana"><span style="color:blue">bool</span> EnableEvents
+<br>
+<br>
+&#160;</font></font></td>
+<td valign="top" width="373"><font size="3" face="Verdana">Legt fest ob NetOffice Ereignisse von Office weiterleiten soll
+</font></td>
+<td valign="top" width="76"><font size="3"><font face="Verdana"><span style="color:blue">true</span>
+</font></font></td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3"><font face="Verdana"><span style="color:blue">RetryMessageFilter
+</span>MessageFilter <br>
+</font></font></td>
+<td valign="top" width="373"><font size="3"><font face="Verdana">Implementierung von IMessageFilter.
+<a href="http://netoffice.codeplex.com/wikipage?title=Settings.MessageFilter_DE" target="_blank">
+Zusätzliche Informationen</a>&#160;</font></font></td>
+<td valign="top" width="76">&#160;</td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3"><font face="Verdana"><span style="color:blue">bool</span> EnableThreadSafe
+<br>
+</font></font></td>
+<td valign="top" width="373"><span style="color:green"><font size="3"><font face="Verdana"><font color="#000000">Legt fest ob NetOffice systeminterne Schritte
+<span style="color:green"><font color="#000000">für die Verwendung in</font> <font color="#000000">
+Multithreadumgebungen absichert</font></span></font> </font></font></span></td>
+<td valign="top" width="76"><font size="3"><font face="Verdana"><span style="color:blue">true</span>
+</font></font></td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3"><font face="Verdana"><span style="color:blue">bool</span> EnableAutomaticQuit
+<br>
+</font></font></td>
+<td valign="top" width="373"><span style="color:green"><font size="3"><font face="Verdana"><font color="#000000">Legt fest ob für Application Objekte während der
+</font><span style="color:green"><font color="#000000">Ausführung von Dispose() automatisch Quit() augerufen wird</font>
+</span></font></font></span></td>
+<td valign="top" width="76"><font size="3" face="Verdana"><font size="3"><font face="Verdana"><span style="color:blue">false</span>
+</font></font></font></td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3"><font face="Verdana"><span style="color:blue">bool</span> EnableSafeMode
+<br>
+&#160;</font></font></td>
+<td valign="top" width="373"><font size="3" face="Verdana">Legt fest ob NetOffice während der Ausführung
+<font color="#000000"><font color="#000000"><span style="color:green"><font color="#000000">prüft</font>
+<font color="#000000">ob ein</font></span> </font><span style="color:green"><font color="#000000">Property oder Methode zur Verfügung</font>
+</span>steht </font><span style="color:green"><font color="#000000">und fallweise eine EntityNotSupportedException auslöst</font>
+</span>&#160;</font></td>
+<td valign="top" width="76"><font size="3" face="Verdana"><font size="3"><font face="Verdana"><span style="color:blue">false</span>
+</font></font></font></td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3"><font face="Verdana"><span style="color:blue">bool</span> EnableDebugOutput
+<br>
+</font></font></td>
+<td valign="top" width="373"><span style="color:green"><font color="#000000"><font size="3"><font face="Verdana">Legt fest ob NetOffice wichtige systeminterne Schritte
+<span style="color:green"><font color="#000000">in der NetOffice Debug Console protokolliert</font>
+</span></font></font></font></span></td>
+<td valign="top" width="76"><font size="3" face="Verdana"><font size="3"><font face="Verdana"><span style="color:blue">false</span>
+</font></font></font></td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3"><font face="Verdana"><span style="color:blue">bool</span> EnableEventDebugOutput
+<br>
+&#160;</font></font></td>
+<td valign="top" width="373"><font size="3" face="Verdana">Legt fest ob systeminterne Schritte für die Verwendung von Ereignissen in der NetOffice Debug Console protokolliert</font></td>
+<td valign="top" width="76"><font size="3" face="Verdana"><font size="3"><font face="Verdana"><span style="color:blue">false</span>
+</font></font></font></td>
+</tr>
+<tr>
+<td valign="top" width="279"><font size="3"><font face="Verdana"><span style="color:blue">bool</span> EnableOperatorOverloads</font></font></td>
+<td valign="top" width="373"><font size="3" face="Verdana">Legt fest ob NetOffice Verweisvergleiche für Office Objekte an den COM Server weiterleitet.
+<br>
+</font></td>
+<td valign="top" width="76"><font size="3"><font face="Verdana"><span style="color:blue">true</span>
+</font></font></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background-color:white; color:black"><font size="3" face="Verdana">&#160;</font></div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,85 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' working with Charts in Excel</span>
+<span style="color:green">' taken from Example05.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example05Main()
+
+  <span style="color:green">' start excel and turn off msg boxes</span>
+  <span style="color:blue">Dim</span> excelApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+  excelApplication.DisplayAlerts = <span style="color:blue">False</span>
+
+  <span style="color:green">' add a new workbook</span>
+  <span style="color:blue">Dim</span> workBook <span style="color:blue">As</span> Excel.Workbook = excelApplication.Workbooks.Add()
+  <span style="color:blue">Dim</span> workSheet <span style="color:blue">As</span> Excel.Worksheet = workBook.Worksheets(1)
+
+  <span style="color:green">' we need some data to display</span>
+  <span style="color:blue">Dim</span> dataRange <span style="color:blue">As</span> Excel.Range = PutSampleData(workSheet)
+
+  <span style="color:green">' create a nice diagram</span>
+  <span style="color:blue">Dim</span> chartObjects <span style="color:blue">As</span> Excel.ChartObjects = workSheet.ChartObjects()
+  <span style="color:blue">Dim</span> chart <span style="color:blue">As</span> Excel.ChartObject = chartObjects.Add(70, 100, 375, 225)
+  chart.Chart.SetSourceData(dataRange)
+
+  <span style="color:green">' save the book </span>
+  <span style="color:blue">Dim</span> fileExtension <span style="color:blue">As</span> <span style="color:blue">String</span> = GetDefaultExtension(excelApplication)
+  <span style="color:blue">Dim</span> workbookFile <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}\Example05{1}&quot;</span>, _<br>                              Application.StartupPath, fileExtension)<br>
+  workBook.SaveAs(workbookFile, Missing.Value, Missing.Value, Missing.Value, _ <br>                Missing.Value, Missing.Value, XlSaveAsAccessMode.xlExclusive)
+
+  <span style="color:green">' close excel and dispose reference</span>
+  excelApplication.Quit()
+  excelApplication.Dispose()
+
+  <span style="color:blue">Dim</span> fDialog <span style="color:blue">As</span> <span style="color:blue">New</span> FinishDialog(<span style="color:#a31515">&quot;Workbook saved.&quot;</span>, workbookFile)
+  fDialog.ShowDialog(<span style="color:blue">Me</span>)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> PutSampleData(<span style="color:blue">ByVal</span> workSheet <span style="color:blue">As</span> Excel.Worksheet) <span style="color:blue">As</span> Excel.Range
+
+  workSheet.Cells(2, 2).Value = <span style="color:#a31515">&quot;Datum&quot;</span>
+  workSheet.Cells(3, 2).Value = DateTime.Now.ToShortDateString()
+  workSheet.Cells(4, 2).Value = DateTime.Now.ToShortDateString()
+  workSheet.Cells(5, 2).Value = DateTime.Now.ToShortDateString()
+  workSheet.Cells(6, 2).Value = DateTime.Now.ToShortDateString()
+
+  workSheet.Cells(2, 3).Value = <span style="color:#a31515">&quot;Columns1&quot;</span>
+  workSheet.Cells(3, 3).Value = 25
+  workSheet.Cells(4, 3).Value = 33
+  workSheet.Cells(5, 3).Value = 30
+  workSheet.Cells(6, 3).Value = 22
+
+  workSheet.Cells(2, 4).Value = <span style="color:#a31515">&quot;Column2&quot;</span>
+  workSheet.Cells(3, 4).Value = 25
+  workSheet.Cells(4, 4).Value = 33
+  workSheet.Cells(5, 4).Value = 30
+  workSheet.Cells(6, 4).Value = 22
+
+  workSheet.Cells(2, 5).Value = <span style="color:#a31515">&quot;Column3&quot;</span>
+  workSheet.Cells(3, 5).Value = 25
+  workSheet.Cells(4, 5).Value = 33
+  workSheet.Cells(5, 5).Value = 30
+  workSheet.Cells(6, 5).Value = 22
+
+  <span style="color:blue">Return</span> workSheet.Range(<span style="color:#a31515">&quot;$B2:$E6&quot;</span>)
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span>
+
+<span style="color:green">''' </span>
+<span style="color:green">''' returns the valid file extension for the instance. for example &quot;.xls&quot; or &quot;.xlsx&quot;</span>
+<span style="color:green">''' </span>
+<span style="color:green">''' &lt;param name=&quot;application&quot; /&gt;the instance</span>
+<span style="color:green">''' the extension</span>
+<span style="color:green">''' </span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> GetDefaultExtension(<span style="color:blue">ByVal</span> app <span style="color:blue">As</span> Excel.Application) <span style="color:blue">As</span> <span style="color:blue">String</span>
+
+ <span style="color:blue">Dim</span> version <span style="color:blue">As</span> <span style="color:blue">Double</span> = Convert.ToDouble(app.Version, CultureInfo.InvariantCulture)
+ <span style="color:blue">If</span> (version &gt;= 12.0) <span style="color:blue">Then</span>
+    <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.xlsx&quot;</span>
+ <span style="color:blue">Else</span>
+    <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.xls&quot;</span>
+ <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

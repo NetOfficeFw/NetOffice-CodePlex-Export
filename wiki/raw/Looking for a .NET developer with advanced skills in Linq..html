@@ -1,0 +1,39 @@
+<div class="wikidoc">
+<p>NetOffice needs powerful Linq extensions, querys for excel ranges or outlook contacts.<br>
+but the first step is an overwrite of the standard linq extensions. this is a special challenge because NetOffice deals with COM Interop and latebinding. this means in a WHERE query you have to free all objects without using to keep the count of open COM proxies
+ low. a simple C# example for an Excel.Range WHERE extension:<br>
+<br>
+<a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=350995">download c# example project</a>&nbsp;<br>
+<br>
+public static IEnumerable&lt;T&gt; Where&lt;T&gt;(this IEnumerable&lt;T&gt; source, Func&lt;Excel.Range,int, bool&gt; predicate) where T : IDisposable<br>
+{<br>
+&nbsp;&nbsp; foreach (T item in source)<br>
+&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (predicate(item as Excel.Range, 1))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yield return item;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; item.Dispose();<br>
+&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+<br>
+example call:<br>
+<br>
+Excel.Range targetRange = (from range in worksheet.Range(<a href="/wikipage?title=%22%24A1%3a%24G14&referringTitle=">&quot;$A1:$G14</a>) where range.Value == &quot;SearchValue&quot;<br>
+select range).FirstOrDefault();<br>
+<br>
+this is just for me with my basic linq knowledge. if you mean you can do that better, please contact me.<br>
+no commercial or free APi has true Linq support at the moment. you have the chance to create a new way to use ms-office. a lot of things more what i have to say but anyway, contact me and lets talk about.
+<br>
+<br>
+what do you have from NetOffice:<br>
+NetOffice is a young idea but the project has a successful start. for the future, you have a better reputation as team member from NetOffice for your career as developer. sometimes you busy? that's okay. of course, the real life is more important.<br>
+<br>
+advanced stuff:<br>
+its possible you think this idea is impossible with combined linq queries. yes, for typical .net scenarios, its impossible. the Dispose() call kills the objects, the dead for a static sequence in local memory. but in NetOffice you got a new proxy in any call
+ you do(fire and forget also for enumerators) thats the reason for it works well.<br>
+<br>
+*think about<br>
+Sebastian<br>
+<br>
+mail: public.sebastian@web.de</p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,42 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' list inbox folder in outlook </span>
+<span style="color:green">' taken from Example01.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example01Main()
+
+   <span style="color:green">' start outlook</span>
+   <span style="color:blue">Dim</span> outlookApplication = <span style="color:blue">New</span> Outlook.Application()
+
+   <span style="color:green">' get inbox </span>
+   <span style="color:blue">Dim</span> outlookNS <span style="color:blue">As</span> Outlook._NameSpace = outlookApplication.GetNamespace(<span style="color:#a31515">&quot;MAPI&quot;</span>)
+   <span style="color:blue">Dim</span> inboxFolder <span style="color:blue">As</span> Outlook.MAPIFolder = _<br>                      outlookNS.GetDefaultFolder(OlDefaultFolders.olFolderInbox)
+
+   <span style="color:green">' setup gui</span>
+   listView1.Items.Clear()
+   labelItemsCount.Text = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;You have {0} e-mails.&quot;</span>, inboxFolder.Items.<span style="color:blue">Count</span>)
+
+   <span style="color:green">' we fetch the inbox folder items</span>
+   <span style="color:blue">Dim</span> items <span style="color:blue">As</span> Outlook._Items = inboxFolder.Items
+   <span style="color:blue">Dim</span> item <span style="color:blue">As</span> COMObject = <span style="color:blue">Nothing</span>
+
+   <span style="color:blue">For</span> <span style="color:blue">Each</span> item <span style="color:blue">As</span> COMObject <span style="color:blue">In</span> inboxFolder.Items 
+
+      <span style="color:green">'  not every item in the inbox folder is a mail item </span>
+      <span style="color:blue">If</span> (TypeName(item) = <span style="color:#a31515">&quot;MailItem&quot;</span>) <span style="color:blue">Then</span> 
+         
+         <span style="color:blue">Dim</span> mailItem <span style="color:blue">As</span> Outlook.MailItem = item 
+         <span style="color:blue">Dim</span> newItem <span style="color:blue">As</span> ListViewItem = listViewInboxFolder.Items.Add(mailItem.SenderName) 
+         newItem.SubItems.Add(mailItem.Subject) 
+          
+      <span style="color:blue">End</span> <span style="color:blue">If</span> 
+
+   <span style="color:blue">Next</span>
+
+   <span style="color:green">'close outlook and dispose</span>
+   outlookApplication.Quit()
+   outlookApplication.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,44 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' taken from Tutorial03.vbproj</span>
+<span style="color:green">'</span>
+<span style="color:green">' This Tutorial shows you how to use the method Dipose() and DiposeChildInstances()<br>' for objects with active event listeners.</span> <span style="color:green">In case you have an object with <br>' exported events, a CommandBarButton for example,</span> <span style="color:green">and you want dispose them <br>' without stoppping fire events you have to use Dispose() with a parameter.</span>
+<span style="color:green">' </span>
+<span style="color:green">' See chapter1 and chapter4 in <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English">technical documentation</a> for further info.</span>
+<span style="color:green">'</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Tutorial03Main() 
+
+        <span style="color:green">'Initialize Api COMObject Support</span>
+        LateBindingApi.Core.Factory.Initialize()
+
+        <span style="color:green">' start application</span>
+        <span style="color:blue">Dim</span> application <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+        application.DisplayAlerts = <span style="color:blue">False</span>
+
+        <span style="color:green">' create new Workbook &amp; attach close event trigger</span>
+        <span style="color:blue">Dim</span> book <span style="color:blue">As</span> Excel.Workbook = application.Workbooks.Add()
+
+        <span style="color:blue">Dim</span> closeHandler <span style="color:blue">As</span> Excel.Workbook_BeforeCloseEventHandler = <span style="color:blue"><br>                                   AddressOf</span> <span style="color:blue">Me</span>.book_BeforeCloseEvent
+        <span style="color:blue">AddHandler</span> book.BeforeCloseEvent, closeHandler
+
+        <span style="color:green">' we dispose the instance. the parameter false signals to api dont release <br>        ' the event listener</span>. <span style="color:green">set parameter to true and the event listener will <br>        ' stopped and you dont get events for the instance</span>
+        <span style="color:green">' the DisposeChildInstances() method has the same method overload</span>
+        book.Close()
+        book.Dispose(<span style="color:blue">False</span>)
+
+        application.Quit()
+        application.Dispose()
+        <span style="color:green">' </span>
+        <span style="color:green">' the application object is ouer root object</span>
+        <span style="color:green">' dispose them release himself and any childs of application, in this case <br>        ' workbooks and workbook</span>. <span style="color:green">the excel instance are now removed from process list</span>
+        <span style="color:green">' </span>
+
+        MessageBox.Show(<span style="color:blue">Me</span>, <span style="color:#a31515">&quot;Done!&quot;</span>, <span style="color:blue">Me</span>.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+<p>&nbsp;&nbsp; <br>
+&nbsp;&nbsp; See next: <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial04_VB">
+Tutorial04 - Observable COM Proxy Count</a></p>
+</div><div class="ClearBoth"></div>

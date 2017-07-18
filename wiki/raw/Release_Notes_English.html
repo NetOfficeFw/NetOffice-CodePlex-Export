@@ -1,0 +1,85 @@
+<div class="wikidoc">
+<p><strong>NetOffice 1.3 - Neue Features im &Uuml;berblick</strong> <br>
+<br>
+- Mehr &Uuml;berladungen f&uuml;r Methoden mit optionalen Parametern <br>
+- Einfache Pr&uuml;fung zur Laufzeit ob ein spezfisches Feature zur Verf&uuml;gung steht
+<br>
+- Enumeratoren f&uuml;r Listen ohne nativen Enumerator Support <br>
+- Integrierte Debug Console <br>
+- Verbesserter Beispielcode <br>
+- Developer Toolbox 0.9</p>
+<p><br>
+<strong>Mehr &Uuml;berladungen f&uuml;r Methoden mit optionalen Parametern</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><br>
+NetOffice kann leider keine optionalen Parameter anbieten da viele Methoden &Uuml;berladungen haben die in unterschiedlichen Office-Versionen definiert sind. W&uuml;rde NetOffice diese zu einer einzigen Methode mit optionalen Parametern zusammenfassen w&uuml;rde
+ die Information verloren gehen welche Version die jeweilige Methode anbietet. Ich hatte deswegen in der Vergangenheit viel Mail-Verkehr quer &uuml;ber die ganze Welt, Leute die mir Beispielprojekte mit optionalen Parametern geschickt und Vorschl&auml;ge gemacht
+ haben, vielen Dank daf&uuml;r. Die Information welche Office Version die jeweilige Methode anbietet wird in NetOffice via XML Dokumentation als IntelliSense angezeigt. Ich m&ouml;chte diese IntelliSense Unterst&uuml;tzung nicht zugunsten der optionalen Parameter
+ opfern. Ich bin stolz darauf das versionsunabh&auml;ngige Office-Entwicklung mit NetOffice nicht einfach nur m&ouml;glich ist sondern das man hierbei auch aktiv unterst&uuml;tzt wird. Daf&uuml;r gibt es nun 3 zentrale Features:
+<br>
+<br>
+1.) W&auml;hrend der Entwicklung durch die XML Dokumentation die anzeigt welche Office Version die jeweilige Funktionalit&auml;t anbietet
+<br>
+2.) Nach der Entwicklung durch die <img src="http://www.mycsharp.de/wbb2/images/codeplex.png" border="0" alt="">
+<a href="http://netoffice.codeplex.com/wikipage?title=DeveloperToolbox_English">Developer Toolbox</a> die eine Code Analyse durchf&uuml;hrt und dem Entwickler aufzeigt mit welchen Office Versionen sein Code funktioniert
+<br>
+3.) Das neue EntityIsAvailable Feature (siehe unten) das erm&ouml;glicht zur Laufzeit zu ermitteln ob eine Funktionalit&auml;t zur Verf&uuml;gung steht
+<br>
+<br>
+Es w&auml;re schade diese besondere Trademark von NetOffice aufzuweichen daher bietet NetOffice keine optionalen Parameter. Als Ersatz f&uuml;r Methoden mit optionalen Parametern bot NetOffice bisher jeweils eine minimale und eine maximale Funktions&uuml;berladung
+ an. In solchenn F&auml;llen wo Methoden sehr viele optionale Parameter enthalten und der Entwickler nur einen oder wenige davon nutzen wollte ist dies jedoch nicht optimal, daher gibt es nun f&uuml;r Methoden mit optionalen Parametern die entsprechende Anzahl
+ an &Uuml;berladungen wie optionale Parameter existieren. Ich hoffe damit einen ad&auml;quaten Ersatz f&uuml;r optionale Parameter hergestellt zu haben.
+<br>
+<strong><br>
+<br>
+Einfache Pr&uuml;fung zur Laufzeit ob ein spezfisches Feature zur Verf&uuml;gung steht</strong>
+<br>
+<br>
+Oftmals ist es hilfreich und sinnvoll zur Laufzeit zu pr&uuml;fen ob ein bestimmtes Property oder Methode von der aktuellen Office Version angeboten wird.
+<br>
+Daher bietet jedes Objekt in NetOffice nun die Methode 'bool EntityIsAvailable(string name);' an. Dazu ein Beispiel:</p>
+<p><code></p>
+<div style="color:black; background-color:white">
+<pre>Outlook.MailItem mailItem = outlookApplication.CreateItem(OlItemType.olMailItem) <span style="color:blue">as</span> Outlook.MailItem;
+
+<span style="color:green">// BodyFormat is not available in Outlook 2000, we check at runtime the property is available </span>
+<span style="color:blue">if</span>(mailItem.EntityIsAvailable(<span style="color:#a31515">&quot;BodyFormat&quot;</span>)) 
+    mailItem.BodyFormat = OlBodyFormat.olFormatPlain; 
+mailItem.Body = <span style="color:#a31515">&quot;dont type google into google.&quot;</span>; 
+mailItem.Subject = <span style="color:#a31515">&quot;Hello there&quot;</span>; 
+mailItem.Display(); 
+mailItem.Close(OlInspectorClose.olDiscard);
+</pre>
+</div>
+<p>&nbsp;</p>
+</code>
+<p></p>
+<p><strong>Enumeratoren f&uuml;r Listen ohne nativen Enumerator Support</strong> <br>
+<br>
+Einige Auflistungstypen in Office, insbesondere in Outlook verf&uuml;gen &uuml;ber ein Default Item(in .NET bekannt als this indexer) sowie einen Count,
+<br>
+jedoch nicht &uuml;ber einen Enumerator der ein einfaches foreach erm&ouml;glicht. In den von Microsoft seperat breit gestellten Primary Interop Assemblies wurden diese Enumeratoren daher manuell erg&auml;nzt. NetOffice tut das jetzt auch. Eine Liste welche
+ Objekte dies betrifft findet sich hier:<img src="http://www.mycsharp.de/wbb2/images/codeplex.png" border="0" alt="">
+<a href="http://netoffice.codeplex.com/workitem/16739">Issue #16739</a> <br>
+<strong><br>
+<br>
+Integrierte Debug Console <br>
+</strong><br>
+Die Debug Console enth&auml;lt eine bewusst simpel gehaltene Log-Funktion, sie zeichnet automatisch alle COMExceptions auf die bei der Interaktion mit Office auftreten. Ich erhoffe mir dadurch einen schnelleren und besseren Support im
+<img src="http://www.mycsharp.de/wbb2/images/codeplex.png" border="0" alt=""> <a href="http://netoffice.codeplex.com/discussions">
+NetOffice Discussion Board</a>. Wer von Office eine Exception bekommt und dazu eine Frage stellen m&ouml;chte, f&uuml;gt den Inhalt der Debug Console seinem Posting an, so kann Ihm oder Ihr schneller geholfen werden.
+<br>
+<strong><br>
+<br>
+Verbesserter Beispielcode</strong> <br>
+<br>
+Der Beispielcode wurde hinsichtlich der neuen Features &uuml;berarbeitet, dazu gibt es 2 neue Beispiele und ein 1 neues Tutorial f&uuml;r die Nutzung von EntityIsAvailable und der Debug Console.
+<br>
+<strong><br>
+<br>
+Developer Toolbox 0.9</strong> <br>
+<br>
+Die Developer Toolbox hat nun technisch und optisch ihren finalen Stand erreicht.
+<br>
+Da NetOffice 1.3 neue Funktions&uuml;berladungen und zus&auml;tzliche Enumeratoren mitbringt, ist ein Update der Developer Toolbox auf Version 0.9 erforderlich wenn man die Office Compatibility Komponente f&uuml;r die Code-Analyse nutzt.</p>
+</div><div class="ClearBoth"></div>

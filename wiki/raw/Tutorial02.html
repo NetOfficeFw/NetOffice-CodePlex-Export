@@ -1,0 +1,56 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">/* taken from Tutorial02.csproj
+In Tutorial01 you have seen how to use Dispose() to release an object and its created children. This Tutorial shows you how to use the method DisposeChildInstances() to release all children with one call.
+
+See chapter1 and chapter5 in <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English">technical documentation</a> for further info.
+*/<br></span>
+<span style="color:blue">public</span> <span style="color:blue">void</span> Tutorial02Main()
+{
+            <span style="color:green">// Initialize Api COMObject Support </span>
+            LateBindingApi.Core.Factory.Initialize();
+
+            <span style="color:green">// start application</span>
+            Excel.Application application = <span style="color:blue">new</span> Excel.Application();
+            application.DisplayAlerts = <span style="color:blue">false</span>;
+
+            Excel.Workbook book   = application.Workbooks.Add();
+            Excel.Worksheet sheet = (Excel.Worksheet)book.Worksheets.Add();
+
+            <span style="color:green">/*
+             * we have 5 created proxies now in proxy table as follows
+             * 
+             * Application
+             *   &#43; Workbooks
+             *     &#43; Workbook  
+             *        &#43; Worksheets  
+             *            &#43; Worksheet  
+            */</span>
+
+
+            <span style="color:green">// we dispose the child instances of book</span>
+            book.DisposeChildInstances();
+
+            <span style="color:green">/*
+            * we have 3 created proxies now, the childs from book are disposed
+            * 
+            * Application
+            *   &#43; Workbooks
+            *     &#43; Workbook  
+            */</span>
+
+            application.Quit();
+            application.Dispose();
+            <span style="color:green">/*
+            * the Dispose() call for application release the instance and<br>            * created childs Workbooks and Workbook
+            */</span>
+
+            MessageBox.Show(<span style="color:blue">this</span>, <span style="color:#a31515">&quot;Done!&quot;</span>, <span style="color:blue">this</span>.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+}
+
+</pre>
+</div>
+<p><br>
+&nbsp; See next: <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial03">
+Tutorial03&nbsp;- Using Dispose with event exporting Objects</a></p>
+</div><div class="ClearBoth"></div>

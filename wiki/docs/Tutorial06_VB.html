@@ -1,0 +1,50 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' taken from Tutorial06.vbproj</span>
+<span style="color:green">'</span>
+<span style="color:green">' The datatype Variant is not plain supported by .NET CLR but common in an <br>' unmanaged COM Environment.</span><span style="color:green"> NetOffice mapped the type to object but you never <br>' have to fear you lost the COM Proxy management from NetOffice.</span>
+<span style="color:green">'</span>
+<span style="color:green">' See chapter2 in <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English">technical documentation</a> for further info.</span>
+<span style="color:green">'</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Tutorial06Main()
+
+        <span style="color:green">' Initialize Api COMObject Support</span>
+        LateBindingApi.Core.Factory.Initialize()
+
+        <span style="color:green">' start application</span>
+        <span style="color:blue">Dim</span> application <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+        application.DisplayAlerts = <span style="color:blue">False</span>
+
+        <span style="color:green">' create new Workbook</span>
+        <span style="color:blue">Dim</span> book <span style="color:blue">As</span> Excel.Workbook = application.Workbooks.Add()
+        <span style="color:blue">Dim</span> sheet <span style="color:blue">As</span> Excel.Worksheet = book.Worksheets(1)
+
+        <span style="color:blue">Dim</span> range <span style="color:blue">As</span> Excel.Range = sheet.Cells(1, 1)
+
+        <span style="color:green">' Style is defined as Variant in Excel Type Library and represents<br>        ' as object in NetOffice</span>
+        <span style="color:blue">Dim</span> style <span style="color:blue">As</span> Excel.Style = range.Style
+
+        <span style="color:green">'variant types can be a scalar type, another way to us is </span>
+        <span style="color:blue">If</span> (TypeName(range.Style) = <span style="color:#a31515">&quot;String&quot;</span>) <span style="color:blue">Then</span>
+            <span style="color:blue">Dim</span> myStyle <span style="color:blue">As</span> <span style="color:blue">String</span> = range.Style
+        <span style="color:blue">ElseIf</span> (TypeName(range.Style) = <span style="color:#a31515">&quot;Style&quot;</span>) <span style="color:blue">Then</span>
+            <span style="color:blue">Dim</span> myStyle <span style="color:blue">As</span> Excel.Style = range.Style
+        <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+        <span style="color:green">' Name, Bold, Size are bool but defined as Variant and also <br>        ' converted to object</span>
+        style.Font.Name = <span style="color:#a31515">&quot;Arial&quot;</span>
+        style.Font.Bold = <span style="color:blue">True</span>
+        style.Font.Size = 14
+
+        <span style="color:green">' quit &amp; dipose</span>
+        application.Quit()
+        application.Dispose()
+
+        MessageBox.Show(<span style="color:blue">Me</span>, <span style="color:#a31515">&quot;Done!&quot;</span>, <span style="color:blue">Me</span>.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)<br>
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+<p><br>
+&nbsp;&nbsp;&nbsp; See next: <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial07_VB">
+Tutorial07 - Invoker</a></p>
+</div><div class="ClearBoth"></div>

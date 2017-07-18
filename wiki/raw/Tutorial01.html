@@ -1,0 +1,63 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">/* taken from Tutorial01.csproj
+All objects in NetOffice which are based on CoClasses or Interfaces are wrapping COM Proxies. It's necessary to release a created COM Proxy by the client caller.
+This tells the COM Server (meaning your office application) that you do not need the instance any longer.
+
+In the MS Interop Assemblies you do that with Marshal.ReleaseComObject(object proxy);
+In NetOffice any object has the Method Dispose() to do that.
+An implemented Proxy Table in NetOffice makes it possible that you do not have to call Dispose() for any (implicitly) created object.
+This tutorial shows you how to use the Dispose() method to release an object and its created child objects.
+
+See chapter1 and chapter5 in <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English">technical documentation</a> for further info.
+
+*/</span>
+
+<span style="color:blue">public</span> <span style="color:blue">void</span> Tutorial01Main()
+{	 
+
+   <span style="color:green">/* NetOffice manages COM Proxies for you to avoid any kind of memory leaks           
+   *  and make sure your application instance removes from process list if you want. */</span>	 
+   
+   <span style="color:green">// Initialize Api COMObject Support </span>
+   LateBindingApi.Core.Factory.Initialize();
+
+   <span style="color:green">// start application</span>
+   Excel.Application application = <span style="color:blue">new</span> Excel.Application();
+   application.DisplayAlerts = <span style="color:blue">false</span>;
+
+   Excel.Workbook book = application.Workbooks.Add();
+   <span style="color:green">/* 
+    * now we have 2 new COM Proxies created.
+    * 
+    * the first proxy was created while accessing the Workbooks collection from <br>    * application the second proxy was created by the Add() method from Workbooks <br>    * and stored now in book with the application object we have 3 created proxies <br>    * now. the workbooks proxy was created about application and the book proxy was<br>    * created about the workbooks.
+    * NetOffice holds the proxies now in a list as follows:
+    * 
+    * Application
+    *   &#43; Workbooks
+    *     &#43; Workbook  
+    * 
+    * any object in NetOffice implements the IDisposible Interface.
+    * use the Dispose() Method to release an object. the method release all created <br>    * child proxies too.
+   */</span>
+
+    application.Quit();
+    application.Dispose();
+    <span style="color:green">/*
+    * the application object is ouer root object
+    * dispose them release himself and any childs of application, in this case workbooks<br>    * and workbook the excel instance are now removed from process list
+    */</span>
+
+    MessageBox.Show(<span style="color:blue">this</span>, <span style="color:#a31515">&quot;Done!&quot;</span>, <span style="color:blue">this</span>.Text, MessageBoxButtons.OK, <br>                                        MessageBoxIcon.Information);
+}
+</pre>
+</div>
+</div>
+<div style="background-color:white; color:black"><br>
+&nbsp;&nbsp;See next: <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial02" target="_self">
+Tutorial02 - Efficient using Dispose &amp; DisposeChildInstances</a><br>
+<br>
+<br>
+</div>
+</div><div class="ClearBoth"></div>

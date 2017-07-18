@@ -1,0 +1,84 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   attach VBA Code to a workbook in Excel
+   taken from Example07.cs
+  
+   Maybe you have to change the excel security settings to
+   access the VBE in excel or you get an exception. A good
+   tutorial to work with VBE: http://www.cpearson.com/excel/vbe.aspx    
+*/</span>
+<span style="color:blue">public</span> <span style="color:blue">void</span> Example07Main()
+{               
+   <span style="color:blue">string</span> workbookFile = <span style="color:blue">null</span>;
+   Excel.Application excelApplication = <span style="color:blue">null</span>;
+   <span style="color:blue">try</span>
+   {
+      <span style="color:green">// start excel and turn off msg boxes</span>
+      excelApplication = <span style="color:blue">new</span> Excel.Application();
+      excelApplication.DisplayAlerts = <span style="color:blue">false</span>;
+      excelApplication.Visible = <span style="color:blue">false</span>;
+
+      <span style="color:green">// add a new workbook</span>
+      Excel.Workbook workBook = excelApplication.Workbooks.Add();
+                 
+      <span style="color:green">// add new global Code Module</span>
+      VBE.VBComponent globalModule = workBook.VBProject.VBComponents.Add(<br>                                     vbext_ComponentType.vbext_ct_StdModule);
+      globalModule.Name = <span style="color:#a31515">&quot;MyNewCodeModule&quot;</span>;
+
+      <span style="color:green">// add a new procedure to the modul</span>
+      globalModule.CodeModule.InsertLines(1, <br>                   <span style="color:#a31515">&quot;Public Sub HelloWorld(Param as string)\r\n” &#43; <br>                   <span style="color:#a31515">&quot;</span>MsgBox \&quot;Hello World!\&quot; &amp; vbnewline &amp; Param\r\nEnd Sub&quot;</span>);
+                 
+      <span style="color:green">// create a click event trigger for the first worksheet</span>
+      <span style="color:blue">int</span> linePosition = <br>      workBook.VBProject.VBComponents[2].CodeModule.CreateEventProc(<br>                                                   <span style="color:#a31515">&quot;BeforeDoubleClick&quot;</span>, <span style="color:#a31515">&quot;Worksheet&quot;</span>);<br>
+      workBook.VBProject.VBComponents[2].CodeModule.InsertLines(<br>                               linePosition &#43; 1, <span style="color:#a31515">&quot;HelloWorld \&quot;BeforeDoubleClick\&quot;&quot;</span>);
+
+      <span style="color:green">// display info in the worksheet</span>
+      Excel.Worksheet sheet = (Excel.Worksheet)workBook.Worksheets[1];
+
+      sheet.Cells[2, 2].Value = <br>      <span style="color:#a31515">&quot;This workbook contains dynamic created VBA Moduls and Event Code&quot;</span>;
+      <br>      sheet.Cells[5, 2].Value = <br>      <span style="color:#a31515">&quot;Open the VBA Editor to see the code&quot;</span>;
+      <br>      sheet.Cells[8, 2].Value = <br>      <span style="color:#a31515">&quot;Do a double click to catch the BeforeDoubleClick Event from this Worksheet.&quot;</span>; 
+     
+      <span style="color:green">// save the book</span>
+      <span style="color:blue">string</span> fileExtension = GetDefaultExtension(excelApplication);
+      workbookFile = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}\\Example07{1}&quot;</span>, <br>                           Application.StartupPath, fileExtension);
+      <br>      workBook.SaveAs(workbookFile, Missing.Value, Missing.Value, Missing.Value, <br>                         Missing.Value, Missing.Value, XlSaveAsAccessMode.xlExclusive);
+    }
+    <span style="color:blue">catch</span> (System.Reflection.TargetInvocationException throwedException)
+    {             
+       <span style="color:green">// not trusted              </span>
+       <span style="color:blue">string</span> message = <span style="color:blue">string</span>.Format(<br>       <span style="color:#a31515">&quot;An error is occured.{0}ExceptionTrace:{0}&quot;</span>, Environment.NewLine);
+               
+       Exception exception = throwedException;
+       <span style="color:blue">while</span> (<span style="color:blue">null</span> != exception)
+       {
+         message &#43;= <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}{1}&quot;</span>, exception.Message, Environment.NewLine); 
+         exception = exception.InnerException;
+       }
+
+       MessageBox.Show(message); 
+     }
+     <span style="color:blue">finally</span>
+     {
+        <span style="color:green">// close excel and dispose reference</span>
+        excelApplication.Quit();
+        excelApplication.Dispose();
+     }
+}
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> returns the valid file extension for the instance. for example &quot;.xls&quot; or &quot;.xlsm&quot;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;application&quot;&gt;</span><span style="color:green">the instance&lt;/param&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">the extension&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">string</span> GetDefaultExtension(Excel.Application application)
+{
+   <span style="color:blue">double</span> Version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);
+   <span style="color:blue">if</span> (Version &gt;= 120.00)
+     <span style="color:blue">return</span> <span style="color:#a31515">&quot;.xlsm&quot;</span>;
+   <span style="color:blue">else</span>
+     <span style="color:blue">return</span> <span style="color:#a31515">&quot;.xls&quot;</span>;
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

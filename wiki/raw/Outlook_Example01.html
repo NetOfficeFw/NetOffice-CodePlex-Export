@@ -1,0 +1,38 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   list inbox folder in Outlook
+   taken from Example01.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example01Main()
+{ 
+   <span style="color:green">// start outlook</span>
+   Outlook.Application outlookApplication = <span style="color:blue">new</span> Outlook.Application();
+   
+   <span style="color:green">// get inbox </span>
+   Outlook._NameSpace outlookNS = outlookApplication.GetNamespace(<span style="color:#a31515">&quot;MAPI&quot;</span>);
+   Outlook.MAPIFolder inboxFolder =  _
+   outlookNS.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
+
+   <span style="color:green">// setup gui</span>
+   listView1.Items.Clear();
+   labelItemsCount.Text = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;You have {0} e-mails.&quot;</span>, inboxFolder.Items.Count);
+   
+   <span style="color:green">// we fetch the inbox folder items.      </span>
+   <span style="color:blue">foreach</span> (COMObject item <span style="color:blue">in</span> inboxFolder.Items)      
+   {      
+       <span style="color:green">// not every item in the inbox is a mail item</span>
+      Outlook.MailItem mailItem = item <span style="color:blue">as</span> Outlook.MailItem;
+      <span style="color:blue">if</span> (<span style="color:blue">null</span> != mailItem)
+      { 
+          ListViewItem newItem =<br>          listViewInboxFolder.Items.Add(mailItem.SenderName);         
+          newItem.SubItems.Add(mailItem.Subject);    
+      }   
+   }   
+
+   <span style="color:green">// close outlook and dispose</span>
+   outlookApplication.Quit();
+   outlookApplication.Dispose();
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

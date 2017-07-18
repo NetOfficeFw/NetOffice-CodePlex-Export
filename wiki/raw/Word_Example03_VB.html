@@ -1,0 +1,123 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' using templates in Word</span>
+<span style="color:green">' taken from Example03.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example03Main()
+
+<span style="color:green">   'start word and turn off msg boxes</span>
+   <span style="color:blue">Dim</span> wordApplication <span style="color:blue">As</span> Word.Application
+   wordApplication = <span style="color:blue">New</span> Word.Application()
+   wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone
+
+   <span style="color:green">'add a new document</span>
+   <span style="color:blue">Dim</span> newDocument <span style="color:blue">As</span> Word.Document
+   newDocument = wordApplication.Documents.Add()
+
+   <span style="color:green">'create a new listtemplate</span>
+   <span style="color:blue">Dim</span> template <span style="color:blue">As</span> Word.ListTemplate
+   template = newDocument.ListTemplates.Add(<span style="color:blue">True</span>, <span style="color:#a31515">&quot;NetOfficeListTemplate&quot;</span>)
+
+   <span style="color:green">'get the predefined listlevels (9)</span>
+   <span style="color:blue">Dim</span> levels <span style="color:blue">As</span> Word.ListLevels
+   levels = template.ListLevels
+
+   <span style="color:green">'customize the first level of the list</span>
+   levels(1).NumberFormat = <span style="color:#a31515">&quot;%1.&quot;</span>
+
+   <span style="color:green">'tab is used to change the level</span>
+   levels(1).TrailingCharacter = WdTrailingCharacter.wdTrailingTab
+   levels(1).NumberStyle = WdListNumberStyle.wdListNumberStyleArabic
+   levels(1).NumberPosition = 0
+   levels(1).Alignment = WdListLevelAlignment.wdListLevelAlignLeft
+   levels(1).TextPosition = wordApplication.CentimetersToPoints(0.63F)
+   levels(1).TabPosition = wordApplication.CentimetersToPoints(0.63F)
+   levels(1).ResetOnHigher = 0
+   levels(1).StartAt = 1
+   levels(1).LinkedStyle = <span style="color:#a31515">&quot;&quot;</span>
+   levels(1).Font.Bold = 1
+
+   <span style="color:green">'customize the second level of the list</span>
+   levels(2).NumberFormat = <span style="color:#a31515">&quot;%1.%2.&quot;</span>
+
+   <span style="color:green">'tab is used to change the level</span>
+   levels(2).TrailingCharacter = WdTrailingCharacter.wdTrailingTab
+   levels(2).NumberStyle = WdListNumberStyle.wdListNumberStyleArabic
+
+   <span style="color:green">'we want the numbers to appear under the first letter of the higher level</span>
+   levels(2).NumberPosition = wordApplication.CentimetersToPoints(0.63F)
+   levels(2).Alignment = WdListLevelAlignment.wdListLevelAlignLeft
+
+   <span style="color:green">'and the text should indent a tab more on the right</span>
+   levels(2).TextPosition = wordApplication.CentimetersToPoints(1.4F)
+   levels(2).TabPosition = wordApplication.CentimetersToPoints(1.4F)
+   levels(2).ResetOnHigher = 0
+   levels(2).StartAt = 1
+   levels(2).LinkedStyle = <span style="color:#a31515">&quot;&quot;</span>
+   levels(2).Font.Italic = 1
+
+   <span style="color:green">'apply the defined listtemplate to the selection</span>
+   wordApplication.Selection.Range.ListFormat.ApplyListTemplate(template, <span style="color:blue">False</span>, _
+      WdListApplyTo.wdListApplyToWholeList, WdDefaultListBehavior.wdWord9ListBehavior)
+
+   <span style="color:green">'create a list</span>
+   wordApplication.Selection.TypeText(<span style="color:#a31515">&quot;Welcoming&quot;</span>)
+   wordApplication.Selection.TypeParagraph()
+
+   wordApplication.Selection.TypeText(<span style="color:#a31515">&quot;Introduction&quot;</span>)
+   wordApplication.Selection.TypeParagraph()
+
+   wordApplication.Selection.TypeText(<span style="color:#a31515">&quot;Presentation&quot;</span>)
+   wordApplication.Selection.TypeParagraph()
+
+   <span style="color:green">'execute the indent so the second level gets activated</span>
+   wordApplication.Selection.Range.ListFormat.ListIndent()
+
+   wordApplication.Selection.TypeText(<span style="color:#a31515">&quot;Top 1&quot;</span>)
+   wordApplication.Selection.TypeParagraph()
+
+   wordApplication.Selection.TypeText(<span style="color:#a31515">&quot;Top 2&quot;</span>)
+   wordApplication.Selection.TypeParagraph()
+
+   wordApplication.Selection.TypeText(<span style="color:#a31515">&quot;Top 3&quot;</span>)
+   wordApplication.Selection.TypeParagraph()
+
+   <span style="color:green">' execute the outdent so the first level gets reactivated</span>
+   wordApplication.Selection.Range.ListFormat.ListOutdent()
+   wordApplication.Selection.TypeText(<span style="color:#a31515">&quot;Questions &amp; Answers&quot;</span>)
+
+   <span style="color:green">' save the document</span>
+   <span style="color:blue">Dim</span> fileExtension <span style="color:blue">As</span> <span style="color:blue">String</span> = GetDefaultExtension(wordApplication)
+   <span style="color:blue">Dim</span> documentFile <span style="color:blue">As</span> <span style="color:blue">String</span> = _<br>   <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}\Example03{1}&quot;</span>, Application.StartupPath, fileExtension)
+   newDocument.SaveAs(documentFile)
+
+   <span style="color:green">' close word and dispose reference</span>
+   wordApplication.Quit()
+   wordApplication.Dispose()
+
+   <span style="color:blue">Dim</span> fDialog <span style="color:blue">As</span> <span style="color:blue">New</span> FinishDialog(<span style="color:#a31515">&quot;Document saved.&quot;</span>, documentFile)
+   fDialog.ShowDialog(<span style="color:blue">Me</span>)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">#Region</span> <span style="color:#a31515">&quot;Helper&quot;</span>
+
+<span style="color:green">''' &lt;summary&gt;</span>
+<span style="color:green">''' returns the valid file extension for the instance. for example &quot;.doc&quot; or &quot;.docx&quot;</span>
+<span style="color:green">''' &lt;/summary&gt;</span>
+<span style="color:green">''' &lt;param name=&quot;application&quot;&gt;the instance&lt;/param&gt;</span>
+<span style="color:green">''' &lt;returns&gt;the extension&lt;/returns&gt;</span>
+<span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> GetDefaultExtension(<span style="color:blue">ByVal</span> application <span style="color:blue">As</span> Word.Application) <span style="color:blue">As</span> <span style="color:blue">String</span>
+
+        <span style="color:blue">Dim</span> version <span style="color:blue">As</span> <span style="color:blue">Double</span> = _<br>        Convert.ToDouble(application.Version, CultureInfo.InvariantCulture)
+        <span style="color:blue">If</span> (version &gt;= 12.0) <span style="color:blue">Then</span>
+            <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.docx&quot;</span>
+        <span style="color:blue">Else</span>
+            <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.doc&quot;</span>
+        <span style="color:blue">End</span> <span style="color:blue">If</span>
+<span style="color:blue">End</span> <span style="color:blue">Function</span>
+
+<span style="color:blue">#End Region</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,52 @@
+REGEDIT4
+
+[HKEY_CLASSES_ROOT\NetOfficeSample.AddinProgID]
+@="NetOfficeSample.AddinClassName"
+
+[HKEY_CLASSES_ROOT\NetOfficeSample.AddinProgID\CLSID]
+@="{00000000-0000-0000-0000-000000000000}"
+
+[HKEY_CLASSES_ROOT\CLSID\{00000000-0000-0000-0000-000000000000}]
+@="NetOfficeSample.AddinClassName"
+
+[HKEY_CLASSES_ROOT\CLSID\{00000000-0000-0000-0000-000000000000}\InprocServer32]
+@="mscoree.dll"
+"ThreadingModel"="Both"
+"Class"="NetOfficeSample.AddinClassName"
+"Assembly"="NetOfficeSample, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+"CodeBase"="file:///C:/Dokumente und Einstellungen/Lange/NetOfficeSample.dll"
+
+[HKEY_CLASSES_ROOT\CLSID\{00000000-0000-0000-0000-000000000000}\InprocServer32\1.0.0.0]
+"Class"="NetOfficeSample.AddinClassName"
+"Assembly"="NetOfficeSample, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+"RuntimeVersion"="v4.0.30319"
+"CodeBase"="file:///C:/Dokumente und Einstellungen/Lange/NetOfficeSample.dll"
+
+[HKEY_CLASSES_ROOT\CLSID\{00000000-0000-0000-0000-000000000000}\ProgId]
+@="NetOfficeSample.AddinProgID"
+
+[HKEY_CLASSES_ROOT\CLSID\{00000000-0000-0000-0000-000000000000}\Implemented Categories\{62C8FE65-4EBB-45E7-B440-6E39B2CDBF29}]
+
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\Excel\Addins\NetOfficeSample.AddinProgID]
+"LoadBehavior"=dword:00000003
+"FriendlyName"="NetOffice Sample Addin"
+"Description"="NetOffice Sample Addin Description"
+
+;  Please remove this comment
+;
+;  1. Replace all "NetOfficeSample.AddinProgID" with the ProgID of your Addin class. you find the ProgID in your Addin class top of the class definition. 
+;  2. Replace all "NetOfficeSample.AddinClassName" with the fullqualified name of your Addin class
+;  3. Replace all "704E1286-8739-474F-9F77-409CC468016D" with the id of your Addin class. you find the ID of your Addin class top of the class definition. 
+;  4. Replace "A"Assembly"="NetOfficeSample, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" with the name and version of your Addin. for c# developers: i suggest you to set your standard namespace name as same as the assembly name
+;  5  Replace "RuntimeVersion"="v4.0.30319" with your .NET Runtime Version
+;  6. Replace "CodeBase"="file:///C:/Dokumente und Einstellungen/Lange/NetOfficeSample.dll" with the path of your assembly
+;  7. Of course, set the load behaviour and description in the last section at your will 
+;
+;  Otherwise you can create a .reg file with regasm myAssembly.dll /codebase /regfile:myRegFile.reg
+;  now you change the codebase path, these path must be the be the path on the target deployment system
+;  as last step at the last section you have to add the last section and change them to your definition
+;
+;  Comment End
+

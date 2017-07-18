@@ -1,0 +1,28 @@
+<div class="wikidoc">
+<p align="justify"><font size="3" face="Verdana">Sofern Sie bereits mit den <em>Interop Assemblies</em> von Microsoft gearbeitet haben wissen Sie das Office auf einer COM Architektur basiert. Das bedeutet, sie beziehen in ihrer Anwendung COM Proxy Objekte von
+ Office für deren Freigabe sie verantwortlich sind. </font></p>
+<p align="justify"><font size="3" face="Verdana">Wie sie vermutlich wissen, müssen Sie jedes COM Proxy Objekt durch die Funktion
+</font><a href="http://msdn.microsoft.com/en-us/library/system.runtime.interopservices.marshal.releasecomobject.aspx" target="_blank"><font size="3" face="Verdana">ReleaseComObject</font></a><font size="3" face="Verdana"> auch wieder freigeben. Sie signalisieren
+ dem COM Server damit das Sie das Objekt nicht mehr benötigen. Würden Sie das Objekt nicht freigeben hält der COM Server es weiterhin im Speicher auch wenn Sie die Office Anwendung längst geschlossen haben und Ihr Programm beendet ist. Sie hätten ein Memory
+ Leak erzeugt und ihre erzeugte Instanz wäre immer noch als aktiver Prozess im Windows Task Manager zu sehen.
+</font></p>
+<p align="justify"><font size="3" face="Verdana">Aufgrund dieser Verhaltenweise ist es notwendig erzeugte Proxy Objekte explizit zu speichern. Praktischer formuliert: Wenn Sie ein Property eines Objekts abfragen z.B. via application.COMAddins haben Sie einen
+ COM Proxy erzeugt und um diesen nach der Benutzung wieder freigeben zu können müssen sie ihn in jedem Fall lokal zwischenspeichern, andernfalls haben Sie keine Möglichkeit später für den Proxy die Funktion
+</font><a href="http://msdn.microsoft.com/en-us/library/system.runtime.interopservices.marshal.releasecomobject.aspx"><font size="3" face="Verdana">ReleaseComObject</font></a><font size="3" face="Verdana"> aufzurufen. Halten Sie sich nicht an diese Regeln hält
+ der COM Server(Office) ihr erzeugtes Objekt weiterhin im Speicher und wartet (vergebens) das Sie ihm die Freigabe signalisieren. Verwenden Sie im Umgang mit den
+<em>Interop Assemblies</em> nie COM Proxy Objekte ohne sie vorher lokal zu speichern!</font></p>
+<p align="justify"><font size="3" face="Verdana">Dadurch ergeben sich natürlich folgende Nachteile:</font></p>
+<p><font size="3" face="Verdana">- Sie müssen jederzeit bedenken alle Objekte stets wieder freigeben zu müssen,
+<br>
+&#160; untypisch in einer managed Umgebung. <br>
+<br>
+- Ihr Code wird durch die expliziten Speicherungen und Freigaben der COM Proxy Objekte
+<br>
+&#160; schnell aufgebläht und unleserlich.</font></p>
+<p align="justify"><font size="3" face="Verdana">In NetOffice müssen sie nicht jedes Objekt explizit freigeben und es ist Ihnen auch erlaubt Objekte implizit zu benutzen. Alle Objekte werden für Sie verwaltet. Sie können in NetOffice ein Objekt explizit über
+ seine Methode <em>Dispose</em> freigeben und sich jeder Zeit über die Anzahl aller COM Proxies innerhalb ihrer Anwendung informieren.&#160; Eine praxisorienterte Erklärung mit Beispielen in C# oder VB.NET finden Sie dazu hier:
+<br>
+<br>
+</font><a href="http://netoffice.codeplex.com/wikipage?title=TutorialOverview_DE"><font size="3" face="Verdana">Tutorial01 – COM Proxy Management verstehen</font></a><font size="3" face="Verdana">.</font></p>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

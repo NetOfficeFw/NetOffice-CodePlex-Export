@@ -1,0 +1,79 @@
+<div class="wikidoc">
+<p>COMObject is the common base type for all objects in NetOffice and also represents a COM Proxy whose type is unknown at compile-time, but still is a COMProxy in every case (not a scalar type like bool or int). Take a look at the following code example:</p>
+<div style="color:black; background-color:white">
+<pre><span style="color:blue">foreach</span> (Office.COMAddIn item <span style="color:blue">in</span> application.COMAddIns) 
+{ 
+    <span style="color:green">/* COMAddIn.Application is defined as COMObject 
+     * The definintion in COM TypeLibrary is VT_DISPATCH. Interop Assemblies or VBA mapped this to simple object */</span> 
+     Excel.Application parentApplication = (Excel.Application)item.Application; 
+}
+
+</pre>
+</div>
+<p>Also take at: <a href="http://netoffice.codeplex.com/wikipage?title=Tutorials_Overview">
+Tutorial05</a><br>
+<br>
+Class definition<br>
+<br>
+</p>
+<div style="color:black; background-color:white">
+<pre><span style="color:green">/*    class COMObject
+   the common base type for all objects in NetOffice. 
+*/</span>
+
+<span style="color:green">// Constructors</span>
+
+   COMObject()
+
+   COMObject(<span style="color:blue">object</span> comProxy)
+
+   COMObject(COMObject replacedObject)
+
+   COMObject(COMObject parentObject, <span style="color:blue">object</span> comProxy)
+
+   COMObject(COMObject parentObject, <span style="color:blue">object</span> comProxy, Type comProxyType)
+
+<span style="color:green">// Properties</span>
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> returns the native wrapped proxy</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:blue">object</span> UnderlyingObject{ <span style="color:blue">get</span>; }
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> returns class name of native wrapped proxy</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:blue">string</span> UnderlyingTypeName{ <span style="color:blue">get</span>; }
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> returns instance is diposed means unusable</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span><span style="color:green"> </span>
+   <span style="color:blue">bool</span> IsDisposed{ <span style="color:blue">get</span>; }
+
+<span style="color:green">// Methods</span>
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> dispose instance and all child instances</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:blue">void</span> Dispose();
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> dispose instance and all child instances</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;disposeEventBinding&quot;&gt;</span><span style="color:green">dispose event exported proxies with one or more event recipients&lt;/param&gt;</span>
+   <span style="color:blue">void</span> Dispose(<span style="color:blue">bool</span> disposeEventBinding);
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> dispose all child instances</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:blue">void</span> DisposeChildInstances();
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> dispose all child instances</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;disposeEventBinding&quot;&gt;</span><span style="color:green">dispose event exported proxies with one or more event recipients&lt;/param&gt;</span>
+   <span style="color:blue">void</span> DisposeChildInstances(<span style="color:blue">bool</span> disposeEventBinding); 
+
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

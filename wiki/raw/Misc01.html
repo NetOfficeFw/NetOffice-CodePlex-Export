@@ -1,0 +1,49 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:blue">static</span> <span style="color:blue">void</span> Main()
+{
+<span style="color:green">/*
+*  NetOffice gives you as additional service a debug console.
+*  Essential NetOffice system steps and any occured exception related with
+*  your office application(or NetOffice himself maybe) are stored here. <br>*  if an error occureed and you need help, please use the NetOffice discussion board: <br>*  <a href="http://netoffice.codeplex.com/discussions">http://netoffice.codeplex.com/discussions
+</a>*  describe your problem and post the content of the DebugConsole as below your message.
+*  the following infos are also helpful: operating system 32 or 64 bit, <br>*  office version 32 or 64 bit, assembly runs as administrator or not
+*
+*  the following options are available
+* 
+*   ConsoleMode.None       = Console is deactivated (default)
+*   ConsoleMode.Console    = redirect all messages to System.Console<br>*   ConsoleMode.Trace      = redirect all messages to System.Diagnostics.Trace
+*   ConsoleMode.MemoryList = keep all messages in memory. <br>*                            use DebugConsole.Messages and <br>*                            DebugConsole.ClearMessagesList() with these option <br>*   ConsoleMode.LogFile    = writes all messages immediately to a file. <br>*                            you have to set DebugConsole.FileName before use
+*/</span>
+
+    Excel.Application application = <span style="color:blue">null</span>;
+    <span style="color:blue">try</span>
+    {
+        <span style="color:green">// activate the DebugConsole. the default value is: ConsoleMode.None</span>
+        DebugConsole.Mode = ConsoleMode.MemoryList;
+
+        <span style="color:green">// create excel instance</span>
+        application = <span style="color:blue">new</span> NetOffice.ExcelApi.Application();
+        application.DisplayAlerts = <span style="color:blue">false</span>;
+
+        <span style="color:green">// we open a non existing file to produce an error</span>
+        application.Workbooks.Open(<span style="color:#a31515">&quot;z:\\NotExistingFile.exe&quot;</span>);
+    }
+    <span style="color:blue">catch</span> (Exception)
+    {
+        Console.WriteLine(<span style="color:#a31515">&quot;An error is occured. NetOffice DebugConsole content below:&quot;</span>);
+
+        <span style="color:blue">foreach</span> (<span style="color:blue">string</span> item <span style="color:blue">in</span> DebugConsole.Messages)
+            Console.WriteLine(item);
+
+        Console.ReadKey();
+    }
+    <span style="color:blue">finally</span>
+    {
+        <span style="color:green">// quit and dispose</span>
+        application.Quit();
+        application.Dispose();
+    }
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,121 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">' taken from Tutorial04.vbproj</span>
+<span style="color:green">'</span>
+<span style="color:green">' Sometimes it is very useful to know the count of open COM Proxies in your application.</span>
+<span style="color:green">' NetOffice offers you a static property and notification event for this.<br><br>'<br></span><span style="color:green">'</span> <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Invoker">LateBindingApi.Core.Factory.ProxyCount</a><br><br><span style="color:green">' <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Invoker">LateBindingApi.Core.Factory.ProxyCountChanged</a><br></span><br><span style="color:green">'</span> 
+<span style="color:green">' This example shows you how to use them.</span>
+<span style="color:green">'</span>
+<span style="color:green">' See chapter5 in <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English">technical documentation</a> for further info.</span>
+<span style="color:green">'</span>
+
+<span style="color:blue">Dim</span> _application <span style="color:blue">As</span> Excel.Application
+
+<span style="color:blue">Public</span> <span style="color:blue">Sub</span> <span style="color:blue">New</span>()
+
+        <span style="color:green">' This call is required by the Windows Form Designer.</span>
+        InitializeComponent()
+
+        <span style="color:green">' Initialize Api COMObject Support </span>
+        LateBindingApi.Core.Factory.Initialize()
+
+        <span style="color:blue">Dim</span> changeHandler <span style="color:blue">As</span> Factory.ProxyCountChangedHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.Factory_ProxyCountChanged
+        <span style="color:blue">AddHandler</span> Factory.ProxyCountChanged, changeHandler
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Factory_ProxyCountChanged(<span style="color:blue">ByVal</span> proxyCount <span style="color:blue">As</span> <span style="color:blue">Integer</span>)
+
+        <span style="color:blue">If</span> (labelProxyCount.InvokeRequired) <span style="color:blue">Then</span>
+            labelProxyCount.Tag = proxyCount.ToString()
+            <span style="color:blue">Dim</span> updateHandler <span style="color:blue">As</span> MethodInvoker = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.UpdateLabel
+            labelProxyCount.Invoke(updateHandler)
+        <span style="color:blue">Else</span>
+            labelProxyCount.Text = proxyCount.ToString()
+        <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> buttonExcel_Click(<span style="color:blue">ByVal</span> sender <span style="color:blue">As</span> System.Object, <span style="color:blue">ByVal</span> e <span style="color:blue">As</span> System.EventArgs) <span style="color:blue">Handles</span> buttonExcel.Click
+
+        <span style="color:blue">If</span> (IsNothing(_application)) <span style="color:blue">Then</span>
+            <span style="color:green">' start application</span>
+            _application = <span style="color:blue">New</span> Excel.Application()
+            _application.DisplayAlerts = <span style="color:blue">False</span>
+            buttonExcel.Text = <span style="color:#a31515">&quot;Quit Excel&quot;</span>
+            buttonWorkbook.Enabled = <span style="color:blue">True</span>
+            buttonAddins.Enabled = <span style="color:blue">True</span>
+            buttonAddRemoveWorkbook.Enabled = <span style="color:blue">True</span>
+        <span style="color:blue">Else</span>
+            <span style="color:green">' quit application</span>
+            _application.Quit()
+            _application.Dispose()
+            _application = <span style="color:blue">Nothing</span>
+            buttonExcel.Text = <span style="color:#a31515">&quot;Start Excel&quot;</span>
+            buttonWorkbook.Enabled = <span style="color:blue">False</span>
+            buttonAddins.Enabled = <span style="color:blue">False</span>
+            buttonAddRemoveWorkbook.Enabled = <span style="color:blue">False</span>
+        <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> buttonWorkbook_Click(<span style="color:blue">ByVal</span> sender <span style="color:blue">As</span> System.Object, <span style="color:blue">ByVal</span> e <span style="color:blue">As</span> System.EventArgs) <span style="color:blue">Handles</span> buttonWorkbook.Click
+
+        <span style="color:green">' 2 new proxies, the workbooks proxy(implicit) and the new workbook from Add()</span>
+        <span style="color:blue">If</span> (<span style="color:blue">Not</span> IsNothing(_application)) <span style="color:blue">Then</span>
+            _application.Workbooks.Add()
+        <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> buttonAddins_Click(<span style="color:blue">ByVal</span> sender <span style="color:blue">As</span> System.Object, <span style="color:blue">ByVal</span> e <span style="color:blue">As</span> System.EventArgs) <span style="color:blue">Handles</span> buttonAddins.Click
+
+        <span style="color:blue">If</span> (<span style="color:blue">Not</span> IsNothing(_application)) <span style="color:blue">Then</span>
+            <span style="color:green">'1 new enumerator proxy and 1 new proxy for any Addin</span>
+            <span style="color:blue">Dim</span> item <span style="color:blue">As</span> Excel.AddIn
+            <span style="color:blue">For</span> <span style="color:blue">Each</span> item <span style="color:blue">In</span> _application.AddIns
+                Console.WriteLine(item.Name)
+            <span style="color:blue">Next</span> item
+        <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> buttonAddRemoveWorkbook_Click(<span style="color:blue">ByVal</span> sender <span style="color:blue">As</span> System.Object, <span style="color:blue">ByVal</span> e <span style="color:blue">As</span> System.EventArgs) <span style="color:blue">Handles</span> buttonAddRemoveWorkbook.Click
+
+        <span style="color:green">' add a new worbook and a new worksheet to the workbook</span>
+        <span style="color:green">' the worksheet is a child proxy from worbook, after dispose the workbook</span>
+        <span style="color:green">' creates 4 new proxies</span>
+        <span style="color:green">' the open proxy count is the same as before</span>
+
+        <span style="color:blue">Dim</span> proxyCount <span style="color:blue">As</span> <span style="color:blue">Integer</span> = LateBindingApi.Core.Factory.ProxyCount
+
+        <span style="color:blue">Dim</span> book <span style="color:blue">As</span> Excel.Workbook = _application.Workbooks.Add()
+        book.Worksheets.Add()
+
+        <span style="color:blue">Dim</span> proxyCountAfterCreate <span style="color:blue">As</span> <span style="color:blue">Integer</span> = LateBindingApi.Core.Factory.ProxyCount
+
+        <span style="color:green">'dispose all child instances from application</span>
+        _application.DisposeChildInstances()
+
+        <span style="color:blue">Dim</span> proxyCountAfterDispose <span style="color:blue">As</span> <span style="color:blue">Integer</span> = LateBindingApi.Core.Factory.ProxyCount
+
+        <span style="color:blue">Dim</span> message <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;Method creates a new Workbook with 1 new Worksheet&quot;</span> &amp; vbNewLine &amp; _
+                                                <span style="color:#a31515">&quot;ProxyCount before create is {0}&quot;</span> &amp; vbNewLine &amp; _
+                                                <span style="color:#a31515">&quot;ProxyCount after create is {1}&quot;</span> &amp; vbNewLine &amp; _
+                                                <span style="color:#a31515">&quot;ProxyCount after dispose Workbook is {2}&quot;</span>, proxyCount, proxyCountAfterCreate, proxyCountAfterDispose)
+
+        MessageBox.Show(message, <span style="color:blue">Me</span>.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> UpdateLabel()
+
+        labelProxyCount.Text = labelProxyCount.Tag
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+</pre>
+</div>
+<p>&nbsp;&nbsp; <br>
+&nbsp;&nbsp; See next: <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial05_VB">
+Tutorial05 - Understanding COMObject</a></p>
+</div><div class="ClearBoth"></div>

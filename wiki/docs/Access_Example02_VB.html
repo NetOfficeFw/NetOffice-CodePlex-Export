@@ -1,0 +1,74 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' write data to database with Access</span>
+<span style="color:green">' taken from Example02.vb</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example02Main()
+
+   <span style="color:green">' start access </span>
+   <span style="color:blue">Dim</span> accessApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Access.Application()
+
+   <span style="color:green">'create database name </span>
+   <span style="color:blue">Dim</span> fileExtension <span style="color:blue">As</span> <span style="color:blue">String</span> = GetDefaultExtension(accessApplication)
+   <span style="color:blue">Dim</span> documentFile <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}\\Example02{1}&quot;</span>, _<br>                                              Application.StartupPath, _<br>                                              fileExtension)
+
+   <span style="color:green">'delete old database if exists</span>
+   <span style="color:blue">If</span> (System.IO.File.Exists(documentFile)) <span style="color:blue">Then</span>
+       System.IO.File.Delete(documentFile)
+   <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+   <span style="color:green">' create database </span>
+   <span style="color:blue">Dim</span> newDatabase <span style="color:blue">As</span> DAO.Database = _<br>       accessApplication.DBEngine.Workspaces(0).CreateDatabase( _<br>                                  documentFile, LanguageConstants.dbLangGeneral)
+   accessApplication.DBEngine.Workspaces(0).Close()
+
+   <span style="color:green">' setup database connection</span>
+   <span style="color:blue">Dim</span> oleConnection <span style="color:blue">As</span> <span style="color:blue">New</span> OleDbConnection( _<br>                     <span style="color:#a31515">&quot;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=&quot;</span> &#43; documentFile)
+   oleConnection.Open()
+
+   <span style="color:green">' create table</span>
+   <span style="color:blue">Dim</span> oleCreateCommand <span style="color:blue">As</span> <span style="color:blue">New</span> OleDbCommand( _<br>       <span style="color:#a31515">&quot;CREATE TABLE NetOfficeTable(Column1 Text, Column2 Text)&quot;</span>, oleConnection)
+   oleCreateCommand.ExecuteReader().Close()
+
+   <span style="color:green">'  write some data with plain sql &amp; close</span>
+   <span style="color:blue">For</span> i <span style="color:blue">As</span> <span style="color:blue">Integer</span> = 0 <span style="color:blue">To</span> 1000
+
+       <span style="color:blue">Dim</span> insertCommand <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(_<br>       <span style="color:#a31515">&quot;INSERT INTO NetOfficeTable(Column1, Column2) VALUES(&quot;&quot;{0}&quot;&quot;, &quot;&quot;{1}&quot;&quot;)&quot;</span>, _<br>       i, DateTime.Now.ToShortTimeString())
+       <span style="color:blue">Dim</span> oleInsertCommand <span style="color:blue">As</span> <span style="color:blue">New</span> OleDbCommand(insertCommand, oleConnection)
+       oleInsertCommand.ExecuteReader().Close()
+
+   <span style="color:blue">Next</span>
+   oleConnection.Close()
+
+   <span style="color:green">'close access and dispose reference</span>
+   accessApplication.Quit(AcQuitOption.acQuitSaveAll)
+   accessApplication.Dispose()
+
+   <span style="color:blue">Dim</span> fDialog <span style="color:blue">As</span> <span style="color:blue">New</span> FinishDialog(<span style="color:#a31515">&quot;Database saved.&quot;</span>, documentFile)
+   fDialog.ShowDialog(<span style="color:blue">Me</span>)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:green">''' &lt;summary&gt;</span>
+<span style="color:green">''' returns the valid file extension for the instance. for example &quot;.mdb&quot; or &quot;.accdb&quot;</span>
+<span style="color:green">''' &lt;/summary&gt;</span>
+<span style="color:green">''' &lt;param name=&quot;application&quot;&gt;the instance&lt;/param&gt;</span>
+<span style="color:green">''' &lt;returns&gt;the extension&lt;/returns&gt;</span>
+<span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> GetDefaultExtension(<span style="color:blue">ByVal</span> application <span style="color:blue">As</span> Access.Application) <span style="color:blue">As</span> <span style="color:blue">String</span>
+
+   <span style="color:green">' Access 2000 doesnt have the Version property(unfortunately)</span>
+   <span style="color:green">' we check for support with the SupportEntity method, implemented by NetOffice</span>
+   <span style="color:blue">If</span> (<span style="color:blue">Not</span> application.EntityIsAvailable(<span style="color:#a31515">&quot;Version&quot;</span>)) <span style="color:blue">Then</span>
+      <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.mdb&quot;</span>
+   <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+   <span style="color:blue">Dim</span> version <span style="color:blue">As</span> <span style="color:blue">Double</span> = _<br>       Convert.ToDouble(application.Version, CultureInfo.InvariantCulture)<br>
+   <span style="color:blue">If</span> (version &gt;= 12.0) <span style="color:blue">Then</span>
+      <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.accdb&quot;</span>
+   <span style="color:blue">Else</span>
+      <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.xls&quot;</span>
+   <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

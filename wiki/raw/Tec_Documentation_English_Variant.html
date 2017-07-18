@@ -1,0 +1,23 @@
+<div class="wikidoc">
+<p>Many office application use the datatype Variant which has its roots in Visual Basic for Applications (VBA). This datatype can -at runtime- be any other type, but it is not supported most of the .NET languages. The datatype Variant is replaced by the simple
+ basetype object&nbsp;in NetOffice. This does not mean that you loose some type-safety or COM proxy management. As long as the Variant type is a COM proxy at runtime, you get the corresponding wrapper class from NetOffice, otherwise the respective scalar type,
+ e.g. bool or int.&nbsp;Take a look at the following code example:&nbsp;</p>
+<div style="color:black; background-color:white">
+<pre><span style="color:green">/* the property Selection from Excel.Application is defined as Variant and in NetOffice as object */</span> 
+<span style="color:green">/* It can have multiple types at runtime what is currently selected, a worksheet, a range, a window or other */</span> 
+<span style="color:blue">if</span> (application.Selection <span style="color:blue">is</span> Excel.Worksheet) 
+{ 
+   Excel.Worksheet sheet = (Excel.Worksheet)application.Selection; 
+} 
+<span style="color:blue">else</span> <span style="color:blue">if</span> (application.selection <span style="color:blue">is</span> Excel.Range) 
+{ 
+   Excel.Range range = (Excel.Range)application.Selection; 
+}
+<span style="color:blue">else</span> <span style="color:blue">if</span> (!application.selection <span style="color:blue">is</span> COMObject) 
+{   
+   <span style="color:green">/* selection is no COM Object means a native scalar type like bool or int  */</span> 
+}
+</pre>
+</div>
+<p>Take a look at&nbsp;<a href="http://netoffice.codeplex.com/wikipage?title=Tutorials_Overview">Tutorial06</a>, regarding this.</p>
+</div><div class="ClearBoth"></div>

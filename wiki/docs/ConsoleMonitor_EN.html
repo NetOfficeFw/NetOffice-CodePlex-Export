@@ -1,0 +1,36 @@
+<div class="wikidoc">
+<p>NetOffice Tools - The Console Monitor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Select Language:englisch:german</p>
+<p>Introduction:<br>
+<br>
+The NetOffice Console Monitor is an external tool(.exe) that allows you to observe debug output from your addins/ applications at runtime. It is very easy to use and reduce your stress level in case of troubleshooting or diagnostics while development/design
+ time, and also helpful to pin point a problem in a deployment system. (you know its very typical for developers, she said: &quot;it works on my pc&quot;) You can observe all NetOffice system steps if you want and also your own logic.<br>
+<br>
+What you have to know:<br>
+<br>
+The NetOffice Shared Output Engine knows currently 2 different Categories. These are Console Output and Channel Output.<br>
+<br>
+About Console Output:<br>
+A Console is just a normaly broadcaster and send/append single messages for anyone, absolutly similar to System.Console or stupid logfiles. Any new messagee is a new appending message in this concept. The Console Monitor shows any messages in an output window
+ and has various view options to sort the messages, ascend oder descend in time, also hierarchy view is possible(if client sender support this) At last: You dont must share a Console with others. Scroll down and you learn how you create your own isolated Console,
+ just for you. <br>
+<br>
+<br>
+About Channel Output:<br>
+<br>
+A Channel is designed to observe just a single value. You may have a low frequency timer and want observe a specific value here then its not very helpful to use a console. Thousands and thousands console messages is not realy what you want is this case, is'n
+ it?&nbsp; The Console Monitor shows you a channel with the given last message. Channels are great to observe single values in real-time without worries.<br>
+<br>
+<br>
+Let's get started:<br>
+<br>
+As first, you learn how you can send console and channel messages whenever you want.</p>
+<p>Console:<br>
+NetOffice.Core.Console.SendMessage(&quot;hello from me&quot;);<br>
+<br>
+Channel:<br>
+NetOffice.Core.Channel.SendMessage(&quot;MyOnDemandCreatedChannel&quot;, &quot;hello cannel&quot;));</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div><div class="ClearBoth"></div>

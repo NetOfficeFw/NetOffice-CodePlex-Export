@@ -1,0 +1,27 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">/*
+   send a mail with Outlook
+   taken from Example03.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> button1_Click(<span style="color:blue">object</span> sender, EventArgs e)
+{
+   <span style="color:green">// start outlook </span>
+   Outlook.Application outlookApplication = <span style="color:blue">new</span> Outlook.Application();
+
+   <span style="color:green">// create a new MailItem.</span>
+   Outlook.MailItem mailItem =<br>            outlookApplication.CreateItem(OlItemType.olMailItem) <span style="color:blue">as</span> Outlook.MailItem;
+
+   <span style="color:green">// prepare item and send</span>
+   mailItem.Recipients.Add(<span style="color:#a31515">&quot;eric@cartman.com&quot;</span>);
+   mailItem.Subject = <span style="color:#a31515">&quot;hello eric&quot;</span>;
+   mailItem.Body    = <span style="color:#a31515">&quot;Season Greetings from NetOffice. Kind Regards - Sebastian&quot;</span>;
+   mailItem.Send();
+
+   <span style="color:green">// close outlook and dispose</span>
+   outlookApplication.Quit();
+   outlookApplication.Dispose();
+}
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

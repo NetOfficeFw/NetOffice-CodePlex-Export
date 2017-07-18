@@ -1,0 +1,18 @@
+<div class="wikidoc">
+<p><strong>Die gute Nachricht zuerst: </strong><br>
+Sie k&ouml;nnen in allen Szenarien die NetOffice AnyCPU Assemblies verwenden, unabh&auml;ngig davon ob Sie f&uuml;r eine 32Bit Office Anwendung oder eine 64 Bit Office Anwendung entwickeln, auch unabh&auml;ngig davon auf welcher Platform diese installiert ist.
+ Ein weiterer Vorteil zu&nbsp;den Interop Assemblies oder VSTO bei denen Sie plattformspezifische&nbsp;Binaries verwenden m&uuml;ssen.
+<br>
+<br>
+<strong>F&uuml;r welchen Zielprozessor&nbsp;muss ich mein Assembly kompilieren?</strong><br>
+Wenn ihr Assembly eine Standalone Anwendung(.exe) ist oder von einer solchen geladen wird k&ouml;nnen Sie Ihr erstelltes Assembly bedenkenlos als AnyCPU kompilieren. Wenn Ihr Assembly ein COMAddin ist das von einer Office 32 Bit Anwendung geladen wird k&ouml;nnen
+ Sie Ihr erstelltes Assembly ebenfalls als AnyCPU kompilieren. Wenn Sie ein COMAddin entwickeln das von einer Office 64Bit Anwendung geladen wird m&uuml;ssen Sie ihr Assembly als x64 kompilieren. Fallweise m&uuml;ssen Sie ein zweites x64 kompiliertes COMAddin
+ zur Verf&uuml;gung stellen wenn Sie 32Bit und 64Bit Office Anwendungen unterst&uuml;tzen m&ouml;chten.<br>
+Anmerkung: Egal ob Sie NetOffice, Interop Assemblies oder VSTO verwenden m&uuml;ssen Sie ein COMAddin f&uuml;r 64Bit Office Anwendungen immer als x64 kompilieren da eine 64Bit Anwendung nur 64Bit Dll's&nbsp;laden kann.</p>
+<p>Sofern Sie auf Ihrem Entwicklungssystem ein 64Bit Office zum Test verwenden und ein COMAddin entwickeln(d.h. Ihr Assembly als&nbsp;x64 kompilieren)&nbsp;und ihr COMAddin w&auml;hrend der Kompilierung registrieren wollen(Register for COM Interop) m&uuml;ssen
+ Sie beachten das manche Visual Studio Versionen in diesem Fall leider die die 32Bit Registrierung aufrufen und Sie den folgenden Fehler erhalten.</p>
+<p><strong>&quot;File &lt;path to assembly&gt; is not a valid assembly&quot;.</strong> <br>
+<br>
+Einen Workarround von Microsoft lesen Sie dazu hier: <br>
+<a href="http://support.microsoft.com/kb/956933">http://support.microsoft.com/kb/956933</a></p>
+</div><div class="ClearBoth"></div>

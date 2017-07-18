@@ -1,0 +1,111 @@
+<div class="wikidoc">
+<p></p>
+<div style="color:black; background-color:white">
+<pre><span style="color:blue">using</span> System;
+<span style="color:blue">using</span> System.Runtime.InteropServices;
+<span style="color:blue">using</span> System.Collections.Generic;
+<span style="color:blue">using</span> System.Reflection;
+<span style="color:blue">using</span> System.Text;
+<span style="color:blue">using</span> System.IO;
+
+<span style="color:blue">namespace</span> Dynamics
+{
+    <span style="color:blue">class</span> Program
+    {
+        <span style="color:blue">static</span> <span style="color:blue">void</span> Main(<span style="color:blue">string</span>[] args)
+        {
+            Console.WriteLine(<span style="color:#a31515">&quot;C# Dynamics Performance Test - 5000 Cells&quot;</span>);
+            Console.WriteLine(<span style="color:#a31515">&quot;Write simple text.&quot;</span>);
+
+            <span style="color:green">// start excel, and get a new sheet reference</span>
+            <span style="color:blue">dynamic</span> excelApplication = CreateExcelApplication();
+            <span style="color:blue">dynamic</span> books = excelApplication.Workbooks;
+            <span style="color:blue">dynamic</span> book = books.Add(Missing.Value);
+            <span style="color:blue">dynamic</span> sheets = book.Worksheets;
+            <span style="color:blue">dynamic</span> sheet = sheets.Add();
+
+            <span style="color:green">// do test 10 times</span>
+            List&lt;MarshalByRefObject&gt; comReferencesList = <span style="color:blue">new</span> List&lt;MarshalByRefObject&gt;();
+            List&lt;TimeSpan&gt; timeElapsedList = <span style="color:blue">new</span> List&lt;TimeSpan&gt;();
+            <span style="color:blue">for</span> (<span style="color:blue">int</span> i = 1; i &lt;= 10; i&#43;&#43;)
+            {
+                DateTime timeStart = DateTime.Now;
+                <span style="color:blue">for</span> (<span style="color:blue">int</span> y = 1; y &lt;= 5000; y&#43;&#43;)
+                {
+                    <span style="color:blue">string</span> rangeAdress = <span style="color:#a31515">&quot;$A&quot;</span> &#43; y.ToString();
+                    <span style="color:blue">dynamic</span> range = sheet.Range[rangeAdress];
+                    range.Value = <span style="color:#a31515">&quot;value&quot;</span>;
+                    comReferencesList.Add(range <span style="color:blue">as</span> MarshalByRefObject);
+                }
+                TimeSpan timeElapsed = DateTime.Now - timeStart;
+
+                <span style="color:green">// display info and dispose references</span>
+                Console.WriteLine(<span style="color:#a31515">&quot;Time Elapsed: {0}&quot;</span>, timeElapsed);
+                timeElapsedList.Add(timeElapsed);
+                <span style="color:blue">foreach</span> (<span style="color:blue">var</span> item <span style="color:blue">in</span> comReferencesList)
+                    Marshal.ReleaseComObject(item);
+                comReferencesList.Clear();
+            }
+
+            <span style="color:green">// display info &amp; log to file</span>
+            TimeSpan timeAverage = AppendResultToLogFile(timeElapsedList, <span style="color:#a31515">&quot;Test1-Dynamics.log&quot;</span>);
+            Console.WriteLine(<span style="color:#a31515">&quot;Time Average: {0}{1}Press any key...&quot;</span>, timeAverage, Environment.NewLine);
+            Console.Read();
+
+            <span style="color:green">// release &amp; quit</span>
+            Marshal.ReleaseComObject(sheet);
+            Marshal.ReleaseComObject(sheets);
+            Marshal.ReleaseComObject(book);
+            Marshal.ReleaseComObject(books);
+
+            excelApplication.Quit();
+            Marshal.ReleaseComObject(excelApplication);
+
+        }
+
+        <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+        <span style="color:gray">///</span><span style="color:green"> creates a new excel application</span>
+        <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+        <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:gray">&lt;/returns&gt;</span>
+        <span style="color:blue">static</span> <span style="color:blue">dynamic</span> CreateExcelApplication()
+        {
+            <span style="color:green">// start excel</span>
+            Type excelType = System.Type.GetTypeFromProgID(<span style="color:#a31515">&quot;Excel.Application&quot;</span>);
+            <span style="color:blue">dynamic</span> excelApplication = System.Activator.CreateInstance(excelType);
+            excelApplication.DisplayAlerts = <span style="color:blue">false</span>;
+            excelApplication.Interactive = <span style="color:blue">false</span>;
+            excelApplication.ScreenUpdating = <span style="color:blue">false</span>;
+            <span style="color:blue">return</span> excelApplication;
+        }
+
+        <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+        <span style="color:gray">///</span><span style="color:green"> writes list items to a logile and append average of items at the end</span>
+        <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+        <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;timeElapsedList&quot;&gt;</span><span style="color:green">a list with log results&lt;/param&gt;</span>
+        <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;fileName&quot;&gt;</span><span style="color:green">name of logfile in current assembly folder&lt;/param&gt;</span>
+        <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">average of timeElapsedList&lt;/returns&gt;</span>
+        <span style="color:blue">static</span> TimeSpan AppendResultToLogFile(List&lt;TimeSpan&gt; timeElapsedList, <span style="color:blue">string</span> fileName)
+        {
+            TimeSpan timeSummary = TimeSpan.Zero;
+            <span style="color:blue">string</span> logFile = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), fileName);
+
+            <span style="color:blue">if</span> (File.Exists(logFile))
+                File.Delete(logFile);
+
+            <span style="color:blue">foreach</span> (TimeSpan item <span style="color:blue">in</span> timeElapsedList)
+            {
+                timeSummary &#43;= item;
+                <span style="color:blue">string</span> logFileAppend = item.ToString() &#43; Environment.NewLine;
+                File.AppendAllText(logFile, logFileAppend, Encoding.UTF8);
+            }
+
+            TimeSpan timeAverage = TimeSpan.FromTicks(timeSummary.Ticks / timeElapsedList.Count);
+            File.AppendAllText(logFile, <span style="color:#a31515">&quot;Time Average: &quot;</span> &#43; timeAverage.ToString(), Encoding.UTF8);
+            <span style="color:blue">return</span> timeAverage;
+        }
+    }
+}
+</pre>
+</div>
+<p></p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,60 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*  background color and borders in Excel. taken from Example01.cs */</span> <br><span style="color:blue">public</span> <span style="color:blue">void</span> Example01Main()
+{
+   <span style="color:green">// start excel and turn off msg boxes</span>
+   Excel.Application excelApplication = <span style="color:blue">new</span> Excel.Application();
+   excelApplication.DisplayAlerts = <span style="color:blue">false</span>;
+
+   <span style="color:green">// add a new workbook</span>
+   Excel.Workbook workBook   = excelApplication.Workbooks.Add();
+   Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];   
+   
+   <span style="color:green">// draw back color and perform the BorderAround method  </span>
+   workSheet.Range(<span style="color:#a31515">&quot;$B2:$B5&quot;</span>).Interior.Color = ToDouble(Color.DarkGreen);   
+   workSheet.Range(<span style="color:#a31515">&quot;$B2:$B5&quot;</span>).BorderAround(XlLineStyle.xlContinuous,<br>                XlBorderWeight.xlMedium, XlColorIndex.xlColorIndexAutomatic);      
+
+   <span style="color:green">// draw back color and border the range explicitly      </span>
+   workSheet.Range(<span style="color:#a31515">&quot;$D2:$D5&quot;</span>).Interior.Color = ToDouble(Color.DarkGreen);      
+   workSheet.Range(<span style="color:#a31515">&quot;$D2:$D5&quot;</span>).Borders[XlBordersIndex.xlInsideHorizontal].LineStyle<br>                                                            = XlLineStyle.xlDouble;<br>      
+   workSheet.Range(<span style="color:#a31515">&quot;$D2:$D5&quot;</span>).Borders[XlBordersIndex.xlInsideHorizontal].Weight = 4;<br>   workSheet.Range(<span style="color:#a31515">&quot;$D2:$D5&quot;</span>).Borders[XlBordersIndex.xlInsideHorizontal].Color<br>                                                            = ToDouble(Color.Black);    
+
+    <span style="color:green">// save the book </span>
+   <span style="color:blue">string</span> fileExtension = GetDefaultExtension(excelApplication);
+   <span style="color:blue">string</span> workbookFile = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}\\Example01{1}&quot;</span>, <br>                                Application.StartupPath, fileExtension);<br>   workBook.SaveAs(workbookFile, Missing.Value, Missing.Value, Missing.Value,<br>                   Missing.Value, Missing.Value, XlSaveAsAccessMode.xlExclusive);
+              
+   <span style="color:green">// close excel and dispose reference</span>
+   excelApplication.Quit();
+   excelApplication.Dispose();
+}
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> Translate a color to double</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;color&quot;&gt;</span><span style="color:green">expression to convert&lt;/param&gt;</span>
+ <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">color&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">double</span> ToDouble(System.Drawing.Color color)
+{
+   <span style="color:blue">uint</span> returnValue = color.B;
+   returnValue = returnValue &lt;&lt; 8;
+   returnValue &#43;= color.G;
+   returnValue = returnValue &lt;&lt; 8;
+   returnValue &#43;= color.R;
+   <span style="color:blue">return</span> returnValue;
+}
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> returns the valid file extension for the instance. for example &quot;.xls&quot; or &quot;.xlsx&quot;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;application&quot;&gt;</span><span style="color:green">the instance&lt;/param&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">the extension&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">string</span> GetDefaultExtension(Excel.Application application)
+{
+   <span style="color:blue">double</span> Version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);
+   <span style="color:blue">if</span> (Version &gt;= 12.00)
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.xlsx&quot;</span>;
+   <span style="color:blue">else</span>
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.xls&quot;</span>;
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

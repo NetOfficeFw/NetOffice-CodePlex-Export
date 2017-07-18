@@ -1,0 +1,78 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' custoize classic UI in PowerPoint</span>
+<span style="color:green">' taken from Example07.vb</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example07Main()
+
+   <span style="color:blue">Dim</span> commandBar <span style="color:blue">As</span> Office.CommandBar = <span style="color:blue">Nothing</span>
+   <span style="color:blue">Dim</span> commandBarBtn <span style="color:blue">As</span> Office.CommandBarButton = <span style="color:blue">Nothing</span>
+
+   <span style="color:green">' start powerpoint </span>
+   <span style="color:blue">Dim</span> powerApplication <span style="color:blue">As</span> <span style="color:blue">New</span> PowerPoint.Application()
+        
+   <span style="color:green">' add a new presentation with one new slide</span>
+   <span style="color:blue">Dim</span> presentation <span style="color:blue">As</span> PowerPoint.Presentation = _<br>                       powerApplication.Presentations.Add(MsoTriState.msoTrue)
+   <span style="color:blue">Dim</span> slide <span style="color:blue">As</span> PowerPoint.Slide = presentation.Slides.Add(1, PpSlideLayout.ppLayoutBlank)
+
+
+   <span style="color:green">' add a commandbar popup</span>
+   <span style="color:blue">Dim</span> commandBarPopup <span style="color:blue">As</span> Office.CommandBarPopup = _<br>        powerApplication.CommandBars(<span style="color:#a31515">&quot;Menu Bar&quot;</span>).Controls.Add( _<br>                                                 MsoControlType.msoControlPopup)
+   commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>
+
+   <span style="color:green">' you can see we use an own icon via .PasteFace()</span>
+   <span style="color:green">' is not possible from outside process boundaries to use the PictureProperty <br>   </span><span style="color:green">' directly  the reason for is IPictureDisp:<br>   <span style="color:green">'</span> http://support.microsoft.com/kb/286460/de</span>
+   <span style="color:green">' its not important is early or late binding or managed or unmanaged, <br>   ' the behaviour is always the same</span>
+
+   <span style="color:green">' add a button to the popup</span>
+   commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)
+   commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+   commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+   Clipboard.SetDataObject(<span style="color:blue">Me</span>.Icon.ToBitmap())
+   commandBarBtn.PasteFace()
+   D<span style="color:blue">im</span> clickHandler <span style="color:blue">As</span> Office.CommandBarButton_ClickEventHandler = _<br>                       <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+   <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+   <span style="color:green">'add a new toolbar</span>
+   commandBar = powerApplication.CommandBars.Add(<span style="color:#a31515">&quot;MyCommandBar&quot;</span>, _<br>                MsoBarPosition.msoBarTop, <span style="color:blue">False</span>, <span style="color:blue">True</span>)
+   commandBar.Visible = <span style="color:blue">True</span>
+
+   <span style="color:green">' add a button to the toolbar</span>
+   commandBarBtn = commandBar.Controls.Add(MsoControlType.msoControlButton)
+   commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+   commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+   commandBarBtn.FaceId = 3
+   clickHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+   <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+   <span style="color:green">' add a dropdown box to the toolbar</span>
+   commandBarPopup = commandBar.Controls.Add(MsoControlType.msoControlPopup)
+   commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>
+
+   <span style="color:green">' add a button to the popup, we use an own icon for the button</span>
+   commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)
+   commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+   commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+   Clipboard.SetDataObject(<span style="color:blue">Me</span>.Icon.ToBitmap())
+   commandBarBtn.PasteFace()
+   clickHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+   <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+   <span style="color:green">' create context menu</span>
+   commandBarPopup = powerApplication.CommandBars(<span style="color:#a31515">&quot;Frames&quot;</span>).Controls.Add( _<br>                     MsoControlType.msoControlPopup)
+   commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>
+
+   <span style="color:green">' add a button to the popup</span>
+   commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)
+   commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+   commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+   commandBarBtn.FaceId = 9
+   clickHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+   <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+   <span style="color:green">' make visible</span>
+   powerApplication.Visible = MsoTriState.msoFalse
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

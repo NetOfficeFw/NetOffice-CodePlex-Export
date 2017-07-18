@@ -1,0 +1,115 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/* <br>   using Numberformats in Excel <br>   taken from Example03.cs<br>*/</span> <span style="color:blue"><br>public</span> void Example03Main()
+{
+  <span style="color:green">// start excel and turn off msg boxes</span>
+  Excel.Application excelApplication = <span style="color:blue">new</span> Excel.Application();
+  excelApplication.DisplayAlerts = <span style="color:blue">false</span>;
+
+  /<span style="color:green">/ add a new workbook</span>
+  Excel.Workbook workBook = excelApplication.Workbooks.Add();
+  Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];
+            
+  <span style="color:green">/* some kind of numerics */</span>
+           
+  <span style="color:green">// the given thread culture in all latebinding calls are stored <br>  // in NetOffice.Settings.</span>
+  <span style="color:green">// you can change the culture. default is en-us.</span>
+  CultureInfo cultureInfo = NetOffice.Settings.ThreadCulture;
+  <span style="color:blue">string</span> Pattern1 = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;0{0}00&quot;</span>, <br>                           cultureInfo.NumberFormat.CurrencyDecimalSeparator);
+  <span style="color:blue">string</span> Pattern2 = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;#{1}##0{0}00&quot;</span>, <br>                           cultureInfo.NumberFormat.CurrencyDecimalSeparator, <br>                           cultureInfo.NumberFormat.CurrencyGroupSeparator);
+            
+  workSheet.Range(<span style="color:#a31515">&quot;A1&quot;</span>).Value = <span style="color:#a31515">&quot;Type&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;B1&quot;</span>).Value = <span style="color:#a31515">&quot;Value&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;C1&quot;</span>).Value = <span style="color:#a31515">&quot;Formatted &quot;</span> &#43; Pattern1;
+  workSheet.Range(<span style="color:#a31515">&quot;D1&quot;</span>).Value = <span style="color:#a31515">&quot;Formatted &quot;</span> &#43; Pattern2;
+
+  <span style="color:blue">int</span> integerValue = 532234;
+  workSheet.Range(<span style="color:#a31515">&quot;A3&quot;</span>).Value = <span style="color:#a31515">&quot;Integer&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;B3&quot;</span>).Value = integerValue;
+  workSheet.Range(<span style="color:#a31515">&quot;C3&quot;</span>).Value = integerValue;
+  workSheet.Range(<span style="color:#a31515">&quot;C3&quot;</span>).NumberFormat = Pattern1;
+  workSheet.Range(<span style="color:#a31515">&quot;D3&quot;</span>).Value = integerValue;
+  workSheet.Range(<span style="color:#a31515">&quot;D3&quot;</span>).NumberFormat = Pattern2;
+
+  <span style="color:blue">double</span> doubleValue = 23172.64;
+  workSheet.Range(<span style="color:#a31515">&quot;A4&quot;</span>).Value = <span style="color:#a31515">&quot;double&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;B4&quot;</span>).Value = doubleValue;
+  workSheet.Range(<span style="color:#a31515">&quot;C4&quot;</span>).Value = doubleValue;
+  workSheet.Range(<span style="color:#a31515">&quot;C4&quot;</span>).NumberFormat= Pattern1;
+  workSheet.Range(<span style="color:#a31515">&quot;D4&quot;</span>).Value = doubleValue;
+  workSheet.Range(<span style="color:#a31515">&quot;D4&quot;</span>).NumberFormat = Pattern2;
+
+  <span style="color:blue">float</span> floatValue = 84345.9132f;
+  workSheet.Range(<span style="color:#a31515">&quot;A5&quot;</span>).Value = <span style="color:#a31515">&quot;float&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;B5&quot;</span>).Value = floatValue;
+  workSheet.Range(<span style="color:#a31515">&quot;C5&quot;</span>).Value = floatValue;
+  workSheet.Range(<span style="color:#a31515">&quot;C5&quot;</span>).NumberFormat = Pattern1;
+  workSheet.Range(<span style="color:#a31515">&quot;D5&quot;</span>).Value = floatValue;
+  workSheet.Range(<span style="color:#a31515">&quot;D5&quot;</span>).NumberFormat = Pattern2;
+
+  Decimal decimalValue = 7251231.313367m;
+  workSheet.Range(<span style="color:#a31515">&quot;A6&quot;</span>).Value = <span style="color:#a31515">&quot;Decimal&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;B6&quot;</span>).Value = decimalValue;
+  workSheet.Range(<span style="color:#a31515">&quot;C6&quot;</span>).Value = decimalValue;
+  workSheet.Range(<span style="color:#a31515">&quot;C6&quot;</span>).NumberFormat = Pattern1;
+  workSheet.Range(<span style="color:#a31515">&quot;D6&quot;</span>).Value = decimalValue;
+  workSheet.Range(<span style="color:#a31515">&quot;D6&quot;</span>).NumberFormat =  Pattern2;
+
+  workSheet.Range(<span style="color:#a31515">&quot;A9&quot;</span>).Value = <span style="color:#a31515">&quot;DateTime&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;B10&quot;</span>).Value = cultureInfo.DateTimeFormat.FullDateTimePattern;
+  workSheet.Range(<span style="color:#a31515">&quot;C10&quot;</span>).Value = cultureInfo.DateTimeFormat.LongDatePattern;
+  workSheet.Range(<span style="color:#a31515">&quot;D10&quot;</span>).Value = cultureInfo.DateTimeFormat.ShortDatePattern;
+  workSheet.Range(<span style="color:#a31515">&quot;E10&quot;</span>).Value = cultureInfo.DateTimeFormat.LongTimePattern;
+  workSheet.Range(<span style="color:#a31515">&quot;F10&quot;</span>).Value = cultureInfo.DateTimeFormat.ShortTimePattern;
+
+  <span style="color:green">// DateTime</span>
+  DateTime dateTimeValue = DateTime.Now;
+  workSheet.Range(<span style="color:#a31515">&quot;B11&quot;</span>).Value = dateTimeValue;
+  workSheet.Range(<span style="color:#a31515">&quot;B11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.FullDateTimePattern;
+
+  workSheet.Range(<span style="color:#a31515">&quot;C11&quot;</span>).Value = dateTimeValue;
+  workSheet.Range(<span style="color:#a31515">&quot;C11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.LongDatePattern;
+
+  workSheet.Range(<span style="color:#a31515">&quot;D11&quot;</span>).Value = dateTimeValue;
+  workSheet.Range(<span style="color:#a31515">&quot;D11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.ShortDatePattern;
+
+  workSheet.Range(<span style="color:#a31515">&quot;E11&quot;</span>).Value = dateTimeValue;
+  workSheet.Range(<span style="color:#a31515">&quot;E11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.LongTimePattern;
+
+  workSheet.Range(<span style="color:#a31515">&quot;F11&quot;</span>).Value = dateTimeValue;
+  workSheet.Range(<span style="color:#a31515">&quot;F11&quot;</span>).NumberFormat = cultureInfo.DateTimeFormat.ShortTimePattern;
+
+  <span style="color:green">// string</span>
+  workSheet.Range(<span style="color:#a31515">&quot;A14&quot;</span>).Value = <span style="color:#a31515">&quot;String&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;B14&quot;</span>).Value = <span style="color:#a31515">&quot;This is a sample String&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;B14&quot;</span>).NumberFormat = <span style="color:#a31515">&quot;@&quot;</span>;
+
+  <span style="color:green">// number as string</span>
+  workSheet.Range(<span style="color:#a31515">&quot;B15&quot;</span>).Value = <span style="color:#a31515">&quot;513&quot;</span>;
+  workSheet.Range(<span style="color:#a31515">&quot;B15&quot;</span>).NumberFormat = <span style="color:#a31515">&quot;@&quot;</span>;
+
+  <span style="color:green">// set colums</span>
+  workSheet.Columns[1].AutoFit();<br>  workSheet.Columns[2].AutoFit();<br>  workSheet.Columns[3].AutoFit();<br>  workSheet.Columns[4].AutoFit();<br>      
+  <span style="color:green">// save the book </span>
+  <span style="color:blue">string</span> fileExtension = GetDefaultExtension(excelApplication);
+  <span style="color:blue">string</span> workbookFile = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}\\Example03{1}&quot;</span>, <br>                                   Application.StartupPath, fileExtension);<br><br>  workBook.SaveAs(workbookFile, Missing.Value, Missing.Value, Missing.Value,<br>                                Missing.Value, Missing.Value, <br>                                XlSaveAsAccessMode.xlExclusive);
+
+  <span style="color:green">// close excel and dispose reference</span>
+  excelApplication.Quit();
+  excelApplication.Dispose();<br>}
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> returns the valid file extension for the instance. for example &quot;.xls&quot; or &quot;.xlsx&quot;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;application&quot;&gt;</span><span style="color:green">the instance&lt;/param&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">the extension&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">string</span> GetDefaultExtension(Excel.Application application)
+{
+<span style="color:blue">   double</span> Version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);
+   <span style="color:blue">if</span> (Version &gt;= 12.00)
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.xlsx&quot;</span>;
+   <span style="color:blue">else</span>
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.xls&quot;</span>;
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,28 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   list all contacts with Outlook <br>   taken from Example05.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example05Main()
+{
+   <span style="color:green">// start outlook</span>
+   Outlook.Application outlookApplication = <span style="color:blue">new</span> Outlook.Application();
+
+   <span style="color:green">// enum contacts </span>
+   Outlook.MAPIFolder contactFolder = <br>   outlookApplication.Session.GetDefaultFolder(OlDefaultFolders.olFolderContacts);
+   <br><span style="color:blue">   for</span> (<span style="color:blue">int</span> i = 1; i &lt;= contactFolder.Items.Count; i&#43;&#43;)
+   {
+       Outlook.ContactItem contact = contactFolder.Items[i] <span style="color:blue">as</span> Outlook.ContactItem;
+       <span style="color:blue">if</span> (<span style="color:blue">null</span> != contact)
+       {
+           ListViewItem listItem = listView1.Items.Add(i.ToString());
+           listItem.SubItems.Add(contact.CompanyAndFullName);
+       }
+   }
+           
+   <span style="color:green">// close outlook and dispose</span>
+   outlookApplication.Quit();
+   outlookApplication.Dispose();
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

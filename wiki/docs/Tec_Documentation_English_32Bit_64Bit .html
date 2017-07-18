@@ -1,0 +1,13 @@
+<div class="wikidoc">
+<p>The good news up front:<br>
+You can use the NetOffice AnyCPU assemblies in all scenarios.</p>
+<p>This is true regardless wether you develop for a 32Bit Office application or a 64Bit Office application, even independent on which platform these are installed. If your assembly is a standalone application (.exe) or is being loaded by one, you can compile
+ your assembly as AnyCPU without worries. If your assembly is a COMAddin that &nbsp;is being loaded by a 32Bit Office application, you can still compile it as AnyCPU. If you develop a COMAddin that is being used by a 64Bit Office application, you have to compile
+ your assembly as x64. If you wart to support 32Bit and 64Bit Office applications, you may need to provide a second x64-compiled COMAddin. This behaviour is the same in all scenarios(interop,vsto or netoffice).&nbsp;A 64Bit application can only load 64Bit Dll's.</p>
+<p>If you use a 64Bit Office for testing on your development system and you want to register your COMAddin while compiling (Register for COM Interop), you need to keep in mind that some older versions of Visual Studio call the 32Bit registration in that case.
+ In this case, you get the following error:</p>
+<p><strong>&quot;File &lt;path to assembly&gt; is not a valid assembly&quot;. </strong><br>
+<br>
+You can read a workarround by Microsoft here: <br>
+<a href="http://support.microsoft.com/kb/956933">http://support.microsoft.com/kb/956933</a></p>
+</div><div class="ClearBoth"></div>

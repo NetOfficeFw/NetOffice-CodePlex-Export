@@ -1,0 +1,55 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">' taken from Tutorial01.vbproj</span>
+<span style="color:green">'</span>
+<span style="color:green">' All objects in NetOffice which are based on CoClasses or Interfaces are wrapping <br>' COM Proxies.</span> <span style="color:green">It's necessary to release a created COM Proxy by the client caller.</span>
+<span style="color:green">' This tells the COM Server (meaning your office application) that you do not need <br>' the instance any longer.</span>
+
+<span style="color:green">' In the MS Interop Assemblies you do that with Marshal.ReleaseComObject(object proxy)</span>
+<span style="color:green">' In NetOffice any object has the Method Dispose() to do that.</span>
+<span style="color:green">' An implemented Proxy Table in NetOffice makes it possible that you do not have <br>' to call Dispose() for any (implicitly) created object.</span>
+<span style="color:green">' This examples shows you how to use the Dispose() method to release an object <br>' and its created child objects.</span>
+<span style="color:green">'</span>
+<span style="color:green">' See chapter1 and chapter5 in <a href="http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English">technical documentation</a> for further info.</span>
+<span style="color:green">'</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Tutorial01Main()
+
+        <span style="color:green">' NetOffice manages COM Proxies for you to avoid any kind of memory leaks</span>
+        <span style="color:green">' and make sure your application instance removes from process list if you <br>        ' want.</span>
+
+        <span style="color:green">' Initialize Api COMObject Support </span>
+        LateBindingApi.Core.Factory.Initialize()
+
+        <span style="color:green">' start application</span>
+        <span style="color:blue">Dim</span> application <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+        application.DisplayAlerts = <span style="color:blue">False</span>
+
+        <span style="color:blue">Dim</span> book <span style="color:blue">As</span> Excel.Workbook = application.Workbooks.Add()
+        <span style="color:green">' now we have 2 new COM Proxies created.</span>
+        <span style="color:green">' </span>
+        <span style="color:green">' the first proxy was created while accessing the Workbooks collection <br>        ' from application</span><span style="color:green">. the second proxy was created by the Add() method from <br>        ' Workbooks and stored now in book </span><span style="color:green">with the application object we have <br>        ' 3 created proxies now. the workbooks proxy was created </span><span style="color:green">about application <br>        ' and the book proxy was created about the workbooks.</span>
+        <span style="color:green">' NetOffice holds the proxies now in a list as follows:</span>
+        <span style="color:green">' </span>
+        <span style="color:green">' Application</span>
+        <span style="color:green">'   &#43; Workbooks</span>
+        <span style="color:green">'     &#43; Workbook  </span>
+        <span style="color:green">' </span>
+        <span style="color:green">' any object in NetOffice implements the IDisposible Interface.</span>
+        <span style="color:green">' use the Dispose() Method to release an object. the method release all <br>        ' created child proxies too.</span>
+
+        application.Quit()
+        application.Dispose()
+        <span style="color:green">' the application object is ouer root object</span>
+        <span style="color:green">' dispose them release himself and any childs of application, in this <br>        ' case workbooks and workbook</span>
+        <span style="color:green">' the excel instance are now removed from process list</span>
+
+        MessageBox.Show(<span style="color:blue">Me</span>, <span style="color:#a31515">&quot;Done!&quot;</span>, <span style="color:blue">Me</span>.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+</pre>
+</div>
+<p><br>
+&nbsp;&nbsp;&nbsp;See next: Tutorial02 - <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial02_VB">
+Efficient using Dispose &amp; DisposeChildInstances</a></p>
+</div><div class="ClearBoth"></div>

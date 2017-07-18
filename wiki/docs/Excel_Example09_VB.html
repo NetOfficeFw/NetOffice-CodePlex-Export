@@ -1,0 +1,82 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' customize classic UI in Excel</span>
+<span style="color:green">' taken from Example09.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example09Main()
+
+ <span style="color:blue">Dim</span> commandBar <span style="color:blue">As</span> Office.CommandBar = <span style="color:blue">Nothing</span>
+ <span style="color:blue">Dim</span> commandBarBtn <span style="color:blue">As</span> Office.CommandBarButton = <span style="color:blue">Nothing</span>
+
+ <span style="color:green">' start excel and turn off msg boxes</span>
+ _excelApplication = <span style="color:blue">New</span> Excel.Application()
+ _excelApplication.DisplayAlerts = <span style="color:blue">False</span>
+
+ <span style="color:green">' add a new workbook</span>
+ <span style="color:blue">Dim</span> workBook <span style="color:blue">As</span> Excel.Workbook = _excelApplication.Workbooks.Add()
+
+ <span style="color:green">' add a commandbar popup</span>
+ <span style="color:blue">Dim</span> commandBarPopup <span style="color:blue">As</span> Office.CommandBarPopup = _<br> _excelApplication.CommandBars.Item(<span style="color:#a31515">&quot;Worksheet Menu Bar&quot;</span>).Controls.Add( _<br>                                                   MsoControlType.msoControlPopup)
+ commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>
+
+ <span style="color:green">' you can see we use an own icon via .PasteFace()</span>
+ <span style="color:green">' is not possible from outside process boundaries to use the <br> <span style="color:green">'</span> PictureProperty directly. the reason for is IPictureDisp:</span>
+ <span style="color:green">' <a href="http://support.microsoft.com/kb/286460/de">http://support.microsoft.com/kb/286460/de</a><br></span> <span style="color:green">' its not important is early or late binding or managed or unmanaged, <br> <span style="color:green">'</span> the behaviour is always the same</span>
+ <span style="color:green">' For example, a COMAddin running as InProcServer and can access the Picture Property</span>
+
+ <span style="color:green">' add a button to the popup</span>
+ commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)
+ commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+ commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+ Clipboard.SetDataObject(<span style="color:blue">Me</span>.Icon.ToBitmap())
+ commandBarBtn.PasteFace()
+ <span style="color:blue">Dim</span> clickHandler <span style="color:blue">As</span> Office.CommandBarButton_ClickEventHandler = _<br>                                              <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+ <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+ <span style="color:green">'add a new toolbar</span>
+ commandBar = _excelApplication.CommandBars.Add(<span style="color:#a31515">&quot;MyCommandBar&quot;</span>, _<br>                                           MsoBarPosition.msoBarTop, <span style="color:blue">False</span>, <span style="color:blue">True</span>)
+ commandBar.Visible = <span style="color:blue">True</span>
+
+ <span style="color:green">' add a button to the toolbar</span>
+ commandBarBtn = commandBar.Controls.Add(MsoControlType.msoControlButton)
+ commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+ commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+ commandBarBtn.FaceId = 3
+ clickHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+ <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+ <span style="color:green">' add a dropdown box to the toolbar</span>
+ commandBarPopup = commandBar.Controls.Add(MsoControlType.msoControlPopup)
+ commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>
+
+ <span style="color:green">' add a button to the popup, we use an own icon for the button</span>
+ commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)
+ commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+ commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+ Clipboard.SetDataObject(<span style="color:blue">Me</span>.Icon.ToBitmap())
+ commandBarBtn.PasteFace()
+ clickHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+ <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+ <span style="color:green">' create context menu</span>
+ commandBarPopup = _excelApplication.CommandBars.Item(<span style="color:#a31515">&quot;Cell&quot;</span>).Controls.Add( _<br>                                                     MsoControlType.msoControlPopup)
+ commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>
+
+ <span style="color:green">' add a button to the popup</span>
+ commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)
+ commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+ commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+ commandBarBtn.FaceId = 9
+ clickHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+ <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+ <span style="color:blue">Dim</span> sheet <span style="color:blue">As</span> Excel.Worksheet = workBook.Worksheets(1)
+ sheet.Cells(2, 2).Value = <span style="color:#a31515">&quot;this excel instance contains 3 custom menus&quot;</span>
+ sheet.Cells(3, 2).Value = <span style="color:#a31515">&quot;the main menu, the toolbar menu and the cell context menu&quot;</span>
+ sheet.Cells(4, 2).Value = <span style="color:#a31515">&quot;in this case the menus are temporaily created&quot;</span>
+ <br> <span style="color:green">' make visible </span>
+ _excelApplication.Visible = <span style="color:blue">True</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

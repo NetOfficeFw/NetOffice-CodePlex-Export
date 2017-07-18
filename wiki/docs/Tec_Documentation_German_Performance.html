@@ -1,0 +1,132 @@
+<div class="wikidoc">
+<p align="justify"><font size="3" face="Verdana">In der folgenden Übersicht sehen sie das Ergebniss von 3 Vergleichstest bzgl. der Performance verschiedener Zugriffswege in. NET auf MS-Office. Alle Tests wurden auf einer Windows7 32-Bit Workstation(2.66GHZ.
+ 3,25GB RAM) mit MS Excel 2010 durchgeführt. Sie finden den Quellcode zu allen Tests online oder im Ordner PerformanceTests.</font></p>
+<p align="justify"><font size="3"><font face="Verdana"><strong>Test1</strong>: Durchlaufen von 5.000 Zellen und beschreiben mit einem Testwert.
+<br>
+</font></font><strong><br>
+<font size="3" face="Verdana">Test2</font></strong><font size="3" face="Verdana">: Durchlaufen von 10.000 Zellen, beschreiben mit einem Testwert. Änderung der Schriftart, Änderung des Zellenformats und Aufruf der BorderArround Methode,
+<br>
+</font><strong><br>
+<font size="3" face="Verdana">Test3</font></strong><font size="3" face="Verdana">: Durchlaufen von 15.000 Zellen, beschreiben mit einem Testwert. Änderung der Schriftart, Änderung des Zellenformats, Änderung der WrapText Eigenschaft und hinzufügen eines Kommentars.
+<br>
+<br>
+Alle Tests wurden 10x ausgeführt und der gemittelte Wert in der folgenden Tabelle notiert.</font></p>
+<table border="0" cellspacing="0" cellpadding="2" width="600">
+<tbody>
+<tr>
+<td valign="top" width="195"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="137"><span style="text-decoration:underline"><font size="3" face="Verdana">Test1</font></span></td>
+<td valign="top" width="132"><span style="text-decoration:underline"><font size="3" face="Verdana">Test2</font></span></td>
+<td valign="top" width="134"><span style="text-decoration:underline"><font size="3" face="Verdana">Test3</font></span></td>
+</tr>
+<tr>
+<td valign="top" width="195"><strong><font size="3" face="Verdana">MS Interop Assemblies</font></strong></td>
+<td valign="top" width="137"><font size="3" face="Verdana">00:00:02.8820154</font></td>
+<td valign="top" width="132"><font size="3" face="Verdana">00:00:25.9789228</font></td>
+<td valign="top" width="134"><font size="3" face="Verdana">00:01:28.4552610</font></td>
+</tr>
+<tr>
+<td valign="top" width="195"><strong><font size="3" face="Verdana">VisualBasic LateBinding</font></strong></td>
+<td valign="top" width="137"><font size="3" face="Verdana">00:00:02.9468967</font></td>
+<td valign="top" width="132"><font size="3" face="Verdana">00:00:26.7264004</font></td>
+<td valign="top" width="134"><font size="3" face="Verdana">00:01:29.0091273</font></td>
+</tr>
+<tr>
+<td valign="top" width="195"><font size="3"><font face="Verdana"><strong>Dynamics in C#</strong>&#160;</font></font></td>
+<td valign="top" width="137"><font size="3" face="Verdana">00:00:02.6801315</font></td>
+<td valign="top" width="132"><font size="3" face="Verdana">00:00:45.2283897</font></td>
+<td valign="top" width="134"><font size="3" face="Verdana">00:02:11.2374746</font></td>
+</tr>
+<tr>
+<td valign="top" width="195"><strong><font size="3" face="Verdana">NetOffice Release 1.2</font></strong></td>
+<td valign="top" width="137"><font size="3" face="Verdana">00:00:02.8579749</font></td>
+<td valign="top" width="132"><font size="3" face="Verdana">00:00:26.3763757</font></td>
+<td valign="top" width="134"><font size="3" face="Verdana">00:01:29.0284321</font></td>
+</tr>
+</tbody>
+</table>
+<p align="justify"><br>
+<font size="3"><font face="Verdana"><strong>Anmerkungen:</strong> <br>
+Wie Sie erkennen können liegen alle Testergebnisse sehr nah zusammen mit Ausnahme der Dynamics in Test 2 und Test 3. Wie sind diese Werte zu erklären?
+<br>
+<br>
+In meiner managed Umgebung(.NET) ist der Zugriff via Latebinding langsamer als EarlyBinding, jedoch fällt dieser Unterschied nicht so segnifikant aus wie in einer unmanaged Umgebung. NetOffice und der Latebinding Mechanismus in Visual Basic gleichen diese geringe
+ Differenz durch intelligente Caching Mechanismen wieder aus so das Typen-Information für COM Proxies zu keinem Zeitpunkt mehrmals abgerufen werden müssen. Dieser Caching Mechansimus funktioniert Typen-basiert und bedeutet das Typen-Information für ein Range
+ Objekt in Excel nur bei der ersten Verwendung eines Range Objektes abgerufen werden und diese Information danach auch für andere Range Objekte wiederverwendet wird.
+<br>
+<br>
+Bei den C# Dynamics funktioniert diese Caching Mechanismus Instanz-basiert, dies bedeutet wenn Sie ein dynamic in einem lokalen Scope, z.B. einer ForEach Schleife, verwenden und dieser Scope abgebaut wird(am Ende jedes einzelnen Durchlaufs) die dynamic Variable
+ mit samt ihren Typen-Information verworfen wird. Da in Test 2 und Test 3 lokale dynamic Variablen in einer ForEach Schleife deklariert und verwendet, und diese nach jedem neuerlichen Schleifendurchlauf verworfen werden, kommt es hier zu einem deutlichen Performance-Einbruch
+ da die Typen-Informationen in jedem Durchlauf der Schleife erneut abgerufen werden müssen.
+<br>
+<br>
+Zusatzbemerkung: Bei zur Entwicklungszeit unbekannten Typen, z.B. Variants, müssen in jedem Fall zusätzliche Informationen zur Laufzeit ermittelt werden um diese Typen zu analysieren, dieser Vorgang wird in NetOffice ebenfalls durch einen Caching Mechanismus
+ unterstützt, kann jedoch die Performance geringfügig beinflussen. <br>
+<br>
+<strong>Performance Tests Quellcode online</strong></font></font></p>
+<table border="0" cellspacing="0" cellpadding="2" width="284">
+<tbody>
+<tr>
+<td valign="top" width="77"><span style="text-decoration:underline"><font size="3" face="Verdana">Test 1</font></span></td>
+<td valign="top" width="205"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test1_Dynamics"><font size="3" face="Verdana">Dynamics in C#</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test1_VisualBasic"><font size="3" face="Verdana">VisualBasic LateBinding</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test1_Interop"><font size="3" face="Verdana">MS Interop Assemblies</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test1_NetOffice"><font size="3" face="Verdana">NetOffice</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><span style="text-decoration:underline"><font size="3" face="Verdana">Test 2</font></span></td>
+<td valign="top" width="205"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test2_Dynamics"><font size="3" face="Verdana">Dynamics in C#</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test2_VisualBasic"><font size="3" face="Verdana">VisualBasic LateBinding</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test2_Interop"><font size="3" face="Verdana">MS Interop Assemblies</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test2_NetOffice"><font size="3" face="Verdana">NetOffice</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><span style="text-decoration:underline"><font size="3" face="Verdana">Test 3</font></span></td>
+<td valign="top" width="205"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test3_Dynamics"><font size="3" face="Verdana">Dynamics in C#</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test3_VisualBasic"><font size="3" face="Verdana">VisualBasic LateBinding</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test3_Interop"><font size="3" face="Verdana">MS Interop Assemblies</font></a></td>
+</tr>
+<tr>
+<td valign="top" width="77"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="205"><a href="http://netoffice.codeplex.com/wikipage?title=Test3_NetOffice"><font size="3" face="Verdana">NetOffice</font></a></td>
+</tr>
+</tbody>
+</table>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>
