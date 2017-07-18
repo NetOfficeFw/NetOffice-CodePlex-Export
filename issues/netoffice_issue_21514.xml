@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21514</Id>
+  <Title>"Collection was modified" error when disposing application</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi
+
+From time to time, I encounter the following error when calling Application.Dispose().
+Please see the stacktrace :
+<pre><code>System.InvalidOperationException: Collection was modified; enumeration operation may not execute.
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Collections.Generic.List`1.Enumerator.MoveNextRare()
+   at System.Collections.Generic.List`1.Enumerator.MoveNext()
+   at NetOffice.COMObject.DisposeChildInstances(Boolean disposeEventBinding)
+   at NetOffice.COMObject.Dispose(Boolean disposeEventBinding)
+   at NetOffice.ExcelApi.Application.Dispose(Boolean disposeEventBinding)
+   at NetOffice.ExcelApi.Application.Dispose()</code></pre>
+After looking the source code, there may be a bug in COMObject.RemoveChildObject(), it misses the block
+<pre><code>        if (Settings.EnableThreadSafe)
+        {
+          Monitor.Enter(this._childListLock);
+          flag = true;
+        }</code></pre>
+Hope this helps.]]></DescriptionHtml>
+  <Status>Active</Status>
+  <Type>Issue</Type>
+  <Impact>High</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hi 
+
+i need more details about the scenario(specialy single-thread oder multi-thread).can you reproduce the problem or much better how i can reproduce your scenario?if its impossible i want send you a small code snippet to create a text file about yourCOM proxy
+ tree. please run this code before you call dispose and send me the text file.okay?
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-11-15T12:59:33.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[btw: i agree with the missing lock. thx !!!! 
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-11-15T13:02:02.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[update: missing lock is fixed]]></BodyHtml>
+      <CreatedAt>2014-11-15T20:26:41.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>juflo</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi 
+
+After many retries, I'm unable to isolate the issue in a sample code.Feel free to send me a code snippet for generating the data you need to analyse.
+
+
+Regards.]]></BodyHtml>
+      <CreatedAt>2014-12-09T14:09:11.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[wich NO version? (the missing lock is fixed in NO 1.7.2) 
+
+give me a sample and i want execute this > 1 million times in a virtual machine to pin point the problem :)
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-12-09T17:57:42.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>juflo</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I have 1.6.0 version.I see there is an update to 1.7.2 in NuGet.I will update to this version to see if the problem still occurs.Thanks.]]></BodyHtml>
+      <CreatedAt>2015-01-09T10:51:45.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>juflo</ReportedBy>
+  <ReportedAt>2014-10-30T12:56:23.0000000+00:00</ReportedAt>
+</CodeplexIssue>

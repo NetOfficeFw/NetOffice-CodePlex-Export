@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>19974</Id>
+  <Title>Entirerow and Entirecolumn methods/properties not in range object.</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi,
+
+I've just started using Netoffice and I've found that Entirerow and Entirecolumn properties/methods are not available from the range object. I use these to get a reference to the entire row/column so that I can insert one or more rows/columns. Is there a workaround
+ for this?
+
+Cheers]]></DescriptionHtml>
+  <Status>Active</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>pico1234</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[OK I've found that the properties are in actual fact present and seem to work. But they are marked as hidden from intellisense. Any reason for this?]]></BodyHtml>
+      <CreatedAt>2013-07-17T03:30:03.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[oops, this is an issue. 
+
+NetOffice has some special workarrounds for parametrized properties(not supported in C#). the property version without parameters is a normal property and the property version/overload with parameters is a method in a dumy base class because its no allowed
+ to have a method and a property with the same name in the same class. NetOffice has also corresponding methods with the 'get_'/'set' prefix to hold compatibility with existing standard interop assembly c# code. these methods are hidden in intellisense and
+ thats all(normally...) i do an update at weekend and fix the problem.(may more properties has this problem, i have to clearify the situation)
+
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2013-07-17T07:32:22.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>pico1234</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi Sebastian, 
+
+Thanks for the response. I had some further questions, some of which you have answered.
+
+
+To confirm my understanding: 
+
+C# doesn't support parameterised properties which is why you have put corresponding methods into a base class. This doesn't apply to VB.Net as far as I can tell - correct me if I'm wrong.
+
+
+I have seen the hidden 'get_'/'set' methods for various properties. You say its for compatibility with existing C# code. Does it have any impact on VB.net code? The reason I ask is that I have to use the get_Offset() and get_Resize methods/properties on the
+ Range object for them to work. The intellisense options, Offset() and Resize() do not work.]]></BodyHtml>
+      <CreatedAt>2013-07-17T11:06:05.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>pico1234</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Ok, I discovered what the cause of the problem is. The reason I currently need to use get_Resize() etc instead of just Resize() etc is:
+
+
+The VB.net compiler thinks that when I use Range.Resize(a, b) that I am referring to the default property (.Item) of the Range object returned by the Range.Resize() property rather than seeing the overloaded methods in the base class.
+
+I think this is why you needed to put the methods in the base class in the first place because the compiler didn't know whether you wanted the method or the property. The workaround is to use the get_Resize method. So Range_.Resize(a, b) is not actually accessible.
+
+
+It would be good if we could eliminate this issue though. I wonder if the Range.Resize property is even necessary. When is it useful?
+
+
+The same arguments would be made for .Offset(...) etc.]]></BodyHtml>
+      <CreatedAt>2013-07-17T11:36:05.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hello, 
+
+vb.net supports parametrized properties, indeed. but netoffice is written in c#. 
+
+about get_/set:if you want call a paramtrized property with the standard interop assembly(not PIA) the compiler shows you the get_/set_ method version.(thats what it is inside of the IL code).
+
+
+about vb:the vb.net language has an issue in a scenario with a property that have 2 optional parameters(for example). the property overload without a parameter is located in the main class and the corresponding methods in the base class and i dont know why
+ but vb.net can't see the methods in the base class in this case. the property in the derived class(Range) hides the methods in the base class(Range_) for visual basic.(no problem in c#) this is the reason you have to use the get_ or set_ version in vb.net
+ sometimes. i hope microsoft resolve this issue very very soon. 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2013-07-17T11:41:30.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[edit OffSet and Resize is accessible of course without parameters.a useful trick is to cast the instance to Range_
+
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2013-07-17T11:46:11.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>pico1234</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi Sebastian, 
+
+I had just guessed that NetOffice would be written in C#! Unfortunately the Codeplex server is very slow for me at least and I wasn't able to look at it myself. I had just been inspecting the MSIL.
+
+
+I was reading that parameterised properties accessed by C# code are automatically "converted" into get_/set_ methods. I wonder if it would be useful to re-write some of the code in VB.net? Then you can write parameterised properties which will automatically
+ generate the get_/set_ methods. 
+
+Ross]]></BodyHtml>
+      <CreatedAt>2013-07-17T12:34:06.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i have multiple challenges to handle. its just one more as parametrized properties. c# has the better/more powerful event concept and i need native enumerators to. in summary: c# works better or in other words. if do netoffice in vb then c# devs has much
+ more problems as vb devs when i do netoffice in c#.for example:if i do that in vb then the c# developer has to use get_ and set_ in any case and i think this is a no-go for c# devs.vb devs have this one issue at the moment but i hope i find a solution for
+ that(or ms fix this problem) i try some compiler attributes, explicitly interfaces, linq extensions but the methods in the base class was not acessible]]></BodyHtml>
+      <CreatedAt>2013-07-17T13:16:54.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[ooops Ctrl+S triggers the submit button..suprisei have one last idea and try them next weekend.wish me luck dude ^^]]></BodyHtml>
+      <CreatedAt>2013-07-17T13:20:19.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>pico1234</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Is there a better place to discuss this? 
+
+Also have you considered condensing down the number of method overloads by using optional parameters?
+
+
+<a href="http://msdn.microsoft.com/en-us/vstudio/ee460905.aspx" rel="nofollow">http://msdn.microsoft.com/en-us/vstudio/ee460905.aspx</a>]]></BodyHtml>
+      <CreatedAt>2013-07-21T11:34:25.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>pico1234</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[You might have to use a stronger type for the inputs (leaving it as object seemed to cause a problem) but I can't think of any valid argument other than an integer (int might not be the correct size to use).
+<pre><code>    public NetOffice.ExcelApi.Range Offset(int rowOffset = 0, int columnOffset = 0)     {           // ...      }</code></pre>]]></BodyHtml>
+      <CreatedAt>2013-07-21T11:45:00.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i cant use optional parameters because i still want support .NET 2another reason is the supportbylibrary annotation and xml comments, its impossible to do this with one method overload.
+
+
+update: the problem is the properties EntireRow and EntireColumn was marked as [nonbrowsable] in the COM type library
+
+
+all entities in NetOffice are hidden if the entity are marked as [hidden] and/or [nonbrowsable] in the COM typelibrary.
+
+
+i want change this. only [hidden] entities should be hidden.]]></BodyHtml>
+      <CreatedAt>2013-07-26T20:11:32.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>pico1234</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Fair enough. What about putting all the logic part of the method into a hidden or private method and then write the overloaded public methods so that they utilise the hidden or private method? If you consolidate in this way you could then use conditional
+ compilation to provide the correct signatures to each language. Eg. 
+
+' Public C# signatures.#If CSharp Then
+<pre><code>    Public ReadOnly Property Offset() As NetOffice.ExcelApi.Range            Get                Dim paramsArray As Object() = Nothing                Return Offset(paramsArray)            End Get        End Property
+
+    ' Legacy C# methods.        Public Function get_Offset(rowOffset As Object, columnOffset As Object) As NetOffice.ExcelApi.Range            Return Offset(rowOffset, columnOffset)        End Function
+
+    Public Function get_Offset(rowOffset As Object) As NetOffice.ExcelApi.Range            Return Offset(rowOffset)        End Function
+</code></pre>
+' Public VB signatures.#Else Public Function Offset() As NetOffice.ExcelApi.Rang Dim paramsArray As Object() = Nothing Return Offset(paramsArray) End Function
+<h1>End If</h1>
+<pre><code>' Common language methods.    Public Function Offset(rowOffset As Object) As NetOffice.ExcelApi.Range        Dim paramsArray As Object() = Invoker.ValidateParamsArray(rowOffset)        Return Offset(paramsArray)    End Function
+
+Public Function Offset(rowOffset As Object, columnOffset As Object) As NetOffice.ExcelApi.Range        Dim paramsArray As Object() = Invoker.ValidateParamsArray(rowOffset, columnOffset)        Return Offset(paramsArray)    End Function
+
+' Private method which consolidates the code for all the Offset functions.    Private Function Offset(paramsArray As Object()) As NetOffice.ExcelApi.Range        Dim returnItem As Object = Invoker.PropertyGet(Me, "Offset", paramsArray)        Dim newObject As NetOffice.ExcelApi.Range = TryCast(NetOffice.Factory.CreateKnownObjectFromComProxy(Me, returnItem, NetOffice.ExcelApi.Range.LateBindingApiWrapperType), NetOffice.ExcelApi.Range)        Return newObject    End Function</code></pre>]]></BodyHtml>
+      <CreatedAt>2013-07-28T23:03:41.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>pico1234</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Sorry looks like the #If ... #Else ... #End If are escaped as titles in this forum.]]></BodyHtml>
+      <CreatedAt>2013-07-28T23:04:58.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>pico1234</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Try the attached code for reference. Also I apologise its in VB. I don't trust my conversion skills into C# but hopefully you can understand it and convert it to C#.]]></BodyHtml>
+      <CreatedAt>2013-07-28T23:06:53.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>pico1234</ReportedBy>
+  <ReportedAt>2013-07-16T22:42:28.0000000+00:00</ReportedAt>
+</CodeplexIssue>

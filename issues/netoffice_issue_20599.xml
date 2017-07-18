@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>20599</Id>
+  <Title>Visual Studio Project Wizard</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I can't figure out how to install the Project Wizard into Visual Studio Pro 2010. I can't find any instructions on how to do this. I don't see the Project Wizard in the Online Templates and I don't see it in the downloads section of the NetOffice web site.
+ The Project Wizard in the Toolbox does not work for Visual Studio Pro because it generates a project for Visual Studio Express, which is incompatible with Visual Studio Pro. If there is a Project Wizard in the Toolbox that can be installed into Visual Studio
+ Pro, please explain how. Please help me get the Project Wizard installed in Visual Studio Pro 2010. Thank you!]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments />
+  <ReportedBy>bchat</ReportedBy>
+  <ReportedAt>2014-01-06T21:53:36.0000000+00:00</ReportedAt>
+</CodeplexIssue>

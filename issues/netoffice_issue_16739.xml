@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>16739</Id>
+  <Title>Some lists are not Enumerable in Outlook</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Please implement IEnumerable on the various lists across the solution. Otherwise, there are a lot of foreach-statements in applications that would need to be rewritten to for-loops for people migrating to NetOffice.
+ 
+Examples from my compile output:
+foreach statement cannot operate on variables of type 'NetOffice.OutlookApi._Items' because 'NetOffice.OutlookApi._Items' does not contain a public definition for 'GetEnumerator'
+
+foreach statement cannot operate on variables of type 'NetOffice.OutlookApi.Stores' because 'NetOffice.OutlookApi.Stores' does not contain a public definition for 'GetEnumerator'
+
+foreach statement cannot operate on variables of type 'NetOffice.OutlookApi._Folders' because 'NetOffice.OutlookApi._Folders' does not contain a public definition for 'GetEnumerator'
+
+ 
+As an example, see attached file, or <a href="https://gist.github.com/1284715#file__items_enumerator.cs" rel="nofollow">
+https://gist.github.com/1284715#file__items_enumerator.cs</a> , where I have implemented an Enumerator for _Items.cs in v1.1 of NetOffice.
+ 
+If you want to, I could contribute by creating a patch for the three lists mentioned. But you probably have a better overview of how many places this should be implemented. And maybe if there is a generic solution so we don't need so much copy-pasting.]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[yes i know, these types doesnt have a real enumerator. microsoft add these faked enumerators also to the Primary Interop Assemblies(not the normaly Interop Assemblies)
+
+i think i can create a rule for my codegenerator. types with an int count property and a default item property with the member id 0(this indexer in .net) and no enumerator
+
+will have a faked enumerator in next netoffice release. what i want to do is collect all items in an array before i start the enumerator, the enumerator items count are not changeble while retrieving in this way.
+
+
+thanks for this issue! its a good enhancement ;)]]></BodyHtml>
+      <CreatedAt>2011-10-14T12:32:10.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Nilzor</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Ok thanks for the reply - looking forward to the next version :)]]></BodyHtml>
+      <CreatedAt>2011-10-14T15:45:52.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[the codegenerator is now updated: 
+the following classes has a custom enumerator in NetOffice Release 2.0 
+
+Word.Adjustments 
+Word.Editors 
+Word.OMathArgs 
+Word.BuildingBlockTypes 
+Word.Categories 
+Word.BuildingBlocks 
+Word.BuildingBlockEntries 
+Word.OMathBreaks 
+Outlook.AddressEntries 
+Outlook._Folders 
+Outlook._Items 
+Outlook.Panes 
+Outlook.Selection 
+Outlook.AddressLists 
+Outlook.SyncObjects 
+Outlook._Explorers 
+Outlook._Inspectors 
+Outlook.Actions 
+Outlook.PropertyPages 
+Outlook.Attachments 
+Outlook.UserProperties 
+Outlook.Recipients 
+Outlook.Links 
+Outlook.Exceptions 
+Outlook._OutlookBarShortcuts 
+Outlook._OutlookBarGroups 
+Outlook.Pages 
+Outlook._Results 
+Outlook.Conflicts 
+Outlook._NavigationModules 
+Outlook._Rules 
+Outlook._RuleActions 
+Outlook._RuleConditions 
+Outlook._Columns 
+Outlook._UserDefinedProperties 
+Outlook._Accounts 
+Outlook._Stores 
+Outlook._Categories 
+Outlook._TimeZones 
+Outlook._AttachmentSelection 
+Outlook._ViewFields 
+Outlook._OrderFields 
+Outlook._AutoFormatRules 
+Outlook._NavigationGroups 
+Outlook._NavigationFolders 
+Outlook._SimpleItems 
+Office.Adjustments 
+Office.AnswerWizardFiles 
+Office.ODSOColumns 
+Office.ODSOFilters 
+Office.ServerPolicy 
+PowerPoint.Adjustments 
+PowerPoint.PPRadioCluster 
+OWC10.ChDataLabels 
+OWC10.ChErrorBarsCollection 
+OWC10.ChSegments 
+OWC10.ChChartFields 
+OWC10.Headings 
+OWC10.FieldListDragDataList 
+MSProject.Windows 
+Excel.IPanes 
+
+the release 2.0 is planned with the next release of ms-office but i publish stable release previews from time to time related with completed roadmap items.
+
+the first release preview comes 01/12/2011]]></BodyHtml>
+      <CreatedAt>2011-11-02T23:54:54.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>atschirren</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Please make CustomDocumentProperties and BuiltInDocumentProperties on Word.Document enumerable as well.]]></BodyHtml>
+      <CreatedAt>2011-11-12T00:54:44.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[NetOffice 1.3 is available now and includes custom enumerators. 
+issue closed. have a nice day!]]></BodyHtml>
+      <CreatedAt>2011-11-12T22:07:32.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[done! 
+
+
+** Closed by SebastianDotNet 12.11.2011 14:07]]></BodyHtml>
+      <CreatedAt>2011-11-12T22:14:48.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[my bad, not closed. i mean fixed.]]></BodyHtml>
+      <CreatedAt>2011-11-12T22:14:49.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Nilzor</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Thanks, tested it now - porting from standard PIA's is now much easier :)]]></BodyHtml>
+      <CreatedAt>2011-12-07T20:25:43.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Nilzor</ReportedBy>
+  <ReportedAt>2011-10-13T14:35:38.0000000+00:00</ReportedAt>
+</CodeplexIssue>

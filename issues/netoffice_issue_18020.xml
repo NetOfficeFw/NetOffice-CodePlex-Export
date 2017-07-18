@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>18020</Id>
+  <Title>config loadFromRemoteSources needed?</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi,
+ 
+when using the new 1.5.1 assemblies (build 90130) from my .net 4.0 application I receive a NotSupportedExeption "The invoked member is not supported in a dynamic assembly." when calling
+
+var app = new NetOffice.ExcelApi.Application();
+ 
+I don't know why, because the examples in 
+\Examples\Misc\C#\Examples\MiscExamples
+don't throw this exception.
+ 
+ 
+After some investigation I found
+<a href="http://msdn.microsoft.com/en-us/library/dd409252(VS.100).aspx" rel="nofollow">http://msdn.microsoft.com/en-us/library/dd409252(VS.100).aspx</a>
+(<loadFromRemoteSources> Element)
+and after setting it in my app.config it works fine.
+ 
+I have my project sources and assemblies all stored on a local drive somewhere under c:\ !
+ 
+Prior to this I used version 1.3 and I didn't receive this exception!
+ 
+So I enabled DebugConsole.Mode to Trace and receive the attached exception infos]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[thanks for reporting. which windows version do you use? i change the initialize implementation right now.
+<ul>
+<li>Sebastian </li></ul>]]></BodyHtml>
+      <CreatedAt>2012-05-10T14:21:55.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[the implementation is changed in latest source and assemblies. 
+please give me a feedback, it works for you. 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-05-10T15:22:24.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>mausoma</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi, 
+
+ok better. 
+The functionallity works, but my Tracing still shows some loading problems. 
+But maybe that's ok, because in the end it works! 
+
+I'm using 
+Windows 7 64 bit 
+I use the code from an AnyCPU project. My application using this project is configured for x86.
+
+
+
+
+The trace: 
+
+NetOffice: NetOffice.Factory.Initialize() 
+NetOffice: Detect NetOffice assembly ExcelApi. 
+NetOffice: Try to load dependent assembly C:\devlop\TFS\Hannes\GGG\bin_x86\Debug\OfficeApi.dll.
+
+NetOffice: Type:NotSupportedException 
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may
+ be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See
+<a href="http://go.microsoft.com/fwlink/?LinkId=155569" rel="nofollow">http://go.microsoft.com/fwlink/?LinkId=155569</a> for more information.
+
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+
+Stack: at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+
+at System.Reflection.Assembly.LoadFile(String path) 
+at NetOffice.Factory.Initialize() 
+
+
+NetOffice: Try to load dependent assembly C:\devlop\TFS\Hannes\GGG\bin_x86\Debug\VBIDEApi.dll.
+
+NetOffice: Type:NotSupportedException 
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may
+ be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See
+<a href="http://go.microsoft.com/fwlink/?LinkId=155569" rel="nofollow">http://go.microsoft.com/fwlink/?LinkId=155569</a> for more information.
+
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+
+Stack: at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+
+at System.Reflection.Assembly.LoadFile(String path) 
+at NetOffice.Factory.Initialize() 
+
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Management\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Management.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+
+NetOffice: NetOffice.Factory.Initialize() passed 
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\14.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll'
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\assembly\GAC_MSIL\office\14.0.0.0__71e9bce111e9429c\office.dll']]></BodyHtml>
+      <CreatedAt>2012-05-10T17:24:02.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>mausoma</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[By the way: I have installed an office version in 64 bit, maybe that's important.]]></BodyHtml>
+      <CreatedAt>2012-05-10T17:26:24.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[this looks like a security issue. let me explain what happen. 
+
+Initialize performs a lookup for all currently loaded NetOffice assemblies and do a connect to these assemblies. if you call a method with com proxy return then NetOffice analyze the proxy at runtime and find the target wrapper class in the connected NetOffice
+ assemblies. 
+
+a problem is now: the CLR loads all assemblies on demand. maybe you have excel office vbide references in your project but you use just only excel in code. the other assemblies was not loaded now.
+
+
+maybe you set a breakpoint in your debugger and you want to see application.COMAddins in the debugger watch list. the type COMAddin is defined in Office... ooops OfficeApi.dll is not loaded from the CLR and an exception occured. NetOffice handle this with Settings.EnableAdHocLoading
+
+(hidden from IntelliSense) and try to load nonloaded dependent assemblies while Intialize() and this cause security problems maybe. if it fails to load a dependent assembly then you got a warning message but NetOffice is not in critical state now.
+
+
+you can disable the adhoc loading of course: 
+Settings.EnableAdHocLoading= false; 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-05-11T11:24:38.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[the issue is fixed today. an updated release is available. 
+
+*have a nice day]]></BodyHtml>
+      <CreatedAt>2012-05-11T18:44:03.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>mausoma</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi Sebastian, 
+
+latest buil 90342 generates only a few messages now, ant it work very well. 
+Thanks a lot! 
+
+
+
+NetOffice: NetOffice.Factory.Initialize() DeepLevel:True 
+NetOffice: Detect NetOffice assembly ExcelApi. 
+NetOffice: Detect NetOffice assembly ExcelApi. 
+NetOffice: Detect NetOffice assembly OfficeApi. 
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\devlop\TFS\Hannes\GGG\bin_x86\Debug\OfficeApi.dll'
+
+NetOffice: Detect NetOffice assembly VBIDEApi. 
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\devlop\TFS\Hannes\GGG\bin_x86\Debug\VBIDEApi.dll'
+
+NetOffice: NetOffice.Factory.Initialize() passed 
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\14.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll'
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\assembly\GAC_MSIL\office\14.0.0.0__71e9bce111e9429c\office.dll'
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Numerics\v4.0_4.0.0.0__b77a5c561934e089\System.Numerics.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\assembly\GAC_MSIL\Microsoft.VisualStudio.DebuggerVisualizers\10.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.DebuggerVisualizers.dll'
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Packages\Debugger\Visualizers\Microsoft.VisualStudio.Debugger.DataSetVisualizer.dll'
+
+NetOffice: Failed to resolve Assembly 
+The program '[7332] GGG_Crawler.exe: Program Trace' has exited with code 0 (0x0).
+
+The program '[7332] GGG_Crawler.exe: Managed (v4.0.30319)' has exited with code 0 (0x0).]]></BodyHtml>
+      <CreatedAt>2012-05-11T18:44:56.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>mausoma</ReportedBy>
+  <ReportedAt>2012-05-09T19:02:40.0000000+00:00</ReportedAt>
+</CodeplexIssue>

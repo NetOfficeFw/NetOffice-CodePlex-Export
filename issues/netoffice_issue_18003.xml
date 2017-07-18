@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>18003</Id>
+  <Title>Resharper/MSpec Assembly bind erros with 1.5.1</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi Sebastian,
+ 
+(I'm writing in English so others can also follow the discussion aas i gues this may affect more people then just me)
+ 
+I've just upgraded to 1.5.1 and now all Specs (MSpec tests) that are using a running Excel instance (my intigraion test) fail with an assembly binding error for (Resharper.*.dlls) when running from Resharpers test runner.
+When running from Commandline everything works. This is quite strange as i did not find any hint what happens in the NetOffice.dll causing reahsrper to fail resolving it's assemblies.
+ 
+It is definatelly triggered by the NetOffice.dll as all tests not using the NetOffice API are working.
+ 
+This is not a major issue for me as 1.4.1 is working perfectly - just wanted to let you know that there are some strange sideeffects triggered by NetOffice
+ 
+*** Assembly Binder Log Entry (08.05.2012 @ 10:08:52) ***
+ 
+The operation failed.
+Bind result: hr = 0x80070002. The system cannot find the file specified.
+ 
+Assembly manager loaded from: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\clr.dll
+Running under executable C:\Program Files (x86)\JetBrains\ReSharper\v6.1\Bin\JetBrains.ReSharper.TaskRunner.CLR4.MSIL.exe
+--- A detailed error log follows. 
+ 
+=== Pre-bind state information ===
+LOG: User = WS-CHubinger\animal
+LOG: DisplayName = JetBrains.ReSharper.TaskRunnerFramework, Version=6.1.37.86, Culture=neutral, PublicKeyToken=1010a0d8d6380325
+(Fully-specified)
+LOG: Appbase = file:///C:/Project/ondot-excel-add-in/src/Excel Add-In/ExcelAddIn.Specs/bin/Debug
+LOG: Initial PrivatePath = NULL
+LOG: Dynamic Base = NULL
+LOG: Cache Base = C:\Users\animal\AppData\Local\Temp\t0hprif0.xww
+LOG: AppName = ExcelAddIn.Specs
+<h1>Calling assembly : NetOffice, Version=1.5.0.1, Culture=neutral, PublicKeyToken=297f57b43ae7c1de.</h1>
+LOG: This bind starts in default load context.
+LOG: No application configuration file found.
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: JetBrains.ReSharper.TaskRunnerFramework, Version=6.1.37.86, Culture=neutral, PublicKeyToken=1010a0d8d6380325
+LOG: GAC Lookup was unsuccessful.
+LOG: Attempting download of new URL file:///C:/Project/ondot-excel-add-in/src/Excel Add-In/ExcelAddIn.Specs/bin/Debug/JetBrains.ReSharper.TaskRunnerFramework.DLL.
+LOG: Attempting download of new URL file:///C:/Project/ondot-excel-add-in/src/Excel Add-In/ExcelAddIn.Specs/bin/Debug/JetBrains.ReSharper.TaskRunnerFramework/JetBrains.ReSharper.TaskRunnerFramework.DLL.
+LOG: Attempting download of new URL file:///C:/Project/ondot-excel-add-in/src/Excel Add-In/ExcelAddIn.Specs/bin/Debug/JetBrains.ReSharper.TaskRunnerFramework.EXE.
+LOG: Attempting download of new URL file:///C:/Project/ondot-excel-add-in/src/Excel Add-In/ExcelAddIn.Specs/bin/Debug/JetBrains.ReSharper.TaskRunnerFramework/JetBrains.ReSharper.TaskRunnerFramework.EXE.
+LOG: All probing URLs attempted and failed.
+ 
+kind regards,
+Christian]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>mausoma</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Maybe this is the same issue than I have: 
+<a href="http://netoffice.codeplex.com/workitem/18020" rel="nofollow">http://netoffice.codeplex.com/workitem/18020</a>
+
+
+The system seems to be not allowed to load the assemblies even if they are locally available.
+
+Then the loading fails, ...]]></BodyHtml>
+      <CreatedAt>2012-05-09T23:23:49.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[its done. the issue is fixed today. an updated release is available. 
+
+*have a nice day]]></BodyHtml>
+      <CreatedAt>2012-05-11T18:43:18.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>ChristianHubinger</ReportedBy>
+  <ReportedAt>2012-05-08T07:48:45.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21946</Id>
+  <Title>Multiple NetOffice Excel Add-ins</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi,
+
+I am currently having a problem with 2 excel add-ins built with NetOffice version 1.6 and 1.7.2. These two add-ins are being developed on the same machine The second add-in that loads (loading seems to be based on the addin progid, and then in alphabetical
+ order) will throw an exception in the <strong>IDTExtensibility2.OnConnection</strong> method. The method looks like this:
+<pre><code>void IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom)
+{
+    try
+    {
+        this.excelApplication = new Excel.Application(null, application);
+        ...do some work...
+    }
+    catch (Exception exception)
+    {
+        ...
+    }
+}</code></pre>
+The exception is thrown where the new '''Excel.Application''' is being created. The message of the exception is the following:
+
+<em>Object reference not set to an instance of an object.</em>
+
+Does anybody have an idea what may be the cause of this problem? Could the problem be that the two add-ins do not use the same version? one is using version 1.6, the other is using version 1.7.2.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>samgerene</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I can confirm that the problem is indeed due to a version conflict. I just updated the addin that was referencing NetOffice version 1.6.0.0 to 1.7.2 and the problem is gone. Is there a way to handle this without the requirement that all NetOffice based
+ add-ins must use the same version of NetOffice? Add-in developers do not have control over all add-ins that may be installed by users, which may be referencing different versions of NetOffice, only the first add-in that gets loaded (and the order seems to
+ be determined by the name of the addin) is the only one that will work.]]></BodyHtml>
+      <CreatedAt>2015-07-19T22:43:48.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hey, 
+
+The problem behind is Excel want load all addins (without a shim) in the same appdomain. NO 1.6 doesnt handle this as well in scenarios with multiple NO versions. (try load same assembly in multiple versions and share all static(shared in vb) members in the
+ whole appdomain) 
+
+for this reason NO 1.7(and future versions) works more intelligent here. the static NetOffice.Core has been changed to a default instance NetOffice.Core.Default. To avoid conflicts i suggest you to create your own core instead of the default core. Something
+ like: 
+
+Excel.Application app = new Excel.Application(new NetOffice.Core(), null, application);
+
+
+Now each instance of your addin use his own core (which includes dependency loader, runtime system and so on) and no side-effects.
+
+
+BTW: The NetOffice.Tools based addins(see examples) uses also his own core, reduce infrastructure code and spend some special services. (no worries, its lightweight)
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2015-07-19T23:07:45.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>samgerene</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Dear Sebastian, 
+
+Thanks for the fast reply, I will update the version of NetOffice of the add-in that is under my control to the latest version and do as you suggested regarding creating an "own core".
+
+
+Regards, Sam]]></BodyHtml>
+      <CreatedAt>2015-07-20T07:25:23.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>ajvorobiev</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Dear Sebastian, 
+
+updating all plugins to 1.7.3 (latest available Nuget) and having them initialize each their own Cores did not help our problem. Addins still somehow interfere. One of the clues that I am leaning towards is the use of ICustomTaskPaneConsumer and ICTPFactory
+ in at least one of the addins. If this addin is the second to load, its task panes cannot be found. No particular exception is thrown, just the taskpanes are not created when the addin loads.
+
+
+I hope that you can further investigate this issue. 
+
+Kind Regards, 
+
+Alex]]></BodyHtml>
+      <CreatedAt>2015-11-04T16:44:10.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>samgerene</ReportedBy>
+  <ReportedAt>2015-07-19T17:54:47.0000000+00:00</ReportedAt>
+</CodeplexIssue>

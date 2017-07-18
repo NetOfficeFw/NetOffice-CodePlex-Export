@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>20531</Id>
+  <Title>Excel ProtectedViewWindowDeactivateEvent not firing</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Working with protected view on excel document. The ProtectedViewWindowDeactivateEvent is not firing. Not sure why as it does with the word documents. Already compared the event signatures in the two event api and things looks great. Wan't able to debug
+ into why the event doesn't fire.
+
+When the WorkbookOpenEvent does fire after the Protected View :"Enable Editing" button is pressed the Application.ActiveWorkbook is not populated.
+
+Ultimately I need to initialize some code when the document comes out of protected view mode. Need a handle to the ActiveWorkbook.
+
+Made an example to help diagnose why this is happening.
+
+<a href="http://www.example.com" rel="nofollow">Example 10</a>(<a href="https://bitbucket.org/kirk98445/netoffice-examples/src/2c0e9b1a5de9b82a31389545dba54cb7caa85e64/ExcelExamples/Examples/Example10.cs" rel="nofollow">https://bitbucket.org/kirk98445/netoffice-examples/src/2c0e9b1a5de9b82a31389545dba54cb7caa85e64/ExcelExamples/Examples/Example10.cs</a>)]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>ekirk0</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I found a workaround and don't think its worth looking into further. 
+
+void Application_WorkbookOpenEvent(NetOffice.ExcelApi.Workbook Wb) does get called with the current workbook.
+
+Event though Application.ActiveWorkbook is null at the time. The timing of protected events and when the application objects get initialized varies between the different office apps. That is no fault of netoffice.
+
+
+Thanks]]></BodyHtml>
+      <CreatedAt>2014-01-15T19:56:12.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>ekirk0</ReportedBy>
+  <ReportedAt>2013-12-17T18:16:19.0000000+00:00</ReportedAt>
+</CodeplexIssue>

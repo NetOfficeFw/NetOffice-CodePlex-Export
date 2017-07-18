@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>20615</Id>
+  <Title>No COM Addin example runs under W8/Office 2013</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I tried to run any outlook COM Add-in under W8 and Office 2013, but neither works. The addins registered successfully and they are visible in the COM Add-In dialog, but all time disabled. Trying to load the Add-In manually produces a message, which states,
+ that " ... is not a valid Office Add-In."]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[please let me know more about the machine and the office version.windows is 64bit?office is 32bit?your addin use .net 4.5 ?fusion log viewer say, no missing dependencies?vb or c# solution?its works fine in w7(same bitness scenario)?
+
+
+*sebastian]]></BodyHtml>
+      <CreatedAt>2014-01-13T15:06:19.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>RogerLae</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Windows is 8 Pro 64, Office 2013 32 bit (15.0.4551.1007), tried all C# addins 4.0 and 4.5, any CPU, x86 and x64 without success; found out, that's not a NetOffice - problem. Following step by step the instruction under
+<a href="http://msdn.microsoft.com/en-us/library/office/ff868772.aspx" rel="nofollow">
+http://msdn.microsoft.com/en-us/library/office/ff868772.aspx</a> leads to the same. Fusion Log viewer keeps still for any scenario
+
+
+RogerLae]]></BodyHtml>
+      <CreatedAt>2014-01-13T16:38:48.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>allquixotic</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I am having the exact same problem as OP. 
+
+I am running Windows 8.1 64-bit with Office 2013 and 2010 64-bit installed on the machine.
+
+
+I tried my own extension, which loads on Windows 7 32-bit with Office 2010, but I recompiled it targeting x86-64, and the same behavior occurs, as when I target NetOffice 1.7.0 (Preview)\NET 4.0\Examples\Word\C#\NetOffice COMAddin Examples\Extended\bin\Debug\NetOfficeTools.ExtendedWordCS4.dll
+
+
+I do manual regasm with /codebase with admin privileges to make sure it registers, and the registry keys look OK, but the "Location" in the MS Word Add-in list is empty for these NetOffice addins.
+
+
+I am able to load addins developed with Visual Studio 2013 and VSTO just fine. 
+
+I tried both Office 2010 and Office 2013 to see if they were any different -- nope, neither one will load any NetOffice addins, even if they are compiled for 64-bit and bundled with all dependencies. In fact I used the same MSI (compiled with WiX) to install
+ my addin that runs fine on Windows 7 32-bit, and still no go. 
+
+Looks like NetOffice is simply broken on Windows 8 / 8.1 64-bit with Office 2013 installed, even if Office 2013 is 32-bit or 64-bit, even if you have a parallel install of Office 2010. :(]]></BodyHtml>
+      <CreatedAt>2014-01-25T05:05:18.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>allquixotic</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Addendum: I can reproduce the problem on both NetOffice 1.6.0, and NetOffice 1.7.0 Preview.]]></BodyHtml>
+      <CreatedAt>2014-01-25T08:19:20.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>RogerLae</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[As I stated in my comment 13.1. this is not a problem of NetOffice. Reproducing the steps of MS - tutorial under
+<a href="http://msdn.microsoft.com/en-us/library/office/ff868772.aspx" rel="nofollow">
+http://msdn.microsoft.com/en-us/library/office/ff868772.aspx</a> leads to the same result.]]></BodyHtml>
+      <CreatedAt>2014-01-25T09:06:33.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>allquixotic</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Then we are experiencing different issues, since VSTO works for me.]]></BodyHtml>
+      <CreatedAt>2014-01-25T22:39:45.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>RogerLae</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[This is not the tutorial for using VSTO (may be it works), but for COMAddins via IDTExtensibility2 Interface (the same technique, which use Sebastian)]]></BodyHtml>
+      <CreatedAt>2014-01-27T06:39:12.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>RogerLae</ReportedBy>
+  <ReportedAt>2014-01-12T16:17:38.0000000+00:00</ReportedAt>
+</CodeplexIssue>

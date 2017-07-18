@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>18922</Id>
+  <Title>NetOffice 1.5.1.2 "Doesn't contain any public member..."</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[XP, VS 2010, Excel 2003, VB.NET
+
+"Namespace or type specified in the Imports 'NetOffice.ExcelApi' doesn't contain any public member or cannot be found. Make sure the namespace or the type is defined and contains at least one public member. Make sure the imported element name doesn't use
+ any aliases."
+
+"Namespace or type specified in the Imports 'NetOffice.ExcelApi.Enums' doesn't contain any public member or cannot be found. Make sure the namespace or the type is defined and contains at least one public member. Make sure the imported element name doesn't
+ use any aliases."
+
+So this is the actual problem. Before I had switched to a new computer without testing so I wasn't sure exactly what was going on.
+
+Let me know if you need more information. Thanks!]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[holy.... WTF? 
+
+can you attach a minimal project with these problem to the isssue? 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-11-14T23:24:15.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Jon49</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Just as an update. When I updated my projects that weren't setup as an automation add-in they worked just fine (of course, I needed to change .Address to .get_Address). But it is the automation project that had problems (as described above).
+
+
+Typically the problem is that you don't have the reference set but you do have a project set toImports 'NamespaceSo all you should need to do is set a reference to that project. Of course, in my case the reference was already set and not working.
+
+
+When I set up a new automation add-in project, the problem with the old automation add-in went away. So I'm thinking maybe it is some setting somewhere for registration of the dll? But now my original automation add-in won't hook up to Excel anymore since it:
+
+
+Load behavior: Not loaded. A runtime error occurred during the loading of the COM add-in.
+
+
+I'll work on getting that minimal project to you to take a look at, if I can replicate the problem.]]></BodyHtml>
+      <CreatedAt>2012-11-28T14:42:17.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Jon49</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[It appears that it is an issue related to the registration of the COM add-in, since my test project is working great with the same start up code.]]></BodyHtml>
+      <CreatedAt>2012-11-28T18:34:43.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Jon49</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Not sure what the core issue was. But I think not all the projects had been changed to the new version. Also, it showed one of the NetOffice dlls was showing that it was being used. So, I did a restart of the computer and then it worked.
+
+
+I had another issue where the Excel wouldn't recognize my add-in any more (like it was thinking some other project was my dll). I finally just created a new project and imported all my old data.]]></BodyHtml>
+      <CreatedAt>2012-11-29T23:40:10.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Jon49</ReportedBy>
+  <ReportedAt>2012-11-14T15:58:28.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21090</Id>
+  <Title>Detect NetOffice assembly OfficeApi. Type:SEHException Message:外部组件发生异常。</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=4ce962cc9e5644e3:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1
+IFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=1208423a019d3443:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1
+IFactoryInfo:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1
+Attribute:System.Diagnostics.DebuggableAttribute
+Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute
+Attribute:System.Reflection.AssemblyTitleAttribute
+Attribute:System.Reflection.AssemblyDescriptionAttribute
+Attribute:System.Reflection.AssemblyConfigurationAttribute
+Attribute:System.Reflection.AssemblyCompanyAttribute
+Attribute:System.Reflection.AssemblyProductAttribute
+Attribute:System.Reflection.AssemblyCopyrightAttribute
+Attribute:System.Reflection.AssemblyTrademarkAttribute
+Attribute:System.Reflection.AssemblyFileVersionAttribute
+NetOffice.Factory.Initialize() passed
+NetOffice.Factory.Initialize() DeepLevel:True
+Failed to resolve Assembly
+Try to resolve Assembly
+Failed to resolve Assembly
+Failed to resolve Assembly
+Failed to resolve Assembly
+Failed to resolve Assembly
+Failed to resolve Assembly
+Detect NetOffice assembly OfficeApi.
+Type:SEHException
+Message:外部组件发生异常。
+Target:System.RuntimeMethodHandle ResolveMethod(Int32, System.RuntimeTypeHandle*, Int32, System.RuntimeTypeHandle*, Int32)
+Stack: 在 System.ModuleHandle.ResolveMethod(Int32 methodToken, RuntimeTypeHandle* typeInstArgs, Int32 typeInstCount, RuntimeTypeHandle* methodInstArgs, Int32 methodInstCount)
+在 System.ModuleHandle.ResolveMethodHandle(Int32 methodToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+在 System.ModuleHandle.ResolveMethodHandle(Int32 methodToken)
+在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, Module decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable,
+ Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, RuntimeMethodHandle& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+在 System.Reflection.CustomAttribute.GetCustomAttributes(Module decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes)
+在 System.Reflection.CustomAttribute.GetCustomAttributes(Assembly assembly, RuntimeType caType)
+在 System.Reflection.Assembly.GetCustomAttributes(Boolean inherit)
+在 NetOffice.Factory.AddAssembly(String name, Assembly itemAssembly)
+在 NetOffice.Factory.AddNetOfficeAssemblies(Boolean deepLevel)
+在 NetOffice.Factory.Initialize()]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i need more details or a sample solution to pin point the problem.please send a sample solution to public.sebastian[at]web.de. (please include the NO assemblies)*sebastian]]></BodyHtml>
+      <CreatedAt>2014-06-20T04:51:41.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>cgh_chen</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Sorry for not write the reason late. 
+
+BUG is Not For NetOffice. I start a new trhead to monitor a variable which hold the COMObjects of Word, So that I can Dipose them when timeout.
+
+
+I start the thread in DoConnection as: 
+
+private bool DoConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst) { if (_wordApplication != null) return true; try { AssemblyResolver.Register(); //NetOffice.Factory.ProxyCountChanged += new NetOffice.Factory.ProxyCountChangedHandler(Factory_ProxyCountChanged);
+ //StartMonitor();
+<pre><code>            System.AppDomain domain = AppDomain.CurrentDomain;                log4n.Info(domain.BaseDirectory);                Step("Startup OK...");                Step("OnConnection 0" + Application);                _wordApplication = new WordAPI.Application(null, Application);                Step("OnConnection 1");                _commandBars = _wordApplication.CommandBars;
+</code></pre>
+This code runs OK in WIN7, BUT in XP raise SEHException.]]></BodyHtml>
+      <CreatedAt>2014-06-21T00:49:14.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>cgh_chen</ReportedBy>
+  <ReportedAt>2014-06-19T03:10:08.0000000+00:00</ReportedAt>
+</CodeplexIssue>

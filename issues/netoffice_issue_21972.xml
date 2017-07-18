@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21972</Id>
+  <Title>Unable to get attachment filename</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi All,
+
+I encountered an exception while trying to get attachment filenames for an email in Outlook 2013 and wondering if anybody encountered this before?
+
+The exception shows:
+at NetOffice.Invoker.PropertyGet(COMObject comObject, ...)
+at NetOffice.OutlookApi.Attachment.get_Filename()
+
+This problem only happen with specific emails and not all.
+And it seems to be email in RichText format with embedded attachments.
+I tried to simulate this problem but did not encounter any problem on my own machine.
+
+Anybody else ever encounter this problem?
+
+The code snippet is as follow:
+
+Outlook.Attachments olAttachments = _MailItem.Attachments;
+<pre><code>                int iTotalAtts = 0;
+                string AttachmentFolder = string.Empty;
+                if (olAttachments != null)
+                {
+                    iTotalAtts = olAttachments.Count;
+                    if (iTotalAtts > 0)
+                    {
+                        AttachmentFolder = _slMailObj.tmp_folder + Path.DirectorySeparatorChar + _slMailObj.mail_id + Path.DirectorySeparatorChar;
+                        Directory.CreateDirectory(AttachmentFolder);
+                    }
+
+                    int nCount = 1;
+                    foreach (Outlook.Attachment att in olAttachments)
+                    {
+                        string tmpAttachFile = AttachmentFolder + nCount.ToString("000") + "_" + att.FileName;
+                        tmpAttachFile = wsFile.GetUniqueFileName(tmpAttachFile);
+                        att.SaveAsFile(tmpAttachFile);
+                        nCount++;
+                    }
+                }
+</code></pre>
+Thanks.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>long1000</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Anybody has any idea? 
+
+Fyi, if I fwd this email to another user and then, try the same code, it works.So this probably point to some formatting problem since once forwarded something in the email changed.]]></BodyHtml>
+      <CreatedAt>2015-08-19T05:19:15.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[so the problem occurs with mails in RTF format and only in OL 2013 on the customer system?i need some more details to reproduce the issue. (any exception log would be helpful)
+
+
+1) the operating system?2) solution is an addin?3) outlook is running with elevated rights?
+
+
+My current idea is the content is blocked due security reasons. the content is accsessible for users without hurdles?(no unblock dialogs or something like this)
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2015-08-26T16:49:34.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>long1000</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi,The user is running Office 2010 32 bits.1. The OS is Win7 64 bits.2. Yes, it is an addin. Actually, I have 1 single addin for all 4 apps (Word, Excel, Ppt and Outlook).3. Not sure.
+
+
+There's no unblock dialog or something like that.And it is not all emails. So far, I only notice those that have problems are RTF format. Other emails in html or text format do not have problem getting the attachments.When I tried to create the problem by creating
+ RTF emails with attachments on my laptop,there's no problem.So I'm not able to repeat the problem and I cannot install dev tools on the user's pc either. -_-
+
+
+Any suggestions?Thanks.]]></BodyHtml>
+      <CreatedAt>2015-08-27T03:14:39.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>long1000</ReportedBy>
+  <ReportedAt>2015-08-12T00:18:25.0000000+00:00</ReportedAt>
+</CodeplexIssue>

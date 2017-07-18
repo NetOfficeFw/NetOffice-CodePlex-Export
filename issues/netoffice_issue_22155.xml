@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>22155</Id>
+  <Title>Class not exists: NetOffice.OfficeApi.Document</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[We are currently using NetOffice for our Microsoft Outlook AddIn.
+application.ActiveInspector().WordEditor currently returns null value for Outlook 2010 and throws next exception for Outlook 2013:
+Class not exists: NetOffice.OfficeApi.Document at NetOffice.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy) at NetOffice.OutlookApi._Inspector.get_WordEditor()
+
+According to Microsoft <a href="https://msdn.microsoft.com/en-us/library/office/ff868196.aspx" rel="nofollow">
+documentation</a> WordEditor should return Microsoft Word Document Object Model of the message being displayed.
+Seams that NetOffice.Factory.CreateObjectFromComProxy method is trying to create object with wrong class name. It should create NetOffice.WordApi.Document instead of NetOffice.OfficeApi.Document.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>pasielsky</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I'm experimenting something similar when I try to get this property: 
+
+WorkbookConnection.OLEDBConnection.ADOConnection 
+
+Even if other OLEDBConnection properties are filled, this one (ADOConnection) throw an exception:System.ArgumentException: Class not exists: NetOffice.ExcelApi.Connection à NetOffice.Core.CreateObjectFromComProxy(IFactoryInfo factoryInfo, COMObject caller,
+ Object comProxy, Type comProxyType, String className, String fullClassName) à NetOffice....
+
+
+Did you solve your issue ? How?thx]]></BodyHtml>
+      <CreatedAt>2016-05-20T13:52:33.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>werder13</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi, 
+
+I've solved the issue. Used reflection for it. Please take a look on code snippet below:
+
+
+<code>Word.Document document = null;object[] args = null;object comProxy = null;Outlook._Inspector inspector = application.ActiveInspector();
+
+
+// _Inspector class property WordEditor throws "Class not exists: NetOffice.OfficeApi.Document" exceptioncomProxy = NetOffice.Invoker.PropertyGet((NetOffice.COMObject)inspector, "WordEditor", args);if (comProxy != null){ args = new object[]
+ { inspector, comProxy, comProxy.GetType() }; document = Activator.CreateInstance(typeof(Word.Document), args) as Word.Document;}</code>]]></BodyHtml>
+      <CreatedAt>2016-05-25T11:34:27.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Have you include all netoffice word assemblies as well ?I need to to know the missing class id from the NetOffice exception.
+
+
+Let me explain about NetOffice.OfficeApi.Document and NetOffice.WordApi.Document.NetOffice try to detect NetOffice.WordApi.Document as first. Unfortunately the MS Word developer team break the basic COM rules and some types are multiple defined in word and
+ and the common office core with the same id. This is not allowed in the COM standard! i dont know why - but thats happen.NetOffice try to level this with looking for the application first and for the office main core after them.At the end you got a confusing
+ exception about NetOffice.OfficeApi.Document - i'm sorry.As i implement that in year of 2010 - i dont realize this is may a problem for anyone.]]></BodyHtml>
+      <CreatedAt>2016-05-26T20:36:01.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>werder13</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[<blockquote>Have you include all netoffice word assemblies as well ?Yes, I've included WordApi.dll
+</blockquote>]]></BodyHtml>
+      <CreatedAt>2016-05-27T19:26:40.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i need to know the missing class/interface id to pin point the problem.The class/interface id is given in the NetOffice exceptíon.(in other words i need to know which type NetOffice failed to resolve)
+
+
+Please help me in this one and i do what i can.]]></BodyHtml>
+      <CreatedAt>2016-05-28T03:07:53.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>werder13</ReportedBy>
+  <ReportedAt>2016-02-02T08:54:09.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>19950</Id>
+  <Title>Can't install it on windows 8</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I made a setup project(vs2010,office2007) and build the setup file on windows 7.
+It's no problem to install it on windows 7. But when I installed it on windows 8.
+There is no com addin appeared in office addin list.
+The ribbon is also not displayed.
+I also changed x86 of the setup project to x64. It's the same result.
+Does any who met this problem? How did you settled it?
+
+By the way, I am using netoffice 3.5(.net framework).]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>dujunsheng</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[The function ComRegisterFunctionAttribute: RegisterFunction wasn't executed.]]></BodyHtml>
+      <CreatedAt>2013-07-09T08:53:40.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>dujunsheng</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[setup]]></BodyHtml>
+      <CreatedAt>2013-07-10T07:29:11.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[msi doesnt call the register/unregister methods. never!you have to set the reg keys in the setup project.see the deployment sample in the download section.]]></BodyHtml>
+      <CreatedAt>2013-07-10T23:38:25.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>RGR</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Maybe this helps?<a href="http://support.microsoft.com/kb/2792179" rel="nofollow">http://support.microsoft.com/kb/2792179</a>]]></BodyHtml>
+      <CreatedAt>2013-09-13T09:11:05.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>dujunsheng</ReportedBy>
+  <ReportedAt>2013-07-09T04:48:04.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>18708</Id>
+  <Title>InvalidCastException thrown when accessing Outlook Gender Property</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Problem: NetOffice v1.4.1 throws an InvalidCastException when trying to get the values of NetOffice.OutlookApi.ContactItem.Gender because the Gender property tries to cast an Int16 value to OlGender enum which defaults to Int32. The above problem surfaced
+ when Outlook2003 was used.
+ 
+Solution: Change the declaration of OlGender 
+from: public enum OlGender
+to: public enum OlGender : short]]></DescriptionHtml>
+  <Status>Closed</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[my tests with NetOffice 1.5.1.2 [RC] works fine. 
+please try latest release (older releases performs a hard cast, newer versions use Convert.To...)]]></BodyHtml>
+      <CreatedAt>2012-09-27T09:19:44.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>lopper</ReportedBy>
+  <ReportedAt>2012-09-27T03:34:02.0000000+00:00</ReportedAt>
+  <ClosedAt>2012-10-27T23:10:46.0000000+02:00</ClosedAt>
+</CodeplexIssue>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21861</Id>
+  <Title>Debugging in Visual Studio 2010</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I writing an Addin using Visual Studio 2010 Professional. When trying to debug, I get an error message that it is a library and that it cannot be started directly.
+
+
+How do I debug the Addin? It worked when I used to do it with Office Interop in Visual Studio project but with NetOffice, I can't debug. Please help.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hey men 
+
+in Visual Studio 2010:
+<ul>
+<li>go to project {MyProject} Properties in menu on top- go to the tab "Debugging"- hit the radioBox "Start external program"- select your target office application from local filesystem(may Excel.exe, Word.exe, whatever...)
+</li></ul>
+now start debugging and vs start the office application. your addin want loaded and you can debug your code, incl. breakpoints, whatever.
+
+
+*happy debugging Sebastian]]></BodyHtml>
+      <CreatedAt>2015-05-18T21:34:11.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Danzy83</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Thanks Sebastian. Excel now loads when I give the debug command but breakpoints are not hit wherever I set them. Any workarounds? I'm using Visual Studio 2010 Professional.]]></BodyHtml>
+      <CreatedAt>2015-05-18T22:44:29.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hey men 
+
+let me know your .net framework version and profile. (this means your target .net framework version in your assembly)
+
+
+in some cases, vs2010 is not ready to use the debugger in depricated .net framework versions. (in fact: we can fix this to put an *.exe.config hand in the local directory to the .exe file, also for [officeApp}.exe)
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2015-05-18T23:55:56.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Danzy83</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi Sebastian, 
+
+my assembly targets the .Net Framework 2.0. I don't know if vs2010 deprecates that.]]></BodyHtml>
+      <CreatedAt>2015-05-19T09:39:41.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Danzy83</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi Sebastian, 
+
+I opened the project with vs2008 professional on another machine and during debugging, breakpoints were hit.
+
+
+The problem now is that during project creation with the Developer Toolbox, under Environment, VS2010, VS2012, and vs2013 are shown as the tools to that can be used.
+
+
+If there is a way or version that supports vs2008, I would love to use that. Currently I use the latest version (1.7.3).]]></BodyHtml>
+      <CreatedAt>2015-05-19T10:02:56.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[VS2010 can't handle the remote debugger in .Net 2 as well per default.The trick is to create an .exe.config file in the same directory as the office application.(For example: Excel.exe.config for MS-Excel)
+
+
+put this content on it: 
+
+
+
+Now VS2010 is using the remoter debugger from .NET 2 
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2015-05-19T14:46:01.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Danzy83</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi, 
+
+I'm now using vs2008 to manually create the project rather than using Developer Toolbox. Works great and tabs show in Excel application. Breakpoints are also hit. If there are no flaws, I will stick to vs2008.
+
+
+I will follow your directives on the configuration to make it work in vs2010. 
+
+Thanks for your support. You are great!]]></BodyHtml>
+      <CreatedAt>2015-05-19T15:31:34.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Danzy83</ReportedBy>
+  <ReportedAt>2015-05-17T20:56:15.0000000+00:00</ReportedAt>
+</CodeplexIssue>

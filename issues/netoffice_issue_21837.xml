@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21837</Id>
+  <Title>Cannot get HWND of a PowerPoint SlideShow window</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi,
+
+I migrated my WPF app from PIA v14 to NetOffice. I have problem with getting HWND (window handle) from PowerPoint. It was working on PIA v14, but when I try to access to
+<strong>ppPresentation.SlideShowWindow.HWND</strong> property (ppPresentation is my PowerPoint presentation opened as SlideShow) with NetOffice, exception
+<strong>"Member not found. (Exception from HRESULT: 0x80020003 (DISP_E_MEMBERNOTFOUND))"</strong> is thrown. How I can get handle to SlideShow window using NetOffice? Other functiomns works ok.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[NetOffice use the IDispatch interface instead of the VTable interface. I have no idea why but PPoint won't give handles through the IDispatch interface.
+
+
+I suggest you to create a small bybass like this extension:
+<pre><code>static class MyExtensions    {        public static int WindowHandle(this SlideShowWindow window)        {            VSlideShowWindow wnd = window.UnderlyingObject as VSlideShowWindow;            return wnd.HWND;        }
+
+    [Guid("91493453-5A91-11CF-8700-00AA0060263B"), TypeLibType(4288), ComImport]        public interface VSlideShowWindow        {            [DispId(2010), TypeLibFunc(1)]            int HWND { get; }        }    }</code></pre>]]></BodyHtml>
+      <CreatedAt>2015-05-05T17:57:05.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>DominikPalo</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Thanks, 
+
+but: 
+
+1) Visual Studio doesn't allow to use TypeLibFunc attribute on property (it shows:
+<em>Error 2 Attribute 'TypeLibFunc' is not valid on this declaration type. It is only valid on 'method' declarations.</em>)
+
+
+2) If I tried to use this extension method without TypeLibFunc(1) on HWND attribute, it returns incorrect HWND (for example: real HWND of my SlideShow window is 918404, but your extension method WindowHandle returns 97410748)]]></BodyHtml>
+      <CreatedAt>2015-05-06T09:50:39.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[ooops, my bad. here it is again
+<pre><code>    [Guid("91493453-5A91-11CF-8700-00AA0060263B"), TypeLibType(4288), ComImport]        public interface VSlideShowWindow        {            int HWND             {                [DispId(2010), TypeLibFunc(1)]                [MethodImpl(4096)]                get;            }        }</code></pre>]]></BodyHtml>
+      <CreatedAt>2015-05-06T10:56:50.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[once again :( [Guid("91493453-5A91-11CF-8700-00AA0060263B"), TypeLibType(4288), ComImport] public interface VSlideShowWindow { [DispId(2010)] int HWND { [DispId(2010), TypeLibFunc(1)] [MethodImpl(4096)] get; } }]]></BodyHtml>
+      <CreatedAt>2015-05-06T10:58:03.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>DominikPalo</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Thanks, 
+
+but I still get incorrect HWNDs (WindowHandle() returns very big numbers, which are not associated with any window in system)]]></BodyHtml>
+      <CreatedAt>2015-05-06T13:42:54.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>DominikPalo</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I created this workaround: 
+
+```private IntPtr GetSlideShowWindowHandle(string fileName){ Process[] ppProcesses = Process.GetProcessesByName("POWERPNT");
+<pre><code>var ppSlideShowProcess = ppProcesses.FirstOrDefault((p) => {         return p.MainWindowHandle != IntPtr.Zero && p.MainWindowTitle.Contains("[" + fileName);     });
+
+return ppSlideShowProcess == null ? IntPtr.Zero : ppSlideShowProcess.MainWindowHandle;}```
+</code></pre>
+which searches for correct window handle by comparing titles of all opened windows owned by PowerPoint with string "[MyPresentationFileName" - every SlideShow window contains [MyPresentationFile] or [MyPresentationFileName.extension] in title.
+
+
+But I think it would be more reliable to use SlideShowWindow.HWND property (which works without problems with PIA and returns correct HWND)]]></BodyHtml>
+      <CreatedAt>2015-05-06T14:02:00.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[the extension imitate the behavior of the "normal" interop assemblies 1:1(PIA is a custom set of interop assemblies, may MS create a special workaround here)
+
+
+It looks like you want the main window handle of the ppoint application. are you sure its the same as your slideshow window handle?(i think its not because the slideshow use its own [child] window) (get the ppoint application main handle is easy trough the
+ netoffice powerpoint application utils)]]></BodyHtml>
+      <CreatedAt>2015-05-06T14:25:51.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>DominikPalo</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[No, I want the SlideShow window handle (which is as you mentioned child window of the main powerpoint window). But with PIA libraries I got correct handle from SlideShowWindow.HWND all time (also with my workaround I got correct handle - it uses name of
+ a presentation file in [] brackets to find correct SlideShow window - main PowerPoint window or window with presentation opened in edit mode don't contain these [] brackets around teh file name, so these windows are ignored). But with your workaround/extension
+ method, returned handlers are incorrect, it contains probably random numbers that doen't correspond with any window.]]></BodyHtml>
+      <CreatedAt>2015-05-06T15:49:28.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>chripo</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[can confirm Sebastian's workaround does not work. it returns different handles when running multiple times on the same slide show window.]]></BodyHtml>
+      <CreatedAt>2015-09-29T11:56:02.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>DominikPalo</ReportedBy>
+  <ReportedAt>2015-05-05T08:31:49.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>22317</Id>
+  <Title>Wrong calculation of offset after cells are merged</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi Sebastian, 
+
+Please take a look at attached screens to clarify. 
+I try to merge 2 cells making a loop for say 60 rows and 4 columns. I always start from my reference cell (say "B5") and make a step (each time 2 rows) to receive new starting cell (say "B7", "B9" and so on) for next merge operation
+ (say "B5:B6", "B7:B8" and so on). Unfortunatelly calculated cell starting address is wrong ("B8" instead of "B7").
+
+
+What am I missing here?]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[You may face a bad trap here and work against the wrong indexer.
+(Dont use the underline "_" at the end please.)
+
+Please try 
+
+var test = workSheet.get_Range("B5").get_Offset(2, 0).Address;
+
+(This is a Visual Basic syntax problem - not easy to explain...)
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2017-01-09T08:02:26.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>yarecky</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Sebastian,
+
+You've already explained me by the way of my another problem about VB syntax. This is not a problem here.
+For you information: resize_ and offset_ are my extension methods:
+<pre><code><Extension()>
+Public Function Resize_(rng As NetOfficeExcel.Range, y As Integer, x As Integer) As NetOfficeExcel.Range
+  Return rng.get_Resize(y, x)
+End Function
+
+<Extension()>
+Public Function Offset_(rng As NetOfficeExcel.Range, y As Integer, x As Integer) As NetOfficeExcel.Range
+  Return rng.get_Offset(y, x)
+End Function</code></pre>
+get_Resize and get_Offset are not in intelisense so I made my own. 
+Anyway problem is: if you iterate through cells like me (parameter 'y') in column 'B' and during this operation merging is done also on column 'B', address of cells are wrongly calculated. But if I iterate through cells in column 'A' and then make offset by
+ 1 column to the 'B' and then merge 'B' all is ok.
+
+See below example (the only difference is value x in get_offset (1 vs 0), method 1 merges cells 1 column to the right, method 2 merges the column:
+<pre><code>Console.WriteLine("Method 1")
+Console.WriteLine("------------------------------------------------")
+For y = 0 To 39 Step 2
+    Dim rng As Excel.Range = .Range("B5").get_Offset(y, 1).get_Resize(2, 1)
+    rng.Merge()
+    Console.WriteLine("Row: {0}, Address: {1}", y, rng.Address)
+Next
+Console.WriteLine("------------------------------------------------")
+Console.WriteLine()
+
+Console.WriteLine("Method 2")
+Console.WriteLine("------------------------------------------------")
+For y = 0 To 39 Step 2
+    Dim rng As Excel.Range = .Range("B5").get_Offset(y, 0).get_Resize(2, 1)
+    rng.Merge()
+    Console.WriteLine("Row: {0}, Address: {1}", y, rng.Address)
+Next
+Console.WriteLine("------------------------------------------------")</code></pre>
+Results:
+<pre><code>Method 1
+------------------------------------------------
+Row: 0, Address: $C$5:$C$6
+Row: 2, Address: $C$7:$C$8
+Row: 4, Address: $C$9:$C$10
+Row: 6, Address: $C$11:$C$12
+...
+Row: 38, Address: $C$43:$C$44
+------------------------------------------------
+
+Method 2
+------------------------------------------------
+Row: 0, Address: $B$5:$B$6
+Row: 2, Address: $B$8:$B$9 <======= from here wrong range!
+Row: 4, Address: $B$10:$B$11
+Row: 6, Address: $B$12:$B$13
+...
+Row: 38, Address: $B$44:$B$45
+------------------------------------------------</code></pre>
+Another sample:
+<pre><code>Console.WriteLine(.get_Range("B50").get_Offset(2, 0).Address) ' <= should be $B$52 => OK
+  .get_Range("B50").get_Offset(0, 0).get_Resize(2, 1).Merge() '<= we merge $B$50:$B$51
+Console.WriteLine(.get_Range("B50").get_Offset(2, 0).Address) ' <= should be $B$52 => NOK ($B$53)
+  .get_Range("B50").get_Offset(2, 0).get_Resize(2, 1).Merge() '<= we merge $B$52:$B$53
+Console.WriteLine(.get_Range("B50").get_Offset(4, 0).Address) ' <= should be $B$54 => NOK ($B$55)
+
+and so on...</code></pre>
+And output:
+<pre><code>$B$52
+$B$53
+$B$55</code></pre>
+The same like above but more clearer...
+<pre><code>Console.WriteLine(.get_Range("B50").get_Offset(0, 0).Address) ' <= should be $B$50 => OK
+  .get_Range("B50").get_Offset(0, 0).get_Resize(2, 1).Merge() '<= we merge $B$50:$B$51
+Console.WriteLine(.get_Range("B50").get_Offset(0, 0).Address) ' <= should be $B$50 => OK
+
+Console.WriteLine(.get_Range("B50").get_Offset(2, 0).Address) ' <= should be $B$52 => NOK ($B$53)
+  .get_Range("B50").get_Offset(2, 0).get_Resize(2, 1).Merge() '<= we want to merge $B$52:$B$53
+Console.WriteLine(.get_Range("B50").get_Offset(2, 0).Address) ' <= should be $B$52 => NOK ($B$53)</code></pre>
+Result:
+<pre><code>$B$50
+$B$50
+$B$53
+$B$53</code></pre>]]></BodyHtml>
+      <CreatedAt>2017-01-09T15:18:00.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>yarecky</ReportedBy>
+  <ReportedAt>2017-01-06T15:28:40.0000000+00:00</ReportedAt>
+</CodeplexIssue>

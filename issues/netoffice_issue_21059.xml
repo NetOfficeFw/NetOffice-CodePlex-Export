@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21059</Id>
+  <Title>Com Exception when set cell values</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi all
+
+Following code (Example 1) work fine on Excel 2010/2013 x86, windows x64 but don't work on Excel 2010/2013 x86, windows x32:
+<pre><code>public void RunExample()
+        {
+            // start excel and turn off msg boxes
+            Excel.Application excelApplication = new Excel.Application();
+            excelApplication.DisplayAlerts = false;
+
+            // add a new workbook
+            Excel.Workbook workBook = excelApplication.Workbooks.Add();
+            Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];
+
+            // draw back color and perform the BorderAround method
+            workSheet.Range("$B2:$B5").Interior.Color = ToDouble(Color.DarkGreen);
+            workSheet.Range("$B2:$B5").BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlMedium, XlColorIndex.xlColorIndexAutomatic);
+
+            // draw back color and border the range explicitly
+            workSheet.Range("$D2:$D5").Interior.Color = ToDouble(Color.DarkGreen);
+            workSheet.Range("$D2:$D5").Borders[XlBordersIndex.xlInsideHorizontal].LineStyle = XlLineStyle.xlDouble;
+            workSheet.Range("$D2:$D5").Borders[XlBordersIndex.xlInsideHorizontal].Weight = 4;
+            workSheet.Range("$D2:$D5").Borders[XlBordersIndex.xlInsideHorizontal].Color = ToDouble(Color.Black);
+
+            workSheet.Cells[1, 1].Value = "We have 2 simple shapes created.";
+
+            decimal d1=(decimal) 1.0099;
+            decimal d2 = (decimal)10001;
+
+            try
+            {
+           // Error here:
+                workSheet.Cells[10, 2].Formula = string.Format("={0}*{1}", d1, d2);
+            }
+            catch (Exception e)
+            {
+                
+                throw;
+            }
+            
+
+            // save the book 
+            string fileExtension = GetDefaultExtension(excelApplication);
+            string workbookFile = string.Format("{0}\\Example01{1}", _hostApplication.RootDirectory, fileExtension);
+            workBook.SaveAs(workbookFile);
+
+            // close excel and dispose reference
+            excelApplication.Quit();
+            excelApplication.Dispose();
+
+            // show dialog for the user(you!)
+            _hostApplication.ShowFinishDialog(null, workbookFile);
+        }</code></pre>
+StackTrace = " at NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\r\n at NetOffice.ExcelApi.Range.set_Formula(Object value)\r\n at ExcelExamplesCS4.Example01.RunExample() in c:\Users\thangtx\Desktop\netoffice-106580\Examples\E...]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>thangtx</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Any update on this issue? I have alot of problem when run project on Windows 7, Windows 8 x86.
+
+
+Regards]]></BodyHtml>
+      <CreatedAt>2014-06-20T19:03:01.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>thangtx</ReportedBy>
+  <ReportedAt>2014-06-06T15:21:17.0000000+00:00</ReportedAt>
+</CodeplexIssue>

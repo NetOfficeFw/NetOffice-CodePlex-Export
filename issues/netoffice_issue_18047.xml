@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>18047</Id>
+  <Title>Error when trying to get Excel.Selection.Name.Name</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[If I name cell A1, "MyCell", and select that cell, then in VBA I can do the following:
+ 
+Debug.Print Application.Selection.Name & " ... " & Application.Selection.Name.Name
+ 
+=Sheet1!$A$1 ... MyCell
+ 
+I can't seem to make this work from within NetOffice. Instead I get the following:
+ 
+Debug.Print Application.Selection.Name.ToString
+ 
+NetOffice.ExcelApi.Name
+ 
+ 
+Am I stuck? Is there some other way to get the cell name of the currently selected cell via NetOffice?
+ 
+Thanks,
+Mike]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Medium</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[as hotfix: 
+change: Application.Selection.Name.Name 
+to: Application.Selection.Name.get_Name() 
+
+i fix the issue tomorrow 
+*sorry 
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-05-12T15:42:58.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[an updated 1.5 release is available.]]></BodyHtml>
+      <CreatedAt>2012-05-14T03:00:47.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>mwolfe02</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Wow...impressive response time. I downloaded the new release and it seems to be working. Thanks!]]></BodyHtml>
+      <CreatedAt>2012-05-14T18:52:55.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>mwolfe02</ReportedBy>
+  <ReportedAt>2012-05-11T19:07:44.0000000+00:00</ReportedAt>
+</CodeplexIssue>

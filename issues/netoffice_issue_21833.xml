@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21833</Id>
+  <Title>Regarding office version</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi Team,
+
+I am using office power point interop to merger multiple power point document to single document. Now the issue is all document were created in office 2010 all files are merging properly if the system where it is running has office 2010. If exe runs on system
+ having office 2013 then extra spaces get added to the slide. I amslo tried to setup page size but still he spaces get added. I googled on it and found that it is due to new slide size added to office 2013 which is wide screen 16:9.
+
+
+My question is if I use NetOffice then can I mention which version of office to use? As we know that interop internally decides which version of component to use. It always prefer latest version.
+
+
+Please answer me ASAP, any help will be appreciated. 
+
+Thanks,
+Indresh]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[you can use a version specific progid to create an application instance in target version (must be installed of course). This is possible trough the interop assemblies and NetOffice. In NetOffice its a bit easier trough the application ctor like new PowerPoint.Application("PowerPoint.Application.14").
+
+
+next time please use the discussion board. 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2015-05-05T18:18:19.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Indresh1210</ReportedBy>
+  <ReportedAt>2015-05-03T04:59:58.0000000+00:00</ReportedAt>
+</CodeplexIssue>

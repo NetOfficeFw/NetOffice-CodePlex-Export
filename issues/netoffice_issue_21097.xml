@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21097</Id>
+  <Title>3th party mail client hangs when sending mail</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I made an Outlook-addin using NetOffice.
+When I use Word, Excel or AdobeReader to send a mail, I get then SendMail-window from Outlook.
+
+When I press the Send-button, I get my popup from my Outlook-addin as expected, and when I press OK, the mail is send. Then the SendMail-window is closed, and the Notification-Icon in the Notification-Tray says "Outlook is closing", but the Outlook-process
+ is never closed, neither the Notification Icon, and my Word, Excel or AdobeReader is hanging. When Outlook was already running before, is also keeps hanging.
+Eventually, I have to kill my Word, Excel or AdobeReader process.
+
+When I try this on my computer, it works fine (I am Administrator of my machine). My colleague is not Admin, and it also works for him, but for the users in production, it doesn't work. We all have Office 2013, AdobeReader XI and Windows 7.
+
+I think it might be a cleanup issue, and I noticed I never receive the OnBeginShutdown- or OnDisconnection-event.
+Any idea on how to approach this problem?]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments />
+  <ReportedBy>stesme</ReportedBy>
+  <ReportedAt>2014-06-23T11:44:13.0000000+00:00</ReportedAt>
+</CodeplexIssue>

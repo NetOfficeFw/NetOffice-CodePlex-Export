@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21086</Id>
+  <Title>Excel Pivot Table SourceData Range &gt;65536 Crashes</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi Guys.
+
+Running 1.6 and am trying to create a Pivot Table in Excel. I can get it to generate fine as long as the SourceData range does not go over 65536. If I go to 65537 I get:
+<pre><code>{"Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))"}</code></pre>
+If I create the table in Excel manually it works fine. I assume there is a ushort variable limit to blame here? Here is the code that causes the problem (abbreviated to save space):
+<pre><code>var workbook = ExcelApplication.ActiveWorkbook;
+if (workbook == null)
+    return;
+
+var DataWorksheet = (Worksheet)workbook.Worksheets.FirstOrDefault(ws => ((Worksheet)ws).Name == "Data");
+if (DataWorksheet == null)
+    return;
+
+var pivotsheet = workbook.Worksheets.Add() as Worksheet;
+if (pivotsheet == null)
+    return;
+
+// THE EVENTUAL PROBLEM WHEN > 65536    
+var usedrange = DataWorksheet.Range("A1:U65537"); 
+
+//THIS LINE WILL CAUSE THE EXCEPTION WHEN usedrange IS > 65536
+var pivotcache = workbook.PivotCaches().Add(XlPivotTableSourceType.xlDatabase, usedrange);
+
+var pivottables = pivotsheet.PivotTables() as PivotTables;
+
+if (pivottables != null)
+{
+    var pivottable = pivottables.Add(pivotcache, pivotsheet.Range("A1"), "PivotTable1");
+    pivottable.InGridDropZones = false;
+}</code></pre>
+Thanks
+Ernie]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>aesalazar</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Anything? At least a workaround?]]></BodyHtml>
+      <CreatedAt>2014-07-24T21:25:18.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>aesalazar</ReportedBy>
+  <ReportedAt>2014-06-17T14:02:41.0000000+00:00</ReportedAt>
+</CodeplexIssue>

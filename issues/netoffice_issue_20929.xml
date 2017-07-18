@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>20929</Id>
+  <Title>SlideShowWindow.HWND Member not found</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Just thought I'd try your NetOffice dll in place of PIA in my app but get the following exception in PowerPoint 2013 when trying to access:
+<pre><code>Presentation.SlideShowWindow.HWND</code></pre>
+<blockquote>System.Runtime.InteropServices.COMException
+HResult=-2147352573
+Message=Member not found. (Exception from HRESULT: 0x80020003 (DISP_E_MEMBERNOTFOUND))
+ErrorCode=-2147352573
+</blockquote>]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[This is a well-known bug from PowerPoint himself. In fact since PP95, not sure why its not fixed all the time.You can't use the HWND property regardless from any API(PIA, VSTO, NO..)
+
+
+I suggest you find the window handle at hand(FindWindowEx for example) 
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-04-18T04:41:17.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>mcm_ham</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Weird, because it's been working fine for me in PIA v12 & v14 running Office XP to 2013 (sample attached).]]></BodyHtml>
+      <CreatedAt>2014-04-18T06:34:30.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>mcm_ham</ReportedBy>
+  <ReportedAt>2014-04-16T09:12:26.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>20765</Id>
+  <Title>Generate FormRegionStartup interface in OutlookApi</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hey, guys
+
+I am create an outlook add-in by NetOffice. 
+But I don't know how to create a custom form region?
+
+I checked some discussions on Internet, still do not have any solve.
+
+Can anyone give me an example or some codes? 
+Thank you very much.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Issue</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>artnib</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[<a href="http://msdn.microsoft.com/ru-ru/library/cc513845.aspx" rel="nofollow">Chapter 13: Creating Form Regions</a>]]></BodyHtml>
+      <CreatedAt>2014-02-25T16:22:13.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>artnib</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[This is adiscussion topic rather than NetOffice issue.]]></BodyHtml>
+      <CreatedAt>2014-02-25T16:25:39.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>VaaanPan</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[OK, I will move it to discussion section.Thanks again.]]></BodyHtml>
+      <CreatedAt>2014-02-26T00:53:12.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>artnib</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Currently there is no FormRegionStartup interface so it's impossible to implement it in Outlook addins with form regions.<a href="https://netoffice.codeplex.com/discussions/428189" rel="nofollow">https://netoffice.codeplex.com/discussions/428189</a>]]></BodyHtml>
+      <CreatedAt>2014-02-26T16:18:53.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>VaaanPan</ReportedBy>
+  <ReportedAt>2014-02-25T07:46:06.0000000+00:00</ReportedAt>
+</CodeplexIssue>

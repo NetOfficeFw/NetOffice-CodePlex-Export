@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>22149</Id>
+  <Title>Word Document Print Preview</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I'm currently using NetOffice to create a word document and it works beautifully. However, the newDocument.PrintPreview() doesn't actually do anything. I was expecting it to popup a window and show a preview of the page.
+
+PrintOut() works fine though.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments />
+  <ReportedBy>Legolash2o</ReportedBy>
+  <ReportedAt>2016-01-25T08:01:42.0000000+00:00</ReportedAt>
+</CodeplexIssue>

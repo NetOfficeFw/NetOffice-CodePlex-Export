@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21158</Id>
+  <Title>How to Stop Tab Key add new row, Word 2013</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Office 2007 / 2010, I can use key hook, stop the add new row action. 
+Word 2013, key hook do nothing.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>cgh_chen</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Sub NextCell()'' NextCell Macro' Moves to the next table cell'' Selection.MoveRight Unit:=wdCell End Sub
+
+
+combine with KeyBindings override shotcut key]]></BodyHtml>
+      <CreatedAt>2014-07-19T10:49:00.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>cgh_chen</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[BUT I lost the default action when selection is out of tab. :(]]></BodyHtml>
+      <CreatedAt>2014-07-19T14:00:39.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>cgh_chen</ReportedBy>
+  <ReportedAt>2014-07-19T05:36:34.0000000+00:00</ReportedAt>
+</CodeplexIssue>

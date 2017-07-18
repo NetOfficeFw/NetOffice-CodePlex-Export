@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21627</Id>
+  <Title>MergeShapes Should Work for Office 2010</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[When Call the method of ShapeRange.MergeShapes,
+The VSTO works even in Office 2010, and the NetOffice comes error.
+The Microsoft Office don't support this methos in vba of Office 2010, but supported in VSTO for Office 2010. (The online help is in the vba program. )
+Any idea to solve this problem?]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[any error details/exception log? 
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-12-30T10:31:16.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>ye4241</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[@SebastianDotNetUnknown name. (Exception from HRESULT:0x80020006 (DISP_E_UNKNOWNNAME))
+
+
+In code:<code>comObject.InstanceType.InvokeMember(name, BindingFlags.InvokeMethod, null, comObject.UnderlyingObject, paramsArray, Settings.Default.ThreadCulture);</code>
+
+
+The VBA model don't include this method, however the method is supported by VSTO.]]></BodyHtml>
+      <CreatedAt>2014-12-31T01:34:22.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>ye4241</ReportedBy>
+  <ReportedAt>2014-12-30T07:35:09.0000000+00:00</ReportedAt>
+</CodeplexIssue>

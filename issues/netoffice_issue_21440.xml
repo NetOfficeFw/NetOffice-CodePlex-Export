@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21440</Id>
+  <Title>Problem when running in release mode</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[To all,
+
+I have a weird problem ... here is the code:
+...
+<pre><code>public Excel.Application excel = null;
+public Excel.Workbook wb = null;
+        
+private bool _IsReady = false;
+private object missingType = Type.Missing;
+....
+try
+{
+    excel = new Excel.Application();   <--- com+ exception here ...
+    wb = excel.Workbooks.Open(this._finalTestDataFileIn, missingType, true);
+    _IsReady = true;
+
+}
+</code></pre>
+This code with throw an exception :
+
+System.Exception._COMPlusExceptionCode -532462766
+
+But with the same code in debug mode code it works fine without a hicup. This code is in a class library.
+
+
+Any ideas?
+
+psc0425]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[the code is running in debug/release mode on same system? 
+
+i'm wondering about: "System.Exception._COMPlusExceptionCode" 
+
+its looks like for a COM+ environment problem so far....(common here is a dependency or security issue, specialy on Win Vista/7 and higher, because the debug release is started with VS.NET privileges and the release ist started with roaming user privileges)
+
+
+For me: its sounds like a security issue, otherwise you have to help me to reproduce your problem in my test machine to pin point the problem.
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-10-10T21:54:15.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>psc0425</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I tested the code on my development machine ...win8.1 vs2013 ... excel 2013.Not logged into a domaine.
+
+
+What other details is needed?]]></BodyHtml>
+      <CreatedAt>2014-10-10T22:51:32.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[all what i need for to reproduce the problem, specialy about your COM+ environment.please help me to reproduce your scenario as best is possible(in a virtual machine) to pin point the problem.
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-10-11T00:29:44.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>psc0425</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Can you specify? I don't understand what is in a com+ environment. 
+
+thanks]]></BodyHtml>
+      <CreatedAt>2014-10-11T18:28:38.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[no idea about your scenario. its looks like COM+ for me because your exception code:
+
+
+System.Exception.[_COMPlus]ExceptionCode -532462766Do you work remote in a terminal session? (remote desktop or something like this)
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-10-12T07:58:36.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>psc0425</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Nope, just on my developement machine.I have access to a XP machine, and a win 7 pc. I will update when possible.
+
+
+PHIL]]></BodyHtml>
+      <CreatedAt>2014-10-14T17:32:21.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[sry i have to ask again:the code is running in debug/release mode on same system? means: works fine on your developer machine in debug compilation and stops in release settings here?(for me it looks like the code is running on xp and failed on w7, this
+ is very common but different to a debug/release issue) Preliminary: I have to make sure this is a real release compilation issue(no issue here for all the years) Let me know about you op system(version, bit) /office version(version, bit) /NO version and all
+ the things what ist helpfull to reproduce you scenario in a virtual machine. For the moment: im sure this i not a NO debug/release issue.
+
+
+BTW: Google tolds me some people got the same exception(without NO) in a mutli-thread scenario.Please let me know about your scenario, (from IIS, WindowsForms, WindowsService, RPC-Session....)
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-10-16T04:06:34.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>psc0425</ReportedBy>
+  <ReportedAt>2014-10-10T17:14:21.0000000+00:00</ReportedAt>
+</CodeplexIssue>

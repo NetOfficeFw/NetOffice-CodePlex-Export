@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21468</Id>
+  <Title>Use In Powershell</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hello,
+
+I have been trying to use NetOffice from powershell to automate excel.
+
+At most I can open a new spreadsheet but it seems I cannot access any worksheets. I suspect this is because the indexers do not work in powershell. The following code opens the spreadsheet but trying to get a Worksheet object simply delivers a null object.
+<pre><code>add-type -Path .\4.0\ExcelApi.dll
+add-type -Path .\4.0\NetOffice.dll
+add-type -Path .\4.0\OfficeApi.dll
+#add-type -path .\4.0\VBIDEApi.dll
+
+$excel = new-object NetOffice.ExcelApi.Application
+[NetOffice.ExcelApi.Workbook]$wkBk = [NetOffice.ExcelApi.Workbook]$excel.Workbooks.Add()
+$wkbk.GetType()
+$sht = $wkBk.Worksheets[1]
+$sht.GetType()
+$excel.Dispose()
+</code></pre>
+The result is:-
+
+
+IsPublic IsSerial Name BaseType
+<hr>
+True False Workbook NetOffice.ExcelApi._Workbook
+You cannot call a method on a null-valued expression.
+At D:\PowershellScripts\NetOffice\Test-NetOffice4.0.ps1:30 char:1
+<ul>
+<li>$sht.GetType() </li><li>~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : InvalidOperation: (:) [], RuntimeException </li><li>FullyQualifiedErrorId : InvokeMethodOnNull
+</li></ul>
+</li></ul>
+Is there a way of using NetOffice assembies with Powershell?]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments />
+  <ReportedBy>pianoboy</ReportedBy>
+  <ReportedAt>2014-10-20T07:10:06.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>20987</Id>
+  <Title>Excel: TargetInvocationException with larger amount of Range accesses</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi there, we're using Excel 2013 templates and the latest NetOffice 1.7.0 libs in a C# assembly to create reports from data stored in an MS-SQL server database. This works well, unless a certain amount of data is exceeded. My code looks like this:
+
+// exportSheet is a Worksheet instance
+ListObject dataTable = exportSheet.ListObjects["DataTable"];
+Range dataTableBody = dataTable.DataBodyRange;
+...
+// Loop start...
+// recordCount increases with evaluated records from DB
+dataTableBody[recordCount, 1].Value = recordCount; //Exception may occur here...
+dataTableBody[recordCount, 2].Value = meterRecord.Timestamp; //...or here or...
+dataTableBody[recordCount, 3].Value = meterRecord.IntervalValueDiff; //...or here
+...
+// Loop end
+
+When a (non deterministic) amount of data is exceeded, I get a COMException with an inner exception of type System.Reflection.TargetInvocationException in the lines where I try to assign the cell values (see attached file). This happens with more than roughly
+ 500-700 records on my machine - with fewer records, everything is fine.
+
+Any chance to find out, what the source of the problem is? Any hint for a workaround?
+
+Best regards,
+Hans]]></DescriptionHtml>
+  <Status>Closed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>HJPhilippi</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Issue solved - mea maxima culpa... 
+
+In the class that encapsulated access to the Excel instance with a singleton pattern, we have a timer to remove an unused/idle Excel application instance after a certain amount of time. And the code was a little too eager, kicking the instance while some code
+ still working on it. No wonder that this resulted in the described exceptions. :-/Now it's fixed and the issue pointless. Thanks for your great library!
+
+
+Cheers,Hans]]></BodyHtml>
+      <CreatedAt>2014-05-13T17:16:08.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hans find the problem in his own code. 
+
+we are happy to help Hans next time :)
+
+*the NO crew members]]></BodyHtml>
+      <CreatedAt>2014-05-15T01:58:05.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>HJPhilippi</ReportedBy>
+  <ReportedAt>2014-05-13T10:54:23.0000000+00:00</ReportedAt>
+  <ClosedAt>2014-05-14T23:58:05.0000000+02:00</ClosedAt>
+</CodeplexIssue>

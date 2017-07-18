@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21998</Id>
+  <Title>Minor bug in CustomUIAttribute.BuildPath()</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Just noticed what looks like a bug in /Source/NetOffice/Tools/CustomUIAttribute.cs, line 67 in version 1.7.3 in that the line ending:
+
+assemblyNamespace.Substring(resourcePath.Length - 1) };
+
+should, I believe be:
+
+assemblyNamespace.Substring(assemblyNamespace.Length - 1) };
+
+Not an issue for me, or probably most people, but thought it worth mentioning just in case it causes problems for someone.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[absolutely!!! 
+
+thanks for pointing this out!i want fix this very soon and give a comment to your advise.
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2015-09-14T17:28:40.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>gne</ReportedBy>
+  <ReportedAt>2015-09-08T19:48:06.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>19909</Id>
+  <Title>Outlook address book opens in background</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi,
+
+Im using netoffice to open outlook address book with suppressed CC, BCC options, When user click a button on WPF form this address book should open up as a pop up and user can select name from there. It works fine but the address book goes behind the running
+ screen always. basically user has to click the button and click on outlook email cilent on the windows tray to view the address book. Is this a bug in netoffice is there anything i can do to fix this ?
+<pre><code>   //Initializing application object
+            Application application = GetApplicationObject();
+
+            //Holds the outlook recipients object
+            Recipients outlookRecipients = new Recipients();
+
+            if (null != application)
+            {
+                //Initializing SelectNamesDialog from the current session
+                SelectNamesDialog addressBooKDialog = application.Session.GetSelectNamesDialog();
+
+                //Restricts multiple selections
+                addressBooKDialog.AllowMultipleSelection = false;
+
+                //Disabling To, Cc, Bcc lists
+                addressBooKDialog.NumberOfRecipientSelectors = OlRecipientSelectors.olShowNone;
+
+                //Set the global address list as default
+                addressBooKDialog.InitialAddressList = application.Session.GetGlobalAddressList();
+                addressBooKDialog.Display();
+
+                //Get the selected  recipients collection
+                outlookRecipients = addressBooKDialog.Recipients;</code></pre>]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments />
+  <ReportedBy>kurubaran</ReportedBy>
+  <ReportedAt>2013-06-27T08:48:01.0000000+00:00</ReportedAt>
+</CodeplexIssue>

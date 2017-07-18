@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>19683</Id>
+  <Title>Application.GetActiveInstance throws ArgumentException "The object's type must be __ComObject..."</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[see discussion <a href="http://netoffice.codeplex.com/discussions/441304" rel="nofollow">
+http://netoffice.codeplex.com/discussions/441304</a>
+
+On some systems the methods 
+
+Application.GetActiveInstance 
+Application.GetActiveInstances
+
+throw an ArgumentException "The object's type must be __ComObject..." 
+<pre><code>The object's type must be __ComObject or derived from __ComObject.
+Parameter name: o System.ArgumentException System.ArgumentException: The object's type must be __ComObject or derived from __ComObject.
+Parameter name: o
+at System.Runtime.InteropServices.Marshal.ReleaseComObject(Object o)
+at NetOffice.RunningObjectTable.GetActiveProxiesFromROT(String componentName, String className)
+at NetOffice.WordApi.Application.GetActiveInstances() </code></pre>
+The problem may occur with different Office Applications (Word / Access ) and different Plattforms (Windows 7 / Windows 8)
+On one affected machine a com instance of type C4.CCC made this trouble. It seems it is related with ATI graphic cards.
+
+
+Reason:
+
+The objects of the RunningObjectTable are iterated, to compare the component and class name. The reference counter of objects which don't match is decremented by calling:
+<pre><code> Marshal.ReleaseComObject(comInstance);</code></pre>
+see:
+<pre><code>if (componentNameEqual && classNameEqual)
+   {
+                    Marshal.ReleaseComObject(bindInfo);
+                    return comInstance;
+   }
+   else
+   {
+                    componentNameEqual = ((_ballmersPlace + componentName).Equals(component, StringComparison.InvariantCultureIgnoreCase));
+                    if (componentNameEqual && classNameEqual)
+                    {
+                        Marshal.ReleaseComObject(bindInfo);
+                        return comInstance;
+                    }
+                    else
+                        Marshal.ReleaseComObject(comInstance); // <=== Exception thrown here
+    }</code></pre>
+The problem is, that although it is expected to retrieve COM-Instances some are not really COM-Types.
+for which RelaseComObject can be called.
+
+
+Suggested solution:
+
+Checking the type of the COM-Instance before calling ReleaseComObject would solve this issue.
+<pre><code>if (componentNameEqual && classNameEqual)
+                        {
+                            resultList.Add(comInstance);
+                        }
+                        else
+                        {
+                            componentNameEqual = ((_ballmersPlace + componentName).Equals(component, StringComparison.InvariantCultureIgnoreCase));
+                            if (componentNameEqual && classNameEqual)
+                            {
+                                resultList.Add(comInstance);
+                            }
+                            else
+                            {                                
+                                // In some strange scenarios we got an object
+                                // which was not a COM object
+                                if (comInstance.GetType().IsCOMObject)
+                                    Marshal.ReleaseComObject(comInstance);
+                            }
+                        }
+                    }</code></pre>]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Issue</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>brianthiel</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I'm attempting to look at all running instances of Excel and connect to one if it's formatted in the manner that I require. The following code causes the same error as above:
+
+
+foreach (Excel.Application app in Excel.Application.GetActiveInstances())]]></BodyHtml>
+      <CreatedAt>2013-06-20T20:23:23.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i create a new source state this weekend and fix the problem otherweise its easy for you to change this single line in the source code. i have no idea why this problem occurs, any instance from the ROT is a com proxy *scarywhich office version and operations
+ system do you use?Sebastian]]></BodyHtml>
+      <CreatedAt>2013-06-20T21:26:31.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>brianthiel</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I am using C# and Visual Studio 2010, Microsoft Office 2007, and Windows 7 Home Premium. Perhaps there is another way to accomplish what I want to do?
+
+
+My application starts Excel, writes header text to several spreadsheets, then writes data to Excel periodically. If my applications closes and restarts, I want to connect to Excel IF it is my spreadsheet. I want to be able to connect even if there are multiple
+ instances of Excel that are running. As such, I've written the following code:
+<pre><code>        try            {                foreach (Excel.Application app in Excel.Application.GetActiveInstances())                {                    xlApplication = app;                    if (xlApplication.Workbooks.Count >= 1)                    {                        xlWorkbook = xlApplication.Workbooks[1];                        if (xlWorkbook.Worksheets.Count >= 2)                        {                            if ((((Excel.Worksheet)xlWorkbook.Worksheets[1]).Name == "Test Results") &&                                (((Excel.Worksheet)xlWorkbook.Worksheets[2]).Name == "Detailed Test Results"))                            {                                bReturn = true;                                ExistingFile = true;
+
+                            // Activate the first worksheet by default.                                ((Excel.Worksheet)xlApplication.ActiveWorkbook.Sheets[1]).Activate();
+
+                            // Make sure Excel is visible and give the user control of Microsoft Excel's lifetime.                                xlApplication.Visible = true;                                xlApplication.UserControl = true;                                break;                             }                        }                    }
+
+                if (!bReturn)                    {                        CleanupExcelInterop();                    }                }            }            catch (Exception ex)            {                CleanupExcelInterop();                Console.WriteLine("***** Excel Interop Exception " + ((null != ex.InnerException) ? ex.InnerException.Message : ex.Message));            }
+
+        if (!bReturn)            {                CleanupExcelInterop();            }</code></pre>]]></BodyHtml>
+      <CreatedAt>2013-06-20T22:13:27.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>MrKagami13</ReportedBy>
+  <ReportedAt>2013-05-08T11:41:57.0000000+00:00</ReportedAt>
+</CodeplexIssue>

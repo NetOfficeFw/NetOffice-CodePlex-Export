@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>18875</Id>
+  <Title>Excel Range Address Stops Working in NetOffice Release 1.5.1.2</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Update: My computer was doing some funky things. I'll try the new release again tomorrow just to make sure it wasn't something I did.
+
+Windows XP, Excel 2003, VB.NET 2010, .NET 4.0
+
+I switched to the new dlls (NetOffice Release 1.5.1.2) and the address from the range shows only two options.
+
+Address() As String
+Chars(index As Integer) As Char
+
+(I have no idea where the Chars comes from).
+
+This is what I have written and it gives an error with the second parameter (rng is a NetOffice.ExcelAPI.Range):
+
+Dim sAddress As String = rng.Address(True, True)]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[the problem is related to your issue: <a href="http://netoffice.codeplex.com/workitem/18383use" rel="nofollow">
+http://netoffice.codeplex.com/workitem/18383use</a> rng.get_Address(True, True) instead of rng.Address(True,True)the problem occurs only in visual basic because vb is not very intelligent in oop programming.i want a create a special VB version in NetOffice
+ 1.6 to remove this problem once and for all! Sebastian]]></BodyHtml>
+      <CreatedAt>2012-11-08T15:05:46.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Jon49</ReportedBy>
+  <ReportedAt>2012-11-07T18:05:56.0000000+00:00</ReportedAt>
+</CodeplexIssue>

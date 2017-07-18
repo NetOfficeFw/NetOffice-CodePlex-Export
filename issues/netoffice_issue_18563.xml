@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>18563</Id>
+  <Title>MS Project: COM error when hooking up event</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[When I add an event handler to an event in MS Project 2007, I get the following error.
+ 
+A first chance exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll
+System.Runtime.InteropServices.COMException (0x80004005): Error HRESULT E_FAIL has been returned from a call to a COM component.
+at NetOffice.SinkHelper.SetupEventBinding(IConnectionPoint connectPoint)
+at NetOffice.MSProjectApi._EProjectApp2_SinkHelper..ctor(COMObject eventClass, IConnectionPoint connectPoint)
+at NetOffice.MSProjectApi.Application.CreateEventBridge()
+at TestProjevetnbridge.Program.Main(String[] args) in c:\temp\TestProjevetnbridge\Program.cs:line 18
+
+From NetOffice debug console:
+ 
+NetOffice: NetOffice.Factory.Initialize() passed
+A first chance exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll
+NetOffice: Type:COMException
+Message:Error HRESULT E_FAIL has been returned from a call to a COM component.
+Target:Void GetConnectionInterface(System.Guid ByRef)
+Stack: at System.Runtime.InteropServices.ComTypes.IConnectionPoint.GetConnectionInterface(Guid& pIID)
+at NetOffice.SinkHelper.SetupEventBinding(IConnectionPoint connectPoint)
+<h2> </h2>
+ 
+It seemingly goes wrong when creating an event bridge (according to the method name).
+Example code:
+var application = new NetOffice.MSProjectApi.Application();
+application.CreateEventBridge();
+ 
+ 
+I use MS Project 2007, Netoffice 1.5 (tried with 1.4 - same result), .NET framework 3.5.
+Machine is 64-bit but same error if x86 target]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hello, 
+i create an example project and the same exception occurs. it looks like ms-project doesnt support latebind events, means the GetConnectionInterface method. i want create an earlybind way now for ms-project as fast as possible because ms-project doesnt use
+ different event interfaces in different versions (at the moment). i'm realy suprised and do some tests now if the problem occurs also in project 2010 and 2012.
+
+i come back in 4 hours and give more response. 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-09-01T02:42:55.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[update: thanks god for ILSpy, i find a way for ms-project. i have to repeat all tests with the fixed version and upload them tomorroy (if the tests are ok)]]></BodyHtml>
+      <CreatedAt>2012-09-01T03:56:09.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[an update is available for: 
+
+[RC] NetOffice 1.5.1 + Office 2013(Preview) + .NET 4.5 Support 
+
+please gimme response already was okay now. 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-09-01T07:00:46.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Piet123</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Thank you for your fast support! I can image this is not an easy one.. 
+It seems to work quite well already. 
+I did some quick checks and found that the NewProjectEvent event fires well. 
+But it does not seem to reach the event hanlder for ProjectBeforeTaskNewEvent ? 
+
+And also, I do not know if this is something that can be fixed, but the VSTO version of the add-in I'm trying to change to NetOffice - calls Application.Message from some event handlers. This works well in VSTO, but in the NetOffice version, I get a COM exception
+ stating that the function is not available in this situation ('De methode is niet beschikbaar in deze situatie' in dutch). But this is not ctritical for me because I can use Windows.Forms messagebox as an alternative.]]></BodyHtml>
+      <CreatedAt>2012-09-02T21:30:02.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i have no experience with MSProject. do you have code snippets for me?
+<ol>
+<li>call Application.Message </li><li>ProjectBeforeTaskNewEvent must be fired
+</li></ol>
+i test the snippets on my system and see the what happen 
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-09-04T10:37:16.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Piet123</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[See sample plugin code. 
+Two events in this sample do not fire.]]></BodyHtml>
+      <CreatedAt>2012-09-05T10:44:22.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Piet123</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Is there any progress on this? 
+I'd like to use NetOffice instead of VSTO, but it has to work for Project of course.
+
+Please let me know if my sample is not clear or if I can be of any help.]]></BodyHtml>
+      <CreatedAt>2012-09-13T08:19:22.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[oh sorry for the delay, i'm a msproject noob and i try to throw the ProjectBeforeTaskNew event with the following code with the interop assemblies and NetOffice:
+
+
+MSProject.Project proj = app.Projects.Add(); 
+proj.Tasks.Add(); 
+
+but accessing the Tasks property failed (RPC_REJECTED_EXCEPTION) with both API's but now i know how its possible to create a new task at hand and this works fine with the ProjectBeforeTaskNew event i see. the last 1.5.1 RC contains a mistake(the netoffice.dll
+ contains old keytokens for the api assemblies) and these cause problems(damn it) i do an update now and come back again when its done. i have no idea why i cant accessing the task property with NetOffice and also not with the Interop Assemblies but i hope
+ this a normal msproject behavior and fix the keytokes resolve the issue. 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-09-15T14:57:28.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[NetOffice 1.5.1.2 is done and online. please checkout and give me response please.
+
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-09-15T18:06:16.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Piet123</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Sebastian, 
+Unfortunately, I still cannot get the ProjectBeforeTaskChange event to be fired. 
+
+When using VSTO sample, it works fine. You can try a VSTO sample by creating a new Project 2010 Add In named 'SampleProjectAddInVsto' and replace ThisAddIn.cs contents with code snippet below.
+
+
+It should output to the Output window in Visual Studio (and Debug selected in dropdown):
+
+SampleProjectAddInVsto: ThisAddIn_Startup 
+SampleProjectAddInVsto: Application_NewProject 
+SampleProjectAddInVsto: Application_ProjectBeforeTaskNew 
+SampleProjectAddInVsto: Application_ProjectBeforeTaskChange: pjTaskName 
+SampleProjectAddInVsto: Application_ProjectBeforeTaskChange: pjTaskName Task 1 
+
+The latter two message (from Application_ProjectBeforeTaskChange event) do not fire in similar code in NetOffice.
+
+
+
+using System; 
+using System.Collections.Generic; 
+using System.Diagnostics; 
+using System.Linq; 
+using System.Text; 
+using System.Xml.Linq; 
+using Microsoft.Office.Interop.MSProject; 
+using MSProject = Microsoft.Office.Interop.MSProject; 
+using Office = Microsoft.Office.Core; 
+
+namespace SampleProjectAddInVsto 
+{
+<pre><code>public partial class ThisAddIn
+{
+    private void ThisAddIn_Startup(object sender, System.EventArgs e)
+    {
+        System.Diagnostics.Trace.WriteLine("SampleProjectAddInVsto: ThisAddIn_Startup");
+        this.Application.NewProject += Application_NewProject;            
+        this.Application.ProjectBeforeTaskNew += Application_ProjectBeforeTaskNew;            
+        this.Application.ProjectBeforeTaskChange += Application_ProjectBeforeTaskChange;
+    }
+
+    void Application_ProjectBeforeTaskChange(Task tsk, PjField Field, object NewVal, ref bool Cancel)
+    {
+        Trace.WriteLine("SampleProjectAddInVsto: Application_ProjectBeforeTaskChange: " + Field + " " + tsk.Name);
+    }
+
+    void Application_NewProject(MSProject.Project pj)
+    {
+        Trace.WriteLine("SampleProjectAddInVsto: Application_NewProject");
+
+        // auto add task and change name
+        Task task1 = pj.Tasks.Add("Task 1");
+        task1.Name = "Task 1 name change";
+    }
+
+    void Application_ProjectBeforeTaskNew(MSProject.Project pj, ref bool Cancel)
+    {
+        Trace.WriteLine("SampleProjectAddInVsto: Application_ProjectBeforeTaskNew");
+    }
+
+    private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
+    {
+    }
+
+    #region VSTO generated code
+
+    /// 
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// 
+    private void InternalStartup()
+    {
+        this.Startup += new System.EventHandler(ThisAddIn_Startup);
+        this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
+    }
+
+    #endregion
+}</code></pre>
+}]]></BodyHtml>
+      <CreatedAt>2012-09-17T09:14:14.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i create a sample addin for you. please checkout: 
+<a href="http://netoffice.codeplex.com/wikipage?title=Download%20Page" rel="nofollow">http://netoffice.codeplex.com/wikipage?title=Download%20Page</a>
+
+<em>test environment WinXP, Project2003, VS 2010</em> 
+
+what i see is the NetOffice deployment table is not right. you need also the VBIDEApi.dll.
+
+its possible you miss an assembly and your addin is not loaded? 
+
+i see also MS Project has ProjectBeforeTaskNew and ProjectBeforeTaskNew2 but no idea why. bot events was fired in my test case.
+
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-09-18T10:05:46.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Piet123</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Sebastian, 
+
+I did some checking myself using ILSpy. 
+I noticed the signature of ProjectBeforeTaskChange in _EProjectApp2 is slightly different when comparing the NetOffice MsOfficeApi with Microsoft.Office.Interop.Project
+
+
+I tried to modify the NetOffice source code _EProjectApp2.cs and changed:
+<pre><code>  void ProjectBeforeTaskChange([In, MarshalAs(UnmanagedType.IDispatch)] object tsk, [In] object field, [In, MarshalAs(UnmanagedType.IDispatch)] object newVal, [In] [Out] ref object cancel);
+</code></pre>
+to:
+<pre><code>    void ProjectBeforeTaskChange([In, MarshalAs(UnmanagedType.IDispatch)] object tsk, [In] object field, [In] object newVal, [In] [Out] ref object cancel);
+</code></pre>
+You can see I removed the MarshalAs(UnmanagedType.IDispatch) from the newVal parameter and changed the corresponding method in _EProjectApp2_SinkHelper too.
+
+
+Now it works!! 
+It seems the newVal parameter is not a Office proxy object, but 'just' a plain object (it seems to be a string at least in some cases) ? I do not know if is the correct way to just leave it plain 'object', the Interop DLL has MarshalAs(UnmanagedType.Struct)
+ as attribute. I leave that up to you as COM expert.
+<h2>There may be more events like this (like ProjectBeforeTaskChange2 at least)</h2>
+ProjectBeforeTaskNew fires ok now (It did not in a previous version or I did not check it correctly)
+
+
+I also noticed there are a few events where there are two of them with the same name except for '2' at the end. They have slightly different parameters. I do not know why they are both available in Project, maybe some are left for backwards compatibility?]]></BodyHtml>
+      <CreatedAt>2012-09-18T10:45:49.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>kwoodhouse</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Good morning Sebastian,I downloaded and tried the SampleProjectAddin.zip with both of the following configurations:<em> VS2010, .Net 4.0</em> VS2012, .Net 4.5.
+
+
+I am running MS Project 2010 on Windows 7 64-bit. The two (2) task related events (Application_ProjectBeforeTaskChange and Application_ProjectBeforeTaskNew) do not fire.
+
+
+I also tried Application_ProjectBeforeTaskChange2Event and it did not fire.]]></BodyHtml>
+      <CreatedAt>2012-11-14T13:12:20.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hello,Piet123 helps me to do some modifications for better MSProject event support but these changes are not a part of the latest release. please checkout the assemblies in latest source state works for you.
+
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-11-14T23:21:47.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Piet123</ReportedBy>
+  <ReportedAt>2012-08-30T05:41:51.0000000+00:00</ReportedAt>
+</CodeplexIssue>

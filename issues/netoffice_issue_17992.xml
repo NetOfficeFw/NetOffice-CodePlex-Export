@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>17992</Id>
+  <Title>bad color</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[netoffice v1.4.1 - Excel
+ 
+when i run this code,
+ 
+WorkSheet.Range(cell).Font.Color = Color.Blue.ToArgb();
+ 
+the result is in Red instead of Blue !
+ 
+if i do this :
+ 
+WorkSheet.Range(cell).Font.Color = Color.Red.ToArgb();
+ 
+ 
+the result is in Blue instead of Red !
+ 
+ 
+i work with office 2007 SP2]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[the definition in office is different to .NET 
+but you can convert them with the following method: 
+
+<em>/ taken from Example01.cs /</em> 
+
+/// 
+/// Translate a color to double 
+/// 
+/// 
+expression to convert 
+
+/// color 
+private static double ToDouble(System.Drawing.Color color) 
+{ 
+uint returnValue = color.B; 
+returnValue = returnValue << 8; 
+returnValue += color.G; 
+returnValue = returnValue << 8; 
+returnValue += color.R; 
+return returnValue; 
+}]]></BodyHtml>
+      <CreatedAt>2012-05-06T22:23:41.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>fred98</ReportedBy>
+  <ReportedAt>2012-05-06T04:24:03.0000000+00:00</ReportedAt>
+</CodeplexIssue>

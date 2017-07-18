@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>22223</Id>
+  <Title>Trusted publisher signing</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi,
+
+I've developed an extension based on NetOffice. My office configuration requires applications to be signed by Trusted Publishers. I tried signing the output DLL with signtool.exe, with a valid certificate, but unfortunately, Office says "There is no digital
+ signature available".
+
+The option can be enabled via: File->Options->Trust Center->Trust Center Settings -> Add-ins -> Require application Add-ins to be signed by Trusted Publisher
+
+What's the appropriate method for signing the DLL? 
+
+It seems that when using VSTO ClickOnce handles the signing, also there's a .manifest file that is created for the DLL, I'm not sure if its required or not but I'm unable to create one for class libraries.
+
+<a href="https://msdn.microsoft.com/en-us/library/bb772096(v=vs.120).aspx" rel="nofollow">https://msdn.microsoft.com/en-us/library/bb772096(v=vs.120).aspx</a>
+<a href="https://msdn.microsoft.com/en-us/library/bb386179.aspx" rel="nofollow">https://msdn.microsoft.com/en-us/library/bb386179.aspx</a>
+<a href="https://msdn.microsoft.com/en-us/library/che5h906.aspx" rel="nofollow">https://msdn.microsoft.com/en-us/library/che5h906.aspx</a>]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments />
+  <ReportedBy>forku</ReportedBy>
+  <ReportedAt>2016-03-24T15:04:52.0000000+00:00</ReportedAt>
+</CodeplexIssue>

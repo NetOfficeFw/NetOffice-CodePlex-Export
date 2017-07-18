@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>17015</Id>
+  <Title>Word Window.GetPoint does not return values</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[The GetPoint function of a Word application Window object, does not return any values in NetOffice.
+
+GetPoint(int,int,int,int,object)
+ 
+It should work like the interop method:
+<a href="http://msdn.microsoft.com/en-us/library/microsoft.office.interop.word.window.getpoint(v=office.14).aspx" rel="nofollow">http://msdn.microsoft.com/en-us/library/microsoft.office.interop.word.window.getpoint(v=office.14).aspx</a>
+ 
+GetPoint(out int,out int,out int,out int,object)]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Medium</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[the out qualifier is missing in NetOffice, its the first time i see a method with out params in ms-office.
+
+thats the reason for i dont implement the out flag. my bad :/ i fix this bug tomorrow.
+
+
+thanks for report the issue !!! 
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2011-12-10T02:18:45.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[a nice to know update: 
+
+The following table shows all methods in office applications with one or more out parameters.
+<h2>Word</h2>
+Word.Window.GetPoint 
+Word.ConnectorFormat.BeginConnect 
+Word.ConnectorFormat.EndConnect 
+Word.DiagramNode.MoveNode 
+Word.DiagramNode.ReplaceNode 
+Word.DiagramNode.SwapNode 
+Word.DiagramNode.TransferChildren
+<h2>Excel</h2>
+Excel.IXmlMap.ExportXml 
+Excel._Workbook.XmlImport 
+Excel._Workbook.XmlImportXml
+<h2>PowerPoint</h2>
+PowerPoint.ShapeRange.GetPolygonalRepresentation 
+PowerPoint.TextRange.RotatedBounds
+<h2>Outlook</h2>
+No.entries
+<h2>Access</h2>
+Access._LabelEvents.DblClick 
+Access._RectangleEvents.DblClick 
+Access._ImageEvents.DblClick 
+Access._CommandButtonEvents.Exit 
+Access._CommandButtonEvents.DblClick 
+Access._OptionButtonEvents.BeforeUpdate 
+Access._OptionButtonEvents.Exit 
+Access._OptionButtonEvents.DblClick 
+Access._CheckBoxEvents.BeforeUpdate 
+Access._CheckBoxEvents.Exit 
+Access._CheckBoxEvents.DblClick 
+Access._OptionGroupEvents.BeforeUpdate 
+Access._OptionGroupEvents.Exit 
+Access._OptionGroupEvents.DblClick 
+Access._BoundObjectFrameEvents.BeforeUpdate 
+Access._BoundObjectFrameEvents.Exit 
+Access._BoundObjectFrameEvents.DblClick 
+Access._TextBoxEvents.BeforeUpdate 
+Access._TextBoxEvents.Exit 
+Access._TextBoxEvents.DblClick 
+Access._TextBoxEvents.Dirty 
+Access._TextBoxEvents.Undo 
+Access._ListBoxEvents.BeforeUpdate 
+Access._ListBoxEvents.Exit 
+Access._ListBoxEvents.DblClick 
+Access._ComboBoxEvents.BeforeUpdate 
+Access._ComboBoxEvents.NotInList 
+Access._ComboBoxEvents.Exit 
+Access._ComboBoxEvents.DblClick 
+Access._ComboBoxEvents.Dirty 
+Access._ComboBoxEvents.Undo 
+Access._ObjectFrameEvents.Exit 
+Access._ObjectFrameEvents.DblClick 
+Access._ToggleButtonEvents.BeforeUpdate 
+Access._ToggleButtonEvents.Exit 
+Access._ToggleButtonEvents.DblClick 
+Access._PaletteButtonEvents.BeforeUpdate 
+Access._PaletteButtonEvents.Exit 
+Access._PaletteButtonEvents.DblClick 
+Access._SubFormEvents.Exit 
+Access._SubReportEvents.Exit 
+Access._CustomControlEvents.Exit 
+Access._TabControlEvents.DblClick 
+Access._PageEvents.DblClick 
+Access._SectionEvents.DblClick 
+Access._SectionInReportEvents.Format 
+Access._SectionInReportEvents.Print 
+Access._SectionInReportEvents.DblClick 
+Access._PageHdrFtrInReportEvents.Format 
+Access._PageHdrFtrInReportEvents.Print 
+Access._PageHdrFtrInReportEvents.DblClick 
+Access._FormEvents.BeforeInsert 
+Access._FormEvents.BeforeUpdate 
+Access._FormEvents.Delete 
+Access._FormEvents.BeforeDelConfirm 
+Access._FormEvents.Open 
+Access._FormEvents.Unload 
+Access._FormEvents.DblClick 
+Access._FormEvents.Error 
+Access._FormEvents.Filter 
+Access._FormEvents.ApplyFilter 
+Access._FormEvents.Dirty 
+Access._FormEvents.Undo 
+Access._FormEvents.RecordExit 
+Access._FormEvents.BeginBatchEdit 
+Access._FormEvents.UndoBatchEdit 
+Access._FormEvents.BeforeBeginTransaction 
+Access._FormEvents.BeforeCommitTransaction 
+Access._ReportEvents.Open 
+Access._ReportEvents.Error 
+Access._ReportEvents.NoData 
+Access._FormEvents2.BeforeInsert 
+Access._FormEvents2.BeforeUpdate 
+Access._FormEvents2.Delete 
+Access._FormEvents2.BeforeDelConfirm 
+Access._FormEvents2.Open 
+Access._FormEvents2.Unload 
+Access._FormEvents2.DblClick 
+Access._FormEvents2.Error 
+Access._FormEvents2.Filter 
+Access._FormEvents2.ApplyFilter 
+Access._FormEvents2.Dirty 
+Access._FormEvents2.Undo 
+Access._FormEvents2.RecordExit 
+Access._FormEvents2.BeginBatchEdit 
+Access._FormEvents2.UndoBatchEdit 
+Access._ReportEvents2.Open 
+Access._ReportEvents2.Error 
+Access._ReportEvents2.NoData 
+Access._ReportEvents2.Unload 
+Access._ReportEvents2.DblClick 
+Access._ReportEvents2.Filter 
+Access._ReportEvents2.ApplyFilter 
+Access.DispAttachmentEvents.BeforeUpdate 
+Access.DispAttachmentEvents.Exit 
+Access.DispAttachmentEvents.Dirty 
+Access.DispAttachmentEvents.DblClick 
+Access.DispCommandButtonEvents.Exit 
+Access.DispCommandButtonEvents.DblClick 
+Access.DispBoundObjectFrameEvents.BeforeUpdate 
+Access.DispBoundObjectFrameEvents.Exit 
+Access.DispBoundObjectFrameEvents.DblClick 
+Access.DispObjectFrameEvents.Exit 
+Access.DispObjectFrameEvents.DblClick 
+Access.DispCustomControlEvents.Exit 
+Access.DispCheckBoxEvents.BeforeUpdate 
+Access.DispCheckBoxEvents.Exit 
+Access.DispCheckBoxEvents.DblClick 
+Access.DispOptionButtonEvents.BeforeUpdate 
+Access.DispOptionButtonEvents.Exit 
+Access.DispOptionButtonEvents.DblClick 
+Access.DispToggleButtonEvents.BeforeUpdate 
+Access.DispToggleButtonEvents.Exit 
+Access.DispToggleButtonEvents.DblClick 
+Access.DispRectangleEvents.DblClick 
+Access.DispImageEvents.DblClick 
+Access.DispListBoxEvents.BeforeUpdate 
+Access.DispListBoxEvents.Exit 
+Access.DispListBoxEvents.DblClick 
+Access.DispOptionGroupEvents.BeforeUpdate 
+Access.DispOptionGroupEvents.Exit 
+Access.DispOptionGroupEvents.DblClick 
+Access.DispTextBoxEvents.BeforeUpdate 
+Access.DispTextBoxEvents.Exit 
+Access.DispTextBoxEvents.DblClick 
+Access.DispTextBoxEvents.Dirty 
+Access.DispTextBoxEvents.Undo 
+Access.DispComboBoxEvents.BeforeUpdate 
+Access.DispComboBoxEvents.NotInList 
+Access.DispComboBoxEvents.Exit 
+Access.DispComboBoxEvents.DblClick 
+Access.DispComboBoxEvents.Dirty 
+Access.DispComboBoxEvents.Undo 
+Access.DispSubFormEvents.Exit 
+Access.DispSubReportEvents.Exit 
+Access.DispSectionEvents.DblClick 
+Access.DispSectionInReportEvents.Format 
+Access.DispSectionInReportEvents.Print 
+Access.DispSectionInReportEvents.DblClick 
+Access.DispPaletteButtonEvents.BeforeUpdate 
+Access.DispPaletteButtonEvents.Exit 
+Access.DispPaletteButtonEvents.DblClick 
+Access.DispPageHdrFtrInReportEvents.Format 
+Access.DispPageHdrFtrInReportEvents.Print 
+Access.DispPageHdrFtrInReportEvents.DblClick 
+Access.DispTabControlEvents.DblClick 
+Access.DispPageEvents.DblClick 
+Access.DispLabelEvents.DblClick
+<h2>Office.Core</h2>
+Office.IDocumentInspector.GetInfo 
+Office.IDocumentInspector.Inspect 
+Office.IDocumentInspector.Fix 
+Office.IDocumentInspector.GetInfo 
+Office.IDocumentInspector.Inspect 
+Office.IDocumentInspector.Fix 
+Office.IConverterPreferences.HrGetMacroEnabled 
+Office.IConverterPreferences.HrCheckFormat 
+Office.IConverterPreferences.HrGetLossySave 
+Office.IConverterApplicationPreferences.HrGetLcid 
+Office.IConverterApplicationPreferences.HrGetHwnd 
+Office.IConverterApplicationPreferences.HrGetApplication 
+Office.IConverterApplicationPreferences.HrCheckFormat 
+Office.IConverterUICallback.HrMessageBox 
+Office.IConverterUICallback.HrInputBox 
+Office.IConverter.HrInitConverter 
+Office.IConverter.HrImport 
+Office.IConverter.HrExport 
+Office.IConverter.HrGetFormat 
+Office.IConverter.HrGetErrorString 
+Office.IAccessible.accLocation 
+Office.CommandBar.accLocation 
+Office.CommandBarControl.accLocation 
+Office._CommandBarButton.accLocation 
+Office.CommandBarPopup.accLocation 
+Office._CommandBarComboBox.accLocation 
+Office._CommandBarActiveX.accLocation 
+Office.DocumentInspector.Inspect 
+Office.DocumentInspector.Fix 
+Office.TextRange2.RotatedBounds 
+Office.IMsoChart.Evaluate 
+Office.EncryptionProvider.Authenticate 
+Office.EncryptionProvider.ShowSettings 
+Office.IBlogExtensibility.BlogProviderProperties 
+Office.IBlogExtensibility.SetupBlogAccount 
+Office.IBlogExtensibility.GetUserBlogs 
+Office.IBlogExtensibility.GetRecentPosts 
+Office.IBlogExtensibility.Open 
+Office.IBlogExtensibility.PublishPost 
+Office.IBlogExtensibility.RepublishPost 
+Office.IBlogExtensibility.GetCategories 
+Office.IBlogPictureExtensibility.BlogPictureProviderProperties 
+Office.IBlogPictureExtensibility.PublishPicture 
+Office.IAccessible.accLocation 
+Office.CommandBar.accLocation 
+Office.CommandBarControl.accLocation 
+Office._CommandBarButton.accLocation 
+Office.CommandBarPopup.accLocation 
+Office._CommandBarComboBox.accLocation 
+Office._CommandBarActiveX.accLocation 
+Office.DocumentInspector.Inspect 
+Office.DocumentInspector.Fix 
+Office.TextRange2.RotatedBounds 
+Office.IMsoChart.Evaluate 
+Office.EncryptionProvider.Authenticate 
+Office.EncryptionProvider.ShowSettings 
+Office.IBlogExtensibility.BlogProviderProperties 
+Office.IBlogExtensibility.SetupBlogAccount 
+Office.IBlogExtensibility.GetUserBlogs 
+Office.IBlogExtensibility.GetRecentPosts 
+Office.IBlogExtensibility.Open 
+Office.IBlogExtensibility.PublishPost 
+Office.IBlogExtensibility.RepublishPost 
+Office.IBlogExtensibility.GetCategories 
+Office.IBlogPictureExtensibility.BlogPictureProviderProperties 
+Office.IBlogPictureExtensibility.PublishPicture
+<h2>VBE</h2>
+VBIDE._CodePane.GetSelection]]></BodyHtml>
+      <CreatedAt>2011-12-10T17:52:17.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[done. an updated release is available. 
+*have a nice day]]></BodyHtml>
+      <CreatedAt>2011-12-11T19:46:56.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Piet123</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Great! Good to see this is fixed so quickly and in the same time for all other methods with output values too.]]></BodyHtml>
+      <CreatedAt>2011-12-13T10:54:31.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Piet123</ReportedBy>
+  <ReportedAt>2011-12-09T09:08:25.0000000+00:00</ReportedAt>
+</CodeplexIssue>

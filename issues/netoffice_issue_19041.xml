@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>19041</Id>
+  <Title>Not enough storage is available to complete this operation - when opening a pptx</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I used netOffice to open a pptx on my win8 with office 365 installed and got this error:
+
+System.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details.
+---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. --->
+System.OutOfMemoryException: Not enough storage is available to complete this operation. (Exception from HRESULT: 0x8007000E (E_OUTOFMEMORY))
+--- End of inner exception stack trace ---
+at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)
+at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)
+at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)
+at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)
+at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)
+at NetOffice.PowerPointApi.Presentations.Open(String fileName, MsoTriState readOnly, MsoTriState untitled, MsoTriState withWindow)]]></DescriptionHtml>
+  <Status>Active</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>shawnliang</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[By the way, my PC still has over 1GB of free physical memory and the pptx I opened is only 250KB. No idea why it says out of memory....]]></BodyHtml>
+      <CreatedAt>2012-12-12T14:09:13.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[can i see your (original) code snippet for a test? 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2012-12-13T12:16:17.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>shawnliang</ReportedBy>
+  <ReportedAt>2012-12-12T04:08:05.0000000+00:00</ReportedAt>
+</CodeplexIssue>

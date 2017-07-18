@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>20704</Id>
+  <Title>Excel XmlImportXml does not work</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I have a function that imports xml data into a range in Excel. This have been working fine using the Excel interop, but when I changed to NetOffice it didn't work anymore.
+
+I've tried to use the function differently, but no luck so far.... 
+Sample:
+strXML contains the XML to be inserted
+<pre><code>                Dim excel As NetOffice.ExcelApi.Application = Nothing
+                Dim exWb As NetOffice.ExcelApi.Workbook
+                Dim sht As NetOffice.ExcelApi.Worksheet
+                
+                excel = New NetOffice.ExcelApi.Application
+                Dim xsd As NetOffice.ExcelApi.XmlMap = Nothing
+                exWb.XmlImportXml(strXML, xsd, True, sht.Range("A1"))
+</code></pre>
+Error:
+Parameter not optional. (Exception from HRESULT: 0x8002000F (DISP_E_PARAMNOTOPTIONAL))
+
+All parameters has been filled. The xsd parameter is an out parameter...
+I've tried to reduce to (strXML, xsd) parameters. But same result.
+
+I've also tried to go directly from a dataset with dataset.GetXML and dataset.GetXmlSchema
+Same result.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>JBjurstam</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi,
+
+I came accross the same issue when I tried to convert a project today. Please fix it!
+
+Something is definitely going wrong in the wrapper library, because if I use .UnderlyingObject, I do get working code:
+<pre><code>            var destination = sheet.Cells[1, 1];
+            var map = workbook.XmlMaps.Add(schema).UnderlyingObject;
+            dynamic x = workbook.UnderlyingObject;
+            x.XmlImportXml(xml, out map, true, destination.UnderlyingObject);
+</code></pre>
+This code throws the same exception as mentioned by the thread starter, however:
+<pre><code>          var destination = sheet.Cells[1, 1];
+          var map = workbook.XmlMaps.Add(schema);
+          workbook.XmlImportXml(xml, out map, true, destination);
+</code></pre>]]></BodyHtml>
+      <CreatedAt>2016-09-26T16:41:55.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I have no experience with xml import at all.
+(I looks like an optional argument is missing)
+Would you help me to reproduce the issue please?
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2016-09-26T20:28:42.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>JBjurstam</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Dear Sebastian,
+
+Would you like me to set up a working/failing example with the snippets I posted, or what do you need of me?
+
+Kind regards,
+Johan]]></BodyHtml>
+      <CreatedAt>2016-09-27T09:00:13.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>JBjurstam</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Using Excel 2010 and NetOffice for .NET 4.5 obtained as a NuGet package
+<pre><code>using System;
+using Excel = NetOffice.ExcelApi;
+using System.IO;
+
+namespace NetOfficeBugs
+{
+    class Program
+    {
+        private static string _schema = "<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n  <xs:element name=\"ArrayOfCommentInfo\">\r\n    <xs:complexType>\r\n      <xs:sequence>\r\n        <xs:element name=\"CommentInfo\" maxOccurs=\"unbounded\" minOccurs=\"0\">\r\n          <xs:complexType>\r\n            <xs:sequence>\r\n              <xs:element type=\"xs:byte\" name=\"CommentId\"/>\r\n              <xs:element type=\"xs:short\" name=\"NodeId\"/>\r\n              <xs:element type=\"xs:string\" name=\"TicketTitle\"/>\r\n              <xs:element type=\"xs:string\" name=\"DateFormatted\"/>\r\n              <xs:element type=\"xs:string\" name=\"Complaint\"/>\r\n            </xs:sequence>\r\n          </xs:complexType>\r\n        </xs:element>\r\n      </xs:sequence>\r\n    </xs:complexType>\r\n  </xs:element>\r\n</xs:schema>";
+
+
+        static void Main(string[] args)
+        {
+            using (var exApp = new Excel.Application())
+            {
+                Console.WriteLine($"Excel Version: {exApp.Version}");
+
+                var xml = File.ReadAllText("example.xml");
+
+                exApp.Visible = true;
+
+                var workbook = exApp.Workbooks.Add();
+                var sheet = (Excel.Worksheet)workbook.Worksheets[1];
+
+
+                //Uncomment what you want to test
+                //ImportXmlUnderlyingObject(xml, workbook, sheet); 
+                //ImportXmlNetOffice(xml, workbook, sheet);
+
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Done executing!");
+            Console.ReadLine();
+        }
+
+        private static void ImportXmlNetOffice(string xml, Excel.Workbook workbook, Excel.Worksheet sheet)
+        {
+            //This code works if you use the standard Excel libraries from Microsoft
+
+            var destination = sheet.Cells[1, 1];
+            var map = workbook.XmlMaps.Add(_schema);
+            workbook.XmlImportXml(xml, out map, true, destination);
+
+            //But causes this exception in NetOffice:
+
+            /*
+            System.Runtime.InteropServices.COMException was unhandled
+              ErrorCode=-2147467259
+              HResult=-2147467259
+              Message=See inner exception(s) for details.
+              Source=NetOffice
+              StackTrace:
+                   bij NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)
+                   bij NetOffice.ExcelApi._Workbook.XmlImportXml(String data, XmlMap& importMap, Object overwrite, Object destination)
+                   bij NetOfficeBugs.Program.ImportXmlNetOffice(String xml, Workbook workbook, Worksheet sheet) in C:\Users\johanb\Source\Repos\TicketSystemTools\NetOfficeBugs\Program.cs:regel 47
+                   bij NetOfficeBugs.Program.Main(String[] args) in C:\Users\johanb\Source\Repos\TicketSystemTools\NetOfficeBugs\Program.cs:regel 31
+                   bij System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+                   bij System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+                   bij Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+                   bij System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+                   bij System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+                   bij System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+                   bij System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+                   bij System.Threading.ThreadHelper.ThreadStart()
+              InnerException: 
+                   HResult=-2146232828
+                   Message=Het doel van een aanroep heeft een uitzondering veroorzaakt.
+                   Source=mscorlib
+                   StackTrace:
+                        bij System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)
+                        bij System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)
+                        bij NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)
+                   InnerException: 
+                        ErrorCode=-2147352561
+                        HResult=-2147352561
+                        Message=Parameter niet optioneel. (Uitzondering van HRESULT: 0x8002000F (DISP_E_PARAMNOTOPTIONAL))
+                        InnerException: 
+
+            */
+        }
+
+        private static void ImportXmlUnderlyingObject(string xml, Excel.Workbook workbook, Excel.Worksheet sheet)
+        {
+            var destination = sheet.Cells[1, 1];
+
+            var map = workbook.XmlMaps.Add(_schema).UnderlyingObject;
+
+            dynamic dynamicWorkbook = workbook.UnderlyingObject;
+            dynamicWorkbook.XmlImportXml(xml, out map, true, destination.UnderlyingObject);
+        }
+    }
+}
+</code></pre>]]></BodyHtml>
+      <CreatedAt>2016-09-28T12:29:27.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>JBjurstam</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Sorry, forgot the contents of example.xml:
+<pre><code><?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCommentInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CommentInfo>
+    <CommentId>80</CommentId>
+    <NodeId>156</NodeId>
+    <TicketTitle>Blabla</TicketTitle>
+    <DateFormatted>6-4-2016</DateFormatted>
+    <Complaint>false</Complaint>
+  </CommentInfo>
+  <CommentInfo>
+    <CommentId>81</CommentId>
+    <NodeId>159</NodeId>
+    <TicketTitle>Blabla2</TicketTitle>
+    <DateFormatted>6-4-2016</DateFormatted>
+    <Complaint>false</Complaint>
+  </CommentInfo>
+</ArrayOfCommentInfo></code></pre>]]></BodyHtml>
+      <CreatedAt>2016-09-28T12:30:14.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Thanks!
+
+Now i want clearify the situation asap.
+(Right now, i believe in the idea that the out argument cause issues)
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2016-09-28T19:02:21.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>JBjurstam</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Alright, good luck!
+
+And... the code for importing XML data is such a mess... I have no idea what the out param is about here..]]></BodyHtml>
+      <CreatedAt>2016-09-29T08:54:53.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>cveirup</ReportedBy>
+  <ReportedAt>2014-02-04T10:13:10.0000000+00:00</ReportedAt>
+</CodeplexIssue>

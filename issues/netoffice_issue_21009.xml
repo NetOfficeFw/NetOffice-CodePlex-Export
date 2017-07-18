@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21009</Id>
+  <Title>Toolbox 1.2 won't start - loadFromRemoteSources</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi,
+
+I tried to install NetOffice 1.6 and the corresponding Toolbox 1.2 because I use Visual Studio Express 2013.
+
+The toolbox is located on C:\tools... but when I try to start it, I get an error message (see attached screenshot):
+<pre><code>1 | An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information. | NotSupportedException | Void .ctor()</code></pre>
+I run on Windows 7 64bit with Office 2010 and .NET 4.5.
+
+Any ideas?
+Thanks.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hey man, 
+
+in fact: its not allowed to execute a .NET assembly from a network location.(default .net policy)
+
+
+change the .NET policy(management console) or shift the solution to local hard drive and try again.
+
+
+helps?*let me know 
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2014-05-21T21:52:27.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>flxmx</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[By the way... I found a copy of the toolbox version 1.1 on a backup drive. This version installs perfectly.
+
+
+CheersFelix]]></BodyHtml>
+      <CreatedAt>2014-05-21T22:42:59.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>flxmx</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[<blockquote>in fact: its not allowed to execute a .NET assembly from a network location.(default .net policy)> change the .NET policy(management console) or shift the solution to local hard drive and try again. It is not located on a network drive.Btw version
+ 1.1 does start perfectly from the same location.
+</blockquote>]]></BodyHtml>
+      <CreatedAt>2014-05-21T22:45:22.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>MacShee</Author>
+      <BodyHtml xml:space="preserve" />
+      <CreatedAt>2014-06-23T18:19:48.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>ecksteid</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[This happened to me too using Windows 7, but it was an easy fix. 
+
+The problem is that the zip file comes from the internet, so Windows 7 tags everything as "blocked" until you unblock it. You don't want to unzip the files first or you will have to manually unblock each file.
+
+
+The trick is to unblock the downloaded zip file first, which unblocks everything inside.
+
+
+To unblock, right-click the zip file, choose properties, then click "Unblock" at the bottom.]]></BodyHtml>
+      <CreatedAt>2014-09-12T22:47:24.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>flxmx</ReportedBy>
+  <ReportedAt>2014-05-21T05:57:51.0000000+00:00</ReportedAt>
+</CodeplexIssue>

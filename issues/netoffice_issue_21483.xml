@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21483</Id>
+  <Title>how to solve The message filter indicated that the application is busy. (Exception from HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER))</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Dear Friends,
+<pre><code>                I'm using NET Office for manipulating a word report. This is working fine in my dev. environment but when I put it into Staging Environment, it gives the below error,</code></pre>
+how to solve The message filter indicated that the application is busy. (Exception from HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER)).
+
+
+I use wordApp.DisplayAlerts = wdAlertsNone; just after creating the word document.
+
+
+I using this within SharePoint 2007 + visual studio 3.5
+
+Any idea how to solve it ?
+
+Thanks,
+Dilip]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[NetOffice gives you a message filter for this reason. 
+
+Please use:NetOffice.Settings.Default.MessageFilter.Enabled = true; 
+
+optional: NetOffice.Settings.Default.MessageFilter.RetryMode = RetryMessageFilterMode.Delayed;
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-11-15T13:07:21.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>dilipnilanka</ReportedBy>
+  <ReportedAt>2014-10-24T22:56:35.0000000+00:00</ReportedAt>
+</CodeplexIssue>

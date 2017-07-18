@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>17339</Id>
+  <Title>NetOffice.WordApi.Document.Revisions.AcceptAll() does not accept footnote changes</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Accidentally discovered this while processing some Word Documents that were undergoing massive revision. The Revisions.AcceptAll() method does not actually accept any of the changes in Word footnotes.
+ 
+By contrast, _Document.AcceptAllRevisions() method accepts everything.
+ 
+Sample documents and code are attached.]]></DescriptionHtml>
+  <Status>Closed</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>tobs1701</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Forgot to mention: I'm using the NetOffice Api build 1.3.2. 
+
+Thanks, 
+Toby]]></BodyHtml>
+      <CreatedAt>2012-02-02T21:39:49.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[are you sure this is a NetOffice issue? 
+in other words: working with interop assemblies works as well and NetOffice ignore the footnotes?
+
+i do a test with the interop assemblies in vs2010 and word 2007 and i have exactly the same behavior.]]></BodyHtml>
+      <CreatedAt>2012-02-03T01:06:41.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>tobs1701</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[It didn't occur to me that it might be a fundamental issue with the Microsoft API, but it looks as if you're right.
+
+
+Thanks for checking into it.]]></BodyHtml>
+      <CreatedAt>2012-02-03T16:34:32.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[no problem, you can create a new issue or re-open this one any time. 
+*sebastian]]></BodyHtml>
+      <CreatedAt>2012-02-08T13:59:13.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>tobs1701</ReportedBy>
+  <ReportedAt>2012-02-02T19:39:07.0000000+00:00</ReportedAt>
+  <ClosedAt>2012-02-08T12:59:13.0000000+01:00</ClosedAt>
+</CodeplexIssue>

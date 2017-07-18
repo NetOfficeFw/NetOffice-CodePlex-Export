@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>22315</Id>
+  <Title>Class not found in loaded NetOffice Assemblies</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Applied to Microsoft Access. 
+I received similar exception when use property Parent for any control if Parent is Form.
+
+You could see one of them in example (button0 on Form1 ) 
+
+NetOffice.NetOfficeException: Class 49b38fa1-b771-41e1-a8d6-8e65b81fcf97:Form_Form1 not found in loaded NetOffice Assemblies]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Have you tried to add a reference to MSFormsApi.dll ?
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2016-10-14T09:21:04.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Serge1956</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I tried, but it did not help.
+Which connection can be between Access.Form and MSForms?
+
+Serge]]></BodyHtml>
+      <CreatedAt>2016-10-14T10:56:58.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[MSFormsApi is the "Forms 2.0" COM library which contains TextBox, Button, Label, etc.
+You need this libray if you want to access controls like these in office applications.
+
+I can not open the database right now with my access 2007. can you see whats the class name of the parent interop proxy?
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2016-10-14T13:53:29.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Serge1956</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[<blockquote>MSFormsApi is the "Forms 2.0" COM library which contains TextBox, Button, Label, etc.
+</blockquote>
+I know about MSForms.
+Access.Form and MSForm.Userform are two different objects.
+Also Access.CommandButton and MSForm.CommandButton etc.
+<blockquote>I can not open the database right now with my access 2007.
+</blockquote>
+You can create own database file with one form (Form1) wich contains one CommandButton
+
+Serge]]></BodyHtml>
+      <CreatedAt>2016-10-15T09:00:23.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Yes i know, it was just an idea.
+
+I have to ask on more time because this is the most important question.
+What type is this interop proxy with the interface id 49b38fa1-b771-41e1-a8d6-8e65b81fcf97 ?
+what its type or (class) name? (your see that in your alternate interop solution)
+You can see that in the debugger or recieve informations with:
+System.ComponentModel.TypeDescriptor.GetClassName(object instance);
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2016-10-17T21:25:51.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Serge1956</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Sebastian, 
+
+System.ComponentModel.TypeDescriptor.GetClassName(ctl.Parent) return Form_Form1.
+This is evident in the first message. 
+
+Guid changes with each opening of the Access Application, but the same for different foms:
+
+NetOffice.NetOfficeException: Class f47e1d09-6f8c-46c1-8952-c26dfb5d4e5d:Form_Form1 not found in loaded NetOffice Assemblies
+
+NetOffice.NetOfficeException: Class f47e1d09-6f8c-46c1-8952-c26dfb5d4e5d:Form_Form2 not found in loaded NetOffice Assemblies
+
+Serge]]></BodyHtml>
+      <CreatedAt>2016-10-20T12:52:13.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Serge1956</ReportedBy>
+  <ReportedAt>2016-10-13T08:21:12.0000000+00:00</ReportedAt>
+</CodeplexIssue>

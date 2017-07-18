@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>22318</Id>
+  <Title>Error while Installing package from nuget for .net core 1.1</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[OK <a href="https://api.nuget.org/v3-flatcontainer/sautinsoft.document/index.json" rel="nofollow">
+https://api.nuget.org/v3-flatcontainer/sautinsoft.document/index.json</a> 271ms 
+GET <a href="https://api.nuget.org/v3-flatcontainer/sautinsoft.document/2.4.12.23/sautinsoft.document.2.4.12.23.nupkg" rel="nofollow">
+https://api.nuget.org/v3-flatcontainer/sautinsoft.document/2.4.12.23/sautinsoft.document.2.4.12.23.nupkg</a>
+
+OK <a href="https://api.nuget.org/v3-flatcontainer/sautinsoft.document/2.4.12.23/sautinsoft.document.2.4.12.23.nupkg" rel="nofollow">
+https://api.nuget.org/v3-flatcontainer/sautinsoft.document/2.4.12.23/sautinsoft.document.2.4.12.23.nupkg</a> 349ms
+
+Installing sautinsoft.document 2.4.12.23. 
+Install-Package : Package sautinsoft.document 2.4.12.23 is not compatible with netcoreapp1.1
+
+(.NETCoreApp,Version=v1.1). Package sautinsoft.document 2.4.12.23 supports:
+<ul>
+<li>net40 (.NETFramework,Version=v4.0) </li><li>net45 (.NETFramework,Version=v4.5) 
+At line:1 char:1 </li><li>Install-Package sautinsoft.document </li><li>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : NotSpecified: (:) [Install-Package], Exception </li><li>FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdle
+
+ts.InstallPackageCommand
+</li></ul>
+</li></ul>
+Install-Package : One or more packages are incompatible with .NETCoreApp,Version=v1.1.
+
+At line:1 char:1
+<ul>
+<li>Install-Package sautinsoft.document </li><li>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : NotSpecified: (:) [Install-Package], Exception </li><li>FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdle
+
+ts.InstallPackageCommand
+</li></ul>
+</li></ul>
+Install-Package : Package sautinsoft.document 2.4.12.23 is not compatible with netcoreapp1.1
+
+(.NETCoreApp,Version=v1.1) / win. Package sautinsoft.document 2.4.12.23 supports:
+<ul>
+<li>net40 (.NETFramework,Version=v4.0) </li><li>net45 (.NETFramework,Version=v4.5) 
+At line:1 char:1 </li><li>Install-Package sautinsoft.document </li><li>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : NotSpecified: (:) [Install-Package], Exception </li><li>FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdle
+
+ts.InstallPackageCommand
+</li></ul>
+</li></ul>
+Install-Package : One or more packages are incompatible with .NETCoreApp,Version=v1.1 (win).
+
+At line:1 char:1
+<ul>
+<li>Install-Package sautinsoft.document </li><li>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : NotSpecified: (:) [Install-Package], Exception </li><li>FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdle
+
+ts.InstallPackageCommand
+</li></ul>
+</li></ul>
+Install-Package : Package sautinsoft.document 2.4.12.23 is not compatible with netcoreapp1.1
+
+(.NETCoreApp,Version=v1.1) / win-x64. Package sautinsoft.document 2.4.12.23 supports:
+<ul>
+<li>net40 (.NETFramework,Version=v4.0) </li><li>net45 (.NETFramework,Version=v4.5) 
+At line:1 char:1 </li><li>Install-Package sautinsoft.document </li><li>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : NotSpecified: (:) [Install-Package], Exception </li><li>FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdle
+
+ts.InstallPackageCommand
+</li></ul>
+</li></ul>
+Install-Package : One or more packages are incompatible with .NETCoreApp,Version=v1.1 (win-x64).
+
+At line:1 char:1
+<ul>
+<li>Install-Package sautinsoft.document </li><li>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : NotSpecified: (:) [Install-Package], Exception </li><li>FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdle
+
+ts.InstallPackageCommand
+</li></ul>
+</li></ul>
+Install-Package : Package sautinsoft.document 2.4.12.23 is not compatible with netcoreapp1.1
+
+(.NETCoreApp,Version=v1.1) / win-x86. Package sautinsoft.document 2.4.12.23 supports:
+<ul>
+<li>net40 (.NETFramework,Version=v4.0) </li><li>net45 (.NETFramework,Version=v4.5) 
+At line:1 char:1 </li><li>Install-Package sautinsoft.document </li><li>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : NotSpecified: (:) [Install-Package], Exception </li><li>FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdle
+
+ts.InstallPackageCommand
+</li></ul>
+</li></ul>
+Install-Package : One or more packages are incompatible with .NETCoreApp,Version=v1.1 (win-x86).
+
+At line:1 char:1
+<ul>
+<li>Install-Package sautinsoft.document </li><li>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : NotSpecified: (:) [Install-Package], Exception </li><li>FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdle
+
+ts.InstallPackageCommand
+</li></ul>
+</li></ul>
+Install-Package : Package restore failed. Rolling back package changes for 'WebApplication6'.
+
+At line:1 char:1
+<ul>
+<li>Install-Package sautinsoft.document </li><li>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ul>
+<li>CategoryInfo : NotSpecified: (:) [Install-Package], Exception </li><li>FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdle
+
+ts.InstallPackageCommand
+</li></ul>
+</li></ul>]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I'm sorry to say, i do not own the nuget packages (because i dont want support nuget).
+I gave a message to the fabulous Caio Proiete for help right now.
+
+It looks like you have a .Net Core application right? 
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2017-02-10T16:28:42.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>CaioProiete</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi @ MAtravadi,
+
+NetOffice does not support .NET Core yet. The only way to use NetOffice today is with the full .NET Framework (up to 4.6.2 as of today).
+
+Cheers,
+Caio Proiete]]></BodyHtml>
+      <CreatedAt>2017-02-10T18:23:11.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>MAtravadi</ReportedBy>
+  <ReportedAt>2017-02-10T04:26:58.0000000+00:00</ReportedAt>
+</CodeplexIssue>

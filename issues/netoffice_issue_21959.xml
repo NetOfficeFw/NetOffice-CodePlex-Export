@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21959</Id>
+  <Title>Outlook's Explorer.InlineResponseClose event is not supported</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[The InlineResponse event on the Explorer object is supported but the InlineResponseClose is not. Please implement it in the next version.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[thanks for pointing this out.i have no idea why its missing. i use the last public beta from office 2013 to create the NetOffice source code. may it was not included here. i want add the InlineResponseClose event to NetOffice 1.4 tomorrow.
+
+
+THX!*Sebastian]]></BodyHtml>
+      <CreatedAt>2015-08-06T20:47:05.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>PsiBlades</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[The latest source code with this fix has bugged out both InlineResponse and InlineResponseClose events.
+
+
+The DispId attribute needs to be changed for the InlineResponseClose delegate from 64658 to 64662 in: Outlook/EventInterfaces/ExplorerEvents_10.cs
+
+
+[SupportByVersionAttribute("Outlook", 15)][PreserveSig, MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime), DispId(<strong>64662</strong>)]void InlineResponseClose();]]></BodyHtml>
+      <CreatedAt>2016-01-05T21:37:42.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Stritch000</ReportedBy>
+  <ReportedAt>2015-08-03T04:59:48.0000000+00:00</ReportedAt>
+</CodeplexIssue>

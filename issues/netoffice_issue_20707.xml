@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>20707</Id>
+  <Title>VS Project Wizard creates project in wrong folder (option Custom)</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[When I am creating new project and option "Custom" is selected for "Project Folder" then project is created in subfolder "Custom" created in folder where NetOffice Developper Toolbox is. Selected project folder is empty.]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>artnib</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Fixed in revision 106580.]]></BodyHtml>
+      <CreatedAt>2014-02-05T18:26:22.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>lucky62</ReportedBy>
+  <ReportedAt>2014-02-04T18:09:25.0000000+00:00</ReportedAt>
+</CodeplexIssue>

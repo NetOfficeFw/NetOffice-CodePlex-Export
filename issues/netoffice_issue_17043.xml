@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>17043</Id>
+  <Title>Attach to instance of MSOffice App</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Now we cant attach COMObject to a running instance of any COM, that registered in ROT. All (?) MS Office App register self instances in ROT, so .....
+ 
+NetOffice must support attaching to exists instance.
+ 
+Note: see examlple from MS: <a href="http://support.microsoft.com/kb/238975/en-us" rel="nofollow">
+http://support.microsoft.com/kb/238975/en-us</a>]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>jocker1331</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[.net example: <a href="http://support.microsoft.com/kb/316126/en-us" rel="nofollow">
+http://support.microsoft.com/kb/316126/en-us</a>]]></BodyHtml>
+      <CreatedAt>2011-12-15T10:13:51.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hello jocker1331, 
+
+not every office application does the same with the ROT, the matter is a little bit more complicated.
+
+
+what you can do all the time with NetOffice is as follows(related to the .net example)
+
+
+object excelProxy = System.Runtime.InteropServices.Marshal.GetActiveObject("Excel.Application")
+
+Excel.Application application = new Excel.Application(null, excelProxy); 
+
+you find an example "GetRunningOutlookInstance" in the folder Examples\Misc
+
+is that helpfull for you?]]></BodyHtml>
+      <CreatedAt>2011-12-15T11:54:47.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>jocker1331</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hmm.... Yes, it's really what I want. Thanks!]]></BodyHtml>
+      <CreatedAt>2011-12-15T16:18:00.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>jocker1331</ReportedBy>
+  <ReportedAt>2011-12-15T08:08:38.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>19353</Id>
+  <Title>Will NetOffice support OneNote?</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Would like to use NetOffice to automate OneNote 2010 and 2013, but cannot find any support for it. Will this be put on the roadmap?]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i have no experience with one note at all. i want clearify the situation(check for legal licenses and the COM Api) when its possible you have to help to create tests and examples ok?
+
+
+Sebastian]]></BodyHtml>
+      <CreatedAt>2013-02-17T09:27:17.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>gardnerbp</ReportedBy>
+  <ReportedAt>2013-02-15T18:25:12.0000000+00:00</ReportedAt>
+</CodeplexIssue>

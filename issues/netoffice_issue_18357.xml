@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>18357</Id>
+  <Title>app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar].Display  cant find object i think</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[When I try to get back what button was pressed in the spelling box like :
+Return value Description
+-2 The Close button.
+-1 The OK button.
+0 (zero) The Cancel button.
+<blockquote>0 (zero) A command button: 1 is the first button, 2 is the second button, and so on.
+ 
+<a href="http://msdn.microsoft.com/en-us/library/aa211931(v=office.11).aspx" rel="nofollow">http://msdn.microsoft.com/en-us/library/aa211931(v=office.11).aspx</a>
+Error is a casting problem because when a dug deeper it was and inner excretion and looks like it could not find the dialog.
+here is code it work before i used the NetOffice stuff I think it is because of the late bind
+object timeOut = 1000;
+</blockquote>
+<pre><code>            doc1.CheckSpelling();</code></pre>
+ 
+<pre><code>            int vis = app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar].Display(timeOut);</code></pre>]]></DescriptionHtml>
+  <Status>Closed</Status>
+  <Type>Issue</Type>
+  <Impact>Medium</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hello, 
+
+please help me a bit and copy the full exception content. my first test(word 2007, winXP) works without any exception but i cant see a dialog, the method returns immediately with -1.
+
+
+you can use the NetOffice DebugConsole too: <a href="http://netoffice.codeplex.com/wikipage?title=Misc01" rel="nofollow">
+http://netoffice.codeplex.com/wikipage?title=Misc01</a>]]></BodyHtml>
+      <CreatedAt>2012-07-14T00:07:57.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[ups, THE MOST IMPORTANT THING: did you use NetOffice 1.5.1 ??? 
+
+the 1.5.1 release includes a bug fix for numeric return values. the result definition for Display is int in the COM type library but Word is always a bit funny and returns double values for some methods with int returns. this cause casting problems in older
+ NetOffice versions. the 1.5.1 release use System.Convert and not hard-coded plain stupid casts.]]></BodyHtml>
+      <CreatedAt>2012-07-14T00:23:40.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Burn_Denny</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Do i use the Release Candidate 1.5.1? that is what I am downloading now. Well on thing that I tried was
+
+LateBindingApi.Core.Invoker.MethodReturn(app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar], "Display", new object[] { 10 }); but every time i get -1 even if cancel or close it which should be -2 or 0. What I really am trying to do an can tell
+ me is trying to capture the ignore button in the speller but I was never able to find anything but this. I am going to try to install and well comment back but if you have anything else about the Ignore button that would help. thanks]]></BodyHtml>
+      <CreatedAt>2012-07-18T17:50:15.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Burn_Denny</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Ok So the Error is gone but it is not getting the correct numbers back like I was thinking that it was going to so it should be
+
+-2 The Close button. 
+-1 The OK button. 
+0 (zero) The Cancel button. 
+but all i get is -1 
+just need to capture what button is clicked]]></BodyHtml>
+      <CreatedAt>2012-07-18T19:43:27.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i do a small test 
+
+Word.Document newDocument = wordApplication.Documents.Add(); 
+wordApplication.Selection.TypeText("This textX containZ sume bahd wordZ");
+
+Word.Dialog dlg = wordApplication.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar];
+
+int result = dlg.Display(); 
+
+i see the dialog doesnt comes if no errors or no text detected.(by design from word himself)
+
+i see also the dialog doesnt have the typical close/ok button. you get 0 for the abort button and -1 for any other button (ignore/change) this is not a netoffice mistake, its just word. :/]]></BodyHtml>
+      <CreatedAt>2012-07-19T23:43:12.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Burn_Denny</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Thanks for your reply What i was trying to say is that when you go here (this worked before)
+
+
+<a href="http://msdn.microsoft.com/en-us/library/aa211931(v=office.11).aspx" rel="nofollow">http://msdn.microsoft.com/en-us/library/aa211931(v=office.11).aspx</a>
+
+
+you will see that i should get 0 -1 -2 So when you open up the spell checker and you press cancel acouring to msdn i should get 0 but i get -1 and close is -2 and i get -1 again ignore btn and change button (aka OK) -1. This worked before I used this and i
+ was using office 2003 so not sure if that changed later on. So what do you think of why iam not getting this. And the biggest thing is there another way to get what button is clicked that I am not aware of with this DLL?
+
+
+Thanks Brent]]></BodyHtml>
+      <CreatedAt>2012-07-20T22:11:46.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hmmm okay, gimme a day to create a native interop solution. did you use VBA/VB6 before?]]></BodyHtml>
+      <CreatedAt>2012-07-21T15:16:11.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[i do 2 tests with the microsoft interop assemblies in word 2007 and word 2003 in different virtual machines.
+
+the behaviour was the exactly the same. 0 for cancel button and -1 for each other. please show me the code there worked before.]]></BodyHtml>
+      <CreatedAt>2012-07-23T06:52:47.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Burn_Denny</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[using System; 
+using System.Reflection; 
+using System.Collections.Generic; 
+using System.ComponentModel; 
+using System.Data; 
+using System.Drawing; 
+using System.Text; 
+using System.Windows.Forms; 
+
+using Word = NetOffice.WordApi; 
+using Office = NetOffice.OfficeApi; 
+using NetOffice.WordApi.Enums; 
+using NetOffice.OfficeApi.Enums; 
+
+
+
+namespace WFROI 
+{
+<pre><code>/// 
+/// Summary description for WordSpellChecker.
+/// 
+public class WordSpellChecker
+{
+    public WordSpellChecker( )
+    {
+
+    }
+    int vis;
+   // Word.Application app;
+    public bool CheckSpelling(TextBox textBox)
+
+    {
+        Word.Application app = new Word.Application();
+        Word._Document  doc1 ;
+        doc1 = app.Documents.Add();
+        app.Width = 100;
+        app.Height = 100;
+        if (textBox.Text.Length > 0)
+        {
+            app.Visible = false;
+            // Setting these variables is comparable to passing null to the function.
+            // This is necessary because the C# null cannot be passed by reference.
+            doc1.ShowSpellingErrors = true;
+            doc1.Words.First.InsertBefore(textBox.Text);
+            doc1.Application.Height = 100;
+            doc1.Application.Width = 100;
+            doc1.ActiveWindow.SetFocus();
+            Word.Dialog dlg = app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar];
+            dlg.Application.Options.CheckSpellingAsYouType = true;
+            dlg.Application.Options.CheckGrammarAsYouType = false;
+            dlg.Application.Options.CheckGrammarWithSpelling = false;
+            doc1.CheckSpelling();
+          //  vis = dlg.Display();
+        //  doc1.CheckSpelling();
+        //  vis = app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar].Show();
+        //  doc1.ActiveWindow.Height = 100;
+        //  doc1.ActiveWindow.Width = 100;
+        //  vis = -1;
+            textBox.Text = doc1.Range().Text.Replace("\r", ""); ;
+
+            if(vis == -1)
+            {
+                doc1.ActiveWindow.Visible = false;
+                recheck( doc1,textBox);
+            }
+    }
+        object saveChanges = false;
+        object originalFormat = Missing.Value;
+        object routeDocument = Missing.Value;
+
+        app.Quit(saveChanges);
+        return true;
+    }
+
+
+
+    protected void recheck(Word._Document doc,TextBox textBox)
+    {
+
+        doc.SpellingChecked =false;
+        if(doc.SpellingErrors.Count == 0)
+        {
+            doc.SpellingChecked = true;
+        }
+        else
+        {
+
+            //Word.ProofreadingErrors spellErrorsColl = doc.SpellingErrors;
+            //IEnumerator myRange = spellErrorsColl.GetEnumerator();
+        //  string Errors ="";
+            int Errors = doc.SpellingErrors.Count;
+            //for(int i=0; i2)
+            {
+                message = "Spell Checker has detected that there are still " + Errors + " miss spelled words.";
+                }
+                    else
+            {
+                message = "Spell Checker has detected that there is still " + Errors + " miss spelled word.";
+            }
+
+        DialogResult result1 = MessageBox.Show( message + "\n\n Press OK to accept the miss spelling(s).  \n\n Press CANCLE to recheck and change the errors.\n","Spelling Errors",MessageBoxButtons.OKCancel );
+            switch (result1)
+            {
+                case DialogResult.OK:
+                    doc.SpellingChecked = true;
+                    break;
+                case DialogResult.Cancel:
+                object optional = Missing.Value;
+                CheckSpelling(textBox);
+
+                    break;
+            }
+                object first = 0;
+                object last = doc.Characters.Count - 1;
+                textBox.Text = doc.Range(first, last).Text.Replace("\r", "");
+
+
+        }
+    }
+
+}</code></pre>
+}]]></BodyHtml>
+      <CreatedAt>2012-07-24T21:16:13.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Burn_Denny</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[So I put up my code so when I use dlg.Display(); (I have commented out) the dialog wont get focus and is behind everything, unlike if I use doc1.CheckSpelling(); it does have focus. And also I still get -1 lol. not sure why.]]></BodyHtml>
+      <CreatedAt>2012-07-24T21:21:02.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Burn_Denny</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[p.s. Sorry un-comment out vis = -1;]]></BodyHtml>
+      <CreatedAt>2012-07-24T21:27:33.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[you want display a dialog with an invisible word. this cause problems and is never a good idea. i know 99% of the dialogs returns 0,1,2 but some dialogs doesnt do that. you say this works before but i think your previous code calls another dialog. true?]]></BodyHtml>
+      <CreatedAt>2012-07-24T23:03:09.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>Burn_Denny</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[It used the dll for office 2003 so i had to use app.Dialogs[Word.WdWordDialog.wdDialogToolsSpellingAndGrammar].Display(); and not sure about "an invisible word" I send in the text from a text box i check if there is text at all before calling
+ this function. If you are refusing to putting app. viability = false. I don't want people to see the word document with the text in it because they will be confused, because i am checking a text-box.text I could be doing this the wrong way so i am please let
+ me know., like if i should not use the word. document at all.]]></BodyHtml>
+      <CreatedAt>2012-07-26T23:09:14.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Burn_Denny</ReportedBy>
+  <ReportedAt>2012-07-12T19:48:46.0000000+00:00</ReportedAt>
+  <ClosedAt>2012-10-27T23:11:21.0000000+02:00</ClosedAt>
+</CodeplexIssue>

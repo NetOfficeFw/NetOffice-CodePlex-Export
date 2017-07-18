@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>20909</Id>
+  <Title>How to open template file (.xltx) for editing</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I try to open my template file as:
+var doc = ExcelApp.Workbooks.Open('myTemplate.xltx', false, false);
+But, instead of opening template Excell create new file, based on template.
+
+doc = ExcelApp.Workbooks.Open(filename: tName, updateLinks: false, readOnly: false, editable: true); - doesn't work (Error 1 The best overload for 'Open' does not have a parameter named 'editable')
+
+Please, explain how to open template file (.xltx)]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[NO doesnt use optional parameters. this is because you can't use named <a href="mailto:arguments.app.Workbooks.Open(@"C:\Mappe1.xltx",null," rel="nofollow">
+arguments.app.Workbooks.Open(@"C:\Mappe1.xltx",null,</a> null, null, null, null, null, null, null,true);
+
+
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-04-14T10:42:55.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>rtverd</ReportedBy>
+  <ReportedAt>2014-04-10T11:19:36.0000000+00:00</ReportedAt>
+</CodeplexIssue>

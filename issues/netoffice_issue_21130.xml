@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21130</Id>
+  <Title>Using SaveAs on Workbook not working</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I have opened a file in Excel but when I try to use the workbook SaveAs method no errors are generated but the file does not get saved.
+
+(I have Excel v15)
+<pre><code>if (excelVersion >= 12.0)
+    book.SaveAs(useFilename, XlFileFormat.xlWorkbookDefault);
+else
+    book.SaveAs(useFilename);</code></pre>]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>ekirk0</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Did you find a solution? 
+
+This is how I persist a copy of the file from an open document. 
+
+<a href="http://blogs.msdn.com/b/pranavwagh/archive/2008/04/03/how-to-do-a-save-copy-as-in-word.aspx" rel="nofollow">http://blogs.msdn.com/b/pranavwagh/archive/2008/04/03/how-to-do-a-save-copy-as-in-word.aspx</a>
+
+
+<a href="http://stackoverflow.com/questions/8981118/how-can-i-save-the-contents-of-an-oleobject-as-a-file-in-an-automated-way" rel="nofollow">http://stackoverflow.com/questions/8981118/how-can-i-save-the-contents-of-an-oleobject-as-a-file-in-an-automated-way</a>
+
+
+```using System.IO;using COM = System.Runtime.InteropServices.ComTypes;using System.Runtime.InteropServices;
+
+
+public static bool PersistFile(object underlyingObject, string newfilePath) { COM.IPersistFile pp = (COM.IPersistFile)underlyingObject;
+<pre><code>        pp.Save(newfilePath, false);
+
+        return File.Exists(newfilePath);
+
+    }```</code></pre>]]></BodyHtml>
+      <CreatedAt>2014-07-09T19:06:44.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>JAustin</ReportedBy>
+  <ReportedAt>2014-07-07T14:32:14.0000000+00:00</ReportedAt>
+</CodeplexIssue>

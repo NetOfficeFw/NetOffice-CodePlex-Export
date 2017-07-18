@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21030</Id>
+  <Title>COM Exceptions in NetOffice (Excel)</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I'm trying to port an Excel VSTO Addin over to NetOffice. So far I've got the Addin launching, but any time I try to make a call on a NetOffice object I get the following:
+<pre><code>----- Source: NetOffice -----
+Inner Exception 1: System.MissingMethodException: Method 'System.__ComObject.Add' not found.
+   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)
+   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)
+System.Runtime.InteropServices.COMException: See inner exception(s) for details.
+   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)
+   at NetOffice.ExcelApi.Workbooks.Add()
+   at Hcg.Stinger.Connect.InitializeAutomationAddIn() in D:\Code\Prevision\Source\Hcg\Stinger\Connect.cs:line 541
+   at Hcg.Stinger.Connect.OnStartupComplete(Array& custom, MainTaskPane taskPane) in D:\Code\Prevision\Source\Hcg\Stinger\Connect.cs:line 258
+----------</code></pre>
+The code is pretty straightforward:
+<pre><code>Excel.Workbook  book = _excelApp.Workbooks.Add();</code></pre>
+I also got the similar error when I called saying the Cursor did not exist, even though it show up in the intellisense:
+<pre><code>Excel.Enums.XlMousePointer cursorOriginal = Excel.Enums.XlMousePointer.xlDefault;
+_excelApp.Cursor = Excel.Enums.XlMousePointer.xlWait;</code></pre>
+Ideas?
+
+Thanks, 
+
+Erick]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[what i need to know: 
+
+1) Excel version(32 or 64 bit)2) NetOffice version3) Operating system(32 or 64 bit)
+
+
+at last: the operating system is a developer machine or just a user pc. 
+
+the fast way to pin point the problem is a sample solution. (send to public[at]sebastian.web.de and remove any private code, i dont need this)
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-05-28T01:16:58.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>ericklind</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Actually I did get it working. I'm on Excel 2010 32 bit, VS 2010, .NET 4.0, NetOffice version 1.6, and Win 7 64 bit. But now I'm getting other COM issues when I try to access other things like the taskPane:<code>Inner Exception 1: System.Runtime.InteropServices.InvalidComObjectException:
+ Attempt has been made to use a COM object that does not have a backing class factory. at NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)System.Runtime.InteropServices.COMException: See inner exception(s) for details. at NetOffice.Invoker.PropertySet(COMObject
+ comObject, String name, Object[] value) at NetOffice.OfficeApi._CustomTaskPane.set_Visible(Boolean value) at PrevisionAddIn.Addin.ShowExcelTaskPane(UserControl taskPane, String title) in D:\Code\Prevision\Source\Hcg\Stinger\PrevisionAddIn\Addin.cs:line 139
+ at Hcg.Stinger.TaskPaneFrameController.ShowController(ITaskPaneController controller) in D:\Code\Prevision\Source\Hcg\Stinger\TaskPaneFrameController.cs:line 332 at Hcg.Stinger.TaskPaneFrameController.Show(EnumGlobalTaskPanes taskPane) in D:\Code\Prevision\Source\Hcg\Stinger\TaskPaneFrameController.cs:line
+ 146 at Hcg.Stinger.TaskPaneFrameController.AuthorizeTaskPanes() in D:\Code\Prevision\Source\Hcg\Stinger\TaskPaneFrameController.cs:line 174 at Hcg.Stinger.TaskPaneFrameController..ctor(MainTaskPane frame) in D:\Code\Prevision\Source\Hcg\Stinger\TaskPaneFrameController.cs:line
+ 83 at Hcg.Stinger.Connect.OnStartupComplete(Array& custom, MainTaskPane taskPane) in D:\Code\Prevision\Source\Hcg\Stinger\Connect.cs:line 264----------</code>
+
+
+So the the code is pretty straight forward:<code>private Office._CustomTaskPane _taskPane = null;
+
+
+public void CTPFactoryAvailable(object CTPFactoryInst) { try { Office.ICTPFactory ctpFactory = new NetOffice.OfficeApi.ICTPFactory(_app, CTPFactoryInst); _taskPane = ctpFactory.CreateCTP("Hcg.Stinger.MainTaskPane", "PrevisionEPM", Type.Missing);
+ _taskPane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight; _taskPane.DockPositionRestrict = MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange; _taskPane.Width = 300; _taskPane.Visible = true; _mainTaskPane = _taskPane.ContentControl as
+ MainTaskPane; ctpFactory.Dispose(); } catch (Exception exception) { string message = string.Format("An error occured.{0}{0}{1}", Environment.NewLine, exception.Message); MessageBox.Show(message, _progId, MessageBoxButtons.OK, MessageBoxIcon.Error);
+ } } public void ShowExcelTaskPane(System.Windows.Forms.UserControl taskPane, string title) { _taskPane.Visible = false; _taskPane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight; _taskPane.DockPositionRestrict = MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
+ _taskPane.Visible = true; }</code>It also sets my takspane so that none of the controls work on it at all. Anything I need to do?]]></BodyHtml>
+      <CreatedAt>2014-05-28T01:58:05.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>ericklind</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi Sebastian,The Saga continues. I was finally able to get this doing what I needed to. I noticed that on the TaskPanes.Add it was not doing anything to set or create the TaskPaneInfo.Pane, which I need for my app. I changed the code to this, and it worked:```public
+ Addin() { try { TaskPanes.Add(typeof(MainTaskPane), "Main Task Pane"); TaskPanes[0].DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight; TaskPanes[0].DockPositionRestrict = MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoHorizontal;
+ TaskPanes[0].Width = 250; TaskPanes[0].Visible = true; TaskPanes[0].Arguments = new object[] { this };
+<pre><code>                            this.OnStartupComplete += new OnStartupCompleteEventHandler(Addin_OnStartupComplete);                this.OnConnection += new OnConnectionEventHandler(Addin_OnConnection);                this.OnDisconnection += new OnDisconnectionEventHandler(Addin_OnDisconnection);            }            catch (Exception throwedException)            {                string details = string.Format("{1}{1}Details:{1}{1}{0}", throwedException.Message, Environment.NewLine);                MessageBox.Show("An error occured in OnAction: " + details, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);            }        }
+
+    public override void CTPFactoryAvailable(object CTPFactoryInst)        {            try            {                base.CTPFactoryAvailable(CTPFactoryInst);                _taskPane = TaskPanes[0];                _mainTaskPane = _taskPane.Pane.ContentControl as MainTaskPane;            }            catch (Exception exception)            {                string message = string.Format("An error occured.{0}{0}{1}", Environment.NewLine, exception.Message);                MessageBox.Show(message, _progId, MessageBoxButtons.OK, MessageBoxIcon.Error);            }        }```Now the problem is that my taskpane is frozen as if it's disabled.  I cannot interact with any controls on it at all.  I've checked the status and it is enabled.  Is there something that I need to do in order to enable that otherwise?  I've looked through the samples and nothing stands out.
+</code></pre>
+Thanks again for all your work! 
+
+-Erick]]></BodyHtml>
+      <CreatedAt>2014-05-28T22:42:18.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>ericklind</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Finally figured it out. For some reason I have to attach all the events to the event handlers in the constructor of the task pane before I they will work. Not sure why this should matter but it does.]]></BodyHtml>
+      <CreatedAt>2014-06-02T22:51:38.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>ericklind</ReportedBy>
+  <ReportedAt>2014-05-27T14:36:46.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21974</Id>
+  <Title>PresentationBeforeCloseEvent did not trigger</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi All,
+
+I'm implementing a event for beforeclose for Word, Excel and Powerpoint.
+Both Word and Excel works as expected.
+HOwever, for PowerPoint, the beforeclosevent is not triggered.
+Is this a bug?
+
+Thanks.
+
+regards,
+long]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[PowerPoint has some known event issues.A very common problem is PowerPoint must visible or some events didnt fire.May this is the problem?
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2015-08-16T01:46:41.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>long1000</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi, 
+
+I'm using the File->Close menu to close the presentation, so it is visible.When I trace the code, the event didn't fire.
+
+
+Is there any fix to this?Thanks.]]></BodyHtml>
+      <CreatedAt>2015-08-19T05:17:12.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[The event works fine in my tests.Sure the instance where the event come from is still alive?
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2015-08-19T11:34:00.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>long1000</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I believe the instance is still alive.I'm can follow other parts of the codes and I also have a breakpoint in the event handler.But when I close powerpoint, it did not trigger the event.Word and Excel do not have this problem.]]></BodyHtml>
+      <CreatedAt>2015-08-22T04:25:39.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[<ol>
+<li>the event is only supported in power point 14(2010) and above. whats your power point version?2. can you verify breakpoints works in general?3. i create an OnDispose event for each NetOffice class. you can trigger them to make sure your instance is alive.
+</li></ol>
+*sebastian]]></BodyHtml>
+      <CreatedAt>2015-08-22T08:57:32.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>long1000</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi Sebastian,
+<ol>
+<li>Oh, that explains it. I'm using Office 2007.The Word and Excel works properly so I thought Powerpoint should also work properly.Thanks.
+</li></ol>
+Would u be able to help on the other issue about Outlook attachment?I've raised it as another issue: 21972.Thanks.]]></BodyHtml>
+      <CreatedAt>2015-08-26T10:50:56.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>long1000</ReportedBy>
+  <ReportedAt>2015-08-15T09:00:48.0000000+00:00</ReportedAt>
+</CodeplexIssue>

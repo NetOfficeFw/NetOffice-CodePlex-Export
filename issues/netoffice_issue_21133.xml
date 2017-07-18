@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21133</Id>
+  <Title>Is it possible to open a Word document and place the document viewer in a winforms form area?</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I would like to place a document in my own winforms form. This used to be possible with OLE but MS have stopped supporting OLE. Does NetOffice provide a way to do this?]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments />
+  <ReportedBy>JAustin</ReportedBy>
+  <ReportedAt>2014-07-08T12:03:53.0000000+00:00</ReportedAt>
+</CodeplexIssue>

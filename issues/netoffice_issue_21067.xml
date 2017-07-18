@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21067</Id>
+  <Title>When to release event's COMObject?</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[When to release the newContentControl, DO I NEED to release it by myself, or NetOffice release it?
+
+In the DocumentEvents2.cs
+public void ContentControlOnExit([In, MarshalAs(UnmanagedType.IDispatch)] object contentControl, [In] [Out] ref object cancel)
+<pre><code>    {
+        Delegate[] recipients = _eventBinding.GetEventRecipients("ContentControlOnExit");
+        if( (true == _eventClass.IsCurrentlyDisposing) || (recipients.Length == 0) )
+        {
+            Invoker.ReleaseParamsArray(contentControl, cancel);
+            return;
+        }
+
+        NetOffice.WordApi.ContentControl newContentControl = NetOffice.Factory.CreateObjectFromComProxy(_eventClass, contentControl) as NetOffice.WordApi.ContentControl;
+        object[] paramsArray = new object[2];
+        paramsArray[0] = newContentControl;
+        paramsArray.SetValue(cancel, 1);
+        _eventBinding.RaiseCustomEvent("ContentControlOnExit", ref paramsArray);
+
+        cancel = (bool)paramsArray[1];
+    }</code></pre>]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[the newContentControl is a child from _eventclass(may Word.Document) now in NO com proxy management.(Dispose the document instance(_eventclass) means also to dispose all the childs *your turn.)
+
+
+The common way is to dispose newContentControl at last in the event trigger to keep the memory usage low, otherwise newContentControl lives so long as the parent is alive.
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2014-06-11T08:58:36.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>cgh_chen</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[If have more ContentControlOnExit event handler, dispose the contentcontrol shoud be careful!]]></BodyHtml>
+      <CreatedAt>2014-06-11T12:01:01.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>cgh_chen</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[2014-06-11 21:47:21,440 [1] DEBUG Change: 935 >> After start word with my AddIn ProxyCount = 935 Add Many COM Proxy from external code.]]></BodyHtml>
+      <CreatedAt>2014-06-11T15:51:03.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>cgh_chen</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Open Source Project, Debug find the error code !]]></BodyHtml>
+      <CreatedAt>2014-06-12T05:52:59.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>cgh_chen</ReportedBy>
+  <ReportedAt>2014-06-11T02:37:19.0000000+00:00</ReportedAt>
+</CodeplexIssue>

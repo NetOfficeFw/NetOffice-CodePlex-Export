@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>16994</Id>
+  <Title>Exception while using custom Enumerators</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[an issue is reported by ngx.
+ 
+<a href="http://netoffice.codeplex.com/discussions/281614" rel="nofollow">http://netoffice.codeplex.com/discussions/281614</a>
+ 
+custom enumerators use a wrong array range in NetOffice, as outcome an exception was thrown.
+task: change used array range and make sure it works good.]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>High</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[issue fixed. 
+an upated release is available. 
+*have a nice day]]></BodyHtml>
+      <CreatedAt>2011-12-02T17:27:09.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>SebastianDotNet</ReportedBy>
+  <ReportedAt>2011-12-02T13:55:28.0000000+00:00</ReportedAt>
+</CodeplexIssue>

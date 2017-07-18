@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21823</Id>
+  <Title>Access to COM Object throws a COM exception when VBA editor is opened</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hi,
+I'm currently working on an excel addIn with netOffice, I found the following issue.
+
+Issue:
+Access to COM Object throws a COM exception when VBA editor is opened
+
+How to replicate it:
+<ol>
+<li>Use the attached project (IExtensibility COMAddin Examples), an addin based on NetOffice official example with only one change in the OnAction Method (see below the code in OnAction Method).
+</li><li>Open Excel (I use office 2013)
+</li><li>Click on Button1 on the AddIn's tab in the ribbon --> it works fine
+</li><li>Open the VBA editor:
+<ul>
+<li>Click on Developer Tab in the ribbon (to enable this tab in excel option -> Customize Ribbon -> Check Developer checkbox on the right side)
+</li><li>Click on Visual Basic button </li><li>Click on View -> Code </li><li>Type few characters in the code window
+</li></ul>
+</li><li>Don't close the VBA editor and reClick on Button1 on the AddIn's tab in the ribbon --> this time an exception occurs (see below exception message)
+</li></ol>
+My code in OnAction Method:
+<pre><code>    foreach (Excel.Workbook wb in _excelApplication.Workbooks)
+    {
+        Excel.Sheets wss = wb.Worksheets;
+        foreach (Excel.Worksheet ws in wss)
+        {
+            MessageBox.Show("Name: " + ws.Name);
+        }
+    }
+</code></pre>
+Exception:
+<pre><code> System.Runtime.InteropServices.COMException was unhandled by user code
+  HResult=-2147467259
+  Message=See inner exception(s) for details.
+  Source=NetOffice
+  ErrorCode=-2147467259
+
+ Exception StackTrace:
+   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)
+   at NetOffice.ExcelApi._Worksheet.get_Name()
+   at COMAddinRibbonExampleCS45.Addin.OnAction(IRibbonControl control) in c:\Users\...\...\RibbonUI\Addin.cs:line 101
+
+ Inner Exception:
+System.Runtime.InteropServices.COMException (0x800A9C64): Exception from HRESULT: 0x800A9C64
+   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)
+   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)
+   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)
+</code></pre>
+Do you have any suggestion to fix this bug?
+
+Thanks for your help,
+regards
+
+Luca]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments />
+  <ReportedBy>SpreadSheetSpace</ReportedBy>
+  <ReportedAt>2015-04-24T10:48:51.0000000+00:00</ReportedAt>
+</CodeplexIssue>

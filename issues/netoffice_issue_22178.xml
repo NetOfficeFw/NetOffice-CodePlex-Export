@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>22178</Id>
+  <Title>Excel FormatConditions do not resolve to derived types</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Using NetOffice, all items contained in ExcelApi.FormatConditions resolve to be of type ExcelApi.FormatCondition. Depending on what type of conditioning has been applied, the items should be of varying types, such as Top10 or Databar (see
+<a href="https://msdn.microsoft.com/en-us/library/microsoft.office.interop.excel.xlformatconditiontype.aspx" rel="nofollow">
+https://msdn.microsoft.com/en-us/library/microsoft.office.interop.excel.xlformatconditiontype.aspx</a> for format condition types).
+
+A workaround for this is to do something like:
+var defaultCondition = Application.ActiveSheet.Range("A1").FormatConditions[1];
+var typedCondition = new Top10(defaultCondition);
+//typedCondition.Rank is now available, while defaultCondition.Rank throws an exception
+
+The specific format condition types should inherit from FormatCondition and FormatConditions[index] should automatically resolve the type and return the derived type object.]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments />
+  <ReportedBy>hotn</ReportedBy>
+  <ReportedAt>2016-02-24T15:46:51.0000000+00:00</ReportedAt>
+</CodeplexIssue>

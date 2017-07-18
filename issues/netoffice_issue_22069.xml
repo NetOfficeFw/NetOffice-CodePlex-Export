@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>22069</Id>
+  <Title>How can I initialize NetOffice.WordApi objects using a Microsoft.Office.Interop objects?</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I have a Microsoft Office Addin Project on Visual Studio. It uses Microsoft.Office.Interop.dll . Within the code logic, I need to use NetOffice.WordApi instead of the regular Interop assemblies. My question is this: Since NetOffice is a wrapper to Microsoft.Office.Interop.dll
+ , How can I initialize a NetOffice.WordApi objects using a Microsoft.Office.Interop objects (e.g. Application -> Application , INDocument -> NODocument or Table to Table)]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>AndreasWaning</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[I have the same Problem. Could you give me sign, if I find a solution ? > a.waning (at) gmx.deThanks Andreas]]></BodyHtml>
+      <CreatedAt>2015-11-11T19:28:45.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[In NetOffice 1.7.3 you have to use the ctor from the corresponding wrapper class.The following examples used a non-existing method called "CreateObject" which is the same like the VB6 well-known method to create a new COM class trough late-binding.
+
+
+example1 - Word Application 
+
+object interopProxy = CreateObject("Word.Application");NetOffice.WordApi.Application app = new NetOffice.WordApi.Application(null, interopProxy);
+
+
+example2 - Word Documentobject interopProxy = CreateObject("Word.Document);NetOffice.WordApi.Document document = new NetOffice.WordApi.Document(null, interopProxy);
+
+
+may nice to know:I've been created some static methods in NetOffice 1.7.4 to do this easier because its a common problem for beginners. Its something like:
+
+
+var managedNetOfficeWrapper = COMObject.CreateInstanceFromProxy(interopProxy);// netoffice analyze the proxy and creates the corresponding wrapper automaticaly - you have to cast the result from the common base class COMObject to its actual type.
+
+
+moreover: as far i remember, the NO 1.7.3 includes a tutorial how to face this challenge. you may give'em a try ;) ( i know, the most open-source projects doesnt spend a good explanation/documentation. I alyways try to do this better like a commercial/professional
+ project. Its need the same time as the development - please do me pleasure and spend 5-10 minutes for the tutorials)
+
+
+"The tutorials are sufficient to understand what makes NetOffice tick. Great info!"- a customer feedback from a United States company
+
+
+*Sebastian]]></BodyHtml>
+      <CreatedAt>2015-11-11T20:54:08.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Mohamedahmed90</ReportedBy>
+  <ReportedAt>2015-11-05T10:14:55.0000000+00:00</ReportedAt>
+</CodeplexIssue>

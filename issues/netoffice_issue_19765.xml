@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>19765</Id>
+  <Title>how to use on a system without installing MS Office?</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[I compiled an application using netoffice with framework 2.0 and deployed on a machine without MS Office installed on it.
+
+
+It gives an error at the initialization "ProgId not found for Excel.Application". So can I now use netoffice without MS Office.
+
+Please reply,
+
+Sandeep]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>MrKagami13</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hi Sandeep, 
+
+reading the first paragraph of the starting page already answers your question: 
+
+".NET Wrapper Assemblies for accessing the following MS Office applications: " (<a href="http://netoffice.codeplex.com/" rel="nofollow">http://netoffice.codeplex.com/</a>)
+
+
+NetOffice is just a library which wraps you the API of these application to be able to develop independently from the specific Microsoft Office version. It is not a replacement for the Microsoft Office applications.
+
+
+So it cannot used without the installed Office applications. 
+
+Best regards]]></BodyHtml>
+      <CreatedAt>2013-05-29T09:09:36.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>sandeephuria</ReportedBy>
+  <ReportedAt>2013-05-25T10:22:08.0000000+00:00</ReportedAt>
+</CodeplexIssue>

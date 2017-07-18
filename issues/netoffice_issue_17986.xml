@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>17986</Id>
+  <Title>Please add 'Trace' ConsoleMode to DebugConsole</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Right now, the DebugConsole class has options to log to the console, file or memorylist.
+Could you please add 'Trace' as an option which logs a message using the .NET framework trace logging system.
+A call to System.Diagnostics.Trace.WriteLine(message) will do fine.
+ 
+I request this because it is the most easy way to find problems when developing Add-Ins for us (there is no console available for an add-in).
+
+By default, System.Diagnostics.Trace.WriteLine, messages are written to the Windows debug output. Those messages are displayed in the Visual Studio debug output window in debug mode, and can also be shown using the sysinternals 'DebugView' tool.
+By using the app.config, the user can even log the trace output to other outputs.
+ 
+Thank you for this great product, much much better than VSTO!]]></DescriptionHtml>
+  <Status>Resolved</Status>
+  <Type>Issue</Type>
+  <Impact>Low</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Trace is available in the updated 1.5.1 RC 
+
+*have a nice day]]></BodyHtml>
+      <CreatedAt>2012-05-04T19:15:07.0000000+02:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>Piet123</ReportedBy>
+  <ReportedAt>2012-05-04T04:43:14.0000000+00:00</ReportedAt>
+</CodeplexIssue>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeplexIssue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>21712</Id>
+  <Title>Decimal separator is always dot (.) when saving an excel file to text file</Title>
+  <DescriptionHtml xml:space="preserve"><![CDATA[Hello,
+
+NetOffice.ExcelApi.WorkBook.SaveAs(...) ignores my local settings when I save the workbook, e.g, in XlFileFormat.xlCurrentPlatformText format. After the workbook is saved to .txt file the decimal separator is always dot (.) while NetOffice.ExcelApi.Application.DecimalSeparator
+ says that my decimal separator is comma (,).
+
+If I save the workbook to the excel format then it uses the decimal separator defined in the DecimalSeparator property.
+
+Is this a bug or feature that .txt file is always saved by using dot as a decimal separator?
+
+I am using NetOffice 1.7.2 and .NET Framework 4.5
+<pre><code>NetOffice.ExcelApi.Application excelApplication = new Excel.Application();
+
+var workbook = excelApplication.Workbooks.Open("c:\\example.xlsx");
+workbook.SaveAs("c:\\example.txt", XlFileFormat.xlCurrentPlatformText, Type.Missing, Type.Missing, false);</code></pre>]]></DescriptionHtml>
+  <Status>Proposed</Status>
+  <Type>Unassigned</Type>
+  <Impact>Unassigned</Impact>
+  <Comments>
+    <CodeplexComment>
+      <Author>SebastianDotNet</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[hey men, 
+
+can you make sure this problem occurs not with the MS Interop assemblies?(it looks like excel ignore its own seperator, NetOffice contains no own logic here)
+
+
+may it helps to change the given thread culture(as environment).something like this:
+
+
+int lcid = GetYourLCIDHere(); // choose a language with your favourite seperator settingsNetOffice.Settings.Default.ThreadCulture = new CultureInfo(lcid);
+
+
+This culture is given to the office application in any call from NetOffice himself.
+
+
+*hope this helps!Sebastian]]></BodyHtml>
+      <CreatedAt>2015-02-06T21:47:20.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+    <CodeplexComment>
+      <Author>sami_lehtonen</Author>
+      <BodyHtml xml:space="preserve"><![CDATA[Hello and thanks, 
+
+I tested this with MS Interop assemblies and was able to reproduce it. So this isn't NetOffice's bug.
+
+
+Sami]]></BodyHtml>
+      <CreatedAt>2015-02-09T10:42:59.0000000+01:00</CreatedAt>
+    </CodeplexComment>
+  </Comments>
+  <ReportedBy>sami_lehtonen</ReportedBy>
+  <ReportedAt>2015-02-06T10:55:25.0000000+00:00</ReportedAt>
+</CodeplexIssue>
