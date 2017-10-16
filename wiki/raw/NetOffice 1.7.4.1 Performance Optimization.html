@@ -1,0 +1,19 @@
+<div class="wikidoc">
+<p><strong>NetOffice 1.7.4.1 Performance Optimizations</strong></p>
+<p>&nbsp;</p>
+<p>- avoid analyzing well known proxies which is not a base type for someone,<br>
+&nbsp; specialy event arguments</p>
+<p>- improve building the latebinding argument array<br>
+<br>
+- improve sink helper performance in event interfaces by caching reflection operations<br>
+<br>
+- remove duplicated proxy information calls in Core(GetParentLibraryID, etc.)<br>
+<br>
+- implement COMProxyShare to avoid calling the remote server when its possible<br>
+<br>
+- spend a fixed type cache for well known duplicate types instead of try search the whole appdomain<br>
+<br>
+- improve initialization process</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div><div class="ClearBoth"></div>
