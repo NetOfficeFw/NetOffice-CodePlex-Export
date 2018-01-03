@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Hi Guys.\n\nRunning 1.6 and am trying to create a Pivot Table in Excel.  I can get it to generate fine as long as the SourceData range does not go over 65536.  If I go to 65537 I get:\n\n```\n{\"Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))\"}\n```\n\nIf I create the table in Excel manually it works fine.  I assume there is a ushort variable limit to blame here?  Here is the code that causes the problem (abbreviated to save space):\n\n```\nvar workbook = ExcelApplication.ActiveWorkbook;\nif (workbook == null)\n\treturn;\n\nvar DataWorksheet = (Worksheet)workbook.Worksheets.FirstOrDefault(ws => ((Worksheet)ws).Name == \"Data\");\nif (DataWorksheet == null)\n\treturn;\n\nvar pivotsheet = workbook.Worksheets.Add() as Worksheet;\nif (pivotsheet == null)\n\treturn;\n\n// THE EVENTUAL PROBLEM WHEN > 65536\t\nvar usedrange = DataWorksheet.Range(\"A1:U65537\"); \n\n//THIS LINE WILL CAUSE THE EXCEPTION WHEN usedrange IS > 65536\nvar pivotcache = workbook.PivotCaches().Add(XlPivotTableSourceType.xlDatabase, usedrange);\n\nvar pivottables = pivotsheet.PivotTables() as PivotTables;\n\nif (pivottables != null)\n{\n\tvar pivottable = pivottables.Add(pivotcache, pivotsheet.Range(\"A1\"), \"PivotTable1\");\n\tpivottable.InGridDropZones = false;\n}\n```\n\nThanks\nErnie",
+    "HtmlDescription": "Hi Guys.<br />\n<br />\nRunning 1.6 and am trying to create a Pivot Table in Excel.  I can get it to generate fine as long as the SourceData range does not go over 65536.  If I go to 65537 I get:<br />\n<pre><code>{&quot;Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))&quot;}</code></pre>\n\nIf I create the table in Excel manually it works fine.  I assume there is a ushort variable limit to blame here?  Here is the code that causes the problem (abbreviated to save space):<br />\n<pre><code>var workbook = ExcelApplication.ActiveWorkbook;\nif (workbook == null)\n    return;\n\nvar DataWorksheet = (Worksheet)workbook.Worksheets.FirstOrDefault(ws =&gt; ((Worksheet)ws).Name == &quot;Data&quot;);\nif (DataWorksheet == null)\n    return;\n\nvar pivotsheet = workbook.Worksheets.Add() as Worksheet;\nif (pivotsheet == null)\n    return;\n\n// THE EVENTUAL PROBLEM WHEN &gt; 65536    \nvar usedrange = DataWorksheet.Range(&quot;A1:U65537&quot;); \n\n//THIS LINE WILL CAUSE THE EXCEPTION WHEN usedrange IS &gt; 65536\nvar pivotcache = workbook.PivotCaches().Add(XlPivotTableSourceType.xlDatabase, usedrange);\n\nvar pivottables = pivotsheet.PivotTables() as PivotTables;\n\nif (pivottables != null)\n{\n    var pivottable = pivottables.Add(pivotcache, pivotsheet.Range(&quot;A1&quot;), &quot;PivotTable1&quot;);\n    pivottable.InGridDropZones = false;\n}</code></pre>\n\nThanks<br />\nErnie<br />\n",
+    "PlainDescription": "Hi Guys.\n\nRunning 1.6 and am trying to create a Pivot Table in Excel.  I can get it to generate fine as long as the SourceData range does not go over 65536.  If I go to 65537 I get:\n{\"Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))\"}\n\nIf I create the table in Excel manually it works fine.  I assume there is a ushort variable limit to blame here?  Here is the code that causes the problem (abbreviated to save space):\nvar workbook = ExcelApplication.ActiveWorkbook;\nif (workbook == null)\nreturn;\n\n\nvar DataWorksheet = (Worksheet)workbook.Worksheets.FirstOrDefault(ws => ((Worksheet)ws).Name == \"Data\");\nif (DataWorksheet == null)\nreturn;\n\n\nvar pivotsheet = workbook.Worksheets.Add() as Worksheet;\nif (pivotsheet == null)\nreturn;\n\n\n// THE EVENTUAL PROBLEM WHEN > 65536  \nvar usedrange = DataWorksheet.Range(\"A1:U65537\"); \n\n//THIS LINE WILL CAUSE THE EXCEPTION WHEN usedrange IS > 65536\nvar pivotcache = workbook.PivotCaches().Add(XlPivotTableSourceType.xlDatabase, usedrange);\n\nvar pivottables = pivotsheet.PivotTables() as PivotTables;\n\nif (pivottables != null)\n{\nvar pivottable = pivottables.Add(pivotcache, pivotsheet.Range(&quot;A1&quot;), &quot;PivotTable1&quot;);\npivottable.InGridDropZones = false;\n\n}\n\nThanks\nErnie\n",
+    "LastUpdatedBy": "aesalazar",
+    "LastUpdatedDate": "2014-07-24T21:25:18.563+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "aesalazar",
+    "ReportedDate": "2014-06-17T18:02:41.447+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel Pivot Table SourceData Range >65536 Crashes",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21086,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Anything?  At least a workaround?",
+      "PostedBy": "aesalazar",
+      "PostedDate": "2014-07-24T21:25:18.563+02:00",
+      "WorkItemId": 21086,
+      "Id": 203244
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

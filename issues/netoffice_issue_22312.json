@@ -1,0 +1,62 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Description": "The indexer .Offset[] does not work as expected. See full code below. I use Excel 2010 and NetOffice for .NET 4.5 obtained as a NuGet package\r\n\r\n```\r\nusing System;\r\nusing Excel = NetOffice.ExcelApi;\r\nusing System.IO;\r\n\r\nnamespace NetOfficeBugs\r\n{\r\n    class Program\r\n    {\r\n       static void Main(string[] args)\r\n        {\r\n            using (var exApp = new Excel.Application())\r\n            {\r\n                Console.WriteLine($\"Excel Version: {exApp.Version}\");\r\n\r\n                var xml = File.ReadAllText(\"example.xml\");\r\n\r\n                exApp.Visible = true;\r\n\r\n                var workbook = exApp.Workbooks.Add();\r\n                var sheet = (Excel.Worksheet)workbook.Worksheets[1];\r\n\r\n\r\n                //Uncomment what you want to test\r\n                //OffsetNetOffice(sheet);\r\n                //OffsetUnderlyingObject(sheet);\r\n            }\r\n\r\n            Console.WriteLine();\r\n            Console.WriteLine(\"Done executing!\");\r\n            Console.ReadLine();\r\n        }\r\n\r\n        private static void OffsetUnderlyingObject(Excel.Worksheet sheet)\r\n        {\r\n            var cell1 = (dynamic)sheet.Cells[5, 5].UnderlyingObject;\r\n            Console.WriteLine($\"cell1: {cell1.Address}\");\r\n\r\n            var cell2 = cell1.Offset[-1, 0];\r\n            Console.WriteLine($\"cell2: {cell2.Address}\");\r\n\r\n            var cell2OtherOverLoad = cell1.Offset[-1];\r\n            Console.WriteLine($\"cell2: {cell2OtherOverLoad.Address}\");\r\n\r\n\r\n            /*Output:\r\n               Excel Version: 14.0\r\n               cell1: $E$5\r\n               cell2: $E$4\r\n               cell2: $E$4\r\n            */\r\n\r\n        }\r\n\r\n        private static void OffsetNetOffice(Excel.Worksheet sheet)\r\n        {\r\n            var cell1 = sheet.Cells[5, 5];\r\n            Console.WriteLine($\"cell1: {cell1.Address}\");\r\n\r\n            var cell2 = cell1.Offset[-1, 0];\r\n            Console.WriteLine($\"cell2: {cell2.Address}\");\r\n\r\n            var cell2OtherOverLoad = cell1.Offset[-1];\r\n            Console.WriteLine($\"cell2: {cell2OtherOverLoad.Address}\");\r\n\r\n            /*Output:\r\n                Excel Version: 14.0\r\n                cell1: $E$5\r\n                cell2: $D$3\r\n                cell2: $E$3\r\n            */\r\n        }\r\n```",
+    "HtmlDescription": "The indexer .Offset[] does not work as expected. See full code below. I use Excel 2010 and NetOffice for .NET 4.5 obtained as a NuGet package<br />\n<pre><code>using System;\nusing Excel = NetOffice.ExcelApi;\nusing System.IO;\n\nnamespace NetOfficeBugs\n{\n    class Program\n    {\n       static void Main(string[] args)\n        {\n            using (var exApp = new Excel.Application())\n            {\n                Console.WriteLine($&quot;Excel Version: {exApp.Version}&quot;);\n\n                var xml = File.ReadAllText(&quot;example.xml&quot;);\n\n                exApp.Visible = true;\n\n                var workbook = exApp.Workbooks.Add();\n                var sheet = (Excel.Worksheet)workbook.Worksheets[1];\n\n\n                //Uncomment what you want to test\n                //OffsetNetOffice(sheet);\n                //OffsetUnderlyingObject(sheet);\n            }\n\n            Console.WriteLine();\n            Console.WriteLine(&quot;Done executing!&quot;);\n            Console.ReadLine();\n        }\n\n        private static void OffsetUnderlyingObject(Excel.Worksheet sheet)\n        {\n            var cell1 = (dynamic)sheet.Cells[5, 5].UnderlyingObject;\n            Console.WriteLine($&quot;cell1: {cell1.Address}&quot;);\n\n            var cell2 = cell1.Offset[-1, 0];\n            Console.WriteLine($&quot;cell2: {cell2.Address}&quot;);\n\n            var cell2OtherOverLoad = cell1.Offset[-1];\n            Console.WriteLine($&quot;cell2: {cell2OtherOverLoad.Address}&quot;);\n\n\n            /*Output:\n               Excel Version: 14.0\n               cell1: $E$5\n               cell2: $E$4\n               cell2: $E$4\n            */\n\n        }\n\n        private static void OffsetNetOffice(Excel.Worksheet sheet)\n        {\n            var cell1 = sheet.Cells[5, 5];\n            Console.WriteLine($&quot;cell1: {cell1.Address}&quot;);\n\n            var cell2 = cell1.Offset[-1, 0];\n            Console.WriteLine($&quot;cell2: {cell2.Address}&quot;);\n\n            var cell2OtherOverLoad = cell1.Offset[-1];\n            Console.WriteLine($&quot;cell2: {cell2OtherOverLoad.Address}&quot;);\n\n            /*Output:\n                Excel Version: 14.0\n                cell1: $E$5\n                cell2: $D$3\n                cell2: $E$3\n            */\n        }</code></pre>\n\n",
+    "PlainDescription": "The indexer .Offset[] does not work as expected. See full code below. I use Excel 2010 and NetOffice for .NET 4.5 obtained as a NuGet package\nusing System;\nusing Excel = NetOffice.ExcelApi;\nusing System.IO;\n\nnamespace NetOfficeBugs\n{\nclass Program\n{\n   static void Main(string[] args)\n    {\n        using (var exApp = new Excel.Application())\n        {\n            Console.WriteLine($\"Excel Version: {exApp.Version}\");\n\n            var xml = File.ReadAllText(\"example.xml\");\n\n            exApp.Visible = true;\n\n            var workbook = exApp.Workbooks.Add();\n            var sheet = (Excel.Worksheet)workbook.Worksheets[1];\n\n\n            //Uncomment what you want to test\n            //OffsetNetOffice(sheet);\n            //OffsetUnderlyingObject(sheet);\n        }\n\n        Console.WriteLine();\n        Console.WriteLine(\"Done executing!\");\n        Console.ReadLine();\n    }\n\n    private static void OffsetUnderlyingObject(Excel.Worksheet sheet)\n    {\n        var cell1 = (dynamic)sheet.Cells[5, 5].UnderlyingObject;\n        Console.WriteLine($\"cell1: {cell1.Address}\");\n\n        var cell2 = cell1.Offset[-1, 0];\n        Console.WriteLine($\"cell2: {cell2.Address}\");\n\n        var cell2OtherOverLoad = cell1.Offset[-1];\n        Console.WriteLine($\"cell2: {cell2OtherOverLoad.Address}\");\n\n\n        /*Output:\n           Excel Version: 14.0\n           cell1: $E$5\n           cell2: $E$4\n           cell2: $E$4\n        */\n\n    }\n\n    private static void OffsetNetOffice(Excel.Worksheet sheet)\n    {\n        var cell1 = sheet.Cells[5, 5];\n        Console.WriteLine($\"cell1: {cell1.Address}\");\n\n        var cell2 = cell1.Offset[-1, 0];\n        Console.WriteLine($\"cell2: {cell2.Address}\");\n\n        var cell2OtherOverLoad = cell1.Offset[-1];\n        Console.WriteLine($\"cell2: {cell2OtherOverLoad.Address}\");\n\n        /*Output:\n            Excel Version: 14.0\n            cell1: $E$5\n            cell2: $D$3\n            cell2: $E$3\n        */\n    }\n\n\n",
+    "LastUpdatedBy": "JBjurstam",
+    "LastUpdatedDate": "2016-09-29T08:58:27.867+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "JBjurstam",
+    "ReportedDate": "2016-09-28T12:27:50.387+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Range.Offset[] does not work",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22312,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The output looks different. Thats the problem right?\nWhat means the \n   Console.WriteLine($\"cell1: {cell1.Address}\"); \ncall ?? (IIS? PowerShell?) This is not C# in a desktop what i known.\nThere is a known issue with this indexers in visual basic - because vb can not see the real this indexer.\n(You need an up cast here before) \nIt looks like you face the same trap - but i didnt understand why. Can you explain more about the context?\n\nSebsastian\n\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-09-28T19:18:22.787+02:00",
+      "WorkItemId": 22312,
+      "Id": 204387
+    },
+    {
+      "Message": "Hi Sebastian!\n\nYou can read about $ here:\nhttp://stackoverflow.com/documentation/c%23/24/c-sharp-6-0-features/49/string-interpolation#t=201609290642042511322\n\nIt's a nifty feature in C# 6.0\n\nWhat is an up cast?\n\nYes, the problem is that the NetOffice wrapper Range.Offset returns a completely different Range-object than dynamic or PIA Range.Offset would. I use .Offset quite a lot because it allows me to hard code the address of one cell, then refer to other cells belonging to the same block of content by using relative positions to the first cell. That way, I don't need to change a ton of hard coded references if I need to move this block of content in the future.\n\n",
+      "PostedBy": "JBjurstam",
+      "PostedDate": "2016-09-29T08:58:27.867+02:00",
+      "WorkItemId": 22312,
+      "Id": 204408
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

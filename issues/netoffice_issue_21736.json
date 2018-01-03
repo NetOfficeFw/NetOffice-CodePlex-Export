@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi ,\ni am trying to open outlook 2013 application from visual studio 2013 c#  but something goes wrong. \nmy command is \"NetOffice.OutlookApi.Application outlookApplication = new Outlook.Application();\".\ni see the icon on the icons on the taskbar bottom right but it is like this \n![http://s12.postimg.org/a4q1mday5/Untitled.png]\nand it stays like that.When i click on it after 5-10 seconds it says that can not open outlook.\nI try the same code in windows 7 , visual studio 2013 and office 2010 and it is ok.\n\n\nAny idea???",
+    "HtmlDescription": "Hi ,<br />\ni am trying to open outlook 2013 application from visual studio 2013 c#  but something goes wrong. <br />\nmy command is &quot;NetOffice.OutlookApi.Application outlookApplication = new Outlook.Application();&quot;.<br />\ni see the icon on the icons on the taskbar bottom right but it is like this <br />\n![<a href=\"http://s12.postimg.org/a4q1mday5/Untitled.png]\" rel=\"nofollow\">http://s12.postimg.org/a4q1mday5/Untitled.png]</a><br />\nand it stays like that.When i click on it after 5-10 seconds it says that can not open outlook.<br />\nI try the same code in windows 7 , visual studio 2013 and office 2010 and it is ok.<br />\n<br />\n<br />\nAny idea???<br />\n",
+    "PlainDescription": "Hi ,\ni am trying to open outlook 2013 application from visual studio 2013 c#  but something goes wrong. \nmy command is \"NetOffice.OutlookApi.Application outlookApplication = new Outlook.Application();\".\ni see the icon on the icons on the taskbar bottom right but it is like this \n![http://s12.postimg.org/a4q1mday5/Untitled.png]\nand it stays like that.When i click on it after 5-10 seconds it says that can not open outlook.\nI try the same code in windows 7 , visual studio 2013 and office 2010 and it is ok.\n\n\nAny idea???\n",
+    "LastUpdatedBy": "Petran3",
+    "LastUpdatedDate": "2015-02-24T11:12:00.89+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Petran3",
+    "ReportedDate": "2015-02-24T11:08:00.787+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Problem with windows 8.1 ,visual studio 2013 and outlook 2013",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21736,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

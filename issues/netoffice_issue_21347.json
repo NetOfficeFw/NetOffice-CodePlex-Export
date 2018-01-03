@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "I was only able to download it from:\n[https://github.com/CaioProiete/NetOffice-NuGet](https://github.com/CaioProiete/NetOffice-NuGet)\n\nPlease fix the download, it freeze at around 29MB, then timeout.",
+    "HtmlDescription": "I was only able to download it from:<br />\n<a href=\"https://github.com/CaioProiete/NetOffice-NuGet\" rel=\"nofollow\">https://github.com/CaioProiete/NetOffice-NuGet</a><br />\n<br />\nPlease fix the download, it freeze at around 29MB, then timeout.<br />\n",
+    "PlainDescription": "I was only able to download it from:\nhttps://github.com/CaioProiete/NetOffice-NuGet\n\nPlease fix the download, it freeze at around 29MB, then timeout.\n",
+    "LastUpdatedBy": "CaioProiete",
+    "LastUpdatedDate": "2014-11-25T14:43:27.743+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Ash2014_CA",
+    "ReportedDate": "2014-09-19T20:28:02.08+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Download is not working",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 21347,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hey man![0A][0A]i support the NO downloads from codeplex only.[0A]first timer i ever heard from NetOffice on github (WTF?)[0A]you can download NetOffice from various websites but[0A]these downloads are not official in exception of codeplex.[0A] [0A]A generaly hint: Use when ever you can the original downloads from the[0A]contributer/manufactor. Its more safety. (Use a search engine to find the real contributor)[0A][0A]*Sebastian[0A][0A]",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-09-26T01:00:19.18+02:00",
+      "WorkItemId": 21347,
+      "Id": 203257
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

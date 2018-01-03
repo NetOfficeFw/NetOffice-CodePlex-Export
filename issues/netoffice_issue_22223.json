@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi,\n\nI've developed an extension based on NetOffice. My office configuration requires applications to be signed by Trusted Publishers. I tried signing the output DLL with signtool.exe, with a valid certificate, but unfortunately, Office says \"There is no digital signature available\".\n\nThe option can be enabled via: File->Options->Trust Center->Trust Center Settings -> Add-ins -> Require application Add-ins to be signed by Trusted Publisher\n\nWhat's the appropriate method for signing the DLL? \n\nIt seems that when using VSTO ClickOnce handles the signing, also there's a .manifest file that is created for the DLL, I'm not sure if its required or not but I'm unable to create one for class libraries.\n\nhttps://msdn.microsoft.com/en-us/library/bb772096(v=vs.120).aspx\nhttps://msdn.microsoft.com/en-us/library/bb386179.aspx\nhttps://msdn.microsoft.com/en-us/library/che5h906.aspx",
+    "HtmlDescription": "Hi,<br />\n<br />\nI've developed an extension based on NetOffice. My office configuration requires applications to be signed by Trusted Publishers. I tried signing the output DLL with signtool.exe, with a valid certificate, but unfortunately, Office says &quot;There is no digital signature available&quot;.<br />\n<br />\nThe option can be enabled via: File-&gt;Options-&gt;Trust Center-&gt;Trust Center Settings -&gt; Add-ins -&gt; Require application Add-ins to be signed by Trusted Publisher<br />\n<br />\nWhat's the appropriate method for signing the DLL? <br />\n<br />\nIt seems that when using VSTO ClickOnce handles the signing, also there's a .manifest file that is created for the DLL, I'm not sure if its required or not but I'm unable to create one for class libraries.<br />\n<br />\n<a href=\"https://msdn.microsoft.com/en-us/library/bb772096(v=vs.120).aspx\" rel=\"nofollow\">https://msdn.microsoft.com/en-us/library/bb772096(v=vs.120).aspx</a><br />\n<a href=\"https://msdn.microsoft.com/en-us/library/bb386179.aspx\" rel=\"nofollow\">https://msdn.microsoft.com/en-us/library/bb386179.aspx</a><br />\n<a href=\"https://msdn.microsoft.com/en-us/library/che5h906.aspx\" rel=\"nofollow\">https://msdn.microsoft.com/en-us/library/che5h906.aspx</a><br />\n",
+    "PlainDescription": "Hi,\n\nI've developed an extension based on NetOffice. My office configuration requires applications to be signed by Trusted Publishers. I tried signing the output DLL with signtool.exe, with a valid certificate, but unfortunately, Office says \"There is no digital signature available\".\n\nThe option can be enabled via: File->Options->Trust Center->Trust Center Settings -> Add-ins -> Require application Add-ins to be signed by Trusted Publisher\n\nWhat's the appropriate method for signing the DLL? \n\nIt seems that when using VSTO ClickOnce handles the signing, also there's a .manifest file that is created for the DLL, I'm not sure if its required or not but I'm unable to create one for class libraries.\n\nhttps://msdn.microsoft.com/en-us/library/bb772096(v=vs.120).aspx\nhttps://msdn.microsoft.com/en-us/library/bb386179.aspx\nhttps://msdn.microsoft.com/en-us/library/che5h906.aspx\n",
+    "LastUpdatedBy": "forku",
+    "LastUpdatedDate": "2016-03-24T17:04:52.393+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "forku",
+    "ReportedDate": "2016-03-24T17:04:52.393+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Trusted publisher signing",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22223,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

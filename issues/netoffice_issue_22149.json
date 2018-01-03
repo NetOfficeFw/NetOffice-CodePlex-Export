@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "I'm currently using NetOffice to create a word document and it works beautifully. However, the newDocument.PrintPreview() doesn't actually do anything. I was expecting it to popup a window and show a preview of the page.\n\nPrintOut() works fine though.",
+    "HtmlDescription": "I'm currently using NetOffice to create a word document and it works beautifully. However, the newDocument.PrintPreview() doesn't actually do anything. I was expecting it to popup a window and show a preview of the page.<br />\n<br />\nPrintOut() works fine though.<br />\n",
+    "PlainDescription": "I'm currently using NetOffice to create a word document and it works beautifully. However, the newDocument.PrintPreview() doesn't actually do anything. I was expecting it to popup a window and show a preview of the page.\n\nPrintOut() works fine though.\n",
+    "LastUpdatedBy": "Legolash2o",
+    "LastUpdatedDate": "2016-01-25T11:01:42.77+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Legolash2o",
+    "ReportedDate": "2016-01-25T11:01:42.77+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Word Document Print Preview",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22149,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "I have written code which search contact based on email id and needs to display Contact Form, every other part is working but .Display property is not showing Contact Form for searched Contact.\n\nMy code:\n\n\n        Dim strWhere As String\n        Dim colItems As Outlook.Items\n        Dim blnFound As Boolean\n        Dim strAddress As String = emailAddress\n\n        ContactName = \"\"\n        FTPSite = \"\"\n\n        strWhere = \"[Email1Address] <> vbNullString \" & _\n                   \"Or [Email2Address] <> vbNullString \" & _\n                   \"Or [Email3Address] <> vbNullString \"\n\n        strWhere = \"[Email1Address] = '\" & strAddress & \"'\" & _\n                   \"Or [Email2Address] = '\" & strAddress & \"'\" & _\n                   \"Or [Email3Address] = '\" & strAddress & \"'\"\n\n        colItems = oContactFolder.Items.Restrict(strWhere)\n\n        If String.IsNullOrEmpty(strAddress) = False Then\n            colItems.SetColumns(\"FirstName, FTPSite, Email1Address, Email2Address, Email3Address\")\n\n            For Each objItem In colItems\n                ' must test for item type to avoid distribution lists\n                If TypeName(objItem).ToString = \"ContactItem\" Then\n                    Dim contactItem As Outlook.ContactItem = _outlookApplication.CreateItem(OlItemType.olContactItem)\n\n                    contactItem = TryCast(objItem, Outlook.ContactItem)\n\n                    If InStr(contactItem.Email1Address, strAddress) > 0 Or _\n                        InStr(contactItem.Email2Address, strAddress) > 0 Or _\n                        InStr(contactItem.Email3Address, strAddress) > 0 Then\n\n                        ContactName = contactItem.FirstName\n                        FTPSite = contactItem.FTPSite\n\n                        'If Not String.IsNullOrEmpty(FTPSite) Then \n\n                        __contactItem.Display()__\n\n                        blnFound = True\n                        Exit For\n                    End If\n                End If\n            Next\n        End If\n\n        colItems = Nothing\n\n        Return blnFound\n\n\n\nKindly assist. Problem in 2007, 2010 and 2013",
+    "HtmlDescription": "I have written code which search contact based on email id and needs to display Contact Form, every other part is working but .Display property is not showing Contact Form for searched Contact.<br />\n<br />\nMy code:<br />\n<pre><code>    Dim strWhere As String\n    Dim colItems As Outlook.Items\n    Dim blnFound As Boolean\n    Dim strAddress As String = emailAddress\n\n    ContactName = &quot;&quot;\n    FTPSite = &quot;&quot;\n\n    strWhere = &quot;[Email1Address] &lt;&gt; vbNullString &quot; &amp; _\n               &quot;Or [Email2Address] &lt;&gt; vbNullString &quot; &amp; _\n               &quot;Or [Email3Address] &lt;&gt; vbNullString &quot;\n\n    strWhere = &quot;[Email1Address] = '&quot; &amp; strAddress &amp; &quot;'&quot; &amp; _\n               &quot;Or [Email2Address] = '&quot; &amp; strAddress &amp; &quot;'&quot; &amp; _\n               &quot;Or [Email3Address] = '&quot; &amp; strAddress &amp; &quot;'&quot;\n\n    colItems = oContactFolder.Items.Restrict(strWhere)\n\n    If String.IsNullOrEmpty(strAddress) = False Then\n        colItems.SetColumns(&quot;FirstName, FTPSite, Email1Address, Email2Address, Email3Address&quot;)\n\n        For Each objItem In colItems\n            ' must test for item type to avoid distribution lists\n            If TypeName(objItem).ToString = &quot;ContactItem&quot; Then\n                Dim contactItem As Outlook.ContactItem = _outlookApplication.CreateItem(OlItemType.olContactItem)\n\n                contactItem = TryCast(objItem, Outlook.ContactItem)\n\n                If InStr(contactItem.Email1Address, strAddress) &gt; 0 Or _\n                    InStr(contactItem.Email2Address, strAddress) &gt; 0 Or _\n                    InStr(contactItem.Email3Address, strAddress) &gt; 0 Then\n\n                    ContactName = contactItem.FirstName\n                    FTPSite = contactItem.FTPSite\n\n                    'If Not String.IsNullOrEmpty(FTPSite) Then \n\n                    __contactItem.Display()__\n\n                    blnFound = True\n                    Exit For\n                End If\n            End If\n        Next\n    End If\n\n    colItems = Nothing\n\n    Return blnFound\n\n\n</code></pre>\n\nKindly assist. Problem in 2007, 2010 and 2013<br />\n",
+    "PlainDescription": "I have written code which search contact based on email id and needs to display Contact Form, every other part is working but .Display property is not showing Contact Form for searched Contact.\n\nMy code:\nDim strWhere As String\nDim colItems As Outlook.Items\nDim blnFound As Boolean\nDim strAddress As String = emailAddress\n\nContactName = &quot;&quot;\nFTPSite = &quot;&quot;\n\nstrWhere = &quot;[Email1Address] &lt;&gt; vbNullString &quot; &amp; _\n           &quot;Or [Email2Address] &lt;&gt; vbNullString &quot; &amp; _\n           &quot;Or [Email3Address] &lt;&gt; vbNullString &quot;\n\nstrWhere = &quot;[Email1Address] = '&quot; &amp; strAddress &amp; &quot;'&quot; &amp; _\n           &quot;Or [Email2Address] = '&quot; &amp; strAddress &amp; &quot;'&quot; &amp; _\n           &quot;Or [Email3Address] = '&quot; &amp; strAddress &amp; &quot;'&quot;\n\ncolItems = oContactFolder.Items.Restrict(strWhere)\n\nIf String.IsNullOrEmpty(strAddress) = False Then\n    colItems.SetColumns(&quot;FirstName, FTPSite, Email1Address, Email2Address, Email3Address&quot;)\n\n    For Each objItem In colItems\n        ' must test for item type to avoid distribution lists\n        If TypeName(objItem).ToString = &quot;ContactItem&quot; Then\n            Dim contactItem As Outlook.ContactItem = _outlookApplication.CreateItem(OlItemType.olContactItem)\n\n            contactItem = TryCast(objItem, Outlook.ContactItem)\n\n            If InStr(contactItem.Email1Address, strAddress) &gt; 0 Or _\n                InStr(contactItem.Email2Address, strAddress) &gt; 0 Or _\n                InStr(contactItem.Email3Address, strAddress) &gt; 0 Then\n\n                ContactName = contactItem.FirstName\n                FTPSite = contactItem.FTPSite\n\n                'If Not String.IsNullOrEmpty(FTPSite) Then \n\n                __contactItem.Display()__\n\n                blnFound = True\n                Exit For\n            End If\n        End If\n    Next\nEnd If\n\ncolItems = Nothing\n\nReturn blnFound\n\n\n\n\n\nKindly assist. Problem in 2007, 2010 and 2013\n",
+    "LastUpdatedBy": "TALLYTACT",
+    "LastUpdatedDate": "2013-12-15T05:26:00.577+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "TALLYTACT",
+    "ReportedDate": "2013-12-15T05:24:15.997+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "contactItem.Display not working",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20525,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

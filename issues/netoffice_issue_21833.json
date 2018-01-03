@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Hi Team,\n\nI am using office power point interop to merger multiple power point document to single document. Now the issue is all document were created in office 2010 all files are merging properly if the system where it is running has office 2010. If exe runs on system having office 2013 then extra spaces get added to the slide. I amslo tried to setup page size but still he spaces get added. I googled on it and found that it is due to new slide size  added to office 2013 which is wide screen 16:9.   \n\nMy question is if I use NetOffice then can I mention which version of office to use? As we know that interop internally decides which version of component to use. It always prefer latest version. \n\nPlease answer me ASAP, any help will be appreciated. \n\nThanks,\nIndresh",
+    "HtmlDescription": "Hi Team,<br />\n<br />\nI am using office power point interop to merger multiple power point document to single document. Now the issue is all document were created in office 2010 all files are merging properly if the system where it is running has office 2010. If exe runs on system having office 2013 then extra spaces get added to the slide. I amslo tried to setup page size but still he spaces get added. I googled on it and found that it is due to new slide size  added to office 2013 which is wide screen 16:9. <br />\n<br />\nMy question is if I use NetOffice then can I mention which version of office to use? As we know that interop internally decides which version of component to use. It always prefer latest version. <br />\n<br />\nPlease answer me ASAP, any help will be appreciated. <br />\n<br />\nThanks,<br />\nIndresh<br />\n",
+    "PlainDescription": "Hi Team,\n\nI am using office power point interop to merger multiple power point document to single document. Now the issue is all document were created in office 2010 all files are merging properly if the system where it is running has office 2010. If exe runs on system having office 2013 then extra spaces get added to the slide. I amslo tried to setup page size but still he spaces get added. I googled on it and found that it is due to new slide size  added to office 2013 which is wide screen 16:9. \n\nMy question is if I use NetOffice then can I mention which version of office to use? As we know that interop internally decides which version of component to use. It always prefer latest version. \n\nPlease answer me ASAP, any help will be appreciated. \n\nThanks,\nIndresh\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2015-05-05T18:18:19.94+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Indresh1210",
+    "ReportedDate": "2015-05-03T08:59:58.813+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Regarding office version",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21833,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "you can use a version specific progid to create an application instance in target version (must be installed of course). This is possible trough the interop assemblies and NetOffice. In NetOffice its a bit easier trough the application ctor like new PowerPoint.Application(\"PowerPoint.Application.14\").\r\n\r\nnext time please use the discussion board.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-05T18:18:19.94+02:00",
+      "WorkItemId": 21833,
+      "Id": 203294
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

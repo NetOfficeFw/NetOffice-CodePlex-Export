@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "I have opened a file in Excel but when I try to use the workbook SaveAs method no errors are generated but the file does not get saved.\n\n(I have Excel v15)\n\n    if (excelVersion >= 12.0)\n        book.SaveAs(useFilename, XlFileFormat.xlWorkbookDefault);\n    else\n        book.SaveAs(useFilename);",
+    "HtmlDescription": "I have opened a file in Excel but when I try to use the workbook SaveAs method no errors are generated but the file does not get saved.<br />\n<br />\n(I have Excel v15)<br />\n<pre><code>if (excelVersion &gt;= 12.0)\n    book.SaveAs(useFilename, XlFileFormat.xlWorkbookDefault);\nelse\n    book.SaveAs(useFilename);</code></pre>\n\n",
+    "PlainDescription": "I have opened a file in Excel but when I try to use the workbook SaveAs method no errors are generated but the file does not get saved.\n\n(I have Excel v15)\nif (excelVersion >= 12.0)\nbook.SaveAs(useFilename, XlFileFormat.xlWorkbookDefault);\n\nelse\nbook.SaveAs(useFilename);\n\n\n",
+    "LastUpdatedBy": "ekirk0",
+    "LastUpdatedDate": "2014-07-09T19:06:44.137+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "JAustin",
+    "ReportedDate": "2014-07-07T18:32:14.37+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Using SaveAs on Workbook not working",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21130,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Did you find a solution?\r\n\r\nThis is how I persist a copy of the file from an open document.\r\n\r\nhttp://blogs.msdn.com/b/pranavwagh/archive/2008/04/03/how-to-do-a-save-copy-as-in-word.aspx\r\n\r\nhttp://stackoverflow.com/questions/8981118/how-can-i-save-the-contents-of-an-oleobject-as-a-file-in-an-automated-way\r\n\r\n```using System.IO;using COM = System.Runtime.InteropServices.ComTypes;using System.Runtime.InteropServices;\r\n\r\n  public static bool PersistFile(object underlyingObject, string newfilePath)        {            COM.IPersistFile pp = (COM.IPersistFile)underlyingObject;\r\n\r\n            pp.Save(newfilePath, false);\r\n\r\n            return File.Exists(newfilePath);\r\n\r\n        }```",
+      "PostedBy": "ekirk0",
+      "PostedDate": "2014-07-09T19:06:44.137+02:00",
+      "WorkItemId": 21130,
+      "Id": 203247
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

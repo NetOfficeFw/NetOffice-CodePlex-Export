@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 6,
+    "Custom": "",
+    "Description": "See my description (and solution) in this post\nhttp://netoffice.codeplex.com/discussions/402559",
+    "HtmlDescription": "See my description (and solution) in this post<br />\n<a href=\"http://netoffice.codeplex.com/discussions/402559\" rel=\"nofollow\">http://netoffice.codeplex.com/discussions/402559</a><br />\n",
+    "PlainDescription": "See my description (and solution) in this post\nhttp://netoffice.codeplex.com/discussions/402559\n",
+    "LastUpdatedBy": "buehlert",
+    "LastUpdatedDate": "2013-09-12T13:20:38.65+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "buehlert",
+    "ReportedDate": "2012-11-09T16:47:33.8+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cannot call VBA methods with parameters",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18896,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for reporting this issue and your research.the problem is related to the parameters as far i'm understand.as hotfix is it possible for you to use a call like this\r\n\r\nvar result = app.Run(\"addinFileName.ppam!TestAddin\", new object[] {new object[]{\"par1\", \"par2\"}});\r\n\r\n???\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-11-10T03:32:26.183+01:00",
+      "WorkItemId": 18896,
+      "Id": 203108
+    },
+    {
+      "Message": "No, sorry, your suggestion doesn't work unfortunately.I will get again the inner exception {\"Application.Run : Invalid request.  Sub or function not defined.\"}\r\n\r\nJust for you to know how the parameters should be passed, here are the differences:\r\n\r\n1. Right now the Invoker.cs - MethodReturn gets a paramsArray object which looks like this:  paramsArray[2] :                 paramsArray[0] = \"addinFileName.ppam!TestAddin\"                 paramsArray[1] = object[1] -> object[0] = \"par1\"\r\n\r\n2. After my workaround posted in the forum the array looks like this: paramsArray[2] :                paramsArray[0] = \"addinFileName.ppam!TestAddin\"               paramsArray[1] =  \"par1\"\r\n\r\nThanks and best regards,Thomas",
+      "PostedBy": "buehlert",
+      "PostedDate": "2012-11-14T16:27:53.34+01:00",
+      "WorkItemId": 18896,
+      "Id": 203109
+    },
+    {
+      "Message": "god damn it :( i change the implementation now.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-11-15T00:32:47.93+01:00",
+      "WorkItemId": 18896,
+      "Id": 203110
+    },
+    {
+      "Message": "Hi Sebastian\r\n\r\nThanks a lot for a fantastic release 1.6.0!Unfortunately the macro related issue I recognized has not been fixed yet.Is there any chance of a working update?\r\n\r\nThanks and best regards,Thomas",
+      "PostedBy": "buehlert",
+      "PostedDate": "2013-09-12T09:58:47.307+02:00",
+      "WorkItemId": 18896,
+      "Id": 203111
+    },
+    {
+      "Message": "Here is some code to test this easily:\r\n\r\nCreate test.ppam with following subs/functions:```Public Sub TestAddin()\tMsgBox (\"Hello\")End Sub\r\n\r\nPublic Function TestAddin2() As String\tTestAddin2 = \"Hello \"End Function\r\n\r\nPublic Function TestAddin3(name As String) As String\tTestAddin3 = \"Hello \" & nameEnd Function```\r\n\r\nNow, create a C# Test method like:```var powerApplication = new Application();powerApplication.Visible = MsoTriState.msoTrue;var addin = powerApplication.AddIns.Add(\"D:\\test\\test.ppam\");addin.Loaded = MsoTriState.msoTrue;\r\n\r\n//1. Macro, no parameters, no return value  \t\t\t\t\tpowerApplication.Run(addin.Name + \"!TestAddin\");\r\n\r\n//2. Macro, no parameters, with return valuevar res = powerApplication.Run(addin.Name + \"!TestAddin2\");Debug.WriteLine(res.ToString());\r\n\r\n//2. Macro, with parameters, with return valuevar res2 = powerApplication.Run(addin.Name + \"!TestAddin3\", new Object[] { \"test\" });Debug.WriteLine(res2.ToString());\r\n\r\npowerApplication.Quit();powerApplication.Dispose();```\r\n\r\nTestAddin -> works, message box will be displayedTestAddin2 -> works, \"Hello\" is returnedTestAddin3 -> crashes -> it says \"Application.Run : Invalid request. Sub or function not defined\"",
+      "PostedBy": "buehlert",
+      "PostedDate": "2013-09-12T10:05:37.323+02:00",
+      "WorkItemId": 18896,
+      "Id": 203112
+    },
+    {
+      "Message": "This is how it works, please use it as a suggestion how to solve this bug:\r\n\r\nThe class \"NetOffice.Invoker.cs\" contains the following method called for running macros:\r\n\r\n``` public static object MethodReturn(COMObject comObject, string name, object[] paramsArray)        {            try            {                if (comObject.IsDisposed)                    throw new InvalidComObjectException();\r\n\r\n\t\t\t    if ((Settings.EnableSafeMode) && (!comObject.EntityIsAvailable(name, SupportEntityType.Method)))                    throw new EntityNotSupportedException(string.Format(\"Method {0} is not available.\", name));\r\n\r\n\t\t\t\tobject returnValue;\t\t\t\tif (name == \"Run\" && paramsArray != null && paramsArray.Length == 2 && paramsArray[0].GetType() == typeof(string) && paramsArray[1].GetType() == typeof(object[]))\t\t\t\t{\t\t\t\t\tvar newParas = new List { paramsArray[0] };\t\t\t\t\tnewParas.AddRange((object[])paramsArray[1]);\r\n\r\n\t\t\t\t\treturnValue = comObject.InstanceType.InvokeMember(name, BindingFlags.InvokeMethod | BindingFlags.GetProperty, null,\t\t\t\t   comObject.UnderlyingObject, newParas.ToArray(), Settings.ThreadCulture);\t\t\t\t}\t\t\t\telse\t\t\t\t{\t\t\t\t\treturnValue = comObject.InstanceType.InvokeMember(name, BindingFlags.InvokeMethod | BindingFlags.GetProperty, null, comObject.UnderlyingObject, paramsArray, Settings.ThreadCulture);\t\t\t\t}                               return returnValue;            }            catch (Exception throwedException)            {                DebugConsole.WriteException(throwedException);                throw new System.Runtime.InteropServices.COMException(GetExceptionMessage(throwedException), throwedException);            }        }```",
+      "PostedBy": "buehlert",
+      "PostedDate": "2013-09-12T13:20:38.65+02:00",
+      "WorkItemId": 18896,
+      "Id": 203113
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

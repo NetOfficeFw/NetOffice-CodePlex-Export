@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Problem:\n* If Outlook is started via automation the Addin ist not fully loaded.\n\nSteps to reproduce:\n* Install the \"NetOffice COMAddin Examples\\Extended\" Plugin in Outlook\n* Close Outlook\n* Execute the following PS:\n```\n$outlook = new-object -com outlook.application;\n$mail = $outlook.CreateItem(0)  \n$mail.Recipients.Add(\"info@example.de\")  \n$mail.Subject = \"test e-mail\"  \n$mail.save()\n```\n* DD-Click Outlook in the \"Notification Area\"\n\nExpected Results:\n* The Addin is fully loaded\n\nResulst:\n* The Addin is visible in the ribbon but the buttons have no affect.",
+    "HtmlDescription": "Problem:<br />\n<ul>\n<li>\nIf Outlook is started via automation the Addin ist not fully loaded.<br />\n</li>\n</ul>\nSteps to reproduce:<br />\n<ul>\n<li>Install the &quot;NetOffice COMAddin Examples\\Extended&quot; Plugin in Outlook</li>\n<li>Close Outlook</li>\n<li>Execute the following PS:</li>\n</ul>\n<pre><code>$outlook = new-object -com outlook.application;\n$mail = $outlook.CreateItem(0)  \n$mail.Recipients.Add(&quot;info@example.de&quot;)  \n$mail.Subject = &quot;test e-mail&quot;  \n$mail.save()</code></pre>\n\n<ul>\n<li>\nDD-Click Outlook in the &quot;Notification Area&quot;<br />\n</li>\n</ul>\nExpected Results:<br />\n<ul>\n<li>\nThe Addin is fully loaded<br />\n</li>\n</ul>\nResulst:<br />\n<ul>\n<li>The Addin is visible in the ribbon but the buttons have no affect.</li>\n</ul>\n",
+    "PlainDescription": "Problem:\n\n\nIf Outlook is started via automation the Addin ist not fully loaded.\n\n\nSteps to reproduce:\n\nInstall the \"NetOffice COMAddin Examples\\Extended\" Plugin in Outlook\nClose Outlook\nExecute the following PS:\n\n$outlook = new-object -com outlook.application;\n$mail = $outlook.CreateItem(0)\n$mail.Recipients.Add(\"$mail.Recipients.Add(\"info@example.de\")\n$mail.Subject = \"test e-mail\"\n$mail.save()\n\n\n\nDD-Click Outlook in the \"Notification Area\"\n\n\nExpected Results:\n\n\nThe Addin is fully loaded\n\n\nResulst:\n\nThe Addin is visible in the ribbon but the buttons have no affect.\n",
+    "LastUpdatedBy": "fbdatax",
+    "LastUpdatedDate": "2016-02-23T10:28:45.17+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "fbdatax",
+    "ReportedDate": "2016-02-23T10:28:45.17+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Outlook: Automation beaks Addin",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22175,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "I have a Microsoft Office Addin Project on Visual Studio. It uses Microsoft.Office.Interop.dll . Within the code logic, I need to use NetOffice.WordApi instead of the regular Interop assemblies. My question is this: Since NetOffice is a wrapper to Microsoft.Office.Interop.dll , How can I initialize a NetOffice.WordApi objects using a Microsoft.Office.Interop objects (e.g. Application -> Application , INDocument -> NODocument or Table to Table)",
+    "HtmlDescription": "I have a Microsoft Office Addin Project on Visual Studio. It uses Microsoft.Office.Interop.dll . Within the code logic, I need to use NetOffice.WordApi instead of the regular Interop assemblies. My question is this: Since NetOffice is a wrapper to Microsoft.Office.Interop.dll , How can I initialize a NetOffice.WordApi objects using a Microsoft.Office.Interop objects (e.g. Application -&gt; Application , INDocument -&gt; NODocument or Table to Table)<br />\n",
+    "PlainDescription": "I have a Microsoft Office Addin Project on Visual Studio. It uses Microsoft.Office.Interop.dll . Within the code logic, I need to use NetOffice.WordApi instead of the regular Interop assemblies. My question is this: Since NetOffice is a wrapper to Microsoft.Office.Interop.dll , How can I initialize a NetOffice.WordApi objects using a Microsoft.Office.Interop objects (e.g. Application -> Application , INDocument -> NODocument or Table to Table)\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2015-11-11T21:54:08.327+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Mohamedahmed90",
+    "ReportedDate": "2015-11-05T13:14:55.01+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "How can I initialize NetOffice.WordApi objects using a Microsoft.Office.Interop objects?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22069,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I have the same Problem. Could you give me sign, if I find a solution ? > a.waning (at) gmx.deThanks Andreas",
+      "PostedBy": "AndreasWaning",
+      "PostedDate": "2015-11-11T20:28:45.183+01:00",
+      "WorkItemId": 22069,
+      "Id": 203360
+    },
+    {
+      "Message": "In NetOffice 1.7.3 you have to use the ctor from the corresponding wrapper class.The following examples used a non-existing method called \"CreateObject\" which is the same like the VB6 well-known method to create a new COM class trough late-binding.\r\n\r\nexample1 - Word Application\r\n\r\nobject interopProxy = CreateObject(\"Word.Application\");NetOffice.WordApi.Application app = new NetOffice.WordApi.Application(null, interopProxy);\r\n\r\nexample2 - Word Documentobject interopProxy = CreateObject(\"Word.Document);NetOffice.WordApi.Document document = new NetOffice.WordApi.Document(null, interopProxy);\r\n\r\nmay nice to know:I've been created some static methods in NetOffice 1.7.4 to do this easier because its a common problem for beginners. Its something like:\r\n\r\nvar managedNetOfficeWrapper = COMObject.CreateInstanceFromProxy(interopProxy);// netoffice analyze the proxy and creates the corresponding wrapper automaticaly - you have to cast the result from the common base class COMObject to its actual type.\r\n\r\nmoreover: as far i remember, the NO 1.7.3 includes a tutorial how to face this challenge. you may give'em a try ;) ( i know, the most open-source projects doesnt spend a good explanation/documentation. I alyways try to do this better like a commercial/professional project. Its need the same time as the development - please do me pleasure and spend 5-10 minutes for the tutorials)\r\n\r\n\"The tutorials are sufficient to understand what makes NetOffice tick. Great info!\"- a customer feedback from a United States company\r\n\r\n*Sebastian\r\n\r\n\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-11-11T21:54:08.327+01:00",
+      "WorkItemId": 22069,
+      "Id": 203361
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

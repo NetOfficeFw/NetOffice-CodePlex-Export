@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "NetOffice 1.4 has a critical bug in the new SafeMode functionality.\nThe SafeMode (Settings.EnableSafeMode, true by default) doesnt work correctly.\nThis feature checks at runtime automaticly the property or method you call is available und throws an EntityNotAvailableException if is not supported from your current office application. the feature is supported by a caching dictionary. the dictionary is lost for a type if you dispose them. thats a mistake. if you use the same type again, you get an error for any method or property call(EntityNotAvailableException). as Hotfix please disable the SafeMode.\n \nLateBindingApi.Core.Settings.EnableSafeMode = false;\n \ni do a fix today AND disable the SafeMode by default.\n \nFollow NetOffice on twitter and get actual infos about bugs and updates:\n \nhttps://twitter.com/#!/net_office",
+    "HtmlDescription": "NetOffice 1.4 has a critical bug in the new SafeMode functionality.<br />\nThe SafeMode (Settings.EnableSafeMode, true by default) doesnt work correctly.<br />\nThis feature checks at runtime automaticly the property or method you call is available und throws an EntityNotAvailableException if is not supported from your current office application. the feature is supported by a caching dictionary. the dictionary is lost for a type if you dispose them. thats a mistake. if you use the same type again, you get an error for any method or property call(EntityNotAvailableException). as Hotfix please disable the SafeMode.<br />\n <br />\nLateBindingApi.Core.Settings.EnableSafeMode = false;<br />\n <br />\ni do a fix today AND disable the SafeMode by default.<br />\n <br />\nFollow NetOffice on twitter and get actual infos about bugs and updates:<br />\n <br />\n<a href=\"https://twitter.com/#!/net_office\" rel=\"nofollow\">https://twitter.com/#!/net_office</a><br />\n",
+    "PlainDescription": "NetOffice 1.4 has a critical bug in the new SafeMode functionality.\nThe SafeMode (Settings.EnableSafeMode, true by default) doesnt work correctly.\nThis feature checks at runtime automaticly the property or method you call is available und throws an EntityNotAvailableException if is not supported from your current office application. the feature is supported by a caching dictionary. the dictionary is lost for a type if you dispose them. thats a mistake. if you use the same type again, you get an error for any method or property call(EntityNotAvailableException). as Hotfix please disable the SafeMode.\n \nLateBindingApi.Core.Settings.EnableSafeMode = false;\n \ni do a fix today AND disable the SafeMode by default.\n \nFollow NetOffice on twitter and get actual infos about bugs and updates:\n \nhttps://twitter.com/#!/net_office\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:16.92+02:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "SebastianDotNet",
+    "ReportedDate": "2012-03-20T01:54:42.59+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "major bug in NetOffice 1.4.0",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17665,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

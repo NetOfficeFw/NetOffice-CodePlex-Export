@@ -1,0 +1,84 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 5,
+    "Custom": "",
+    "Description": "We are currently using NetOffice for our Microsoft Outlook AddIn.\napplication.ActiveInspector().WordEditor currently returns null value for Outlook 2010 and throws next exception for Outlook 2013:\nClass not exists: NetOffice.OfficeApi.Document at NetOffice.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy) at NetOffice.OutlookApi._Inspector.get_WordEditor()\n\nAccording to Microsoft [documentation](https://msdn.microsoft.com/en-us/library/office/ff868196.aspx) WordEditor should return Microsoft Word Document Object Model of the message being displayed.\nSeams that NetOffice.Factory.CreateObjectFromComProxy method is trying to create object with wrong class name. It should create NetOffice.WordApi.Document instead of NetOffice.OfficeApi.Document.",
+    "HtmlDescription": "We are currently using NetOffice for our Microsoft Outlook AddIn.<br />\napplication.ActiveInspector().WordEditor currently returns null value for Outlook 2010 and throws next exception for Outlook 2013:<br />\nClass not exists: NetOffice.OfficeApi.Document at NetOffice.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy) at NetOffice.OutlookApi._Inspector.get_WordEditor()<br />\n<br />\nAccording to Microsoft <a href=\"https://msdn.microsoft.com/en-us/library/office/ff868196.aspx\" rel=\"nofollow\">documentation</a> WordEditor should return Microsoft Word Document Object Model of the message being displayed.<br />\nSeams that NetOffice.Factory.CreateObjectFromComProxy method is trying to create object with wrong class name. It should create NetOffice.WordApi.Document instead of NetOffice.OfficeApi.Document.<br />\n",
+    "PlainDescription": "We are currently using NetOffice for our Microsoft Outlook AddIn.\napplication.ActiveInspector().WordEditor currently returns null value for Outlook 2010 and throws next exception for Outlook 2013:\nClass not exists: NetOffice.OfficeApi.Document at NetOffice.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy) at NetOffice.OutlookApi._Inspector.get_WordEditor()\n\nAccording to Microsoft documentation WordEditor should return Microsoft Word Document Object Model of the message being displayed.\nSeams that NetOffice.Factory.CreateObjectFromComProxy method is trying to create object with wrong class name. It should create NetOffice.WordApi.Document instead of NetOffice.OfficeApi.Document.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2016-05-28T03:07:53.823+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "werder13",
+    "ReportedDate": "2016-02-02T11:54:09.2+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Class not exists: NetOffice.OfficeApi.Document",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22155,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm experimenting something similar when I try to get this property:\r\n\r\nWorkbookConnection.OLEDBConnection.ADOConnection\r\n\r\nEven if other OLEDBConnection properties are filled, this one (ADOConnection) throw an exception:System.ArgumentException: Class not exists: NetOffice.ExcelApi.Connection   à NetOffice.Core.CreateObjectFromComProxy(IFactoryInfo factoryInfo, COMObject caller, Object comProxy, Type comProxyType, String className, String fullClassName)   à NetOffice....\r\n\r\nDid you solve your issue ? How?thx",
+      "PostedBy": "pasielsky",
+      "PostedDate": "2016-05-20T13:52:33.69+02:00",
+      "WorkItemId": 22155,
+      "Id": 203364
+    },
+    {
+      "Message": "Hi,\r\n\r\nI've solved the issue. Used reflection for it. Please take a look on code snippet below:\r\n\r\n```Word.Document document = null;object[] args = null;object comProxy = null;Outlook._Inspector inspector = application.ActiveInspector();\r\n\r\n// _Inspector class property WordEditor throws \"Class not exists: NetOffice.OfficeApi.Document\" exceptioncomProxy = NetOffice.Invoker.PropertyGet((NetOffice.COMObject)inspector, \"WordEditor\", args);if (comProxy != null){    args = new object[] { inspector, comProxy, comProxy.GetType() };    document = Activator.CreateInstance(typeof(Word.Document), args) as Word.Document;}```",
+      "PostedBy": "werder13",
+      "PostedDate": "2016-05-25T11:34:27.537+02:00",
+      "WorkItemId": 22155,
+      "Id": 203365
+    },
+    {
+      "Message": "Have you include all netoffice word assemblies as well ?I need to to know the missing class id from the NetOffice exception.\r\n\r\nLet me explain about NetOffice.OfficeApi.Document and NetOffice.WordApi.Document.NetOffice try to detect NetOffice.WordApi.Document as first. Unfortunately the MS Word developer team break the basic COM rules and some types are multiple defined in word and and the common office core with the same id. This is not allowed in the COM standard! i dont know why - but thats happen.NetOffice try to level this with looking for the application first and for the office main core after them.At the end you got a confusing exception about NetOffice.OfficeApi.Document - i'm sorry.As i implement that in year of 2010 - i dont realize this is may a problem for anyone.\r\n\r\n\r\n\r\n\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-05-26T20:36:01.803+02:00",
+      "WorkItemId": 22155,
+      "Id": 203366
+    },
+    {
+      "Message": "> Have you include all netoffice word assemblies as well ?Yes, I've included WordApi.dll",
+      "PostedBy": "werder13",
+      "PostedDate": "2016-05-27T19:26:40.297+02:00",
+      "WorkItemId": 22155,
+      "Id": 203367
+    },
+    {
+      "Message": "i need to know the missing class/interface id to pin point the problem.The class/interface id is given in the NetOffice exceptíon.(in other words i need to know which type NetOffice failed to resolve)\r\n\r\nPlease help me in this one and i do what i can.\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-05-28T03:07:53.823+02:00",
+      "WorkItemId": 22155,
+      "Id": 203368
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

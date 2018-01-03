@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Would like to use NetOffice to automate OneNote 2010 and 2013, but cannot find any support for it. Will this be put on the roadmap?",
+    "HtmlDescription": "Would like to use NetOffice to automate OneNote 2010 and 2013, but cannot find any support for it. Will this be put on the roadmap?<br />\n",
+    "PlainDescription": "Would like to use NetOffice to automate OneNote 2010 and 2013, but cannot find any support for it. Will this be put on the roadmap?\n",
+    "LastUpdatedBy": "GermanSniper",
+    "LastUpdatedDate": "2013-09-23T11:02:10.33+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "gardnerbp",
+    "ReportedDate": "2013-02-15T21:25:12.583+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Will NetOffice support OneNote?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 19353,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "i have no experience with one note at all. i want clearify the situation(check for legal licenses and the COM Api) when its possible you have to help to create tests and examples ok?\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-02-17T10:27:17.573+01:00",
+      "WorkItemId": 19353,
+      "Id": 203123
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

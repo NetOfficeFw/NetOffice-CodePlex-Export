@@ -1,0 +1,154 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 14,
+    "Custom": "",
+    "Description": "When I add an event handler to an event in MS Project 2007, I get the following error.\n \nA first chance exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll\nSystem.Runtime.InteropServices.COMException (0x80004005): Error HRESULT E_FAIL has been returned from a call to a COM component.\n   at NetOffice.SinkHelper.SetupEventBinding(IConnectionPoint connectPoint)\n   at NetOffice.MSProjectApi._EProjectApp2_SinkHelper..ctor(COMObject eventClass, IConnectionPoint connectPoint)\n   at NetOffice.MSProjectApi.Application.CreateEventBridge()\n   at TestProjevetnbridge.Program.Main(String[] args) in c:\\temp\\TestProjevetnbridge\\Program.cs:line 18\n   \nFrom NetOffice debug console:\n \nNetOffice: NetOffice.Factory.Initialize() passed\nA first chance exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll\nNetOffice: Type:COMException\nMessage:Error HRESULT E_FAIL has been returned from a call to a COM component.\nTarget:Void GetConnectionInterface(System.Guid ByRef)\nStack:   at System.Runtime.InteropServices.ComTypes.IConnectionPoint.GetConnectionInterface(Guid& pIID)\n   at NetOffice.SinkHelper.SetupEventBinding(IConnectionPoint connectPoint)\n \n---\n \nIt seemingly goes wrong when creating an event bridge (according to the method name).\nExample code:\nvar application = new NetOffice.MSProjectApi.Application();\napplication.CreateEventBridge();\n \n \nI use MS Project 2007, Netoffice 1.5 (tried with 1.4 - same result), .NET framework 3.5.\nMachine is 64-bit but same error if x86 target",
+    "HtmlDescription": "When I add an event handler to an event in MS Project 2007, I get the following error.<br />\n <br />\nA first chance exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll<br />\nSystem.Runtime.InteropServices.COMException (0x80004005): Error HRESULT E_FAIL has been returned from a call to a COM component.<br />\n   at NetOffice.SinkHelper.SetupEventBinding(IConnectionPoint connectPoint)<br />\n   at NetOffice.MSProjectApi._EProjectApp2_SinkHelper..ctor(COMObject eventClass, IConnectionPoint connectPoint)<br />\n   at NetOffice.MSProjectApi.Application.CreateEventBridge()<br />\n   at TestProjevetnbridge.Program.Main(String[] args) in c:\\temp\\TestProjevetnbridge\\Program.cs:line 18<br />\n <br />\nFrom NetOffice debug console:<br />\n <br />\nNetOffice: NetOffice.Factory.Initialize() passed<br />\nA first chance exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll<br />\nNetOffice: Type:COMException<br />\nMessage:Error HRESULT E_FAIL has been returned from a call to a COM component.<br />\nTarget:Void GetConnectionInterface(System.Guid ByRef)<br />\nStack:   at System.Runtime.InteropServices.ComTypes.IConnectionPoint.GetConnectionInterface(Guid&amp; pIID)<br />\n   at NetOffice.SinkHelper.SetupEventBinding(IConnectionPoint connectPoint)<br />\n<h2> </h2>\n <br />\nIt seemingly goes wrong when creating an event bridge (according to the method name).<br />\nExample code:<br />\nvar application = new NetOffice.MSProjectApi.Application();<br />\napplication.CreateEventBridge();<br />\n <br />\n <br />\nI use MS Project 2007, Netoffice 1.5 (tried with 1.4 - same result), .NET framework 3.5.<br />\nMachine is 64-bit but same error if x86 target<br />\n",
+    "PlainDescription": "When I add an event handler to an event in MS Project 2007, I get the following error.\n \nA first chance exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll\nSystem.Runtime.InteropServices.COMException (0x80004005): Error HRESULT E_FAIL has been returned from a call to a COM component.\n   at NetOffice.SinkHelper.SetupEventBinding(IConnectionPoint connectPoint)\n   at NetOffice.MSProjectApi._EProjectApp2_SinkHelper..ctor(COMObject eventClass, IConnectionPoint connectPoint)\n   at NetOffice.MSProjectApi.Application.CreateEventBridge()\n   at TestProjevetnbridge.Program.Main(String[] args) in c:\\temp\\TestProjevetnbridge\\Program.cs:line 18\n \nFrom NetOffice debug console:\n \nNetOffice: NetOffice.Factory.Initialize() passed\nA first chance exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll\nNetOffice: Type:COMException\nMessage:Error HRESULT E_FAIL has been returned from a call to a COM component.\nTarget:Void GetConnectionInterface(System.Guid ByRef)\nStack:   at System.Runtime.InteropServices.ComTypes.IConnectionPoint.GetConnectionInterface(Guid& pIID)\n   at NetOffice.SinkHelper.SetupEventBinding(IConnectionPoint connectPoint)\n \n \nIt seemingly goes wrong when creating an event bridge (according to the method name).\nExample code:\nvar application = new NetOffice.MSProjectApi.Application();\napplication.CreateEventBridge();\n \n \nI use MS Project 2007, Netoffice 1.5 (tried with 1.4 - same result), .NET framework 3.5.\nMachine is 64-bit but same error if x86 target\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:15.41+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Piet123",
+    "ReportedDate": "2012-08-30T09:41:51.623+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MS Project: COM error when hooking up event",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18563,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600186,
+      "FileName": "SampleProjectAddIn.zip",
+      "WorkItemId": 18563,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=18563&FileAttachmentId=1600186"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "hello,\r\ni create an example project and the same exception occurs. it looks like ms-project doesnt support latebind events, means the GetConnectionInterface method. i want create an earlybind way now for ms-project as fast as possible because ms-project doesnt use different event interfaces in different versions (at the moment). i'm realy suprised and do some tests now if the problem occurs also in project 2010 and 2012.\r\ni come back in 4 hours and give more response.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-09-01T02:42:55.563+02:00",
+      "WorkItemId": 18563,
+      "Id": 203081
+    },
+    {
+      "Message": "update: thanks god for ILSpy, i find a way for ms-project. i have to repeat all tests with the fixed version and upload them tomorroy (if the tests are ok)",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-09-01T03:56:09.85+02:00",
+      "WorkItemId": 18563,
+      "Id": 203082
+    },
+    {
+      "Message": "an update is available for:\r\n\r\n[RC] NetOffice 1.5.1 + Office 2013(Preview) + .NET 4.5 Support\r\n\r\nplease gimme response already was okay now.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-09-01T07:00:46.427+02:00",
+      "WorkItemId": 18563,
+      "Id": 203083
+    },
+    {
+      "Message": "Thank you for your fast support! I can image this is not an easy one..\r\nIt seems to work quite well already.\r\nI did some quick checks and found that the NewProjectEvent event fires well.\r\nBut it does not seem to reach the event hanlder for ProjectBeforeTaskNewEvent ?\r\n\r\nAnd also, I do not know if this is something that can be fixed, but the VSTO version of the add-in I'm trying to change to NetOffice - calls Application.Message from some event handlers. This works well in VSTO, but in the NetOffice version, I get a COM exception stating that the function is not available in this situation ('De methode is niet beschikbaar in deze situatie' in dutch). But this is not ctritical for me  because I can use Windows.Forms messagebox as an alternative.",
+      "PostedBy": "Piet123",
+      "PostedDate": "2012-09-02T21:30:02.173+02:00",
+      "WorkItemId": 18563,
+      "Id": 203084
+    },
+    {
+      "Message": "i have no experience with MSProject. do you have code snippets for me?\r\n1. call Application.Message\r\n2. ProjectBeforeTaskNewEvent must be fired\r\n\r\ni test the snippets on my system and see the what happen\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-09-04T10:37:16.163+02:00",
+      "WorkItemId": 18563,
+      "Id": 203085
+    },
+    {
+      "Message": "See sample plugin code. \r\nTwo events in this sample do not fire.",
+      "PostedBy": "Piet123",
+      "PostedDate": "2012-09-05T10:44:22.72+02:00",
+      "WorkItemId": 18563,
+      "Id": 203086
+    },
+    {
+      "Message": "Is there any progress on this?\r\nI'd like to use NetOffice instead of VSTO, but it has to work for Project of course.\r\nPlease let me know if my sample is not clear or if I can be of any help.\r\n",
+      "PostedBy": "Piet123",
+      "PostedDate": "2012-09-13T08:19:22.38+02:00",
+      "WorkItemId": 18563,
+      "Id": 203087
+    },
+    {
+      "Message": "oh sorry for the delay, i'm a msproject noob and i try to throw the ProjectBeforeTaskNew event with the following code with the interop assemblies and NetOffice:\r\n\r\nMSProject.Project proj = app.Projects.Add();\r\nproj.Tasks.Add();\r\n\r\nbut accessing the Tasks property failed (RPC_REJECTED_EXCEPTION) with both API's but now i know how its possible to create a new task at hand and this works fine with the ProjectBeforeTaskNew event i see. the last 1.5.1 RC contains a mistake(the netoffice.dll contains old keytokens for the api assemblies) and these cause problems(damn it) i do an update now and come back again when its done. i have no idea why i cant accessing the task property with NetOffice and also not with the Interop Assemblies but i hope this a normal msproject behavior and fix the keytokes resolve the issue.\r\n\r\nSebastian\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-09-15T14:57:28.827+02:00",
+      "WorkItemId": 18563,
+      "Id": 203088
+    },
+    {
+      "Message": "NetOffice 1.5.1.2 is done and online. please checkout and give me response please.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-09-15T18:06:16.957+02:00",
+      "WorkItemId": 18563,
+      "Id": 203089
+    },
+    {
+      "Message": "Sebastian, \r\nUnfortunately, I still cannot get the ProjectBeforeTaskChange event to be fired.\r\n\r\nWhen using VSTO sample, it works fine. You can try a VSTO sample by creating a new Project 2010 Add In named 'SampleProjectAddInVsto' and replace ThisAddIn.cs contents with code snippet below.\r\n\r\nIt should output to the Output window in Visual Studio (and Debug selected in dropdown):\r\nSampleProjectAddInVsto: ThisAddIn_Startup\r\nSampleProjectAddInVsto: Application_NewProject\r\nSampleProjectAddInVsto: Application_ProjectBeforeTaskNew\r\nSampleProjectAddInVsto: Application_ProjectBeforeTaskChange: pjTaskName \r\nSampleProjectAddInVsto: Application_ProjectBeforeTaskChange: pjTaskName Task 1\r\n\r\nThe latter two message (from Application_ProjectBeforeTaskChange event) do not fire in similar code in NetOffice.\r\n\r\n\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Diagnostics;\r\nusing System.Linq;\r\nusing System.Text;\r\nusing System.Xml.Linq;\r\nusing Microsoft.Office.Interop.MSProject;\r\nusing MSProject = Microsoft.Office.Interop.MSProject;\r\nusing Office = Microsoft.Office.Core;\r\n\r\nnamespace SampleProjectAddInVsto\r\n{\r\n    public partial class ThisAddIn\r\n    {\r\n        private void ThisAddIn_Startup(object sender, System.EventArgs e)\r\n        {\r\n            System.Diagnostics.Trace.WriteLine(\"SampleProjectAddInVsto: ThisAddIn_Startup\");\r\n            this.Application.NewProject += Application_NewProject;            \r\n            this.Application.ProjectBeforeTaskNew += Application_ProjectBeforeTaskNew;            \r\n            this.Application.ProjectBeforeTaskChange += Application_ProjectBeforeTaskChange;\r\n        }\r\n\r\n        void Application_ProjectBeforeTaskChange(Task tsk, PjField Field, object NewVal, ref bool Cancel)\r\n        {\r\n            Trace.WriteLine(\"SampleProjectAddInVsto: Application_ProjectBeforeTaskChange: \" + Field + \" \" + tsk.Name);\r\n        }\r\n\r\n        void Application_NewProject(MSProject.Project pj)\r\n        {\r\n            Trace.WriteLine(\"SampleProjectAddInVsto: Application_NewProject\");\r\n\r\n            // auto add task and change name\r\n            Task task1 = pj.Tasks.Add(\"Task 1\");\r\n            task1.Name = \"Task 1 name change\";\r\n        }\r\n\r\n        void Application_ProjectBeforeTaskNew(MSProject.Project pj, ref bool Cancel)\r\n        {\r\n            Trace.WriteLine(\"SampleProjectAddInVsto: Application_ProjectBeforeTaskNew\");\r\n        }\r\n\r\n        private void ThisAddIn_Shutdown(object sender, System.EventArgs e)\r\n        {\r\n        }\r\n\r\n        #region VSTO generated code\r\n\r\n        /// \r\n        /// Required method for Designer support - do not modify\r\n        /// the contents of this method with the code editor.\r\n        /// \r\n        private void InternalStartup()\r\n        {\r\n            this.Startup += new System.EventHandler(ThisAddIn_Startup);\r\n            this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);\r\n        }\r\n        \r\n        #endregion\r\n    }\r\n}\r\n\r\n",
+      "PostedBy": "Piet123",
+      "PostedDate": "2012-09-17T09:14:14.377+02:00",
+      "WorkItemId": 18563,
+      "Id": 203090
+    },
+    {
+      "Message": "i create a sample addin for you. please checkout:\r\nhttp://netoffice.codeplex.com/wikipage?title=Download%20Page\r\n*test environment WinXP, Project2003, VS 2010*\r\n\r\nwhat i see is the NetOffice deployment table is not right. you need also the VBIDEApi.dll.\r\nits possible you miss an assembly and your addin is not loaded?\r\n\r\ni see also MS Project has ProjectBeforeTaskNew and ProjectBeforeTaskNew2 but no idea why. bot events was fired in my test case.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-09-18T10:05:46.597+02:00",
+      "WorkItemId": 18563,
+      "Id": 203091
+    },
+    {
+      "Message": "Sebastian,\r\n\r\nI did some checking myself using ILSpy.\r\nI noticed the signature of ProjectBeforeTaskChange in _EProjectApp2 is slightly different when comparing the NetOffice MsOfficeApi with Microsoft.Office.Interop.Project\r\n\r\nI tried to modify the NetOffice source code _EProjectApp2.cs and changed:\r\n      void ProjectBeforeTaskChange([In, MarshalAs(UnmanagedType.IDispatch)] object tsk, [In] object field, [In, MarshalAs(UnmanagedType.IDispatch)] object newVal, [In] [Out] ref object cancel);\r\n\r\nto:\r\n\r\n        void ProjectBeforeTaskChange([In, MarshalAs(UnmanagedType.IDispatch)] object tsk, [In] object field, [In] object newVal, [In] [Out] ref object cancel);\r\n\r\nYou can see I removed the MarshalAs(UnmanagedType.IDispatch) from the newVal parameter and changed the corresponding method in _EProjectApp2_SinkHelper too.\r\n\r\nNow it works!!\r\nIt seems the newVal parameter is not a Office proxy object, but 'just' a plain object (it seems to be a string at least in some cases) ? I do not know if is the correct way to just leave it plain 'object', the Interop DLL has MarshalAs(UnmanagedType.Struct) as attribute. I leave that up to you as COM expert.\r\n\r\nThere may be more events like this (like ProjectBeforeTaskChange2 at least)\r\n--\r\n\r\nProjectBeforeTaskNew fires ok now (It did not in a previous version or I did not check it correctly) \r\n\r\nI also noticed there are a few events where there are two of them with the same name except for '2' at the end. They have slightly different parameters. I do not know why they are both available in Project, maybe some are left for backwards compatibility? \r\n\r\n\r\n\r\n\r\n\r\n\t\t\r\n \r\n",
+      "PostedBy": "Piet123",
+      "PostedDate": "2012-09-18T10:45:49.06+02:00",
+      "WorkItemId": 18563,
+      "Id": 203092
+    },
+    {
+      "Message": "Good morning Sebastian,I downloaded and tried the SampleProjectAddin.zip with both of the following configurations:* VS2010, .Net 4.0* VS2012, .Net 4.5.\r\n\r\nI am running MS Project 2010 on Windows 7 64-bit.  The two (2) task related events (Application_ProjectBeforeTaskChange and Application_ProjectBeforeTaskNew) do not fire.\r\n\r\nI also tried Application_ProjectBeforeTaskChange2Event and it did not fire.",
+      "PostedBy": "kwoodhouse",
+      "PostedDate": "2012-11-14T14:12:20.107+01:00",
+      "WorkItemId": 18563,
+      "Id": 203093
+    },
+    {
+      "Message": "hello,Piet123 helps me to do some modifications for better MSProject event support but these changes are not a part of the latest release. please checkout the assemblies in latest source state works for you.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-11-15T00:21:47.8+01:00",
+      "WorkItemId": 18563,
+      "Id": 203094
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

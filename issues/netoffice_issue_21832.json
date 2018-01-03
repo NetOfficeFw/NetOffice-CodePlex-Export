@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Hi,\n\nI'm interested in OUTLOOK using NetOffice.\n\nI have the following assemblies imported and referenced in my project: OutlookAPI, OfficeAPI, NetOffice.\n\nI was using the standard MS Interop assembly, and referenced it like this:\n\n     using Outlook = Microsoft.Office.Interop.Outlook;\n\nI have also now added:\n\n     using OutlookApi;\n     using NetOffice;\n     using OfficeApi;\n\n...all my code breaks, example:\n\n      Outlook.Application usersOutlook = new Outlook.Application();\n\"The type or namespace 'Outlook' could not be found'...\n\nWhat am I missing ?\n\nThanks,\n\nBarry",
+    "HtmlDescription": "Hi,<br />\n<br />\nI'm interested in OUTLOOK using NetOffice.<br />\n<br />\nI have the following assemblies imported and referenced in my project: OutlookAPI, OfficeAPI, NetOffice.<br />\n<br />\nI was using the standard MS Interop assembly, and referenced it like this:<br />\n<pre><code> using Outlook = Microsoft.Office.Interop.Outlook;\n</code></pre>\n\nI have also now added:<br />\n<pre><code> using OutlookApi;\n using NetOffice;\n using OfficeApi;\n</code></pre>\n\n...all my code breaks, example:<br />\n<pre><code>  Outlook.Application usersOutlook = new Outlook.Application();</code></pre>\n\n&quot;The type or namespace 'Outlook' could not be found'...<br />\n<br />\nWhat am I missing ?<br />\n<br />\nThanks,<br />\n<br />\nBarry<br />\n",
+    "PlainDescription": "Hi,\n\nI'm interested in OUTLOOK using NetOffice.\n\nI have the following assemblies imported and referenced in my project: OutlookAPI, OfficeAPI, NetOffice.\n\nI was using the standard MS Interop assembly, and referenced it like this:\n using Outlook = Microsoft.Office.Interop.Outlook;\n\n\nI have also now added:\n using OutlookApi;\n using NetOffice;\n using OfficeApi;\n\n\n...all my code breaks, example:\n  Outlook.Application usersOutlook = new Outlook.Application();\n\n\"The type or namespace 'Outlook' could not be found'...\n\nWhat am I missing ?\n\nThanks,\n\nBarry\n",
+    "LastUpdatedBy": "Flashheart",
+    "LastUpdatedDate": "2015-07-24T21:05:44.12+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Bazzy",
+    "ReportedDate": "2015-05-01T19:11:21.493+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "setting up NetOffice (\"using\" assemblies)",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21832,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Having the same issue\r\n\r\nExcel.Application works but Outlook.Application does not",
+      "PostedBy": "Flashheart",
+      "PostedDate": "2015-07-24T20:59:39.693+02:00",
+      "WorkItemId": 21832,
+      "Id": 203292
+    },
+    {
+      "Message": "Found Solution:\r\n\r\nusing Outlook = NetOffice.OutlookApi;\r\n\r\nNetOffice Wizard only does this for Console Apps and not Windows Apps",
+      "PostedBy": "Flashheart",
+      "PostedDate": "2015-07-24T21:05:44.12+02:00",
+      "WorkItemId": 21832,
+      "Id": 203293
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

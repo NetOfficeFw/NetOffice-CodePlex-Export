@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi,\nI'm currently working on an excel addIn with netOffice, I found the following issue.\n\nIssue:\nAccess to COM Object throws a COM exception when VBA editor is opened\n\nHow to replicate it:\n1. Use the attached project (IExtensibility COMAddin Examples), an addin based on NetOffice official example with only one change in the OnAction Method (see below the code in OnAction Method).\n\n2. Open Excel (I use office 2013)\n\n3. Click on Button1 on the AddIn's tab in the ribbon --> it works fine\n\n4. Open the VBA editor:\n * Click on Developer Tab in the ribbon (to enable this tab in excel option -> Customize Ribbon -> Check Developer checkbox on the right side)\n * Click on Visual Basic button \n * Click on View -> Code\n * Type few characters in the code window\n\n5. Don't close the VBA editor and reClick on Button1 on the AddIn's tab in the ribbon --> this time an exception occurs (see below exception message)\n\nMy code in OnAction Method:\n```\n\tforeach (Excel.Workbook wb in _excelApplication.Workbooks)\n\t{\n\t\tExcel.Sheets wss = wb.Worksheets;\n\t\tforeach (Excel.Worksheet ws in wss)\n\t\t{\n\t\t\tMessageBox.Show(\"Name: \" + ws.Name);\n\t\t}\n\t}\n\n```\nException:\n```\n System.Runtime.InteropServices.COMException was unhandled by user code\n  HResult=-2147467259\n  Message=See inner exception(s) for details.\n  Source=NetOffice\n  ErrorCode=-2147467259\n\n Exception StackTrace:\n   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\n   at NetOffice.ExcelApi._Worksheet.get_Name()\n   at COMAddinRibbonExampleCS45.Addin.OnAction(IRibbonControl control) in c:\\Users\\...\\...\\RibbonUI\\Addin.cs:line 101\n\n Inner Exception:\nSystem.Runtime.InteropServices.COMException (0x800A9C64): Exception from HRESULT: 0x800A9C64\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\n\n```\n\nDo you have any suggestion to fix this bug?\n\nThanks for your help,\nregards\n\nLuca",
+    "HtmlDescription": "Hi,<br />\nI'm currently working on an excel addIn with netOffice, I found the following issue.<br />\n<br />\nIssue:<br />\nAccess to COM Object throws a COM exception when VBA editor is opened<br />\n<br />\nHow to replicate it:<br />\n<ol>\n<li>\nUse the attached project (IExtensibility COMAddin Examples), an addin based on NetOffice official example with only one change in the OnAction Method (see below the code in OnAction Method).<br />\n</li>\n<li>\nOpen Excel (I use office 2013)<br />\n</li>\n<li>\nClick on Button1 on the AddIn's tab in the ribbon --&gt; it works fine<br />\n</li>\n<li>\nOpen the VBA editor:<br />\n<ul>\n<li>Click on Developer Tab in the ribbon (to enable this tab in excel option -&gt; Customize Ribbon -&gt; Check Developer checkbox on the right side)</li>\n<li>Click on Visual Basic button </li>\n<li>Click on View -&gt; Code</li>\n<li>\nType few characters in the code window<br />\n</li>\n</ul>\n</li>\n<li>\nDon't close the VBA editor and reClick on Button1 on the AddIn's tab in the ribbon --&gt; this time an exception occurs (see below exception message)<br />\n</li>\n</ol>\nMy code in OnAction Method:<br />\n<pre><code>    foreach (Excel.Workbook wb in _excelApplication.Workbooks)\n    {\n        Excel.Sheets wss = wb.Worksheets;\n        foreach (Excel.Worksheet ws in wss)\n        {\n            MessageBox.Show(&quot;Name: &quot; + ws.Name);\n        }\n    }\n</code></pre>\n\nException:<br />\n<pre><code> System.Runtime.InteropServices.COMException was unhandled by user code\n  HResult=-2147467259\n  Message=See inner exception(s) for details.\n  Source=NetOffice\n  ErrorCode=-2147467259\n\n Exception StackTrace:\n   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\n   at NetOffice.ExcelApi._Worksheet.get_Name()\n   at COMAddinRibbonExampleCS45.Addin.OnAction(IRibbonControl control) in c:\\Users\\...\\...\\RibbonUI\\Addin.cs:line 101\n\n Inner Exception:\nSystem.Runtime.InteropServices.COMException (0x800A9C64): Exception from HRESULT: 0x800A9C64\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\n</code></pre>\n\nDo you have any suggestion to fix this bug?<br />\n<br />\nThanks for your help,<br />\nregards<br />\n<br />\nLuca<br />\n",
+    "PlainDescription": "Hi,\nI'm currently working on an excel addIn with netOffice, I found the following issue.\n\nIssue:\nAccess to COM Object throws a COM exception when VBA editor is opened\n\nHow to replicate it:\n\n\nUse the attached project (IExtensibility COMAddin Examples), an addin based on NetOffice official example with only one change in the OnAction Method (see below the code in OnAction Method).\n\n\nOpen Excel (I use office 2013)\n\n\nClick on Button1 on the AddIn's tab in the ribbon --> it works fine\n\n\nOpen the VBA editor:\n\nClick on Developer Tab in the ribbon (to enable this tab in excel option -> Customize Ribbon -> Check Developer checkbox on the right side)\nClick on Visual Basic button \nClick on View -> Code\n\nType few characters in the code window\n\n\n\n\nDon't close the VBA editor and reClick on Button1 on the AddIn's tab in the ribbon --> this time an exception occurs (see below exception message)\n\n\nMy code in OnAction Method:\nforeach (Excel.Workbook wb in _excelApplication.Workbooks)\n{\n    Excel.Sheets wss = wb.Worksheets;\n    foreach (Excel.Worksheet ws in wss)\n    {\n        MessageBox.Show(&quot;Name: &quot; + ws.Name);\n    }\n}\n\n\n\nException:\n System.Runtime.InteropServices.COMException was unhandled by user code\n  HResult=-2147467259\n  Message=See inner exception(s) for details.\n  Source=NetOffice\n  ErrorCode=-2147467259\n\n Exception StackTrace:\n   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\n   at NetOffice.ExcelApi._Worksheet.get_Name()\n   at COMAddinRibbonExampleCS45.Addin.OnAction(IRibbonControl control) in c:\\Users......\\RibbonUI\\Addin.cs:line 101\n\n Inner Exception:\nSystem.Runtime.InteropServices.COMException (0x800A9C64): Exception from HRESULT: 0x800A9C64\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\n\n\nDo you have any suggestion to fix this bug?\n\nThanks for your help,\nregards\n\nLuca\n",
+    "LastUpdatedBy": "SpreadSheetSpace",
+    "LastUpdatedDate": "2015-04-24T18:33:29.397+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "SpreadSheetSpace",
+    "ReportedDate": "2015-04-24T14:48:51.97+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Access to COM Object throws a COM exception when VBA editor is opened",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21823,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600206,
+      "FileName": "IExtensibility COMAddin Examples.zip",
+      "WorkItemId": 21823,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=21823&FileAttachmentId=1600206"
+    }
+  ],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

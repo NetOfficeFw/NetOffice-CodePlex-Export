@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "I am developing my project in vb.net 2012 with office 2010. I am facing problem while using office lib. it asking me to install office 2010 in clinet machine.  Just i switched to Net Office. Again i am having problem other versions of office 2003, 2007 not supported for coverting my doc object into pdf. Only office 2010 working fine with my project. I am having same situvation forceing my clients to install office 2010 for run my project. I want my project should support from office 2003. How to convert word object to pdf. Netoffice won't support this?\n\nError Log for while executing my project with office 2007 in my client machine.",
+    "HtmlDescription": "I am developing my project in vb.net 2012 with office 2010. I am facing problem while using office lib. it asking me to install office 2010 in clinet machine.  Just i switched to Net Office. Again i am having problem other versions of office 2003, 2007 not supported for coverting my doc object into pdf. Only office 2010 working fine with my project. I am having same situvation forceing my clients to install office 2010 for run my project. I want my project should support from office 2003. How to convert word object to pdf. Netoffice won't support this?<br />\n<br />\nError Log for while executing my project with office 2007 in my client machine.<br />\n",
+    "PlainDescription": "I am developing my project in vb.net 2012 with office 2010. I am facing problem while using office lib. it asking me to install office 2010 in clinet machine.  Just i switched to Net Office. Again i am having problem other versions of office 2003, 2007 not supported for coverting my doc object into pdf. Only office 2010 working fine with my project. I am having same situvation forceing my clients to install office 2010 for run my project. I want my project should support from office 2003. How to convert word object to pdf. Netoffice won't support this?\n\nError Log for while executing my project with office 2007 in my client machine.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2014-05-11T01:37:12.39+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "guruliving",
+    "ReportedDate": "2014-05-07T09:57:47.137+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SaveAs2 Error",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20980,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600200,
+      "FileName": "errorlog.txt",
+      "WorkItemId": 20980,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=20980&FileAttachmentId=1600200"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "not sure....\r\n\r\nI did'nt understand your problem :p ( You have to make sure office is installed)\r\n\r\nIt looks like you want convert some documents to PDF file format.This is is not supported in older office versions, you have to make sure the pdf printer is installed)\r\n\r\n*anywayjust gimme an example project to public.sebastian[at]web.de. I want help you to clearify the situation.\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-05-11T01:37:12.39+02:00",
+      "WorkItemId": 20980,
+      "Id": 203221
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

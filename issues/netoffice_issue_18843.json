@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "I am newbie in C#. When I trying to use NetOffice i got the following problem. Please be kind enough to solve this one for me.\n\nAlready I added the relevant dlls to the project. But I couldn't initialize. When I trying like this.\n\nOutlook.Application outlookApplication = new Outlook.Application();  \n\nit shows me a error like this.\n\n** Interop type 'NetOffice.OutlookApi.Application' cannot be embedded. Use the applicable interface instead.",
+    "HtmlDescription": "I am newbie in C#. When I trying to use NetOffice i got the following problem. Please be kind enough to solve this one for me.<br />\n<br />\nAlready I added the relevant dlls to the project. But I couldn't initialize. When I trying like this.<br />\n<br />\nOutlook.Application outlookApplication = new Outlook.Application();<br />\n<br />\nit shows me a error like this.<br />\n<br />\n** Interop type 'NetOffice.OutlookApi.Application' cannot be embedded. Use the applicable interface instead.<br />\n",
+    "PlainDescription": "I am newbie in C#. When I trying to use NetOffice i got the following problem. Please be kind enough to solve this one for me.\n\nAlready I added the relevant dlls to the project. But I couldn't initialize. When I trying like this.\n\nOutlook.Application outlookApplication = new Outlook.Application();\n\nit shows me a error like this.\n\n** Interop type 'NetOffice.OutlookApi.Application' cannot be embedded. Use the applicable interface instead.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:14.907+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "yapaarachchi",
+    "ReportedDate": "2012-11-02T13:59:39.4+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18843,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "set the reference properties \"Embed Interop Types\" to false\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-11-02T14:30:50.56+01:00",
+      "WorkItemId": 18843,
+      "Id": 203105
+    },
+    {
+      "Message": "Thank you very much Sebastian. I solved my issue. You did a great job by creating this kind of wrapper to solve the version dependency in office applications.....",
+      "PostedBy": "yapaarachchi",
+      "PostedDate": "2012-11-03T05:43:13.363+01:00",
+      "WorkItemId": 18843,
+      "Id": 203106
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Hi,\n\nI just tried downloading the latest source and 'Tools\\Utils\\ApplicationUtils.cs' is missing from the WordApi project.  So I can't build the solution currently.  \n\nCheers\n\nRoss",
+    "HtmlDescription": "Hi,<br />\n<br />\nI just tried downloading the latest source and 'Tools\\Utils\\ApplicationUtils.cs' is missing from the WordApi project.  So I can't build the solution currently.<br />\n<br />\nCheers<br />\n<br />\nRoss<br />\n",
+    "PlainDescription": "Hi,\n\nI just tried downloading the latest source and 'Tools\\Utils\\ApplicationUtils.cs' is missing from the WordApi project.  So I can't build the solution currently.\n\nCheers\n\nRoss\n",
+    "LastUpdatedBy": "pico1234",
+    "LastUpdatedDate": "2015-06-18T23:40:55.64+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "pico1234",
+    "ReportedDate": "2015-06-13T07:23:10.467+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Missing source file",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21907,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for pointing this out.\r\n\r\nwhat is it ? release package, preview release or latest source state?\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-06-15T21:26:04.467+02:00",
+      "WorkItemId": 21907,
+      "Id": 203322
+    },
+    {
+      "Message": "Sorry for the late reply, Codeplex has been down for a few days.\r\n\r\nYes, it is  the latest source state (https://netoffice.codeplex.com/SourceControl/latest).  I'm not sure if it is missing elsewhere.\r\n\r\nRegards\r\n\r\nRoss",
+      "PostedBy": "pico1234",
+      "PostedDate": "2015-06-18T23:40:55.64+02:00",
+      "WorkItemId": 21907,
+      "Id": 203323
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

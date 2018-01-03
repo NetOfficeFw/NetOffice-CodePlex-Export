@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "I used netOffice to open a pptx on my win8 with office 365 installed and got this error:\n\nSystem.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details.\n---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. --->\nSystem.OutOfMemoryException: Not enough storage is available to complete this operation. (Exception from HRESULT: 0x8007000E (E_OUTOFMEMORY))\n   --- End of inner exception stack trace ---\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)\n   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)\n   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)\n   at NetOffice.PowerPointApi.Presentations.Open(String fileName, MsoTriState readOnly, MsoTriState untitled, MsoTriState withWindow)",
+    "HtmlDescription": "I used netOffice to open a pptx on my win8 with office 365 installed and got this error:<br />\n<br />\nSystem.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details.<br />\n---&gt; System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt;<br />\nSystem.OutOfMemoryException: Not enough storage is available to complete this operation. (Exception from HRESULT: 0x8007000E (E_OUTOFMEMORY))<br />\n   --- End of inner exception stack trace ---<br />\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br />\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br />\n   at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)<br />\n   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)<br />\n   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)<br />\n   at NetOffice.PowerPointApi.Presentations.Open(String fileName, MsoTriState readOnly, MsoTriState untitled, MsoTriState withWindow)<br />\n",
+    "PlainDescription": "I used netOffice to open a pptx on my win8 with office 365 installed and got this error:\n\nSystem.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details.\n---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. --->\nSystem.OutOfMemoryException: Not enough storage is available to complete this operation. (Exception from HRESULT: 0x8007000E (E_OUTOFMEMORY))\n   --- End of inner exception stack trace ---\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)\n   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)\n   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)\n   at NetOffice.PowerPointApi.Presentations.Open(String fileName, MsoTriState readOnly, MsoTriState untitled, MsoTriState withWindow)\n",
+    "LastUpdatedBy": "whitewoolve",
+    "LastUpdatedDate": "2013-04-10T10:12:18.917+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "shawnliang",
+    "ReportedDate": "2012-12-12T07:08:05.03+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Not enough storage is available to complete this operation - when opening a pptx",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 19041,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "By the way, my PC still has over 1GB of free physical memory and the pptx I opened is only 250KB. No idea why it says out of memory.... ",
+      "PostedBy": "shawnliang",
+      "PostedDate": "2012-12-12T15:09:13.86+01:00",
+      "WorkItemId": 19041,
+      "Id": 203120
+    },
+    {
+      "Message": "can i see your (original) code snippet for a test?\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-12-13T13:16:17.61+01:00",
+      "WorkItemId": 19041,
+      "Id": 203121
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

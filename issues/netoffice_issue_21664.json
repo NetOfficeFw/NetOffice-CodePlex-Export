@@ -1,0 +1,77 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "On one machine with win 8.1, office 2013 got an exception (others with the same components are ok)\nWhat could be causing this?\n\n```\nRetrieving the COM class factory for component with CLSID {00024500-0000-0000-C000-000000000046} failed due to the following error: 80080005.\n\nEx.Source: mscorlib\nEx.TargetSite: AllocateUninitializedObject\n\nStack trace: \n   at System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(RuntimeType objectType)\n   at System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(Type objectType)\n   at System.Runtime.Remoting.Activation.ActivationServices.CreateInstance(Type serverType)\n   at System.Runtime.Remoting.Activation.ActivationServices.IsCurrentContextOK(Type serverType, Object[] props, Boolean bNewObj)\n   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandle& ctor, Boolean& bNeedSecurityCheck)\n   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean fillCache)\n   at System.RuntimeType.CreateInstanceImpl(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean fillCache)\n   at System.Activator.CreateInstance(Type type, Boolean nonPublic)\n   at NetOffice.COMObject.CreateFromProgId(String progId)\n   at NetOffice.COMObject..ctor(String progId)\n   at NetOffice.ExcelApi.Application..ctor()\n   at BclAccounting.MainForm.ExportViewToExcel(GridView View)\n   at BclAccounting.MainForm.ExportToExcelToolStripButton_Click(Object sender, EventArgs e)\n```",
+    "HtmlDescription": "On one machine with win 8.1, office 2013 got an exception (others with the same components are ok)<br />\nWhat could be causing this?<br />\n<pre><code>Retrieving the COM class factory for component with CLSID {00024500-0000-0000-C000-000000000046} failed due to the following error: 80080005.\n\nEx.Source: mscorlib\nEx.TargetSite: AllocateUninitializedObject\n\nStack trace: \n   at System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(RuntimeType objectType)\n   at System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(Type objectType)\n   at System.Runtime.Remoting.Activation.ActivationServices.CreateInstance(Type serverType)\n   at System.Runtime.Remoting.Activation.ActivationServices.IsCurrentContextOK(Type serverType, Object[] props, Boolean bNewObj)\n   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean&amp; canBeCached, RuntimeMethodHandle&amp; ctor, Boolean&amp; bNeedSecurityCheck)\n   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean fillCache)\n   at System.RuntimeType.CreateInstanceImpl(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean fillCache)\n   at System.Activator.CreateInstance(Type type, Boolean nonPublic)\n   at NetOffice.COMObject.CreateFromProgId(String progId)\n   at NetOffice.COMObject..ctor(String progId)\n   at NetOffice.ExcelApi.Application..ctor()\n   at BclAccounting.MainForm.ExportViewToExcel(GridView View)\n   at BclAccounting.MainForm.ExportToExcelToolStripButton_Click(Object sender, EventArgs e)</code></pre>\n\n",
+    "PlainDescription": "On one machine with win 8.1, office 2013 got an exception (others with the same components are ok)\nWhat could be causing this?\nRetrieving the COM class factory for component with CLSID {00024500-0000-0000-C000-000000000046} failed due to the following error: 80080005.\n\nEx.Source: mscorlib\nEx.TargetSite: AllocateUninitializedObject\n\nStack trace: \n   at System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(RuntimeType objectType)\n   at System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(Type objectType)\n   at System.Runtime.Remoting.Activation.ActivationServices.CreateInstance(Type serverType)\n   at System.Runtime.Remoting.Activation.ActivationServices.IsCurrentContextOK(Type serverType, Object[] props, Boolean bNewObj)\n   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandle& ctor, Boolean& bNeedSecurityCheck)\n   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean fillCache)\n   at System.RuntimeType.CreateInstanceImpl(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean fillCache)\n   at System.Activator.CreateInstance(Type type, Boolean nonPublic)\n   at NetOffice.COMObject.CreateFromProgId(String progId)\n   at NetOffice.COMObject..ctor(String progId)\n   at NetOffice.ExcelApi.Application..ctor()\n   at BclAccounting.MainForm.ExportViewToExcel(GridView View)\n   at BclAccounting.MainForm.ExportToExcelToolStripButton_Click(Object sender, EventArgs e)\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2016-11-16T11:43:16.823+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Niemand",
+    "ReportedDate": "2015-01-15T14:51:58.293+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Retrieving the COM class factory failed",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21664,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The stack trace indicates its a security issue. Limitless reasons possible so far...Make sure the application doesnt start from a network location or usb-stick, whatever in a normal deskop session. Check UAC settings, so Excel want started without a break. Make sure your application and excel was in the same privileges level. \r\n\r\n(Troubleshooting tip: Disable all excel (COM)addins temporaily to make sure the problem is not a third party addin)\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-01-18T06:43:00.59+01:00",
+      "WorkItemId": 21664,
+      "Id": 203283
+    },
+    {
+      "Message": "> Make sure the application doesnt start from a network location or usb-stick\r\n\r\nNormal desktop.\r\n\r\n> Disable all excel (COM)addins temporaily to make sure the problem is not a third party addin\r\n\r\nNot using any.\r\n\r\n> Check UAC settings, so Excel want started without a break. Make sure your application and excel was in the same privileges level.\r\n\r\nHow exactly?",
+      "PostedBy": "Niemand",
+      "PostedDate": "2015-01-19T11:54:09.007+01:00",
+      "WorkItemId": 21664,
+      "Id": 203284
+    },
+    {
+      "Message": "Any update to this problem?\nI'm having the same issue running Office 2013 on Win2012.\nThanks.",
+      "PostedBy": "long1000",
+      "PostedDate": "2016-11-15T09:28:44.367+01:00",
+      "WorkItemId": 21664,
+      "Id": 204998
+    },
+    {
+      "Message": "I need to see some caller code.\nWhat you try to do? I need to know this to reproduce the scenario.\n\nThe id :{00024500-0000-0000-C000-000000000046} is the point of interest here.\nNetOffice failed to find a wrapper class for a COM type with this interface id.\nI need to know what is this (awaiting) type to clearify the situation.\n\n*Sebastian\n\n\n\n\n\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-11-16T11:43:16.823+01:00",
+      "WorkItemId": 21664,
+      "Id": 205036
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

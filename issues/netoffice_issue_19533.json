@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Have been struggling to get the COM enabled library to load in Outlook. Have used COMAddinRibbonExample (OutlookAddinCS4.RibbonAddin) as a template for my add-in and have it working perfectly on build or debug on my actual machine. Though the machine is 64-bit, it works on 32-bit compiling. With that said, everything code wise should be correct (enough to work). \n\nOn my virtual machine however, which uses Windows 7 32-bit, Outlook refuses to load this at all. Instead, it displays the generic \"Not Loaded. A runtime error occurred during the loading of the COM Add-in\".\n\nI have used Regasm.exe from the correct version .NET Framework in Windows on the library and it registers successfully. All the necessary registry entries are there. All of the dependencies are located in the same folder as the library. This puts me at quite a bit of a loss. \n\nIf this works expectedly on my own machine, I would figure its either the COM registration not doing exactly as it should or something settings orientated. \n\nWith that said, I have tried Platform Target in both x86 and Any, both Register for COM interop checked and unchecked, my target framework is .NET 4 and have tried the Client profile as well. Output type is class library.\n\nWould really appreciate any assistance. If any further info is required let me know.",
+    "HtmlDescription": "Have been struggling to get the COM enabled library to load in Outlook. Have used COMAddinRibbonExample (OutlookAddinCS4.RibbonAddin) as a template for my add-in and have it working perfectly on build or debug on my actual machine. Though the machine is 64-bit, it works on 32-bit compiling. With that said, everything code wise should be correct (enough to work). <br />\n<br />\nOn my virtual machine however, which uses Windows 7 32-bit, Outlook refuses to load this at all. Instead, it displays the generic &quot;Not Loaded. A runtime error occurred during the loading of the COM Add-in&quot;.<br />\n<br />\nI have used Regasm.exe from the correct version .NET Framework in Windows on the library and it registers successfully. All the necessary registry entries are there. All of the dependencies are located in the same folder as the library. This puts me at quite a bit of a loss. <br />\n<br />\nIf this works expectedly on my own machine, I would figure its either the COM registration not doing exactly as it should or something settings orientated. <br />\n<br />\nWith that said, I have tried Platform Target in both x86 and Any, both Register for COM interop checked and unchecked, my target framework is .NET 4 and have tried the Client profile as well. Output type is class library.<br />\n<br />\nWould really appreciate any assistance. If any further info is required let me know.<br />\n",
+    "PlainDescription": "Have been struggling to get the COM enabled library to load in Outlook. Have used COMAddinRibbonExample (OutlookAddinCS4.RibbonAddin) as a template for my add-in and have it working perfectly on build or debug on my actual machine. Though the machine is 64-bit, it works on 32-bit compiling. With that said, everything code wise should be correct (enough to work). \n\nOn my virtual machine however, which uses Windows 7 32-bit, Outlook refuses to load this at all. Instead, it displays the generic \"Not Loaded. A runtime error occurred during the loading of the COM Add-in\".\n\nI have used Regasm.exe from the correct version .NET Framework in Windows on the library and it registers successfully. All the necessary registry entries are there. All of the dependencies are located in the same folder as the library. This puts me at quite a bit of a loss. \n\nIf this works expectedly on my own machine, I would figure its either the COM registration not doing exactly as it should or something settings orientated. \n\nWith that said, I have tried Platform Target in both x86 and Any, both Register for COM interop checked and unchecked, my target framework is .NET 4 and have tried the Client profile as well. Output type is class library.\n\nWould really appreciate any assistance. If any further info is required let me know.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-03-28T14:21:09.037+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "MichaelColesky",
+    "ReportedDate": "2013-03-27T17:29:34.127+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Outlook Addin Failing to Load on Win7-32",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19533,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "sounds like a missing dependency for me...",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-03-28T14:21:09.037+01:00",
+      "WorkItemId": 19533,
+      "Id": 203124
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

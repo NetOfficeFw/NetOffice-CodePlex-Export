@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "I would like to place a document in my own winforms form.  This used to be possible with OLE but MS have stopped supporting OLE.  Does NetOffice provide a way to do this?",
+    "HtmlDescription": "I would like to place a document in my own winforms form.  This used to be possible with OLE but MS have stopped supporting OLE.  Does NetOffice provide a way to do this?<br />\n",
+    "PlainDescription": "I would like to place a document in my own winforms form.  This used to be possible with OLE but MS have stopped supporting OLE.  Does NetOffice provide a way to do this?\n",
+    "LastUpdatedBy": "JAustin",
+    "LastUpdatedDate": "2014-07-08T16:03:53.72+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "JAustin",
+    "ReportedDate": "2014-07-08T16:03:53.72+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Is it possible to open a Word document and place the document viewer in a winforms form area?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21133,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

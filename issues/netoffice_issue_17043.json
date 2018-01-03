@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "Now we cant attach COMObject to a running instance of any COM, that registered in ROT. All (?) MS Office App register self instances in ROT, so .....\n \nNetOffice must support attaching to exists instance.\n \nNote: see examlple from MS: http://support.microsoft.com/kb/238975/en-us",
+    "HtmlDescription": "Now we cant attach COMObject to a running instance of any COM, that registered in ROT. All (?) MS Office App register self instances in ROT, so .....<br />\n <br />\nNetOffice must support attaching to exists instance.<br />\n <br />\nNote: see examlple from MS: <a href=\"http://support.microsoft.com/kb/238975/en-us\" rel=\"nofollow\">http://support.microsoft.com/kb/238975/en-us</a><br />\n",
+    "PlainDescription": "Now we cant attach COMObject to a running instance of any COM, that registered in ROT. All (?) MS Office App register self instances in ROT, so .....\n \nNetOffice must support attaching to exists instance.\n \nNote: see examlple from MS: http://support.microsoft.com/kb/238975/en-us\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:17.58+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "jocker1331",
+    "ReportedDate": "2011-12-15T11:08:38.42+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Attach to instance of MSOffice App",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17043,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": ".net example: http://support.microsoft.com/kb/316126/en-us",
+      "PostedBy": "jocker1331",
+      "PostedDate": "2011-12-15T11:13:51.673+01:00",
+      "WorkItemId": 17043,
+      "Id": 203026
+    },
+    {
+      "Message": "hello jocker1331,\r\n\r\nnot every office application does the same with the ROT, the matter is a little bit more complicated.\r\n\r\nwhat you can do all the time with NetOffice is as follows(related to the .net example)\r\n\r\nobject excelProxy = System.Runtime.InteropServices.Marshal.GetActiveObject(\"Excel.Application\")\r\nExcel.Application application = new Excel.Application(null, excelProxy);\r\n\r\nyou find an example \"GetRunningOutlookInstance\" in the folder Examples\\Misc\r\nis that helpfull for you?\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-12-15T12:54:47.147+01:00",
+      "WorkItemId": 17043,
+      "Id": 203027
+    },
+    {
+      "Message": "Hmm.... Yes, it's really what I want. Thanks!",
+      "PostedBy": "jocker1331",
+      "PostedDate": "2011-12-15T17:18:00.12+01:00",
+      "WorkItemId": 17043,
+      "Id": 203028
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

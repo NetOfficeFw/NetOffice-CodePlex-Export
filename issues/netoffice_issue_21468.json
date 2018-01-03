@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hello,\n\nI have been trying to use NetOffice from powershell to automate excel.\n\nAt most I can open a new spreadsheet but it seems I cannot access any worksheets. I suspect this is because the indexers do not work in powershell. The following code opens the spreadsheet but trying to get a Worksheet object simply delivers a null object.\n\n```\nadd-type -Path .\\4.0\\ExcelApi.dll\nadd-type -Path .\\4.0\\NetOffice.dll\nadd-type -Path .\\4.0\\OfficeApi.dll\n#add-type -path .\\4.0\\VBIDEApi.dll\n\n$excel = new-object NetOffice.ExcelApi.Application\n[NetOffice.ExcelApi.Workbook]$wkBk = [NetOffice.ExcelApi.Workbook]$excel.Workbooks.Add()\n$wkbk.GetType()\n$sht = $wkBk.Worksheets[1]\n$sht.GetType()\n$excel.Dispose()\n\n```\nThe result is:-\n\n\nIsPublic IsSerial Name                                     BaseType\n-------- -------- ----                                     --------\nTrue     False    Workbook                                 NetOffice.ExcelApi._Workbook\nYou cannot call a method on a null-valued expression.\nAt D:\\PowershellScripts\\NetOffice\\Test-NetOffice4.0.ps1:30 char:1\n+ $sht.GetType()\n+ ~~~~~~~~~~~~~~\n    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException\n    + FullyQualifiedErrorId : InvokeMethodOnNull\n\n\n\nIs there a way of using NetOffice assembies with Powershell?",
+    "HtmlDescription": "Hello,<br />\n<br />\nI have been trying to use NetOffice from powershell to automate excel.<br />\n<br />\nAt most I can open a new spreadsheet but it seems I cannot access any worksheets. I suspect this is because the indexers do not work in powershell. The following code opens the spreadsheet but trying to get a Worksheet object simply delivers a null object.<br />\n<pre><code>add-type -Path .\\4.0\\ExcelApi.dll\nadd-type -Path .\\4.0\\NetOffice.dll\nadd-type -Path .\\4.0\\OfficeApi.dll\n#add-type -path .\\4.0\\VBIDEApi.dll\n\n$excel = new-object NetOffice.ExcelApi.Application\n[NetOffice.ExcelApi.Workbook]$wkBk = [NetOffice.ExcelApi.Workbook]$excel.Workbooks.Add()\n$wkbk.GetType()\n$sht = $wkBk.Worksheets[1]\n$sht.GetType()\n$excel.Dispose()\n</code></pre>\n\nThe result is:-<br />\n<br />\n<br />\nIsPublic IsSerial Name                                     BaseType<br />\n<hr />\nTrue     False    Workbook                                 NetOffice.ExcelApi._Workbook<br />\nYou cannot call a method on a null-valued expression.<br />\nAt D:\\PowershellScripts\\NetOffice\\Test-NetOffice4.0.ps1:30 char:1<br />\n<ul>\n<li>$sht.GetType()</li>\n<li>\n~~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo          : InvalidOperation: (:) [], RuntimeException</li>\n<li>\nFullyQualifiedErrorId : InvokeMethodOnNull<br />\n</li>\n</ul>\n</li>\n</ul>\nIs there a way of using NetOffice assembies with Powershell?<br />\n",
+    "PlainDescription": "Hello,\n\nI have been trying to use NetOffice from powershell to automate excel.\n\nAt most I can open a new spreadsheet but it seems I cannot access any worksheets. I suspect this is because the indexers do not work in powershell. The following code opens the spreadsheet but trying to get a Worksheet object simply delivers a null object.\nadd-type -Path .\\4.0\\ExcelApi.dll\nadd-type -Path .\\4.0\\NetOffice.dll\nadd-type -Path .\\4.0\\OfficeApi.dll\nadd-type -path .\\4.0\\VBIDEApi.dll\n$excel = new-object NetOffice.ExcelApi.Application\n[NetOffice.ExcelApi.Workbook]$wkBk = [NetOffice.ExcelApi.Workbook]$excel.Workbooks.Add()\n$wkbk.GetType()\n$sht = $wkBk.Worksheets[1]\n$sht.GetType()\n$excel.Dispose()\n\n\nThe result is:-\n\n\nIsPublic IsSerial Name                                     BaseType\n\nTrue     False    Workbook                                 NetOffice.ExcelApi._Workbook\nYou cannot call a method on a null-valued expression.\nAt D:\\PowershellScripts\\NetOffice\\Test-NetOffice4.0.ps1:30 char:1\n\n$sht.GetType()\n\n~~~~~~~~~~~~~~\n\nCategoryInfo          : InvalidOperation: (:) [], RuntimeException\n\nFullyQualifiedErrorId : InvokeMethodOnNull\n\n\n\n\nIs there a way of using NetOffice assembies with Powershell?\n",
+    "LastUpdatedBy": "pianoboy",
+    "LastUpdatedDate": "2014-10-20T11:10:06.283+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "pianoboy",
+    "ReportedDate": "2014-10-20T11:10:06.283+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Use In Powershell",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21468,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

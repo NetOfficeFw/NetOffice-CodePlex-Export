@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "Hi,\n\nI created a test outlook adding project using NO Developer Toolbox.\nProject contains:\n-  .NET framework 4.5\n- VS 2013 Express\n- plugin loaded on startup\n- RibbonUI customization\n- Custom TaskPane\n- Toggle button (irrelevant here)\n\nAfter builing and lunching an Outlook I get this exception:\n\n```\nNetOfficeException;System.String[] AddAssembly(System.String, System.Reflection.Assembly);Unexpected OfficeApi factory info. Assembly OfficeApi\nNetOffice.NetOfficeException: Unexpected OfficeApi factory info. Assembly OfficeApi\n   at NetOffice.Core.AddAssembly(String name, Assembly itemAssembly) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 1046\n   at NetOffice.Core.AddNetOfficeAssemblies() in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 350\n   at NetOffice.Core.Initialize(CacheOptions cacheOptions) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 317\n   at NetOffice.Core.CreateObjectFromComProxy(COMObject caller, Object comProxy) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 660\n   at NetOffice.OfficeApi.ICTPFactory.CreateCTP(String cTPAxID, String cTPTitle) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\Office\\DispatchInterfaces\\ICTPFactory.cs:line 125\n   at NetOffice.OutlookApi.Tools.COMAddin.CTPFactoryAvailable(Object CTPFactoryInst) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\Outlook\\Tools\\COMAddin.cs:line 432\n```\n\nException is not visible when Custom TaskPane is not in use.\n\nAny suggestions why this exception is raised?\n\nThanks",
+    "HtmlDescription": "Hi,<br />\n<br />\nI created a test outlook adding project using NO Developer Toolbox.<br />\nProject contains:<br />\n<ul>\n<li>.NET framework 4.5</li>\n<li>VS 2013 Express</li>\n<li>plugin loaded on startup</li>\n<li>RibbonUI customization</li>\n<li>Custom TaskPane</li>\n<li>\nToggle button (irrelevant here)<br />\n</li>\n</ul>\nAfter builing and lunching an Outlook I get this exception:<br />\n<pre><code>NetOfficeException;System.String[] AddAssembly(System.String, System.Reflection.Assembly);Unexpected OfficeApi factory info. Assembly OfficeApi\nNetOffice.NetOfficeException: Unexpected OfficeApi factory info. Assembly OfficeApi\n   at NetOffice.Core.AddAssembly(String name, Assembly itemAssembly) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 1046\n   at NetOffice.Core.AddNetOfficeAssemblies() in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 350\n   at NetOffice.Core.Initialize(CacheOptions cacheOptions) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 317\n   at NetOffice.Core.CreateObjectFromComProxy(COMObject caller, Object comProxy) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 660\n   at NetOffice.OfficeApi.ICTPFactory.CreateCTP(String cTPAxID, String cTPTitle) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\Office\\DispatchInterfaces\\ICTPFactory.cs:line 125\n   at NetOffice.OutlookApi.Tools.COMAddin.CTPFactoryAvailable(Object CTPFactoryInst) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\Outlook\\Tools\\COMAddin.cs:line 432</code></pre>\n\nException is not visible when Custom TaskPane is not in use.<br />\n<br />\nAny suggestions why this exception is raised?<br />\n<br />\nThanks<br />\n",
+    "PlainDescription": "Hi,\n\nI created a test outlook adding project using NO Developer Toolbox.\nProject contains:\n\n.NET framework 4.5\nVS 2013 Express\nplugin loaded on startup\nRibbonUI customization\nCustom TaskPane\n\nToggle button (irrelevant here)\n\n\nAfter builing and lunching an Outlook I get this exception:\nNetOfficeException;System.String[] AddAssembly(System.String, System.Reflection.Assembly);Unexpected OfficeApi factory info. Assembly OfficeApi\nNetOffice.NetOfficeException: Unexpected OfficeApi factory info. Assembly OfficeApi\n   at NetOffice.Core.AddAssembly(String name, Assembly itemAssembly) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 1046\n   at NetOffice.Core.AddNetOfficeAssemblies() in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 350\n   at NetOffice.Core.Initialize(CacheOptions cacheOptions) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 317\n   at NetOffice.Core.CreateObjectFromComProxy(COMObject caller, Object comProxy) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Core.cs:line 660\n   at NetOffice.OfficeApi.ICTPFactory.CreateCTP(String cTPAxID, String cTPTitle) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\Office\\DispatchInterfaces\\ICTPFactory.cs:line 125\n   at NetOffice.OutlookApi.Tools.COMAddin.CTPFactoryAvailable(Object CTPFactoryInst) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\Outlook\\Tools\\COMAddin.cs:line 432\n\nException is not visible when Custom TaskPane is not in use.\n\nAny suggestions why this exception is raised?\n\nThanks\n",
+    "LastUpdatedBy": "cool_szczur",
+    "LastUpdatedDate": "2015-05-14T14:28:00.113+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "cool_szczur",
+    "ReportedDate": "2015-05-13T14:18:41.603+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NetOffice.NefOfficeException when Outlook addin is loading",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21855,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "After upgrading NO to 1.7.4:```COMException;;Unable to create NetOfficeTools.ExtendedOutlookCS4.SamplePane(NetOffice Tools - Sample Pane(CS4)).System.Runtime.InteropServices.COMException (0x80004005): Unable to create NetOfficeTools.ExtendedOutlookCS4.SamplePane(NetOffice Tools - Sample Pane(CS4)). ---> NetOffice.NetOfficeException: Unexpected OutlookApi factory info. Assembly OutlookApi   at NetOffice.Core.AddAssembly(String name, Assembly itemAssembly) in C:\\NetOfficeX7\\Source\\NetOffice\\Core.cs:line 1143   at NetOffice.Core.AddNetOfficeAssemblies() in C:\\NetOfficeX7\\Source\\NetOffice\\Core.cs:line 408   at NetOffice.Core.Initialize(CacheOptions cacheOptions) in C:\\NetOfficeX7\\Source\\NetOffice\\Core.cs:line 375   at NetOffice.Core.CreateObjectFromComProxy(COMObject caller, Object comProxy) in C:\\NetOfficeX7\\Source\\NetOffice\\Core.cs:line 724   at NetOffice.OfficeApi.ICTPFactory.CreateCTP(String cTPAxID, String cTPTitle) in C:\\NetOfficeX7\\Source\\Office\\DispatchInterfaces\\ICTPFactory.cs:line 125   at NetOffice.OutlookApi.Tools.COMAddin.CreateCTP(String fullName, String title) in C:\\NetOfficeX7\\Source\\Outlook\\Tools\\COMAddin.cs:line 544\r\n\r\nNetOfficeException;System.String[] AddAssembly(System.String, System.Reflection.Assembly);Unexpected OutlookApi factory info. Assembly OutlookApiNetOffice.NetOfficeException: Unexpected OutlookApi factory info. Assembly OutlookApi   at NetOffice.Core.AddAssembly(String name, Assembly itemAssembly) in C:\\NetOfficeX7\\Source\\NetOffice\\Core.cs:line 1143   at NetOffice.Core.AddNetOfficeAssemblies() in C:\\NetOfficeX7\\Source\\NetOffice\\Core.cs:line 408   at NetOffice.Core.Initialize(CacheOptions cacheOptions) in C:\\NetOfficeX7\\Source\\NetOffice\\Core.cs:line 375   at NetOffice.Core.CreateObjectFromComProxy(COMObject caller, Object comProxy) in C:\\NetOfficeX7\\Source\\NetOffice\\Core.cs:line 724   at NetOffice.OfficeApi.ICTPFactory.CreateCTP(String cTPAxID, String cTPTitle) in C:\\NetOfficeX7\\Source\\Office\\DispatchInterfaces\\ICTPFactory.cs:line 125   at NetOffice.OutlookApi.Tools.COMAddin.CreateCTP(String fullName, String title) in C:\\NetOfficeX7\\Source\\Outlook\\Tools\\COMAddin.cs:line 544\r\n\r\n```",
+      "PostedBy": "cool_szczur",
+      "PostedDate": "2015-05-13T15:22:51.17+02:00",
+      "WorkItemId": 21855,
+      "Id": 203304
+    },
+    {
+      "Message": "hello,\r\n\r\nthis is nearly impossible :o did you use previous NetOffice versions simulanously or mixed? (may another netoffice-based addin is running)  the exception means the core has created a project info instance from the outlook assembly but its failed to cast the instance(which is not null) to IProjectInfo. the only possible reason what i know is an ambiguity version conflict for the IProjectInfo interface. \r\n\r\nis any custom running before CreateCTP is called(may ctor or OnConnection) ?\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-14T13:34:06.23+02:00",
+      "WorkItemId": 21855,
+      "Id": 203305
+    },
+    {
+      "Message": "Hi Sebastian\r\n\r\nI checked registry and I found one netoffice-based addin (one of the examples).After removing it from registry exceptions are not visible and CustomPane addin works.\r\n\r\nThanks for pointing me solution.",
+      "PostedBy": "cool_szczur",
+      "PostedDate": "2015-05-14T14:28:00.113+02:00",
+      "WorkItemId": 21855,
+      "Id": 203306
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

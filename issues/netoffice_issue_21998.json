@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Just noticed what looks like a bug in /Source/NetOffice/Tools/CustomUIAttribute.cs, line 67 in version 1.7.3 in that the line ending:\n\nassemblyNamespace.Substring(resourcePath.Length - 1) };\n\nshould, I believe be:\n\nassemblyNamespace.Substring(assemblyNamespace.Length - 1) };\n\nNot an issue for me, or probably most people, but thought it worth mentioning just in case it causes problems for someone.",
+    "HtmlDescription": "Just noticed what looks like a bug in /Source/NetOffice/Tools/CustomUIAttribute.cs, line 67 in version 1.7.3 in that the line ending:<br />\n<br />\nassemblyNamespace.Substring(resourcePath.Length - 1) };<br />\n<br />\nshould, I believe be:<br />\n<br />\nassemblyNamespace.Substring(assemblyNamespace.Length - 1) };<br />\n<br />\nNot an issue for me, or probably most people, but thought it worth mentioning just in case it causes problems for someone.<br />\n",
+    "PlainDescription": "Just noticed what looks like a bug in /Source/NetOffice/Tools/CustomUIAttribute.cs, line 67 in version 1.7.3 in that the line ending:\n\nassemblyNamespace.Substring(resourcePath.Length - 1) };\n\nshould, I believe be:\n\nassemblyNamespace.Substring(assemblyNamespace.Length - 1) };\n\nNot an issue for me, or probably most people, but thought it worth mentioning just in case it causes problems for someone.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2015-09-14T17:28:40.62+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "gne",
+    "ReportedDate": "2015-09-08T23:48:06.093+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Minor bug in CustomUIAttribute.BuildPath()",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21998,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "absolutely!!!\r\n\r\nthanks for pointing this out!i want fix this very soon and give a comment to your advise.\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-09-14T17:28:40.62+02:00",
+      "WorkItemId": 21998,
+      "Id": 203351
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

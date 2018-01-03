@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi,\ni had made my plugin for Word with netoffice 1.7.3 and compile it. Most times it start allright and i can select my Plugin and enable it but now Word didn´t Show me the plugin... I had registered it manually like in the docs with the right regasm Version but i didn´t see the plugin....\n\nI use Word 2013 64 Bit and Visual Studio 2013 and i compile the solution again .net 4.5",
+    "HtmlDescription": "Hi,<br />\ni had made my plugin for Word with netoffice 1.7.3 and compile it. Most times it start allright and i can select my Plugin and enable it but now Word didn´t Show me the plugin... I had registered it manually like in the docs with the right regasm Version but i didn´t see the plugin....<br />\n<br />\nI use Word 2013 64 Bit and Visual Studio 2013 and i compile the solution again .net 4.5<br />\n",
+    "PlainDescription": "Hi,\ni had made my plugin for Word with netoffice 1.7.3 and compile it. Most times it start allright and i can select my Plugin and enable it but now Word didn´t Show me the plugin... I had registered it manually like in the docs with the right regasm Version but i didn´t see the plugin....\n\nI use Word 2013 64 Bit and Visual Studio 2013 and i compile the solution again .net 4.5\n",
+    "LastUpdatedBy": "soldi01",
+    "LastUpdatedDate": "2015-04-16T16:36:59.333+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "soldi01",
+    "ReportedDate": "2015-04-16T16:36:59.333+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Addin suddenly not loaded",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21810,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

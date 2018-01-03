@@ -1,0 +1,83 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 5,
+    "Description": "Hi,\r\n\r\nI tried a sample solution \"NetOffice Excel Addin Examples\", the project \"NetOffice Tools - Extended\".  I use Excel 2013 on Windows7 64 bit. After compiled I can see the the addin \"NetOfficeTools Extended Example CS4\" in Excel. The button \"About\" works, but the button \"Sample Pane CS4 Visible\" does nothing. \r\n\r\nI wrote a simple project which creates a new Excel Application and open a workbook from the path. In this case I can see the task pane and I am able to switch it on and off.\r\n\r\nCould you help me please?\r\n\r\nThanks\r\nJiri",
+    "HtmlDescription": "Hi,\r<br />\n<br />\nI tried a sample solution &quot;NetOffice Excel Addin Examples&quot;, the project &quot;NetOffice Tools - Extended&quot;.  I use Excel 2013 on Windows7 64 bit. After compiled I can see the the addin &quot;NetOfficeTools Extended Example CS4&quot; in Excel. The button &quot;About&quot; works, but the button &quot;Sample Pane CS4 Visible&quot; does nothing. \r<br />\n<br />\nI wrote a simple project which creates a new Excel Application and open a workbook from the path. In this case I can see the task pane and I am able to switch it on and off.\r<br />\n<br />\nCould you help me please?\r<br />\n<br />\nThanks\r<br />\nJiri<br />\n",
+    "PlainDescription": "Hi,\r\n\nI tried a sample solution \"NetOffice Excel Addin Examples\", the project \"NetOffice Tools - Extended\".  I use Excel 2013 on Windows7 64 bit. After compiled I can see the the addin \"NetOfficeTools Extended Example CS4\" in Excel. The button \"About\" works, but the button \"Sample Pane CS4 Visible\" does nothing. \r\n\nI wrote a simple project which creates a new Excel Application and open a workbook from the path. In this case I can see the task pane and I am able to switch it on and off.\r\n\nCould you help me please?\r\n\nThanks\r\nJiri\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2017-09-25T13:05:20.983+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "jirkaml",
+    "ReportedDate": "2017-02-28T10:39:45.033+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel Addin sample does not show task pane",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22319,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I do not understand the problem.\nYour own addin works fine to enable/disable the pane but the NO example doesnt works?\nI just want to understand the problem... (Enable/disable taskpane cause problems if you have multiple example addins installed in few netoffice versions because the taskpane id is given by name)\n\nSebastian\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2017-03-07T11:39:48.043+01:00",
+      "WorkItemId": 22319,
+      "Id": 207665
+    },
+    {
+      "Message": "Hi Sebastian,\n\nthank you for your answer. I try to describe the problem in more detail. \nI use NetOffice 1.7.3 and the sample project \"d:\\Projects\\Libraries\\NetOffice 1.7.3\\NET 4.5\\Examples\\Excel\\C#\\IExtensibility COMAddin Examples\\IExtensibility Excel Addin Examples.sln\"  .  I have built the project \"IDTExtensibility2 - Taskpane\". \n\nWhen I start Excel 2013 for a new workbook I cannot see the pane and the addin is not in the ribbon. But if I go to \"Developer - COM Addins\" an uncheck this COM Addin, press OK, check COM Addin, press OK - now I can see the pane. But after saving and new opening the workbook I cannot see the pane again.\n\nThanks, Jiri\n",
+      "PostedBy": "jirkaml",
+      "PostedDate": "2017-03-08T12:19:32.097+01:00",
+      "WorkItemId": 22319,
+      "Id": 207677
+    },
+    {
+      "Message": "hey men,\n\nThanks for you explanation. (and please keep in your mind - it doesnt work is not an error description)\n\nIt looks like the addin example code cause problems while starting - my bad.\nExcel disable the addin now and keep hold the addin for a start on demand - you do it here.\nFor unknown reasons, everything works fine when you start the addin later on but fails on start the application. To be honest - i do not maintain the IDTExtensibility2 addins for 2 years now. \n(Advise: Try the NetOffice Tools examples) Can you help me with some debugger error informations here?\nRun the addin per remote debugger, an enable the option \"Break on all Exceptions\" in Visual Studio)\n\nSebastian\n\n\n\n\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2017-03-09T16:28:40.547+01:00",
+      "WorkItemId": 22319,
+      "Id": 207695
+    },
+    {
+      "Message": "I am facing same issues I have gone through all the steps but still it does't work.Even I am trying to Export some of the report form my [QuickBooks](https://quickbookspayrollsupport.com/) to Excel and it's keep on crashing on me.",
+      "PostedBy": "alexperkins",
+      "PostedDate": "2017-09-24T15:20:16.53+02:00",
+      "WorkItemId": 22319,
+      "Id": 208818
+    },
+    {
+      "Message": "May an other .NET addin cause problems here.\n(NetOffice does not support shimming by default.)\nHave you tried to remove other addins temporaily?\n(Or just use the COM Shim Wizard to isolate your addin)\n\n*Sebastian\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2017-09-25T13:05:20.983+02:00",
+      "WorkItemId": 22319,
+      "Id": 208819
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

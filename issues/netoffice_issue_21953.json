@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "I have a web application that uses NetOffice ExcelAPI. All works okay on the local development machine, but when I deploy the application to the server and run the app I get a 500 error. The log file doesn't seem to register that such an event has occurred but, by process of elimination, I have determined it is the NetOffice ExcelAPI that triggers the 500 error.\n\nInterestingly, I have two other web applications on the same server using the same version of NetOffice.ExcelAPI that run without any issues.\n\nCan anyone offer any troubleshooting tips that might provide some light on why I get the 500 error?",
+    "HtmlDescription": "I have a web application that uses NetOffice ExcelAPI. All works okay on the local development machine, but when I deploy the application to the server and run the app I get a 500 error. The log file doesn't seem to register that such an event has occurred but, by process of elimination, I have determined it is the NetOffice ExcelAPI that triggers the 500 error.<br />\n<br />\nInterestingly, I have two other web applications on the same server using the same version of NetOffice.ExcelAPI that run without any issues.<br />\n<br />\nCan anyone offer any troubleshooting tips that might provide some light on why I get the 500 error?<br />\n",
+    "PlainDescription": "I have a web application that uses NetOffice ExcelAPI. All works okay on the local development machine, but when I deploy the application to the server and run the app I get a 500 error. The log file doesn't seem to register that such an event has occurred but, by process of elimination, I have determined it is the NetOffice ExcelAPI that triggers the 500 error.\n\nInterestingly, I have two other web applications on the same server using the same version of NetOffice.ExcelAPI that run without any issues.\n\nCan anyone offer any troubleshooting tips that might provide some light on why I get the 500 error?\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2015-07-31T20:00:10.073+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "normality2000",
+    "ReportedDate": "2015-07-28T20:18:04.557+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NetOffice ExcelAPI Causing 500 Error",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21953,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Where is the 500 error number comes from? its never an MS-Excel or COM error code.\r\n\r\nstack trace, full-recursive(!!!) exception details. put all what you have here please. \r\n\r\ncurrently i all what i know is: \"NetOffice Error\"\r\n\r\nthe 500 error comes from your web app but i need to see the problem behind directly from NetOffice.(the stack strace and exception info may include that)\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-07-29T21:22:29.417+02:00",
+      "WorkItemId": 21953,
+      "Id": 203328
+    },
+    {
+      "Message": "Sebastian,The NetOffice ExcelAPI has been installed using nuget.  I have one line of code within the application that just creates a new Excel object. The stacktrace that is returned is as follows:\r\n\r\nServer Error in '/TestExcelAPI' Application.--------------------------------------------------------------------------------\r\n\r\nRetrieving the COM class factory for component with CLSID {00024500-0000-0000-C000-000000000046} failed due to the following error: 80070005 Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED)). Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code. \r\n\r\nException Details: System.UnauthorizedAccessException: Retrieving the COM class factory for component with CLSID {00024500-0000-0000-C000-000000000046} failed due to the following error: 80070005 Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED)). \r\n\r\nASP.NET is not authorized to access the requested resource. Consider granting access rights to the resource to the ASP.NET request identity. ASP.NET has a base process identity (typically {MACHINE}\\ASPNET on IIS 5 or Network Service on IIS 6 and IIS 7, and the configured application pool identity on IIS 7.5) that is used if the application is not impersonating. If the application is impersonating via , the identity will be the anonymous user (typically IUSR_MACHINENAME) or the authenticated request user. \r\n\r\nTo grant ASP.NET access to a file, right-click the file in Explorer, choose \"Properties\" and select the Security tab. Click \"Add\" to add the appropriate user or group. Highlight the ASP.NET account, and check the boxes for the desired access.\r\n\r\nSource Error: \r\n\r\nAn unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.  \r\n\r\nStack Trace: \r\n\r\n[UnauthorizedAccessException: Retrieving the COM class factory for component with CLSID {00024500-0000-0000-C000-000000000046} failed due to the following error: 80070005 Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED)).]   System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(RuntimeType objectType) +0   System.Runtime.Remoting.Activation.ActivationServices.CreateInstance(RuntimeType serverType) +79   System.Runtime.Remoting.Activation.ActivationServices.IsCurrentContextOK(RuntimeType serverType, Object[] props, Boolean bNewObj) +76   System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck) +0   System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache) +98   System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache) +241   System.Activator.CreateInstance(Type type, Boolean nonPublic) +69   NetOffice.COMObject.CreateFromProgId(String progId) +51   NetOffice.COMObject..ctor(String progId) +69   NetOffice.ExcelApi.Application..ctor() +19   ExcelTestAPI._Default.Page_Load(Object sender, EventArgs e) in D:\\PROJECTS\\VisualStudio2012\\ExcelTestAPI\\ExcelTestAPI\\Default.aspx.vb:7   System.Web.UI.Control.OnLoad(EventArgs e) +91   System.Web.UI.Control.LoadRecursive() +74   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +2207\r\n\r\nOne interesting item that I note is the line that reads ' ExcelTestAPI._Default.Page_Load(Object sender, EventArgs e) in D:\\PROJECTS\\VisualStudio2012\\ExcelTestAPI\\ExcelTestAPI\\Default.aspx.vb:7'.\r\n\r\nThis is referencing the development machine rather than the server. Could this have anything to do with the problem? If so, how would I go about fixing it.\r\n\r\nAs I have said before, we have other applications that use ExcelAPI and found it to be a wonderful product to code with and produce quality MS Office documents, so I am convinced that the error lies at my end but I just cannot fathom it out.\r\n\r\nAny help would be appreciated.\r\n\r\n \r\n\r\n--------------------------------------------------------------------------------Version Information: Microsoft .NET Framework Version:4.0.30319; ASP.NET Version:4.0.30319.1031 ",
+      "PostedBy": "normality2000",
+      "PostedDate": "2015-07-30T17:55:10.82+02:00",
+      "WorkItemId": 21953,
+      "Id": 203329
+    },
+    {
+      "Message": "Its a common error i believe.\r\n\r\nIts not allowed to create a COM component(which it is) from local system account.(E_ACCESSDENIED)this topic shows you different options to resolve the problem.\r\n\r\nhttp://stackoverflow.com/questions/17785063/retrieving-the-com-class-factory-for-component-error-80070005-access-is-de\r\n\r\n(best way on is to use open-xml of course - if possible. no excel requiered here. The ClosedXML project here on codeplex is such great. give'em a try if you can)\r\n\r\n*Sebastian\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-07-31T20:00:10.073+02:00",
+      "WorkItemId": 21953,
+      "Id": 203330
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

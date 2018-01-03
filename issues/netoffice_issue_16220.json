@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Interop Assemblies wrap all exceptions from the COM Server in a COMException.\nNetOffice doesnt do that and existing code there using interop assemblies are not portable without changes maybe.\ntask: wrap all exceptions in a COMException.",
+    "HtmlDescription": "Interop Assemblies wrap all exceptions from the COM Server in a COMException.<br />\nNetOffice doesnt do that and existing code there using interop assemblies are not portable without changes maybe.<br />\ntask: wrap all exceptions in a COMException.<br />\n",
+    "PlainDescription": "Interop Assemblies wrap all exceptions from the COM Server in a COMException.\nNetOffice doesnt do that and existing code there using interop assemblies are not portable without changes maybe.\ntask: wrap all exceptions in a COMException.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:19.023+02:00",
+    "PlannedForRelease": "NetOffice Release 0.9b",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "SebastianDotNet",
+    "ReportedDate": "2011-07-06T15:50:33.233+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "wrap all exceptions from office COM Server in a COMException",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 16220,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "fixed :)",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-07-08T10:24:57.493+02:00",
+      "WorkItemId": 16220,
+      "Id": 202991
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

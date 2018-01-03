@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Developer Toolbox has the blurred taskbar icon in Windows 8.\n\n![Image](http://netoffice.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=19363&FileAttachmentId=6812)",
+    "HtmlDescription": "Developer Toolbox has the blurred taskbar icon in Windows 8.<br />\n<br />\n<img src=\"http://netoffice.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&amp;WorkItemId=19363&amp;FileAttachmentId=6812\" alt=\"Image\" /><br />\n",
+    "PlainDescription": "Developer Toolbox has the blurred taskbar icon in Windows 8.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-02-22T02:38:51.56+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "artnib",
+    "ReportedDate": "2013-02-19T17:24:50.48+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Blurred taskbar icon for Developer Toolbox",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19363,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600187,
+      "FileName": "Toolbox_taskbar.png",
+      "WorkItemId": 19363,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=19363&FileAttachmentId=1600187"
+    }
+  ],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

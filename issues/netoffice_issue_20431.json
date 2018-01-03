@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "1. Place on slide several shapes.\n2. Group them.\n3. Select child shape.\n4. Press CTRL and select group\n5. Try to enumerate Selection.ShapeRange\n\nAn exception of type 'AddinExpress.MSO.ADXExternalException' occurred. Additional information: \nAn error has occurred in the code of the add-in. (AddinExpress.MSO.ADXExternalException)\n-->\nSee inner exception(s) for details. (System.Runtime.InteropServices.COMException)\n-->\nException has been thrown by the target of an invocation. (System.Reflection.TargetInvocationException)\n-->\nException from HRESULT: 0x800A01A8 (System.Runtime.InteropServices.COMException)\n\nCould you help?",
+    "HtmlDescription": "<ol>\n<li>Place on slide several shapes.</li>\n<li>Group them.</li>\n<li>Select child shape.</li>\n<li>Press CTRL and select group</li>\n<li>\nTry to enumerate Selection.ShapeRange<br />\n</li>\n</ol>\nAn exception of type 'AddinExpress.MSO.ADXExternalException' occurred. Additional information: <br />\nAn error has occurred in the code of the add-in. (AddinExpress.MSO.ADXExternalException)<br />\n--&gt;<br />\nSee inner exception(s) for details. (System.Runtime.InteropServices.COMException)<br />\n--&gt;<br />\nException has been thrown by the target of an invocation. (System.Reflection.TargetInvocationException)<br />\n--&gt;<br />\nException from HRESULT: 0x800A01A8 (System.Runtime.InteropServices.COMException)<br />\n<br />\nCould you help?<br />\n",
+    "PlainDescription": "Place on slide several shapes.\nGroup them.\nSelect child shape.\nPress CTRL and select group\n\nTry to enumerate Selection.ShapeRange\n\n\nAn exception of type 'AddinExpress.MSO.ADXExternalException' occurred. Additional information: \nAn error has occurred in the code of the add-in. (AddinExpress.MSO.ADXExternalException)\n-->\nSee inner exception(s) for details. (System.Runtime.InteropServices.COMException)\n-->\nException has been thrown by the target of an invocation. (System.Reflection.TargetInvocationException)\n-->\nException from HRESULT: 0x800A01A8 (System.Runtime.InteropServices.COMException)\n\nCould you help?\n",
+    "LastUpdatedBy": "daiz",
+    "LastUpdatedDate": "2013-11-18T14:42:22.227+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "daiz",
+    "ReportedDate": "2013-11-18T09:02:18.477+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Bug with group selection PowerPoint",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20431,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Stack trace:\r\n\r\n-->   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name)   at NetOffice.Utils.d__0.MoveNext()   at NetOffice.PowerPointApi.ShapeRange.d__0.MoveNext()   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()   at System.Linq.Enumerable.d__14`2.MoveNext()   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)",
+      "PostedBy": "daiz",
+      "PostedDate": "2013-11-18T14:42:22.227+01:00",
+      "WorkItemId": 20431,
+      "Id": 203187
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

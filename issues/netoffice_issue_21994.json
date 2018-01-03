@@ -1,0 +1,77 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "Hi,\nI'm having an issue with workbooks property in Excel.\nWhat I'm trying to do is a loop on a same Excel application object:\n1.  open a workbook\n2.  read some data\n3.  close the workbook\n4.  dispose the workbook\n5.  loop until there is no file left\n\nBut I can see in task manager that Excel memory is growing everytime I loop despite the dispose method. Is there a way to handle this (maybe I'm not using it the right way) or is that a bug?",
+    "HtmlDescription": "Hi,<br />\nI'm having an issue with workbooks property in Excel.<br />\nWhat I'm trying to do is a loop on a same Excel application object:<br />\n<ol>\n<li>open a workbook</li>\n<li>read some data</li>\n<li>close the workbook</li>\n<li>dispose the workbook</li>\n<li>\nloop until there is no file left<br />\n</li>\n</ol>\nBut I can see in task manager that Excel memory is growing everytime I loop despite the dispose method. Is there a way to handle this (maybe I'm not using it the right way) or is that a bug?<br />\n",
+    "PlainDescription": "Hi,\nI'm having an issue with workbooks property in Excel.\nWhat I'm trying to do is a loop on a same Excel application object:\n\nopen a workbook\nread some data\nclose the workbook\ndispose the workbook\n\nloop until there is no file left\n\n\nBut I can see in task manager that Excel memory is growing everytime I loop despite the dispose method. Is there a way to handle this (maybe I'm not using it the right way) or is that a bug?\n",
+    "LastUpdatedBy": "pasielsky",
+    "LastUpdatedDate": "2015-09-03T10:38:38.757+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "pasielsky",
+    "ReportedDate": "2015-09-02T16:41:18.05+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Memory leak using Excel workbook",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21994,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "its difficult to analyze without code example because i did not understand \"loop until there is no file left\".(btw: the NO proxy management was safe for all the years)\r\n\r\ncan i see some code for step 5 ?\r\n\r\nnice to know:in a standalone solution(not sure its yours) you can use the static NetOffice.Core.Default.ProxyCount property and ProxyCountChanged event for diagnostics. it shows you how many proxies currently open in your solution.\r\n\r\nSebastian\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-09-02T17:46:21.387+02:00",
+      "WorkItemId": 21994,
+      "Id": 203347
+    },
+    {
+      "Message": "I'm just looping on files in a folder; my code is quite huge so basically it's just:// myClass// ...// private membersprivate netoffice.Excel _ExcelApplication; // initilized in constructor\r\n\r\n// myMethod// ...Foreach (file in Directory){   Workbook MyWorkbook = _ExcelApplication.Workbooks.open(file);   // Do some stuff in opened workbook to read cells values   // ...   // close file   MyWorkbook.close();   MyWorkbook.dispose();   GC.Collect();   GC.WaitForPendingFinalizers();}\r\n\r\nSo it's working BUT as there are many files in my folder, Excel is growing in memory and when it is above 110k, opening a new file is really slow (at the end, it's more than 6 minutes to open a file).",
+      "PostedBy": "pasielsky",
+      "PostedDate": "2015-09-03T10:07:55.733+02:00",
+      "WorkItemId": 21994,
+      "Id": 203348
+    },
+    {
+      "Message": "You may didnt realize the Workbooks property/proxy from _ExcelApplication. (you call them -on the fly- and didnt dispose them)\r\n\r\nI suggest you to use \r\n\r\n1)Dim books As Excel.Workbooks = _ExcelApplication.Workbooks....books.Dispose()\r\n\r\nor dispose all child proxies from _ExcelApplication instead at the end of foreach loop2) _ExcelApplication.DisposeChildInstances()\r\n\r\n*let me know this helpsSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-09-03T10:27:53.487+02:00",
+      "WorkItemId": 21994,
+      "Id": 203349
+    },
+    {
+      "Message": "Wonderfull!DisposeChildInstances worked !My program run in a minute instead of 40 minutes yesterday: that's terrific!\r\n\r\nthank you so much, you made my day!",
+      "PostedBy": "pasielsky",
+      "PostedDate": "2015-09-03T10:38:38.757+02:00",
+      "WorkItemId": 21994,
+      "Id": 203350
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

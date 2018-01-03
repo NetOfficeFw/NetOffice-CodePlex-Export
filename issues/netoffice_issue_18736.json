@@ -1,0 +1,64 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "SebastianDotNet",
+    "ClosedComment": "",
+    "ClosedDate": "2012-10-28T01:09:19.06+02:00",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Hi,\n\nwhere is \"FinishDialog\" defined?\n\nI Get:\n\nError\t1\tType 'FinishDialog' is not defined.\t\n\nFrom example:\n        Dim fDialog As New FinishDialog(\"Workbook saved.\", workbookFile)\n        fDialog.ShowDialog(Me)",
+    "HtmlDescription": "Hi,<br />\n<br />\nwhere is &quot;FinishDialog&quot; defined?<br />\n<br />\nI Get:<br />\n<br />\nError\t1\tType 'FinishDialog' is not defined.\t<br />\n<br />\nFrom example:<br />\n<pre><code>    Dim fDialog As New FinishDialog(&quot;Workbook saved.&quot;, workbookFile)\n    fDialog.ShowDialog(Me)</code></pre>\n\n",
+    "PlainDescription": "Hi,\n\nwhere is \"FinishDialog\" defined?\n\nI Get:\n\nError\t1\tType 'FinishDialog' is not defined.\t\n\nFrom example:\nDim fDialog As New FinishDialog(&quot;Workbook saved.&quot;, workbookFile)\nfDialog.ShowDialog(Me)\n\n\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-05-16T13:50:56.583+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "er2rp",
+    "ReportedDate": "2012-10-02T10:29:43.53+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Example01 VB, Finishdialog",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18736,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi again,\r\n\r\nI found it - it is a Form dialog that I have to create.",
+      "PostedBy": "er2rp",
+      "PostedDate": "2012-10-02T13:42:00.25+02:00",
+      "WorkItemId": 18736,
+      "Id": 203103
+    },
+    {
+      "Message": "FinishDialog is defined in ExampleBase.dll\r\n\r\nwhich office product and .net version you have tried?",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-10-02T14:21:11.147+02:00",
+      "WorkItemId": 18736,
+      "Id": 203104
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

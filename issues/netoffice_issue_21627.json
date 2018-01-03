@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "When Call the method of ShapeRange.MergeShapes,\nThe VSTO works even in Office 2010, and the NetOffice comes error.\nThe Microsoft Office don't support this methos in vba of Office 2010, but supported in VSTO for Office 2010. (The online help is in the vba program. )\nAny idea to solve this problem?",
+    "HtmlDescription": "When Call the method of ShapeRange.MergeShapes,<br />\nThe VSTO works even in Office 2010, and the NetOffice comes error.<br />\nThe Microsoft Office don't support this methos in vba of Office 2010, but supported in VSTO for Office 2010. (The online help is in the vba program. )<br />\nAny idea to solve this problem?<br />\n",
+    "PlainDescription": "When Call the method of ShapeRange.MergeShapes,\nThe VSTO works even in Office 2010, and the NetOffice comes error.\nThe Microsoft Office don't support this methos in vba of Office 2010, but supported in VSTO for Office 2010. (The online help is in the vba program. )\nAny idea to solve this problem?\n",
+    "LastUpdatedBy": "ye4241",
+    "LastUpdatedDate": "2014-12-31T02:34:22.64+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "ye4241",
+    "ReportedDate": "2014-12-30T10:35:09.913+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MergeShapes Should Work for Office 2010",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21627,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "any error details/exception log?\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-12-30T11:31:16.637+01:00",
+      "WorkItemId": 21627,
+      "Id": 203280
+    },
+    {
+      "Message": "@SebastianDotNetUnknown name. (Exception from HRESULT:0x80020006 (DISP_E_UNKNOWNNAME))\r\n\r\nIn code:```comObject.InstanceType.InvokeMember(name, BindingFlags.InvokeMethod, null, comObject.UnderlyingObject, paramsArray, Settings.Default.ThreadCulture);```\r\n\r\nThe VBA model don't include this method, however the method is supported by VSTO.\r\n\r\n",
+      "PostedBy": "ye4241",
+      "PostedDate": "2014-12-31T02:34:22.64+01:00",
+      "WorkItemId": 21627,
+      "Id": 203281
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

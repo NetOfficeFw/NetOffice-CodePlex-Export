@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hello,\n\nI use Edraw Office Viewer to integrated MS Word in my WinForm Application.\n\nThe Tool has a method GetApplication. (See next lines)\nMicrosoft.Office.Interop.Word.Application application = (Microsoft.Office.Interop.Word.Application) axEDOffice1.GetApplication();\n\n\nNow I wanted to attached the application object to NetOffice.WordApi.Application Object.\n(Because I want to use the NetOffice Api to excecute commands.)\n\n\nIs that possible ?\n\nThanks a lot,\nAndreas",
+    "HtmlDescription": "Hello,<br />\n<br />\nI use Edraw Office Viewer to integrated MS Word in my WinForm Application.<br />\n<br />\nThe Tool has a method GetApplication. (See next lines)<br />\nMicrosoft.Office.Interop.Word.Application application = (Microsoft.Office.Interop.Word.Application) axEDOffice1.GetApplication();<br />\n<br />\n<br />\nNow I wanted to attached the application object to NetOffice.WordApi.Application Object.<br />\n(Because I want to use the NetOffice Api to excecute commands.)<br />\n<br />\n<br />\nIs that possible ?<br />\n<br />\nThanks a lot,<br />\nAndreas<br />\n",
+    "PlainDescription": "Hello,\n\nI use Edraw Office Viewer to integrated MS Word in my WinForm Application.\n\nThe Tool has a method GetApplication. (See next lines)\nMicrosoft.Office.Interop.Word.Application application = (Microsoft.Office.Interop.Word.Application) axEDOffice1.GetApplication();\n\n\nNow I wanted to attached the application object to NetOffice.WordApi.Application Object.\n(Because I want to use the NetOffice Api to excecute commands.)\n\n\nIs that possible ?\n\nThanks a lot,\nAndreas\n",
+    "LastUpdatedBy": "AndreasWaning",
+    "LastUpdatedDate": "2013-05-21T12:46:00.007+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "AndreasWaning",
+    "ReportedDate": "2013-05-21T12:46:00.007+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Convert Microsoft.Office.Interop.Word.ApplicationClass to NetOffice.COMObject",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 19742,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

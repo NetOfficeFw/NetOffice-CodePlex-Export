@@ -1,0 +1,77 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "Hi,\n\nI use NetOffice to edit an Excel file.\nWhen I try to change hidden property, an exception is thrown.\n\nCode:\n```\n                sheetCadEmp.Cells[1].Hidden = false;\n```\n\nError:\n```\nSee inner exception(s) for details.\n==============\nNetOffice\n==============\n   em NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\n   em NetOffice.ExcelApi.Range.set_Hidden(Object value)\n\n```\n\n```\n==============\nmscorlib\n==============\n   em System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   em System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   em System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)\n   em NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\n==============\n\n```",
+    "HtmlDescription": "Hi,<br />\n<br />\nI use NetOffice to edit an Excel file.<br />\nWhen I try to change hidden property, an exception is thrown.<br />\n<br />\nCode:<br />\n<pre><code>                sheetCadEmp.Cells[1].Hidden = false;</code></pre>\n\nError:<br />\n<pre><code>See inner exception(s) for details.\n==============\nNetOffice\n==============\n   em NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\n   em NetOffice.ExcelApi.Range.set_Hidden(Object value)\n</code></pre>\n\n<pre><code>==============\nmscorlib\n==============\n   em System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   em System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   em System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)\n   em NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\n==============\n</code></pre>\n\n",
+    "PlainDescription": "Hi,\n\nI use NetOffice to edit an Excel file.\nWhen I try to change hidden property, an exception is thrown.\n\nCode:\n            sheetCadEmp.Cells[1].Hidden = false;\n\n\nError:\nSee inner exception(s) for details.\nNetOffice\nem NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\n   em NetOffice.ExcelApi.Range.set_Hidden(Object value)\nmscorlib\nem System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   em System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   em System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)\n   em NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\n",
+    "LastUpdatedBy": "bhfaria",
+    "LastUpdatedDate": "2013-08-20T04:21:43.49+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "bhfaria",
+    "ReportedDate": "2013-08-19T05:08:33.64+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NetOffice 1.6.0 - ExcelApi. Range and Hidden",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20087,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "as far i known the hidden property is not applicable for cells. only available for rows and columns. did that work with/interop or vsto ??? i think not.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-08-20T02:42:30.693+02:00",
+      "WorkItemId": 20087,
+      "Id": 203163
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nThe first arg to Cells is rowIndex that return an Range.Cells[rowIndex] have a Hidden property\r\n\r\nI can't find another method to get entire row using NetOffice to apply Hidden value. \r\n\r\nThis method exists?\r\n\r\nSorry for my bad english.",
+      "PostedBy": "bhfaria",
+      "PostedDate": "2013-08-20T03:10:41.057+02:00",
+      "WorkItemId": 20087,
+      "Id": 203164
+    },
+    {
+      "Message": "where you from?",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-08-20T03:54:41.3+02:00",
+      "WorkItemId": 20087,
+      "Id": 203165
+    },
+    {
+      "Message": "Brazil.",
+      "PostedBy": "bhfaria",
+      "PostedDate": "2013-08-20T04:21:43.49+02:00",
+      "WorkItemId": 20087,
+      "Id": 203166
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

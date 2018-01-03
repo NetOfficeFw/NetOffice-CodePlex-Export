@@ -1,0 +1,84 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 5,
+    "Custom": "",
+    "Description": "Hi,\nI'm a new user of net office and I'm trying to make a ribbon addin to Excel. It's kind of a proof of concept to show it is possible to make a real powerfull/clean/maintainable development using .NET instead of writing tons of vba code (using sharpdevelop).\nOne of the basic feature I'm trying to show is to select a row in a sheet, click on a button and then insert a row just underneath the one selected.\nYou could write it in vba like this:\nSelection.Rows.insert()\nBut I can't find any Rows property (nor any Columns property) in Worksheet class (can't find it anywhere else). Then I tried to find methods provided by ExcelAPI DLL; I just found that Rows property exist but that Browsable attribute has been set to false.\nIs this expected? If so, how can I access that property to insert a row where I want?\n\nthank you",
+    "HtmlDescription": "Hi,<br />\nI'm a new user of net office and I'm trying to make a ribbon addin to Excel. It's kind of a proof of concept to show it is possible to make a real powerfull/clean/maintainable development using .NET instead of writing tons of vba code (using sharpdevelop).<br />\nOne of the basic feature I'm trying to show is to select a row in a sheet, click on a button and then insert a row just underneath the one selected.<br />\nYou could write it in vba like this:<br />\nSelection.Rows.insert()<br />\nBut I can't find any Rows property (nor any Columns property) in Worksheet class (can't find it anywhere else). Then I tried to find methods provided by ExcelAPI DLL; I just found that Rows property exist but that Browsable attribute has been set to false.<br />\nIs this expected? If so, how can I access that property to insert a row where I want?<br />\n<br />\nthank you<br />\n",
+    "PlainDescription": "Hi,\nI'm a new user of net office and I'm trying to make a ribbon addin to Excel. It's kind of a proof of concept to show it is possible to make a real powerfull/clean/maintainable development using .NET instead of writing tons of vba code (using sharpdevelop).\nOne of the basic feature I'm trying to show is to select a row in a sheet, click on a button and then insert a row just underneath the one selected.\nYou could write it in vba like this:\nSelection.Rows.insert()\nBut I can't find any Rows property (nor any Columns property) in Worksheet class (can't find it anywhere else). Then I tried to find methods provided by ExcelAPI DLL; I just found that Rows property exist but that Browsable attribute has been set to false.\nIs this expected? If so, how can I access that property to insert a row where I want?\n\nthank you\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2015-08-08T09:54:44.047+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "pasielsky",
+    "ReportedDate": "2015-08-05T14:49:32.5+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "cannot access to Rows property in ExcelAPI",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21962,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "have you tried get_Rows? (in some situations visual basic has problems to the see properties from c# code)\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-08-06T20:49:33.61+02:00",
+      "WorkItemId": 21962,
+      "Id": 203333
+    },
+    {
+      "Message": "I'm using CSharp in Sharpdevelop. Intellisense does not provide any Rows nor Columns properties. Again, using ildasm on Excel API DLL, it shows me a method called Rows but I can see its browsable attribute has been set to false.I'm using net office 1.7.3get_Rows is unavailable as well.",
+      "PostedBy": "pasielsky",
+      "PostedDate": "2015-08-06T22:55:45.15+02:00",
+      "WorkItemId": 21962,
+      "Id": 203334
+    },
+    {
+      "Message": "Currently, the Rows property is hidden. same for columns.  (i want clearify why it is...)in other words you can use them but Intellisense wont show it.\r\n\r\ni want remove the hidden annotations for the properties immediately.please let me know if you find some more...\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-08-07T02:18:47.407+02:00",
+      "WorkItemId": 21962,
+      "Id": 203335
+    },
+    {
+      "Message": "I can tell that EntireRow and EntireColumn properties from Range class are not browsable as well",
+      "PostedBy": "pasielsky",
+      "PostedDate": "2015-08-07T16:39:39.827+02:00",
+      "WorkItemId": 21962,
+      "Id": 203336
+    },
+    {
+      "Message": "thx!Rows and Columns has been changed.i want change EntireRow and EntireColumn today.\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-08-08T09:54:44.047+02:00",
+      "WorkItemId": 21962,
+      "Id": 203337
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

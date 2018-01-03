@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "I tried to compile the C# Tutorials.sln in NetOffice1.6\\NET4.5\\Tutorials\\C# in VS2012Premium.  The output was an error in Tutorials\\Tutorials\\Tutorial10.cs on line 39 and line 48.  EnableMessageFilter is not a member of NetOffice.Settings.  I comment out line 39 and revise line 40 so that it does not refer to bool messageFilter, and the solution compiles.\n\nThe same compilation error occurs in the .NET4.0 version of the tutorials.",
+    "HtmlDescription": "I tried to compile the C# Tutorials.sln in NetOffice1.6\\NET4.5\\Tutorials\\C# in VS2012Premium.  The output was an error in Tutorials\\Tutorials\\Tutorial10.cs on line 39 and line 48.  EnableMessageFilter is not a member of NetOffice.Settings.  I comment out line 39 and revise line 40 so that it does not refer to bool messageFilter, and the solution compiles.<br />\n<br />\nThe same compilation error occurs in the .NET4.0 version of the tutorials.<br />\n",
+    "PlainDescription": "I tried to compile the C# Tutorials.sln in NetOffice1.6\\NET4.5\\Tutorials\\C# in VS2012Premium.  The output was an error in Tutorials\\Tutorials\\Tutorial10.cs on line 39 and line 48.  EnableMessageFilter is not a member of NetOffice.Settings.  I comment out line 39 and revise line 40 so that it does not refer to bool messageFilter, and the solution compiles.\n\nThe same compilation error occurs in the .NET4.0 version of the tutorials.\n",
+    "LastUpdatedBy": "FARAZ76",
+    "LastUpdatedDate": "2013-11-28T11:43:21.887+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "bizcad",
+    "ReportedDate": "2013-08-29T21:12:45.087+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Compile error in Tutorial 10 of v1.6",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20151,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Similar Error in the VB version. Using VS2013. All tutorial projects giving teh said error.",
+      "PostedBy": "FARAZ76",
+      "PostedDate": "2013-11-28T11:43:21.887+01:00",
+      "WorkItemId": 20151,
+      "Id": 203167
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

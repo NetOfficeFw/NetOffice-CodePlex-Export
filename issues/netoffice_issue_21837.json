@@ -1,0 +1,112 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 9,
+    "Custom": "",
+    "Description": "Hi,\n\nI migrated my WPF app from PIA v14 to NetOffice. I have problem with getting HWND (window handle) from PowerPoint. It was working on PIA v14, but when I try to access to __ppPresentation.SlideShowWindow.HWND__  property (ppPresentation is my PowerPoint presentation opened as SlideShow) with NetOffice, exception __\"Member not found. (Exception from HRESULT: 0x80020003 (DISP_E_MEMBERNOTFOUND))\"__ is thrown. How I can get handle to SlideShow window using NetOffice? Other functiomns works ok.",
+    "HtmlDescription": "Hi,<br />\n<br />\nI migrated my WPF app from PIA v14 to NetOffice. I have problem with getting HWND (window handle) from PowerPoint. It was working on PIA v14, but when I try to access to <strong>ppPresentation.SlideShowWindow.HWND</strong>  property (ppPresentation is my PowerPoint presentation opened as SlideShow) with NetOffice, exception <strong>&quot;Member not found. (Exception from HRESULT: 0x80020003 (DISP_E_MEMBERNOTFOUND))&quot;</strong> is thrown. How I can get handle to SlideShow window using NetOffice? Other functiomns works ok.<br />\n",
+    "PlainDescription": "Hi,\n\nI migrated my WPF app from PIA v14 to NetOffice. I have problem with getting HWND (window handle) from PowerPoint. It was working on PIA v14, but when I try to access to ppPresentation.SlideShowWindow.HWND  property (ppPresentation is my PowerPoint presentation opened as SlideShow) with NetOffice, exception \"Member not found. (Exception from HRESULT: 0x80020003 (DISP_E_MEMBERNOTFOUND))\" is thrown. How I can get handle to SlideShow window using NetOffice? Other functiomns works ok.\n",
+    "LastUpdatedBy": "chripo",
+    "LastUpdatedDate": "2015-09-29T11:56:02.857+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "DominikPalo",
+    "ReportedDate": "2015-05-05T12:31:49.86+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cannot get HWND of a PowerPoint SlideShow window",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21837,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "NetOffice use the IDispatch interface instead of the VTable interface. I have no idea why but PPoint won't give handles through the IDispatch interface.\r\n\r\nI suggest you to create a small bybass like this extension:\r\n\r\n    static class MyExtensions    {        public static int WindowHandle(this SlideShowWindow window)        {            VSlideShowWindow wnd = window.UnderlyingObject as VSlideShowWindow;            return wnd.HWND;        }\r\n\r\n        [Guid(\"91493453-5A91-11CF-8700-00AA0060263B\"), TypeLibType(4288), ComImport]        public interface VSlideShowWindow        {            [DispId(2010), TypeLibFunc(1)]            int HWND { get; }        }    }",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-05T17:57:05.22+02:00",
+      "WorkItemId": 21837,
+      "Id": 203295
+    },
+    {
+      "Message": "Thanks,\r\n\r\nbut:\r\n\r\n1) Visual Studio doesn't allow to use TypeLibFunc attribute on property (it shows: _Error\t2\tAttribute 'TypeLibFunc' is not valid on this declaration type. It is only valid on 'method' declarations._)\r\n\r\n2) If I tried to use this extension method without TypeLibFunc(1) on HWND attribute, it returns incorrect HWND (for example: real HWND of my SlideShow window is 918404, but your extension method WindowHandle returns 97410748)",
+      "PostedBy": "DominikPalo",
+      "PostedDate": "2015-05-06T09:50:39.773+02:00",
+      "WorkItemId": 21837,
+      "Id": 203296
+    },
+    {
+      "Message": "ooops, my bad. here it is again\r\n\r\n        [Guid(\"91493453-5A91-11CF-8700-00AA0060263B\"), TypeLibType(4288), ComImport]        public interface VSlideShowWindow        {            int HWND             {                [DispId(2010), TypeLibFunc(1)]                [MethodImpl(4096)]                get;            }        }",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-06T10:56:50.48+02:00",
+      "WorkItemId": 21837,
+      "Id": 203297
+    },
+    {
+      "Message": "once again :(      [Guid(\"91493453-5A91-11CF-8700-00AA0060263B\"), TypeLibType(4288), ComImport]    public interface VSlideShowWindow    {        [DispId(2010)]        int HWND         {            [DispId(2010), TypeLibFunc(1)]            [MethodImpl(4096)]            get;        }    }",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-06T10:58:03.937+02:00",
+      "WorkItemId": 21837,
+      "Id": 203298
+    },
+    {
+      "Message": "Thanks,\r\n\r\nbut I still get incorrect HWNDs (WindowHandle() returns very big numbers, which are not associated with any window in system) ",
+      "PostedBy": "DominikPalo",
+      "PostedDate": "2015-05-06T13:42:54.483+02:00",
+      "WorkItemId": 21837,
+      "Id": 203299
+    },
+    {
+      "Message": "I created this workaround:\r\n\r\n```private IntPtr GetSlideShowWindowHandle(string fileName){    Process[] ppProcesses = Process.GetProcessesByName(\"POWERPNT\");\r\n\r\n    var ppSlideShowProcess = ppProcesses.FirstOrDefault((p) => {         return p.MainWindowHandle != IntPtr.Zero && p.MainWindowTitle.Contains(\"[\" + fileName);     });\r\n\r\n    return ppSlideShowProcess == null ? IntPtr.Zero : ppSlideShowProcess.MainWindowHandle;}```\r\n\r\nwhich searches for correct window handle by comparing titles of all opened windows owned by PowerPoint with string \"[MyPresentationFileName\" - every SlideShow window contains [MyPresentationFile] or [MyPresentationFileName.extension] in title. \r\n\r\nBut I think it would be more reliable to use SlideShowWindow.HWND property (which works without problems with PIA and returns correct HWND)",
+      "PostedBy": "DominikPalo",
+      "PostedDate": "2015-05-06T14:02:00.437+02:00",
+      "WorkItemId": 21837,
+      "Id": 203300
+    },
+    {
+      "Message": "the extension imitate the behavior of the \"normal\" interop assemblies 1:1(PIA is a custom set of interop assemblies, may MS create a special workaround here)\r\n\r\nIt looks like you want the main window handle of the ppoint application. are you sure its the same as your slideshow window handle?(i think its not because the slideshow use its own [child] window)   (get the ppoint application main handle is easy trough the netoffice powerpoint application utils)",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-06T14:25:51.927+02:00",
+      "WorkItemId": 21837,
+      "Id": 203301
+    },
+    {
+      "Message": "No, I want the SlideShow window handle (which is as you mentioned child window of the main powerpoint window). But with PIA libraries I got correct handle from SlideShowWindow.HWND all time (also with my workaround I got correct handle - it uses name of a presentation file in [] brackets to find correct SlideShow window - main PowerPoint window or window with presentation opened in edit mode don't contain these [] brackets around teh file name, so these windows are ignored). But with your workaround/extension method, returned handlers are incorrect, it contains probably random numbers that doen't correspond with any window.",
+      "PostedBy": "DominikPalo",
+      "PostedDate": "2015-05-06T15:49:28.79+02:00",
+      "WorkItemId": 21837,
+      "Id": 203302
+    },
+    {
+      "Message": "can confirm Sebastian's workaround does not work. it returns different handles when running multiple times on the same slide show window.",
+      "PostedBy": "chripo",
+      "PostedDate": "2015-09-29T11:56:02.857+02:00",
+      "WorkItemId": 21837,
+      "Id": 203303
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

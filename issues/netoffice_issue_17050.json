@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "I do mistake in Release 1.3.1 \n \nthe following interfaces are generated as classes and have to generate as interface of course.\n \nIRibbonUI\nIRibbonControl\nIRibbonExtensibility\nICustomTaskPaneConsumer",
+    "HtmlDescription": "I do mistake in Release 1.3.1 <br />\n <br />\nthe following interfaces are generated as classes and have to generate as interface of course.<br />\n <br />\nIRibbonUI<br />\nIRibbonControl<br />\nIRibbonExtensibility<br />\nICustomTaskPaneConsumer<br />\n",
+    "PlainDescription": "I do mistake in Release 1.3.1 \n \nthe following interfaces are generated as classes and have to generate as interface of course.\n \nIRibbonUI\nIRibbonControl\nIRibbonExtensibility\nICustomTaskPaneConsumer\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:17.423+02:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "SebastianDotNet",
+    "ReportedDate": "2011-12-16T06:31:06.427+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "wrong entity type: IRibbonUI, ICustomTaskPaneConsumer",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17050,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

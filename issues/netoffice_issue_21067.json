@@ -1,0 +1,77 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "When to release the newContentControl, DO I NEED to release it by myself, or NetOffice release it?\n\nIn the DocumentEvents2.cs\npublic void ContentControlOnExit([In, MarshalAs(UnmanagedType.IDispatch)] object contentControl, [In] [Out] ref object cancel)\n\t\t{\n\t\t\tDelegate[] recipients = _eventBinding.GetEventRecipients(\"ContentControlOnExit\");\n\t\t\tif( (true == _eventClass.IsCurrentlyDisposing) || (recipients.Length == 0) )\n\t\t\t{\n\t\t\t\tInvoker.ReleaseParamsArray(contentControl, cancel);\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tNetOffice.WordApi.ContentControl newContentControl = NetOffice.Factory.CreateObjectFromComProxy(_eventClass, contentControl) as NetOffice.WordApi.ContentControl;\n\t\t\tobject[] paramsArray = new object[2];\n\t\t\tparamsArray[0] = newContentControl;\n\t\t\tparamsArray.SetValue(cancel, 1);\n\t\t\t_eventBinding.RaiseCustomEvent(\"ContentControlOnExit\", ref paramsArray);\n\n\t\t\tcancel = (bool)paramsArray[1];\n\t\t}",
+    "HtmlDescription": "When to release the newContentControl, DO I NEED to release it by myself, or NetOffice release it?<br />\n<br />\nIn the DocumentEvents2.cs<br />\npublic void ContentControlOnExit([In, MarshalAs(UnmanagedType.IDispatch)] object contentControl, [In] [Out] ref object cancel)<br />\n<pre><code>    {\n        Delegate[] recipients = _eventBinding.GetEventRecipients(&quot;ContentControlOnExit&quot;);\n        if( (true == _eventClass.IsCurrentlyDisposing) || (recipients.Length == 0) )\n        {\n            Invoker.ReleaseParamsArray(contentControl, cancel);\n            return;\n        }\n\n        NetOffice.WordApi.ContentControl newContentControl = NetOffice.Factory.CreateObjectFromComProxy(_eventClass, contentControl) as NetOffice.WordApi.ContentControl;\n        object[] paramsArray = new object[2];\n        paramsArray[0] = newContentControl;\n        paramsArray.SetValue(cancel, 1);\n        _eventBinding.RaiseCustomEvent(&quot;ContentControlOnExit&quot;, ref paramsArray);\n\n        cancel = (bool)paramsArray[1];\n    }</code></pre>\n\n",
+    "PlainDescription": "When to release the newContentControl, DO I NEED to release it by myself, or NetOffice release it?\n\nIn the DocumentEvents2.cs\npublic void ContentControlOnExit([In, MarshalAs(UnmanagedType.IDispatch)] object contentControl, [In] [Out] ref object cancel)\n{\n    Delegate[] recipients = _eventBinding.GetEventRecipients(&quot;ContentControlOnExit&quot;);\n    if( (true == _eventClass.IsCurrentlyDisposing) || (recipients.Length == 0) )\n    {\n        Invoker.ReleaseParamsArray(contentControl, cancel);\n        return;\n    }\n\n    NetOffice.WordApi.ContentControl newContentControl = NetOffice.Factory.CreateObjectFromComProxy(_eventClass, contentControl) as NetOffice.WordApi.ContentControl;\n    object[] paramsArray = new object[2];\n    paramsArray[0] = newContentControl;\n    paramsArray.SetValue(cancel, 1);\n    _eventBinding.RaiseCustomEvent(&quot;ContentControlOnExit&quot;, ref paramsArray);\n\n    cancel = (bool)paramsArray[1];\n}\n\n\n",
+    "LastUpdatedBy": "cgh_chen",
+    "LastUpdatedDate": "2014-06-12T05:52:59.793+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "cgh_chen",
+    "ReportedDate": "2014-06-11T06:37:19.573+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "When to release event's COMObject?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21067,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "the newContentControl is a child from _eventclass(may Word.Document) now in NO com proxy management.(Dispose the document instance(_eventclass) means also to dispose all the childs *your turn.)\r\n\r\nThe common way is to dispose newContentControl at last in the event trigger to keep the memory usage low, otherwise newContentControl lives so long as the parent is alive.\r\n\r\n*Sebastian\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-06-11T08:58:36.527+02:00",
+      "WorkItemId": 21067,
+      "Id": 203235
+    },
+    {
+      "Message": "If have more ContentControlOnExit event handler, dispose the contentcontrol shoud be careful!",
+      "PostedBy": "cgh_chen",
+      "PostedDate": "2014-06-11T12:01:01.26+02:00",
+      "WorkItemId": 21067,
+      "Id": 203236
+    },
+    {
+      "Message": "2014-06-11 21:47:21,440 [1] DEBUG Change: 935 >> After start word with my AddIn  ProxyCount = 935 Add Many COM Proxy from external code.",
+      "PostedBy": "cgh_chen",
+      "PostedDate": "2014-06-11T15:51:03.71+02:00",
+      "WorkItemId": 21067,
+      "Id": 203237
+    },
+    {
+      "Message": "Open Source Project, Debug find the error code !",
+      "PostedBy": "cgh_chen",
+      "PostedDate": "2014-06-12T05:52:59.793+02:00",
+      "WorkItemId": 21067,
+      "Id": 203238
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

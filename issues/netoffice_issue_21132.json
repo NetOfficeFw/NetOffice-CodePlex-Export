@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "I can open a Word document as readonly so the [Read-only] shows but I want to disable the editing too.  Is there additional options to stop people from being able to edit the document?",
+    "HtmlDescription": "I can open a Word document as readonly so the [Read-only] shows but I want to disable the editing too.  Is there additional options to stop people from being able to edit the document?<br />\n",
+    "PlainDescription": "I can open a Word document as readonly so the [Read-only] shows but I want to disable the editing too.  Is there additional options to stop people from being able to edit the document?\n",
+    "LastUpdatedBy": "ekirk0",
+    "LastUpdatedDate": "2014-07-17T20:10:25.007+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "JAustin",
+    "ReportedDate": "2014-07-08T16:01:30.26+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Is there a way to make Word open in readonly and not be able to edit the document",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21132,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "http://office.microsoft.com/en-us/excel-help/what-is-protected-view-HA010355931.aspx\r\n\r\ncreate a NetOffice.WordApi.ProtectedViewWindow for your document.\r\n\r\n```//detecting if in protected mode.NetOffice.WordApi.ProtectedViewWindow protectedViewWindow = Application.ActiveProtectedViewWindow;            if (protectedViewWindow != null)            {                return;            }```",
+      "PostedBy": "ekirk0",
+      "PostedDate": "2014-07-09T19:14:43.78+02:00",
+      "WorkItemId": 21132,
+      "Id": 203248
+    },
+    {
+      "Message": "So I have a word document this is not in protected mode but I want to open it in read only protected mode.  I don't see how that works in code.",
+      "PostedBy": "JAustin",
+      "PostedDate": "2014-07-16T13:39:58.207+02:00",
+      "WorkItemId": 21132,
+      "Id": 203249
+    },
+    {
+      "Message": "Apply protection mode.\r\n\r\n```NetOffice.WordApi.Application app = new NetOffice.WordApi.Application();app.DisplayAlerts = NetOffice.WordApi.Enums.WdAlertLevel.wdAlertsNone;app.Visible = true;\r\n\r\nNetOffice.WordApi.Document doc = app.Documents.Open(filename, false, true);            doc.Protect(NetOffice.WordApi.Enums.WdProtectionType.wdAllowOnlyReading, false, \"password\");            ```\r\n\r\n```NetOffice.WordApi.Application app = new NetOffice.WordApi.Application();app.Visible = true;NetOffice.WordApi.ProtectedViewWindow window = app.ProtectedViewWindows.Open(filename);\r\n\r\n```",
+      "PostedBy": "ekirk0",
+      "PostedDate": "2014-07-17T20:10:25.007+02:00",
+      "WorkItemId": 21132,
+      "Id": 203250
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

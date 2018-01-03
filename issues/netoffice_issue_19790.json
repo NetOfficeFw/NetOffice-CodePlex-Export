@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "I try to save active workbook to SharePoint library. The same code works for Word and\nPowerPoint but throws exception for Excel application (see exception in attachments).\n\n=== cut ===\n    NetOffice.OfficeApi.FileDialog dialog = excelApp.FileDialog(MsoFileDialogType.msoFileDialogSaveAs);\n    dialog.Title = \"Save To Library\";\n    dialog.AllowMultiSelect = false;\n    dialog.InitialFileName = String.Format(\"{0}/{1}\", url, excelApp.ActiveWorkbook.Name);\n\n    try\n    {\n        if (dialog.Show() == -1) dialog.Execute();\n    }\n    catch (Exception ex)\n    {\n        MessageBox.Show(ex.ToString(), MessageBoxCaption);\n    }\n=== cut ===\n\nDo you have any idea why it happens?",
+    "HtmlDescription": "I try to save active workbook to SharePoint library. The same code works for Word and<br />\nPowerPoint but throws exception for Excel application (see exception in attachments).<br />\n<br />\n=== cut ===<br />\n<pre><code>NetOffice.OfficeApi.FileDialog dialog = excelApp.FileDialog(MsoFileDialogType.msoFileDialogSaveAs);\ndialog.Title = &quot;Save To Library&quot;;\ndialog.AllowMultiSelect = false;\ndialog.InitialFileName = String.Format(&quot;{0}/{1}&quot;, url, excelApp.ActiveWorkbook.Name);\n\ntry\n{\n    if (dialog.Show() == -1) dialog.Execute();\n}\ncatch (Exception ex)\n{\n    MessageBox.Show(ex.ToString(), MessageBoxCaption);\n}</code></pre>\n\n=== cut ===<br />\n<br />\nDo you have any idea why it happens?<br />\n",
+    "PlainDescription": "I try to save active workbook to SharePoint library. The same code works for Word and\nPowerPoint but throws exception for Excel application (see exception in attachments).\n\n=== cut ===\nNetOffice.OfficeApi.FileDialog dialog = excelApp.FileDialog(MsoFileDialogType.msoFileDialogSaveAs);\ndialog.Title = \"Save To Library\";\ndialog.AllowMultiSelect = false;\ndialog.InitialFileName = String.Format(\"{0}/{1}\", url, excelApp.ActiveWorkbook.Name);\n\ntry\n{\nif (dialog.Show() == -1) dialog.Execute();\n\n}\ncatch (Exception ex)\n{\nMessageBox.Show(ex.ToString(), MessageBoxCaption);\n\n}\n\n=== cut ===\n\nDo you have any idea why it happens?\n",
+    "LastUpdatedBy": "werder13",
+    "LastUpdatedDate": "2013-05-31T12:08:18.947+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "icymask",
+    "ReportedDate": "2013-05-31T10:59:02.943+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MS Excel 2010 FileDialog failed on Execute()",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 19790,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600188,
+      "FileName": "excel_app_error.png",
+      "WorkItemId": 19790,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=19790&FileAttachmentId=1600188"
+    }
+  ],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

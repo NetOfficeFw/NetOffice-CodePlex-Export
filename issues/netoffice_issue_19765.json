@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "I compiled an application using netoffice with framework 2.0 and deployed on a machine without MS Office installed on it. \n\nIt gives an error at the initialization \"ProgId not found for Excel.Application\". So can I now use netoffice without MS Office.\n\nPlease reply,\n\nSandeep",
+    "HtmlDescription": "I compiled an application using netoffice with framework 2.0 and deployed on a machine without MS Office installed on it. <br />\n<br />\nIt gives an error at the initialization &quot;ProgId not found for Excel.Application&quot;. So can I now use netoffice without MS Office.<br />\n<br />\nPlease reply,<br />\n<br />\nSandeep<br />\n",
+    "PlainDescription": "I compiled an application using netoffice with framework 2.0 and deployed on a machine without MS Office installed on it. \n\nIt gives an error at the initialization \"ProgId not found for Excel.Application\". So can I now use netoffice without MS Office.\n\nPlease reply,\n\nSandeep\n",
+    "LastUpdatedBy": "MrKagami13",
+    "LastUpdatedDate": "2013-05-29T09:09:36.947+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "sandeephuria",
+    "ReportedDate": "2013-05-25T14:22:08.237+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "how to use on a system without installing MS Office?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 19765,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi Sandeep,\r\n\r\nreading the first paragraph of the starting page already answers your question:\r\n\r\n\".NET Wrapper Assemblies for accessing the following MS Office applications: \" (http://netoffice.codeplex.com/)\r\n\r\nNetOffice is just a library which wraps you the API of these application to be able to develop independently from the specific Microsoft Office version. It is not a replacement for the Microsoft Office applications. \r\n\r\nSo it cannot used without the installed Office applications.\r\n\r\nBest regards",
+      "PostedBy": "MrKagami13",
+      "PostedDate": "2013-05-29T09:09:36.947+02:00",
+      "WorkItemId": 19765,
+      "Id": 203128
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

@@ -1,0 +1,98 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 6,
+    "Custom": "",
+    "Description": "We received this bug in few places. Usually it thrown in time of calling some classes instances like an IEnumerator, for example with LINQ methods. You could see one of them in example. Just launch app.\nIn this case we have \"Class not exists: NetOffice.AccessApi.Property\"\nCould you propose fix of this bug type?",
+    "HtmlDescription": "We received this bug in few places. Usually it thrown in time of calling some classes instances like an IEnumerator, for example with LINQ methods. You could see one of them in example. Just launch app.<br />\nIn this case we have &quot;Class not exists: NetOffice.AccessApi.Property&quot;<br />\nCould you propose fix of this bug type?<br />\n",
+    "PlainDescription": "We received this bug in few places. Usually it thrown in time of calling some classes instances like an IEnumerator, for example with LINQ methods. You could see one of them in example. Just launch app.\nIn this case we have \"Class not exists: NetOffice.AccessApi.Property\"\nCould you propose fix of this bug type?\n",
+    "LastUpdatedBy": "jpd30",
+    "LastUpdatedDate": "2015-01-06T22:56:59.763+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "oshtefchuk",
+    "ReportedDate": "2013-11-25T11:54:11.047+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Permanent exception Class not exists: NetOffice.*Api.[ClassName]",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 3,
+    "Id": 20450,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600193,
+      "FileName": "sampleNetOfficeBug.zip",
+      "WorkItemId": 20450,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=20450&FileAttachmentId=1600193"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "the property result returns the parent lib guid 4ac9e1da-5bad-4ac7-86e3-24f4cdceca28.never heard of this id. it looks like it is a special access dao bridge component (Microsoft.Office.Interop.Access.Dao) for access 2007 and higher(DAO 3.6). i have to add this id to the NO DAO API because the NO core factory need to know this to find the corresponding wrapper for the proxy.\r\n\r\n*thx for info. i want change this asap\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-11-26T16:06:45.717+01:00",
+      "WorkItemId": 20450,
+      "Id": 203188
+    },
+    {
+      "Message": "i have changed the implementation today and all tests works fine. but i need one day more because i need a 64bit system to generate the new source code and i only have 32bit systems at home.(generate the code is very instensive in memory usage)\r\n\r\nthanks again for your bug report. i will come back when its done.*sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-11-26T23:26:29.87+01:00",
+      "WorkItemId": 20450,
+      "Id": 203189
+    },
+    {
+      "Message": "do you have any results about this problem? we continue to receive this type bug at other places",
+      "PostedBy": "oshtefchuk",
+      "PostedDate": "2013-12-12T14:37:38.59+01:00",
+      "WorkItemId": 20450,
+      "Id": 203190
+    },
+    {
+      "Message": "do you plan to continue with supporting NetOffice? at the moment we have no response long time",
+      "PostedBy": "oshtefchuk",
+      "PostedDate": "2014-01-10T14:53:02.507+01:00",
+      "WorkItemId": 20450,
+      "Id": 203191
+    },
+    {
+      "Message": "sorry for the delay! currently i finish a project in my job that i worked for more than 4 years as project leader and its a 200% full time job at the moment. the next weekend is my first free weekend since nov/2013. i want update the NO preview in this time(in fact: NO 1.7 is done for while) 'im realy sorry for the delay :(\r\n\r\n*sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-01-13T16:13:27.223+01:00",
+      "WorkItemId": 20450,
+      "Id": 203192
+    },
+    {
+      "Message": "Are there any updates on this issue?  We are trying to read properties of fields such as Text Align, Description, and Caption.\r\n\r\nThanks, Debbie",
+      "PostedBy": "dwallacetriad",
+      "PostedDate": "2014-05-23T17:51:42.3+02:00",
+      "WorkItemId": 20450,
+      "Id": 203193
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

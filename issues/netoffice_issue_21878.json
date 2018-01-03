@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 5,
+    "Custom": "",
+    "Description": "Hi Sebastian,\n\nThere seems to be s small bug concerning the destruction of com-objects of inspector.currentitem in outlook in Netoffice 1.7.3\nYou can reproduce it by creating an instance of the class below in Addin_OnStartupComplete and then\ne.g. copy a mail from the inbox in Outlook to the desktop, open it, close it, and then try to delete it or try to reopen it.\n\nThere will appear messageboxes saying that the object is in use.\n_________________________\npublic class AddinTester\n    {\n        Outlook.NameSpace olNs;\n        Outlook.Application Outl;\n        Outlook.Inspectors olInsp;\n\n        public AddinTester(ref Outlook.Application OlApp)\n        {\n            Outl = OlApp;\n            olNs = (Outlook.NameSpace)Outl.GetNamespace(\"MAPI\");\n\n            olInsp = (Outlook.Inspectors)OlApp.Inspectors;\n\n            olInsp.NewInspectorEvent += olInsp_NewInspectorEvent;       \n        }\n\n        void olInsp_NewInspectorEvent(Outlook._Inspector Inspector)\n        {\n            if (Inspector.CurrentItem is Outlook.AppointmentItem)\n                System.Windows.Forms.MessageBox.Show(\"Appointment\");\n            else\n                System.Windows.Forms.MessageBox.Show(\"No Appointment\");\n        }\n    }\n\n\nBest Regards,\n\nAndreas",
+    "HtmlDescription": "Hi Sebastian,<br />\n<br />\nThere seems to be s small bug concerning the destruction of com-objects of inspector.currentitem in outlook in Netoffice 1.7.3<br />\nYou can reproduce it by creating an instance of the class below in Addin_OnStartupComplete and then<br />\ne.g. copy a mail from the inbox in Outlook to the desktop, open it, close it, and then try to delete it or try to reopen it.<br />\n<br />\nThere will appear messageboxes saying that the object is in use.<br />\n<hr />\npublic class AddinTester<br />\n<pre><code>{\n    Outlook.NameSpace olNs;\n    Outlook.Application Outl;\n    Outlook.Inspectors olInsp;\n\n    public AddinTester(ref Outlook.Application OlApp)\n    {\n        Outl = OlApp;\n        olNs = (Outlook.NameSpace)Outl.GetNamespace(&quot;MAPI&quot;);\n\n        olInsp = (Outlook.Inspectors)OlApp.Inspectors;\n\n        olInsp.NewInspectorEvent += olInsp_NewInspectorEvent;       \n    }\n\n    void olInsp_NewInspectorEvent(Outlook._Inspector Inspector)\n    {\n        if (Inspector.CurrentItem is Outlook.AppointmentItem)\n            System.Windows.Forms.MessageBox.Show(&quot;Appointment&quot;);\n        else\n            System.Windows.Forms.MessageBox.Show(&quot;No Appointment&quot;);\n    }\n}\n\n</code></pre>\n\nBest Regards,<br />\n<br />\nAndreas<br />\n",
+    "PlainDescription": "Hi Sebastian,\n\nThere seems to be s small bug concerning the destruction of com-objects of inspector.currentitem in outlook in Netoffice 1.7.3\nYou can reproduce it by creating an instance of the class below in Addin_OnStartupComplete and then\ne.g. copy a mail from the inbox in Outlook to the desktop, open it, close it, and then try to delete it or try to reopen it.\n\nThere will appear messageboxes saying that the object is in use.\n\npublic class AddinTester\n{\nOutlook.NameSpace olNs;\nOutlook.Application Outl;\nOutlook.Inspectors olInsp;\n\npublic AddinTester(ref Outlook.Application OlApp)\n{\n    Outl = OlApp;\n    olNs = (Outlook.NameSpace)Outl.GetNamespace(&quot;MAPI&quot;);\n\n    olInsp = (Outlook.Inspectors)OlApp.Inspectors;\n\n    olInsp.NewInspectorEvent += olInsp_NewInspectorEvent;       \n}\n\nvoid olInsp_NewInspectorEvent(Outlook._Inspector Inspector)\n{\n    if (Inspector.CurrentItem is Outlook.AppointmentItem)\n        System.Windows.Forms.MessageBox.Show(&quot;Appointment&quot;);\n    else\n        System.Windows.Forms.MessageBox.Show(&quot;No Appointment&quot;);\n}\n\n}\n\n\n\nBest Regards,\n\nAndreas\n",
+    "LastUpdatedBy": "_Andreas_",
+    "LastUpdatedDate": "2015-09-30T08:55:37.023+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "_Andreas_",
+    "ReportedDate": "2015-05-20T14:13:54.67+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Outlook-Addin / Inspector.currentitem",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21878,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600207,
+      "FileName": "OlErrmsg.PNG",
+      "WorkItemId": 21878,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=21878&FileAttachmentId=1600207"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "hey men,\r\n\r\nin other words: Inspector.CurrentItem is null in olInsp_NewInspectorEvent?(may its not an appointment but not null.....)\r\n\r\n*Sebastian\r\n\r\nbtw: ich habs glaub ich nicht genau verstanden. kopieren/öffnen/schliessen ? vielleicht klappts in deutsch besser. falls du das hier lesen kannst dann tuh mir bitte den gefallen ;)\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-26T16:54:17.543+02:00",
+      "WorkItemId": 21878,
+      "Id": 203314
+    },
+    {
+      "Message": "Hallo Sebastian,\r\n\r\nsorry für den lag, Urlaubszeit etc ... \r\n\r\nok, also das Problem ist etwas exotisch:User hier in der Firma legen Mails, Termine etc auf den Desktop, oder in einen Ordner im Filesystem (warum auch immer).Zu irgend einem Zeitpunkt wollen sie den Termin / die Mail öffnen, und erhalten eine Fehlermeldung, dass das  Objekt noch in Use ist. Sie können den Termin weder öffnen, noch löchen. Mit der Klasse oben kannst du das reproduzieren\r\n\r\nGruß\r\n\r\nAndreas",
+      "PostedBy": "_Andreas_",
+      "PostedDate": "2015-08-04T12:32:25.127+02:00",
+      "WorkItemId": 21878,
+      "Id": 203315
+    },
+    {
+      "Message": "da muss ich nochmal nachfragen. von wem kommt denn der fehler?ist das eine exception wenn ja wo?(die datei-endung ist .msg? - damit ich auchs richtig reproduziere)\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-08-06T20:53:04.113+02:00",
+      "WorkItemId": 21878,
+      "Id": 203316
+    },
+    {
+      "Message": "Ok, zum reporduzieren:- Termin (ist *.msg) per drag & drop auf den Desktop ziehen- Termin öffnen und wieder schliessen (ohne Änderung)- Versuchen, den Termin zu löschen- Fehlermeldung poppt auf (file attached)",
+      "PostedBy": "_Andreas_",
+      "PostedDate": "2015-08-07T08:48:42.59+02:00",
+      "WorkItemId": 21878,
+      "Id": 203317
+    },
+    {
+      "Message": "Hallo Sebastian,\r\n\r\ngibt es irgend welche Fortschritte in der Sache?\r\n\r\nGruß\r\n\r\nAndreas",
+      "PostedBy": "_Andreas_",
+      "PostedDate": "2015-09-30T08:55:37.023+02:00",
+      "WorkItemId": 21878,
+      "Id": 203318
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

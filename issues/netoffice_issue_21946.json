@@ -1,0 +1,77 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "Hi,\n\nI am currently having a problem with 2 excel add-ins built with NetOffice version 1.6 and 1.7.2. These two add-ins are being developed on the same machine  The second add-in that loads (loading seems to be based on the addin progid, and then in alphabetical order) will throw an exception in the __IDTExtensibility2.OnConnection__ method. The method looks like this:\n\n```\nvoid IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom)\n{\n    try\n    {\n        this.excelApplication = new Excel.Application(null, application);\n        ...do some work...\n    }\n    catch (Exception exception)\n    {\n        ...\n    }\n}\n```\n\nThe exception is thrown where the new '''Excel.Application''' is being created. The message of the exception is the following:\n\n_Object reference not set to an instance of an object._\n\nDoes anybody have an idea what may be the cause of this problem? Could the problem be that the two add-ins do not use the same version? one is using version 1.6, the other is using version 1.7.2.",
+    "HtmlDescription": "Hi,<br />\n<br />\nI am currently having a problem with 2 excel add-ins built with NetOffice version 1.6 and 1.7.2. These two add-ins are being developed on the same machine  The second add-in that loads (loading seems to be based on the addin progid, and then in alphabetical order) will throw an exception in the <strong>IDTExtensibility2.OnConnection</strong> method. The method looks like this:<br />\n<pre><code>void IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom)\n{\n    try\n    {\n        this.excelApplication = new Excel.Application(null, application);\n        ...do some work...\n    }\n    catch (Exception exception)\n    {\n        ...\n    }\n}</code></pre>\n\nThe exception is thrown where the new '''Excel.Application''' is being created. The message of the exception is the following:<br />\n<br />\n<em>Object reference not set to an instance of an object.</em><br />\n<br />\nDoes anybody have an idea what may be the cause of this problem? Could the problem be that the two add-ins do not use the same version? one is using version 1.6, the other is using version 1.7.2.<br />\n",
+    "PlainDescription": "Hi,\n\nI am currently having a problem with 2 excel add-ins built with NetOffice version 1.6 and 1.7.2. These two add-ins are being developed on the same machine  The second add-in that loads (loading seems to be based on the addin progid, and then in alphabetical order) will throw an exception in the IDTExtensibility2.OnConnection method. The method looks like this:\nvoid IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom)\n{\ntry\n{\n    this.excelApplication = new Excel.Application(null, application);\n    ...do some work...\n}\ncatch (Exception exception)\n{\n    ...\n}\n\n}\n\nThe exception is thrown where the new '''Excel.Application''' is being created. The message of the exception is the following:\n\nObject reference not set to an instance of an object.\n\nDoes anybody have an idea what may be the cause of this problem? Could the problem be that the two add-ins do not use the same version? one is using version 1.6, the other is using version 1.7.2.\n",
+    "LastUpdatedBy": "ajvorobiev",
+    "LastUpdatedDate": "2015-11-04T17:44:10.287+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "samgerene",
+    "ReportedDate": "2015-07-19T21:54:47.68+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Multiple NetOffice Excel Add-ins",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21946,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I can confirm that the problem is indeed due to a version conflict. I just updated the addin that was referencing NetOffice version 1.6.0.0 to 1.7.2 and the problem is gone. Is there a way to handle this without the requirement that all NetOffice based add-ins must use the same version of NetOffice? Add-in developers do not have control over all add-ins that may be installed by users, which may be referencing different versions of NetOffice, only the first add-in that gets loaded (and the order seems to be determined by the name of the addin) is the only one that will work.",
+      "PostedBy": "samgerene",
+      "PostedDate": "2015-07-19T22:43:48.157+02:00",
+      "WorkItemId": 21946,
+      "Id": 203324
+    },
+    {
+      "Message": "hey,\r\n\r\nThe problem behind is Excel want load all addins (without a shim) in the same appdomain. NO 1.6 doesnt handle this as well in scenarios with multiple NO versions. (try load same assembly in multiple versions and share all static(shared in vb) members in the whole appdomain)\r\n\r\nfor this reason NO 1.7(and future versions) works more intelligent here. the static NetOffice.Core has been changed to a default instance NetOffice.Core.Default. To avoid conflicts i suggest you to create your own core instead of the default core.  Something like:\r\n\r\nExcel.Application app = new Excel.Application(new NetOffice.Core(), null, application);\r\n\r\nNow each instance of your addin use his own core (which includes dependency loader, runtime system and so on) and no side-effects.\r\n\r\nBTW: The NetOffice.Tools based addins(see examples) uses also his own core, reduce infrastructure code and spend some special services. (no worries, its lightweight)\r\n\r\n*Sebastian  \r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-07-19T23:07:45.91+02:00",
+      "WorkItemId": 21946,
+      "Id": 203325
+    },
+    {
+      "Message": "Dear Sebastian,\r\n\r\nThanks for the fast reply, I will update the version of NetOffice of the add-in that is under my control to the latest version and do as you suggested regarding creating an \"own core\".\r\n\r\nRegards, Sam",
+      "PostedBy": "samgerene",
+      "PostedDate": "2015-07-20T07:25:23.307+02:00",
+      "WorkItemId": 21946,
+      "Id": 203326
+    },
+    {
+      "Message": "Dear Sebastian,\r\n\r\nupdating all plugins to 1.7.3 (latest available Nuget) and having them initialize each their own Cores did not help our problem. Addins still somehow interfere. One of the clues that I am leaning towards is the use of ICustomTaskPaneConsumer and ICTPFactory in at least one of the addins. If this addin is the second to load, its task panes cannot be found. No particular exception is thrown, just the taskpanes are not created when the addin loads.\r\n\r\nI hope that you can further investigate this issue.\r\n\r\nKind Regards,\r\n\r\nAlex",
+      "PostedBy": "ajvorobiev",
+      "PostedDate": "2015-11-04T17:44:10.287+01:00",
+      "WorkItemId": 21946,
+      "Id": 203327
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

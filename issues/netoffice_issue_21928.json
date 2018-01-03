@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi,\n\nI'm using your library to control PowerPoint SlideShows, but I have problem with some presentations. If a presentation contains some extrenal media objects, my app stops executing on the SlideShowSettings.Run() method (if it's called from the main thread, app freezes totally and no exception is thrown). Execution is then stopped until user closes the Microsoft Office Security Options dialog (image attached). Setting ppApplication.DisplayAlerts to PpAlertLevel.ppAlertsNone; doesn't help. Is there any setting to disable these dialogs? Or how to correctly handle this problem?\n\nThanks",
+    "HtmlDescription": "Hi,<br />\n<br />\nI'm using your library to control PowerPoint SlideShows, but I have problem with some presentations. If a presentation contains some extrenal media objects, my app stops executing on the SlideShowSettings.Run() method (if it's called from the main thread, app freezes totally and no exception is thrown). Execution is then stopped until user closes the Microsoft Office Security Options dialog (image attached). Setting ppApplication.DisplayAlerts to PpAlertLevel.ppAlertsNone; doesn't help. Is there any setting to disable these dialogs? Or how to correctly handle this problem?<br />\n<br />\nThanks<br />\n",
+    "PlainDescription": "Hi,\n\nI'm using your library to control PowerPoint SlideShows, but I have problem with some presentations. If a presentation contains some extrenal media objects, my app stops executing on the SlideShowSettings.Run() method (if it's called from the main thread, app freezes totally and no exception is thrown). Execution is then stopped until user closes the Microsoft Office Security Options dialog (image attached). Setting ppApplication.DisplayAlerts to PpAlertLevel.ppAlertsNone; doesn't help. Is there any setting to disable these dialogs? Or how to correctly handle this problem?\n\nThanks\n",
+    "LastUpdatedBy": "DominikPalo",
+    "LastUpdatedDate": "2015-06-30T14:16:12.79+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "DominikPalo",
+    "ReportedDate": "2015-06-30T14:16:11.77+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SlideShowSettings.Run() freezes thread if presentation contains external media objects",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21928,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600208,
+      "FileName": "ppalert.PNG",
+      "WorkItemId": 21928,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=21928&FileAttachmentId=1600208"
+    }
+  ],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

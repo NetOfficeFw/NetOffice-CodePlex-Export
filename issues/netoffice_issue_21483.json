@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Dear Friends,\n                    I'm using NET Office for manipulating a word report. This is working fine in my dev. environment but when I put it into Staging Environment, it gives the below error,\nhow to solve The message filter indicated that the application is busy. (Exception from HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER)). \n\nI use wordApp.DisplayAlerts = wdAlertsNone; just after creating the word document. \n\nI using this within SharePoint 2007 + visual studio 3.5\n\nAny idea how to solve it ?\n\nThanks,\nDilip",
+    "HtmlDescription": "Dear Friends,<br />\n<pre><code>                I'm using NET Office for manipulating a word report. This is working fine in my dev. environment but when I put it into Staging Environment, it gives the below error,</code></pre>\n\nhow to solve The message filter indicated that the application is busy. (Exception from HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER)). <br />\n<br />\nI use wordApp.DisplayAlerts = wdAlertsNone; just after creating the word document. <br />\n<br />\nI using this within SharePoint 2007 + visual studio 3.5<br />\n<br />\nAny idea how to solve it ?<br />\n<br />\nThanks,<br />\nDilip<br />\n",
+    "PlainDescription": "Dear Friends,\n            I'm using NET Office for manipulating a word report. This is working fine in my dev. environment but when I put it into Staging Environment, it gives the below error,\n\n\nhow to solve The message filter indicated that the application is busy. (Exception from HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER)). \n\nI use wordApp.DisplayAlerts = wdAlertsNone; just after creating the word document. \n\nI using this within SharePoint 2007 + visual studio 3.5\n\nAny idea how to solve it ?\n\nThanks,\nDilip\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2014-11-15T14:07:21.92+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "dilipnilanka",
+    "ReportedDate": "2014-10-25T02:56:35.917+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "how to solve The message filter indicated that the application is busy. (Exception from HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER))",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21483,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "NetOffice gives you a message filter for this reason.\r\n\r\nPlease use:NetOffice.Settings.Default.MessageFilter.Enabled = true;\r\n\r\noptional: NetOffice.Settings.Default.MessageFilter.RetryMode = RetryMessageFilterMode.Delayed;\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-11-15T14:07:21.92+01:00",
+      "WorkItemId": 21483,
+      "Id": 203269
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

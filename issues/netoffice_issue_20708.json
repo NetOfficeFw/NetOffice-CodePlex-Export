@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "New AddIn C# project is created by NetOfficeDevelopperToolbox - VS Project Vizard.\n\"I want a custom Task Pane\" option is selected.\n\nCreated project contains new class \"TaskPaneControl\" in namespace \"MyAssembly\" (namespace based on assembly name).\n\nFile TaskPaneControl.cs:\n```\nusing System;\nusing System.Collections;\nusing System.Collections.Generic;\nusing System.Windows.Forms;\n\nnamespace MyAssembly\n{\n    public partial class TaskPaneControl : UserControl\n    {       \n        public TaskPaneControl()\n        {\n            InitializeComponent();\n        }\n    }\n}\n\n```\n\nBut file Addin.cs (TaskPaneControl class is used here) contains wrong namespace \"MeinAssembly\".\n\nFile Addin.cs\n```\nusing System;\nusing System.Runtime.InteropServices;\nusing System.Windows.Forms; \nusing NetOffice;\nusing Outlook = NetOffice.OutlookApi;\nusing NetOffice.OutlookApi.Enums;\nusing Office = NetOffice.OfficeApi;\nusing NetOffice.OfficeApi.Enums;\nusing NetOffice.Tools;\nusing NetOffice.OutlookApi.Tools;\n\nnamespace MeinAssembly\n{\n    [COMAddin(\"MyAssembly\",\"Assembly Description\",3)]\n    [GuidAttribute(\"C253A09E-A5B8-41AC-84AE-2B0F1BE5C553\"), ProgId(\"MyAssembly.Addin\")]\n    public class Addin : COMAddin\n    {\n        public Addin()\n        {\n            this.OnStartupComplete += new OnStartupCompleteEventHandler(Addin_OnStartupComplete);\n            this.OnConnection += new OnConnectionEventHandler(Addin_OnConnection);\n            this.OnDisconnection += new OnDisconnectionEventHandler(Addin_OnDisconnection);\n            TaskPanes.Add(typeof(TaskPaneControl), \"Task Pane\");\n            TaskPanes[0].DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight;\n            TaskPanes[0].DockPositionRestrict = MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoHorizontal;\n            TaskPanes[0].Width = 150;\n            TaskPanes[0].Visible = true;\n            TaskPanes[0].Arguments = new object[] { this };\n        }\n\n        #region IDTExtensibility2 Members\n\n        void Addin_OnConnection(object Application, NetOffice.Tools.ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)\n        {   \n\n        }\n\n        void Addin_OnStartupComplete(ref Array custom)\n        {\n\n        }\n\n        void Addin_OnDisconnection(NetOffice.Tools.ext_DisconnectMode RemoveMode, ref Array custom)\n        {\n           \n        }\n\n        #endregion\n    }\n}\n\n```\n\nError is reported when trying to build the project.\n\nProblem is solved by rename namespace \"MeinAssembly\" to \"MyAssemly\" in Addin.cs.",
+    "HtmlDescription": "New AddIn C# project is created by NetOfficeDevelopperToolbox - VS Project Vizard.<br />\n&quot;I want a custom Task Pane&quot; option is selected.<br />\n<br />\nCreated project contains new class &quot;TaskPaneControl&quot; in namespace &quot;MyAssembly&quot; (namespace based on assembly name).<br />\n<br />\nFile TaskPaneControl.cs:<br />\n<pre><code>using System;\nusing System.Collections;\nusing System.Collections.Generic;\nusing System.Windows.Forms;\n\nnamespace MyAssembly\n{\n    public partial class TaskPaneControl : UserControl\n    {       \n        public TaskPaneControl()\n        {\n            InitializeComponent();\n        }\n    }\n}\n</code></pre>\n\nBut file Addin.cs (TaskPaneControl class is used here) contains wrong namespace &quot;MeinAssembly&quot;.<br />\n<br />\nFile Addin.cs<br />\n<pre><code>using System;\nusing System.Runtime.InteropServices;\nusing System.Windows.Forms; \nusing NetOffice;\nusing Outlook = NetOffice.OutlookApi;\nusing NetOffice.OutlookApi.Enums;\nusing Office = NetOffice.OfficeApi;\nusing NetOffice.OfficeApi.Enums;\nusing NetOffice.Tools;\nusing NetOffice.OutlookApi.Tools;\n\nnamespace MeinAssembly\n{\n    [COMAddin(&quot;MyAssembly&quot;,&quot;Assembly Description&quot;,3)]\n    [GuidAttribute(&quot;C253A09E-A5B8-41AC-84AE-2B0F1BE5C553&quot;), ProgId(&quot;MyAssembly.Addin&quot;)]\n    public class Addin : COMAddin\n    {\n        public Addin()\n        {\n            this.OnStartupComplete += new OnStartupCompleteEventHandler(Addin_OnStartupComplete);\n            this.OnConnection += new OnConnectionEventHandler(Addin_OnConnection);\n            this.OnDisconnection += new OnDisconnectionEventHandler(Addin_OnDisconnection);\n            TaskPanes.Add(typeof(TaskPaneControl), &quot;Task Pane&quot;);\n            TaskPanes[0].DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight;\n            TaskPanes[0].DockPositionRestrict = MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoHorizontal;\n            TaskPanes[0].Width = 150;\n            TaskPanes[0].Visible = true;\n            TaskPanes[0].Arguments = new object[] { this };\n        }\n\n        #region IDTExtensibility2 Members\n\n        void Addin_OnConnection(object Application, NetOffice.Tools.ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)\n        {   \n\n        }\n\n        void Addin_OnStartupComplete(ref Array custom)\n        {\n\n        }\n\n        void Addin_OnDisconnection(NetOffice.Tools.ext_DisconnectMode RemoveMode, ref Array custom)\n        {\n           \n        }\n\n        #endregion\n    }\n}\n</code></pre>\n\nError is reported when trying to build the project.<br />\n<br />\nProblem is solved by rename namespace &quot;MeinAssembly&quot; to &quot;MyAssemly&quot; in Addin.cs.<br />\n",
+    "PlainDescription": "New AddIn C# project is created by NetOfficeDevelopperToolbox - VS Project Vizard.\n\"I want a custom Task Pane\" option is selected.\n\nCreated project contains new class \"TaskPaneControl\" in namespace \"MyAssembly\" (namespace based on assembly name).\n\nFile TaskPaneControl.cs:\nusing System;\nusing System.Collections;\nusing System.Collections.Generic;\nusing System.Windows.Forms;\n\nnamespace MyAssembly\n{\npublic partial class TaskPaneControl : UserControl\n{       \n    public TaskPaneControl()\n    {\n        InitializeComponent();\n    }\n}\n\n}\n\n\nBut file Addin.cs (TaskPaneControl class is used here) contains wrong namespace \"MeinAssembly\".\n\nFile Addin.cs\nusing System;\nusing System.Runtime.InteropServices;\nusing System.Windows.Forms; \nusing NetOffice;\nusing Outlook = NetOffice.OutlookApi;\nusing NetOffice.OutlookApi.Enums;\nusing Office = NetOffice.OfficeApi;\nusing NetOffice.OfficeApi.Enums;\nusing NetOffice.Tools;\nusing NetOffice.OutlookApi.Tools;\n\nnamespace MeinAssembly\n{\n[COMAddin(&quot;MyAssembly&quot;,&quot;Assembly Description&quot;,3)]\n[GuidAttribute(&quot;C253A09E-A5B8-41AC-84AE-2B0F1BE5C553&quot;), ProgId(&quot;MyAssembly.Addin&quot;)]\npublic class Addin : COMAddin\n{\n    public Addin()\n    {\n        this.OnStartupComplete += new OnStartupCompleteEventHandler(Addin_OnStartupComplete);\n        this.OnConnection += new OnConnectionEventHandler(Addin_OnConnection);\n        this.OnDisconnection += new OnDisconnectionEventHandler(Addin_OnDisconnection);\n        TaskPanes.Add(typeof(TaskPaneControl), &quot;Task Pane&quot;);\n        TaskPanes[0].DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight;\n        TaskPanes[0].DockPositionRestrict = MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoHorizontal;\n        TaskPanes[0].Width = 150;\n        TaskPanes[0].Visible = true;\n        TaskPanes[0].Arguments = new object[] { this };\n    }\n\n    #region IDTExtensibility2 Members\n\n    void Addin_OnConnection(object Application, NetOffice.Tools.ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)\n    {   \n\n    }\n\n    void Addin_OnStartupComplete(ref Array custom)\n    {\n\n    }\n\n    void Addin_OnDisconnection(NetOffice.Tools.ext_DisconnectMode RemoveMode, ref Array custom)\n    {\n\n    }\n\n    #endregion\n}\n\n}\n\n\nError is reported when trying to build the project.\n\nProblem is solved by rename namespace \"MeinAssembly\" to \"MyAssemly\" in Addin.cs.\n",
+    "LastUpdatedBy": "lucky62",
+    "LastUpdatedDate": "2014-02-04T21:46:17.14+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "lucky62",
+    "ReportedDate": "2014-02-04T21:46:17.14+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Wrong namespace in created AddIn C# project",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20708,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

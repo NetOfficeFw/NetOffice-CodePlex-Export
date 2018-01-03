@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "While opening an access-mdb-database with c#-example #4 the following exception occures:\n\nDBEngine class not found in LateBindungApi (Source: \"LateBindingApi.Core\"):\n   bei LateBindingApi.Core.Factory.GetFactoryInfo(Object comProxy)\n   bei LateBindingApi.Core.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy)\n   bei NetOffice.AccessApi._Application.get_DBEngine()\n   bei Example04.Form1.ShowDatabaseInfo(String filePath) in Z:\\Sicherung\\Samples\\NetOffice\\NetOffice Release 1.4.1\\Net3.5\\Examples\\Access\\C#\\Example04\\Form1.cs:Zeile 51.\n   bei Example04.Form1.buttonSelectDatabase_Click(Object sender, EventArgs e) in Z:\\Sicherung\\Samples\\NetOffice\\NetOffice Release 1.4.1\\Net3.5\\Examples\\Access\\C#\\Example04\\Form1.cs:Zeile 37.\n   bei System.Windows.Forms.Control.OnClick(EventArgs e)\n   bei System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)\n   bei System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\n   bei System.Windows.Forms.Control.WndProc(Message& m)\n   bei System.Windows.Forms.ButtonBase.WndProc(Message& m)\n   bei System.Windows.Forms.Button.WndProc(Message& m)\n   bei System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   bei System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n   bei System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)\n   bei System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(Int32 dwComponentID, Int32 reason, Int32 pvLoopData)\n   bei System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)\n   bei System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)\n   bei Example04.Program.Main() in Z:\\Sicherung\\Samples\\NetOffice\\NetOffice Release 1.4.1\\Net3.5\\Examples\\Access\\C#\\Example04\\Program.cs:Zeile 17.\n   bei System.AppDomain._nExecuteAssembly(Assembly assembly, String[] args)\n   bei Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n   bei System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n   bei System.Threading.ThreadHelper.ThreadStart()\n\nCurious is, that it runs first time with another database. Than i've tried to load another database, and now also the first database could not be opened.\n\nI've checked, that no old access instance is running, i've cleared the project, but the message appears again.",
+    "HtmlDescription": "While opening an access-mdb-database with c#-example #4 the following exception occures:<br />\n<br />\nDBEngine class not found in LateBindungApi (Source: &quot;LateBindingApi.Core&quot;):<br />\n   bei LateBindingApi.Core.Factory.GetFactoryInfo(Object comProxy)<br />\n   bei LateBindingApi.Core.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy)<br />\n   bei NetOffice.AccessApi._Application.get_DBEngine()<br />\n   bei Example04.Form1.ShowDatabaseInfo(String filePath) in Z:\\Sicherung\\Samples\\NetOffice\\NetOffice Release 1.4.1\\Net3.5\\Examples\\Access\\C#\\Example04\\Form1.cs:Zeile 51.<br />\n   bei Example04.Form1.buttonSelectDatabase_Click(Object sender, EventArgs e) in Z:\\Sicherung\\Samples\\NetOffice\\NetOffice Release 1.4.1\\Net3.5\\Examples\\Access\\C#\\Example04\\Form1.cs:Zeile 37.<br />\n   bei System.Windows.Forms.Control.OnClick(EventArgs e)<br />\n   bei System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)<br />\n   bei System.Windows.Forms.Control.WmMouseUp(Message&amp; m, MouseButtons button, Int32 clicks)<br />\n   bei System.Windows.Forms.Control.WndProc(Message&amp; m)<br />\n   bei System.Windows.Forms.ButtonBase.WndProc(Message&amp; m)<br />\n   bei System.Windows.Forms.Button.WndProc(Message&amp; m)<br />\n   bei System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message&amp; m)<br />\n   bei System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)<br />\n   bei System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG&amp; msg)<br />\n   bei System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(Int32 dwComponentID, Int32 reason, Int32 pvLoopData)<br />\n   bei System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)<br />\n   bei System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)<br />\n   bei Example04.Program.Main() in Z:\\Sicherung\\Samples\\NetOffice\\NetOffice Release 1.4.1\\Net3.5\\Examples\\Access\\C#\\Example04\\Program.cs:Zeile 17.<br />\n   bei System.AppDomain._nExecuteAssembly(Assembly assembly, String[] args)<br />\n   bei Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()<br />\n   bei System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)<br />\n   bei System.Threading.ThreadHelper.ThreadStart()<br />\n<br />\nCurious is, that it runs first time with another database. Than i've tried to load another database, and now also the first database could not be opened.<br />\n<br />\nI've checked, that no old access instance is running, i've cleared the project, but the message appears again.<br />\n",
+    "PlainDescription": "While opening an access-mdb-database with c#-example #4 the following exception occures:\n\nDBEngine class not found in LateBindungApi (Source: \"LateBindingApi.Core\"):\n   bei LateBindingApi.Core.Factory.GetFactoryInfo(Object comProxy)\n   bei LateBindingApi.Core.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy)\n   bei NetOffice.AccessApi._Application.get_DBEngine()\n   bei Example04.Form1.ShowDatabaseInfo(String filePath) in Z:\\Sicherung\\Samples\\NetOffice\\NetOffice Release 1.4.1\\Net3.5\\Examples\\Access\\C#\\Example04\\Form1.cs:Zeile 51.\n   bei Example04.Form1.buttonSelectDatabase_Click(Object sender, EventArgs e) in Z:\\Sicherung\\Samples\\NetOffice\\NetOffice Release 1.4.1\\Net3.5\\Examples\\Access\\C#\\Example04\\Form1.cs:Zeile 37.\n   bei System.Windows.Forms.Control.OnClick(EventArgs e)\n   bei System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)\n   bei System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\n   bei System.Windows.Forms.Control.WndProc(Message& m)\n   bei System.Windows.Forms.ButtonBase.WndProc(Message& m)\n   bei System.Windows.Forms.Button.WndProc(Message& m)\n   bei System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   bei System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n   bei System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)\n   bei System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(Int32 dwComponentID, Int32 reason, Int32 pvLoopData)\n   bei System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)\n   bei System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)\n   bei Example04.Program.Main() in Z:\\Sicherung\\Samples\\NetOffice\\NetOffice Release 1.4.1\\Net3.5\\Examples\\Access\\C#\\Example04\\Program.cs:Zeile 17.\n   bei System.AppDomain._nExecuteAssembly(Assembly assembly, String[] args)\n   bei Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n   bei System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n   bei System.Threading.ThreadHelper.ThreadStart()\n\nCurious is, that it runs first time with another database. Than i've tried to load another database, and now also the first database could not be opened.\n\nI've checked, that no old access instance is running, i've cleared the project, but the message appears again.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-02-22T02:38:52.39+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "TomDabbelju",
+    "ReportedDate": "2013-02-06T09:32:34.907+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Failure opening Access-mdb-Database",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19314,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "DBEngine is defined in DAOApi.dll. do you have a reference to the assembly?\r\n\r\nwhat the Latebinding.Core.dll does is to analyze the loaded assemblies at runtime and look for the corresponding wrapper class. if you dont use a type from DAOApi.dll in your code (a using is not enough) then the CRL remove the DAOApi.dll from the loaded assemblies(load on demand). btw: modern netoffice versions does this better to avoid the problem. \r\n\r\nadd a type from DAOApi.dll to your code, may just as a dumy or switch to a newer version.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-02-06T17:43:02.307+01:00",
+      "WorkItemId": 19314,
+      "Id": 203122
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

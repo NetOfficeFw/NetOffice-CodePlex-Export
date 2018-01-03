@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Hi\n\nI noticed (thorugh add-in failing) that in powerpoint 2007 the extracolors object does not act like a \"real\" collection, that is it does not implement the IEnumerable methods.\n\nIn effect it's impossible to iterate over the collection with foreach, instead one must use a for loop with own counter. Doing the latter is not a problem as such, but one could consider whereever the NetOffice proxy type should reflect this (i.e. be something else than a collection?)",
+    "HtmlDescription": "Hi<br />\n<br />\nI noticed (thorugh add-in failing) that in powerpoint 2007 the extracolors object does not act like a &quot;real&quot; collection, that is it does not implement the IEnumerable methods.<br />\n<br />\nIn effect it's impossible to iterate over the collection with foreach, instead one must use a for loop with own counter. Doing the latter is not a problem as such, but one could consider whereever the NetOffice proxy type should reflect this (i.e. be something else than a collection?)<br />\n",
+    "PlainDescription": "Hi\n\nI noticed (thorugh add-in failing) that in powerpoint 2007 the extracolors object does not act like a \"real\" collection, that is it does not implement the IEnumerable methods.\n\nIn effect it's impossible to iterate over the collection with foreach, instead one must use a for loop with own counter. Doing the latter is not a problem as such, but one could consider whereever the NetOffice proxy type should reflect this (i.e. be something else than a collection?)\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2015-11-13T20:55:02.283+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "askholme",
+    "ReportedDate": "2015-10-06T11:05:48.863+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Extracolors property is not IENumerable in powerpoint 2007",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22035,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm currently figure out whats the problem. is it a collection in VBA or interop ???\r\n\r\n*sry powerpoint content and development targets in netoffice is a bit slower from the flagships(excel, word, outlook) because we dont have enough users here. (please keep in your mind, its an open source project and i do all this in my free time)\r\n\r\nwhat i can say is: NetOffice spend a 1:1 and better inferface to the inerop assemblies(also PowerPoint)but if its possible i want make the extracolors to an IEnumerable of course.(This is not easy - because i have to veryfiy this alwas these type - otherwise i can't do this)\r\n\r\n*Sebastian\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-11-13T20:55:02.283+01:00",
+      "WorkItemId": 22035,
+      "Id": 203357
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

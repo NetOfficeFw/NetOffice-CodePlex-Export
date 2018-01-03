@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 6,
+    "Custom": "",
+    "Description": "Hi\n\nFrom time to time, I encounter the following error when calling Application.Dispose().\nPlease see the stacktrace :\n```\nSystem.InvalidOperationException: Collection was modified; enumeration operation may not execute.\n   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)\n   at System.Collections.Generic.List`1.Enumerator.MoveNextRare()\n   at System.Collections.Generic.List`1.Enumerator.MoveNext()\n   at NetOffice.COMObject.DisposeChildInstances(Boolean disposeEventBinding)\n   at NetOffice.COMObject.Dispose(Boolean disposeEventBinding)\n   at NetOffice.ExcelApi.Application.Dispose(Boolean disposeEventBinding)\n   at NetOffice.ExcelApi.Application.Dispose()\n```\n\nAfter looking the source code, there may be a bug in COMObject.RemoveChildObject(), it misses the block\n```\n        if (Settings.EnableThreadSafe)\n        {\n          Monitor.Enter(this._childListLock);\n          flag = true;\n        }\n```\n\nHope this helps.",
+    "HtmlDescription": "Hi<br />\n<br />\nFrom time to time, I encounter the following error when calling Application.Dispose().<br />\nPlease see the stacktrace :<br />\n<pre><code>System.InvalidOperationException: Collection was modified; enumeration operation may not execute.\n   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)\n   at System.Collections.Generic.List`1.Enumerator.MoveNextRare()\n   at System.Collections.Generic.List`1.Enumerator.MoveNext()\n   at NetOffice.COMObject.DisposeChildInstances(Boolean disposeEventBinding)\n   at NetOffice.COMObject.Dispose(Boolean disposeEventBinding)\n   at NetOffice.ExcelApi.Application.Dispose(Boolean disposeEventBinding)\n   at NetOffice.ExcelApi.Application.Dispose()</code></pre>\n\nAfter looking the source code, there may be a bug in COMObject.RemoveChildObject(), it misses the block<br />\n<pre><code>        if (Settings.EnableThreadSafe)\n        {\n          Monitor.Enter(this._childListLock);\n          flag = true;\n        }</code></pre>\n\nHope this helps.<br />\n",
+    "PlainDescription": "Hi\n\nFrom time to time, I encounter the following error when calling Application.Dispose().\nPlease see the stacktrace :\nSystem.InvalidOperationException: Collection was modified; enumeration operation may not execute.\n   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)\n   at System.Collections.Generic.List1.Enumerator.MoveNextRare()   at System.Collections.Generic.List1.Enumerator.MoveNext()\n   at NetOffice.COMObject.DisposeChildInstances(Boolean disposeEventBinding)\n   at NetOffice.COMObject.Dispose(Boolean disposeEventBinding)\n   at NetOffice.ExcelApi.Application.Dispose(Boolean disposeEventBinding)\n   at NetOffice.ExcelApi.Application.Dispose()\n\nAfter looking the source code, there may be a bug in COMObject.RemoveChildObject(), it misses the block\n    if (Settings.EnableThreadSafe)\n    {\n      Monitor.Enter(this._childListLock);\n      flag = true;\n    }\n\n\nHope this helps.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2017-12-12T00:04:29.147+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "juflo",
+    "ReportedDate": "2014-10-30T14:56:23.317+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "\"Collection was modified\" error when disposing application",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21514,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hi\r\n\r\ni need more details about the scenario(specialy single-thread oder multi-thread).can you reproduce the problem or much better how  i can reproduce your scenario?if its impossible i want send you a small code snippet to create a text file about yourCOM proxy tree. please run this code before you call dispose and send me the text file.okay?\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-11-15T13:59:33.92+01:00",
+      "WorkItemId": 21514,
+      "Id": 203270
+    },
+    {
+      "Message": "btw: i agree with the missing lock. thx !!!!\r\n\r\n*Sebastian ",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-11-15T14:02:02.187+01:00",
+      "WorkItemId": 21514,
+      "Id": 203271
+    },
+    {
+      "Message": "update: missing lock is fixed",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-11-15T21:26:41.493+01:00",
+      "WorkItemId": 21514,
+      "Id": 203272
+    },
+    {
+      "Message": "Hi\r\n\r\nAfter many retries, I'm unable to isolate the issue in a sample code.Feel free to send me a code snippet for generating the data you need to analyse.\r\n\r\nRegards.",
+      "PostedBy": "juflo",
+      "PostedDate": "2014-12-09T15:09:11.32+01:00",
+      "WorkItemId": 21514,
+      "Id": 203273
+    },
+    {
+      "Message": "wich NO version? (the missing lock is fixed in NO 1.7.2)\r\n\r\ngive me a sample and i want execute this > 1 million times in a virtual machine to pin point the problem :)\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-12-09T18:57:42.333+01:00",
+      "WorkItemId": 21514,
+      "Id": 203274
+    },
+    {
+      "Message": "I have 1.6.0 version.I see there is an update to 1.7.2 in NuGet.I will update to this version to see if the problem still occurs.Thanks.",
+      "PostedBy": "juflo",
+      "PostedDate": "2015-01-09T11:51:45.23+01:00",
+      "WorkItemId": 21514,
+      "Id": 203275
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Just thought I'd try your NetOffice dll in place of PIA in my app but get the following exception in PowerPoint 2013 when trying to access:\n\n```\nPresentation.SlideShowWindow.HWND\n```\n\n> System.Runtime.InteropServices.COMException\n  HResult=-2147352573\n  Message=Member not found. (Exception from HRESULT: 0x80020003 (DISP_E_MEMBERNOTFOUND))\n  ErrorCode=-2147352573",
+    "HtmlDescription": "Just thought I'd try your NetOffice dll in place of PIA in my app but get the following exception in PowerPoint 2013 when trying to access:<br />\n<pre><code>Presentation.SlideShowWindow.HWND</code></pre>\n\n<blockquote>\nSystem.Runtime.InteropServices.COMException<br />\nHResult=-2147352573<br />\nMessage=Member not found. (Exception from HRESULT: 0x80020003 (DISP_E_MEMBERNOTFOUND))<br />\nErrorCode=-2147352573<br />\n</blockquote>\n",
+    "PlainDescription": "Just thought I'd try your NetOffice dll in place of PIA in my app but get the following exception in PowerPoint 2013 when trying to access:\nPresentation.SlideShowWindow.HWND\n\n\nSystem.Runtime.InteropServices.COMException\nHResult=-2147352573\nMessage=Member not found. (Exception from HRESULT: 0x80020003 (DISP_E_MEMBERNOTFOUND))\nErrorCode=-2147352573\n",
+    "LastUpdatedBy": "mcm_ham",
+    "LastUpdatedDate": "2014-04-18T06:34:30.34+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "mcm_ham",
+    "ReportedDate": "2014-04-16T13:12:26.68+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SlideShowWindow.HWND Member not found",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20929,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600199,
+      "FileName": "NetOfficeCrash.zip",
+      "WorkItemId": 20929,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=20929&FileAttachmentId=1600199"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This is a well-known bug from PowerPoint himself. In fact since PP95, not sure why its not fixed all the time.You can't use the HWND property regardless from any API(PIA, VSTO, NO..)\r\n\r\nI suggest you find the window handle at hand(FindWindowEx for example)\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-04-18T04:41:17.7+02:00",
+      "WorkItemId": 20929,
+      "Id": 203219
+    },
+    {
+      "Message": "Weird, because it's been working fine for me in PIA v12 & v14 running Office XP to 2013 (sample attached).",
+      "PostedBy": "mcm_ham",
+      "PostedDate": "2014-04-18T06:34:30.34+02:00",
+      "WorkItemId": 20929,
+      "Id": 203220
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "an issue is reported by ngx.\n \nhttp://netoffice.codeplex.com/discussions/281614\n \ncustom enumerators use a wrong array range in NetOffice, as outcome an exception was thrown.\ntask: change used array range and make sure it works good.",
+    "HtmlDescription": "an issue is reported by ngx.<br />\n <br />\n<a href=\"http://netoffice.codeplex.com/discussions/281614\" rel=\"nofollow\">http://netoffice.codeplex.com/discussions/281614</a><br />\n <br />\ncustom enumerators use a wrong array range in NetOffice, as outcome an exception was thrown.<br />\ntask: change used array range and make sure it works good.<br />\n",
+    "PlainDescription": "an issue is reported by ngx.\n \nhttp://netoffice.codeplex.com/discussions/281614\n \ncustom enumerators use a wrong array range in NetOffice, as outcome an exception was thrown.\ntask: change used array range and make sure it works good.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:17.96+02:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "SebastianDotNet",
+    "ReportedDate": "2011-12-02T16:55:28.737+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Exception while using custom Enumerators",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16994,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "issue fixed.\r\nan upated release is available.\r\n*have a nice day",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-12-02T18:27:09.317+01:00",
+      "WorkItemId": 16994,
+      "Id": 203021
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

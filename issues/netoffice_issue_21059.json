@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Hi all\n\nFollowing code (Example 1) work fine on Excel 2010/2013 x86, windows x64 but don't work on Excel 2010/2013 x86, windows x32:\n```\npublic void RunExample()\n        {\n            // start excel and turn off msg boxes\n            Excel.Application excelApplication = new Excel.Application();\n            excelApplication.DisplayAlerts = false;\n\n            // add a new workbook\n            Excel.Workbook workBook = excelApplication.Workbooks.Add();\n            Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];\n\n            // draw back color and perform the BorderAround method\n            workSheet.Range(\"$B2:$B5\").Interior.Color = ToDouble(Color.DarkGreen);\n            workSheet.Range(\"$B2:$B5\").BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlMedium, XlColorIndex.xlColorIndexAutomatic);\n\n            // draw back color and border the range explicitly\n            workSheet.Range(\"$D2:$D5\").Interior.Color = ToDouble(Color.DarkGreen);\n            workSheet.Range(\"$D2:$D5\").Borders[XlBordersIndex.xlInsideHorizontal].LineStyle = XlLineStyle.xlDouble;\n            workSheet.Range(\"$D2:$D5\").Borders[XlBordersIndex.xlInsideHorizontal].Weight = 4;\n            workSheet.Range(\"$D2:$D5\").Borders[XlBordersIndex.xlInsideHorizontal].Color = ToDouble(Color.Black);\n\n            workSheet.Cells[1, 1].Value = \"We have 2 simple shapes created.\";\n\n            decimal d1=(decimal) 1.0099;\n            decimal d2 = (decimal)10001;\n\n            try\n            {\n           // Error here:\n                workSheet.Cells[10, 2].Formula = string.Format(\"={0}*{1}\", d1, d2);\n            }\n            catch (Exception e)\n            {\n                \n                throw;\n            }\n            \n\n            // save the book \n            string fileExtension = GetDefaultExtension(excelApplication);\n            string workbookFile = string.Format(\"{0}\\\\Example01{1}\", _hostApplication.RootDirectory, fileExtension);\n            workBook.SaveAs(workbookFile);\n\n            // close excel and dispose reference\n            excelApplication.Quit();\n            excelApplication.Dispose();\n\n            // show dialog for the user(you!)\n            _hostApplication.ShowFinishDialog(null, workbookFile);\n        }\n```\n\nStackTrace = \"   at NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\\r\\n   at NetOffice.ExcelApi.Range.set_Formula(Object value)\\r\\n   at ExcelExamplesCS4.Example01.RunExample() in c:\\\\Users\\\\thangtx\\\\Desktop\\\\netoffice-106580\\\\Examples\\\\E...",
+    "HtmlDescription": "Hi all<br />\n<br />\nFollowing code (Example 1) work fine on Excel 2010/2013 x86, windows x64 but don't work on Excel 2010/2013 x86, windows x32:<br />\n<pre><code>public void RunExample()\n        {\n            // start excel and turn off msg boxes\n            Excel.Application excelApplication = new Excel.Application();\n            excelApplication.DisplayAlerts = false;\n\n            // add a new workbook\n            Excel.Workbook workBook = excelApplication.Workbooks.Add();\n            Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];\n\n            // draw back color and perform the BorderAround method\n            workSheet.Range(&quot;$B2:$B5&quot;).Interior.Color = ToDouble(Color.DarkGreen);\n            workSheet.Range(&quot;$B2:$B5&quot;).BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlMedium, XlColorIndex.xlColorIndexAutomatic);\n\n            // draw back color and border the range explicitly\n            workSheet.Range(&quot;$D2:$D5&quot;).Interior.Color = ToDouble(Color.DarkGreen);\n            workSheet.Range(&quot;$D2:$D5&quot;).Borders[XlBordersIndex.xlInsideHorizontal].LineStyle = XlLineStyle.xlDouble;\n            workSheet.Range(&quot;$D2:$D5&quot;).Borders[XlBordersIndex.xlInsideHorizontal].Weight = 4;\n            workSheet.Range(&quot;$D2:$D5&quot;).Borders[XlBordersIndex.xlInsideHorizontal].Color = ToDouble(Color.Black);\n\n            workSheet.Cells[1, 1].Value = &quot;We have 2 simple shapes created.&quot;;\n\n            decimal d1=(decimal) 1.0099;\n            decimal d2 = (decimal)10001;\n\n            try\n            {\n           // Error here:\n                workSheet.Cells[10, 2].Formula = string.Format(&quot;={0}*{1}&quot;, d1, d2);\n            }\n            catch (Exception e)\n            {\n                \n                throw;\n            }\n            \n\n            // save the book \n            string fileExtension = GetDefaultExtension(excelApplication);\n            string workbookFile = string.Format(&quot;{0}\\\\Example01{1}&quot;, _hostApplication.RootDirectory, fileExtension);\n            workBook.SaveAs(workbookFile);\n\n            // close excel and dispose reference\n            excelApplication.Quit();\n            excelApplication.Dispose();\n\n            // show dialog for the user(you!)\n            _hostApplication.ShowFinishDialog(null, workbookFile);\n        }</code></pre>\n\nStackTrace = &quot;   at NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\\r\\n   at NetOffice.ExcelApi.Range.set_Formula(Object value)\\r\\n   at ExcelExamplesCS4.Example01.RunExample() in c:\\Users\\thangtx\\Desktop\\netoffice-106580\\Examples\\E...<br />\n",
+    "PlainDescription": "Hi all\n\nFollowing code (Example 1) work fine on Excel 2010/2013 x86, windows x64 but don't work on Excel 2010/2013 x86, windows x32:\npublic void RunExample()\n    {\n        // start excel and turn off msg boxes\n        Excel.Application excelApplication = new Excel.Application();\n        excelApplication.DisplayAlerts = false;\n\n        // add a new workbook\n        Excel.Workbook workBook = excelApplication.Workbooks.Add();\n        Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];\n\n        // draw back color and perform the BorderAround method\n        workSheet.Range(&quot;$B2:$B5&quot;).Interior.Color = ToDouble(Color.DarkGreen);\n        workSheet.Range(&quot;$B2:$B5&quot;).BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlMedium, XlColorIndex.xlColorIndexAutomatic);\n\n        // draw back color and border the range explicitly\n        workSheet.Range(&quot;$D2:$D5&quot;).Interior.Color = ToDouble(Color.DarkGreen);\n        workSheet.Range(&quot;$D2:$D5&quot;).Borders[XlBordersIndex.xlInsideHorizontal].LineStyle = XlLineStyle.xlDouble;\n        workSheet.Range(&quot;$D2:$D5&quot;).Borders[XlBordersIndex.xlInsideHorizontal].Weight = 4;\n        workSheet.Range(&quot;$D2:$D5&quot;).Borders[XlBordersIndex.xlInsideHorizontal].Color = ToDouble(Color.Black);\n\n        workSheet.Cells[1, 1].Value = &quot;We have 2 simple shapes created.&quot;;\n\n        decimal d1=(decimal) 1.0099;\n        decimal d2 = (decimal)10001;\n\n        try\n        {\n       // Error here:\n            workSheet.Cells[10, 2].Formula = string.Format(&quot;={0}*{1}&quot;, d1, d2);\n        }\n        catch (Exception e)\n        {\n\n            throw;\n        }\n\n\n        // save the book \n        string fileExtension = GetDefaultExtension(excelApplication);\n        string workbookFile = string.Format(&quot;{0}\\\\Example01{1}&quot;, _hostApplication.RootDirectory, fileExtension);\n        workBook.SaveAs(workbookFile);\n\n        // close excel and dispose reference\n        excelApplication.Quit();\n        excelApplication.Dispose();\n\n        // show dialog for the user(you!)\n        _hostApplication.ShowFinishDialog(null, workbookFile);\n    }\n\n\nStackTrace = \"   at NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\\r\\n   at NetOffice.ExcelApi.Range.set_Formula(Object value)\\r\\n   at ExcelExamplesCS4.Example01.RunExample() in c:\\Users\\thangtx\\Desktop\\netoffice-106580\\Examples\\E...\n",
+    "LastUpdatedBy": "thangtx",
+    "LastUpdatedDate": "2014-06-20T19:03:01.19+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "thangtx",
+    "ReportedDate": "2014-06-06T19:21:17.24+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Com Exception when set cell values",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21059,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Any update on this issue? I have alot of problem when run project on Windows 7, Windows 8 x86.\r\n\r\nRegards",
+      "PostedBy": "thangtx",
+      "PostedDate": "2014-06-20T19:03:01.19+02:00",
+      "WorkItemId": 21059,
+      "Id": 203234
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

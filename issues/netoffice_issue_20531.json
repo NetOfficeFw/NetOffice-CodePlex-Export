@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Working with protected view on excel document.  The ProtectedViewWindowDeactivateEvent  is not firing.  Not sure why as it does with the word documents.  Already compared the event signatures in the two event api and things looks great.  Wan't able to debug into why the event doesn't fire.\n\nWhen the WorkbookOpenEvent does fire after the Protected View :\"Enable Editing\" button is pressed the Application.ActiveWorkbook is not populated.\n\nUltimately I need to initialize some code when the document comes out of protected view mode.  Need a handle to the  ActiveWorkbook.\n\nMade an example to help diagnose why this is happening.\n\n[Example 10](http://www.example.com)(https://bitbucket.org/kirk98445/netoffice-examples/src/2c0e9b1a5de9b82a31389545dba54cb7caa85e64/ExcelExamples/Examples/Example10.cs)",
+    "HtmlDescription": "Working with protected view on excel document.  The ProtectedViewWindowDeactivateEvent  is not firing.  Not sure why as it does with the word documents.  Already compared the event signatures in the two event api and things looks great.  Wan't able to debug into why the event doesn't fire.<br />\n<br />\nWhen the WorkbookOpenEvent does fire after the Protected View :&quot;Enable Editing&quot; button is pressed the Application.ActiveWorkbook is not populated.<br />\n<br />\nUltimately I need to initialize some code when the document comes out of protected view mode.  Need a handle to the  ActiveWorkbook.<br />\n<br />\nMade an example to help diagnose why this is happening.<br />\n<br />\n<a href=\"http://www.example.com\" rel=\"nofollow\">Example 10</a>(<a href=\"https://bitbucket.org/kirk98445/netoffice-examples/src/2c0e9b1a5de9b82a31389545dba54cb7caa85e64/ExcelExamples/Examples/Example10.cs\" rel=\"nofollow\">https://bitbucket.org/kirk98445/netoffice-examples/src/2c0e9b1a5de9b82a31389545dba54cb7caa85e64/ExcelExamples/Examples/Example10.cs</a>)<br />\n",
+    "PlainDescription": "Working with protected view on excel document.  The ProtectedViewWindowDeactivateEvent  is not firing.  Not sure why as it does with the word documents.  Already compared the event signatures in the two event api and things looks great.  Wan't able to debug into why the event doesn't fire.\n\nWhen the WorkbookOpenEvent does fire after the Protected View :\"Enable Editing\" button is pressed the Application.ActiveWorkbook is not populated.\n\nUltimately I need to initialize some code when the document comes out of protected view mode.  Need a handle to the  ActiveWorkbook.\n\nMade an example to help diagnose why this is happening.\n\nExample 10(https://bitbucket.org/kirk98445/netoffice-examples/src/2c0e9b1a5de9b82a31389545dba54cb7caa85e64/ExcelExamples/Examples/Example10.cs)\n",
+    "LastUpdatedBy": "ekirk0",
+    "LastUpdatedDate": "2014-01-15T20:56:12.247+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "ekirk0",
+    "ReportedDate": "2013-12-17T21:16:19.13+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel ProtectedViewWindowDeactivateEvent not firing",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20531,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600196,
+      "FileName": "Example10.cs",
+      "WorkItemId": 20531,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=20531&FileAttachmentId=1600196"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I found a workaround and don't think its worth looking into further.\r\n\r\nvoid Application_WorkbookOpenEvent(NetOffice.ExcelApi.Workbook Wb) does get called with the current workbook.  \r\n\r\nEvent though Application.ActiveWorkbook is null at the time.   The timing of protected events and when the application objects get initialized varies between the different office apps.  That is no fault of netoffice.\r\n\r\nThanks",
+      "PostedBy": "ekirk0",
+      "PostedDate": "2014-01-15T20:56:12.247+01:00",
+      "WorkItemId": 20531,
+      "Id": 203199
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

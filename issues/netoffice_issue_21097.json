@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "I made an Outlook-addin using NetOffice.\nWhen I use Word, Excel or AdobeReader to send a mail, I get then SendMail-window from Outlook. \nWhen I press the Send-button, I get my popup from my Outlook-addin as expected, and when I press OK, the mail is send. Then the SendMail-window is closed, and the Notification-Icon in the Notification-Tray says \"Outlook is closing\", but the Outlook-process is never closed, neither the Notification Icon, and my Word, Excel or AdobeReader is hanging. When Outlook was already running before, is also keeps hanging.\nEventually, I have to kill my Word, Excel or AdobeReader process.\n\nWhen I try this on my computer, it works fine (I am Administrator of my machine). My colleague is not Admin, and it also works for him, but for the users in production, it doesn't work. We all have Office 2013, AdobeReader XI and Windows 7.\n\nI think it might be a cleanup issue, and I noticed I never receive the OnBeginShutdown- or OnDisconnection-event.\nAny idea on how to approach this problem?",
+    "HtmlDescription": "I made an Outlook-addin using NetOffice.<br />\nWhen I use Word, Excel or AdobeReader to send a mail, I get then SendMail-window from Outlook. <br />\nWhen I press the Send-button, I get my popup from my Outlook-addin as expected, and when I press OK, the mail is send. Then the SendMail-window is closed, and the Notification-Icon in the Notification-Tray says &quot;Outlook is closing&quot;, but the Outlook-process is never closed, neither the Notification Icon, and my Word, Excel or AdobeReader is hanging. When Outlook was already running before, is also keeps hanging.<br />\nEventually, I have to kill my Word, Excel or AdobeReader process.<br />\n<br />\nWhen I try this on my computer, it works fine (I am Administrator of my machine). My colleague is not Admin, and it also works for him, but for the users in production, it doesn't work. We all have Office 2013, AdobeReader XI and Windows 7.<br />\n<br />\nI think it might be a cleanup issue, and I noticed I never receive the OnBeginShutdown- or OnDisconnection-event.<br />\nAny idea on how to approach this problem?<br />\n",
+    "PlainDescription": "I made an Outlook-addin using NetOffice.\nWhen I use Word, Excel or AdobeReader to send a mail, I get then SendMail-window from Outlook. \nWhen I press the Send-button, I get my popup from my Outlook-addin as expected, and when I press OK, the mail is send. Then the SendMail-window is closed, and the Notification-Icon in the Notification-Tray says \"Outlook is closing\", but the Outlook-process is never closed, neither the Notification Icon, and my Word, Excel or AdobeReader is hanging. When Outlook was already running before, is also keeps hanging.\nEventually, I have to kill my Word, Excel or AdobeReader process.\n\nWhen I try this on my computer, it works fine (I am Administrator of my machine). My colleague is not Admin, and it also works for him, but for the users in production, it doesn't work. We all have Office 2013, AdobeReader XI and Windows 7.\n\nI think it might be a cleanup issue, and I noticed I never receive the OnBeginShutdown- or OnDisconnection-event.\nAny idea on how to approach this problem?\n",
+    "LastUpdatedBy": "stesme",
+    "LastUpdatedDate": "2014-06-23T15:44:13.48+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "stesme",
+    "ReportedDate": "2014-06-23T15:44:13.48+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "3th party mail client hangs when sending mail",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21097,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

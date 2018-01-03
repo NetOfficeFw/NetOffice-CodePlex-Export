@@ -1,0 +1,98 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 7,
+    "Custom": "",
+    "Description": "In VBA when doing resize on a range it will resize the range. But when I do it with NetOffice it returns the index of the range. E.g.,\n \nrng=Range(\"A2:C14\")\nrng2=rng.Resize(rng.Rows.Count, 1)\n \nNow rng2 should be:\n \n\"A2:A14\"\n \nBut instead it is:\n \n\"A14\"\n \nLikewise, if I do this:\n \nrng2=rng.Resize(Type.Missing, 1)\n \nShould return:\n \n\"A2:A14\"\n \nBut instead returns:\n \n\"A2\"",
+    "HtmlDescription": "In VBA when doing resize on a range it will resize the range. But when I do it with NetOffice it returns the index of the range. E.g.,<br />\n <br />\nrng=Range(&quot;A2:C14&quot;)<br />\nrng2=rng.Resize(rng.Rows.Count, 1)<br />\n <br />\nNow rng2 should be:<br />\n <br />\n&quot;A2:A14&quot;<br />\n <br />\nBut instead it is:<br />\n <br />\n&quot;A14&quot;<br />\n <br />\nLikewise, if I do this:<br />\n <br />\nrng2=rng.Resize(Type.Missing, 1)<br />\n <br />\nShould return:<br />\n <br />\n&quot;A2:A14&quot;<br />\n <br />\nBut instead returns:<br />\n <br />\n&quot;A2&quot;<br />\n",
+    "PlainDescription": "In VBA when doing resize on a range it will resize the range. But when I do it with NetOffice it returns the index of the range. E.g.,\n \nrng=Range(\"A2:C14\")\nrng2=rng.Resize(rng.Rows.Count, 1)\n \nNow rng2 should be:\n \n\"A2:A14\"\n \nBut instead it is:\n \n\"A14\"\n \nLikewise, if I do this:\n \nrng2=rng.Resize(Type.Missing, 1)\n \nShould return:\n \n\"A2:A14\"\n \nBut instead returns:\n \n\"A2\"\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2017-12-12T00:04:29.147+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Jon49",
+    "ReportedDate": "2012-07-19T01:32:41.83+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Resize doesn't resize range",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18383,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hey jon,\r\n\r\ni do a test in c# netoffice 1.5.1\r\n\r\nExcel.Range rng = workSheet.Range(\"A2:C14\");\r\nExcel.Range rng2 = rng.Resize(rng.Rows.Count, 1);\r\nstring address = rng2.Address(Type.Missing, Type.Missing);\r\n\r\n// address is \"$A$2:$A$14;\r\n\r\nwhich netoffice version you use?\r\n\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-07-19T23:18:27.653+02:00",
+      "WorkItemId": 18383,
+      "Id": 203074
+    },
+    {
+      "Message": "I was using 1.4, I switched to 1.5 and I am still getting the same bug, I'm using VB.NET on an XP office 2003. Let me know if you need more information.\r\n\r\nHere's the code I am using:\r\n\r\nDim rCompare = rng.Resize(rng.Rows.Count, 1).Offset(0, iCompareColumn - rng.Column)\r\n\r\nWhen I check the value what rng.Resize does I get this:\r\n\r\n?rng.Address(True,True)\r\n\"$A$2:$E$14\"\r\n?rng.Resize(rng.Rows.count,1).Address(True,True)\r\n\"$A$14\"\r\n?rng.Resize(Type.Missing,1).Address(True,True)\r\n\"$A$2\"",
+      "PostedBy": "Jon49",
+      "PostedDate": "2012-07-24T02:03:32.723+02:00",
+      "WorkItemId": 18383,
+      "Id": 203075
+    },
+    {
+      "Message": "rng is workSheet.Range(\"A2:C14\") ??\r\nplease replace iCompareColumn to a constant just for me.\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-07-24T08:21:44.123+02:00",
+      "WorkItemId": 18383,
+      "Id": 203076
+    },
+    {
+      "Message": "iCompareColumn is 1 and rng.Column is 1. But that doesn't really reflect the core problem which is:\r\n\r\n?rng.Address(True,True)\r\n\"$A$2:$E$14\"\r\n?rng.Resize(rng.Rows.count,1).Address(True,True)\r\n\"$A$14\"\r\n?rng.Resize(Type.Missing,1).Address(True,True)\r\n\"$A$2\"\r\n\r\nFor some reason this is not working correctly, even when I use a newer version of NetOffice. Let me know if you want me to send you my project.\r\n\r\nBTW, I sent you a link to a website that should make doing the LINQ in C# coding much easier. It was done by Jon Skeet, someone who is really knowledgeable on the subject. He did 42 different implementations.\r\n\r\nhttp://msmvps.com/blogs/jon_skeet/archive/2011/02/23/reimplementing-linq-to-objects-part-45-conclusion-and-list-of-posts.aspx\r\n\r\nHope that is helpful for your LINQ project.",
+      "PostedBy": "Jon49",
+      "PostedDate": "2012-07-25T00:17:01.72+02:00",
+      "WorkItemId": 18383,
+      "Id": 203077
+    },
+    {
+      "Message": "hello jon,\r\n\r\nsorry for the delay, please checkout: http://netoffice.codeplex.com/wikipage?title=Download%20Page\r\n\r\nthe example works fine for me.\r\nmodify the example and show me whats wrong. please send the modified example to public.sebastian@web.de\r\n\r\nthanks!!!\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-08-02T23:06:45.567+02:00",
+      "WorkItemId": 18383,
+      "Id": 203078
+    },
+    {
+      "Message": "OK, I ran your example and I was still getting the wrong answer, as seen below:\r\n\r\nrange2.Address is $A$14\r\nPress any key...\r\n\r\nI didn't change any of the code, just opened it and ran it.\r\n\r\nI'm using an XP with Office 2003 Professional. Since I didn't change anything I won't send you the code back. Let me know if you still want me to send it to you.",
+      "PostedBy": "Jon49",
+      "PostedDate": "2012-08-02T23:56:32.657+02:00",
+      "WorkItemId": 18383,
+      "Id": 203079
+    },
+    {
+      "Message": "hey jon,\r\n\r\npatrick o beirne helps me to understand the real problem. its a syntax issue.\r\nResize is a property with parameters that returns a range.  VB developers has one syntactical issue here( C# evelopers not) you have to call get_Resize(1,1)  the given parameter in your code are affected to the returned range, look at the intellisense(rowIndex, columnIndex) the overloads without get_ exists but VB can't see them. i hope i find a better solution for the next release.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-08-03T18:42:28.213+02:00",
+      "WorkItemId": 18383,
+      "Id": 203080
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

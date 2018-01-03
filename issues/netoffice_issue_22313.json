@@ -1,0 +1,62 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Description": "In standard Excel interop, this is enough to add a worksheet in C#:\r\n\r\n```\r\nvar sheet = worksheets.Add(After: addAfterSheet);\r\n```\r\n\r\nHowever, in NetOffice, I have to do this:\r\n\r\n```\r\nvar sheet = worksheets.Add(before: Type.Missing, after: addAfterSheet);\r\n```\r\n\r\nIs this by design? It's a bit of a shame, since one of the greatest improvement for Interop in C# lately was the ability to use named arguments instead of Type.Missing everywhere...",
+    "HtmlDescription": "In standard Excel interop, this is enough to add a worksheet in C#:<br />\n<pre><code>var sheet = worksheets.Add(After: addAfterSheet);</code></pre>\n\nHowever, in NetOffice, I have to do this:<br />\n<pre><code>var sheet = worksheets.Add(before: Type.Missing, after: addAfterSheet);</code></pre>\n\nIs this by design? It's a bit of a shame, since one of the greatest improvement for Interop in C# lately was the ability to use named arguments instead of Type.Missing everywhere...<br />\n",
+    "PlainDescription": "In standard Excel interop, this is enough to add a worksheet in C#:\nvar sheet = worksheets.Add(After: addAfterSheet);\n\nHowever, in NetOffice, I have to do this:\nvar sheet = worksheets.Add(before: Type.Missing, after: addAfterSheet);\n\nIs this by design? It's a bit of a shame, since one of the greatest improvement for Interop in C# lately was the ability to use named arguments instead of Type.Missing everywhere...\n",
+    "LastUpdatedBy": "JBjurstam",
+    "LastUpdatedDate": "2016-09-29T08:38:21.283+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "JBjurstam",
+    "ReportedDate": "2016-09-28T12:44:45.59+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Named arguments do not work as expected (C#)",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22313,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "NetOffice supports optionals arguments but didnt support -so called- named arguments like \n\"argName := argValue\"\n\nNetOffice doesnt use optional arguments for compatibility reasons because optional arguments is not supported by all .net languages in any version. To level this problem NetOffice spend all possible method overloads. For your Worksheet=>Add example this means NetOffice API offers the following API:\n\npublic object Add(object before);\npublic object Add(object before, object after);\npublic object Add(object before, object after, object count);\npublic object Add(object before, object after, object count, object type);\n\nThis means if you want to set the second \"after\" argument, you have to give the first \"before\" argument also. This call interface design was born in Year of 2009 btw. (My personal opinion is to change that with the next .Net version which is means to drop  .Net 3.0 and below because C# didnt support optional arguments here)\n\nSebastian\n\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-09-28T19:59:16.517+02:00",
+      "WorkItemId": 22313,
+      "Id": 204391
+    },
+    {
+      "Message": "Ah, I understand. Thanks for your reply Sebastian!",
+      "PostedBy": "JBjurstam",
+      "PostedDate": "2016-09-29T08:38:21.283+02:00",
+      "WorkItemId": 22313,
+      "Id": 204406
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

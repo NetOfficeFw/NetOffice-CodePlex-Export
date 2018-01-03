@@ -1,0 +1,64 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "SebastianDotNet",
+    "ClosedComment": "Hans find the problem in his own code. \n\nwe are happy to help Hans next time :)\n\n*the NO crew members",
+    "ClosedDate": "2014-05-15T01:58:05.827+02:00",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Hi there, we're using Excel 2013 templates and the latest NetOffice 1.7.0 libs in a C# assembly to create reports from data stored in an MS-SQL server database. This works well, unless a certain amount of data is exceeded. My code looks like this:\n\n// exportSheet is a Worksheet instance\nListObject dataTable = exportSheet.ListObjects[\"DataTable\"];\nRange dataTableBody = dataTable.DataBodyRange;\n...\n// Loop start...\n// recordCount increases with evaluated records from DB\ndataTableBody[recordCount, 1].Value = recordCount; //Exception may occur here...\ndataTableBody[recordCount, 2].Value = meterRecord.Timestamp; //...or here or...\ndataTableBody[recordCount, 3].Value = meterRecord.IntervalValueDiff; //...or here\n...\n// Loop end\n\nWhen a (non deterministic) amount of data is exceeded, I get a COMException with an inner exception of type System.Reflection.TargetInvocationException in the lines where I try to assign the cell values (see attached file). This happens with more than roughly 500-700 records on my machine - with fewer records, everything is fine.\n\nAny chance to find out, what the source of the problem is? Any hint for a workaround?\n\nBest regards,\nHans",
+    "HtmlDescription": "Hi there, we're using Excel 2013 templates and the latest NetOffice 1.7.0 libs in a C# assembly to create reports from data stored in an MS-SQL server database. This works well, unless a certain amount of data is exceeded. My code looks like this:<br />\n<br />\n// exportSheet is a Worksheet instance<br />\nListObject dataTable = exportSheet.ListObjects[&quot;DataTable&quot;];<br />\nRange dataTableBody = dataTable.DataBodyRange;<br />\n...<br />\n// Loop start...<br />\n// recordCount increases with evaluated records from DB<br />\ndataTableBody[recordCount, 1].Value = recordCount; //Exception may occur here...<br />\ndataTableBody[recordCount, 2].Value = meterRecord.Timestamp; //...or here or...<br />\ndataTableBody[recordCount, 3].Value = meterRecord.IntervalValueDiff; //...or here<br />\n...<br />\n// Loop end<br />\n<br />\nWhen a (non deterministic) amount of data is exceeded, I get a COMException with an inner exception of type System.Reflection.TargetInvocationException in the lines where I try to assign the cell values (see attached file). This happens with more than roughly 500-700 records on my machine - with fewer records, everything is fine.<br />\n<br />\nAny chance to find out, what the source of the problem is? Any hint for a workaround?<br />\n<br />\nBest regards,<br />\nHans<br />\n",
+    "PlainDescription": "Hi there, we're using Excel 2013 templates and the latest NetOffice 1.7.0 libs in a C# assembly to create reports from data stored in an MS-SQL server database. This works well, unless a certain amount of data is exceeded. My code looks like this:\n\n// exportSheet is a Worksheet instance\nListObject dataTable = exportSheet.ListObjects[\"DataTable\"];\nRange dataTableBody = dataTable.DataBodyRange;\n...\n// Loop start...\n// recordCount increases with evaluated records from DB\ndataTableBody[recordCount, 1].Value = recordCount; //Exception may occur here...\ndataTableBody[recordCount, 2].Value = meterRecord.Timestamp; //...or here or...\ndataTableBody[recordCount, 3].Value = meterRecord.IntervalValueDiff; //...or here\n...\n// Loop end\n\nWhen a (non deterministic) amount of data is exceeded, I get a COMException with an inner exception of type System.Reflection.TargetInvocationException in the lines where I try to assign the cell values (see attached file). This happens with more than roughly 500-700 records on my machine - with fewer records, everything is fine.\n\nAny chance to find out, what the source of the problem is? Any hint for a workaround?\n\nBest regards,\nHans\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2014-05-15T01:58:05.827+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "HJPhilippi",
+    "ReportedDate": "2014-05-13T14:54:23.147+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel: TargetInvocationException with larger amount of Range accesses",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20987,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600201,
+      "FileName": "NetOffice exception 2014-05-13.txt",
+      "WorkItemId": 20987,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=20987&FileAttachmentId=1600201"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Issue solved - mea maxima culpa...\r\n\r\nIn the class that encapsulated access to the Excel instance with a singleton pattern, we have a timer to remove an unused/idle Excel application instance after a certain amount of time. And the code was a little too eager, kicking the instance while some code still working on it. No wonder that this resulted in the described exceptions. :-/Now it's fixed and the issue pointless. Thanks for your great library!\r\n\r\nCheers,Hans",
+      "PostedBy": "HJPhilippi",
+      "PostedDate": "2014-05-13T17:16:08.32+02:00",
+      "WorkItemId": 20987,
+      "Id": 203222
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

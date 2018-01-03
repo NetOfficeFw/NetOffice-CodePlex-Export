@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Office 2007 / 2010, I can use key hook, stop the add new row action. \nWord 2013, key hook do nothing.",
+    "HtmlDescription": "Office 2007 / 2010, I can use key hook, stop the add new row action. <br />\nWord 2013, key hook do nothing.<br />\n",
+    "PlainDescription": "Office 2007 / 2010, I can use key hook, stop the add new row action. \nWord 2013, key hook do nothing.\n",
+    "LastUpdatedBy": "cgh_chen",
+    "LastUpdatedDate": "2014-07-19T14:00:39.457+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "cgh_chen",
+    "ReportedDate": "2014-07-19T09:36:34.69+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "How to Stop Tab Key add new row, Word 2013",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21158,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Sub NextCell()'' NextCell Macro' Moves to the next table cell''    Selection.MoveRight Unit:=wdCell End Sub\r\n\r\ncombine with KeyBindings override shotcut key",
+      "PostedBy": "cgh_chen",
+      "PostedDate": "2014-07-19T10:49:00.583+02:00",
+      "WorkItemId": 21158,
+      "Id": 203254
+    },
+    {
+      "Message": "BUT I lost the default action when selection is out of tab. :( ",
+      "PostedBy": "cgh_chen",
+      "PostedDate": "2014-07-19T14:00:39.457+02:00",
+      "WorkItemId": 21158,
+      "Id": 203255
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

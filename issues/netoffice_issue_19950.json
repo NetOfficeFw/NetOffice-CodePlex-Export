@@ -1,0 +1,84 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "I made a setup project(vs2010,office2007) and build the setup file on windows 7.\nIt's no problem to install it on windows 7. But when I installed it on windows 8.\nThere is no com addin appeared in office addin list.\nThe ribbon is also not displayed.\nI also changed x86 of the setup project to x64. It's the same result.\nDoes any who met this problem? How did you settled it?\n\nBy the way, I am using netoffice 3.5(.net framework).",
+    "HtmlDescription": "I made a setup project(vs2010,office2007) and build the setup file on windows 7.<br />\nIt's no problem to install it on windows 7. But when I installed it on windows 8.<br />\nThere is no com addin appeared in office addin list.<br />\nThe ribbon is also not displayed.<br />\nI also changed x86 of the setup project to x64. It's the same result.<br />\nDoes any who met this problem? How did you settled it?<br />\n<br />\nBy the way, I am using netoffice 3.5(.net framework).<br />\n",
+    "PlainDescription": "I made a setup project(vs2010,office2007) and build the setup file on windows 7.\nIt's no problem to install it on windows 7. But when I installed it on windows 8.\nThere is no com addin appeared in office addin list.\nThe ribbon is also not displayed.\nI also changed x86 of the setup project to x64. It's the same result.\nDoes any who met this problem? How did you settled it?\n\nBy the way, I am using netoffice 3.5(.net framework).\n",
+    "LastUpdatedBy": "RGR",
+    "LastUpdatedDate": "2013-09-13T09:11:05.33+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "dujunsheng",
+    "ReportedDate": "2013-07-09T08:48:04.837+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Can't install it on windows 8",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 19950,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600189,
+      "FileName": "Setup.pdf",
+      "WorkItemId": 19950,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=19950&FileAttachmentId=1600189"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The function ComRegisterFunctionAttribute: RegisterFunction wasn't executed.",
+      "PostedBy": "dujunsheng",
+      "PostedDate": "2013-07-09T08:53:40.613+02:00",
+      "WorkItemId": 19950,
+      "Id": 203132
+    },
+    {
+      "Message": "setup",
+      "PostedBy": "dujunsheng",
+      "PostedDate": "2013-07-10T07:29:11.62+02:00",
+      "WorkItemId": 19950,
+      "Id": 203133
+    },
+    {
+      "Message": "msi doesnt call the register/unregister methods. never!you have to set the reg keys in the setup project.see the deployment sample in the download section.",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-07-10T23:38:25.287+02:00",
+      "WorkItemId": 19950,
+      "Id": 203134
+    },
+    {
+      "Message": "Maybe this helps?http://support.microsoft.com/kb/2792179",
+      "PostedBy": "RGR",
+      "PostedDate": "2013-09-13T09:11:05.33+02:00",
+      "WorkItemId": 19950,
+      "Id": 203135
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

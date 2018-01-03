@@ -1,0 +1,144 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 11,
+    "Description": "I am exploring using NetOffice.Visio for my project VisioAutomation: https://github.com/saveenr/VisioAutomation\r\n\r\nHere's some code which works with Microsoft.Office.Interop.Visio\r\n        \r\n            // using IVisio = Microsoft.Office.Interop.Visio;\r\n            var app = new IVisio.Application();\r\n            var doc = app.Documents.Add(\"\");\r\n            var page = app.ActivePage;\r\n            var shape = page.DrawRectangle(0, 0, 2, 3);\r\n            shape.Text = \"With Microsoft.Office.Interop.Visio\";\r\n\r\n            var SID_SRCStream = new short[4];\r\n            SID_SRCStream[0] = (short)shape.ID16;\r\n            SID_SRCStream[1] = (short)IVisio.VisSectionIndices.visSectionObject;\r\n            SID_SRCStream[2] = (short)IVisio.VisRowIndices.visRowFill;\r\n            SID_SRCStream[3] = (short)IVisio.VisCellIndices.visFillForegnd;\r\n\r\n            System.Array a;\r\n            page.GetFormulasU(SID_SRCStream, out a);\r\n\r\nBut the same code throws an exception with NetOffice.Visio (for .NET 4.0)\r\n\r\n            // using IVisioNetOffice = NetOffice.VisioApi;\r\n            var app = new IVisioNetOffice.Application();\r\n            var doc = app.Documents.Add(\"\");\r\n            var page = app.ActivePage;\r\n            var shape = page.DrawRectangle(0, 0, 2, 3);\r\n            shape.Text = \"With NetOffice\";\r\n\r\n            var SID_SRCStream = new short[4];\r\n            SID_SRCStream[0] = (short)shape.ID16;\r\n            SID_SRCStream[1] = (short)IVisioNetOffice.Enums.VisSectionIndices.visSectionObject;\r\n            SID_SRCStream[2] = (short)IVisioNetOffice.Enums.VisRowIndices.visRowFill;\r\n            SID_SRCStream[3] = (short)IVisioNetOffice.Enums.VisCellIndices.visFillForegnd;\r\n\r\n\r\n            object[] a;\r\n            page.GetFormulasU(SID_SRCStream, out a);\r\n\r\nThe exception occurs in GetFormulas the inner exception says \"{\"Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))\"}\". \r\n\r\nI suspect the problem is with the second parameter because setformulas seems to work with the same SID_SRCStream.\r\n\r\nAny ideas what is wrong in my code?\r\n\r\n",
+    "HtmlDescription": "I am exploring using NetOffice.Visio for my project VisioAutomation: <a href=\"https://github.com/saveenr/VisioAutomation\" rel=\"nofollow\">https://github.com/saveenr/VisioAutomation</a>\r<br />\n<br />\nHere's some code which works with Microsoft.Office.Interop.Visio<br />\n<pre><code>        // using IVisio = Microsoft.Office.Interop.Visio;\n        var app = new IVisio.Application();\n        var doc = app.Documents.Add(&quot;&quot;);\n        var page = app.ActivePage;\n        var shape = page.DrawRectangle(0, 0, 2, 3);\n        shape.Text = &quot;With Microsoft.Office.Interop.Visio&quot;;\n\n        var SID_SRCStream = new short[4];\n        SID_SRCStream[0] = (short)shape.ID16;\n        SID_SRCStream[1] = (short)IVisio.VisSectionIndices.visSectionObject;\n        SID_SRCStream[2] = (short)IVisio.VisRowIndices.visRowFill;\n        SID_SRCStream[3] = (short)IVisio.VisCellIndices.visFillForegnd;\n\n        System.Array a;\n        page.GetFormulasU(SID_SRCStream, out a);\n</code></pre>\n\nBut the same code throws an exception with NetOffice.Visio (for .NET 4.0)<br />\n<pre><code>        // using IVisioNetOffice = NetOffice.VisioApi;\n        var app = new IVisioNetOffice.Application();\n        var doc = app.Documents.Add(&quot;&quot;);\n        var page = app.ActivePage;\n        var shape = page.DrawRectangle(0, 0, 2, 3);\n        shape.Text = &quot;With NetOffice&quot;;\n\n        var SID_SRCStream = new short[4];\n        SID_SRCStream[0] = (short)shape.ID16;\n        SID_SRCStream[1] = (short)IVisioNetOffice.Enums.VisSectionIndices.visSectionObject;\n        SID_SRCStream[2] = (short)IVisioNetOffice.Enums.VisRowIndices.visRowFill;\n        SID_SRCStream[3] = (short)IVisioNetOffice.Enums.VisCellIndices.visFillForegnd;\n\n\n        object[] a;\n        page.GetFormulasU(SID_SRCStream, out a);\n</code></pre>\n\nThe exception occurs in GetFormulas the inner exception says &quot;{&quot;Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))&quot;}&quot;. \r<br />\n<br />\nI suspect the problem is with the second parameter because setformulas seems to work with the same SID_SRCStream.\r<br />\n<br />\nAny ideas what is wrong in my code?<br />\n",
+    "PlainDescription": "I am exploring using NetOffice.Visio for my project VisioAutomation: https://github.com/saveenr/VisioAutomation\r\n\nHere's some code which works with Microsoft.Office.Interop.Visio\n    // using IVisio = Microsoft.Office.Interop.Visio;\n    var app = new IVisio.Application();\n    var doc = app.Documents.Add(\"\");\n    var page = app.ActivePage;\n    var shape = page.DrawRectangle(0, 0, 2, 3);\n    shape.Text = \"With Microsoft.Office.Interop.Visio\";\n\n    var SID_SRCStream = new short[4];\n    SID_SRCStream[0] = (short)shape.ID16;\n    SID_SRCStream[1] = (short)IVisio.VisSectionIndices.visSectionObject;\n    SID_SRCStream[2] = (short)IVisio.VisRowIndices.visRowFill;\n    SID_SRCStream[3] = (short)IVisio.VisCellIndices.visFillForegnd;\n\n    System.Array a;\n    page.GetFormulasU(SID_SRCStream, out a);\n\n\n\nBut the same code throws an exception with NetOffice.Visio (for .NET 4.0)\n    // using IVisioNetOffice = NetOffice.VisioApi;\n    var app = new IVisioNetOffice.Application();\n    var doc = app.Documents.Add(\"\");\n    var page = app.ActivePage;\n    var shape = page.DrawRectangle(0, 0, 2, 3);\n    shape.Text = \"With NetOffice\";\n\n    var SID_SRCStream = new short[4];\n    SID_SRCStream[0] = (short)shape.ID16;\n    SID_SRCStream[1] = (short)IVisioNetOffice.Enums.VisSectionIndices.visSectionObject;\n    SID_SRCStream[2] = (short)IVisioNetOffice.Enums.VisRowIndices.visRowFill;\n    SID_SRCStream[3] = (short)IVisioNetOffice.Enums.VisCellIndices.visFillForegnd;\n\n\n    object[] a;\n    page.GetFormulasU(SID_SRCStream, out a);\n\n\n\nThe exception occurs in GetFormulas the inner exception says \"{\"Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))\"}\". \r\n\nI suspect the problem is with the second parameter because setformulas seems to work with the same SID_SRCStream.\r\n\nAny ideas what is wrong in my code?\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2016-09-10T22:01:46.96+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "saveenr",
+    "ReportedDate": "2016-09-04T06:37:30.2+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Exception thrown with Visio Page.GetFormulas",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22311,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1604821,
+      "FileName": "exceptions.txt",
+      "WorkItemId": 22311,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=22311&FileAttachmentId=1604821"
+    },
+    {
+      "FileId": 1605157,
+      "FileName": "NetOffice Issue 22311 - Out Array Bypass.cs",
+      "WorkItemId": 22311,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=22311&FileAttachmentId=1605157"
+    },
+    {
+      "FileId": 1605158,
+      "FileName": "NetOffice Issue 22311 - Out Array Bypass.cs",
+      "WorkItemId": 22311,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=22311&FileAttachmentId=1605158"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This is an issue in NetOffice 1.7.3\n\nNetOffice want replace null arguments with Type.Missing which is not a good idea in that case.\nPlease try object[] a = new object[0]; and let me know how it works.\n\nSebastian\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-09-04T10:04:07.04+02:00",
+      "WorkItemId": 22311,
+      "Id": 203873
+    },
+    {
+      "Message": "Thanks for the quick reply - I tried the code below...\n\n            object[] a = new object[0];\n            page.GetFormulasU(SID_SRCStream, out a);\n\nAnd it continues to give the same error.",
+      "PostedBy": "saveenr",
+      "PostedDate": "2016-09-04T23:03:14.6+02:00",
+      "WorkItemId": 22311,
+      "Id": 203875
+    },
+    {
+      "Message": "I must to ask for it . It is definitely the same kind of exception? BTW: Any kind of stack trace want very helpful here.\n\nI see 2 more possible reasons here.\n\n1) NetOffice failed to marshal(back) an array as an output argument here. arrays in COM Interop is a very very special topic. (the stack trace can clearify that, remove any private informations if you, want i want only see the last netoffice calls)\n\n2) The Visio dev team does something wrong in the IDispatch implementation of GetFormulas( this is a common scenario, i find a lot of bugs all the NetOffice years here in all Office applications except Excel - the \"primusin parvum\")\n\nI'm sorry to say that i dont have visio installed on my current system. (I'm a freelance programmer and not in my country right now) Please give me one day to fix this to reproduce your problem and don let me alone here. This is probably an important issue in NetOffice.\n\nPlease try this static method instead with \"a\" as null value (for diagnostics only, i'm sure that fails but i can make sure a possible third kind of error is impossible) \n\npublic static void GetFormulas(NetOffice.VisioApi.IVPage page,  Int16[] sID_SRCStream, out object[] formulaArray)\n{\n\tParameterModifier[] modifiers = Invoker.CreateParamModifiers(false,true);\n\tformulaArray = null;\n\tobject[] paramsArray = new object[]{sID_SRCStream, formulaArray};\n\tInvoker.Method(page, \"GetFormulas\", paramsArray, modifiers);\n\tformulaArray = (object[])paramsArray[1];\n}\n\nThanks and i work for this issue in high priority.\n*Sebastian\n\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-09-05T00:26:27.56+02:00",
+      "WorkItemId": 22311,
+      "Id": 203876
+    },
+    {
+      "Message": "Thanks Sebastian,\r\n\r\nI've added an attachment to this comment with the stacktraces.\r\n\r\nI tried the code you provided ...\r\n\r\n```\r\n            var  modifiers = NetOffice.Invoker.CreateParamModifiers(false, true);\r\n            object[] formulaArray = null;\r\n            object[] paramsArray = new object[] { SID_SRCStream, formulaArray };\r\n            NetOffice.Invoker.Method(page, \"GetFormulas\", paramsArray, modifiers);\r\n            formulaArray = (object[])paramsArray[1];\r\n            object[] a = new object[0];\r\n            page.GetFormulasU(SID_SRCStream, out a);\r\n\r\n```\r\nbut it won't compile to to the Invoker.Method line...\r\n\r\n```\r\nSeverity\tCode\tDescription\tProject\tFile\tLine\tSuppression State\r\nError\tCS0120\tAn object reference is required for the non-static field, method, or property 'Invoker.Method(COMObject, string, object[], ParameterModifier[])'\tConsoleApplication1\td:\\test_visio\\ConsoleApplication1\\ConsoleApplication1\\Program.cs\t77\tActive\r\n\r\n```\r\n",
+      "PostedBy": "saveenr",
+      "PostedDate": "2016-09-05T07:10:32.197+02:00",
+      "WorkItemId": 22311,
+      "Id": 203878
+    },
+    {
+      "Message": "Minor clarification, the attachment with the exception is right under the Description of the Issue at the top of this thread",
+      "PostedBy": "saveenr",
+      "PostedDate": "2016-09-05T07:14:10.97+02:00",
+      "WorkItemId": 22311,
+      "Id": 203879
+    },
+    {
+      "Message": "I can reproduce the issue right now. \r\n\r\nIn order to continute to work with NetOffice asap i create a bypass for you as linq extension(see attachment)\r\nThis should work in all Visio versions(*1) (11 to 16) - but only true tested in 16-2016 (sry i'm not at home)\r\n\r\nI want create a C++ COM server now with the same method signature as IVPage::GetFormulas and IDispatch support to analyze the problem with a C# dumy client. I'll be back as fast i can.\r\nIf you have problems with the given bypass or other/new problems - please let me know.\r\n\r\n*Sebastian\r\n\r\n(*1) = The bypass use the early bind implementation behind in a lightweight way. This works versionless and fine when the interface id and the method dispid/method signature never has been changed. IVPage interface id and GetFormula method never has been changed.\r\n \r\n\r\n\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-09-06T20:49:10.23+02:00",
+      "WorkItemId": 22311,
+      "Id": 203920
+    },
+    {
+      "Message": "second try to give the attachment (javascript issues)\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-09-06T20:50:56.513+02:00",
+      "WorkItemId": 22311,
+      "Id": 203921
+    },
+    {
+      "Message": "using System;\nusing System.Runtime.InteropServices;\nusing System.Reflection;\nusing System.Runtime.CompilerServices;\nusing Visio = NetOffice.VisioApi;\n\nnamespace Foo // change to what you want/need\n{\n    public static class IVPageExtensions\n    {\n        [DefaultMember(\"Name\"), Guid(\"000D0709-0000-0000-C000-000000000046\"), TypeLibType(4176)]\n        [ComImport]\n        private interface IVPageVTable\n        {\n            [DispId(32)]\n            [MethodImpl(MethodImplOptions.InternalCall)]\n            void GetFormulas([MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_I2)] [In] ref Array SID_SRCStream, \n                [MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_VARIANT)] out Array formulaArray);\n        }\n\n        public static void GetFormulas(this Visio.IVPage page, Int16[] sID_SRCStream, out object[] formulaArray)\n        {\n            formulaArray = null;\n\n            Array arg1 = sID_SRCStream as Array;\n            if(null == arg1)\n                arg1 = new Array[0];\n\n            IVPageVTable proxy = page.UnderlyingObject as IVPageVTable;\n            if (null != proxy)\n            {\n                Array formulas = null;\n                proxy.GetFormulas(ref arg1, out formulas);\n                if (null != formulas)\n                {                    \n                    formulaArray = new object[formulas.Length];\n                    for (int i = 0; i < formulas.Length; i++)\n                        formulaArray[i] = formulas.GetValue(i);\n                }\n            }\n            else\n                throw new InvalidCastException(\"Unable to cast underlying proxy into interop interface\");    \n        }\n    }\n}\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-09-06T20:51:42.863+02:00",
+      "WorkItemId": 22311,
+      "Id": 203922
+    },
+    {
+      "Message": "Thanks, Sebastian. I tried the code you provided - no exception is thrown but it sets returned value for formulaArray is set to null (instead of an array with a single formula value)\n\nOne thing that may be affecting it is that on the current machine I tried it on a machine with both Visio 2010 and Visio 2016 and when I ran the code Visio 2010 kept launching. Tomorrow I'll try on a machine that only has Visio 2016 installed.",
+      "PostedBy": "saveenr",
+      "PostedDate": "2016-09-08T08:03:38.79+02:00",
+      "WorkItemId": 22311,
+      "Id": 203959
+    },
+    {
+      "Message": "OK, I finally got to a machine with Visio 2016 only installed - same results. formulaArray is set to null. As I step through the code it the line \"proxy.GetFormulas(ref arg1, out formulas)\" always sets formulas to null",
+      "PostedBy": "saveenr",
+      "PostedDate": "2016-09-10T19:36:59.5+02:00",
+      "WorkItemId": 22311,
+      "Id": 204030
+    },
+    {
+      "Message": "I'm sorry to say that the bypass didnt works. Nothing is called in that way. Thats why is always null.\nI can reproduce the error in late binding. Currently i create a C++ com server with same argument signature to see what happen in the backend. if everything is good in my backend implementation for the arguments - it is a bug in visio, otherwise COM Interop does some magic here which i can find in the IL code for interop calling and my backend implementation. I hope i have some answers tomorrow in the evening.\n\nSebastian\n\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2016-09-10T22:01:46.96+02:00",
+      "WorkItemId": 22311,
+      "Id": 204031
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

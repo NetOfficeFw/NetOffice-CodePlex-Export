@@ -1,0 +1,112 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 8,
+    "Custom": "",
+    "Description": "Some properties are missing the indexer to access an item. Especially BuiltInDocumentProperties and CustomDocumentProperties on Word.Document should have it.\nFor BuiltInDocumentProperties it should be possible to access an item using the WdBuiltInProperty enum (BuiltInDocumentProperties[WdBuiltInProperty.wdPropertyAuthor])",
+    "HtmlDescription": "Some properties are missing the indexer to access an item. Especially BuiltInDocumentProperties and CustomDocumentProperties on Word.Document should have it.<br />\nFor BuiltInDocumentProperties it should be possible to access an item using the WdBuiltInProperty enum (BuiltInDocumentProperties[WdBuiltInProperty.wdPropertyAuthor])<br />\n",
+    "PlainDescription": "Some properties are missing the indexer to access an item. Especially BuiltInDocumentProperties and CustomDocumentProperties on Word.Document should have it.\nFor BuiltInDocumentProperties it should be possible to access an item using the WdBuiltInProperty enum (BuiltInDocumentProperties[WdBuiltInProperty.wdPropertyAuthor])\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:18.163+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "atschirren",
+    "ReportedDate": "2011-11-12T02:01:59.757+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Missing indexer for some properties",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16898,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600183,
+      "FileName": "_Document.cs",
+      "WorkItemId": 16898,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=16898&FileAttachmentId=1600183"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "for collection classes with an enum type as this indexer parameter, netoffice doesnt support custom enumerators currently.\r\ni change them fast as possible.",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-11-12T23:11:56.467+01:00",
+      "WorkItemId": 16898,
+      "Id": 203013
+    },
+    {
+      "Message": "I've found the real problem for this issue.\r\nThe propertis \"BuiltInDocumentProperties\" and \"CustomDocumentProperties\" on \"NetOffice.WordApi._Document\" should return \"NetOffice.OfficeApi.DocumentProperties\" instead of \"COMObject\". If \"DocumentProperties\" is returned the indexer is present and the collections are enumerable (see my comment on #16739 as well).\r\n\r\nI attached the corrected document class\r\n",
+      "PostedBy": "atschirren",
+      "PostedDate": "2011-11-14T09:40:39.777+01:00",
+      "WorkItemId": 16898,
+      "Id": 203014
+    },
+    {
+      "Message": "the properties are defined as VT_Dispatch in COM type library. this means an anyonym COM proxy. in NetOffice an anyonym COM proxy is represented as COMObject.\r\nwhy it is an anonym proxy? 2 different reasons are possible. 1) the type can be changed in context of situation. 2) all office application use these common base type from office and some applications replace the property with an own type here. \r\nyou have to cast the type at runtime, not realy cool i know but i'm in trouble with other office applications maybe if i change them. is that okay for you?\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-11-14T21:44:42.287+01:00",
+      "WorkItemId": 16898,
+      "Id": 203015
+    },
+    {
+      "Message": "Not really okay but I can live with it.\r\nKeep in mind that Microsofts original PIAs return a typed DocumentProperties collection for BuiltInDocumentProperties and CustomDocumentProperties (http://msdn.microsoft.com/de-de/library/microsoft.office.tools.word.document.builtindocumentproperties.aspx). Your library would be more compatible if it would do so as well.",
+      "PostedBy": "atschirren",
+      "PostedDate": "2011-12-12T08:21:24.967+01:00",
+      "WorkItemId": 16898,
+      "Id": 203016
+    },
+    {
+      "Message": "\r\n\n\n** Closed by SebastianDotNet 09.12.2011 17:57",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-12-13T00:23:47.277+01:00",
+      "WorkItemId": 16898,
+      "Id": 203017
+    },
+    {
+      "Message": "",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-12-13T00:23:48.41+01:00",
+      "WorkItemId": 16898,
+      "Id": 203018
+    },
+    {
+      "Message": "the definition behind the link is: Object BuiltInDocumentProperties { get; }\r\nat runtime the property returns a DocumentProperties object. NetOffice does the same.\r\ni'm misunderstood you?",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-12-13T00:26:47.573+01:00",
+      "WorkItemId": 16898,
+      "Id": 203019
+    },
+    {
+      "Message": "Hi Sebastian\r\nI see your point now. The VS2010 Intellisense and the dynamic return value of the MS PIAs confused me. With the VS2010 PIAs BuiltInDocumentProperties and CustomDocumentProperties seem to return a typed DocumentProperties collection. No cast is required.\r\nBut NetOffice has to support different .NET versions and does not support \"dynamic\". That's why a cast is required.",
+      "PostedBy": "atschirren",
+      "PostedDate": "2012-01-31T01:05:24.563+01:00",
+      "WorkItemId": 16898,
+      "Id": 203020
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

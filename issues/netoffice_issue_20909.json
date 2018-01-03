@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "I try to open my template file as:\n var doc = ExcelApp.Workbooks.Open('myTemplate.xltx', false, false);\nBut, instead  of opening template  Excell create new file, based on template.\n\ndoc = ExcelApp.Workbooks.Open(filename: tName, updateLinks: false, readOnly: false, editable: true); - doesn't work  (Error\t1\tThe best overload for 'Open' does not have a parameter named 'editable')\n\nPlease, explain how  to open template file (.xltx)",
+    "HtmlDescription": "I try to open my template file as:<br />\n var doc = ExcelApp.Workbooks.Open('myTemplate.xltx', false, false);<br />\nBut, instead  of opening template  Excell create new file, based on template.<br />\n<br />\ndoc = ExcelApp.Workbooks.Open(filename: tName, updateLinks: false, readOnly: false, editable: true); - doesn't work  (Error\t1\tThe best overload for 'Open' does not have a parameter named 'editable')<br />\n<br />\nPlease, explain how  to open template file (.xltx)<br />\n",
+    "PlainDescription": "I try to open my template file as:\n var doc = ExcelApp.Workbooks.Open('myTemplate.xltx', false, false);\nBut, instead  of opening template  Excell create new file, based on template.\n\ndoc = ExcelApp.Workbooks.Open(filename: tName, updateLinks: false, readOnly: false, editable: true); - doesn't work  (Error\t1\tThe best overload for 'Open' does not have a parameter named 'editable')\n\nPlease, explain how  to open template file (.xltx)\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2014-04-14T10:42:55.513+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "rtverd",
+    "ReportedDate": "2014-04-10T15:19:36.423+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "How to open template file (.xltx) for editing",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20909,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "NO doesnt use optional parameters. this is because you can't use named arguments.app.Workbooks.Open(@\"C:\\Mappe1.xltx\",null, null, null, null, null, null, null, null,true);\r\n\r\n\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-04-14T10:42:55.513+02:00",
+      "WorkItemId": 20909,
+      "Id": 203218
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

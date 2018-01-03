@@ -1,0 +1,98 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 7,
+    "Custom": "",
+    "Description": "To all,\n\nI have a weird problem ... here is the code:\n...\n```\npublic Excel.Application excel = null;\npublic Excel.Workbook wb = null;\n\t\t\nprivate bool _IsReady = false;\nprivate object missingType = Type.Missing;\n....\ntry\n{\n\texcel = new Excel.Application();   <--- com+ exception here ...\n\twb = excel.Workbooks.Open(this._finalTestDataFileIn, missingType, true);\n\t_IsReady = true;\n\n}\n\n```\n\nThis code with throw an exception :\n\nSystem.Exception._COMPlusExceptionCode -532462766\n\nBut with the same code in debug mode code it works fine without a hicup. This code is in a class library. \n\nAny ideas?\n\npsc0425",
+    "HtmlDescription": "To all,<br />\n<br />\nI have a weird problem ... here is the code:<br />\n...<br />\n<pre><code>public Excel.Application excel = null;\npublic Excel.Workbook wb = null;\n        \nprivate bool _IsReady = false;\nprivate object missingType = Type.Missing;\n....\ntry\n{\n    excel = new Excel.Application();   &lt;--- com+ exception here ...\n    wb = excel.Workbooks.Open(this._finalTestDataFileIn, missingType, true);\n    _IsReady = true;\n\n}\n</code></pre>\n\nThis code with throw an exception :<br />\n<br />\nSystem.Exception._COMPlusExceptionCode -532462766<br />\n<br />\nBut with the same code in debug mode code it works fine without a hicup. This code is in a class library. <br />\n<br />\nAny ideas?<br />\n<br />\npsc0425<br />\n",
+    "PlainDescription": "To all,\n\nI have a weird problem ... here is the code:\n...\npublic Excel.Application excel = null;\npublic Excel.Workbook wb = null;\n      \nprivate bool _IsReady = false;\nprivate object missingType = Type.Missing;\n....\ntry\n{\nexcel = new Excel.Application();   &lt;--- com+ exception here ...\nwb = excel.Workbooks.Open(this._finalTestDataFileIn, missingType, true);\n_IsReady = true;\n\n\n}\n\n\nThis code with throw an exception :\n\nSystem.Exception._COMPlusExceptionCode -532462766\n\nBut with the same code in debug mode code it works fine without a hicup. This code is in a class library. \n\nAny ideas?\n\npsc0425\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2014-10-16T04:06:34.783+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "psc0425",
+    "ReportedDate": "2014-10-10T21:14:21.48+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Problem when running in release mode",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21440,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "the code is running in debug/release mode on same system?\r\n\r\ni'm wondering about: \"System.Exception._COMPlusExceptionCode\"\r\n\r\nits looks like for a COM+ environment problem so far....(common here is a dependency or security issue, specialy on Win Vista/7 and higher, because the debug release is started with VS.NET privileges and the release ist started with roaming user privileges)\r\n\r\nFor me: its sounds like a security issue, otherwise you have to help me to reproduce your problem in my test machine to pin point the problem.\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-10-10T21:54:15.803+02:00",
+      "WorkItemId": 21440,
+      "Id": 203262
+    },
+    {
+      "Message": "I tested the code on my development machine ...win8.1 vs2013 ... excel 2013.Not logged into a domaine.\r\n\r\nWhat other details is needed?",
+      "PostedBy": "psc0425",
+      "PostedDate": "2014-10-10T22:51:32.66+02:00",
+      "WorkItemId": 21440,
+      "Id": 203263
+    },
+    {
+      "Message": "all what i need for to reproduce the problem, specialy about your COM+ environment.please help me to reproduce your scenario as best is possible(in a virtual machine)  to pin point the problem.\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-10-11T00:29:44.373+02:00",
+      "WorkItemId": 21440,
+      "Id": 203264
+    },
+    {
+      "Message": "Can you specify? I don't understand what is in a com+ environment.\r\n\r\nthanks",
+      "PostedBy": "psc0425",
+      "PostedDate": "2014-10-11T18:28:38.497+02:00",
+      "WorkItemId": 21440,
+      "Id": 203265
+    },
+    {
+      "Message": "no idea about your scenario. its looks like COM+ for me because your exception code:\r\n\r\nSystem.Exception.[_COMPlus]ExceptionCode -532462766Do you work remote in a terminal session? (remote desktop or something like this)\r\n\r\n*Sebastian\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-10-12T07:58:36.72+02:00",
+      "WorkItemId": 21440,
+      "Id": 203266
+    },
+    {
+      "Message": "Nope, just on my developement machine.I have access to a XP machine, and a win 7 pc. I will update when possible.\r\n\r\nPHIL",
+      "PostedBy": "psc0425",
+      "PostedDate": "2014-10-14T17:32:21.957+02:00",
+      "WorkItemId": 21440,
+      "Id": 203267
+    },
+    {
+      "Message": "sry i have to ask again:the code is running in debug/release mode on same system? means: works fine on your developer machine in debug compilation and stops in release settings here?(for me it looks like the code is running on xp and failed on w7, this is very common but different to a debug/release issue) Preliminary: I have to make sure this is a real release compilation issue(no issue here for all the years) Let me know about you op system(version, bit) /office version(version, bit) /NO version and all the things what ist helpfull to reproduce you scenario in a virtual machine. For the moment: im sure this i not a NO debug/release issue. \r\n\r\nBTW: Google tolds me some people got the same exception(without NO) in a mutli-thread scenario.Please let me know about your scenario, (from IIS, WindowsForms, WindowsService, RPC-Session....)\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2014-10-16T04:06:34.783+02:00",
+      "WorkItemId": 21440,
+      "Id": 203268
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

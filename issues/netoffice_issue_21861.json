@@ -1,0 +1,98 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 7,
+    "Custom": "",
+    "Description": "I writing an Addin using Visual Studio 2010 Professional. When trying to debug, I get an error message that it is a library and that it cannot be started directly. \n\nHow do I debug the Addin? It worked when I used to do it with Office Interop in Visual Studio project but with NetOffice, I can't debug. Please help.",
+    "HtmlDescription": "I writing an Addin using Visual Studio 2010 Professional. When trying to debug, I get an error message that it is a library and that it cannot be started directly. <br />\n<br />\nHow do I debug the Addin? It worked when I used to do it with Office Interop in Visual Studio project but with NetOffice, I can't debug. Please help.<br />\n",
+    "PlainDescription": "I writing an Addin using Visual Studio 2010 Professional. When trying to debug, I get an error message that it is a library and that it cannot be started directly. \n\nHow do I debug the Addin? It worked when I used to do it with Office Interop in Visual Studio project but with NetOffice, I can't debug. Please help.\n",
+    "LastUpdatedBy": "tim_qin",
+    "LastUpdatedDate": "2015-06-11T03:51:53.573+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Danzy83",
+    "ReportedDate": "2015-05-18T00:56:15.113+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Debugging in Visual Studio 2010",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 21861,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hey men\r\n\r\nin Visual Studio 2010:\r\n\r\n- go to project {MyProject} Properties in menu on top- go to the tab \"Debugging\"- hit the radioBox \"Start external program\"- select your target office application from local filesystem(may Excel.exe, Word.exe, whatever...)\r\n\r\nnow start debugging and vs start the office application. your addin want loaded and you can debug your code, incl. breakpoints, whatever.\r\n\r\n*happy debugging Sebastian\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-18T21:34:11.597+02:00",
+      "WorkItemId": 21861,
+      "Id": 203307
+    },
+    {
+      "Message": "Thanks Sebastian. Excel now loads when I give the debug command but breakpoints are not hit wherever I set them. Any workarounds? I'm using Visual Studio 2010 Professional.",
+      "PostedBy": "Danzy83",
+      "PostedDate": "2015-05-18T22:44:29.91+02:00",
+      "WorkItemId": 21861,
+      "Id": 203308
+    },
+    {
+      "Message": "hey men\r\n\r\nlet me know your .net framework version and profile. (this means your target .net framework version in your assembly)\r\n\r\nin some cases, vs2010 is not ready to use the debugger in depricated .net framework versions.  (in fact: we can fix this to put an *.exe.config hand in the local directory to the .exe file, also for [officeApp}.exe)\r\n\r\n*Sebastian\r\n\r\n\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-18T23:55:56.427+02:00",
+      "WorkItemId": 21861,
+      "Id": 203309
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nmy assembly targets the .Net Framework 2.0. I don't know if vs2010 deprecates that.",
+      "PostedBy": "Danzy83",
+      "PostedDate": "2015-05-19T09:39:41.51+02:00",
+      "WorkItemId": 21861,
+      "Id": 203310
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nI opened the project with vs2008 professional on another machine and during debugging, breakpoints were hit.\r\n\r\nThe problem now is that during project creation with the Developer Toolbox, under Environment, VS2010, VS2012, and vs2013 are shown as the tools to that can be used.\r\n\r\nIf there is a way or version that supports vs2008, I would love to use that. Currently I use the latest version (1.7.3).",
+      "PostedBy": "Danzy83",
+      "PostedDate": "2015-05-19T10:02:56.35+02:00",
+      "WorkItemId": 21861,
+      "Id": 203311
+    },
+    {
+      "Message": "VS2010 can't handle the remote debugger in .Net 2 as well per default.The trick is to create an .exe.config file in the same directory as the office application.(For example: Excel.exe.config for MS-Excel)\r\n\r\nput this content on it:\r\n\r\n        \r\n\r\nNow VS2010 is using the remoter debugger from .NET 2\r\n\r\n*Sebastian\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-05-19T14:46:01.043+02:00",
+      "WorkItemId": 21861,
+      "Id": 203312
+    },
+    {
+      "Message": "Hi,\r\n\r\nI'm now using vs2008 to manually create the project rather than using Developer Toolbox. Works great and tabs show in Excel application. Breakpoints are also hit. If there are no flaws, I will stick to vs2008.\r\n\r\nI will follow your directives on the configuration to make it work in vs2010. \r\n\r\nThanks for your support. You are great!",
+      "PostedBy": "Danzy83",
+      "PostedDate": "2015-05-19T15:31:34.83+02:00",
+      "WorkItemId": 21861,
+      "Id": 203313
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

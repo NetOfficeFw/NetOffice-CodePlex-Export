@@ -1,0 +1,146 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 12,
+    "Custom": "",
+    "Description": "I tried migrating my .NET application (Microsoft Excel Add-In) from NetOffice Release 1.4.1 to 1.6.0 (latest), and am experiencing an error with my code. Specifically, the Address property of the Range object appears not to have any parameters ie. Address() - May I please know if this is intended? For your reference, I am currently working with .NET 2.0.\n\nThank you in advance.",
+    "HtmlDescription": "I tried migrating my .NET application (Microsoft Excel Add-In) from NetOffice Release 1.4.1 to 1.6.0 (latest), and am experiencing an error with my code. Specifically, the Address property of the Range object appears not to have any parameters ie. Address() - May I please know if this is intended? For your reference, I am currently working with .NET 2.0.<br />\n<br />\nThank you in advance.<br />\n",
+    "PlainDescription": "I tried migrating my .NET application (Microsoft Excel Add-In) from NetOffice Release 1.4.1 to 1.6.0 (latest), and am experiencing an error with my code. Specifically, the Address property of the Range object appears not to have any parameters ie. Address() - May I please know if this is intended? For your reference, I am currently working with .NET 2.0.\n\nThank you in advance.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-07-28T12:21:54.107+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "eugene_huang",
+    "ReportedDate": "2013-07-14T11:35:43.827+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Address Property of Range Object has no parameters (NetOffice 1.6.0)",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 19965,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600190,
+      "FileName": "error.ppt",
+      "WorkItemId": 19965,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=19965&FileAttachmentId=1600190"
+    },
+    {
+      "FileId": 1600191,
+      "FileName": "error.ppt",
+      "WorkItemId": 19965,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=19965&FileAttachmentId=1600191"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "do you use Visual Basic? (VB has a syntax issue here, you need the get_ version)\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-07-15T13:48:17.753+02:00",
+      "WorkItemId": 19965,
+      "Id": 203136
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nThank you for your prompt response. Yes, I'm working with Visual Basic and your solution worked perfect. Thank you again.\r\n\r\nI now, however, experience another error when I run my compiled add-in on Microsoft Excel (Please refer to the attached file for the error messages). This error does not occur when I run my other compiled .NET applications (Microsoft Word, Microsoft PowerPoint Add-Ins), which have also been migrated from NetOffice 1.4.1 to 1.6.0. Please let me know if I should raise this as a separate issue on the discussion board.\r\n\r\nFor your reference, I am testing the compiled add-in on Microsoft Excel 2007, Windows Vista.\r\n\r\nThank you again.\r\n\r\nEugene",
+      "PostedBy": "eugene_huang",
+      "PostedDate": "2013-07-15T15:33:44.913+02:00",
+      "WorkItemId": 19965,
+      "Id": 203137
+    },
+    {
+      "Message": "did you use the netoffice tools namespace?",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-07-15T16:35:46.433+02:00",
+      "WorkItemId": 19965,
+      "Id": 203138
+    },
+    {
+      "Message": "Pardon my ignorance; I'm not entirely familiar with namespaces. I don't believe I used the \"netoffice tools namespace\" but I may have done so unknowingly. Is there anyway I can check to find out?\r\n\r\nTo let you know, I am using the Assemblies:1. ExcelApi.dll2. NetOffice.dll3. OfficeApi.dll4. PowerPointApi.dll5. VBIDEApi.dll6. WordApi.dll\r\n\r\nThanks again.",
+      "PostedBy": "eugene_huang",
+      "PostedDate": "2013-07-16T15:15:18.527+02:00",
+      "WorkItemId": 19965,
+      "Id": 203139
+    },
+    {
+      "Message": "no worries. the tools namespace is a new 1.6 feature.as first try to debug the problem.go the menu debugging/exceptions and activate the checkbox 'Common Language Runtime Exceptions' now go to the project properties/debugging and hit the option 'start external program' and choose your office application(path)now start debugging and see where the exception occurs in your code\r\n\r\nSebastian\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-07-16T22:57:14.033+02:00",
+      "WorkItemId": 19965,
+      "Id": 203140
+    },
+    {
+      "Message": "Sebastian,\r\n\r\nThank you for your advice. \r\n\r\nThe error appears to result from the following block of code:\r\n\r\nDim excelProxy As Object = System.Runtime.InteropServices.Marshal.GetActiveObject(\"Excel.Application\")Dim xlApp As Excel.Application = New Excel.Application(Nothing, excelProxy)\r\n\r\nThe precise error message is attached to this message, for your reference.\r\n\r\nI really appreciate your help and patience with this.\r\n\r\nEugene",
+      "PostedBy": "eugene_huang",
+      "PostedDate": "2013-07-17T16:38:10.54+02:00",
+      "WorkItemId": 19965,
+      "Id": 203141
+    },
+    {
+      "Message": "the error occurs in which line ??the last ?? :o ( the assert message tolds me you try to call a method.N0 doesnt use Debug.Assert btw. you do?*scary",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-07-18T14:47:15.477+02:00",
+      "WorkItemId": 19965,
+      "Id": 203142
+    },
+    {
+      "Message": "I've tried testing it again, and can now confirm that the error occurs in the following line:\r\n\r\nDim xlApp As Excel.Application = New Excel.Application(Nothing, excelProxy) \r\n\r\nYes, I used \"Debug.Assert\" to debug the code as I have difficulty doing so through Visual Studio (dll is called by vba). Is there is any way I can circumvent this? I tried debugging on Visual Studio using the instructions you provided (ie. specified excel as an external program), but nothing happens when I hit \"debug\" (an instance of Excel starts up but nothing happens thereafter).\r\n\r\nThank you again.",
+      "PostedBy": "eugene_huang",
+      "PostedDate": "2013-07-18T15:30:17.027+02:00",
+      "WorkItemId": 19965,
+      "Id": 203143
+    },
+    {
+      "Message": "its possible that your vba code is executed while excel is starting?\r\n\r\nabout the debugging: can you tell me your target .net version and vs version?",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-07-18T17:45:46.92+02:00",
+      "WorkItemId": 19965,
+      "Id": 203144
+    },
+    {
+      "Message": "I deleted the VBA files (which run on excel startup) prior to debugging, so it's unlikely the VBA files were interferring with the debugging process. \r\n\r\nMy target .NET version is 2.0, and I'm working with Visual Studio Express 2008.",
+      "PostedBy": "eugene_huang",
+      "PostedDate": "2013-07-19T13:33:43.39+02:00",
+      "WorkItemId": 19965,
+      "Id": 203145
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nMay I please know if you've had the chance to review my query? Please let me know there's any additional information you require.\r\n\r\nThank you,Eugene",
+      "PostedBy": "eugene_huang",
+      "PostedDate": "2013-07-28T11:20:51.19+02:00",
+      "WorkItemId": 19965,
+      "Id": 203146
+    },
+    {
+      "Message": "when its possible, please send me your solution (incl. the netoffice binaries u use) to public.sebastian[at]web.de, remove all privat code you if want and give me instructions how i can reproduce your scenario.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2013-07-28T12:21:54.107+02:00",
+      "WorkItemId": 19965,
+      "Id": 203147
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

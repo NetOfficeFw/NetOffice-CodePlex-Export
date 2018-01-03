@@ -1,0 +1,77 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "When I run the word C# samples I get an error dialog when opening the resulting doc afterwords.\nThe dialog says:\nTitle: C# WordRibbonAddin\nText: An error occured in OnAction.\n        Error accessing resource Stream",
+    "HtmlDescription": "When I run the word C# samples I get an error dialog when opening the resulting doc afterwords.<br />\nThe dialog says:<br />\nTitle: C# WordRibbonAddin<br />\nText: An error occured in OnAction.<br />\n<pre><code>    Error accessing resource Stream</code></pre>\n\n",
+    "PlainDescription": "When I run the word C# samples I get an error dialog when opening the resulting doc afterwords.\nThe dialog says:\nTitle: C# WordRibbonAddin\nText: An error occured in OnAction.\nError accessing resource Stream\n\n\n",
+    "LastUpdatedBy": "chr_jensen",
+    "LastUpdatedDate": "2013-06-14T09:33:19.18+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "chr_jensen",
+    "ReportedDate": "2011-06-07T21:06:35.56+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error when opening Word samples in Word 2007",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16026,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for request.\r\ncan you tell me the .net framework version ?",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-06-07T22:46:30.03+02:00",
+      "WorkItemId": 16026,
+      "Id": 202987
+    },
+    {
+      "Message": "now i see the mistake. *damn it\r\nthe method to read the embedded xml file in COM Addin Ribbon Example was wrong.\r\nthe problem is not associated to the normal examples.\r\nneeds one day to fix it.\r\nissue is in progress now.",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-06-07T23:11:40.907+02:00",
+      "WorkItemId": 16026,
+      "Id": 202988
+    },
+    {
+      "Message": "fixed! :-)",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-06-08T17:23:11.86+02:00",
+      "WorkItemId": 16026,
+      "Id": 202989
+    },
+    {
+      "Message": "Thx!",
+      "PostedBy": "chr_jensen",
+      "PostedDate": "2011-06-09T11:51:20.563+02:00",
+      "WorkItemId": 16026,
+      "Id": 202990
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Hello,\n\nNetOffice.ExcelApi.WorkBook.SaveAs(...) ignores my local settings when I save the workbook, e.g, in XlFileFormat.xlCurrentPlatformText format. After the workbook is saved to .txt file the decimal separator is always dot (.) while NetOffice.ExcelApi.Application.DecimalSeparator says that my decimal separator is comma (,).\n\nIf I save the workbook to the excel format then it uses the decimal separator defined in the DecimalSeparator property.\n\nIs this a bug or feature that .txt file is always saved by using dot as a decimal separator?\n\nI am using NetOffice 1.7.2 and .NET Framework 4.5\n\n```\nNetOffice.ExcelApi.Application excelApplication = new Excel.Application();\n\nvar workbook = excelApplication.Workbooks.Open(\"c:\\\\example.xlsx\");\nworkbook.SaveAs(\"c:\\\\example.txt\", XlFileFormat.xlCurrentPlatformText, Type.Missing, Type.Missing, false);\n```",
+    "HtmlDescription": "Hello,<br />\n<br />\nNetOffice.ExcelApi.WorkBook.SaveAs(...) ignores my local settings when I save the workbook, e.g, in XlFileFormat.xlCurrentPlatformText format. After the workbook is saved to .txt file the decimal separator is always dot (.) while NetOffice.ExcelApi.Application.DecimalSeparator says that my decimal separator is comma (,).<br />\n<br />\nIf I save the workbook to the excel format then it uses the decimal separator defined in the DecimalSeparator property.<br />\n<br />\nIs this a bug or feature that .txt file is always saved by using dot as a decimal separator?<br />\n<br />\nI am using NetOffice 1.7.2 and .NET Framework 4.5<br />\n<pre><code>NetOffice.ExcelApi.Application excelApplication = new Excel.Application();\n\nvar workbook = excelApplication.Workbooks.Open(&quot;c:\\\\example.xlsx&quot;);\nworkbook.SaveAs(&quot;c:\\\\example.txt&quot;, XlFileFormat.xlCurrentPlatformText, Type.Missing, Type.Missing, false);</code></pre>\n\n",
+    "PlainDescription": "Hello,\n\nNetOffice.ExcelApi.WorkBook.SaveAs(...) ignores my local settings when I save the workbook, e.g, in XlFileFormat.xlCurrentPlatformText format. After the workbook is saved to .txt file the decimal separator is always dot (.) while NetOffice.ExcelApi.Application.DecimalSeparator says that my decimal separator is comma (,).\n\nIf I save the workbook to the excel format then it uses the decimal separator defined in the DecimalSeparator property.\n\nIs this a bug or feature that .txt file is always saved by using dot as a decimal separator?\n\nI am using NetOffice 1.7.2 and .NET Framework 4.5\nNetOffice.ExcelApi.Application excelApplication = new Excel.Application();\n\nvar workbook = excelApplication.Workbooks.Open(\"c:\\example.xlsx\");\nworkbook.SaveAs(\"c:\\example.txt\", XlFileFormat.xlCurrentPlatformText, Type.Missing, Type.Missing, false);\n",
+    "LastUpdatedBy": "sami_lehtonen",
+    "LastUpdatedDate": "2015-02-09T11:42:59.687+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "sami_lehtonen",
+    "ReportedDate": "2015-02-06T13:55:25.257+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Decimal separator is always dot (.) when saving an excel file to text file",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21712,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hey men,\r\n\r\ncan you make sure this problem occurs not with the MS Interop assemblies?(it looks like excel ignore its own seperator, NetOffice contains no own logic here)\r\n\r\nmay it helps to change the given thread culture(as environment).something like this:\r\n\r\nint lcid = GetYourLCIDHere(); // choose a language with your favourite seperator settingsNetOffice.Settings.Default.ThreadCulture = new CultureInfo(lcid);\r\n\r\nThis culture is given to the office application in any call from NetOffice himself.\r\n\r\n*hope this helps!Sebastian ",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-02-06T22:47:20.83+01:00",
+      "WorkItemId": 21712,
+      "Id": 203290
+    },
+    {
+      "Message": "Hello and thanks,\r\n\r\nI tested this with MS Interop assemblies and was able to reproduce it. So this isn't NetOffice's bug.\r\n\r\nSami",
+      "PostedBy": "sami_lehtonen",
+      "PostedDate": "2015-02-09T11:42:59.687+01:00",
+      "WorkItemId": 21712,
+      "Id": 203291
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

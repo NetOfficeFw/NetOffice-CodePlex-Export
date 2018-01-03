@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "ExcelApi.FormatConditions.GetEnumerator() throws an exception when iterating through existing formats in a sheet when the sheet has an IconSetCondition\n\nFix is to change the IEnumerable to object (from FormatCondition) and then check on the calling end what type of format is being processed.\n\n```\npublic class FormatConditions : COMObject ,IEnumerable<object>\n\n.. snip..\n\n[SupportByVersionAttribute(\"Excel\", 9,10,11,12,14,15)]\npublic IEnumerator<object> GetEnumerator()  \n{\n       NetRuntimeSystem.Collections.IEnumerable innerEnumerator = (this as NetRuntimeSystem.Collections.IEnumerable);\n       foreach (object item in innerEnumerator)\n              yield return item;\n}\n```",
+    "HtmlDescription": "ExcelApi.FormatConditions.GetEnumerator() throws an exception when iterating through existing formats in a sheet when the sheet has an IconSetCondition<br />\n<br />\nFix is to change the IEnumerable to object (from FormatCondition) and then check on the calling end what type of format is being processed.<br />\n<pre><code>public class FormatConditions : COMObject ,IEnumerable&lt;object&gt;\n\n.. snip..\n\n[SupportByVersionAttribute(&quot;Excel&quot;, 9,10,11,12,14,15)]\npublic IEnumerator&lt;object&gt; GetEnumerator()  \n{\n       NetRuntimeSystem.Collections.IEnumerable innerEnumerator = (this as NetRuntimeSystem.Collections.IEnumerable);\n       foreach (object item in innerEnumerator)\n              yield return item;\n}</code></pre>\n\n",
+    "PlainDescription": "ExcelApi.FormatConditions.GetEnumerator() throws an exception when iterating through existing formats in a sheet when the sheet has an IconSetCondition\n\nFix is to change the IEnumerable to object (from FormatCondition) and then check on the calling end what type of format is being processed.\npublic class FormatConditions : COMObject ,IEnumerable<object>\n\n.. snip..\n\n[SupportByVersionAttribute(\"Excel\", 9,10,11,12,14,15)]\npublic IEnumerator<object> GetEnumerator()\n{\n   NetRuntimeSystem.Collections.IEnumerable innerEnumerator = (this as NetRuntimeSystem.Collections.IEnumerable);\n   foreach (object item in innerEnumerator)\n          yield return item;\n\n}\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2017-12-12T00:04:29.147+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "sverrirs",
+    "ReportedDate": "2013-08-21T13:21:00.043+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ExcelApi.FormatConditions throws error during enumeration",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20112,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

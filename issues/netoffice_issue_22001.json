@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Are there any plans to support more versions of the DAO DBEngine than 3.6 and 12.0? This is the fastest way to modify Access dbs in some batched cases, and it would be a boon to code portability if more version were supported. Thanks for your time.",
+    "HtmlDescription": "Are there any plans to support more versions of the DAO DBEngine than 3.6 and 12.0? This is the fastest way to modify Access dbs in some batched cases, and it would be a boon to code portability if more version were supported. Thanks for your time.<br />\n",
+    "PlainDescription": "Are there any plans to support more versions of the DAO DBEngine than 3.6 and 12.0? This is the fastest way to modify Access dbs in some batched cases, and it would be a boon to code portability if more version were supported. Thanks for your time.\n",
+    "LastUpdatedBy": "Wildbiftek",
+    "LastUpdatedDate": "2015-10-13T21:24:09.9+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "Wildbiftek",
+    "ReportedDate": "2015-09-10T16:11:36.187+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "DAO version support",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22001,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "is this an MS-Access scenario?\r\n\r\ncurrently what known is 2 different kinds of engines.(in multiple versions)the old DAO engine (NetOffice support both of them.something here that i didnt realize?\r\n\r\nplease explain in detail which engine you need. everything is helpfull dll name version and so on....\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-09-14T17:24:10.847+02:00",
+      "WorkItemId": 22001,
+      "Id": 203352
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nThanks for the reply and the great product!\r\n\r\nI am referring to compatibility with the assembly in my microsoft visual studio 2010 path:\r\n\r\nC:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Visual Studio Tools for Office\\PIA\\Office14\\Microsoft.Office.interop.access.dao.dll\r\n\r\nThe runtime version is:\r\n\r\nv2.0.50727\r\n\r\nAnd the version is:\r\n\r\n14.0.0.0\r\n\r\nI have Office 2010 installed as well and I believe this assembly corresponds to the version of Access from this version. There is a version conflict when trying to call DAO functions using the NetOffice API with this version of Access, and this specific version doesn't seem to exist in the header file (so intellisense doesn't show this).\r\n\r\nLet me know if I can clarify. Thanks!\r\n\r\n",
+      "PostedBy": "Wildbiftek",
+      "PostedDate": "2015-10-13T21:24:09.9+02:00",
+      "WorkItemId": 22001,
+      "Id": 203353
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "netoffice v1.4.1 - Excel\n \nwhen i run this code,\n \nWorkSheet.Range(cell).Font.Color = Color.Blue.ToArgb();\n \nthe result is in Red instead of Blue !\n \nif i do this :\n \nWorkSheet.Range(cell).Font.Color = Color.Red.ToArgb();\n \n \nthe result is in Blue instead of Red !\n \n \ni work with office 2007 SP2",
+    "HtmlDescription": "netoffice v1.4.1 - Excel<br />\n <br />\nwhen i run this code,<br />\n <br />\nWorkSheet.Range(cell).Font.Color = Color.Blue.ToArgb();<br />\n <br />\nthe result is in Red instead of Blue !<br />\n <br />\nif i do this :<br />\n <br />\nWorkSheet.Range(cell).Font.Color = Color.Red.ToArgb();<br />\n <br />\n <br />\nthe result is in Blue instead of Red !<br />\n <br />\n <br />\ni work with office 2007 SP2<br />\n",
+    "PlainDescription": "netoffice v1.4.1 - Excel\n \nwhen i run this code,\n \nWorkSheet.Range(cell).Font.Color = Color.Blue.ToArgb();\n \nthe result is in Red instead of Blue !\n \nif i do this :\n \nWorkSheet.Range(cell).Font.Color = Color.Red.ToArgb();\n \n \nthe result is in Blue instead of Red !\n \n \ni work with office 2007 SP2\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:16.21+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "fred98",
+    "ReportedDate": "2012-05-06T08:24:03.32+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "bad color",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17992,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "the definition in office is different to .NET\r\nbut you can convert them with the following method:\r\n\r\n*/ taken from Example01.cs /*\r\n\r\n/// \r\n/// Translate a color to double\r\n/// \r\n/// \r\nexpression to convert\r\n\r\n /// color\r\nprivate static double ToDouble(System.Drawing.Color color)\r\n{\r\n   uint returnValue = color.B;\r\n   returnValue = returnValue << 8;\r\n   returnValue += color.G;\r\n   returnValue = returnValue << 8;\r\n   returnValue += color.R;\r\n   return returnValue;\r\n}",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-05-06T22:23:41.8+02:00",
+      "WorkItemId": 17992,
+      "Id": 203048
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

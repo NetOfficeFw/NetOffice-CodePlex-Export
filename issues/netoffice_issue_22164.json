@@ -1,0 +1,63 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Hi Sebastian,\n\nwhile I was trying to add names automatically i discovered the following:\n\nIf I add a name in VBA i always have to use the english formula (in the RefersTo parameter; as described under https://msdn.microsoft.com/de-de/library/office/ff835300.aspx the formula needs to be in english).\n\nExample: I want to add a formula in german \"=BEREICH.VERSCHIEBEN(A1;0;0;10;1)\". To add this formula automatically via VBA i would write something like\n\n```\nSub example()\n    ActiveWorkbook.Names.Add Name:=\"name\", RefersTo:=\"=Offset($A$1,0,0,10,1)\"\nEnd Sub\n```\n\na new name \"=BEREICH.VERSCHIEBEN(Tabelle1!$A$1;0;0;10;1)\" is created in my Workbook (I have a german installation).\n\nHowever, this doesn't work with NetOffice. I tried 2 versions.\n\n1. This one simply crashes with an error that says that this is not a correct formula\n```\nActiveSheet.Names.Add(\"name\", \"=Offset($A$1,0,0,10,1)\");\n```\n\n2. Replaced \",\" with \";\"\n```\nActiveSheet.Names.Add(\"name\", \"=Offset($A$1;0;0;10;1)\");\n```\n\nThis results in a new name with the formula \"=Offset($A$1;0;0;10;1)\" but of course my german version does not know \"offset\".\n\nSo i guess that there is some sort of translation from the english formula version to your local language which is currently nut supported by NetOffice. Couly you please have a look? Happy to provide additional details if needed.\n\nregards,\n\ncoheedld",
+    "HtmlDescription": "Hi Sebastian,<br />\n<br />\nwhile I was trying to add names automatically i discovered the following:<br />\n<br />\nIf I add a name in VBA i always have to use the english formula (in the RefersTo parameter; as described under <a href=\"https://msdn.microsoft.com/de-de/library/office/ff835300.aspx\" rel=\"nofollow\">https://msdn.microsoft.com/de-de/library/office/ff835300.aspx</a> the formula needs to be in english).<br />\n<br />\nExample: I want to add a formula in german &quot;=BEREICH.VERSCHIEBEN(A1;0;0;10;1)&quot;. To add this formula automatically via VBA i would write something like<br />\n<pre><code>Sub example()\n    ActiveWorkbook.Names.Add Name:=&quot;name&quot;, RefersTo:=&quot;=Offset($A$1,0,0,10,1)&quot;\nEnd Sub</code></pre>\n\na new name &quot;=BEREICH.VERSCHIEBEN(Tabelle1!$A$1;0;0;10;1)&quot; is created in my Workbook (I have a german installation).<br />\n<br />\nHowever, this doesn't work with NetOffice. I tried 2 versions.<br />\n<ol>\n<li>This one simply crashes with an error that says that this is not a correct formula</li>\n</ol>\n<pre><code>ActiveSheet.Names.Add(&quot;name&quot;, &quot;=Offset($A$1,0,0,10,1)&quot;);</code></pre>\n\n<ol>\n<li>Replaced &quot;,&quot; with &quot;;&quot;</li>\n</ol>\n<pre><code>ActiveSheet.Names.Add(&quot;name&quot;, &quot;=Offset($A$1;0;0;10;1)&quot;);</code></pre>\n\nThis results in a new name with the formula &quot;=Offset($A$1;0;0;10;1)&quot; but of course my german version does not know &quot;offset&quot;.<br />\n<br />\nSo i guess that there is some sort of translation from the english formula version to your local language which is currently nut supported by NetOffice. Couly you please have a look? Happy to provide additional details if needed.<br />\n<br />\nregards,<br />\n<br />\ncoheedld<br />\n",
+    "PlainDescription": "Hi Sebastian,\n\nwhile I was trying to add names automatically i discovered the following:\n\nIf I add a name in VBA i always have to use the english formula (in the RefersTo parameter; as described under https://msdn.microsoft.com/de-de/library/office/ff835300.aspx the formula needs to be in english).\n\nExample: I want to add a formula in german \"=BEREICH.VERSCHIEBEN(A1;0;0;10;1)\". To add this formula automatically via VBA i would write something like\nSub example()\nActiveWorkbook.Names.Add Name:=&quot;name&quot;, RefersTo:=&quot;=Offset($A$1,0,0,10,1)&quot;\n\nEnd Sub\n\na new name \"=BEREICH.VERSCHIEBEN(Tabelle1!$A$1;0;0;10;1)\" is created in my Workbook (I have a german installation).\n\nHowever, this doesn't work with NetOffice. I tried 2 versions.\n\nThis one simply crashes with an error that says that this is not a correct formula\n\nActiveSheet.Names.Add(\"name\", \"=Offset($A$1,0,0,10,1)\");\n\n\nReplaced \",\" with \";\"\n\nActiveSheet.Names.Add(\"name\", \"=Offset($A$1;0;0;10;1)\");\n\nThis results in a new name with the formula \"=Offset($A$1;0;0;10;1)\" but of course my german version does not know \"offset\".\n\nSo i guess that there is some sort of translation from the english formula version to your local language which is currently nut supported by NetOffice. Couly you please have a look? Happy to provide additional details if needed.\n\nregards,\n\ncoheedld\n",
+    "LastUpdatedBy": "coheedld",
+    "LastUpdatedDate": "2016-02-06T23:44:39.843+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "coheedld",
+    "ReportedDate": "2016-02-06T23:36:29.7+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel: Names.Add Method",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22164,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600209,
+      "FileName": "Unbenannt25.JPG",
+      "WorkItemId": 22164,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=22164&FileAttachmentId=1600209"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Error message of option 1 as described above.\r\n\r\n",
+      "PostedBy": "coheedld",
+      "PostedDate": "2016-02-06T23:44:39.843+01:00",
+      "WorkItemId": 22164,
+      "Id": 203369
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

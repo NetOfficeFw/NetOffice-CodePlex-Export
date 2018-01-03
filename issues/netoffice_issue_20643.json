@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "In WordAPI for jumping to then next bookmark \"Firstline\" in a document, I've tried to use \nApplication.Selection.Goto(What:=wdGoToBookmark, Name:=\"Firstline\") \n\nbut got the error: \"For parameter \"which\" the argument ist missed\".\n\nFor the argument wdGoToBookmark only the parameter \"name\" is required, in Word interopts, this is functional but nut in NetOffice, WordAPI.\n\nI found no way, to fix this.\nAny Ideas?\n\nThanks\nJoerg",
+    "HtmlDescription": "In WordAPI for jumping to then next bookmark &quot;Firstline&quot; in a document, I've tried to use <br />\nApplication.Selection.Goto(What:=wdGoToBookmark, Name:=&quot;Firstline&quot;) <br />\n<br />\nbut got the error: &quot;For parameter &quot;which&quot; the argument ist missed&quot;.<br />\n<br />\nFor the argument wdGoToBookmark only the parameter &quot;name&quot; is required, in Word interopts, this is functional but nut in NetOffice, WordAPI.<br />\n<br />\nI found no way, to fix this.<br />\nAny Ideas?<br />\n<br />\nThanks<br />\nJoerg<br />\n",
+    "PlainDescription": "In WordAPI for jumping to then next bookmark \"Firstline\" in a document, I've tried to use \nApplication.Selection.Goto(What:=wdGoToBookmark, Name:=\"Firstline\") \n\nbut got the error: \"For parameter \"which\" the argument ist missed\".\n\nFor the argument wdGoToBookmark only the parameter \"name\" is required, in Word interopts, this is functional but nut in NetOffice, WordAPI.\n\nI found no way, to fix this.\nAny Ideas?\n\nThanks\nJoerg\n",
+    "LastUpdatedBy": "vanderr3",
+    "LastUpdatedDate": "2014-08-11T00:05:41.747+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "JHausi",
+    "ReportedDate": "2014-01-17T12:38:58.59+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "WordAPI, Selection.Goto wdGoToBookmark Error",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20643,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The use of Bookmarks in WordAPI does not seem to follow Word API, Try using Bookmarks.Item, it does not exist, nor can one fine a way to use predefined bookmarks.\r\n\r\nIf anyone could shed some light on this?\r\n\r\nThanksRudy",
+      "PostedBy": "vanderr3",
+      "PostedDate": "2014-08-11T00:05:41.747+02:00",
+      "WorkItemId": 20643,
+      "Id": 203211
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

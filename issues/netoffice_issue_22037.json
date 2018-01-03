@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "Hi,\n\ncalling \n```\nExcelApi.Application.GetActiveInstances()\n```\nwith an open Excel instance which has no workbooks visibly opened (i.e. start excel and close or hide the default workbook) causes a NullReferenceException.\n\n\nI tracked it down to the excel hot fix in GetActiveProxiesFromROT and the subsequent proxy lookup by hWnd.\nIf no workbook is visible there seems to be no EXCEL7 window and the lookup returns a null reference, which then causes the NullReferenceException on COMObject instantiation.\n\nBest regards,\nAndreas",
+    "HtmlDescription": "Hi,<br />\n<br />\ncalling <br />\n<pre><code>ExcelApi.Application.GetActiveInstances()</code></pre>\n\nwith an open Excel instance which has no workbooks visibly opened (i.e. start excel and close or hide the default workbook) causes a NullReferenceException.<br />\n<br />\n<br />\nI tracked it down to the excel hot fix in GetActiveProxiesFromROT and the subsequent proxy lookup by hWnd.<br />\nIf no workbook is visible there seems to be no EXCEL7 window and the lookup returns a null reference, which then causes the NullReferenceException on COMObject instantiation.<br />\n<br />\nBest regards,<br />\nAndreas<br />\n",
+    "PlainDescription": "Hi,\n\ncalling \nExcelApi.Application.GetActiveInstances()\n\nwith an open Excel instance which has no workbooks visibly opened (i.e. start excel and close or hide the default workbook) causes a NullReferenceException.\n\n\nI tracked it down to the excel hot fix in GetActiveProxiesFromROT and the subsequent proxy lookup by hWnd.\nIf no workbook is visible there seems to be no EXCEL7 window and the lookup returns a null reference, which then causes the NullReferenceException on COMObject instantiation.\n\nBest regards,\nAndreas\n",
+    "LastUpdatedBy": "LockeLink",
+    "LastUpdatedDate": "2016-12-01T22:13:25.633+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "nullsys",
+    "ReportedDate": "2015-10-07T15:35:51.86+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NullReferenceException on ExcelApi.Application.GetActiveInstances()",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22037,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for the notification. the main problem behind is: you can see all COM instance in ROT but only the first is accessible. This is why GetActiveObject in VB6/VBA has the same problem. You can't decide which instance you want and i've been implemented the hotfix.  \r\n\r\nIs it NetOffice 1.7.3 ?\r\n\r\nI want change the implementation this weekend.\r\n\r\n*Sebastian ",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-11-13T18:50:17.04+01:00",
+      "WorkItemId": 22037,
+      "Id": 203358
+    },
+    {
+      "Message": "BTW: do you have a stack trace, exception details(error code line number, etc.) for me?Its more safe to pin point the (real)problem once and for all.\r\n\r\n*Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-11-15T20:42:35.23+01:00",
+      "WorkItemId": 22037,
+      "Id": 203359
+    },
+    {
+      "Message": "Hi Sebastain,\n\nI ran into this same problem today using NetOffice 1.7.3. I was able to find the 'GetActiveProxiesFromROT ' that Andreas mentioned. I created a brand new project, downloaded the NetOffice ExcelApi and put the following code in and it errors as they described. \n\nFor anyone else that runs into this problem the code shows how I get around the problem using the NetOffice.RunningObjectTable class.\n\nEven with this issue NetOffice is a great library that I use a lot! Thanks!\n\n-Locke\n\n```\nusing System.Linq\n\nclass Program\n    {\n        static void Main(string[] args)\n        {\n            using (var application = new NetOffice.ExcelApi.Application())\n            using (var application2 = new NetOffice.ExcelApi.Application())\n            {\n                application.Visible = true;\n                application2.Visible = true;\n\n                application.Workbooks.Add();\n                application2.Workbooks.Add();\n\n                //OK\n                var applications = NetOffice.ExcelApi.Application.GetActiveInstances();\n\n                foreach (var wb in application2.Workbooks)\n                    wb.Close(false);\n\n                //OK, though it will be missing \"application2\" because no workbooks are open.\n                applications = NetOffice.RunningObjectTable\n                    .GetActiveProxiesFromROT(\"Excel\", \"Application\")\n                    .Where(p => p != null)\n                    .Select(p => new NetOffice.ExcelApi.Application(null, p))\n                    .ToArray();\n\n                //Not OK, this will error\n                var applicationsError = NetOffice.ExcelApi.Application.GetActiveInstances();\n\n                application.Quit();\n                application2.Quit();\n            }\n        }\n    }\n```",
+      "PostedBy": "LockeLink",
+      "PostedDate": "2016-12-01T22:13:25.633+01:00",
+      "WorkItemId": 22037,
+      "Id": 205410
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

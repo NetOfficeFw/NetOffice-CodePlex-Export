@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "Developer Toolbox",
+      "Name": "Developer Toolbox"
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Последовательность не содержит соответствующий элемент\n\nSystem.InvalidOperationException: Последовательность не содержит соответствующий элемент\n\n   в System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)\n\n   в NetOffice.DeveloperToolbox.Translation.Translator.AutoTranslateControls(Control control, String componentName, String ressourceFileName, Int32 lanuageID)\n\n   в NetOffice.DeveloperToolbox.ToolboxControls.OfficeCompatibility.ReportControl..ctor(AnalyzerResult report, Int32 currentLanguageID)\n\n   в NetOffice.DeveloperToolbox.ToolboxControls.OfficeCompatibility.OfficeCompatibilityControl.buttonReport_Click(Object sender, EventArgs e)",
+    "HtmlDescription": "Последовательность не содержит соответствующий элемент<br />\n<br />\nSystem.InvalidOperationException: Последовательность не содержит соответствующий элемент<br />\n<br />\n   в System.Linq.Enumerable.First[TSource](IEnumerable<code>1 source, Func</code>2 predicate)<br />\n<br />\n   в NetOffice.DeveloperToolbox.Translation.Translator.AutoTranslateControls(Control control, String componentName, String ressourceFileName, Int32 lanuageID)<br />\n<br />\n   в NetOffice.DeveloperToolbox.ToolboxControls.OfficeCompatibility.ReportControl..ctor(AnalyzerResult report, Int32 currentLanguageID)<br />\n<br />\n   в NetOffice.DeveloperToolbox.ToolboxControls.OfficeCompatibility.OfficeCompatibilityControl.buttonReport_Click(Object sender, EventArgs e)<br />\n",
+    "PlainDescription": "Последовательность не содержит соответствующий элемент\n\nSystem.InvalidOperationException: Последовательность не содержит соответствующий элемент\n\n   в System.Linq.Enumerable.First[TSource](IEnumerable1 source, Func2 predicate)\n\n   в NetOffice.DeveloperToolbox.Translation.Translator.AutoTranslateControls(Control control, String componentName, String ressourceFileName, Int32 lanuageID)\n\n   в NetOffice.DeveloperToolbox.ToolboxControls.OfficeCompatibility.ReportControl..ctor(AnalyzerResult report, Int32 currentLanguageID)\n\n   в NetOffice.DeveloperToolbox.ToolboxControls.OfficeCompatibility.OfficeCompatibilityControl.buttonReport_Click(Object sender, EventArgs e)\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2015-01-09T22:06:30.537+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "artnib",
+    "ReportedDate": "2015-01-09T13:49:09.497+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "OfficeCompatibility Report button throws InvalidOperationException",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21654,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hey crew member,\r\n\r\ni create NO Toolbox 1.4.2(beta) to fix this problem. its available in the download section.\r\n\r\nthanks for pointing this out !!! *Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2015-01-09T22:06:30.537+01:00",
+      "WorkItemId": 21654,
+      "Id": 203282
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

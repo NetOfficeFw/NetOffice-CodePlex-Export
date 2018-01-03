@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 7,
+    "Custom": "",
+    "Description": "Hi,\n \nwhen using the new 1.5.1 assemblies (build 90130) from my .net 4.0 application I receive a NotSupportedExeption \"The invoked member is not supported in a dynamic assembly.\" when calling \nvar app = new NetOffice.ExcelApi.Application();\n \nI don't know why, because the examples in \n\\Examples\\Misc\\C#\\Examples\\MiscExamples\ndon't throw this exception.\n \n \nAfter some investigation I found\nhttp://msdn.microsoft.com/en-us/library/dd409252(VS.100).aspx\n(<loadFromRemoteSources> Element)\nand after setting it in my app.config it works fine.\n \nI have my project sources and assemblies all stored on a local drive somewhere under c:\\ !\n \nPrior to this I used version 1.3 and I didn't receive this exception!\n \nSo I enabled DebugConsole.Mode to Trace and receive the attached exception infos",
+    "HtmlDescription": "Hi,<br />\n <br />\nwhen using the new 1.5.1 assemblies (build 90130) from my .net 4.0 application I receive a NotSupportedExeption &quot;The invoked member is not supported in a dynamic assembly.&quot; when calling <br />\nvar app = new NetOffice.ExcelApi.Application();<br />\n <br />\nI don't know why, because the examples in <br />\n\\Examples\\Misc\\C#\\Examples\\MiscExamples<br />\ndon't throw this exception.<br />\n <br />\n <br />\nAfter some investigation I found<br />\n<a href=\"http://msdn.microsoft.com/en-us/library/dd409252(VS.100).aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-us/library/dd409252(VS.100).aspx</a><br />\n(&lt;loadFromRemoteSources&gt; Element)<br />\nand after setting it in my app.config it works fine.<br />\n <br />\nI have my project sources and assemblies all stored on a local drive somewhere under c:\\ !<br />\n <br />\nPrior to this I used version 1.3 and I didn't receive this exception!<br />\n <br />\nSo I enabled DebugConsole.Mode to Trace and receive the attached exception infos<br />\n",
+    "PlainDescription": "Hi,\n \nwhen using the new 1.5.1 assemblies (build 90130) from my .net 4.0 application I receive a NotSupportedExeption \"The invoked member is not supported in a dynamic assembly.\" when calling \nvar app = new NetOffice.ExcelApi.Application();\n \nI don't know why, because the examples in \n\\Examples\\Misc\\C#\\Examples\\MiscExamples\ndon't throw this exception.\n \n \nAfter some investigation I found\nhttp://msdn.microsoft.com/en-us/library/dd409252(VS.100).aspx\n(<loadFromRemoteSources> Element)\nand after setting it in my app.config it works fine.\n \nI have my project sources and assemblies all stored on a local drive somewhere under c:\\ !\n \nPrior to this I used version 1.3 and I didn't receive this exception!\n \nSo I enabled DebugConsole.Mode to Trace and receive the attached exception infos\n",
+    "LastUpdatedBy": "mausoma",
+    "LastUpdatedDate": "2013-06-14T09:33:15.85+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "mausoma",
+    "ReportedDate": "2012-05-09T23:02:40.503+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "config loadFromRemoteSources needed?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18020,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600185,
+      "FileName": "NetOfficeTrace.txt",
+      "WorkItemId": 18020,
+      "DownloadUrl": "https://www.codeplex.com/Download/AttachmentDownload.ashx?ProjectName=netoffice&WorkItemId=18020&FileAttachmentId=1600185"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "thanks for reporting. which windows version do you use? i change the initialize implementation right now.\r\n\r\n- Sebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-05-10T14:21:55.067+02:00",
+      "WorkItemId": 18020,
+      "Id": 203051
+    },
+    {
+      "Message": "the implementation is changed in latest source and assemblies.\r\nplease give me a feedback, it works for you.\r\n\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-05-10T15:22:24.153+02:00",
+      "WorkItemId": 18020,
+      "Id": 203052
+    },
+    {
+      "Message": "Hi,\r\n\r\nok better.\r\nThe functionallity works, but my Tracing still shows some loading problems.\r\nBut maybe that's ok, because in the end it works!\r\n\r\nI'm using\r\nWindows 7 64 bit\r\nI use the code from an AnyCPU project. My application using this project is configured for x86.\r\n\r\n\r\n\r\nThe trace:\r\n\r\nNetOffice: NetOffice.Factory.Initialize()\r\nNetOffice: Detect NetOffice assembly ExcelApi.\r\nNetOffice: Try to load dependent assembly C:\\devlop\\TFS\\Hannes\\GGG\\bin_x86\\Debug\\OfficeApi.dll.\r\nNetOffice: Type:NotSupportedException\r\nMessage:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.\r\nTarget:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)\r\nStack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)\r\n   at System.Reflection.Assembly.LoadFile(String path)\r\n   at NetOffice.Factory.Initialize()\r\n\r\n\r\nNetOffice: Try to load dependent assembly C:\\devlop\\TFS\\Hannes\\GGG\\bin_x86\\Debug\\VBIDEApi.dll.\r\nNetOffice: Type:NotSupportedException\r\nMessage:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.\r\nTarget:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)\r\nStack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)\r\n   at System.Reflection.Assembly.LoadFile(String path)\r\n   at NetOffice.Factory.Initialize()\r\n\r\n\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\\Windows\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management\\v4.0_4.0.0.0__b03f5f7f11d50a3a\\System.Management.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.\r\nNetOffice: NetOffice.Factory.Initialize() passed\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\\Windows\\assembly\\GAC_MSIL\\Microsoft.Office.Interop.Excel\\14.0.0.0__71e9bce111e9429c\\Microsoft.Office.Interop.Excel.dll'\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\\Windows\\assembly\\GAC_MSIL\\office\\14.0.0.0__71e9bce111e9429c\\office.dll'\r\n",
+      "PostedBy": "mausoma",
+      "PostedDate": "2012-05-10T17:24:02.177+02:00",
+      "WorkItemId": 18020,
+      "Id": 203053
+    },
+    {
+      "Message": "By the way: I have installed an office version in 64 bit, maybe that's important.",
+      "PostedBy": "mausoma",
+      "PostedDate": "2012-05-10T17:26:24.81+02:00",
+      "WorkItemId": 18020,
+      "Id": 203054
+    },
+    {
+      "Message": "this looks like a security issue. let me explain what happen.\r\n\r\nInitialize performs a lookup for all currently loaded NetOffice assemblies and do a connect to these assemblies. if you call a method with com proxy return then NetOffice analyze the proxy at runtime and find the target wrapper class in the connected NetOffice assemblies. \r\n\r\na problem is now: the CLR loads all assemblies on demand. maybe you have excel office vbide references in your project but you use just only excel in code. the other assemblies was not loaded now. \r\n\r\nmaybe you set a breakpoint in your debugger and you want to see application.COMAddins in the debugger watch list. the type COMAddin is defined in Office... ooops OfficeApi.dll is not loaded from the CLR and an exception occured. NetOffice handle this with Settings.EnableAdHocLoading\r\n(hidden from IntelliSense) and try to load nonloaded dependent assemblies while Intialize() and this cause security problems maybe. if it fails to load a dependent assembly then you got a warning message but NetOffice is not in critical state now.\r\n\r\nyou can disable the adhoc loading of course: \r\nSettings.EnableAdHocLoading= false;\r\n\r\nSebastian\r\n\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-05-11T11:24:38.223+02:00",
+      "WorkItemId": 18020,
+      "Id": 203055
+    },
+    {
+      "Message": "the issue is fixed today. an updated release is available.\r\n\r\n*have a nice day",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-05-11T18:44:03.98+02:00",
+      "WorkItemId": 18020,
+      "Id": 203056
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nlatest buil 90342 generates only a few messages now, ant it work very well.\r\nThanks a lot!\r\n\r\n\r\n\r\nNetOffice: NetOffice.Factory.Initialize() DeepLevel:True\r\nNetOffice: Detect NetOffice assembly ExcelApi.\r\nNetOffice: Detect NetOffice assembly ExcelApi.\r\nNetOffice: Detect NetOffice assembly OfficeApi.\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\\devlop\\TFS\\Hannes\\GGG\\bin_x86\\Debug\\OfficeApi.dll'\r\nNetOffice: Detect NetOffice assembly VBIDEApi.\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\\devlop\\TFS\\Hannes\\GGG\\bin_x86\\Debug\\VBIDEApi.dll'\r\nNetOffice: NetOffice.Factory.Initialize() passed\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\\Windows\\assembly\\GAC_MSIL\\Microsoft.Office.Interop.Excel\\14.0.0.0__71e9bce111e9429c\\Microsoft.Office.Interop.Excel.dll'\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\\Windows\\assembly\\GAC_MSIL\\office\\14.0.0.0__71e9bce111e9429c\\office.dll'\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\\Windows\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Numerics\\v4.0_4.0.0.0__b77a5c561934e089\\System.Numerics.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\\Windows\\assembly\\GAC_MSIL\\Microsoft.VisualStudio.DebuggerVisualizers\\10.0.0.0__b03f5f7f11d50a3a\\Microsoft.VisualStudio.DebuggerVisualizers.dll'\r\n'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'c:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\Packages\\Debugger\\Visualizers\\Microsoft.VisualStudio.Debugger.DataSetVisualizer.dll'\r\nNetOffice: Failed to resolve Assembly\r\nThe program '[7332] GGG_Crawler.exe: Program Trace' has exited with code 0 (0x0).\r\nThe program '[7332] GGG_Crawler.exe: Managed (v4.0.30319)' has exited with code 0 (0x0).\r\n",
+      "PostedBy": "mausoma",
+      "PostedDate": "2012-05-11T18:44:56.02+02:00",
+      "WorkItemId": 18020,
+      "Id": 203057
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

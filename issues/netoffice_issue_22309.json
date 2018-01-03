@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "CustomXMLNode.AddNode seems to throw an exception due to a type mismatch. Tested in Excel 2007.\n\n\nThis is a copy of Microsoft's example for Custom XML Parts found under\nhttps://msdn.microsoft.com/en-us/library/office/ff864167.aspx\n\n```\n\n    NetOffice.ExcelApi.Workbook workbook = /* .... this is set to a proper workbook reference */;\n\n    NetOffice.OfficeAPI.CustomXMLPart cxp1 = workbook.CustomXMLParts.Add(\"<invoice />\");\n    NetOffice.OfficeApi.CustomXMLNode cxn = cxp1.SelectSingleNode(\"/invoice\");\n\n\n    // the following line will throw a COMException exception\n    // InnerException: Exception has been thrown by the target of an invocation\n    //   -> InnerException: {\"Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))\"}\n    cxp1.AddNode(( NetOffice.OfficeApi.CustomXMLNode)cxn, (string)\"upcode\", (string)\"urn:invoice:namespace\");\n\n```\n\nEdit: This works when doing cxp1.DocumentElement.AppendChildNode(...).\nNot quite sure if Microsoft's own example was wrong, or NetOffice causes an issue in the case described above?!",
+    "HtmlDescription": "CustomXMLNode.AddNode seems to throw an exception due to a type mismatch. Tested in Excel 2007.<br />\n<br />\n<br />\nThis is a copy of Microsoft's example for Custom XML Parts found under<br />\n<a href=\"https://msdn.microsoft.com/en-us/library/office/ff864167.aspx\" rel=\"nofollow\">https://msdn.microsoft.com/en-us/library/office/ff864167.aspx</a><br />\n<pre><code>\n    NetOffice.ExcelApi.Workbook workbook = /* .... this is set to a proper workbook reference */;\n\n    NetOffice.OfficeAPI.CustomXMLPart cxp1 = workbook.CustomXMLParts.Add(&quot;&lt;invoice /&gt;&quot;);\n    NetOffice.OfficeApi.CustomXMLNode cxn = cxp1.SelectSingleNode(&quot;/invoice&quot;);\n\n\n    // the following line will throw a COMException exception\n    // InnerException: Exception has been thrown by the target of an invocation\n    //   -&gt; InnerException: {&quot;Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))&quot;}\n    cxp1.AddNode(( NetOffice.OfficeApi.CustomXMLNode)cxn, (string)&quot;upcode&quot;, (string)&quot;urn:invoice:namespace&quot;);\n</code></pre>\n\nEdit: This works when doing cxp1.DocumentElement.AppendChildNode(...).<br />\nNot quite sure if Microsoft's own example was wrong, or NetOffice causes an issue in the case described above?!<br />\n",
+    "PlainDescription": "CustomXMLNode.AddNode seems to throw an exception due to a type mismatch. Tested in Excel 2007.\n\n\nThis is a copy of Microsoft's example for Custom XML Parts found under\nhttps://msdn.microsoft.com/en-us/library/office/ff864167.aspx\nNetOffice.ExcelApi.Workbook workbook = /* .... this is set to a proper workbook reference */;\n\nNetOffice.OfficeAPI.CustomXMLPart cxp1 = workbook.CustomXMLParts.Add(&quot;&lt;invoice /&gt;&quot;);\nNetOffice.OfficeApi.CustomXMLNode cxn = cxp1.SelectSingleNode(&quot;/invoice&quot;);\n\n\n// the following line will throw a COMException exception\n// InnerException: Exception has been thrown by the target of an invocation\n//   -&gt; InnerException: {&quot;Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))&quot;}\ncxp1.AddNode(( NetOffice.OfficeApi.CustomXMLNode)cxn, (string)&quot;upcode&quot;, (string)&quot;urn:invoice:namespace&quot;);\n\n\n\nEdit: This works when doing cxp1.DocumentElement.AppendChildNode(...).\nNot quite sure if Microsoft's own example was wrong, or NetOffice causes an issue in the case described above?!\n",
+    "LastUpdatedBy": "BogeyLab",
+    "LastUpdatedDate": "2016-07-06T15:54:19.4+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "BogeyLab",
+    "ReportedDate": "2016-07-06T15:34:47.727+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "CustomXMLNode.AddNode throws exception; type mismatch",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22309,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "If I name cell A1, \"MyCell\", and select that cell, then in VBA I can do the following:\n \nDebug.Print Application.Selection.Name & \" ... \" & Application.Selection.Name.Name\n \n=Sheet1!$A$1 ... MyCell\n \nI can't seem to make this work from within NetOffice.  Instead I get the following:\n \nDebug.Print Application.Selection.Name.ToString\n \nNetOffice.ExcelApi.Name\n \n \nAm I stuck?  Is there some other way to get the cell name of the currently selected cell via NetOffice?\n \nThanks,\nMike",
+    "HtmlDescription": "If I name cell A1, &quot;MyCell&quot;, and select that cell, then in VBA I can do the following:<br />\n <br />\nDebug.Print Application.Selection.Name &amp; &quot; ... &quot; &amp; Application.Selection.Name.Name<br />\n <br />\n=Sheet1!$A$1 ... MyCell<br />\n <br />\nI can't seem to make this work from within NetOffice.  Instead I get the following:<br />\n <br />\nDebug.Print Application.Selection.Name.ToString<br />\n <br />\nNetOffice.ExcelApi.Name<br />\n <br />\n <br />\nAm I stuck?  Is there some other way to get the cell name of the currently selected cell via NetOffice?<br />\n <br />\nThanks,<br />\nMike<br />\n",
+    "PlainDescription": "If I name cell A1, \"MyCell\", and select that cell, then in VBA I can do the following:\n \nDebug.Print Application.Selection.Name & \" ... \" & Application.Selection.Name.Name\n \n=Sheet1!$A$1 ... MyCell\n \nI can't seem to make this work from within NetOffice.  Instead I get the following:\n \nDebug.Print Application.Selection.Name.ToString\n \nNetOffice.ExcelApi.Name\n \n \nAm I stuck?  Is there some other way to get the cell name of the currently selected cell via NetOffice?\n \nThanks,\nMike\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:15.603+02:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "mwolfe02",
+    "ReportedDate": "2012-05-11T23:07:44.447+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error when trying to get Excel.Selection.Name.Name",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18047,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "as hotfix:\r\nchange: Application.Selection.Name.Name\r\nto:         Application.Selection.Name.get_Name()\r\n\r\ni fix the issue tomorrow\r\n*sorry\r\nSebastian",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-05-12T15:42:58.733+02:00",
+      "WorkItemId": 18047,
+      "Id": 203058
+    },
+    {
+      "Message": "an updated 1.5 release is available.\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2012-05-14T03:00:47.523+02:00",
+      "WorkItemId": 18047,
+      "Id": 203059
+    },
+    {
+      "Message": "Wow...impressive response time.  I downloaded the new release and it seems to be working.  Thanks!",
+      "PostedBy": "mwolfe02",
+      "PostedDate": "2012-05-14T18:52:55.86+02:00",
+      "WorkItemId": 18047,
+      "Id": 203060
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

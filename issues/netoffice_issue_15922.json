@@ -1,0 +1,84 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 5,
+    "Custom": "",
+    "Description": "Hi,\n \nthe following piece of code throws an System.AccessViolationException\n \nusing System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;\nusing Excel = NetOffice.ExcelApi;\nusing System.Diagnostics;\n \nnamespace ConsoleApplication1\n{\n    class Program\n    {\n        static void Main(string[] args)\n        {\n            // Initialize Api COMObject Support\n            LateBindingApi.Core.Factory.Initialize();\n \n            Excel.Application excelApplication = new Excel.Application();\n            Excel.Workbook workbook = excelApplication.Workbooks.Add(); //._Open(@\"D:\\Visual Studio 2008\\Projects\\QIMSIECAInterface\\QIMSIECAInterface\\Templates\\General.xls\");\n \n            excelApplication.Visible = true;\n \n            Excel.Worksheet sheet = (Excel.Worksheet)workbook.Worksheets[1];\n \n            for (int i = 12; i < 100; i++)\n            {\n                Excel.Range r = sheet.Cells[i, 1];\n                Debug.WriteLine(i);\n                i++;\n            }\n \n            excelApplication.Quit();\n            excelApplication.Dispose();\n        }\n    }\n}\n \nException details are the following: \nSystem.AccessViolationException was unhandled\n  Message=\"Attempted to read or write protected memory. This is often an indication that other memory is corrupt.\"\n  Source=\"mscorlib\"\n  StackTrace:\n       at System.AppDomain._nExecuteAssembly(Assembly assembly, String[] args)\n       at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)\n       at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n       at System.Threading.ThreadHelper.ThreadStart_Context(Object state)\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n       at System.Threading.ThreadHelper.ThreadStart()\n  InnerException: \n \nHope you can help.\n \nThanks in advance.",
+    "HtmlDescription": "Hi,<br />\n <br />\nthe following piece of code throws an System.AccessViolationException<br />\n <br />\nusing System;<br />\nusing System.Collections.Generic;<br />\nusing System.Linq;<br />\nusing System.Text;<br />\nusing Excel = NetOffice.ExcelApi;<br />\nusing System.Diagnostics;<br />\n <br />\nnamespace ConsoleApplication1<br />\n{<br />\n<pre><code>class Program\n{\n    static void Main(string[] args)\n    {\n        // Initialize Api COMObject Support\n        LateBindingApi.Core.Factory.Initialize();</code></pre>\n\n <br />\n<pre><code>        Excel.Application excelApplication = new Excel.Application();\n        Excel.Workbook workbook = excelApplication.Workbooks.Add(); //._Open(@&quot;D:\\Visual Studio 2008\\Projects\\QIMSIECAInterface\\QIMSIECAInterface\\Templates\\General.xls&quot;);</code></pre>\n\n <br />\n<pre><code>        excelApplication.Visible = true;</code></pre>\n\n <br />\n<pre><code>        Excel.Worksheet sheet = (Excel.Worksheet)workbook.Worksheets[1];</code></pre>\n\n <br />\n<pre><code>        for (int i = 12; i &lt; 100; i++)\n        {\n            Excel.Range r = sheet.Cells[i, 1];\n            Debug.WriteLine(i);\n            i++;\n        }</code></pre>\n\n <br />\n<pre><code>        excelApplication.Quit();\n        excelApplication.Dispose();\n    }\n}</code></pre>\n\n}<br />\n <br />\nException details are the following: <br />\nSystem.AccessViolationException was unhandled<br />\n  Message=&quot;Attempted to read or write protected memory. This is often an indication that other memory is corrupt.&quot;<br />\n  Source=&quot;mscorlib&quot;<br />\n  StackTrace:<br />\n<pre><code>   at System.AppDomain._nExecuteAssembly(Assembly assembly, String[] args)\n   at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)\n   at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n   at System.Threading.ThreadHelper.ThreadStart_Context(Object state)\n   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n   at System.Threading.ThreadHelper.ThreadStart()</code></pre>\n\nInnerException: <br />\n <br />\nHope you can help.<br />\n <br />\nThanks in advance.<br />\n",
+    "PlainDescription": "Hi,\n \nthe following piece of code throws an System.AccessViolationException\n \nusing System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;\nusing Excel = NetOffice.ExcelApi;\nusing System.Diagnostics;\n \nnamespace ConsoleApplication1\n{\nclass Program\n{\nstatic void Main(string[] args)\n{\n    // Initialize Api COMObject Support\n    LateBindingApi.Core.Factory.Initialize();\n\n\n \n    Excel.Application excelApplication = new Excel.Application();\n    Excel.Workbook workbook = excelApplication.Workbooks.Add(); //._Open(@&quot;D:\\Visual Studio 2008\\Projects\\QIMSIECAInterface\\QIMSIECAInterface\\Templates\\General.xls&quot;);\n\n\n \n    excelApplication.Visible = true;\n\n\n \n    Excel.Worksheet sheet = (Excel.Worksheet)workbook.Worksheets[1];\n\n\n \n    for (int i = 12; i &lt; 100; i++)\n    {\n        Excel.Range r = sheet.Cells[i, 1];\n        Debug.WriteLine(i);\n        i++;\n    }\n\n\n \n    excelApplication.Quit();\n    excelApplication.Dispose();\n}\n\n}\n\n}\n \nException details are the following: \nSystem.AccessViolationException was unhandled\n  Message=\"Attempted to read or write protected memory. This is often an indication that other memory is corrupt.\"\n  Source=\"mscorlib\"\n  StackTrace:\n   at System.AppDomain._nExecuteAssembly(Assembly assembly, String[] args)\n   at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)\n   at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n   at System.Threading.ThreadHelper.ThreadStart_Context(Object state)\n   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n   at System.Threading.ThreadHelper.ThreadStart()\n\nInnerException: \n \nHope you can help.\n \nThanks in advance.\n",
+    "LastUpdatedBy": "SebastianDotNet",
+    "LastUpdatedDate": "2013-06-14T09:33:19.34+02:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "ppratscher",
+    "ReportedDate": "2011-05-27T12:21:25.283+02:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "System.AccessViolationException when writing Excel Cells",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15922,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "can you tell me more about your environment and anything else whats interestend?\r\noperation system 32 or 64 bit\r\noffice version 32 or 64 bit\r\n.net version\r\n\r\ni test your code with same environment and see whats the problem (hopely )",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-05-30T16:14:22.81+02:00",
+      "WorkItemId": 15922,
+      "Id": 202982
+    },
+    {
+      "Message": "some google research: http://social.msdn.microsoft.com/Forums/en-US/csharpgeneral/thread/6adca20b-649f-41a4-8fa1-09534882d76c\r\n\r\npeople with the same problem says this help:\r\n\r\nTools->Options\r\nDebugging->General\r\nuncheck option \"Suppress JIT optimization on module load\"\r\n\r\n",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-05-30T16:52:20.213+02:00",
+      "WorkItemId": 15922,
+      "Id": 202983
+    },
+    {
+      "Message": "Hi,\r\n\r\nthanks for your help!\r\n\r\nOS: Windows XP SP3\r\nVisual Studio 2008 Express Edition\r\n.NET v. 3.5 SP1\r\nOffice 2003\r\n\r\nFurthermore, this problem does not occur when using the pervious LateBindingApi.\r\n\r\nI can provide more details tomorrow if required.\r\n\r\nBest Regards,\r\nPeter",
+      "PostedBy": "ppratscher",
+      "PostedDate": "2011-05-30T18:25:23.8+02:00",
+      "WorkItemId": 15922,
+      "Id": 202984
+    },
+    {
+      "Message": "I can reproduce the problem. its not generic but sometimes.\r\nthe underlying problem occurs in the function LateBindingApi.Factory.GetParentLibraryGuid.\r\ni do some tests and hope i can fix this problem tonight.\r\n\r\ni'm sorry for the problem.",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-05-30T22:32:24.307+02:00",
+      "WorkItemId": 15922,
+      "Id": 202985
+    },
+    {
+      "Message": "update: problem fixed! issue closed.\r\nthanks for using issue tracker and not discussion board :)\r\n ",
+      "PostedBy": "SebastianDotNet",
+      "PostedDate": "2011-05-31T01:14:44.797+02:00",
+      "WorkItemId": 15922,
+      "Id": 202986
+    }
+  ],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}

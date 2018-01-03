@@ -1,0 +1,48 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "DisplayName": "",
+      "Name": ""
+    },
+    "AssignedTo": "",
+    "ClosedBy": "",
+    "ClosedComment": "",
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi there,\n\nIs it possible to use VBA to launch/fire an addin procedure in any way?\n\nI am currently using NetOffice, I have a Comaddin, and used the wizard to create the com addin.\n\nI have the basic addin creating a ribbon command, this ribbon command opens a form created using a Windows Form.\n\nThe code I have is c#.\n\nSo I want to launch my form from VBA instead of using a ribbon control.\n\nIs this possible?",
+    "HtmlDescription": "Hi there,<br />\n<br />\nIs it possible to use VBA to launch/fire an addin procedure in any way?<br />\n<br />\nI am currently using NetOffice, I have a Comaddin, and used the wizard to create the com addin.<br />\n<br />\nI have the basic addin creating a ribbon command, this ribbon command opens a form created using a Windows Form.<br />\n<br />\nThe code I have is c#.<br />\n<br />\nSo I want to launch my form from VBA instead of using a ribbon control.<br />\n<br />\nIs this possible?<br />\n",
+    "PlainDescription": "Hi there,\n\nIs it possible to use VBA to launch/fire an addin procedure in any way?\n\nI am currently using NetOffice, I have a Comaddin, and used the wizard to create the com addin.\n\nI have the basic addin creating a ribbon command, this ribbon command opens a form created using a Windows Form.\n\nThe code I have is c#.\n\nSo I want to launch my form from VBA instead of using a ribbon control.\n\nIs this possible?\n",
+    "LastUpdatedBy": "uildriks",
+    "LastUpdatedDate": "2016-01-20T11:49:16.09+01:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedBy": "JasonColeyNZ",
+    "ReportedDate": "2016-01-14T23:37:17.833+01:00",
+    "CanContactReportedByUser": false,
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Launch ComAddin from from VBA",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 22144,
+    "HasUserVoted": false
+  },
+  "FileAttachments": [],
+  "Comments": [],
+  "CanDeleteWorkItem": true,
+  "CanDeleteComments": true
+}
