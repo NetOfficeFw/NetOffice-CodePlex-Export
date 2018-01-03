@@ -1,0 +1,848 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - COMException sending email with Outlook 2010 on Windows Server 2008 R2</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/402580?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/402580?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="ZBSY7cG9ltZw_WOGHrKkGeTzwayy5acKCUyocC6SE6yne_yJ9-5bMdcKAzdJfR2ty2Zu-DyqYm5ONSoZnQEkAUawmjxMhHaOcKihUc1XdA6F_Yf4MsFMhPY8-oked0XWoC-mzw2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken25fe82503-9056-43bb-a749-3c4c0d003f40" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:52:08 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f402580" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="4b365966-d1f4-478e-a2ac-5f99a7efdab9">
+                
+                    <script class="options" defer="defer" id="4b365966-d1f4-478e-a2ac-5f99a7efdab9" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                COMException sending email with Outlook 2010 on Windows Server 2008 R2
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:402580]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="5948a451-20b2-4a4e-bf0d-15600050c5fc">
+    <script class="options" defer="defer" id="5948a451-20b2-4a4e-bf0d-15600050c5fc" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/402580","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="939207">
+    <td id="PostDetailsCell_939207" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post939207"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/giorgiovaccarino">giorgiovaccarino</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/9/2012 4:34:40 PM" LocalTimeTicks="1352507680">Nov 9, 2012 at 4:34 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_939207" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;In&#32;a&#32;production&#32;server&#32;when&#32;I&#32;access&#32;the&#32;Recipients&#32;object&#32;&#40;i.e.&#32;mailItem.Recipients.Add&#40;...&#41;&#41;&#32;I&#32;get&#32;this&#32;error&#58;&#32;The&#32;error&#32;occurred&#58;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Type&#58;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;COMException&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Message&#58;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;See&#32;inner&#32;exception&#40;s&#41;&#32;for&#32;details.&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Data&#58;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;0&#32;entries&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Stack&#32;trace&#58;&#32;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;in&#32;NetOffice.Invoker.PropertyGet&#40;COMObject&#32;comObject,&#32;String&#32;name,&#32;Object&#91;&#93;&#32;paramsArray&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;in&#32;NetOffice.OutlookApi._MailItem.get_Recipients&#40;&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;in&#32;PitagoraDoc.Module.BusinessLogic.OutlookHelper.SendEmail&#40;Dictionary&#96;2&#32;destinatari,&#32;String&#32;oggetto,&#32;String&#32;corpo,&#32;FileData&#91;&#93;&#32;allegati&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;in&#32;PitagoraDoc.Module.BusinessLogic.ComunicazioneHelper.SendMail&#40;Comunicazione&#32;comunicazione&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;in&#32;PitagoraDoc.Module.Controllers.ComunicazioneController.SalvaEInvia_Execute&#40;Object&#32;sender,&#32;SimpleActionExecuteEventArgs&#32;e&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;in&#32;DevExpress.ExpressApp.Actions.ActionBase.ExecuteCore&#40;Delegate&#32;handler,&#32;ActionBaseEventArgs&#32;eventArgs&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;----------------&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;InnerException&#58;&#32;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Type&#58;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;TargetInvocationException&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Message&#58;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Eccezione&#32;generata&#32;dalla&#32;destinazione&#32;di&#32;una&#32;chiamata.&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Data&#58;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;0&#32;entries&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Stack&#32;trace&#58;&#32;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;in&#32;System.RuntimeType.InvokeDispMethod&#40;String&#32;name,&#32;BindingFlags&#32;invokeAttr,&#32;Object&#32;target,&#32;Object&#91;&#93;&#32;args,&#32;Boolean&#91;&#93;&#32;byrefModifiers,&#32;Int32&#32;culture,&#32;String&#91;&#93;&#32;namedParameters&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;in&#32;System.RuntimeType.InvokeMember&#40;String&#32;name,&#32;BindingFlags&#32;bindingFlags,&#32;Binder&#32;binder,&#32;Object&#32;target,&#32;Object&#91;&#93;&#32;providedArgs,&#32;ParameterModifier&#91;&#93;&#32;modifiers,&#32;CultureInfo&#32;culture,&#32;String&#91;&#93;&#32;namedParams&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;in&#32;NetOffice.Invoker.PropertyGet&#40;COMObject&#32;comObject,&#32;String&#32;name,&#32;Object&#91;&#93;&#32;paramsArray&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;----------------&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;InnerException&#58;&#32;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Type&#58;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;COMException&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Message&#58;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Operazione&#32;terminata.&#32;&#40;Eccezione&#32;da&#32;HRESULT&#58;&#32;0x80004004&#32;&#40;E_ABORT&#41;&#41;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Data&#58;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;0&#32;entries&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Stack&#32;trace&#58;&#32;&#32;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;InnerException&#32;is&#32;null&#32;---------------------------------------------------------------------------&#32;My&#32;code&#32;is&#32;pretty&#32;simple&#58;&#32;...&#32;Outlook.Application&#32;outlookApplication&#32;&#61;&#32;new&#32;Outlook.Application&#40;&#41;&#59;&#32;Outlook.MailItem&#32;mailItem&#32;&#61;&#32;outlookApplication.CreateItem&#40;OlItemType.olMailItem&#41;&#32;as&#32;Outlook.MailItem&#59;&#32;mailItem.Recipients.Add&#40;&#38;quot&#59;xxx&#64;xxx.xx&#38;quot&#59;&#41;&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#47;&#47;&#38;lt&#59;-&#32;Error&#32;...&#32;I&#32;noted&#32;that&#32;using&#32;another&#32;NetOffice&#32;API&#32;in&#32;my&#32;application&#32;&#40;Session.GetDefaultFolder&#41;&#32;first&#32;and&#32;then&#32;try&#32;to&#32;send&#32;a&#32;email&#32;the&#32;error&#32;go&#32;away.&#32;So&#32;as&#32;a&#32;workaround&#32;I&#32;call&#58;&#32;Outlook.MAPIFolder&#32;contactFolder&#32;&#61;&#32;outlookApplication.Session.GetDefaultFolder&#40;OlDefaultFolders.olFolderContacts&#41;&#59;&#32;just&#32;after&#32;the&#32;creation&#32;of&#32;outlookApplication.&#32;What&#32;might&#32;have&#32;happened&#63;&#32;Thank&#32;you,&#32;Giorgio.&#32;&#32;">
+        
+<p>In a production server when I access the Recipients object (i.e. mailItem.Recipients.Add(...))</p>
+<p>I get this error:</p>
+<p>The error occurred:<br>
+&nbsp;&nbsp;&nbsp; Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; COMException<br>
+&nbsp;&nbsp;&nbsp; Message:&nbsp;&nbsp;&nbsp; See inner exception(s) for details.<br>
+&nbsp;&nbsp;&nbsp; Data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 entries<br>
+&nbsp;&nbsp;&nbsp; Stack trace:<br>
+<br>
+&nbsp;&nbsp; in NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)<br>
+&nbsp;&nbsp; in NetOffice.OutlookApi._MailItem.get_Recipients()<br>
+&nbsp;&nbsp; in PitagoraDoc.Module.BusinessLogic.OutlookHelper.SendEmail(Dictionary`2 destinatari, String oggetto, String corpo, FileData[] allegati)<br>
+&nbsp;&nbsp; in PitagoraDoc.Module.BusinessLogic.ComunicazioneHelper.SendMail(Comunicazione comunicazione)<br>
+&nbsp;&nbsp; in PitagoraDoc.Module.Controllers.ComunicazioneController.SalvaEInvia_Execute(Object sender, SimpleActionExecuteEventArgs e)<br>
+&nbsp;&nbsp; in DevExpress.ExpressApp.Actions.ActionBase.ExecuteCore(Delegate handler, ActionBaseEventArgs eventArgs)<br>
+&nbsp;&nbsp;&nbsp; ----------------<br>
+&nbsp;&nbsp;&nbsp; InnerException:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TargetInvocationException<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Message:&nbsp;&nbsp;&nbsp; Eccezione generata dalla destinazione di una chiamata.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 entries<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Stack trace:<br>
+<br>
+&nbsp;&nbsp; in System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br>
+&nbsp;&nbsp; in System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br>
+&nbsp;&nbsp; in NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ----------------<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; InnerException:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; COMException<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Message:&nbsp;&nbsp;&nbsp; Operazione terminata. (Eccezione da HRESULT: 0x80004004 (E_ABORT))<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 entries<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Stack trace:<br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; InnerException is null</p>
+<p>---------------------------------------------------------------------------</p>
+<p>My code is pretty simple:</p>
+<p>...<br>
+Outlook.Application outlookApplication = new Outlook.Application();<br>
+Outlook.MailItem mailItem = outlookApplication.CreateItem(OlItemType.olMailItem) as Outlook.MailItem;<br>
+mailItem.Recipients.Add(&quot;xxx@xxx.xx&quot;);&nbsp;&nbsp;&nbsp; //&lt;- Error<br>
+...</p>
+<p>I noted that using another NetOffice API in my application (Session.GetDefaultFolder) first and then try to send a email the error go away.</p>
+<p>So as a workaround I call:<br>
+Outlook.MAPIFolder contactFolder = outlookApplication.Session.GetDefaultFolder(OlDefaultFolders.olFolderContacts);</p>
+<p>just after the creation of outlookApplication.</p>
+<p><span id="result_box" lang="en"><span>What might have happened?</span></span></p>
+<p><span lang="en"><span>Thank you, Giorgio.<br>
+</span></span></p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_939207" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="939456">
+    <td id="PostDetailsCell_939456" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post939456"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/10/2012 3:00:21 AM" LocalTimeTicks="1352545221">Nov 10, 2012 at 3:00 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_939456" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="hello,can&#32;you&#32;translate&#32;the&#32;message&#32;&#34;&#32;Eccezione&#32;generata&#32;dalla&#32;destinazione&#32;di&#32;una&#32;chiamata.&#34;&#32;for&#32;me&#63;&#63;&#63;It&#32;looks&#32;like&#32;a&#32;security&#32;exception&#32;btw.&#38;nbsp&#59;&#32;is&#32;your&#32;application&#32;a&#32;desktop&#32;application&#32;&#40;console,&#32;winforms,...&#41;&#32;or&#32;IIS&#32;hosted&#32;&#63;&#63;&#63;please&#32;note&#58;&#32;outlook&#32;use&#32;variuos&#32;security&#32;features&#32;and&#32;parts&#32;of&#32;the&#32;object&#32;model&#32;was&#32;restricted.&#32;the&#32;user&#32;has&#32;to&#32;agree&#32;the&#32;accessing&#32;from&#32;a&#32;third&#32;party&#32;component&#32;in&#32;a&#32;special&#32;dialog&#32;box.&#32;automating&#32;office&#32;in&#32;a&#32;server&#32;system&#32;is&#32;generaly&#32;not&#32;a&#32;good&#32;idea.&#32;did&#32;you&#32;see&#32;any&#32;chance&#32;to&#32;use&#32;the&#32;Exchange&#32;Server&#32;Web&#32;API&#32;&#40;EWS&#41;&#63;&#32;Sebastian">
+        
+<p>hello,<br>
+<br>
+can you translate the message &quot; Eccezione generata dalla destinazione di una chiamata.&quot; for me???<br>
+It looks like a security exception btw.&nbsp; is your application a desktop application (console, winforms,...) or IIS hosted ???<br>
+please note: outlook use variuos security features and parts of the object model was restricted. the user has to agree the accessing from a third party component in a special dialog box. automating office in a server system is generaly not a good idea. did
+ you see any chance to use the Exchange Server Web API (EWS)? <br>
+<br>
+Sebastian<br>
+<br>
+</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_939456" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="940182">
+    <td id="PostDetailsCell_940182" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post940182"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/giorgiovaccarino">giorgiovaccarino</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/12/2012 9:12:47 AM" LocalTimeTicks="1352740367">Nov 12, 2012 at 9:12 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_940182" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Hello&#32;Sebastian,&#32;can&#32;you&#32;translate&#32;the&#32;message&#32;&#34;&#32;Eccezione&#32;generata&#32;dalla&#32;destinazione&#32;di&#32;una&#32;chiamata.&#34;&#32;for&#32;me&#63;&#63;&#63;&#32;Exception&#32;has&#32;been&#32;thrown&#32;by&#32;the&#32;target&#32;of&#32;an&#32;invocation&#32;It&#32;looks&#32;like&#32;a&#32;security&#32;exception&#32;btw.&#32;is&#32;your&#32;application&#32;a&#32;desktop&#32;application&#32;&#40;console,&#32;winforms,...&#41;&#32;or&#32;IIS&#32;hosted&#32;&#63;&#63;&#63;&#32;Is&#32;a&#32;terminal&#32;services&#32;server,&#32;so,&#32;OS&#32;apart,&#32;is&#32;a&#32;shared&#32;desktop&#32;pc.&#32;User&#32;access&#32;my&#32;application&#32;&#40;Windows&#32;forms&#32;application&#41;&#32;either&#32;by&#32;remote&#32;desktop&#32;or&#32;remote&#32;application.&#32;In&#32;the&#32;tests&#32;I&#32;am&#32;doing&#32;I&#32;impersonate&#32;the&#32;Administrator&#32;and&#32;the&#32;outlook&#32;security&#32;has&#32;been&#32;adjusted&#32;in&#32;&#34;Trust&#32;center&#47;Programmatic&#32;access&#47;Never&#32;warn&#32;me&#32;about&#32;suspicious&#32;activity&#34;&#32;so&#32;no&#32;dialog&#32;box&#32;pop&#32;up.&#32;In&#32;development&#32;environment&#32;&#40;Windows&#32;7&#32;64&#32;bit&#41;&#32;all&#32;it&#32;is&#32;ok.&#32;User&#32;send&#32;emails&#32;from&#32;the&#32;application&#32;and&#32;want&#32;to&#32;find&#32;it&#32;later&#32;in&#32;sent&#32;items&#32;in&#32;Outlook.&#32;did&#32;you&#32;see&#32;any&#32;chance&#32;to&#32;use&#32;the&#32;Exchange&#32;Server&#32;Web&#32;API&#32;&#40;EWS&#41;&#32;Then&#32;I&#32;don&#39;t&#32;need&#32;it...&#63;&#32;At&#32;the&#32;end&#32;what&#32;look&#32;me&#32;strange,&#32;or&#32;significant,&#32;is&#32;that&#32;after&#32;a&#32;call&#32;to&#32;&#34;Outlook.MAPIFolder&#32;contactFolder&#32;&#61;&#32;outlookApplication.Session.GetDefaultFolder&#40;OlDefaultFolders.olFolderContacts&#41;&#59;&#34;&#32;something&#32;change&#32;in&#32;internal&#32;state&#32;of&#32;Outlook&#32;end&#32;subsequent&#32;call&#32;to&#32;&#34;mailItem.Recipients&#34;&#32;has&#32;success&#32;from&#32;this&#32;point&#32;till&#32;the&#32;application&#32;shutdown.&#32;But&#32;my&#32;knowledge&#32;with&#32;Outlook&#32;is&#32;poor&#32;and&#32;I&#32;don&#39;t&#32;figure&#32;out&#32;the&#32;reason.&#32;Thank&#32;you.&#32;giorgio.vaccarino&#64;wpformat.com">
+        
+<p>Hello Sebastian,</p>
+<p>can you translate the message &quot; Eccezione generata dalla destinazione di una chiamata.&quot; for me???<br>
+Exception has been thrown by the target of an invocation</p>
+<p>It looks like a security exception btw. is your application a desktop application (console, winforms,...) or IIS hosted ???<br>
+Is a terminal services server, so, OS apart, is a shared desktop pc.</p>
+<p>User access my application (Windows forms application) either by remote desktop or remote application.</p>
+<p>In the tests I am doing I impersonate the Administrator and the outlook security has been adjusted in &quot;Trust center/Programmatic access/Never warn me about suspicious activity&quot; so no dialog box pop up.</p>
+<p>In development environment (Windows 7 64 bit) all it is ok.</p>
+<p>User send emails from the application and want to find it later in sent items in Outlook.</p>
+<p>did you see any chance to use the Exchange Server Web API (EWS)</p>
+<p>Then I don't need it...?</p>
+<p>At the end what look me strange, or significant, is that after a call to &quot;Outlook.MAPIFolder contactFolder = outlookApplication.Session.GetDefaultFolder(OlDefaultFolders.olFolderContacts);&quot; something change in internal state of Outlook end subsequent call
+ to &quot;mailItem.Recipients&quot; has success from this point till the application shutdown.</p>
+<p>But my knowledge with Outlook is poor and I don't figure out the reason.</p>
+<p>Thank you.</p>
+<p><a href="mailto:giorgio_vaccarino@wpformat.com" rel="nofollow">giorgio.vaccarino@wpformat.com</a></p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_940182" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="941275">
+    <td id="PostDetailsCell_941275" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post941275"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotnet">SebastianDotnet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/13/2012 11:37:31 PM" LocalTimeTicks="1352878651">Nov 13, 2012 at 11:37 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_941275" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;hmm&#32;i&#32;can&#39;t&#32;reproduce&#32;your&#32;scenario&#32;because&#32;i&#32;dont&#32;have&#32;a&#32;terminal&#32;server&#32;for&#32;my&#32;vm&#39;s.&#32;thats&#32;a&#32;problem.&#32;&#32;the&#32;Microsoft&#32;EWS&#32;API&#32;is&#32;a&#32;nice&#32;way&#32;to&#32;deal&#32;with&#32;the&#32;exchange&#32;server&#32;via&#32;XML&#32;based&#32;communication,&#32;send&#32;mails,&#32;create&#32;contacts&#32;and&#32;all&#32;the&#32;other&#32;stuff.&#32;you&#32;dont&#32;need&#32;automate&#32;a&#32;local&#32;application,&#32;all&#32;what&#32;you&#32;need&#32;is&#32;an&#32;impersonation&#32;account&#32;for&#32;the&#32;exchange&#32;access.&#32;&#32;&#38;quot&#59;send&#32;e-mail&#32;example&#38;quot&#59;&#32;http&#58;&#47;&#47;msdn.microsoft.com&#47;en-us&#47;library&#47;exchange&#47;dd633628&#37;28v&#61;exchg.80&#37;29.aspx&#32;&#32;i&#32;use&#32;the&#32;EWS&#32;in&#32;a&#32;lot&#38;nbsp&#59;&#32;of&#32;server&#32;solutions.&#32;&#32;another&#32;possible&#32;solution&#32;for&#32;you&#32;is&#32;a&#32;local&#32;desktop&#32;proxy&#32;&#40;&#32;maybe&#32;an&#32;outlook&#32;addin&#32;&#41;&#32;and&#32;you&#32;send&#32;orders&#32;to&#32;the&#32;local&#32;addin&#32;via&#32;remoting.&#32;crazy&#32;but&#32;i&#32;think&#32;it&#32;works&#32;also.&#32;the&#32;google&#32;translation&#32;example&#32;addin&#32;in&#32;the&#32;download&#32;section&#32;shows&#32;a&#32;similar&#32;scenario&#32;and&#32;use&#32;IPC&#32;remoting.&#32;you&#32;can&#32;take&#32;look&#32;into&#32;this.&#32;you&#32;may&#32;need&#32;TCP&#32;remoting&#32;because&#32;IPC&#32;remoting&#32;doesnt&#32;works&#32;in&#32;different&#32;user&#32;accounts.&#32;&#32;Sebastian&#32;">
+        
+<p>hmm i can't reproduce your scenario because i dont have a terminal server for my vm's. thats a problem.<br>
+<br>
+the Microsoft EWS API is a nice way to deal with the exchange server via XML based communication, send mails, create contacts and all the other stuff.<br>
+you dont need automate a local application, all what you need is an impersonation account for the exchange access.<br>
+<br>
+&quot;send e-mail example&quot;<br>
+http://msdn.microsoft.com/en-us/library/exchange/dd633628%28v=exchg.80%29.aspx<br>
+<br>
+i use the EWS in a lot&nbsp; of server solutions.<br>
+<br>
+another possible solution for you is a local desktop proxy ( maybe an outlook addin ) and you send orders to the local addin via remoting. crazy but i think it works also. the google translation example addin in the download section shows a similar scenario
+ and use IPC remoting. you can take look into this. you may need TCP remoting because IPC remoting doesnt works in different user accounts.<br>
+<br>
+Sebastian</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_941275" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="941444">
+    <td id="PostDetailsCell_941444" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post941444"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/giorgiovaccarino">giorgiovaccarino</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/14/2012 8:17:25 AM" LocalTimeTicks="1352909845">Nov 14, 2012 at 8:17 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_941444" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;Hello&#32;Sebastian,&#32;first&#32;I&#32;will&#32;surely&#32;give&#32;a&#32;try&#32;to&#32;EWS&#32;because&#32;I&#32;like&#32;the&#32;idea&#32;of&#32;a&#32;message&#32;based&#32;communication&#32;between&#32;applications.&#32;Thank&#32;you&#32;for&#32;your&#32;advices.&#32;Giorgio.&#32;">
+        
+<p>Hello Sebastian,</p>
+<p>first I will surely give a try to EWS because I like the idea of a message based communication between applications.</p>
+<p>Thank you for your advices.</p>
+<p>Giorgio.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_941444" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="941447">
+    <td id="PostDetailsCell_941447" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post941447"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/14/2012 8:20:48 AM" LocalTimeTicks="1352910048">Nov 14, 2012 at 8:20 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_941447" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;if&#32;you&#32;need&#32;help&#32;to&#32;start&#32;with&#32;the&#32;EWS&#32;API&#38;nbsp&#59;&#32;then&#32;please&#32;feel&#32;free&#32;to&#32;contact&#32;me.&#32;&#32;Sebastian&#32;">
+        
+<p>if you need help to start with the EWS API&nbsp; then please feel free to contact me.<br>
+<br>
+Sebastian</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_941447" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="5efbc99f-19d5-471b-8488-4f3b4e3308ea">
+    <script class="options" defer="defer" id="5efbc99f-19d5-471b-8488-4f3b4e3308ea" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_21f67ec9-cf97-47f2-9cdb-0b9c53e963f3">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_661116ce-756f-433b-ab18-fc75b159d017">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_21f67ec9-cf97-47f2-9cdb-0b9c53e963f3" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_661116ce-756f-433b-ab18-fc75b159d017" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/402580';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,970 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - DAOApi.Property Assignment Error &#61;&#62; Class not exists&#58; NetOffice.ExcelApi.Property</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/586132?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/586132?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="ez4rK2O-Vl9AQqOUGeJgqEyEnshD_sKPj7ZR-p_UY9UFIMTr6F5EqujPWNaFj9I5Q42meHAqCd1cdUzP2dOjQ8JYpxlBCyrtlCK_VMqyulj-aBpYAyppzkt3ZSFOfnrbyMt25Q2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken2b457587d-3356-4bc9-bc0f-cc71837f3eb6" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:42 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f586132" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="67c89c21-ca78-4373-aecc-abadd28099ba">
+                
+                    <script class="options" defer="defer" id="67c89c21-ca78-4373-aecc-abadd28099ba" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                DAOApi.Property Assignment Error &#61;&#62; Class not exists&#58; NetOffice.ExcelApi.Property
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:586132]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="d4c75029-2277-40ea-8d5a-658fc841f906">
+    <script class="options" defer="defer" id="d4c75029-2277-40ea-8d5a-658fc841f906" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/586132","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1362738">
+    <td id="PostDetailsCell_1362738" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1362738"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/GordonH">GordonH</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="3/12/2015 10:42:55 AM" LocalTimeTicks="1426182175">Mar 12, 2015 at 10:42 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1362738" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi&#32;Sebastian,&#13;&#10;&#13;&#10;Firstly&#32;thanks&#32;for&#32;such&#32;a&#32;great&#32;product.&#32;We&#32;have&#32;multiple&#32;versions&#32;of&#32;MS&#32;Office&#32;and&#32;NetOffice&#32;just&#32;makes&#32;implementation&#32;into&#32;this&#32;type&#32;of&#32;environment&#32;easy.&#13;&#10;&#13;&#10;I&#32;have&#32;a&#32;strange&#32;error&#32;with&#32;DAOApi.Property.&#32;When&#32;the&#32;DAOApi.Properties&#40;i&#41;&#32;&#32;is&#32;assigned&#32;to&#32;a&#32;DAOApi.Property&#32;variable&#32;the&#32;following&#32;error&#32;occurs&#58;&#13;&#10;&#13;&#10;Class&#32;not&#32;exists&#58;&#32;NetOffice.ExcelApi.Property&#13;&#10;&#13;&#10;My&#32;Dev&#32;machine&#32;is&#32;Win7&#32;Pro&#32;64&#32;with&#32;Office&#32;2010&#32;32&#32;bit.&#13;&#10;&#13;&#10;I&#32;much&#32;appreciate&#32;your&#32;assistance&#32;with&#32;this&#32;matter.&#13;&#10;&#13;&#10;Cheers,&#13;&#10;&#13;&#10;Gordon&#13;&#10;&#13;&#10;The&#32;Method&#32;Code&#32;follows&#58;&#13;&#10;&#13;&#10;Private&#32;Function&#32;HasFieldProperty&#40;ByRef&#32;checkField&#32;As&#32;Field,&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ByVal&#32;checkPropertyName&#32;As&#32;String&#41;&#32;As&#32;Boolean&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;Determine&#32;if&#32;the&#32;fieldToCheck&#32;has&#32;the&#32;&#39;Property&#32;Name&#39;&#32;&#40;eg&#58;&#32;Format,&#32;Input&#32;Mask,....&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fldName&#32;&#61;&#32;checkField.Name&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;Check&#32;if&#32;PropertyName&#32;Exists&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;propertyExists&#32;As&#32;Boolean&#32;&#61;&#32;False&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fldProperty&#32;As&#32;NetOffice.DAOApi.Property&#32;&#61;&#32;Nothing&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fldProperties&#32;As&#32;NetOffice.DAOApi.Properties&#32;&#61;&#32;Nothing&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Try&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fldProperties&#32;&#61;&#32;checkField.Properties&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;For&#32;i&#32;As&#32;Integer&#32;&#61;&#32;0&#32;To&#32;fldProperties.Count&#32;-&#32;1&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fldPropertyName&#32;&#61;&#32;fldProperties&#40;i&#41;.Name&#32;&#39;&#32;Fails&#32;on&#32;this&#32;line&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;If&#32;fldPropertyName&#32;&#61;&#32;checkPropertyName.ToUpper&#32;Then&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyExists&#32;&#61;&#32;True&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Exit&#32;For&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;If&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Next&#32;i&#13;&#10;&#13;&#10;&#13;&#10;DisposeObjects&#58;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Catch&#32;ex&#32;As&#32;Exception&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;msg&#32;&#61;&#32;innerExceptionMessage&#40;ex&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyExists&#32;&#61;&#32;False&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Finally&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;DisposeObjects&#32;&#40;in&#32;Reverse&#32;Order&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;If&#32;Not&#32;IsNothing&#40;fldProperty&#41;&#32;AndAlso&#32;Not&#32;fldProperty.IsDisposed&#32;Then&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fldProperty.Dispose&#40;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;If&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;If&#32;Not&#32;IsNothing&#40;fldProperties&#41;&#32;AndAlso&#32;Not&#32;fldProperties.IsDisposed&#32;Then&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fldProperties.Dispose&#40;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;If&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;Try&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Return&#32;propertyExists&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;Function&#13;&#10;">
+        <div class="markDownOutput ">Hi Sebastian, <br>
+<br>
+Firstly thanks for such a great product. We have multiple versions of MS Office and NetOffice just makes implementation into this type of environment easy.
+<br>
+<br>
+I have a strange error with DAOApi.Property. When the DAOApi.Properties(i) is assigned to a DAOApi.Property variable the following error occurs:
+<br>
+<br>
+Class not exists: NetOffice.ExcelApi.Property <br>
+<br>
+My Dev machine is Win7 Pro 64 with Office 2010 32 bit. <br>
+<br>
+I much appreciate your assistance with this matter. <br>
+<br>
+Cheers, <br>
+<br>
+Gordon <br>
+<br>
+The Method Code follows: <br>
+<br>
+Private Function HasFieldProperty(ByRef checkField As Field,<br>
+<pre><code>                                      ByVal checkPropertyName As String) As Boolean
+
+        ' Determine if the fieldToCheck has the 'Property Name' (eg: Format, Input Mask,....)
+        Dim fldName = checkField.Name
+
+        ' Check if PropertyName Exists
+        Dim propertyExists As Boolean = False
+
+        Dim fldProperty As NetOffice.DAOApi.Property = Nothing
+        Dim fldProperties As NetOffice.DAOApi.Properties = Nothing
+
+        Try
+            fldProperties = checkField.Properties
+
+            For i As Integer = 0 To fldProperties.Count - 1
+
+                Dim fldPropertyName = fldProperties(i).Name ' Fails on this line
+                If fldPropertyName = checkPropertyName.ToUpper Then
+                    propertyExists = True
+                    Exit For
+                End If
+
+            Next i
+
+</code></pre>
+DisposeObjects:<br>
+<pre><code>            ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        Catch ex As Exception
+            Dim msg = innerExceptionMessage(ex)
+            propertyExists = False
+
+        Finally
+            ' DisposeObjects (in Reverse Order)
+            If Not IsNothing(fldProperty) AndAlso Not fldProperty.IsDisposed Then
+                fldProperty.Dispose()
+            End If
+            If Not IsNothing(fldProperties) AndAlso Not fldProperties.IsDisposed Then
+                fldProperties.Dispose()
+            End If
+
+        End Try
+
+        Return propertyExists
+
+    End Function</code></pre>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1362738" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1362807">
+    <td id="PostDetailsCell_1362807" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1362807"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="3/12/2015 2:49:13 PM" LocalTimeTicks="1426196953">Mar 12, 2015 at 2:49 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1362807" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Looks&#32;like&#32;ExcelApi.dll&#32;is&#32;not&#32;referenced&#32;&#40;but&#32;note&#32;sure&#32;it&#32;has&#32;to&#32;be&#41;.&#13;&#10;&#13;&#10;I&#32;need&#32;some&#32;more&#32;infos.&#13;&#10;&#13;&#10;1&#41;&#32;NetOffice&#32;version&#13;&#10;2&#41;&#32;Application&#32;Type,&#32;External&#32;Program&#32;or&#32;Addin&#40;&#32;if&#32;addin&#32;which&#32;host&#32;application&#63;&#41;&#13;&#10;3&#41;&#32;Full&#32;qualified&#32;type&#32;name&#32;of&#32;your&#32;argument&#32;checkField&#32;&#40;need&#32;info&#32;which&#32;is&#32;come&#32;from&#41;&#13;&#10;&#13;&#10;I&#32;want&#32;checkout&#32;the&#32;COM&#32;interface&#32;id&#39;s&#32;of&#32;Excel.Property&#32;and&#32;DAO.Property.&#13;&#10;&#40;may&#32;its&#32;the&#32;same&#32;id&#39;s,&#32;this&#32;is&#32;forbidden&#32;in&#32;COM&#32;but&#32;sometimes&#32;Microsoft&#32;goes&#32;crazy&#41;&#13;&#10;&#13;&#10;Sebastian">
+        <div class="markDownOutput ">Looks like ExcelApi.dll is not referenced (but note sure it has to be). <br>
+<br>
+I need some more infos. <br>
+<br>
+1) NetOffice version <br>
+2) Application Type, External Program or Addin( if addin which host application?)
+<br>
+3) Full qualified type name of your argument checkField (need info which is come from)
+<br>
+<br>
+I want checkout the COM interface id's of Excel.Property and DAO.Property. <br>
+(may its the same id's, this is forbidden in COM but sometimes Microsoft goes crazy)
+<br>
+<br>
+Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1362807" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1363068">
+    <td id="PostDetailsCell_1363068" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1363068"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/GordonH">GordonH</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="3/13/2015 11:00:02 AM" LocalTimeTicks="1426269602">Mar 13, 2015 at 11:00 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1363068" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi&#32;Sebastian,&#13;&#10;&#13;&#10;Thanks&#32;for&#32;your&#32;prompt&#32;reply.&#13;&#10;&#13;&#10;The&#32;NetOffice.ExcelApi&#32;is&#32;not&#32;referenced&#32;in&#32;the&#32;Access&#32;Project&#32;&#40;I&#32;was&#32;confused&#32;when&#32;it&#32;came&#32;up&#32;with&#32;Excel&#32;and&#32;not&#32;Access&#32;as&#32;an&#32;Error&#41;&#13;&#10;&#13;&#10;1&#41;&#32;NetOffice&#32;Version&#32;for&#32;NetOffice&#32;.Core,&#32;&#32;NetOffice&#32;.Access&#32;and&#32;&#32;NetOffice&#32;.Excel&#32;is&#32;1.7.2.0&#13;&#10;2&#41;&#32;Application&#32;type&#32;is&#32;an&#32;external&#32;program.&#32;WPF&#32;UI&#32;calling&#32;set&#32;of&#32;NetOffice&#32;Access&#32;Functions&#32;&#40;as&#32;per&#32;code&#32;snippets&#41;&#32;or&#32;Excel&#32;Functions&#13;&#10;3.&#41;&#32;checkField&#32;source&#32;is&#32;as&#32;per&#32;following&#32;code&#58;&#32;&#13;&#10;&#32;&#32;&#32;&#32;&#32;tdf&#32;&#61;&#62;&#32;tdf.fields&#32;&#61;&#62;&#32;fld.Type&#61;4&#32;&#61;&#62;&#32;SetFieldProperty&#32;&#61;&#62;&#32;HasFieldProperty&#13;&#10;&#13;&#10;Pleased&#32;to&#32;send&#32;a&#32;sample&#32;project&#32;if&#32;that&#32;makes&#32;things&#32;easier.&#13;&#10;&#13;&#10;Have&#32;great&#32;day.&#13;&#10;&#13;&#10;Cheers,&#13;&#10;&#13;&#10;Gordon.&#13;&#10;&#13;&#10;Code&#32;for&#32;checkField&#32;source&#58;&#13;&#10;&#13;&#10;&#35;Region&#32;&#34;Field&#32;Properties&#34;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Private&#32;Function&#32;SetLongFieldProperties&#40;ByRef&#32;tdf&#32;As&#32;TableDef&#41;&#32;As&#32;Boolean&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;Property&#32;Attributes&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;propertyName&#32;As&#32;String&#32;&#61;&#32;Nothing&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;propertyDataType&#32;As&#32;NetOffice.DAOApi.Enums.DataTypeEnum&#32;&#61;&#32;Nothing&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;propertyValue&#32;As&#32;Object&#32;&#61;&#32;Nothing&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;Get&#32;the&#32;fields&#32;from&#32;the&#32;TableDef&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fld&#32;As&#32;Field&#32;&#61;&#32;Nothing&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;flds&#32;As&#32;Fields&#32;&#61;&#32;tdf.Fields&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;result&#32;As&#32;Boolean&#32;&#61;&#32;False&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Try&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;For&#32;Each&#32;fld&#32;In&#32;flds&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fldType&#32;&#61;&#32;fld.Type&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Select&#32;Case&#32;fldType&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Case&#32;4&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;Long&#32;Formatting&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyName&#32;&#61;&#32;&#34;Format&#34;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyDataType&#32;&#61;&#32;NetOffice.DAOApi.Enums.DataTypeEnum.dbText&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyValue&#32;&#61;&#32;&#34;Standard&#34;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SetFieldProperty&#40;fld,&#32;propertyName,&#32;propertyDataType,&#32;propertyValue&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyName&#32;&#61;&#32;&#34;DecimalPlaces&#34;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyDataType&#32;&#61;&#32;NetOffice.DAOApi.Enums.DataTypeEnum.dbByte&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyValue&#32;&#61;&#32;0&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SetFieldProperty&#40;fld,&#32;propertyName,&#32;propertyDataType,&#32;propertyValue&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyName&#32;&#61;&#32;&#34;ColumnWidth&#34;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyDataType&#32;&#61;&#32;NetOffice.DAOApi.Enums.DataTypeEnum.dbInteger&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyValue&#32;&#61;&#32;1200&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SetFieldProperty&#40;fld,&#32;propertyName,&#32;propertyDataType,&#32;propertyValue&#41;&#13;&#10;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;Select&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Next&#32;fld&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;&#61;&#32;True&#13;&#10;&#13;&#10;&#13;&#10;DisposeObjects&#58;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Catch&#32;ex&#32;As&#32;Exception&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;msg&#32;&#61;&#32;innerExceptionMessage&#40;ex&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;&#61;&#32;False&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Finally&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;DisposeObjects&#32;&#40;in&#32;Reverse&#32;Order&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;If&#32;Not&#32;IsNothing&#40;fld&#41;&#32;AndAlso&#32;Not&#32;fld.IsDisposed&#32;Then&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fld.Dispose&#40;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;If&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;If&#32;Not&#32;IsNothing&#40;flds&#41;&#32;AndAlso&#32;Not&#32;flds.IsDisposed&#32;Then&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flds.Dispose&#40;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;If&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;Try&#13;&#10;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Return&#32;True&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;Function&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Private&#32;Function&#32;SetFieldProperty&#40;ByRef&#32;fieldToSet&#32;As&#32;Field,&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ByVal&#32;propertyName&#32;As&#32;String,&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ByVal&#32;propertyDataType&#32;As&#32;NetOffice.DAOApi.Enums.DataTypeEnum,&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ByVal&#32;propertySetValue&#32;As&#32;Object&#41;&#32;As&#32;Boolean&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;Attempt&#32;to&#32;Set&#32;SetFieldProperty&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fieldPropertySet&#32;As&#32;Boolean&#32;&#61;&#32;False&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Try&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;If&#32;HasFieldProperty&#40;fieldToSet,&#32;propertyName&#41;&#32;Then&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldToSet.Properties&#40;propertyName&#41;.Value&#32;&#61;&#32;propertySetValue&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Else&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldToSet.Properties.Append&#40;fieldToSet.CreateProperty&#40;propertyName,&#32;propertyDataType,&#32;propertySetValue&#41;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;If&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldPropertySet&#32;&#61;&#32;True&#13;&#10;&#13;&#10;DisposeObjects&#58;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Catch&#32;ex&#32;As&#32;Exception&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;msg&#32;&#61;&#32;innerExceptionMessage&#40;ex&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fieldPropertySet&#32;&#61;&#32;False&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Finally&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;DisposeObjects&#32;&#40;in&#32;Reverse&#32;Order&#41;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;Try&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Return&#32;fieldPropertySet&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;Function&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Private&#32;Function&#32;HasFieldProperty&#40;ByRef&#32;checkField&#32;As&#32;Field,&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ByVal&#32;checkPropertyName&#32;As&#32;String&#41;&#32;As&#32;Boolean&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;Determine&#32;if&#32;the&#32;fieldToCheck&#32;has&#32;the&#32;&#39;Property&#32;Name&#39;&#32;&#40;eg&#58;&#32;Format,&#32;Input&#32;Mask,....&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fldName&#32;&#61;&#32;checkField.Name&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;Check&#32;if&#32;PropertyName&#32;Exists&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;propertyExists&#32;As&#32;Boolean&#32;&#61;&#32;False&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fldProperty&#32;As&#32;NetOffice.DAOApi.Property&#32;&#61;&#32;Nothing&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fldProperties&#32;As&#32;NetOffice.DAOApi.Properties&#32;&#61;&#32;Nothing&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Try&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fldProperties&#32;&#61;&#32;checkField.Properties&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;For&#32;i&#32;As&#32;Integer&#32;&#61;&#32;0&#32;To&#32;fldProperties.Count&#32;-&#32;1&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;fldPropertyName&#32;&#61;&#32;fldProperties&#40;i&#41;.Name&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;If&#32;fldPropertyName&#32;&#61;&#32;checkPropertyName.ToUpper&#32;Then&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyExists&#32;&#61;&#32;True&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Exit&#32;For&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;If&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Next&#32;i&#13;&#10;&#13;&#10;&#13;&#10;DisposeObjects&#58;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#32;-&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Catch&#32;ex&#32;As&#32;Exception&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Dim&#32;msg&#32;&#61;&#32;innerExceptionMessage&#40;ex&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;propertyExists&#32;&#61;&#32;False&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Finally&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#39;&#32;DisposeObjects&#32;&#40;in&#32;Reverse&#32;Order&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;If&#32;Not&#32;IsNothing&#40;fldProperty&#41;&#32;AndAlso&#32;Not&#32;fldProperty.IsDisposed&#32;Then&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fldProperty.Dispose&#40;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;If&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;If&#32;Not&#32;IsNothing&#40;fldProperties&#41;&#32;AndAlso&#32;Not&#32;fldProperties.IsDisposed&#32;Then&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fldProperties.Dispose&#40;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;If&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;Try&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Return&#32;propertyExists&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;End&#32;Function&#13;&#10;">
+        <div class="markDownOutput ">Hi Sebastian, <br>
+<br>
+Thanks for your prompt reply. <br>
+<br>
+The NetOffice.ExcelApi is not referenced in the Access Project (I was confused when it came up with Excel and not Access as an Error)
+<br>
+<br>
+1) NetOffice Version for NetOffice .Core, NetOffice .Access and NetOffice .Excel is 1.7.2.0
+<br>
+2) Application type is an external program. WPF UI calling set of NetOffice Access Functions (as per code snippets) or Excel Functions
+<br>
+3.) checkField source is as per following code: <br>
+<pre><code> tdf =&gt; tdf.fields =&gt; fld.Type=4 =&gt; SetFieldProperty =&gt; HasFieldProperty
+</code></pre>
+Pleased to send a sample project if that makes things easier. <br>
+<br>
+Have great day. <br>
+<br>
+Cheers, <br>
+<br>
+Gordon. <br>
+<br>
+Code for checkField source:<br>
+<h1>Region &quot;Field Properties&quot;</h1>
+<pre><code>    Private Function SetLongFieldProperties(ByRef tdf As TableDef) As Boolean
+
+        ' Property Attributes
+        Dim propertyName As String = Nothing
+        Dim propertyDataType As NetOffice.DAOApi.Enums.DataTypeEnum = Nothing
+        Dim propertyValue As Object = Nothing
+
+        ' Get the fields from the TableDef
+        Dim fld As Field = Nothing
+        Dim flds As Fields = tdf.Fields
+
+        Dim result As Boolean = False
+
+        Try
+            For Each fld In flds
+
+                Dim fldType = fld.Type
+
+                Select Case fldType
+
+                    Case 4
+
+                        ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                        ' Long Formatting
+                        ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                        propertyName = &quot;Format&quot;
+                        propertyDataType = NetOffice.DAOApi.Enums.DataTypeEnum.dbText
+                        propertyValue = &quot;Standard&quot;
+
+                        SetFieldProperty(fld, propertyName, propertyDataType, propertyValue)
+                        ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+                        propertyName = &quot;DecimalPlaces&quot;
+                        propertyDataType = NetOffice.DAOApi.Enums.DataTypeEnum.dbByte
+                        propertyValue = 0
+
+                        SetFieldProperty(fld, propertyName, propertyDataType, propertyValue)
+                        ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+                        propertyName = &quot;ColumnWidth&quot;
+                        propertyDataType = NetOffice.DAOApi.Enums.DataTypeEnum.dbInteger
+                        propertyValue = 1200
+
+                        SetFieldProperty(fld, propertyName, propertyDataType, propertyValue)
+
+
+                End Select
+
+            Next fld
+
+            result = True
+
+</code></pre>
+DisposeObjects:<br>
+<pre><code>            ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        Catch ex As Exception
+            Dim msg = innerExceptionMessage(ex)
+            result = False
+
+        Finally
+            ' DisposeObjects (in Reverse Order)
+            If Not IsNothing(fld) AndAlso Not fld.IsDisposed Then
+                fld.Dispose()
+            End If
+            If Not IsNothing(flds) AndAlso Not flds.IsDisposed Then
+                flds.Dispose()
+            End If
+
+        End Try
+
+
+        Return True
+
+    End Function
+
+    Private Function SetFieldProperty(ByRef fieldToSet As Field,
+                                      ByVal propertyName As String,
+                                      ByVal propertyDataType As NetOffice.DAOApi.Enums.DataTypeEnum,
+                                      ByVal propertySetValue As Object) As Boolean
+
+        ' Attempt to Set SetFieldProperty
+        Dim fieldPropertySet As Boolean = False
+
+        Try
+            If HasFieldProperty(fieldToSet, propertyName) Then
+                fieldToSet.Properties(propertyName).Value = propertySetValue
+            Else
+                fieldToSet.Properties.Append(fieldToSet.CreateProperty(propertyName, propertyDataType, propertySetValue))
+            End If
+
+            fieldPropertySet = True
+</code></pre>
+DisposeObjects:<br>
+<pre><code>            ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        Catch ex As Exception
+            Dim msg = innerExceptionMessage(ex)
+            fieldPropertySet = False
+
+        Finally
+            ' DisposeObjects (in Reverse Order)
+
+        End Try
+
+        Return fieldPropertySet
+
+    End Function
+
+    Private Function HasFieldProperty(ByRef checkField As Field,
+                                      ByVal checkPropertyName As String) As Boolean
+
+        ' Determine if the fieldToCheck has the 'Property Name' (eg: Format, Input Mask,....)
+        Dim fldName = checkField.Name
+
+        ' Check if PropertyName Exists
+        Dim propertyExists As Boolean = False
+
+        Dim fldProperty As NetOffice.DAOApi.Property = Nothing
+        Dim fldProperties As NetOffice.DAOApi.Properties = Nothing
+
+        Try
+            fldProperties = checkField.Properties
+
+            For i As Integer = 0 To fldProperties.Count - 1
+
+                Dim fldPropertyName = fldProperties(i).Name
+                If fldPropertyName = checkPropertyName.ToUpper Then
+                    propertyExists = True
+                    Exit For
+                End If
+
+            Next i
+
+</code></pre>
+DisposeObjects:<br>
+<pre><code>            ' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        Catch ex As Exception
+            Dim msg = innerExceptionMessage(ex)
+            propertyExists = False
+
+        Finally
+            ' DisposeObjects (in Reverse Order)
+            If Not IsNothing(fldProperty) AndAlso Not fldProperty.IsDisposed Then
+                fldProperty.Dispose()
+            End If
+            If Not IsNothing(fldProperties) AndAlso Not fldProperties.IsDisposed Then
+                fldProperties.Dispose()
+            End If
+
+        End Try
+
+        Return propertyExists
+
+    End Function</code></pre>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1363068" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1363239">
+    <td id="PostDetailsCell_1363239" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1363239"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="3/13/2015 7:59:51 PM" LocalTimeTicks="1426301991">Mar 13, 2015 at 7:59 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1363239" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="A&#32;sample&#32;project&#32;is&#32;greatly&#32;appreciated.&#32;&#13;&#10;&#13;&#10;please&#32;send&#32;to&#58;&#13;&#10;public.sebastian&#91;at&#93;web.de&#13;&#10;&#13;&#10;&#40;i&#32;need&#32;a&#32;mdb&#47;accdb&#32;file&#32;or&#47;and&#32;instructions&#32;how&#32;i&#32;can&#32;reproduce&#32;the&#32;exception&#41;&#13;&#10;&#13;&#10;BTW&#58;&#32;Excel&#32;doesnt&#32;contains&#32;a&#32;type&#32;called&#32;&#34;property&#34;&#32;&#58;o&#32;this&#32;is&#32;very&#32;strange.&#13;&#10;i&#32;find&#32;ICustomProperty&#32;and&#32;CustomProperty&#32;only&#32;in&#32;my&#32;personal&#32;type&#32;lib&#32;analyzer&#32;tool.&#13;&#10;&#40;what&#32;i&#32;know&#32;currently&#58;&#32;NetOffice&#32;failed&#32;to&#32;detect&#32;the&#32;correct&#32;type&#32;library&#32;which&#32;a&#32;single&#32;property&#32;instance&#32;type&#32;comes&#32;from.&#32;&#13;&#10;i&#32;still&#32;believe&#32;on&#32;my&#32;duplicate&#32;interface&#32;id&#32;theory....&#41;&#13;&#10;&#13;&#10;lets&#32;pin&#32;point&#47;fix&#32;this&#32;asap&#32;&#33;&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;&#13;&#10;&#13;&#10;">
+        <div class="markDownOutput ">A sample project is greatly appreciated. <br>
+<br>
+please send to: <br>
+public.sebastian[at]web.de <br>
+<br>
+(i need a mdb/accdb file or/and instructions how i can reproduce the exception) <br>
+<br>
+BTW: Excel doesnt contains a type called &quot;property&quot; :o this is very strange.
+<br>
+i find ICustomProperty and CustomProperty only in my personal type lib analyzer tool.
+<br>
+(what i know currently: NetOffice failed to detect the correct type library which a single property instance type comes from.
+<br>
+i still believe on my duplicate interface id theory....) <br>
+<br>
+lets pin point/fix this asap ! <br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1363239" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="3bc8b5c9-14f0-4c05-afb3-f0689a113f29">
+    <script class="options" defer="defer" id="3bc8b5c9-14f0-4c05-afb3-f0689a113f29" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_3608cfa3-adf7-444d-a57c-e35f09504538">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_2af4e279-21ed-4d6b-ad33-a24add9f14eb">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_3608cfa3-adf7-444d-a57c-e35f09504538" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_2af4e279-21ed-4d6b-ad33-a24add9f14eb" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/586132';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,943 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - NetOffice Saving Excel Sheet to .PDF</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/576228?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/576228?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="OJdn4auB0OFx20efMr4IP4tLZmu3XNkeqi-OnyZuFyUP1Wi6HPhHTrt1SjyAcXz3YBkgKX64mQewIddNHBdeHwOej3xJzw92cFITx4tE2ZKthIMWkweUtmqvg5Yme7uxNe-LJA2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken2d971a0df-8074-4925-ad91-6bb49804f0ac" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:47 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f576228" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="69d532d1-c6b0-4160-8657-717f1c85b36c">
+                
+                    <script class="options" defer="defer" id="69d532d1-c6b0-4160-8657-717f1c85b36c" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                NetOffice Saving Excel Sheet to .PDF
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:576228]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="02843571-fd1c-4cb3-8774-4ea67355bbc1">
+    <script class="options" defer="defer" id="02843571-fd1c-4cb3-8774-4ea67355bbc1" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/576228","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1337031">
+    <td id="PostDetailsCell_1337031" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1337031"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/mix30">mix30</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/24/2014 5:01:28 PM" LocalTimeTicks="1419469288">Dec 24, 2014 at 5:01 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="1/13/2015 2:43:44 PM" LocalTimeTicks="1421189024">Jan 13, 2015 at 2:43 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1337031" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="&#96;&#96;&#96;&#10;using&#32;System&#59;&#10;using&#32;System.Collections.Generic&#59;&#10;using&#32;System.Linq&#59;&#10;using&#32;System.Text&#59;&#10;using&#32;System.Threading.Tasks&#59;&#10;using&#32;Microsoft.CSharp&#59;&#10;using&#32;System.Runtime.InteropServices&#59;&#10;using&#32;System.IO&#59;&#10;using&#32;NetOffice.OfficeApi.Enums&#59;&#10;using&#32;Excel&#32;&#61;&#32;NetOffice.ExcelApi&#59;&#10;&#10;namespace&#32;ConvertSheetsToPDFs&#10;&#123;&#10;&#32;&#32;&#32;&#32;public&#32;class&#32;Program&#10;&#32;&#32;&#32;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public&#32;static&#32;void&#32;Main&#40;string&#91;&#93;&#32;args&#41;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string&#32;filePath1&#32;&#61;&#32;&#64;&#34;&#92;&#92;Server&#92;Folder&#92;SomeFile.xls&#34;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string&#32;saveSheet&#32;&#61;&#32;&#34;&#34;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DateTime&#32;date&#32;&#61;&#32;DateTime.Today&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string&#32;format&#32;&#61;&#32;&#34;MM-dd-yy&#34;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string&#32;stringDate&#32;&#61;&#32;date.ToString&#40;format&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Excel.Worksheet&#32;worksheet&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Excel.Application&#32;excel&#32;&#61;&#32;new&#32;Excel.Application&#40;&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;excel.DisplayAlerts&#32;&#61;&#32;false&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;excel.AskToUpdateLinks&#32;&#61;&#32;false&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;excel.Visible&#32;&#61;&#32;false&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;excel.ScreenUpdating&#32;&#61;&#32;false&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Excel.Workbook&#32;workbook&#32;&#61;&#32;excel.Workbooks.Open&#40;filePath1&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;&#40;int&#32;j&#32;&#61;&#32;0&#59;&#32;j&#32;&#60;&#32;excel.Worksheets.Count&#59;&#32;j&#43;&#43;&#41;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;worksheet&#32;&#61;&#32;excel.Worksheets.ElementAt&#40;j&#41;&#32;as&#32;Excel.Worksheet&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;&#40;worksheet.Name&#32;&#61;&#61;&#32;&#34;SomeWorkSheet&#34;&#41;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Excel.Workbook&#32;workbook2&#32;&#61;&#32;new&#32;Excel.Workbook&#40;worksheet&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;saveSheet&#32;&#61;&#32;&#64;&#34;&#92;&#92;Server&#92;Folder&#92;ARCHIVES&#92;&#34;&#32;&#43;&#32;worksheet.Name&#32;&#43;&#32;&#34;&#32;&#34;&#32;&#43;&#32;stringDate&#32;&#43;&#32;&#34;.pdf&#34;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;object&#32;sheet&#32;&#61;&#32;String.Format&#40;saveSheet&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;workbook2.ExportAsFixedFormat&#40;Excel.Enums.XlFixedFormatType.xlTypePDF,&#32;sheet,&#32;Excel.Enums.XlFixedFormatQuality.xlQualityStandard,&#32;Type.Missing,&#32;Type.Missing,&#32;Type.Missing,&#32;Type.Missing,&#32;Type.Missing,&#32;Type.Missing&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string&#32;end&#32;&#61;&#32;Console.ReadLine&#40;&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;excel.ActiveWorkbook.Close&#40;&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;excel.Quit&#40;&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;excel.Dispose&#40;&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#10;&#32;&#32;&#32;&#32;&#125;&#10;&#125;&#10;&#96;&#96;&#96;">
+        <div class="markDownOutput ">
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.CSharp;
+using System.Runtime.InteropServices;
+using System.IO;
+using NetOffice.OfficeApi.Enums;
+using Excel = NetOffice.ExcelApi;
+
+namespace ConvertSheetsToPDFs
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string filePath1 = @&quot;\\Server\Folder\SomeFile.xls&quot;;
+            string saveSheet = &quot;&quot;;
+            DateTime date = DateTime.Today;
+            string format = &quot;MM-dd-yy&quot;;
+            string stringDate = date.ToString(format);
+            Excel.Worksheet worksheet;
+            Excel.Application excel = new Excel.Application();
+            excel.DisplayAlerts = false;
+            excel.AskToUpdateLinks = false;
+            excel.Visible = false;
+            excel.ScreenUpdating = false;
+            Excel.Workbook workbook = excel.Workbooks.Open(filePath1);
+            for (int j = 0; j &lt; excel.Worksheets.Count; j&#43;&#43;)
+            {
+                worksheet = excel.Worksheets.ElementAt(j) as Excel.Worksheet;
+                if (worksheet.Name == &quot;SomeWorkSheet&quot;)
+                {
+                    Excel.Workbook workbook2 = new Excel.Workbook(worksheet);
+                    saveSheet = @&quot;\\Server\Folder\ARCHIVES\&quot; &#43; worksheet.Name &#43; &quot; &quot; &#43; stringDate &#43; &quot;.pdf&quot;;
+                    object sheet = String.Format(saveSheet);
+                    workbook2.ExportAsFixedFormat(Excel.Enums.XlFixedFormatType.xlTypePDF, sheet, Excel.Enums.XlFixedFormatQuality.xlQualityStandard, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                }
+            }
+            
+            string end = Console.ReadLine();
+            excel.ActiveWorkbook.Close();
+            excel.Quit();
+            excel.Dispose();
+        }
+    }
+}</code></pre>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1337031" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1337096">
+    <td id="PostDetailsCell_1337096" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1337096"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/25/2014 8:02:13 AM" LocalTimeTicks="1419523333">Dec 25, 2014 at 8:02 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1337096" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="the&#32;easiest&#47;fastest&#32;way&#40;in&#32;performance&#41;&#32;is&#32;to&#32;use&#32;copy&#38;paste.&#13;&#10;&#13;&#10;something&#32;like&#32;this&#58;&#13;&#10;worksheet&#32;.Range&#91;&#34;A1&#58;G3&#34;&#93;.Copy&#40;&#41;&#59;&#13;&#10;word&#32;.Selection.Range.PasteSpecial&#40;&#41;&#59;&#13;&#10;&#13;&#10;you&#32;can&#32;set&#32;various&#32;format&#32;arguments&#32;in&#32;the&#32;PasteSpecial&#32;method&#58;&#13;&#10;see&#32;documentation&#58;&#32;http&#58;&#47;&#47;msdn.microsoft.com&#47;de-de&#47;library&#47;microsoft.office.interop.word.wdpastedatatype&#37;28v&#61;office.11&#37;29.aspx&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;">
+        <div class="markDownOutput ">the easiest/fastest way(in performance) is to use copy&amp;paste. <br>
+<br>
+something like this: <br>
+worksheet .Range[&quot;A1:G3&quot;].Copy(); <br>
+word .Selection.Range.PasteSpecial(); <br>
+<br>
+you can set various format arguments in the PasteSpecial method: <br>
+see documentation: <a href="http://msdn.microsoft.com/de-de/library/microsoft.office.interop.word.wdpastedatatype%28v=office.11%29.aspx"  rel="nofollow">
+http://msdn.microsoft.com/de-de/library/microsoft.office.interop.word.wdpastedatatype%28v=office.11%29.aspx</a>
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1337096" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1337276">
+    <td id="PostDetailsCell_1337276" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1337276"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/mix30">mix30</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/26/2014 2:17:57 PM" LocalTimeTicks="1419632277">Dec 26, 2014 at 2:17 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="12/29/2014 3:13:26 PM" LocalTimeTicks="1419894806">Dec 29, 2014 at 3:13 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1337276" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="N&#47;A&#10;">
+        <div class="markDownOutput ">N/A<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1337276" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1337322">
+    <td id="PostDetailsCell_1337322" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1337322"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/mix30">mix30</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/26/2014 7:27:29 PM" LocalTimeTicks="1419650849">Dec 26, 2014 at 7:27 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="12/29/2014 3:13:15 PM" LocalTimeTicks="1419894795">Dec 29, 2014 at 3:13 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1337322" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="N&#47;A">
+        <div class="markDownOutput ">N/A<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1337322" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1337639">
+    <td id="PostDetailsCell_1337639" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1337639"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/mix30">mix30</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/29/2014 3:13:45 PM" LocalTimeTicks="1419894825">Dec 29, 2014 at 3:13 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="12/30/2014 2:20:38 PM" LocalTimeTicks="1419978038">Dec 30, 2014 at 2:20 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1337639" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="So&#32;based&#32;on&#32;my&#32;redone&#32;code,&#32;I&#32;keep&#32;getting&#32;a&#32;error&#32;on&#32;my&#32;worksheet.ExportAsFixedFormat.&#32;The&#32;error&#32;I&#32;get&#32;is&#32;An&#32;unhandled&#32;exception&#32;of&#32;type&#32;&#39;System.Runtime.InteropServices.COMException&#39;&#32;occurred&#32;in&#32;NetOffice.dll.&#32;What&#32;causes&#32;that&#32;exception&#63;&#10;&#10;I&#32;believe&#32;that&#32;is&#32;my&#32;only&#32;issue&#32;at&#32;this&#32;point.&#32;I&#32;think&#32;based&#32;on&#32;the&#32;code&#32;I&#32;should&#32;get&#32;a&#32;.pdf&#32;of&#32;each&#32;worksheet&#32;that&#32;I&#32;have&#32;in&#32;my&#32;workbook.">
+        <div class="markDownOutput ">So based on my redone code, I keep getting a error on my worksheet.ExportAsFixedFormat. The error I get is An unhandled exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll. What causes that exception?<br>
+<br>
+I believe that is my only issue at this point. I think based on the code I should get a .pdf of each worksheet that I have in my workbook.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1337639" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1337833">
+    <td id="PostDetailsCell_1337833" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1337833"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/30/2014 10:38:45 AM" LocalTimeTicks="1419964725">Dec 30, 2014 at 10:38 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1337833" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="please&#32;check&#32;the&#32;inner&#32;exception&#32;for&#32;error&#32;details.&#32;&#40;NO&#32;wrap&#32;all&#32;office&#32;exceptions&#32;in&#32;COMException&#41;&#13;&#10;btw&#58;&#32;you&#32;have&#32;to&#32;use&#32;the&#32;Word.Document.ExportAsFixedFormat&#32;method&#32;to&#32;save&#32;a&#32;word&#32;document&#32;as&#32;pdf.&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;&#13;&#10;">
+        <div class="markDownOutput ">please check the inner exception for error details. (NO wrap all office exceptions in COMException)
+<br>
+btw: you have to use the Word.Document.ExportAsFixedFormat method to save a word document as pdf.
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1337833" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1337876">
+    <td id="PostDetailsCell_1337876" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1337876"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/mix30">mix30</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/30/2014 2:26:19 PM" LocalTimeTicks="1419978379">Dec 30, 2014 at 2:26 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="12/30/2014 2:33:21 PM" LocalTimeTicks="1419978801">Dec 30, 2014 at 2:33 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1337876" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Would&#32;I&#32;still&#32;need&#32;to&#32;use&#32;a&#32;.doc&#32;to&#32;export&#32;my&#32;worksheet&#32;to&#32;a&#32;.pdf&#63;&#32;I&#32;thought&#32;with&#32;worksheet.ExportAsFixedFormat&#40;Excel.Enums.XlFixedFormatType.xlTypePDF,&#32;Sheet,&#32;Excel.Enums.XlFixedFormatQuality.xlQualityStandard,&#32;Type.Missing,&#32;Type.Missing,&#32;Type.Missing,&#32;Type.Missing,&#32;Type.Missing,&#32;Type.Missing&#41;&#59;&#32;I&#32;could&#32;take&#32;each&#32;worksheet&#32;I&#32;want&#32;and&#32;directly&#32;make&#32;it&#32;into&#32;a&#32;.pdf.&#32;I&#32;tried&#32;using&#32;the&#32;.doc&#32;because&#32;I&#32;didn&#39;t&#32;see&#32;a&#32;option&#32;to&#32;turn&#32;a&#32;worksheet&#32;into&#32;a&#32;.pdf,&#32;so&#32;I&#32;thought&#32;I&#32;could&#32;instead&#32;turn&#32;it&#32;into&#32;a&#32;.doc.&#32;I&#32;finally&#32;found&#32;what&#32;seems&#32;to&#32;be&#32;the&#32;way&#32;to&#32;export&#32;a&#32;worksheet&#32;to&#32;a&#32;converted&#32;.pdf.&#32;&#32;So&#32;I&#32;am&#32;trying&#32;to&#32;make&#32;it&#32;work&#32;now.&#32;&#10;&#10;This&#32;is&#32;the&#32;code&#32;I&#32;had&#32;made&#32;with&#32;Aspose&#32;but&#32;I&#32;am&#32;trying&#32;to&#32;get&#32;off&#32;it&#32;because&#32;the&#32;software&#32;is&#32;way&#32;to&#32;expensive&#10;&#10;&#96;&#96;&#96;&#10;using&#32;System&#59;&#10;using&#32;System.Collections.Generic&#59;&#10;using&#32;System.Linq&#59;&#10;using&#32;System.Text&#59;&#10;using&#32;System.Threading.Tasks&#59;&#10;using&#32;Microsoft.CSharp&#59;&#10;using&#32;System.Runtime.InteropServices&#59;&#10;using&#32;Aspose.Pdf&#59;&#10;using&#32;Aspose.Cells&#59;&#10;&#10;namespace&#32;ConvertNewSheetsToPDFs&#10;&#123;&#10;&#32;&#32;&#32;&#32;public&#32;class&#32;Program&#10;&#32;&#32;&#32;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public&#32;static&#32;void&#32;Main&#40;string&#91;&#93;&#32;args&#41;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;Get&#32;the&#32;Excel&#32;file&#32;path&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string&#32;filePath&#32;&#61;&#32;&#64;&#34;&#92;&#92;Server&#92;Folder&#92;NEW&#32;SHEETS.xls&#34;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DateTime&#32;date&#32;&#61;&#32;new&#32;DateTime&#40;&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;date&#32;&#61;&#32;DateTime.Today&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string&#32;format&#32;&#61;&#32;&#34;M-d-yy&#34;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string&#32;stringDate&#32;&#61;&#32;date.ToString&#40;format&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;File&#32;from&#32;its&#32;location&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Workbook&#32;workbook&#32;&#61;&#32;new&#32;Workbook&#40;filePath&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;Make&#32;all&#32;sheets&#32;invisible&#32;except&#32;first&#32;worksheet&#32;because&#32;you&#32;have&#32;to&#32;keep&#32;1&#32;worksheet&#32;visible&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;&#40;int&#32;i&#32;&#61;&#32;1&#59;&#32;i&#32;&#60;&#32;workbook.Worksheets.Count&#59;&#32;i&#43;&#43;&#41;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;workbook.Worksheets&#91;i&#93;.IsVisible&#32;&#61;&#32;false&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;Take&#32;Pdfs&#32;of&#32;each&#32;sheet&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for&#32;&#40;int&#32;j&#32;&#61;&#32;1&#59;&#32;j&#32;&#60;&#32;workbook.Worksheets.Count&#59;&#32;j&#43;&#43;&#41;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;Make&#32;all&#32;sheets&#32;invisible&#32;except&#32;first&#32;worksheet&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;workbook.Worksheets&#91;0&#93;.IsVisible&#32;&#61;&#32;true&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#40;j&#32;&#33;&#61;&#32;1&#41;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#32;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;workbook.Worksheets&#91;j&#32;-&#32;1&#93;.IsVisible&#32;&#61;&#32;false&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Worksheet&#32;ws&#32;&#61;&#32;workbook.Worksheets&#91;j&#93;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;&#40;ws.Name.Equals&#40;&#34;Some&#32;Worksheet&#34;&#41;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Console.Out.WriteLine&#40;ws.Name&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;workbook.Worksheets&#91;j&#93;.IsVisible&#32;&#61;&#32;true&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;workbook.Worksheets&#91;0&#93;.IsVisible&#32;&#61;&#32;false&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;workbook.Save&#40;&#64;&#34;&#92;&#92;Server&#92;&#92;Folder&#92;&#92;&#34;&#32;&#43;&#32;ws.Name&#32;&#43;&#32;&#34;&#32;&#34;&#32;&#43;&#32;stringDate&#32;&#43;&#32;&#34;.pdf&#34;,&#32;Aspose.Cells.SaveFormat.Pdf&#41;&#59;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#10;&#32;&#32;&#32;&#32;&#125;&#10;&#125;&#10;&#96;&#96;&#96;&#10;&#10;This&#32;code&#32;with&#32;Apose&#32;gives&#32;me&#32;what&#32;I&#32;really&#32;want.&#32;Gives&#32;5&#32;different&#32;.pdf&#32;with&#32;only&#32;the&#32;data&#32;from&#32;one&#32;worksheet&#32;in&#32;each.">
+        <div class="markDownOutput ">Would I still need to use a .doc to export my worksheet to a .pdf? I thought with worksheet.ExportAsFixedFormat(Excel.Enums.XlFixedFormatType.xlTypePDF, Sheet, Excel.Enums.XlFixedFormatQuality.xlQualityStandard, Type.Missing, Type.Missing, Type.Missing,
+ Type.Missing, Type.Missing, Type.Missing); I could take each worksheet I want and directly make it into a .pdf. I tried using the .doc because I didn't see a option to turn a worksheet into a .pdf, so I thought I could instead turn it into a .doc. I finally
+ found what seems to be the way to export a worksheet to a converted .pdf. So I am trying to make it work now.
+<br>
+<br>
+This is the code I had made with Aspose but I am trying to get off it because the software is way to expensive<br>
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.CSharp;
+using System.Runtime.InteropServices;
+using Aspose.Pdf;
+using Aspose.Cells;
+
+namespace ConvertNewSheetsToPDFs
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            //Get the Excel file path
+            string filePath = @&quot;\\Server\Folder\NEW SHEETS.xls&quot;;
+            DateTime date = new DateTime();
+            date = DateTime.Today;
+            string format = &quot;M-d-yy&quot;;
+            string stringDate = date.ToString(format);
+            //File from its location
+            Workbook workbook = new Workbook(filePath);
+            //Make all sheets invisible except first worksheet because you have to keep 1 worksheet visible
+            for (int i = 1; i &lt; workbook.Worksheets.Count; i&#43;&#43;)
+            {
+                workbook.Worksheets[i].IsVisible = false;
+            }
+            //Take Pdfs of each sheet
+            for (int j = 1; j &lt; workbook.Worksheets.Count; j&#43;&#43;)
+            {
+                //Make all sheets invisible except first worksheet
+                workbook.Worksheets[0].IsVisible = true;
+                if(j != 1)
+                { 
+                    workbook.Worksheets[j - 1].IsVisible = false;
+                }
+                Worksheet ws = workbook.Worksheets[j];
+                if (ws.Name.Equals(&quot;Some Worksheet&quot;)
+                {
+                    Console.Out.WriteLine(ws.Name);
+                    workbook.Worksheets[j].IsVisible = true;
+                    workbook.Worksheets[0].IsVisible = false;
+                    workbook.Save(@&quot;\\Server\\Folder\\&quot; &#43; ws.Name &#43; &quot; &quot; &#43; stringDate &#43; &quot;.pdf&quot;, Aspose.Cells.SaveFormat.Pdf);
+                }
+            }
+        }
+    }
+}</code></pre>
+This code with Apose gives me what I really want. Gives 5 different .pdf with only the data from one worksheet in each.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1337876" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1341460">
+    <td id="PostDetailsCell_1341460" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1341460"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/mix30">mix30</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/13/2015 2:46:54 PM" LocalTimeTicks="1421189214">Jan 13, 2015 at 2:46 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1341460" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Based&#32;on&#32;what&#32;I&#32;just&#32;updated.&#32;Would&#32;you&#32;say&#32;it&#32;is&#32;what&#32;I&#32;am&#32;wanting.&#32;I&#32;still&#32;get&#32;that&#32;exception&#32;during&#32;the&#32;export&#32;and&#32;it&#32;doesn&#39;t&#32;explain&#32;why&#32;it&#32;is&#32;giving&#32;that&#32;exception.&#32;This&#32;should&#32;create&#32;a&#32;new&#32;workbook&#32;each&#32;time&#32;and&#32;put&#32;in&#32;only&#32;the&#32;desired&#32;worksheet&#32;into&#32;it&#32;a&#32;print&#32;that&#32;into&#32;a&#32;.pdf.&#32;">
+        <div class="markDownOutput ">Based on what I just updated. Would you say it is what I am wanting. I still get that exception during the export and it doesn't explain why it is giving that exception. This should create a new workbook each time and put in only the desired worksheet
+ into it a print that into a .pdf. <br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1341460" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="6d419901-698d-43f1-8330-77a13332c3b2">
+    <script class="options" defer="defer" id="6d419901-698d-43f1-8330-77a13332c3b2" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_ea699f00-26f0-4222-aa8d-ebf9ba75979f">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_8d2fc58d-6715-445f-8e8f-4a867997ba83">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_ea699f00-26f0-4222-aa8d-ebf9ba75979f" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_8d2fc58d-6715-445f-8e8f-4a867997ba83" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/576228';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

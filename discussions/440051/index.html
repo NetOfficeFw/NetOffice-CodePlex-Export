@@ -1,0 +1,920 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Winmail.dat attachments outside Outlook</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/440051?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/440051?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="DVCY92myN_K6_UN6Do7_hcu2vF2MHOXavMR_GzYwThSTuyQDc8BOJJLsiNACK0gIcynqYiqzF2qGuxKgQE4G6MdsPrQuwGrm2z1oXysgVDPL6OUndjUqETRs5Q8Xx-E4Ms45AA2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken2398612e0-4b0a-461d-a14d-4b75c56a27f2" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:51:48 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f440051" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="9c69a6a9-dec9-4d6d-9c15-99db59fc37aa">
+                
+                    <script class="options" defer="defer" id="9c69a6a9-dec9-4d6d-9c15-99db59fc37aa" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Winmail.dat attachments outside Outlook
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:440051]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="1e7d2745-7067-40a1-88cc-b32dc1d61a85">
+    <script class="options" defer="defer" id="1e7d2745-7067-40a1-88cc-b32dc1d61a85" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/440051","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1029492">
+    <td id="PostDetailsCell_1029492" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1029492"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/joherz">joherz</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/12/2013 12:11:14 PM" LocalTimeTicks="1365793874">Apr 12, 2013 at 12:11 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1029492" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="First&#58;&#32;Great&#32;tool,&#32;i&#32;love&#32;NetOffice&#32;&#33;&#33;&#33;&#13;&#10;&#13;&#10;My&#32;problem&#58;&#32;I&#32;am&#32;creating&#32;emails&#32;with&#32;attachments&#32;with&#32;netoffice&#32;and&#32;all&#32;works&#32;fine&#32;in&#32;the&#32;microsoft&#32;world.&#32;But&#32;on&#32;other&#32;email-apps&#32;like&#32;Thunderbird&#32;the&#32;attachment&#32;always&#32;appears&#32;as&#32;winmail.dat.&#32;&#13;&#10;I&#32;know&#58;&#32;there&#32;are&#32;thousands&#32;of&#32;articles&#32;on&#32;this&#32;issue.&#32;I&#32;have&#32;regarded&#32;this&#32;articles,&#32;set&#32;all&#32;to&#32;html&#32;on&#32;message&#32;type&#32;and&#32;converting&#32;attachments&#32;to&#32;html.&#32;Now&#32;if&#32;i&#32;create&#32;a&#32;mail&#32;in&#32;Outlook&#32;manually&#32;with&#32;a&#32;pdf&#32;as&#32;attachment&#32;all&#32;works&#32;fine&#58;&#32;i&#32;can&#32;see&#32;the&#32;pdf&#32;in&#32;Thunderbird&#32;and&#32;the&#32;pdf&#32;is&#32;not&#32;ancapsulated&#32;as&#32;application&#47;ms-tnef.&#13;&#10;But&#32;if&#32;i&#32;create&#32;the&#32;message&#32;with&#32;NetOffice,&#32;the&#32;same&#32;pdf&#32;is&#32;transferred&#32;as&#32;winmail.dat.&#32;It&#32;seemes&#32;that&#32;the&#32;outlook-switch&#32;&#34;convert&#32;attachments&#32;to&#32;html-format&#34;&#32;is&#32;not&#32;regarded.&#13;&#10;&#13;&#10;My&#32;code&#58;&#13;&#10;Outlook.MailItem&#32;MI&#32;&#61;&#32;OutlookApplication.CreateItem&#40;OlItemType.olMailItem&#41;&#32;as&#32;Outlook.MailItem&#59;&#13;&#10;.BodyFormat&#32;&#61;&#32;OlBodyFormat.olFormatHTML&#59;&#13;&#10;MI.Recipients.Add&#40;MD.To&#41;&#59;&#13;&#10;MI.Subject&#32;&#61;&#32;MD.Subject&#59;&#13;&#10;MI.Body&#32;&#61;&#32;MD.Text&#59;&#13;&#10;foreach&#32;&#40;String&#32;AttachmentPath&#32;in&#32;MD.Attachments&#41;&#13;&#10;&#32;&#32;&#32;MI.Attachments.Add&#40;AttachmentPath&#41;&#59;&#13;&#10;MI.UserProperties.Add&#40;MD.AktePath,&#32;OlUserPropertyType.olText&#41;&#59;&#13;&#10;MI.Display&#40;&#41;&#59;&#13;&#10;&#13;&#10;The&#32;addition&#32;of&#32;the&#32;Userproperty&#32;is&#32;needed&#32;for&#32;piping&#32;an&#32;information&#32;for&#32;mme,&#32;i&#32;don&#39;t&#32;believe&#32;this&#32;has&#32;an&#32;affect&#32;to&#32;the&#32;problem.&#13;&#10;As&#32;you&#32;can&#32;see,&#32;i&#32;first&#32;disply&#32;the&#32;mail&#32;before&#32;sending.&#32;The&#32;user&#32;must&#32;send&#32;it&#32;manually&#32;after&#32;adding&#32;some&#32;text.&#13;&#10;&#13;&#10;Is&#32;there&#32;a&#32;switch&#32;for&#32;avoiding&#32;the&#32;encapsulation&#32;in&#32;ms-tnef&#32;format&#32;&#63;&#13;&#10;I&#32;am&#32;wondering&#32;that&#32;sendiing&#32;of&#32;the&#32;same&#32;pdf&#32;without&#32;netoffice&#32;is&#32;no&#32;problem.&#13;&#10;&#13;&#10;Thanx&#32;you&#32;for&#32;your&#32;answers&#32;&#33;&#33;&#33;&#32;&#32;Jochen&#32;Herz&#32;from&#32;germany">
+        <div class="markDownOutput ">First: Great tool, i love NetOffice !!! <br>
+<br>
+My problem: I am creating emails with attachments with netoffice and all works fine in the microsoft world. But on other email-apps like Thunderbird the attachment always appears as winmail.dat.
+<br>
+I know: there are thousands of articles on this issue. I have regarded this articles, set all to html on message type and converting attachments to html. Now if i create a mail in Outlook manually with a pdf as attachment all works fine: i can see the pdf in
+ Thunderbird and the pdf is not ancapsulated as application/ms-tnef. <br>
+But if i create the message with NetOffice, the same pdf is transferred as winmail.dat. It seemes that the outlook-switch &quot;convert attachments to html-format&quot; is not regarded.
+<br>
+<br>
+My code: <br>
+Outlook.MailItem MI = OutlookApplication.CreateItem(OlItemType.olMailItem) as Outlook.MailItem;
+<br>
+.BodyFormat = OlBodyFormat.olFormatHTML; <br>
+MI.Recipients.Add(MD.To); <br>
+MI.Subject = MD.Subject; <br>
+MI.Body = MD.Text; <br>
+foreach (String AttachmentPath in MD.Attachments) <br>
+MI.Attachments.Add(AttachmentPath); <br>
+MI.UserProperties.Add(MD.AktePath, OlUserPropertyType.olText); <br>
+MI.Display(); <br>
+<br>
+The addition of the Userproperty is needed for piping an information for mme, i don't believe this has an affect to the problem.
+<br>
+As you can see, i first disply the mail before sending. The user must send it manually after adding some text.
+<br>
+<br>
+Is there a switch for avoiding the encapsulation in ms-tnef format ? <br>
+I am wondering that sendiing of the same pdf without netoffice is no problem. <br>
+<br>
+Thanx you for your answers !!! Jochen Herz from germany<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1029492" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1029724">
+    <td id="PostDetailsCell_1029724" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1029724"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/12/2013 6:09:22 PM" LocalTimeTicks="1365815362">Apr 12, 2013 at 6:09 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1029724" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="sorry&#32;ich&#32;bin&#32;aufn&#32;freitag&#32;abend&#32;nich&#32;mehr&#32;in&#32;stimmung&#32;f&#252;r&#32;englisch....&#13;&#10;&#13;&#10;Ich&#32;hab&#32;leider&#32;keinen&#32;Schimmer&#32;was&#32;application&#47;ms-tnef&#32;ist.&#13;&#10;Wenn&#32;ich&#32;dich&#32;richtig&#32;verstehe&#32;geht&#32;&#32;das&#32;PDF&#32;Attachment&#32;verloren&#63;&#13;&#10;Ist&#32;der&#32;Code&#32;innerhalb&#32;eines&#32;Addins&#63;&#32;Und&#32;welches&#32;Outlook&#32;verwendest&#32;du&#63;&#13;&#10;Ich&#32;w&#252;rds&#32;mal&#32;nachstellen.&#32;Hast&#32;du&#32;Plain&#47;Interop&#32;oder&#32;VSTO&#32;verwendet&#32;als&#32;das&#32;ganze&#32;funktioniert&#32;hat&#63;&#13;&#10;&#13;&#10;Sebastian">
+        <div class="markDownOutput ">sorry ich bin aufn freitag abend nich mehr in stimmung fÃ¼r englisch.... <br>
+<br>
+Ich hab leider keinen Schimmer was application/ms-tnef ist. <br>
+Wenn ich dich richtig verstehe geht das PDF Attachment verloren? <br>
+Ist der Code innerhalb eines Addins? Und welches Outlook verwendest du? <br>
+Ich wÃ¼rds mal nachstellen. Hast du Plain/Interop oder VSTO verwendet als das ganze funktioniert hat?
+<br>
+<br>
+Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1029724" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1030447">
+    <td id="PostDetailsCell_1030447" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1030447"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/joherz">joherz</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/15/2013 9:25:28 AM" LocalTimeTicks="1366043128">Apr 15, 2013 at 9:25 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1030447" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hallo&#32;Sebastian,&#13;&#10;&#13;&#10;Meine&#32;Randdaten&#58;&#32;Outlook&#32;2010,&#32;anprogrammiert&#32;mit&#32;.Net&#32;2.0&#13;&#10;&#13;&#10;Das&#32;Problem&#32;&#40;in&#32;Deutsch,&#32;ist&#32;mir&#32;auch&#32;lieber&#41;&#58;&#13;&#10;&#13;&#10;Outlook&#32;Mails&#32;sind&#32;sehr&#32;oft&#32;im&#32;propri&#228;t&#228;ren&#32;RTF&#32;Format&#32;kodiert.&#32;Verschickt&#32;man&#32;solche&#32;Mails&#32;per&#32;Mail,&#32;so&#32;werden&#32;diese&#32;Daten&#32;in&#32;einem&#32;Attachment&#32;mit&#32;dem&#32;Namen&#32;Winmail.dat&#32;samt&#32;Formatierung&#32;verschickt&#32;und&#32;beim&#32;Empf&#228;nger&#32;wieder&#32;interpretiert.&#32;Hat&#32;man&#32;auf&#32;der&#32;Empf&#228;ngerseite&#32;auch&#32;Outlook&#32;sieht&#32;man&#32;den&#32;RTF&#32;Text&#32;wieder&#32;mit&#32;allen&#32;Formatierungen&#32;und&#32;das&#32;Attachment&#32;ist&#32;nicht&#32;mehr&#32;sichtbar.&#13;&#10;Empf&#228;ngt&#32;man&#32;aber&#32;mit&#32;einem&#32;anderen&#32;Mail&#32;wie&#32;z.B.&#32;Thunderbird,&#32;so&#32;sieht&#32;man&#32;zwar&#32;den&#32;Plain&#32;Text&#32;der&#32;Mail&#32;aber&#32;auch&#32;das&#32;Attachment&#32;WinMail.Dat,&#32;dessen&#32;Info&#32;nat&#252;rlich&#32;nicht&#32;interpretiert&#32;werden.&#32;Dies&#32;ist&#32;ein&#32;bekanntes&#32;Verfahren&#32;und&#32;es&#32;wird&#32;&#252;berall&#32;empfohlen&#32;daher&#32;in&#32;Plain&#32;Text&#32;oder&#32;HTML&#32;zu&#32;verfassen&#32;damit&#32;Winmail.dat&#32;nicht&#32;verschickt&#32;wird.&#32;Geht&#32;auch&#32;mit&#32;NetOffice&#32;auf&#32;diese&#32;Art&#32;problemlos&#32;aber&#32;nicht&#32;mehr&#32;mit&#32;Attachments&#58;&#13;&#10;&#13;&#10;Aber&#32;wenn&#32;ich&#32;eine&#32;Mail&#32;mit&#32;NetOffice&#32;erfasse&#32;und&#32;ein&#32;oder&#32;mehrere&#32;Attachment,&#32;egal&#32;welchen&#32;Typs,&#32;verfasse,&#32;so&#32;werden&#32;diese&#32;Attachments&#32;auch&#32;in&#32;einer&#32;WinMail-Dat&#32;gepackt&#32;und&#32;so&#32;verschickt.&#32;Ein&#32;Thunderbird-User&#32;sieht&#32;dann&#32;nur&#32;noch&#32;das&#32;Attachment&#32;winmail.dat&#32;und&#32;nicht&#32;mehr&#32;die&#32;eigentlichen&#32;Anh&#228;nge.&#32;Der&#32;Mimetype&#32;des&#32;Attachments&#32;ist&#32;dann&#32;das&#32;erw&#228;hnte&#32;Format&#32;application&#47;ms-tnef&#13;&#10;&#13;&#10;Verschicke&#32;ich&#32;eine&#32;Mail&#32;von&#32;Hand&#32;mit&#32;den&#32;gleichen&#32;Attachments&#32;so&#32;werden&#32;diese&#32;korrekt&#32;abgeschickt.&#13;&#10;Es&#32;gibt&#32;in&#32;den&#32;Outlook&#32;Optionen&#32;einen&#32;Schalter,&#32;mit&#32;dem&#32;man&#32;angeben&#32;kann&#32;dass&#32;Attachment&#32;zuerst&#32;in&#32;HTML&#32;codiert&#32;werden&#32;sollen&#32;aber&#32;der&#32;Schalter&#32;zeigt&#32;keine&#32;&#196;nderung.&#13;&#10;&#13;&#10;Da&#32;ich&#32;bisher&#32;keine&#32;gro&#223;en&#32;Probleme&#32;mit&#32;NetOffice&#32;gehabt&#32;habe,&#32;habe&#32;ich&#32;auch&#32;keine&#32;entsprechende&#32;VSTO-Implementierung&#32;im&#32;Vorfeld&#32;gehabt&#32;sondern&#32;mich&#32;an&#32;den&#32;NetOffice&#32;Demo-Code&#32;zum&#32;Verschicken&#32;einer&#32;Mail&#32;gehalten.&#13;&#10;&#13;&#10;Also&#32;Mails&#32;mit&#32;Attachment&#32;zwischen&#32;Outlook&#32;Benutzern&#32;kein&#32;Problem,&#32;aber&#32;Outlook-Mails&#32;mit&#32;Anhang&#32;an&#32;z.B.&#32;Thunderbird-Benutzer&#32;zumindest&#32;bei&#32;mir&#32;scheinbar&#32;nicht&#32;m&#246;glich.&#32;&#13;&#10;Ich&#32;kann&#32;das&#32;hier&#32;gerne&#32;zeigen&#32;und&#32;dich&#32;auf&#32;den&#32;Testrechner&#32;lassen&#32;oder&#32;sonstigen&#32;Testcode&#32;von&#32;dir&#32;hier&#32;ausf&#252;hren.&#13;&#10;&#13;&#10;W&#228;re&#32;klasse&#32;wenn&#32;es&#32;hier&#32;eine&#32;L&#246;sung&#32;gibt,&#32;den&#32;eigentlich&#32;d&#252;rfte&#32;das&#32;Problem&#32;ja&#32;alle&#32;Outlooker&#32;treffen&#32;die&#32;hiermit&#32;Mails&#32;verschicken.&#13;&#10;&#13;&#10;Vielen&#32;Dank,&#32;Jochen&#32;Herz&#32;&#40;Durchwahl&#58;&#32;06241&#32;&#47;&#32;935012&#41;&#13;&#10;">
+        <div class="markDownOutput ">Hallo Sebastian, <br>
+<br>
+Meine Randdaten: Outlook 2010, anprogrammiert mit .Net 2.0 <br>
+<br>
+Das Problem (in Deutsch, ist mir auch lieber): <br>
+<br>
+Outlook Mails sind sehr oft im propriÃ¤tÃ¤ren RTF Format kodiert. Verschickt man solche Mails per Mail, so werden diese Daten in einem Attachment mit dem Namen Winmail.dat samt Formatierung verschickt und beim EmpfÃ¤nger wieder interpretiert. Hat man auf der EmpfÃ¤ngerseite
+ auch Outlook sieht man den RTF Text wieder mit allen Formatierungen und das Attachment ist nicht mehr sichtbar.
+<br>
+EmpfÃ¤ngt man aber mit einem anderen Mail wie z.B. Thunderbird, so sieht man zwar den Plain Text der Mail aber auch das Attachment WinMail.Dat, dessen Info natÃ¼rlich nicht interpretiert werden. Dies ist ein bekanntes Verfahren und es wird Ã¼berall empfohlen daher
+ in Plain Text oder HTML zu verfassen damit Winmail.dat nicht verschickt wird. Geht auch mit NetOffice auf diese Art problemlos aber nicht mehr mit Attachments:
+<br>
+<br>
+Aber wenn ich eine Mail mit NetOffice erfasse und ein oder mehrere Attachment, egal welchen Typs, verfasse, so werden diese Attachments auch in einer WinMail-Dat gepackt und so verschickt. Ein Thunderbird-User sieht dann nur noch das Attachment winmail.dat
+ und nicht mehr die eigentlichen AnhÃ¤nge. Der Mimetype des Attachments ist dann das erwÃ¤hnte Format application/ms-tnef
+<br>
+<br>
+Verschicke ich eine Mail von Hand mit den gleichen Attachments so werden diese korrekt abgeschickt.
+<br>
+Es gibt in den Outlook Optionen einen Schalter, mit dem man angeben kann dass Attachment zuerst in HTML codiert werden sollen aber der Schalter zeigt keine Ã„nderung.
+<br>
+<br>
+Da ich bisher keine groÃŸen Probleme mit NetOffice gehabt habe, habe ich auch keine entsprechende VSTO-Implementierung im Vorfeld gehabt sondern mich an den NetOffice Demo-Code zum Verschicken einer Mail gehalten.
+<br>
+<br>
+Also Mails mit Attachment zwischen Outlook Benutzern kein Problem, aber Outlook-Mails mit Anhang an z.B. Thunderbird-Benutzer zumindest bei mir scheinbar nicht mÃ¶glich.
+<br>
+Ich kann das hier gerne zeigen und dich auf den Testrechner lassen oder sonstigen Testcode von dir hier ausfÃ¼hren.
+<br>
+<br>
+WÃ¤re klasse wenn es hier eine LÃ¶sung gibt, den eigentlich dÃ¼rfte das Problem ja alle Outlooker treffen die hiermit Mails verschicken.
+<br>
+<br>
+Vielen Dank, Jochen Herz (Durchwahl: 06241 / 935012)<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1030447" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1030449">
+    <td id="PostDetailsCell_1030449" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1030449"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/joherz">joherz</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/15/2013 9:25:54 AM" LocalTimeTicks="1366043154">Apr 15, 2013 at 9:25 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1030449" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;&#32;Hallo&#32;Sebastian,&#32;&#32;Meine&#32;Randdaten&#58;&#32;Outlook&#32;2010,&#32;anprogrammiert&#32;mit&#32;.Net&#32;2.0&#32;&#32;Das&#32;Problem&#32;&#40;in&#32;Deutsch&#32;J,&#32;ist&#32;mir&#32;auch&#32;lieber&#41;&#58;&#32;&#32;Outlook&#32;Mails&#32;sind&#32;sehr&#32;oft&#32;im&#32;propri&#228;t&#228;ren&#32;RTF&#32;Format&#32;kodiert.&#32;Verschickt&#32;man&#32;solche&#32;Mails&#32;per&#32;Mail,&#32;so&#32;werden&#32;diese&#32;Daten&#32;in&#32;einem&#32;Attachment&#32;mit&#32;dem&#32;Namen&#32;Winmail.dat&#32;samt&#32;Formatierung&#32;verschickt&#32;und&#32;beim&#32;Empf&#228;nger&#32;wieder&#32;interpretiert.&#32;Hat&#32;man&#32;auf&#32;der&#32;Empf&#228;ngerseite&#32;auch&#32;Outlook&#32;sieht&#32;man&#32;den&#32;RTF&#32;Text&#32;wieder&#32;mit&#32;allen&#32;Formatierungen&#32;und&#32;das&#32;Attachment&#32;ist&#32;nicht&#32;mehr&#32;sichtbar.&#32;Empf&#228;ngt&#32;man&#32;aber&#32;mit&#32;einem&#32;anderen&#32;Mail&#32;wie&#32;z.B.&#32;Thunderbird,&#32;so&#32;sieht&#32;man&#32;zwar&#32;den&#32;Plain&#32;Text&#32;der&#32;Mail&#32;aber&#32;auch&#32;das&#32;Attachment&#32;WinMail.Dat,&#32;dessen&#32;Info&#32;nat&#252;rlich&#32;nicht&#32;interpretiert&#32;werden.&#32;Dies&#32;ist&#32;ein&#32;bekanntes&#32;Verfahren&#32;und&#32;es&#32;wird&#32;&#252;berall&#32;empfohlen&#32;daher&#32;in&#32;Plain&#32;Text&#32;oder&#32;HTML&#32;zu&#32;verfassen&#32;damit&#32;Winmail.dat&#32;nicht&#32;verschickt&#32;wird.&#32;Geht&#32;auch&#32;mit&#32;NetOffice&#32;auf&#32;diese&#32;Art&#32;problemlos&#32;aber&#32;nicht&#32;mehr&#32;mit&#32;Attachments&#58;&#32;&#32;Aber&#32;wenn&#32;ich&#32;eine&#32;Mail&#32;mit&#32;NetOffice&#32;erfasse&#32;und&#32;ein&#32;oder&#32;mehrere&#32;Attachment,&#32;egal&#32;welchen&#32;Typs,&#32;verfasse,&#32;so&#32;werden&#32;diese&#32;Attachments&#32;auch&#32;in&#32;einer&#32;WinMail-Dat&#32;gepackt&#32;und&#32;so&#32;verschickt.&#32;Ein&#32;Thunderbird-User&#32;sieht&#32;dann&#32;nur&#32;noch&#32;das&#32;Attachment&#32;winmail.dat&#32;und&#32;nicht&#32;mehr&#32;die&#32;eigentlichen&#32;Anh&#228;nge.&#32;Der&#32;Mimetype&#32;des&#32;Attachments&#32;ist&#32;dann&#32;das&#32;erw&#228;hnte&#32;Format&#32;application&#47;ms-tnef&#32;&#32;Verschicke&#32;ich&#32;eine&#32;Mail&#32;von&#32;Hand&#32;mit&#32;den&#32;gleichen&#32;Attachments&#32;so&#32;werden&#32;diese&#32;korrekt&#32;abgeschickt.&#32;Es&#32;gibt&#32;in&#32;den&#32;Outlook&#32;Optionen&#32;einen&#32;Schalter,&#32;mit&#32;dem&#32;man&#32;angeben&#32;kann&#32;dass&#32;Attachment&#32;zuerst&#32;in&#32;HTML&#32;codiert&#32;werden&#32;sollen&#32;aber&#32;der&#32;Schalter&#32;zeigt&#32;keine&#32;&#196;nderung.&#32;&#32;Da&#32;ich&#32;bisher&#32;keine&#32;gro&#223;en&#32;Probleme&#32;mit&#32;NetOffice&#32;gehabt&#32;habe,&#32;habe&#32;ich&#32;auch&#32;keine&#32;entsprechende&#32;VSTO-Implementierung&#32;im&#32;Vorfeld&#32;gehabt&#32;sondern&#32;mich&#32;an&#32;den&#32;NetOffice&#32;Demo-Code&#32;zum&#32;Verschicken&#32;einer&#32;Mail&#32;gehalten.&#32;&#32;Also&#32;Mails&#32;mit&#32;Attachment&#32;zwischen&#32;Outlook&#32;Benutzern&#32;kein&#32;Problem,&#32;aber&#32;Outlook-Mails&#32;mit&#32;Anhang&#32;an&#32;z.B.&#32;Thunderbird-Benutzer&#32;zumindest&#32;bei&#32;mir&#32;scheinbar&#32;nicht&#32;m&#246;glich.&#32;&#32;Ich&#32;kann&#32;das&#32;hier&#32;gerne&#32;zeigen&#32;und&#32;dich&#32;auf&#32;den&#32;Testrechner&#32;lassen&#32;oder&#32;sonstigen&#32;Testcode&#32;von&#32;dir&#32;hier&#32;ausf&#252;hren.&#32;&#32;W&#228;re&#32;klasse&#32;wenn&#32;es&#32;hier&#32;eine&#32;L&#246;sung&#32;gibt,&#32;den&#32;eigentlich&#32;d&#252;rfte&#32;das&#32;Problem&#32;ja&#32;alle&#32;Outlooker&#32;treffen&#32;die&#32;hiermit&#32;Mails&#32;verschicken.&#32;&#32;Vielen&#32;Dank,&#32;Jochen&#32;Herz&#32;&#40;Durchwahl&#58;&#32;06241&#32;&#47;&#32;935012&#41;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Von&#58;&#32;SebastianDotNet&#32;&#91;email&#32;removed&#93;&#32;&#32;Gesendet&#58;&#32;Freitag,&#32;12.&#32;April&#32;2013&#32;19&#58;09&#32;An&#58;&#32;&#91;email&#32;removed&#93;&#32;Betreff&#58;&#32;Re&#58;&#32;Winmail.dat&#32;attachments&#32;outside&#32;Outlook&#32;&#91;netoffice&#58;440051&#93;&#32;&#32;&#32;&#32;From&#58;&#32;SebastianDotNet&#32;&#32;sorry&#32;ich&#32;bin&#32;aufn&#32;freitag&#32;abend&#32;nich&#32;mehr&#32;in&#32;stimmung&#32;f&#252;r&#32;englisch....&#32;&#32;&#32;Ich&#32;hab&#32;leider&#32;keinen&#32;Schimmer&#32;was&#32;application&#47;ms-tnef&#32;ist.&#32;&#32;Wenn&#32;ich&#32;dich&#32;richtig&#32;verstehe&#32;geht&#32;das&#32;PDF&#32;Attachment&#32;verloren&#63;&#32;&#32;Ist&#32;der&#32;Code&#32;innerhalb&#32;eines&#32;Addins&#63;&#32;Und&#32;welches&#32;Outlook&#32;verwendest&#32;du&#63;&#32;&#32;Ich&#32;w&#252;rds&#32;mal&#32;nachstellen.&#32;Hast&#32;du&#32;Plain&#47;Interop&#32;oder&#32;VSTO&#32;verwendet&#32;als&#32;das&#32;ganze&#32;funktioniert&#32;hat&#63;&#32;&#32;&#32;Sebastian&#32;&#32;&#32;">
+        
+<div>
+<p><span style="font-size:11.0pt; font-family:">Hallo Sebastian,</span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:">Meine Randdaten: Outlook 2010, anprogrammiert mit .Net 2.0</span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:">Das Problem (in Deutsch </span><span style="font-size:11.0pt; font-family:Wingdings; color:#1F497D">J</span><span style="font-size:11.0pt; font-family:">, ist mir auch lieber):</span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:">Outlook Mails sind sehr oft im propriÃ¤tÃ¤ren RTF Format kodiert. Verschickt man solche Mails per Mail, so werden diese Daten in einem Attachment mit dem Namen Winmail.dat samt Formatierung verschickt und beim EmpfÃ¤nger
+ wieder interpretiert. Hat man auf der EmpfÃ¤ngerseite auch Outlook sieht man den RTF Text wieder mit allen Formatierungen und das Attachment ist nicht mehr sichtbar.</span></p>
+<p><span style="font-size:11.0pt; font-family:">EmpfÃ¤ngt man aber mit einem anderen Mail wie z.B. Thunderbird, so sieht man zwar den Plain Text der Mail aber auch das Attachment WinMail.Dat, dessen Info natÃ¼rlich nicht interpretiert werden. Dies ist ein bekanntes
+ Verfahren und es wird Ã¼berall empfohlen daher in Plain Text oder HTML zu verfassen damit Winmail.dat nicht verschickt wird. Geht auch mit NetOffice auf diese Art problemlos aber nicht mehr mit Attachments:</span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:">Aber wenn ich eine Mail mit NetOffice erfasse und ein oder mehrere Attachment, egal welchen Typs, verfasse, so werden diese Attachments auch in einer WinMail-Dat gepackt und so verschickt. Ein Thunderbird-User
+ sieht dann nur noch das Attachment winmail.dat und nicht mehr die eigentlichen AnhÃ¤nge. Der Mimetype des Attachments ist dann das erwÃ¤hnte Format
+</span><span style="font-size:9.0pt; font-family:">application/ms-tnef</span><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:">Verschicke ich eine Mail von Hand mit den gleichen Attachments so werden diese korrekt abgeschickt.</span></p>
+<p><span style="font-size:11.0pt; font-family:">Es gibt in den Outlook Optionen einen Schalter, mit dem man angeben kann dass Attachment zuerst in HTML codiert werden sollen aber der Schalter zeigt keine Ã„nderung.</span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:">Da ich bisher keine groÃŸen Probleme mit NetOffice gehabt habe, habe ich auch keine entsprechende VSTO-Implementierung im Vorfeld gehabt sondern mich an den NetOffice Demo-Code zum Verschicken einer Mail gehalten.</span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:">Also Mails mit Attachment zwischen Outlook Benutzern kein Problem, aber Outlook-Mails mit Anhang an z.B. Thunderbird-Benutzer zumindest bei mir scheinbar nicht mÃ¶glich.
+</span></p>
+<p><span style="font-size:11.0pt; font-family:">Ich kann das hier gerne zeigen und dich auf den Testrechner lassen oder sonstigen Testcode von dir hier ausfÃ¼hren.</span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:">WÃ¤re klasse wenn es hier eine LÃ¶sung gibt, den eigentlich dÃ¼rfte das Problem ja alle Outlooker treffen die hiermit Mails verschicken.</span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:">Vielen Dank, Jochen Herz (Durchwahl: 06241 / 935012)</span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<p><span style="font-size:11.0pt; font-family:"></span></p>
+<div>
+<div style="border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0cm 0cm 0cm">
+<p><b><span style="font-size:10.0pt; font-family:">Von:</span></b><span style="font-size:10.0pt; font-family:"> SebastianDotNet [email removed]
+<br>
+<b>Gesendet:</b> Freitag, 12. April 2013 19:09<br>
+<b>An:</b> [email removed]<br>
+<b>Betreff:</b> Re: Winmail.dat attachments outside Outlook [netoffice:440051]</span></p>
+</div>
+</div>
+<p></p>
+<p><span style="font-size:9.0pt; font-family:">From: SebastianDotNet</span></p>
+<div id="ThreadNotificationPostBody" style="margin-bottom:24.0pt">
+<p><span style="font-size:9.0pt; font-family:">sorry ich bin aufn freitag abend nich mehr in stimmung fÃ¼r englisch....
+<br>
+<br>
+Ich hab leider keinen Schimmer was application/ms-tnef ist. <br>
+Wenn ich dich richtig verstehe geht das PDF Attachment verloren? <br>
+Ist der Code innerhalb eines Addins? Und welches Outlook verwendest du? <br>
+Ich wÃ¼rds mal nachstellen. Hast du Plain/Interop oder VSTO verwendet als das ganze funktioniert hat?
+<br>
+<br>
+Sebastian</span></p>
+</div>
+</div>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1030449" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1030599">
+    <td id="PostDetailsCell_1030599" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1030599"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/15/2013 2:21:44 PM" LocalTimeTicks="1366060904">Apr 15, 2013 at 2:21 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1030599" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Ich&#32;habe&#32;leider&#32;keinen&#32;alternativen&#32;Mail-Client,&#32;private&#32;nutze&#32;ich&#32;OutlookXP.&#32;Ich&#32;habe&#32;jetzt&#32;mal&#32;folgenden&#32;Testcode&#32;5x&#32;in&#32;verschiedenen&#32;Varianten&#32;an&#32;meine&#32;Web.de&#32;Adresse&#32;geschickt&#32;und&#32;das&#32;Ergebniss&#32;war&#32;immer&#32;okay&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;Outlook.MailItem&#32;mailItem&#32;&#61;&#13;&#10;&#32;outlookApplication.CreateItem&#40;OlItemType.olMailItem&#41;&#32;as&#32;Outlook.MailItem&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;mailItem.BodyFormat&#32;&#61;&#32;OlBodyFormat.olFormatHTML&#59;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;mailItem.Recipients.Add&#40;textBoxReciever.Text&#41;&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;mailItem.Subject&#32;&#61;&#32;textBoxSubject.Text&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#13;&#10;&#32;&#47;&#47;mailItem.Body&#32;&#61;&#32;&#38;quot&#59;test&#38;quot&#59;&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;mailItem.HTMLBody&#32;&#61;&#32;&#38;quot&#59;&#13;&#10;&#60;p&#62;&#38;quot&#59;&#32;&#38;&#35;43&#59;&#32;&#38;quot&#59;Just&#32;a&#32;test&#38;quot&#59;&#32;&#38;&#35;43&#59;&#32;&#38;quot&#59;&#60;&#47;p&#62;&#13;&#10;&#38;quot&#59;&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;mailItem.Attachments.Add&#40;&#38;quot&#59;c&#58;&#92;&#92;test.xml&#38;quot&#59;&#41;&#59;&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;mailItem.Send&#40;&#41;&#59;&#32;Kannst&#32;du&#32;das&#32;Problem&#32;auf&#32;einem&#32;web.de&#32;Account&#32;replizieren&#63;&#32;&#38;nbsp&#59;&#32;________________________________">
+        <div class="markDownOutput ">Ich habe leider keinen alternativen Mail-Client, private nutze ich OutlookXP. Ich habe jetzt mal folgenden Testcode 5x in verschiedenen Varianten an meine Web.de Adresse geschickt und das Ergebniss war immer okay &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Outlook.MailItem mailItem = <br>
+outlookApplication.CreateItem(OlItemType.olMailItem) as Outlook.MailItem; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mailItem.BodyFormat = OlBodyFormat.olFormatHTML;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ mailItem.Recipients.Add(textBoxReciever.Text); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mailItem.Subject = textBoxSubject.Text; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+//mailItem.Body = &quot;test&quot;; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mailItem.HTMLBody = &quot;<br>
+&lt;p&gt;&amp;quot; &amp;#43; &amp;quot;Just a test&amp;quot; &amp;#43; &amp;quot;&lt;/p&gt; &quot;; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mailItem.Attachments.Add(&quot;c:\test.xml&quot;); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ mailItem.Send(); Kannst du das Problem auf einem web.de Account replizieren? &nbsp; ________________________________<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1030599" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1031203">
+    <td id="PostDetailsCell_1031203" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1031203"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/joherz">joherz</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/16/2013 4:16:17 PM" LocalTimeTicks="1366154177">Apr 16, 2013 at 4:16 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1031203" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hello&#32;Sebastian,&#13;&#10;&#13;&#10;i&#32;found&#32;the&#32;problem&#32;and&#32;want&#32;to&#32;post&#32;a&#32;workarround&#32;here&#32;for&#32;all&#32;who&#32;have&#32;this&#32;problem.&#13;&#10;&#13;&#10;Your&#32;code&#32;was&#32;fine.&#32;But&#32;the&#32;difference&#32;was&#32;the&#32;line&#58;&#13;&#10;&#13;&#10;&#9;mailItem.UserProperties.Add&#40;&#34;123&#47;13&#34;,&#32;OlUserPropertyType.olText&#41;&#59;&#13;&#10;&#13;&#10;I&#32;am&#32;forced&#32;to&#32;give&#32;some&#32;data&#32;on&#32;the&#32;way&#32;so&#32;i&#32;can&#32;work&#32;with&#32;the&#32;mail&#32;in&#32;the&#32;event&#32;Item_send.&#13;&#10;And&#58;&#32;As&#32;soon&#32;i&#32;add&#32;a&#32;userproperty&#32;to&#32;a&#32;mail,&#32;Outlook&#32;2010&#32;creates&#32;a&#32;winmail.dat-file.&#32;&#13;&#10;Unfortunately&#32;not&#32;only&#32;to&#32;transfer&#32;the&#32;property&#32;but&#32;it&#32;pushes&#32;all&#32;attachments&#32;also&#32;into&#32;the&#32;winmail.dat&#32;so&#32;non-outlook&#32;users&#32;can&#32;not&#32;use&#32;them.&#13;&#10;&#13;&#10;First&#32;i&#32;tried&#32;to&#32;delete&#32;all&#32;UserProperties&#32;in&#32;the&#32;event&#32;before&#32;sending&#32;but&#32;this&#32;had&#32;no&#32;effect&#32;if&#32;i&#32;only&#32;delete&#32;them&#32;with&#58;&#13;&#10;&#9;while&#32;&#40;MI.UserProperties.Count&#32;&#62;&#32;0&#41;&#13;&#10;&#9;&#9;MI.UserProperties.Remove&#40;1&#41;&#59;&#13;&#10;&#13;&#10;We&#32;must&#32;switch&#32;off&#32;the&#32;usage&#32;of&#32;the&#32;mimetype&#32;ms-tnef&#32;&#40;which&#32;ist&#32;the&#32;content&#32;of&#32;the&#32;Winmail.dat&#41;.&#32;I&#32;found&#32;switches&#32;for&#32;this&#32;for&#32;mailmapi&#32;but&#32;i&#32;don&#39;t&#32;know&#32;how&#32;to&#32;use&#32;this&#32;with&#32;NetOffice&#32;without&#32;loosing&#32;the&#32;version-compatibility.&#13;&#10;&#13;&#10;But&#32;if&#32;i&#32;set&#32;the&#32;following&#32;registry&#32;key,&#32;the&#32;transfer&#32;was&#32;fine&#32;also&#32;with&#32;userproperties&#58;&#13;&#10;&#9;&#9;&#9;&#13;&#10;Outlook&#32;2010&#58;&#13;&#10;&#91;HKEY_CURRENT_USER&#92;Software&#92;Microsoft&#92;Office&#92;12.0&#92;Outlook&#92;Preferences&#93;&#13;&#10;&#34;DisableTNEF&#34;&#61;dword&#58;00000001&#13;&#10;&#13;&#10;Please&#32;have&#32;a&#32;look&#32;at&#32;the&#32;version&#32;numbering&#32;in&#32;the&#32;path&#32;and&#32;use&#32;the&#32;version&#32;number&#32;of&#32;your&#32;outlook-version.&#13;&#10;&#13;&#10;On&#32;my&#32;machine&#32;this&#32;works&#32;fine,&#32;tomorrow&#32;i&#32;will&#32;test&#32;it&#32;at&#32;the&#32;customer.&#32;If&#32;i&#32;have&#32;troubles&#32;there&#32;with&#32;this&#32;solution&#32;i&#32;will&#32;post&#32;ist&#32;here.&#13;&#10;&#13;&#10;Thanx&#32;you&#32;for&#32;your&#32;help&#32;and&#32;your&#32;fantastic&#32;NetOffice&#33;&#13;&#10;">
+        <div class="markDownOutput ">Hello Sebastian, <br>
+<br>
+i found the problem and want to post a workarround here for all who have this problem.
+<br>
+<br>
+Your code was fine. But the difference was the line:<br>
+<pre><code>mailItem.UserProperties.Add(&quot;123/13&quot;, OlUserPropertyType.olText);
+</code></pre>
+I am forced to give some data on the way so i can work with the mail in the event Item_send.
+<br>
+And: As soon i add a userproperty to a mail, Outlook 2010 creates a winmail.dat-file.
+<br>
+Unfortunately not only to transfer the property but it pushes all attachments also into the winmail.dat so non-outlook users can not use them.
+<br>
+<br>
+First i tried to delete all UserProperties in the event before sending but this had no effect if i only delete them with:<br>
+<pre><code>while (MI.UserProperties.Count &gt; 0)
+    MI.UserProperties.Remove(1);
+</code></pre>
+We must switch off the usage of the mimetype ms-tnef (which ist the content of the Winmail.dat). I found switches for this for mailmapi but i don't know how to use this with NetOffice without loosing the version-compatibility.
+<br>
+<br>
+But if i set the following registry key, the transfer was fine also with userproperties:
+<br>
+<br>
+Outlook 2010: <br>
+[HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Outlook\Preferences] <br>
+&quot;DisableTNEF&quot;=dword:00000001 <br>
+<br>
+Please have a look at the version numbering in the path and use the version number of your outlook-version.
+<br>
+<br>
+On my machine this works fine, tomorrow i will test it at the customer. If i have troubles there with this solution i will post ist here.
+<br>
+<br>
+Thanx you for your help and your fantastic NetOffice!<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1031203" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="6972bb76-ce15-4c8b-bee2-cb4a26f83870">
+    <script class="options" defer="defer" id="6972bb76-ce15-4c8b-bee2-cb4a26f83870" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_6ea99a14-c7b4-41cc-9d9e-2b19a9c44b4d">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_ddaf538a-c127-441b-9452-5e0dce79d7a0">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_6ea99a14-c7b4-41cc-9d9e-2b19a9c44b4d" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_ddaf538a-c127-441b-9452-5e0dce79d7a0" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/440051';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - an error occurrred in CTPFactoryAvailable on other computers</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/648830?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/648830?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="RsLSdooCioMyFDApF8DK0YJ3GPfiywzOknAKzJ-2JlFU3MFbrVCWpV-gZvtuqPZv5FaWN5avdQp6tMQl6lANPLHUdqHp0nwwU8zeKyzdipXP8K-i9LwSwp9NEnNyFDEYsMeslg2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken21a9fe2fc-b1fc-4149-ab74-c29c45f22ea2" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:25 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f648830" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="0b53517b-2bec-42d8-8bde-2b1636833117">
+                
+                    <script class="options" defer="defer" id="0b53517b-2bec-42d8-8bde-2b1636833117" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                an error occurrred in CTPFactoryAvailable on other computers
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:648830]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="2972dba5-72fc-47b1-ac8c-9e59b4a3a0ec">
+    <script class="options" defer="defer" id="2972dba5-72fc-47b1-ac8c-9e59b4a3a0ec" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/648830","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1456106">
+    <td id="PostDetailsCell_1456106" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1456106"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/Kudredin">Kudredin</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/16/2015 10:49:39 AM" LocalTimeTicks="1450291779">Dec 16, 2015 at 10:49 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1456106" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi&#32;All,&#13;&#10;&#13;&#10;I&#39;ve&#32;been&#32;using&#32;NetOffice&#32;to&#32;develop&#32;an&#32;Outlook&#32;2013&#32;plugin.&#32;Since&#32;I&#32;am&#32;using&#32;the&#32;WordEditor&#32;as&#32;well,&#32;I&#32;selected&#32;Outlook&#32;and&#32;Word&#32;in&#32;the&#32;developer&#32;toolbox,&#32;and&#32;at&#32;the&#32;end&#32;I&#32;selected&#32;to&#32;Customize&#32;the&#32;Ribbon&#32;and&#32;that&#32;I&#32;want&#32;to&#32;add&#32;a&#32;Task&#32;Pane.&#13;&#10;&#13;&#10;Now&#32;when&#32;the&#32;project&#32;is&#32;originally&#32;created,&#32;I&#32;had&#32;to&#32;make&#32;some&#32;modifications&#32;for&#32;the&#32;plugin&#32;to&#32;show&#32;up&#32;in&#32;outlook,&#32;and&#32;I&#32;ended&#32;up&#32;with&#32;this&#32;code&#58;&#13;&#10;&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#60;COMAddin&#40;&#34;Moist&#34;,&#32;&#34;My&#32;Outlook&#32;Integrated&#32;Support&#32;Tool&#34;,&#32;3&#41;,&#32;ProgId&#40;&#34;Moist.Addin&#34;&#41;,&#32;Guid&#40;&#34;3C0FB897-8026-4AD3-8599-4DFCA3FF873E&#34;&#41;&#62;&#13;&#10;&#60;RegistryLocation&#40;RegistrySaveLocation.CurrentUser&#41;,&#32;CustomUI&#40;&#34;Moist.RibbonUI.xml&#34;&#41;,&#32;CustomPane&#40;GetType&#40;MyTaskPane&#41;,&#32;&#34;My&#32;TaskPane&#34;,&#32;True,&#32;PaneDockPosition.msoCTPDockPositionRight&#41;&#62;&#13;&#10;&#96;&#96;&#96;&#13;&#10;also&#32;I&#32;changed&#32;the&#32;inherits&#32;to&#58;&#13;&#10;&#96;&#96;&#96;&#13;&#10;Inherits&#32;Outlook.Tools.COMAddin&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#13;&#10;Now&#32;when&#32;I&#32;registered&#32;the&#32;DLL&#32;with&#32;RegAsm.Exe&#32;it&#32;showed&#32;up&#32;in&#32;outlook&#32;perfectly,&#32;even&#32;the&#32;task&#32;pane.&#13;&#10;&#13;&#10;I&#32;created&#32;all&#32;the&#32;functions&#32;I&#32;needed,&#32;and&#32;then&#32;zipped&#32;all&#32;the&#32;assembly&#32;and&#32;all&#32;other&#32;DLLs.&#13;&#10;&#13;&#10;When&#32;I&#32;tried&#32;to&#32;register&#32;the&#32;Assembly&#32;on&#32;another&#32;computer&#32;&#40;same&#32;windows,&#32;same&#32;version&#32;of&#32;outlook&#41;&#32;when&#32;the&#32;user&#32;starts&#32;outlook&#32;the&#32;following&#32;error&#32;message&#32;appears&#58;&#13;&#10;&#13;&#10;&#62;&#32;an&#32;error&#32;occurred&#32;in&#32;CTPFactoryAvailable&#13;&#10;&#13;&#10;I&#32;did&#32;a&#32;mad&#32;search,&#32;but&#32;found&#32;no&#32;such&#32;function&#32;&#40;or&#32;word&#41;&#32;in&#32;my&#32;solution&#32;in&#32;VS&#32;Express.&#32;I&#32;did&#32;some&#32;Googling,&#32;and&#32;found&#32;that&#32;this&#32;function&#32;is&#32;in&#32;the&#32;IEXtensibilty&#32;examples,&#32;so&#32;I&#32;guess&#32;it&#39;s&#32;part&#32;of&#32;the&#32;DLLs&#32;accompanying&#32;my&#32;assembly.&#13;&#10;&#13;&#10;Do&#32;you&#32;guys&#32;have&#32;any&#32;idea,&#32;why&#32;I&#32;would&#32;get&#32;the&#32;task&#32;pane&#32;error&#63;&#32;It&#32;seems&#32;to&#32;work&#32;perfectly&#32;on&#32;my&#32;computer,&#32;and&#32;I&#32;used&#32;the&#32;exact&#32;same&#32;DLLs&#32;in&#32;the&#32;Debug&#32;Folder&#32;on&#32;the&#32;other&#32;computer.&#13;&#10;&#13;&#10;I&#32;created&#32;a&#32;new&#32;project,&#32;just&#32;with&#32;the&#32;task&#32;pane,&#32;completely&#32;blank&#32;and&#32;tried&#32;that&#32;on&#32;the&#32;other&#32;computer,&#32;still&#32;nothing,&#32;I&#32;just&#32;get&#32;the&#32;&#34;an&#32;error&#32;occurred&#32;in&#32;CTPFactoryAvailable&#34;&#32;when&#32;outlook&#32;launches.&#13;&#10;&#13;&#10;Any&#32;help&#32;would&#32;be&#32;much&#32;appreciated.&#13;&#10;&#13;&#10;Many&#32;thanks,&#13;&#10;Krisz&#13;&#10;">
+        <div class="markDownOutput ">Hi All, <br>
+<br>
+I've been using NetOffice to develop an Outlook 2013 plugin. Since I am using the WordEditor as well, I selected Outlook and Word in the developer toolbox, and at the end I selected to Customize the Ribbon and that I want to add a Task Pane.
+<br>
+<br>
+Now when the project is originally created, I had to make some modifications for the plugin to show up in outlook, and I ended up with this code:<br>
+<pre><code>&lt;COMAddin(&quot;Moist&quot;, &quot;My Outlook Integrated Support Tool&quot;, 3), ProgId(&quot;Moist.Addin&quot;), Guid(&quot;3C0FB897-8026-4AD3-8599-4DFCA3FF873E&quot;)&gt;
+&lt;RegistryLocation(RegistrySaveLocation.CurrentUser), CustomUI(&quot;Moist.RibbonUI.xml&quot;), CustomPane(GetType(MyTaskPane), &quot;My TaskPane&quot;, True, PaneDockPosition.msoCTPDockPositionRight)&gt;</code></pre>
+also I changed the inherits to:<br>
+<pre><code>Inherits Outlook.Tools.COMAddin</code></pre>
+Now when I registered the DLL with RegAsm.Exe it showed up in outlook perfectly, even the task pane.
+<br>
+<br>
+I created all the functions I needed, and then zipped all the assembly and all other DLLs.
+<br>
+<br>
+When I tried to register the Assembly on another computer (same windows, same version of outlook) when the user starts outlook the following error message appears:<br>
+<blockquote>an error occurred in CTPFactoryAvailable<br>
+</blockquote>
+I did a mad search, but found no such function (or word) in my solution in VS Express. I did some Googling, and found that this function is in the IEXtensibilty examples, so I guess it's part of the DLLs accompanying my assembly.
+<br>
+<br>
+Do you guys have any idea, why I would get the task pane error? It seems to work perfectly on my computer, and I used the exact same DLLs in the Debug Folder on the other computer.
+<br>
+<br>
+I created a new project, just with the task pane, completely blank and tried that on the other computer, still nothing, I just get the &quot;an error occurred in CTPFactoryAvailable&quot; when outlook launches.
+<br>
+<br>
+Any help would be much appreciated. <br>
+<br>
+Many thanks, <br>
+Krisz<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1456106" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1456108">
+    <td id="PostDetailsCell_1456108" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1456108"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/Kudredin">Kudredin</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/16/2015 11:26:27 AM" LocalTimeTicks="1450293987">Dec 16, 2015 at 11:26 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1456108" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Just&#32;a&#32;quick&#32;update,&#32;I&#32;tested&#32;in&#32;on&#32;multiple&#32;computers,&#32;and&#32;I&#32;get&#32;the&#32;same&#32;error.">
+        <div class="markDownOutput ">Just a quick update, I tested in on multiple computers, and I get the same error.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1456108" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1456215">
+    <td id="PostDetailsCell_1456215" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1456215"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/17/2015 12:07:30 AM" LocalTimeTicks="1450339650">Dec 17, 2015 at 12:07 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1456215" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="can&#32;you&#32;show&#32;me&#32;the&#32;exception&#32;details&#32;please&#63;&#13;&#10;&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">can you show me the exception details please? <br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1456215" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1456234">
+    <td id="PostDetailsCell_1456234" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1456234"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/Kudredin">Kudredin</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/17/2015 7:50:27 AM" LocalTimeTicks="1450367427">Dec 17, 2015 at 7:50 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1456234" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi&#32;Sebastian,&#13;&#10;&#13;&#10;Here&#32;is&#32;the&#32;exception&#58;&#13;&#10;&#13;&#10;&#62;&#32;System.Runtime.InteropServices.COMException&#32;&#40;0x80004005&#41;&#58;&#32;See&#32;inner&#32;exception&#40;s&#41;&#32;for&#32;details.&#32;---&#62;&#32;System.Reflection.TargetInvocationException&#58;&#32;Exception&#32;has&#32;been&#32;thrown&#32;by&#32;the&#32;target&#32;of&#32;an&#32;invocation.&#32;---&#62;&#32;System.Runtime.InteropServices.COMException&#58;&#32;Unable&#32;to&#32;create&#32;specified&#32;ActiveX&#32;control.&#13;&#10;&#32;&#32;&#32;---&#32;End&#32;of&#32;inner&#32;exception&#32;stack&#32;trace&#32;---&#13;&#10;&#32;&#32;&#32;at&#32;System.RuntimeType.InvokeDispMethod&#40;String&#32;name,&#32;BindingFlags&#32;invokeAttr,&#32;Object&#32;target,&#32;Object&#91;&#93;&#32;args,&#32;Boolean&#91;&#93;&#32;byrefModifiers,&#32;Int32&#32;culture,&#32;String&#91;&#93;&#32;namedParameters&#41;&#13;&#10;&#32;&#32;&#32;at&#32;System.RuntimeType.InvokeMember&#40;String&#32;name,&#32;BindingFlags&#32;bindingFlags,&#32;Binder&#32;binder,&#32;Object&#32;target,&#32;Object&#91;&#93;&#32;providedArgs,&#32;ParameterModifier&#91;&#93;&#32;modifiers,&#32;CultureInfo&#32;culture,&#32;String&#91;&#93;&#32;namedParams&#41;&#13;&#10;&#32;&#32;&#32;at&#32;NetOffice.Invoker.MethodReturn&#40;COMObject&#32;comObject,&#32;String&#32;name,&#32;Object&#91;&#93;&#32;paramsArray&#41;&#13;&#10;&#32;&#32;&#32;at&#32;NetOffice.Invoker.MethodReturn&#40;COMObject&#32;comObject,&#32;String&#32;name,&#32;Object&#91;&#93;&#32;paramsArray&#41;&#13;&#10;&#32;&#32;&#32;at&#32;NetOffice.OfficeApi.ICTPFactory.CreateCTP&#40;String&#32;cTPAxID,&#32;String&#32;cTPTitle&#41;&#13;&#10;&#32;&#32;&#32;at&#32;NetOffice.OutlookApi.Tools.COMAddin.CTPFactoryAvailable&#40;Object&#32;CTPFactoryInst&#41;&#13;&#10;&#13;&#10;Thank&#32;you&#32;for&#32;the&#32;quick&#32;response&#33;&#32;&#58;&#41;">
+        <div class="markDownOutput ">Hi Sebastian, <br>
+<br>
+Here is the exception:<br>
+<blockquote>System.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details. ---&gt; System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; System.Runtime.InteropServices.COMException:
+ Unable to create specified ActiveX control.<br>
+--- End of inner exception stack trace ---<br>
+at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br>
+at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br>
+at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)<br>
+at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)<br>
+at NetOffice.OfficeApi.ICTPFactory.CreateCTP(String cTPAxID, String cTPTitle)<br>
+at NetOffice.OutlookApi.Tools.COMAddin.CTPFactoryAvailable(Object CTPFactoryInst)<br>
+</blockquote>
+Thank you for the quick response! :)<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1456234" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1456358">
+    <td id="PostDetailsCell_1456358" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1456358"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/18/2015 7:14:22 AM" LocalTimeTicks="1450451662">Dec 18, 2015 at 7:14 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1456358" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Outlook&#32;failed&#32;to&#32;create&#32;an&#32;instance&#32;of&#32;MyTaskPane.&#13;&#10;&#13;&#10;You&#32;say&#32;it&#32;works&#32;fine&#32;on&#32;your&#32;dev&#32;system.&#32;For&#32;me&#32;now,&#32;its&#32;an&#32;exception&#32;in&#32;the&#32;ctor&#32;of&#32;your&#32;pane&#32;or&#32;in&#32;a&#32;corresponding&#32;event&#32;trigger&#32;or&#32;last&#32;but&#32;not&#32;least,&#32;a&#32;dependent&#32;assembly&#32;is&#32;missing.&#32;&#32;&#40;please&#32;keep&#32;in&#32;your&#32;mind&#58;&#32;CLR&#32;bind&#32;referenced&#32;assemblies&#32;while&#32;first&#32;access-on&#32;demand&#32;-&#32;may&#32;you&#32;use&#32;something&#32;special&#32;in&#32;your&#32;task&#32;pane&#41;&#13;&#10;&#13;&#10;you&#32;can&#32;send&#32;me&#32;a&#32;simplified&#32;version&#32;of&#32;your&#32;project&#32;to&#32;public.sebastian&#91;at&#93;web.de&#32;and&#32;i&#32;want&#32;see&#32;how&#32;it&#32;works&#32;in&#32;my&#32;virtual&#32;machines.&#40;remove&#32;any&#32;private&#32;code&#32;if&#32;you&#32;want&#32;but&#32;keep&#32;all&#32;assembly&#32;references&#32;alive&#41;&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;">
+        <div class="markDownOutput ">Outlook failed to create an instance of MyTaskPane. <br>
+<br>
+You say it works fine on your dev system. For me now, its an exception in the ctor of your pane or in a corresponding event trigger or last but not least, a dependent assembly is missing. (please keep in your mind: CLR bind referenced assemblies while first
+ access-on demand - may you use something special in your task pane) <br>
+<br>
+you can send me a simplified version of your project to public.sebastian[at]web.de and i want see how it works in my virtual machines.(remove any private code if you want but keep all assembly references alive)
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1456358" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1456383">
+    <td id="PostDetailsCell_1456383" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1456383"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/Kudredin">Kudredin</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/18/2015 11:40:16 AM" LocalTimeTicks="1450467616">Dec 18, 2015 at 11:40 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1456383" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="I&#32;used&#32;the&#32;standard&#32;project&#32;created&#32;by&#32;the&#32;Developer&#32;Toolbox,&#32;haven&#39;t&#32;even&#32;added&#32;anything&#32;to&#32;the&#32;taskpane&#32;yet.&#32;I&#32;created&#32;another&#32;blank&#32;project&#32;with&#32;the&#32;only&#32;customization&#32;changing&#58;&#13;&#10;&#96;&#96;&#96;&#13;&#10;Inherits&#32;Word.Tools.COMAddin&#13;&#10;&#96;&#96;&#96;&#13;&#10;to&#13;&#10;&#96;&#96;&#96;&#13;&#10;Inherits&#32;Outlook.Tools.COMAddin&#13;&#10;&#96;&#96;&#96;&#13;&#10;I&#39;ll&#32;send&#32;you&#32;an&#32;email&#32;of&#32;both&#32;the&#32;VB&#32;Project,&#32;and&#32;a&#32;zip&#32;files&#32;of&#32;the&#32;assemblys&#32;I&#32;copied&#32;over.&#13;&#10;&#13;&#10;Million&#32;thanks&#32;for&#32;your&#32;help.&#13;&#10;&#13;&#10;Many&#32;thanks,&#13;&#10;Krisz">
+        <div class="markDownOutput ">I used the standard project created by the Developer Toolbox, haven't even added anything to the taskpane yet. I created another blank project with the only customization changing:<br>
+<pre><code>Inherits Word.Tools.COMAddin</code></pre>
+to<br>
+<pre><code>Inherits Outlook.Tools.COMAddin</code></pre>
+I'll send you an email of both the VB Project, and a zip files of the assemblys I copied over.
+<br>
+<br>
+Million thanks for your help. <br>
+<br>
+Many thanks, <br>
+Krisz<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1456383" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1457869">
+    <td id="PostDetailsCell_1457869" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1457869"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/michaelhicks">michaelhicks</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/4/2016 11:15:54 AM" LocalTimeTicks="1451934954">Jan 4, 2016 at 11:15 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1457869" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Many&#32;thanks&#32;Sebastian&#32;for&#32;your&#32;software.&#32;Just&#32;to&#32;note&#32;the&#32;following&#58;-&#13;&#10;&#13;&#10;I&#39;m&#32;finding&#32;the&#32;same&#32;error&#32;as&#32;described&#32;above&#32;on&#32;one&#32;of&#32;my&#32;machines&#32;&#32;-&#32;Windows&#32;10&#32;64&#32;bit&#32;with&#32;Outlook&#32;2010&#32;64&#32;bit.&#13;&#10;&#13;&#10;But&#32;this&#32;error&#32;does&#32;not&#32;appear&#32;on&#32;my&#32;other&#32;machine&#32;-&#32;Windows&#32;10&#32;64&#32;bit&#32;with&#32;Outlook&#32;2010&#32;32&#32;bit&#32;-&#32;the&#32;addin&#32;loads&#32;and&#32;the&#32;task&#32;pane&#32;appears.&#13;&#10;&#13;&#10;Many&#32;thanks&#32;for&#32;your&#32;work,&#13;&#10;&#13;&#10;Michael">
+        <div class="markDownOutput ">Many thanks Sebastian for your software. Just to note the following:- <br>
+<br>
+I'm finding the same error as described above on one of my machines - Windows 10 64 bit with Outlook 2010 64 bit.
+<br>
+<br>
+But this error does not appear on my other machine - Windows 10 64 bit with Outlook 2010 32 bit - the addin loads and the task pane appears.
+<br>
+<br>
+Many thanks for your work, <br>
+<br>
+Michael<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1457869" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="ef47c311-d7ce-4e7d-8d3e-01de634ade5c">
+    <script class="options" defer="defer" id="ef47c311-d7ce-4e7d-8d3e-01de634ade5c" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_bcf305f2-8f8e-46de-866f-f8a1a975fde3">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_14680704-919c-4f8d-aef0-f047b22e6512">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_bcf305f2-8f8e-46de-866f-f8a1a975fde3" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_14680704-919c-4f8d-aef0-f047b22e6512" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/648830';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

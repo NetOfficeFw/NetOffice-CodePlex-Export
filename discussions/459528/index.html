@@ -1,0 +1,927 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - NuGet Packages for NetOffice</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/459528?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/459528?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="UpPq2ML_IU2SAXANLuU5vA8Kb4HF7ceA3FFRofKZdxLevik-omPCXrOq8obGyiC7jX3OiIyxpD25xgTE3Xq04MJSvCVzkaaHx5sWALYO6IST4xSswqFiF-si9pcY15QMtfe6Nw2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken284f287b6-7b64-4bd9-aee2-4671da7f0672" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:51:25 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f459528" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="552d5fec-ac4b-4e0b-b49f-9aa39f0d4f46">
+                
+                    <script class="options" defer="defer" id="552d5fec-ac4b-4e0b-b49f-9aa39f0d4f46" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                NuGet Packages for NetOffice
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:459528]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="57550f0a-59c6-42ed-bc32-3d7ff1059c33">
+    <script class="options" defer="defer" id="57550f0a-59c6-42ed-bc32-3d7ff1059c33" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/459528","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1100305">
+    <td id="PostDetailsCell_1100305" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1100305"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/CaioProiete">CaioProiete</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/27/2013 11:52:13 PM" LocalTimeTicks="1380351133">Sep 27, 2013 at 11:52 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1100305" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="&#35;&#32;NuGet&#32;Packages&#32;for&#32;NetOffice&#13;&#10;&#91;https&#58;&#47;&#47;github.com&#47;CaioProiete&#47;NetOffice-NuGet&#93;&#40;https&#58;&#47;&#47;github.com&#47;CaioProiete&#47;NetOffice-NuGet&#41;&#13;&#10;&#13;&#10;&#35;&#35;&#32;Introduction&#13;&#10;&#13;&#10;I&#39;ve&#32;recently&#32;created&#32;a&#32;set&#32;of&#32;NuGet&#32;packages&#32;in&#32;order&#32;to&#32;make&#32;it&#32;easier&#32;for&#32;people&#32;to&#32;get&#32;started&#32;with&#32;NetOffice,&#32;and&#32;also&#32;facilitate&#32;deployment&#32;&#47;&#32;distribution&#32;of&#32;NetOffice&#32;as&#32;a&#32;dependency&#32;for&#32;shops&#32;building&#32;professional&#32;applications&#32;using&#32;this&#32;great&#32;library.&#13;&#10;&#13;&#10;_These&#32;NuGet&#32;packages&#32;contain&#32;exactly&#32;the&#32;same&#32;assemblies&#32;that&#32;are&#32;available&#32;for&#32;download&#32;here&#32;at&#32;CodePlex,&#32;and&#32;are&#32;not&#32;modified&#32;in&#32;any&#32;way._&#13;&#10;&#13;&#10;I&#32;created&#32;specific&#32;packages&#32;for&#32;each&#32;MS&#32;Office&#32;application,&#32;so&#32;that&#32;developers&#32;can&#32;use&#32;only&#32;the&#32;pieces&#32;that&#32;they&#32;care&#32;about&#32;&#40;i.e.&#32;If&#32;you&#32;are&#32;developing&#32;an&#32;application&#32;to&#32;work&#32;with&#32;Excel,&#32;you&#32;only&#32;need&#32;the&#32;&#91;NetOffice.Excel&#93;&#40;https&#58;&#47;&#47;www.nuget.org&#47;packages&#47;NetOffice.Excel&#47;&#41;&#32;NuGet&#32;package&#41;.&#13;&#10;&#13;&#10;Each&#32;of&#32;these&#32;specific&#32;packages&#32;include&#32;assemblies&#32;compatible&#32;with&#32;all&#32;versions&#32;of&#32;the&#32;.NET&#32;Framework&#32;&#40;well,&#32;all&#32;versions&#32;that&#32;NetOffice&#32;supports&#41;&#32;and&#32;are&#32;probably&#32;the&#32;recommended&#32;ones&#32;for&#32;people&#32;who&#32;are&#32;getting&#32;started.&#13;&#10;&#13;&#10;&#42;&#32;NetOffice.Excel&#13;&#10;&#42;&#32;NetOffice.Word&#13;&#10;&#42;&#32;NetOffice.Outlook&#13;&#10;&#42;&#32;NetOffice.PowerPoint&#13;&#10;&#42;&#32;NetOffice.Access&#13;&#10;&#42;&#32;NetOffice.MSProject&#13;&#10;&#42;&#32;NetOffice.Visio&#13;&#10;&#13;&#10;I&#32;also&#32;created&#32;more&#32;granular&#32;NuGet&#32;packages&#32;that&#32;target&#32;a&#32;specific&#32;version&#32;of&#32;the&#32;.NET&#32;Framework,&#32;for&#32;developers&#32;that&#32;prefer&#32;to&#32;depend&#32;on&#32;more&#32;specific&#32;packages.&#13;&#10;&#13;&#10;&#42;&#32;NetOffice.Excel.Net20,&#32;.Net30,&#32;.Net35,&#32;.Net40,&#32;.Net45&#13;&#10;&#42;&#32;NetOffice.Word.Net20,&#32;.Net30,&#32;.Net35,&#32;.Net40,&#32;.Net45&#13;&#10;&#42;&#32;NetOffice.Outlook.Net20,&#32;.Net30,&#32;.Net35,&#32;.Net40,&#32;.Net45&#13;&#10;&#42;&#32;NetOffice.PowerPoint.Net20,&#32;.Net30,&#32;.Net35,&#32;.Net40,&#32;.Net45&#13;&#10;&#42;&#32;NetOffice.Access.Net20,&#32;.Net30,&#32;.Net35,&#32;.Net40,&#32;.Net45&#13;&#10;&#42;&#32;NetOffice.MSProject.Net20,&#32;.Net30,&#32;.Net35,&#32;.Net40,&#32;.Net45&#13;&#10;&#42;&#32;NetOffice.Visio.Net20,&#32;.Net30,&#32;.Net35,&#32;.Net40,&#32;.Net45&#13;&#10;&#13;&#10;&#13;&#10;&#35;&#35;&#32;Download&#13;&#10;&#13;&#10;More&#32;details&#32;and&#32;the&#32;source&#32;code&#32;of&#32;the&#32;NuGet&#32;packages&#32;are&#32;available&#32;on&#32;GitHub&#58;&#13;&#10;&#91;https&#58;&#47;&#47;github.com&#47;CaioProiete&#47;NetOffice-NuGet&#93;&#40;https&#58;&#47;&#47;github.com&#47;CaioProiete&#47;NetOffice-NuGet&#41;&#13;&#10;&#13;&#10;All&#32;NuGet&#32;packages&#32;can&#32;be&#32;found&#32;on&#32;the&#32;official&#32;NuGet.org&#32;feed&#32;under&#32;the&#32;tag&#32;&#34;&#91;netoffice&#93;&#40;http&#58;&#47;&#47;www.nuget.org&#47;packages&#63;q&#61;Tags&#37;3A&#37;22netoffice&#37;22&#41;&#34;&#13;&#10;&#91;http&#58;&#47;&#47;www.nuget.org&#47;packages&#63;q&#61;Tags&#37;3A&#37;22netoffice&#37;22&#93;&#40;http&#58;&#47;&#47;www.nuget.org&#47;packages&#63;q&#61;Tags&#37;3A&#37;22netoffice&#37;22&#41;">
+        <div class="markDownOutput ">
+<h1>NuGet Packages for NetOffice</h1>
+<a href="https://github.com/CaioProiete/NetOffice-NuGet"  rel="nofollow">https://github.com/CaioProiete/NetOffice-NuGet</a><br>
+<h2>Introduction</h2>
+I've recently created a set of NuGet packages in order to make it easier for people to get started with NetOffice, and also facilitate deployment / distribution of NetOffice as a dependency for shops building professional applications using this great library.
+<br>
+<br>
+<em>These NuGet packages contain exactly the same assemblies that are available for download here at CodePlex, and are not modified in any way.</em>
+<br>
+<br>
+I created specific packages for each MS Office application, so that developers can use only the pieces that they care about (i.e. If you are developing an application to work with Excel, you only need the
+<a href="https://www.nuget.org/packages/NetOffice.Excel/"  rel="nofollow">NetOffice.Excel</a> NuGet package).
+<br>
+<br>
+Each of these specific packages include assemblies compatible with all versions of the .NET Framework (well, all versions that NetOffice supports) and are probably the recommended ones for people who are getting started.<br>
+<ul>
+<li>NetOffice.Excel </li><li>NetOffice.Word </li><li>NetOffice.Outlook </li><li>NetOffice.PowerPoint </li><li>NetOffice.Access </li><li>NetOffice.MSProject </li><li>NetOffice.Visio<br>
+</li></ul>
+I also created more granular NuGet packages that target a specific version of the .NET Framework, for developers that prefer to depend on more specific packages.<br>
+<ul>
+<li>NetOffice.Excel.Net20, .Net30, .Net35, .Net40, .Net45 </li><li>NetOffice.Word.Net20, .Net30, .Net35, .Net40, .Net45 </li><li>NetOffice.Outlook.Net20, .Net30, .Net35, .Net40, .Net45 </li><li>NetOffice.PowerPoint.Net20, .Net30, .Net35, .Net40, .Net45 </li><li>NetOffice.Access.Net20, .Net30, .Net35, .Net40, .Net45 </li><li>NetOffice.MSProject.Net20, .Net30, .Net35, .Net40, .Net45 </li><li>NetOffice.Visio.Net20, .Net30, .Net35, .Net40, .Net45<br>
+</li></ul>
+<h2>Download</h2>
+More details and the source code of the NuGet packages are available on GitHub: <br>
+<a href="https://github.com/CaioProiete/NetOffice-NuGet"  rel="nofollow">https://github.com/CaioProiete/NetOffice-NuGet</a>
+<br>
+<br>
+All NuGet packages can be found on the official NuGet.org feed under the tag &quot;<a href="http://www.nuget.org/packages?q=Tags%3A%22netoffice%22"  rel="nofollow">netoffice</a>&quot;
+<br>
+<a href="http://www.nuget.org/packages?q=Tags%3A%22netoffice%22"  rel="nofollow">http://www.nuget.org/packages?q=Tags%3A%22netoffice%22</a><br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1100305" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1100686">
+    <td id="PostDetailsCell_1100686" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1100686"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/29/2013 11:21:54 PM" LocalTimeTicks="1380522114">Sep 29, 2013 at 11:21 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1100686" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="I&#32;dont&#32;want&#32;support&#32;Nuget&#32;because&#32;i&#32;dont&#32;support&#32;any&#32;&#34;An&#32;MS&#47;Google&#47;Adobe&#47;Apple&#47;...&#32;product&#32;have&#32;permissions&#32;to&#32;establish&#32;an&#32;internet&#32;connection&#34;&#32;scenario.&#13;&#10;These&#32;guys&#32;are&#32;evil&#32;&#40;what&#32;i&#32;mean&#41;&#32;Of&#32;course,&#32;feel&#32;free&#32;to&#32;do&#32;whatever&#32;you&#32;want.&#32;NetOffice&#32;use&#32;the&#32;MIT-License&#40;no&#32;hurdles&#41;&#32;but&#32;i&#32;give&#32;no&#32;warranties&#32;for&#32;actuality&#32;and&#32;anyone&#32;else.&#13;&#10;&#13;&#10;Sebastian&#13;&#10;">
+        <div class="markDownOutput ">I dont want support Nuget because i dont support any &quot;An MS/Google/Adobe/Apple/... product have permissions to establish an internet connection&quot; scenario.
+<br>
+These guys are evil (what i mean) Of course, feel free to do whatever you want. NetOffice use the MIT-License(no hurdles) but i give no warranties for actuality and anyone else.
+<br>
+<br>
+Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1100686" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1100708">
+    <td id="PostDetailsCell_1100708" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1100708"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/CaioProiete">CaioProiete</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/29/2013 11:54:59 PM" LocalTimeTicks="1380524099">Sep 29, 2013 at 11:54 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="9/30/2013 12:01:40 AM" LocalTimeTicks="1380524500">Sep 30, 2013 at 12:01 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1100708" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="&#42;&#42;SebastianDotNet&#32;wrote&#58;&#42;&#42;&#10;&#62;&#32;I&#32;dont&#32;want&#32;support&#32;Nuget&#32;because&#32;i&#32;dont&#32;support&#32;any&#32;&#34;An&#32;MS&#47;Google&#47;Adobe&#47;Apple&#47;...&#32;product&#32;have&#32;permissions&#32;to&#32;establish&#32;an&#32;internet&#32;connection&#34;&#32;scenario.&#10;&#62;&#32;These&#32;guys&#32;are&#32;evil&#32;&#40;what&#32;i&#32;mean&#41;&#32;Of&#32;course,&#32;feel&#32;free&#32;to&#32;do&#32;whatever&#32;you&#32;want.&#32;NetOffice&#32;use&#32;the&#32;MIT-License&#40;no&#32;hurdles&#41;&#32;but&#32;i&#32;give&#32;no&#32;warranties&#32;for&#32;actuality&#32;and&#32;anyone&#32;else.&#10;&#62;&#32;&#10;&#62;&#32;Sebastian&#10;&#10;&#10;Hey&#32;Sebastian,&#32;glad&#32;to&#32;&#40;finally&#41;&#32;have&#32;a&#32;reply&#32;from&#32;you.&#10;&#10;It&#32;seems&#32;to&#32;me&#32;that&#32;you&#32;are&#32;misinformed...&#32;NuGet&#32;packages&#32;and&#32;&#34;products&#32;having&#32;permission&#32;to&#32;establish&#32;internet&#32;connection&#34;&#32;are&#32;__not&#32;related__.&#10;&#10;__1__-&#41;&#32;Anyone&#32;can&#32;have&#32;their&#32;own&#32;__private__&#32;NuGet&#32;feed&#32;&#40;you&#32;just&#32;have&#32;to&#32;put&#32;the&#32;packages&#32;in&#32;a&#32;folder&#32;in&#32;the&#32;file&#32;system&#41;,&#32;and&#32;there&#39;s&#32;no&#32;need&#32;for&#32;internet&#32;access&#32;and&#32;that&#39;s&#32;actually&#32;what&#32;lots&#32;of&#32;.NET&#32;shops&#32;do,&#32;so&#32;that&#32;their&#32;employees&#32;can&#32;use&#32;only&#32;the&#32;NuGet&#32;packages&#32;that&#32;have&#32;been&#32;&#34;approved&#34;&#32;by&#32;some&#32;IT&#32;Lead.&#10;&#10;&#33;&#91;Image&#93;&#40;http&#58;&#47;&#47;content.screencast.com&#47;users&#47;caioproiete&#47;folders&#47;Snagit&#47;media&#47;8131a7c1-4d7f-490f-9869-dc772d5a9afc&#47;09.29.2013-19.54.png&#41;&#10;&#10;__2__-&#41;&#32;You&#32;don&#39;t&#32;need&#32;Visual&#32;Studio&#32;to&#32;download&#32;NuGet&#32;packages...&#32;You&#32;can&#32;use&#32;simple&#32;HTTP&#32;tools&#32;to&#32;download&#32;them,&#32;if&#32;you&#32;wish.&#32;For&#32;example,&#32;to&#32;download&#32;the&#32;NetOffice.Excel&#32;package&#58;&#10;&#10;&#96;&#96;&#96;&#10;wget&#32;-O&#32;NetOffice.Excel&#32;http&#58;&#47;&#47;packages.nuget.org&#47;api&#47;v1&#47;package&#47;NetOffice.Excel&#47;1.6.0.0&#10;unzip&#32;NetOffice.Excel&#32;&#39;lib&#47;&#42;&#39;&#10;&#10;&#96;&#96;&#96;&#10;&#10;__3__-&#41;&#32;No&#32;one&#32;is&#32;obligated&#32;to&#32;use&#32;the&#32;main&#32;&#91;NuGet.org&#93;&#40;http&#58;&#47;&#47;nuget.org&#41;&#32;feed.&#32;Anyone&#32;can&#32;download&#32;the&#32;package&#32;definition&#32;from&#32;my&#32;GitHub&#32;repository&#32;&#40;https&#58;&#47;&#47;github.com&#47;CaioProiete&#47;NetOffice-NuGet&#41;&#32;and&#32;build&#32;the&#32;packages&#32;themselves.&#10;&#10;__4__-&#41;&#32;If&#32;that&#32;makes&#32;you&#32;&#40;and&#32;possibly&#32;other&#32;people&#41;&#32;happy,&#32;I&#32;could&#32;host&#32;the&#32;generated&#32;NuGet&#32;packages&#32;on&#32;the&#32;same&#32;GitHub&#32;repository,&#32;just&#32;so&#32;people&#32;can&#32;download&#32;from&#32;there&#32;rather&#32;than&#32;downloading&#32;from&#32;the&#32;NuGet.org&#32;feed&#32;&#40;if&#32;that&#32;is&#32;the&#32;problem&#41;.&#32;I&#32;could&#32;also&#32;host&#32;the&#32;packages&#32;on&#32;a&#32;&#91;MyGet&#93;&#40;http&#58;&#47;&#47;www.myget.org&#41;&#32;feed&#32;as&#32;well&#32;&#40;again,&#32;if&#32;NuGet.org&#32;is&#32;a&#32;concern&#32;for&#32;anyone&#41;.&#32;Actually&#32;you&#32;could&#32;host&#32;the&#32;NuGet&#32;packages&#32;here&#32;in&#32;CodePlex&#32;if&#32;you&#32;want&#32;-&#32;happy&#32;to&#32;help&#32;if&#32;you&#32;need.&#10;&#10;Does&#32;that&#32;clarify&#32;things&#32;a&#32;little&#32;for&#32;you&#63;&#10;&#10;NuGet&#32;is&#32;a&#32;package&#32;manager&#32;that&#32;helps&#32;manage&#32;dependencies&#32;of&#32;a&#32;.NET&#32;application...&#32;Any&#32;professional&#32;developer&#32;should&#32;be&#32;using&#32;it.&#10;&#10;Not&#32;wanting&#32;your&#32;Visual&#32;Studio&#32;to&#32;connect&#32;to&#32;the&#32;Internet&#32;is&#32;your&#32;choice,&#32;but&#32;that&#32;has&#32;nothing&#32;to&#32;do&#32;with&#32;embracing&#32;NuGet&#32;as&#32;your&#32;package&#32;manager.&#10;&#10;Cheers,&#10;Caio&#32;Proiete">
+        <div class="markDownOutput "><strong>SebastianDotNet wrote:</strong><br>
+<blockquote>I dont want support Nuget because i dont support any &quot;An MS/Google/Adobe/Apple/... product have permissions to establish an internet connection&quot; scenario.<br>
+These guys are evil (what i mean) Of course, feel free to do whatever you want. NetOffice use the MIT-License(no hurdles) but i give no warranties for actuality and anyone else.<br>
+<br>
+Sebastian<br>
+</blockquote>
+Hey Sebastian, glad to (finally) have a reply from you.<br>
+<br>
+It seems to me that you are misinformed... NuGet packages and &quot;products having permission to establish internet connection&quot; are
+<strong>not related</strong>.<br>
+<br>
+<strong>1</strong>-) Anyone can have their own <strong>private</strong> NuGet feed (you just have to put the packages in a folder in the file system), and there's no need for internet access and that's actually what lots of .NET shops do, so that their employees
+ can use only the NuGet packages that have been &quot;approved&quot; by some IT Lead.<br>
+<br>
+<img src="http://content.screencast.com/users/caioproiete/folders/Snagit/media/8131a7c1-4d7f-490f-9869-dc772d5a9afc/09.29.2013-19.54.png" alt="Image"><br>
+<br>
+<strong>2</strong>-) You don't need Visual Studio to download NuGet packages... You can use simple HTTP tools to download them, if you wish. For example, to download the NetOffice.Excel package:<br>
+<pre><code>wget -O NetOffice.Excel http://packages.nuget.org/api/v1/package/NetOffice.Excel/1.6.0.0
+unzip NetOffice.Excel 'lib/*'
+</code></pre>
+<strong>3</strong>-) No one is obligated to use the main <a href="http://nuget.org"  rel="nofollow">
+NuGet.org</a> feed. Anyone can download the package definition from my GitHub repository (<a href="https://github.com/CaioProiete/NetOffice-NuGet"  rel="nofollow">https://github.com/CaioProiete/NetOffice-NuGet</a>) and build the packages themselves.<br>
+<br>
+<strong>4</strong>-) If that makes you (and possibly other people) happy, I could host the generated NuGet packages on the same GitHub repository, just so people can download from there rather than downloading from the NuGet.org feed (if that is the problem).
+ I could also host the packages on a <a href="http://www.myget.org"  rel="nofollow">
+MyGet</a> feed as well (again, if NuGet.org is a concern for anyone). Actually you could host the NuGet packages here in CodePlex if you want - happy to help if you need.<br>
+<br>
+Does that clarify things a little for you?<br>
+<br>
+NuGet is a package manager that helps manage dependencies of a .NET application... Any professional developer should be using it.<br>
+<br>
+Not wanting your Visual Studio to connect to the Internet is your choice, but that has nothing to do with embracing NuGet as your package manager.<br>
+<br>
+Cheers,<br>
+Caio Proiete<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1100708" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1100710">
+    <td id="PostDetailsCell_1100710" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1100710"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/30/2013 12:02:54 AM" LocalTimeTicks="1380524574">Sep 30, 2013 at 12:02 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1100710" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="gimme&#32;a&#32;day&#32;please&#32;to&#32;check&#32;this&#32;out.&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">gimme a day please to check this out. <br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1100710" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1100712">
+    <td id="PostDetailsCell_1100712" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1100712"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/shanselman">shanselman</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/30/2013 12:46:32 AM" LocalTimeTicks="1380527192">Sep 30, 2013 at 12:46 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1100712" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Let&#32;me&#32;know&#32;if&#32;you&#32;have&#32;any&#32;questions.&#32;NuGet&#32;is&#32;a&#32;very&#32;popular&#32;way&#32;for&#32;people&#32;get&#32;OSS&#32;libraries&#32;into&#32;their&#32;projects,&#32;and&#32;I&#39;m&#32;99&#37;&#32;sure&#32;I&#39;m&#32;not&#32;evil.">
+        <div class="markDownOutput ">Let me know if you have any questions. NuGet is a very popular way for people get OSS libraries into their projects, and I'm 99% sure I'm not evil.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1100712" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1101094">
+    <td id="PostDetailsCell_1101094" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1101094"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/30/2013 11:44:30 PM" LocalTimeTicks="1380609870">Sep 30, 2013 at 11:44 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1101094" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="hello&#32;caio,&#32;hansel,&#13;&#10;&#13;&#10;as&#32;i&#32;start&#32;with&#32;netoffice&#32;some&#32;people&#32;ask&#32;me&#32;for&#32;nuget&#32;package&#40;some&#32;years&#32;ago&#41;.&#32;i&#32;try&#32;nuget&#32;and&#32;see&#32;its&#32;just&#32;a&#32;stupid&#32;addin&#32;and&#32;try&#32;to&#32;establish&#32;an&#32;internet&#32;connection&#32;directly&#40;visual&#32;stuidio&#32;impersination&#41;.&#32;i&#39;m&#32;affraid&#33;&#32;i&#32;ask&#32;in&#32;the&#32;nuget&#32;board&#32;for&#32;solutions&#32;and&#32;a&#32;guy&#32;told&#32;me&#32;to&#32;use&#32;the&#32;nuget&#32;console&#32;and&#32;delete&#32;my&#32;issue&#32;&#42;have&#32;a&#32;nice&#32;day&#42;.&#32;i&#32;study&#32;the&#32;nuget&#32;code&#32;for&#32;a&#32;while&#32;and&#32;it&#32;looks&#32;safe,&#32;yes.&#32;what&#32;i&#32;say&#32;since&#32;1998&#32;a&#32;serious&#32;addin&#32;doesnt&#32;try&#32;to&#32;establish&#32;an&#32;internet&#32;connection&#32;directly.&#32;perform&#32;any&#32;kind&#32;of&#32;ipc&#32;communication&#32;to&#32;deal&#32;with&#32;an&#32;external&#32;process&#40;.exe&#41;&#32;to&#32;give&#32;the&#32;local&#32;firewall&#32;a&#32;chance.&#32;its&#32;okay&#32;for&#32;me&#32;to&#32;give&#32;nuget&#32;the&#32;permissions&#32;to&#32;establish&#32;a&#32;https&#32;connection&#32;to&#32;a&#32;specific&#32;remote&#32;point&#32;but&#32;not&#32;more&#33;&#32;&#40;see&#32;my&#32;google&#32;translation&#32;addin&#32;for&#32;office&#32;in&#32;the&#32;download&#32;section.&#32;it&#39;s&#32;demonstrate&#32;what&#32;i&#32;mean&#41;&#32;&#32;&#13;&#10;&#13;&#10;caio&#58;&#32;i&#32;have&#32;no&#32;problems&#32;to&#32;manage&#32;my&#32;depencies&#32;on&#32;my&#32;own.&#32;sometimes&#32;i&#32;find&#32;the&#32;older&#32;version&#32;is&#32;better&#32;or&#32;i&#32;will&#32;waiting&#32;for&#32;while&#32;to&#32;see&#32;the&#32;new&#32;version&#32;is&#32;stable.&#32;is&#32;the&#32;dependency&#32;problem&#32;the&#32;biggest&#32;for&#32;a&#32;developer&#63;&#32;i&#32;think&#32;no.&#32;its&#32;just&#32;a&#32;small&#32;problem&#32;and&#32;costs&#32;nothing&#32;to&#32;handle&#32;this&#32;at&#32;hand.&#32;you&#32;win&#32;control&#32;man&#33;&#33;&#13;&#10;&#13;&#10;hansel&#58;&#32;i&#32;want&#32;add&#32;a&#32;specific&#32;firewall&#32;rule&#32;to&#32;see&#32;what&#32;can&#32;nuget&#32;do&#32;for&#32;me.&#32;which&#32;protocoll&#32;use&#32;nuget&#32;currently&#32;for&#32;communication&#63;&#32;the&#32;nuget&#32;gallery&#32;has&#32;a&#32;generic&#32;uri&#47;ip&#32;and&#32;port&#63;&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;">
+        <div class="markDownOutput ">hello caio, hansel, <br>
+<br>
+as i start with netoffice some people ask me for nuget package(some years ago). i try nuget and see its just a stupid addin and try to establish an internet connection directly(visual stuidio impersination). i'm affraid! i ask in the nuget board for solutions
+ and a guy told me to use the nuget console and delete my issue <em>have a nice day</em>. i study the nuget code for a while and it looks safe, yes. what i say since 1998 a serious addin doesnt try to establish an internet connection directly. perform any kind
+ of ipc communication to deal with an external process(.exe) to give the local firewall a chance. its okay for me to give nuget the permissions to establish a https connection to a specific remote point but not more! (see my google translation addin for office
+ in the download section. it's demonstrate what i mean)<br>
+<br>
+caio: i have no problems to manage my depencies on my own. sometimes i find the older version is better or i will waiting for while to see the new version is stable. is the dependency problem the biggest for a developer? i think no. its just a small problem
+ and costs nothing to handle this at hand. you win control man!! <br>
+<br>
+hansel: i want add a specific firewall rule to see what can nuget do for me. which protocoll use nuget currently for communication? the nuget gallery has a generic uri/ip and port?
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1101094" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1101096">
+    <td id="PostDetailsCell_1101096" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1101096"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/shanselman">shanselman</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/30/2013 11:51:38 PM" LocalTimeTicks="1380610298">Sep 30, 2013 at 11:51 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1101096" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;&#32;Sure,&#32;NuGet&#32;just&#32;uses&#32;HTTP&#40;s&#41;&#32;to&#32;a&#32;REST&#32;endpoint.&#32;It&#39;s&#32;just&#32;like&#32;NPM&#32;or&#32;GEMs,&#32;except&#32;for&#32;.NET.&#32;There&#32;is&#32;a&#32;central&#32;gallery&#32;&#32;http&#58;&#47;&#47;nuget.codeplex.com&#47;wikipage&#63;title&#61;NuGet&#37;201.6&#37;20Gallery&#37;20Service&#37;20Endpoints&#32;but&#32;lots&#32;of&#32;other&#32;community&#32;galleries&#32;like&#32;MyGet.org.&#32;&#32;&#32;It&#39;s&#32;the&#32;biggest&#32;thing&#32;to&#32;happen&#32;in&#32;.NET&#32;in&#32;years.&#32;&#32;http&#58;&#47;&#47;www.nuget.org&#47;stats&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;">
+        
+<div name="divtagdefaultwrapper" id="divtagdefaultwrapper" style="font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:#000000; margin:0">
+Sure, NuGet just uses HTTP(s) to a REST endpoint. It's just like NPM or GEMs, except for .NET. There is a central gallery
+<a href="http://nuget.codeplex.com/wikipage?title=NuGet%201.6%20Gallery%20Service%20Endpoints" target="_blank" title="http://nuget.codeplex.com/wikipage?title=NuGet%201.6%20Gallery%20Service%20Endpoints
+Ctrl&#43;Click to follow link" rel="nofollow">
+http://nuget.codeplex.com/wikipage?title=NuGet%201.6%20Gallery%20Service%20Endpoints</a> but lots of other community galleries like MyGet.org.
+<div><br>
+</div>
+<div>It's the biggest thing to happen in .NET in years. <a href="http://www.nuget.org/stats" target="_blank" rel="nofollow">
+http://www.nuget.org/stats</a></div>
+<div><br>
+</div>
+<div>
+<div><br>
+<div style="color:rgb(40,40,40)">
+<hr tabindex="-1" style="display:inline-block; width:98%">
+<div id="divRplyFwdMsg" dir="ltr"><font face="Calibri, sans-serif" color="#000000" style="font-size:11pt"><b></b></font></div>
+</div>
+</div>
+</div>
+</div>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1101096" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1101123">
+    <td id="PostDetailsCell_1101123" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1101123"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/1/2013 12:57:17 AM" LocalTimeTicks="1380614237">Oct 1, 2013 at 12:57 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="10/1/2013 12:58:24 AM" LocalTimeTicks="1380614304">Oct 1, 2013 at 12:58 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1101123" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="hahahahaha,&#32;the&#32;microsoft&#32;trick.&#32;its&#32;possible,&#32;but&#32;in&#32;the&#32;very&#32;advanced&#32;options&#40;nuget&#32;console&#41;.&#32;99&#37;&#32;of&#32;the&#32;people&#32;doesnt&#32;realize&#32;them.&#10;okay&#58;&#32;when&#32;steve&#32;ballmer&#32;is&#32;dead&#32;for&#32;20&#32;years&#32;then&#32;i&#32;will&#32;see&#32;what&#32;is&#32;the&#32;situation&#32;and&#32;may&#32;its&#32;okay&#32;to&#32;do&#32;this.&#10;for&#32;now&#58;&#32;i&#32;dont&#32;want&#32;support&#32;any&#32;ms&#47;internet&#32;coop&#32;scenario.&#10;&#10;&#10;btw&#58;&#32;cloud&#32;doesnt&#32;exist.&#32;its&#32;just&#32;software-one-demand.&#32;&#40;no&#32;worries&#32;for&#32;ms&#32;marketing&#41;&#32;&#10;&#10;EOD&#32;&#10;&#10;&#42;Sebastian&#10;&#40;WF&#32;Desktop&#32;Application&#32;Developer&#32;&#38;&#32;JavaScript&#32;Hateboy&#41;">
+        <div class="markDownOutput ">hahahahaha, the microsoft trick. its possible, but in the very advanced options(nuget console). 99% of the people doesnt realize them.<br>
+okay: when steve ballmer is dead for 20 years then i will see what is the situation and may its okay to do this.<br>
+for now: i dont want support any ms/internet coop scenario.<br>
+<br>
+<br>
+btw: cloud doesnt exist. its just software-one-demand. (no worries for ms marketing)
+<br>
+<br>
+EOD <br>
+<br>
+*Sebastian<br>
+(WF Desktop Application Developer &amp; JavaScript Hateboy)<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1101123" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="93196a1d-f2ed-40f6-a4da-f8a92d7fa4a1">
+    <script class="options" defer="defer" id="93196a1d-f2ed-40f6-a4da-f8a92d7fa4a1" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_db4c85f8-2a26-4c79-8dad-a52d1aa4936c">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_1d762d79-b295-4b02-a79b-782a688e1dc4">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_db4c85f8-2a26-4c79-8dad-a52d1aa4936c" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_1d762d79-b295-4b02-a79b-782a688e1dc4" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/459528';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

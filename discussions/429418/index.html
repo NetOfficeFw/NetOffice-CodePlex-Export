@@ -1,0 +1,790 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Cast PIA object to NetOffice object</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/429418?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/429418?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="mQ25ZrDNQ6pwHVDn2nH1e1swg3UljezsNvJ01QNffmITg_DpxZJHpHuLRDmZ1duPgESNcqSxSsG9g3D9UxbclIo4cCux-QCpos60qpWo80Ayk4Ini6vsd7UM1RLPkol60X6VNQ2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken2901f78a3-0eb0-4ad4-a824-7b363da2e6ff" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:52:03 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f429418" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="9d487238-3097-4e83-8f5f-9007db8e224c">
+                
+                    <script class="options" defer="defer" id="9d487238-3097-4e83-8f5f-9007db8e224c" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Cast PIA object to NetOffice object
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:429418]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="4da71c4a-240e-4a35-a4dc-5b56cef343aa">
+    <script class="options" defer="defer" id="4da71c4a-240e-4a35-a4dc-5b56cef343aa" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/429418","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="986009">
+    <td id="PostDetailsCell_986009" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post986009"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/cpcm">cpcm</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/13/2013 12:57:22 AM" LocalTimeTicks="1358067442">Jan 13, 2013 at 12:57 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="1/13/2013 12:58:53 AM" LocalTimeTicks="1358067533">Jan 13, 2013 at 12:58 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_986009" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;I&#32;have&#32;a&#32;VSTO&#32;Excel&#32;2013&#32;addin&#32;prioject&#32;using&#32;PIA.&#32;&#38;nbsp&#59;There&#32;appears&#32;to&#32;be&#32;a&#32;bug&#32;in&#32;the&#32;PIA&#32;for&#32;Excel&#32;2013.&#32;&#38;nbsp&#59;The&#32;same&#32;method&#32;works&#32;fine&#32;in&#32;VBA,&#32;and&#32;I&#32;tested&#32;it&#32;in&#32;NetOffice&#32;and&#32;it&#32;works&#32;there&#32;too.&#32;&#38;nbsp&#59;It&#32;is&#32;just&#32;a&#32;PIA&#32;problem.&#32;&#38;nbsp&#59;I&#32;don&#39;t&#32;want&#32;to&#32;re-work&#32;my&#32;whole&#32;VSTO&#32;project&#32;and&#32;convert&#32;it&#32;all&#32;to&#32;NetOffice.&#32;&#38;nbsp&#59;I&#32;would&#32;like&#32;to&#32;incorporate&#32;NetOffice&#32;for&#32;this&#32;one&#32;Excel&#32;method.&#32;Is&#32;there&#32;a&#32;way&#32;to&#32;cast&#32;an&#32;existing&#32;PIA&#32;Excel&#32;object&#32;to&#32;a&#32;NetOffice&#32;object&#63;&#32;&#38;nbsp&#59;If&#32;I&#32;try&#32;myself&#32;to&#32;set&#32;the&#32;Excel&#32;NetOffice&#32;object&#32;equal&#32;to&#32;the&#32;existing&#32;PIA&#32;object,&#32;here&#32;is&#32;what&#32;I&#32;get&#58;&#32;Unable&#32;to&#32;cast&#32;COM&#32;object&#32;of&#32;type&#32;&#39;Microsoft.Office.Interop.Excel.ApplicationClass&#39;&#32;to&#32;class&#32;type&#32;&#39;NetOffice.ExcelApi.Application&#39;.&#32;Instances&#32;of&#32;types&#32;that&#32;represent&#32;COM&#32;components&#32;cannot&#32;be&#32;cast&#32;to&#32;types&#32;that&#32;do&#32;not&#32;represent&#32;COM&#32;components&#59;&#32;however&#32;they&#32;can&#32;be&#32;cast&#32;to&#32;interfaces&#32;as&#32;long&#32;as&#32;the&#32;underlying&#32;COM&#32;component&#32;supports&#32;QueryInterface&#32;calls&#32;for&#32;the&#32;IID&#32;of&#32;the&#32;interface.&#32;This&#32;would&#32;be&#32;a&#32;big&#32;help&#32;for&#32;me&#32;if&#32;it&#32;could&#32;be&#32;done.&#32;&#38;nbsp&#59;No&#32;telling&#32;when&#32;or&#32;if&#32;MS&#32;will&#32;fix&#32;the&#32;bug&#32;and&#32;it&#32;is&#32;central&#32;to&#32;my&#32;app.&#32;Thanks&#32;so&#32;much,&#32;Craig&#32;">
+        
+<p>I have a VSTO Excel 2013 addin prioject using PIA. &nbsp;There appears to be a bug in the PIA for Excel 2013. &nbsp;The same method works fine in VBA, and I tested it in NetOffice and it works there too. &nbsp;It is just a PIA problem. &nbsp;I don't want
+ to re-work my whole VSTO project and convert it all to NetOffice. &nbsp;I would like to incorporate NetOffice for this one Excel method.</p>
+<p>Is there a way to cast an existing PIA Excel object to a NetOffice object? &nbsp;If I try myself to set the Excel NetOffice object equal to the existing PIA object, here is what I get:</p>
+<p><em>Unable to cast COM object of type 'Microsoft.Office.Interop.Excel.ApplicationClass' to class type 'NetOffice.ExcelApi.Application'. Instances of types that represent COM components cannot be cast to types that do not represent COM components; however
+ they can be cast to interfaces as long as the underlying COM component supports QueryInterface calls for the IID of the interface.</em></p>
+<p>This would be a big help for me if it could be done. &nbsp;No telling when or if MS will fix the bug and it is central to my app.</p>
+<p>Thanks so much,</p>
+<p>Craig</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_986009" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="986020">
+    <td id="PostDetailsCell_986020" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post986020"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/13/2013 2:25:10 AM" LocalTimeTicks="1358072710">Jan 13, 2013 at 2:25 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_986020" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;yes&#32;of&#32;course,&#32;NetOffice&#32;is&#32;a&#32;wrapper&#32;and&#32;wraps&#32;the&#32;com&#32;proxies&#32;for&#32;you.&#32;the&#32;pia&#32;excel&#32;object&#32;is&#32;just&#32;a&#32;com&#32;proxy&#32;with&#32;some&#32;intellisense&#32;magic&#32;to&#32;give&#32;you&#32;the&#32;feel&#32;its&#38;nbsp&#59;&#32;more&#32;than&#32;that.&#32;wrap&#32;the&#32;proxy&#32;as&#32;follows&#58;&#32;&#32;Excel.Application&#32;app&#32;&#61;&#32;new&#32;Excel.Application&#40;null,&#32;piaProxy&#41;&#59;&#32;&#32;&#47;&#47;&#32;your&#32;code&#32;&#32;app.Quit&#40;&#41;&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;&#47;&#47;&#32;terminate&#32;excel&#32;app.Dispose&#40;&#41;&#59;&#32;&#47;&#47;&#32;free&#32;the&#32;application&#32;in&#32;memory&#32;&#32;Sebastian&#32;&#32;btw&#58;&#32;you&#32;can&#32;compare&#32;NetOffic&#32;objects&#32;with&#32;the&#32;&#38;quot&#59;&#61;&#61;&#38;quot&#59;&#32;or&#32;&#40;&#33;&#61;&#41;&#32;operator&#32;to&#32;see&#32;its&#32;the&#32;same&#40;workbook&#32;or&#32;worksheet&#32;for&#32;example&#41;&#32;">
+        
+<p>yes of course, NetOffice is a wrapper and wraps the com proxies for you. the pia excel object is just a com proxy with some intellisense magic to give you the feel its&nbsp; more than that. wrap the proxy as follows:<br>
+<br>
+Excel.Application app = new Excel.Application(null, piaProxy);<br>
+<br>
+// your code<br>
+<br>
+app.Quit();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // terminate excel<br>
+app.Dispose(); // free the application in memory<br>
+<br>
+Sebastian<br>
+<br>
+btw: you can compare NetOffic objects with the &quot;==&quot; or (!=) operator to see its the same(workbook or worksheet for example)</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_986020" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="986033">
+    <td id="PostDetailsCell_986033" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post986033"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/cpcm">cpcm</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/13/2013 4:25:58 AM" LocalTimeTicks="1358079958">Jan 13, 2013 at 4:25 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="1/13/2013 4:33:23 AM" LocalTimeTicks="1358080403">Jan 13, 2013 at 4:33 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_986033" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;That&#32;totally&#32;solved&#32;my&#32;problem&#32;and&#32;turned&#32;Microsoft&#32;lemons&#32;into&#32;lemonade&#33;&#32;&#38;nbsp&#59;Now&#32;it&#32;doesn&#39;t&#32;matter&#32;if&#32;they&#32;don&#39;t&#32;fix&#32;the&#32;bug.&#32;I&#32;guess&#32;the&#32;only&#32;thing&#32;to&#32;confirm&#32;is&#32;that&#32;it&#32;appears&#32;I&#32;shouldn&#39;t&#32;call&#32;dispose&#32;until&#32;my&#32;VSTO&#32;addin&#32;shuts&#32;down.&#32;&#38;nbsp&#59;Here&#39;s&#32;the&#32;exception&#32;if&#32;I&#32;dispose&#32;of&#32;NetOffice&#32;object&#32;and&#32;later&#32;try&#32;to&#32;access&#32;my&#32;VSTO&#32;Globals.Thisaddin.Application&#58;&#32;&#123;&#38;quot&#59;COM&#32;object&#32;that&#32;has&#32;been&#32;separated&#32;from&#32;its&#32;underlying&#32;RCW&#32;cannot&#32;be&#32;used.&#38;quot&#59;&#125;&#32;Does&#32;it&#32;consume&#32;much&#32;memory&#32;or&#32;cause&#32;other&#32;problems&#32;to&#32;have&#32;this&#32;Netoffice&#32;application&#32;object&#32;instantiated&#32;in&#32;addition&#32;to&#32;the&#32;globals.thisaddin.application&#63;&#32;&#38;nbsp&#59;Do&#32;you&#32;see&#32;another&#32;way&#32;around&#32;it&#63;&#32;Or,&#32;is&#32;there&#32;any&#32;problem&#32;with&#32;setting&#32;NetOffice&#32;object&#32;to&#32;nothing&#32;instead&#32;of&#32;dispose&#63;&#32;&#38;nbsp&#59;Will&#32;it&#32;get&#32;cleaned&#32;up&#32;when&#32;VSTO&#32;shuts&#32;down&#63;&#32;&#38;nbsp&#59;That&#32;is,&#32;is&#32;the&#32;NetOffice&#32;creating&#32;a&#32;new&#32;COM&#32;or&#32;using&#32;the&#32;existing&#32;one&#32;from&#32;PIA&#32;which&#32;will&#32;get&#32;released&#32;when&#32;VSTO&#32;shuts&#32;down&#63;&#32;&#38;nbsp&#59;Am&#32;sorry&#32;about&#32;the&#32;question&#32;but&#32;this&#32;is&#32;all&#32;confusing&#32;to&#32;me.&#32;Craig&#32;">
+        
+<p>That totally solved my problem and turned Microsoft lemons into lemonade! &nbsp;Now it doesn't matter if they don't fix the bug.</p>
+<p>I guess the only thing to confirm is that it appears I shouldn't call dispose until my VSTO addin shuts down. &nbsp;Here's the exception if I dispose of NetOffice object and later try to access my VSTO Globals.Thisaddin.Application:</p>
+<p>{&quot;COM object that has been separated from its underlying RCW cannot be used.&quot;}</p>
+<p>Does it consume much memory or cause other problems to have this Netoffice application object instantiated in addition to the globals.thisaddin.application? &nbsp;Do you see another way around it?</p>
+<p>Or, is there any problem with setting NetOffice object to nothing instead of dispose? &nbsp;Will it get cleaned up when VSTO shuts down? &nbsp;That is, is the NetOffice creating a new COM or using the existing one from PIA which will get released when VSTO
+ shuts down? &nbsp;Am sorry about the question but this is all confusing to me.</p>
+<p>Craig</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_986033" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="986115">
+    <td id="PostDetailsCell_986115" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post986115"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/13/2013 3:06:01 PM" LocalTimeTicks="1358118361">Jan 13, 2013 at 3:06 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_986115" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;you&#32;can&#32;hold&#32;the&#32;instance&#32;in&#32;memory&#32;if&#32;course.&#32;an&#32;example&#58;&#32;&#32;Excel.Application&#32;app&#32;&#61;&#32;new&#32;Excel.Application&#40;null,&#32;piaProxy&#41;&#59;&#32;foreach&#40;var&#32;item&#32;in&#32;app.Workbooks&#41;&#32;&#123;&#32;&#38;nbsp&#59;&#32;&#59;&#32;&#47;&#47;&#32;nothing&#32;&#125;&#32;&#32;you&#32;have&#32;com&#32;proxy&#32;tree&#32;in&#32;NetOffice&#32;now&#58;&#32;&#32;&#38;nbsp&#59;-&#32;app&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#32;-&#32;workbooks&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;-&#32;enumerator&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;-&#32;book1&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;-&#32;book2&#32;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#38;nbsp&#59;&#32;-&#32;book3&#32;&#32;you&#32;can&#32;hold&#32;the&#32;app&#32;instance&#32;but&#32;make&#32;sure&#32;to&#32;flush&#32;alle&#32;the&#32;child&#32;proxies.&#32;do&#32;that&#32;with&#32;&#32;&#32;app.DisposeChildInstance&#40;&#41;&#59;&#32;&#32;in&#32;ouer&#32;example,&#32;the&#32;call&#32;dipose&#32;the&#32;5&#32;child&#32;proxies&#32;and&#32;keep&#32;the&#32;application&#32;intance&#32;alive.&#32;you&#32;can&#32;still&#32;use&#32;the&#32;excel&#32;pia&#32;proxy&#32;in&#32;VSTO&#32;now.&#32;the&#32;count&#32;of&#32;com&#32;proxies&#40;managed&#32;from&#32;NetOffice&#41;&#32;in&#32;your&#32;application&#32;is&#32;obseravble.&#32;&#32;int&#32;NetOffice.Factory.ProxyCount&#59;&#32;&#47;&#47;&#32;just&#32;a&#32;static&#32;property&#32;NetOffice.Factory.ProxyCountChanged&#32;&#47;&#47;&#32;change&#32;event&#32;&#32;have&#32;a&#32;look&#32;at&#32;the&#32;Tutorials&#32;in&#32;the&#32;release&#32;package&#32;for&#32;further&#32;info&#32;and&#32;example&#32;code&#32;snippets.&#32;&#32;Sebastian&#32;&#32;&#32;">
+        
+<p>you can hold the instance in memory if course.<br>
+an example:<br>
+<br>
+Excel.Application app = new Excel.Application(null, piaProxy);<br>
+foreach(var item in app.Workbooks)<br>
+{<br>
+&nbsp; ; // nothing<br>
+}<br>
+<br>
+you have com proxy tree in NetOffice now:<br>
+<br>
+&nbsp;- app<br>
+&nbsp;&nbsp; - workbooks<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - enumerator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - book1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - book2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - book3<br>
+<br>
+you can hold the app instance but make sure to flush alle the child proxies.<br>
+do that with <br>
+<br>
+app.DisposeChildInstance();<br>
+<br>
+in ouer example, the call dipose the 5 child proxies and keep the application intance alive. you can still use the excel pia proxy in VSTO now.<br>
+the count of com proxies(managed from NetOffice) in your application is obseravble.<br>
+<br>
+int NetOffice.Factory.ProxyCount; // just a static property<br>
+NetOffice.Factory.ProxyCountChanged // change event<br>
+<br>
+have a look at the Tutorials in the release package for further info and example code snippets.<br>
+<br>
+Sebastian<br>
+<br>
+</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_986115" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="986126">
+    <td id="PostDetailsCell_986126" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post986126"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/cpcm">cpcm</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/13/2013 4:10:01 PM" LocalTimeTicks="1358122201">Jan 13, 2013 at 4:10 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_986126" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;This&#32;is&#32;genius.&#32;&#38;nbsp&#59;What&#32;a&#32;wonderful&#32;product.&#32;&#38;nbsp&#59;Thank&#32;you&#32;so&#32;much.&#32;Craig&#32;">
+        
+<p>This is genius. &nbsp;What a wonderful product. &nbsp;Thank you so much.</p>
+<p>Craig</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_986126" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="71caf1c6-17cf-444e-b71e-f3957dce782f">
+    <script class="options" defer="defer" id="71caf1c6-17cf-444e-b71e-f3957dce782f" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_a60e6e5b-7ede-4a57-94c6-75c15318e46c">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_7bdf2a0e-eb11-4a84-a3f1-f1fdb4ee2c38">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_a60e6e5b-7ede-4a57-94c6-75c15318e46c" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_7bdf2a0e-eb11-4a84-a3f1-f1fdb4ee2c38" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/429418';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

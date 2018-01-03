@@ -1,0 +1,1043 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Deployment Outlook addin VS 2013 for Office 2000-2013</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/577323?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/577323?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="_fldq3jvtDA0fWTeu_g74lBXCZ_oft2VyzturC69a5XntrbYG4SO126JtuiBk65YCcrXmNYoujLziECO31e9IpFKMXwxJfpLBi_Bmx0bMQUSsxNwjS_cmLybT8Z0M6BdIhMNew2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken2d3e34d53-32c7-4395-835e-8ac1ca24783a" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:45 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f577323" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="1886970d-9cd8-4db5-9d6d-60c75b65efba">
+                
+                    <script class="options" defer="defer" id="1886970d-9cd8-4db5-9d6d-60c75b65efba" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Deployment Outlook addin VS 2013 for Office 2000-2013
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:577323]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="d6c22dd1-021e-4f4d-a3c8-f05cccf0f7cc">
+    <script class="options" defer="defer" id="d6c22dd1-021e-4f4d-a3c8-f05cccf0f7cc" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/577323","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1340496">
+    <td id="PostDetailsCell_1340496" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1340496"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/MarieChristine">MarieChristine</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/9/2015 8:29:50 PM" LocalTimeTicks="1420864190">Jan 9, 2015 at 8:29 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1340496" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#32;&#13;&#10;I&#39;m&#32;using&#32;Visual&#32;Studio&#32;2013&#32;with&#32;NetOffice,&#32;and&#32;I&#32;try&#32;to&#32;deploy&#32;my&#32;Outlook&#32;Addin&#32;via&#32;InstallShield.&#32;I&#39;d&#32;like&#32;to&#32;know&#32;which&#32;files&#32;I&#32;have&#32;to&#32;put&#32;in&#32;my&#32;project&#32;to&#32;make&#32;it&#32;works&#32;on&#32;the&#32;client&#39;s&#32;pc.&#32;&#13;&#10;&#13;&#10;With&#32;vsto,&#32;there&#39;s&#32;a&#32;manifest,&#32;a&#32;vsto&#32;and&#32;an&#32;output&#32;file&#32;to&#32;put&#32;in&#32;the&#32;application&#32;files&#32;section,&#32;but&#32;I&#32;don&#39;t&#32;know&#32;wich&#32;file&#32;I&#32;have&#32;insert&#32;to&#32;make&#32;the&#32;addin&#32;start&#32;in&#32;Outlook.&#32;&#13;&#10;&#13;&#10;VSTO&#32;also&#32;need&#32;a&#32;prq&#32;for&#32;Microsoft&#32;Visual&#32;Studio&#32;2010&#32;Tools&#32;for&#32;Office&#32;Runtime,&#32;but&#32;what&#32;do&#32;I&#32;have&#32;to&#32;set&#32;for&#32;NetOffice&#63;&#13;&#10;&#13;&#10;On&#32;the&#32;client,&#32;I&#32;see&#32;the&#32;registers&#32;and&#32;the&#32;paths&#32;are&#32;pointing&#32;in&#32;the&#32;installation&#32;folder,&#32;where&#32;the&#32;dll&#32;are&#32;localized,&#32;but&#32;nothing&#32;happened&#32;when&#32;Outlook&#32;open.&#32;I&#32;see&#32;dlls&#32;in&#32;the&#32;com&#32;components.&#32;&#13;&#10;&#13;&#10;On&#32;my&#32;pc,&#32;in&#32;debug&#32;and&#32;release&#32;mode,&#32;it&#32;starts&#32;by&#32;itself...&#32;Everything&#39;s&#32;fine.&#13;&#10;&#13;&#10;I&#32;searched&#32;for&#32;Informations&#32;in&#32;french&#47;english,&#32;but&#32;found&#32;nothing.&#32;&#13;&#10;&#13;&#10;Help&#32;me&#32;please&#33;">
+        <div class="markDownOutput ">Hi, <br>
+I'm using Visual Studio 2013 with NetOffice, and I try to deploy my Outlook Addin via InstallShield. I'd like to know which files I have to put in my project to make it works on the client's pc.
+<br>
+<br>
+With vsto, there's a manifest, a vsto and an output file to put in the application files section, but I don't know wich file I have insert to make the addin start in Outlook.
+<br>
+<br>
+VSTO also need a prq for Microsoft Visual Studio 2010 Tools for Office Runtime, but what do I have to set for NetOffice?
+<br>
+<br>
+On the client, I see the registers and the paths are pointing in the installation folder, where the dll are localized, but nothing happened when Outlook open. I see dlls in the com components.
+<br>
+<br>
+On my pc, in debug and release mode, it starts by itself... Everything's fine. <br>
+<br>
+I searched for Informations in french/english, but found nothing. <br>
+<br>
+Help me please!<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1340496" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1340511">
+    <td id="PostDetailsCell_1340511" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1340511"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/9/2015 9:55:16 PM" LocalTimeTicks="1420869316">Jan 9, 2015 at 9:55 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1340511" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="hey,&#13;&#10;&#13;&#10;&#40;first&#32;of&#32;all&#58;&#32;JE&#32;SUIES&#32;CHARLIE&#41;&#13;&#10;&#13;&#10;no&#32;idea&#32;what&#32;is&#32;a&#32;prq&#32;but&#32;you&#32;find&#32;a&#32;deployment&#32;table&#32;in&#32;the&#32;NetOffice&#32;documentation&#32;page&#58;&#32;http&#58;&#47;&#47;netoffice.codeplex.com&#47;documentation&#13;&#10;&#40;please&#32;scroll&#32;down&#41;&#13;&#10;&#13;&#10;normaly&#32;is,&#32;the&#32;.msi&#32;installer&#47;deployment&#32;project&#32;find&#32;the&#32;dependencies&#32;automaticly.&#32;&#40;no&#32;idea&#32;about&#32;install&#32;shield&#41;&#13;&#10;&#13;&#10;&#91;Advanced&#93;&#13;&#10;1.&#61;Let&#32;me&#32;know&#32;your&#32;NO&#32;version&#32;and&#32;the&#32;operating&#32;system&#32;on&#32;the&#32;client&#32;pc.&#32;moreover,&#32;your&#32;addin&#32;use&#32;the&#32;NO&#32;Tools&#32;or&#32;not.&#13;&#10;2.&#41;&#32;Addin&#32;is&#32;registered&#32;for&#32;the&#32;current&#32;user&#32;or&#32;systemwide&#32;on&#32;local&#32;machine.&#13;&#10;3.&#41;&#32;Is&#32;you&#32;scenario&#32;a&#32;local&#32;desktop&#32;session&#32;or&#32;works&#32;from&#32;IIS&#32;or&#32;another&#32;web&#32;scenario.&#13;&#10;&#91;&#47;Advanced&#93;&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;">
+        <div class="markDownOutput ">hey, <br>
+<br>
+(first of all: JE SUIES CHARLIE) <br>
+<br>
+no idea what is a prq but you find a deployment table in the NetOffice documentation page:
+<a href="http://netoffice.codeplex.com/documentation"  rel="nofollow">http://netoffice.codeplex.com/documentation</a>
+<br>
+(please scroll down) <br>
+<br>
+normaly is, the .msi installer/deployment project find the dependencies automaticly. (no idea about install shield)
+<br>
+<br>
+[Advanced] <br>
+1.=Let me know your NO version and the operating system on the client pc. moreover, your addin use the NO Tools or not.
+<br>
+2.) Addin is registered for the current user or systemwide on local machine. <br>
+3.) Is you scenario a local desktop session or works from IIS or another web scenario.
+<br>
+[/Advanced] <br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1340511" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1341063">
+    <td id="PostDetailsCell_1341063" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1341063"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/MarieChristine">MarieChristine</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/12/2015 2:26:58 PM" LocalTimeTicks="1421101618">Jan 12, 2015 at 2:26 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1341063" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#13;&#10;&#13;&#10;&#34;Je&#32;suis&#32;Chalie&#34;&#32;too&#33;&#13;&#10;&#13;&#10;Thanks&#32;for&#32;your&#32;response.&#32;Maybe&#32;my&#32;question&#32;was&#32;not&#32;clear.&#13;&#10;&#13;&#10;My&#32;first&#32;try&#32;was&#32;this&#32;one&#32;&#58;&#32;http&#58;&#47;&#47;msdn.microsoft.com&#47;en-us&#47;library&#47;cc442767.aspx&#32;and&#32;it&#32;works&#32;fine.&#13;&#10;In&#32;this&#32;example,&#32;wich&#32;use&#32;Install&#32;Shield,&#32;I&#32;had&#32;to&#32;insert&#32;3&#32;files&#58;&#32;dll.manifest,&#32;output,&#32;and&#32;vsto.&#32;&#34;.prq&#34;&#32;was&#32;a&#32;prerequiste&#32;for&#32;Microsoft&#32;Visual&#32;Studio&#32;2010&#32;tools&#32;for&#32;Office&#32;Runtime&#32;installation&#32;on&#32;the&#32;client&#39;s&#32;pc.&#32;I&#32;ran&#32;it&#32;by&#32;cmd&#32;line,&#32;wiith&#32;&#47;s&#32;&#47;v&#47;qn,&#32;and&#32;when&#32;I&#32;open&#32;Outlook,&#32;my&#32;ribbon&#32;appears&#32;and&#32;the&#32;code&#32;is&#32;running.&#13;&#10;But&#32;I&#32;had&#32;to&#32;create&#32;more&#32;than&#32;one&#32;deployer&#32;for&#32;multiple&#32;Office&#32;version.&#32;Then&#32;I&#32;found&#32;netOffice.&#13;&#10;&#13;&#10;I&#32;have&#32;downloaded&#32;the&#32;example&#32;VB&#32;deployment&#32;project&#32;on&#32;the&#32;website,&#32;but&#32;it&#39;s&#32;not&#32;compatible&#32;with&#32;Visual&#32;Studio&#32;2013.&#13;&#10;&#13;&#10;Second,&#32;I&#32;watched&#32;the&#32;tuto&#32;there&#58;&#32;https&#58;&#47;&#47;netoffice.codeplex.com&#47;wikipage&#63;title&#61;Tutorial11_DE_CS.&#13;&#10;I&#32;translated&#32;it&#32;with&#32;Google,&#32;but&#32;I&#32;don&#39;t&#32;have&#32;new&#32;setup&#32;project&#32;in&#32;the&#32;choices&#32;of&#32;Visual&#32;Studio&#32;new&#32;project&#32;tab,&#32;as&#32;I&#32;see&#32;there.&#13;&#10;When&#32;I&#32;go&#32;to&#32;new&#32;Project,&#32;Setup&#32;and&#32;deployment,&#32;in&#32;VStudio,&#32;I&#32;only&#32;see&#32;Install&#32;Shiled,&#32;that&#32;I&#39;ve&#32;installed&#32;previously.&#13;&#10;&#13;&#10;I&#39;d&#32;like&#32;to&#32;know&#32;wich&#32;files&#32;do&#32;I&#32;have&#32;to&#32;put&#47;install&#47;register&#32;on&#32;the&#32;client&#39;s&#32;pc&#32;to&#32;make&#32;my&#32;Outlook&#32;with&#32;netOffice&#32;dll&#32;run,&#32;and&#32;if&#32;I&#32;can&#32;use&#32;Install&#32;Shield&#32;to&#32;do&#32;that,&#32;else,&#32;how&#32;to&#32;create&#32;msi&#47;installer&#32;compatible&#32;with&#32;netOffice&#32;.&#13;&#10;&#13;&#10;&#13;&#10;Is&#32;there&#32;any&#32;example&#32;with&#32;Visual&#32;Studio&#32;2013&#32;&#40;vb&#32;net&#41;&#32;and&#32;netOffice&#32;1.4.0.0&#63;&#13;&#10;&#13;&#10;I&#32;hope&#32;this&#32;is&#32;clear,&#32;my&#32;first&#32;language&#32;is&#32;french...&#32;&#13;&#10;Thanks&#32;for&#32;your&#32;help&#33;&#13;&#10;">
+        <div class="markDownOutput ">Hi, <br>
+<br>
+&quot;Je suis Chalie&quot; too! <br>
+<br>
+Thanks for your response. Maybe my question was not clear. <br>
+<br>
+My first try was this one : <a href="http://msdn.microsoft.com/en-us/library/cc442767.aspx"  rel="nofollow">
+http://msdn.microsoft.com/en-us/library/cc442767.aspx</a> and it works fine. <br>
+In this example, wich use Install Shield, I had to insert 3 files: dll.manifest, output, and vsto. &quot;.prq&quot; was a prerequiste for Microsoft Visual Studio 2010 tools for Office Runtime installation on the client's pc. I ran it by cmd line, wiith /s /v/qn,
+ and when I open Outlook, my ribbon appears and the code is running. <br>
+But I had to create more than one deployer for multiple Office version. Then I found netOffice.
+<br>
+<br>
+I have downloaded the example VB deployment project on the website, but it's not compatible with Visual Studio 2013.
+<br>
+<br>
+Second, I watched the tuto there: <a href="https://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS"  rel="nofollow">
+https://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS</a>. <br>
+I translated it with Google, but I don't have new setup project in the choices of Visual Studio new project tab, as I see there.
+<br>
+When I go to new Project, Setup and deployment, in VStudio, I only see Install Shiled, that I've installed previously.
+<br>
+<br>
+I'd like to know wich files do I have to put/install/register on the client's pc to make my Outlook with netOffice dll run, and if I can use Install Shield to do that, else, how to create msi/installer compatible with netOffice .
+<br>
+<br>
+<br>
+Is there any example with Visual Studio 2013 (vb net) and netOffice 1.4.0.0? <br>
+<br>
+I hope this is clear, my first language is french... <br>
+Thanks for your help!<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1341063" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1341330">
+    <td id="PostDetailsCell_1341330" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1341330"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/GermanSniper">GermanSniper</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/13/2015 7:22:47 AM" LocalTimeTicks="1421162567">Jan 13, 2015 at 7:22 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1341330" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="In&#32;Install&#32;Shield&#32;LE&#32;I&#32;only&#32;add&#32;the&#32;project&#32;dll&#32;and&#32;set&#32;&#40;COM&#32;Interop&#32;and&#32;&#34;Extract&#32;COM&#32;Information&#34;&#41;.&#32;After&#32;Setup&#32;is&#32;finished&#32;I&#32;run&#32;regasm.exe&#32;&#13;&#10;&#13;&#10;c&#58;&#92;Windows&#92;Microsoft&#32;.Net&#92;Framework&#92;v4.0.30319&#92;Regasm.exe&#32;nameofdll.dll&#32;&#47;codebase&#13;&#10;&#13;&#10;But&#32;currently&#32;I&#32;also&#32;search&#32;for&#32;a&#32;better&#32;solution&#32;because&#32;sometimes&#32;it&#32;dosen&#39;t&#32;work.">
+        <div class="markDownOutput ">In Install Shield LE I only add the project dll and set (COM Interop and &quot;Extract COM Information&quot;). After Setup is finished I run regasm.exe
+<br>
+<br>
+c:\Windows\Microsoft .Net\Framework\v4.0.30319\Regasm.exe nameofdll.dll /codebase
+<br>
+<br>
+But currently I also search for a better solution because sometimes it dosen't work.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1341330" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1341410">
+    <td id="PostDetailsCell_1341410" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1341410"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/13/2015 11:47:13 AM" LocalTimeTicks="1421178433">Jan 13, 2015 at 11:47 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1341410" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="&#64;MarieChristine&#13;&#10;&#13;&#10;As&#32;first&#32;please&#32;do&#32;me&#32;a&#32;pleasure&#32;and&#32;use&#32;the&#32;latest&#32;NO&#32;1.7.2&#32;version&#40;available&#32;on&#32;nuget&#41;.&#32;&#13;&#10;&#40;It&#32;is&#32;very&#32;challenging&#32;for&#32;me&#32;to&#32;support&#32;all&#32;the&#32;older&#32;NO&#32;versions&#32;in&#32;detail.&#41;&#13;&#10;&#13;&#10;The&#32;most&#32;important&#32;question&#58;&#32;What&#32;is&#32;&#32;your&#32;target&#32;office&#32;application&#32;and&#32;whats&#32;your&#32;current&#32;NO&#32;assemblies&#32;on&#32;the&#32;target&#32;system&#63;&#13;&#10;&#13;&#10;Please&#32;check&#32;the&#32;following&#32;registry&#32;key&#32;on&#32;the&#32;target&#32;system&#58;&#32;HKEY_CURRENT_USER&#92;Software&#92;Microsoft&#92;Office&#92;&#36;YourOfficeApplication&#92;&#36;YourAddinProgID&#13;&#10;This&#32;is&#32;the&#32;central&#32;load&#32;information&#32;for&#32;the&#32;Office&#32;application.&#32;The&#32;loadbehavior&#32;key&#32;must&#32;be&#32;&#34;3&#34;&#32;to&#32;load&#32;at&#32;startup.&#32;if&#32;this&#32;key&#32;not&#32;exists&#32;the&#32;register&#32;process&#32;failed,&#32;if&#32;its&#32;loadbehavior&#32;set&#32;to&#32;&#34;2&#34;&#32;after&#32;office&#32;application&#32;start,&#32;an&#32;error&#32;occurs&#32;while&#32;loading&#32;the&#32;addin.&#32;&#40;Try&#32;the&#32;Wow3264Node&#32;also&#32;on&#32;64bit&#32;systems&#41;&#13;&#10;&#13;&#10;&#34;I&#32;have&#32;downloaded&#32;the&#32;example&#32;VB&#32;deployment&#32;project&#32;on&#32;the&#32;website,&#32;but&#32;it&#39;s&#32;not&#32;compatible&#32;with&#32;Visual&#32;Studio&#32;2013.&#32;&#34;&#13;&#10;ooops,&#32;as&#32;far&#32;i&#32;known&#32;Microsoft&#32;drop&#32;the&#32;.msi&#32;installation&#32;support&#32;in&#32;visual&#32;studio.&#32;&#40;no&#32;idea&#32;why&#32;but&#32;i&#32;guess&#32;its&#32;a&#32;trick&#32;to&#32;bring&#32;more&#32;people&#32;to&#32;the&#32;app&#32;store&#41;&#13;&#10;&#13;&#10;At&#32;last&#58;&#32;I&#32;suggest&#32;you&#32;to&#32;use&#32;the&#32;NO&#32;Tools,&#32;available&#32;since&#32;NO&#32;1.6&#32;No&#32;need&#32;to&#32;create&#32;register&#32;code&#32;at&#32;hand.&#32;Checkout&#32;the&#32;new&#32;example&#32;projects.&#13;&#10;&#13;&#10;&#13;&#10;&#64;GermanSniper&#13;&#10;&#34;because&#32;sometimes&#32;it&#32;dosen&#39;t&#32;work.&#34;&#13;&#10;please&#32;explain...what&#32;happen&#63;&#13;&#10;&#13;&#10;">
+        <div class="markDownOutput ">@MarieChristine <br>
+<br>
+As first please do me a pleasure and use the latest NO 1.7.2 version(available on nuget).
+<br>
+(It is very challenging for me to support all the older NO versions in detail.) <br>
+<br>
+The most important question: What is your target office application and whats your current NO assemblies on the target system?
+<br>
+<br>
+Please check the following registry key on the target system: HKEY_CURRENT_USER\Software\Microsoft\Office\$YourOfficeApplication\$YourAddinProgID
+<br>
+This is the central load information for the Office application. The loadbehavior key must be &quot;3&quot; to load at startup. if this key not exists the register process failed, if its loadbehavior set to &quot;2&quot; after office application start, an error
+ occurs while loading the addin. (Try the Wow3264Node also on 64bit systems) <br>
+<br>
+&quot;I have downloaded the example VB deployment project on the website, but it's not compatible with Visual Studio 2013. &quot;
+<br>
+ooops, as far i known Microsoft drop the .msi installation support in visual studio. (no idea why but i guess its a trick to bring more people to the app store)
+<br>
+<br>
+At last: I suggest you to use the NO Tools, available since NO 1.6 No need to create register code at hand. Checkout the new example projects.
+<br>
+<br>
+<br>
+@GermanSniper <br>
+&quot;because sometimes it dosen't work.&quot; <br>
+please explain...what happen?<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1341410" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1343475">
+    <td id="PostDetailsCell_1343475" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1343475"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/aesir7">aesir7</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/20/2015 11:42:58 AM" LocalTimeTicks="1421782978">Jan 20, 2015 at 11:42 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1343475" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hello,&#13;&#10;&#13;&#10;I&#32;have&#32;got&#32;almost&#32;the&#32;same&#32;issue&#32;as&#32;MariChristine,&#32;i&#32;want&#32;to&#32;deploy&#32;my&#32;ribbon&#32;for&#32;outlook.&#13;&#10;At&#32;the&#32;moment&#32;the&#32;ribbon&#32;work&#32;and&#32;can&#32;be&#32;used&#32;in&#32;my&#32;own&#32;outlook,&#32;when&#32;i&#32;generate&#32;the&#32;solution&#32;in&#32;VS2012&#32;the&#32;addIn&#32;is&#32;automatically&#32;installed,&#32;but&#32;i&#32;can&#39;t&#32;figure&#32;out&#32;how&#32;to&#32;deploy&#32;it.&#32;InstallShield&#32;don&#39;t&#32;help.&#32;When&#32;i&#32;try&#32;to&#32;install&#32;manually&#32;the&#32;.dll&#32;in&#32;outlook&#32;i&#32;got&#32;an&#32;error&#32;message&#32;saying&#32;&#34;the&#32;dll&#32;is&#32;not&#32;a&#32;correct&#32;outlook&#32;dll&#34;&#32;&#40;i&#32;use&#32;the&#32;french&#32;version&#32;of&#32;outlook&#41;.&#13;&#10;Im&#32;stuck&#32;here&#32;and&#32;I&#32;may&#32;stop&#32;using&#32;NetOffice&#32;if&#32;i&#32;can&#39;t&#32;solve&#32;this&#32;issue&#32;quickly.&#13;&#10;&#13;&#10;Thank&#32;you&#32;for&#32;your&#32;help.">
+        <div class="markDownOutput ">Hello, <br>
+<br>
+I have got almost the same issue as MariChristine, i want to deploy my ribbon for outlook.
+<br>
+At the moment the ribbon work and can be used in my own outlook, when i generate the solution in VS2012 the addIn is automatically installed, but i can't figure out how to deploy it. InstallShield don't help. When i try to install manually the .dll in outlook
+ i got an error message saying &quot;the dll is not a correct outlook dll&quot; (i use the french version of outlook).
+<br>
+Im stuck here and I may stop using NetOffice if i can't solve this issue quickly.
+<br>
+<br>
+Thank you for your help.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1343475" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1343792">
+    <td id="PostDetailsCell_1343792" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1343792"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/21/2015 1:55:29 PM" LocalTimeTicks="1421877329">Jan 21, 2015 at 1:55 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1343792" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="please&#32;explain&#32;how&#32;you&#32;register&#32;the&#32;addin&#32;manually&#63;&#32;&#40;gacutil&#47;regasm&#63;&#41;&#32;and&#32;your&#32;used&#32;NetOffice&#32;version.&#13;&#10;&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">please explain how you register the addin manually? (gacutil/regasm?) and your used NetOffice version.
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1343792" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1343818">
+    <td id="PostDetailsCell_1343818" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1343818"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/aesir7">aesir7</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/21/2015 3:20:11 PM" LocalTimeTicks="1421882411">Jan 21, 2015 at 3:20 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="1/21/2015 4:10:17 PM" LocalTimeTicks="1421885417">Jan 21, 2015 at 4:10 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1343818" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="I&#32;use&#32;the&#32;latest&#32;version&#32;of&#32;NetOffice.&#32;I&#32;didn&#39;t&#32;used&#32;anything&#32;special&#32;to&#32;install&#32;the&#32;addin&#32;in&#32;outlook.&#32;When&#32;i&#32;said&#32;&#34;manually&#34;&#32;i&#32;mean&#32;that&#32;i&#32;tried&#32;to&#32;install&#32;the&#32;dll&#32;from&#32;the&#32;option&#32;menu&#32;in&#32;outlook.&#10;&#33;&#91;Image&#93;&#40;http&#58;&#47;&#47;img11.hostingpics.net&#47;pics&#47;951173addinoutlook.jpg&#41;">
+        <div class="markDownOutput ">I use the latest version of NetOffice. I didn't used anything special to install the addin in outlook. When i said &quot;manually&quot; i mean that i tried to install the dll from the option menu in outlook.<br>
+<img src="http://img11.hostingpics.net/pics/951173addinoutlook.jpg" alt="Image"><br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1343818" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1343895">
+    <td id="PostDetailsCell_1343895" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1343895"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/MarieChristine">MarieChristine</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/21/2015 7:36:22 PM" LocalTimeTicks="1421897782">Jan 21, 2015 at 7:36 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1343895" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#13;&#10;Sorry,&#32;I&#32;worked&#32;on&#32;other&#32;things...&#13;&#10;I&#32;have&#32;the&#32;latest&#32;NO&#32;version,&#32;the&#32;one&#32;I&#32;gave&#32;you&#32;was&#32;the&#32;Toolbox&#39;s&#32;version.&#32;Sorry&#32;for&#32;the&#32;mistake.&#13;&#10;&#13;&#10;I&#39;d&#32;like&#32;to&#32;know&#32;how&#32;to&#32;make&#32;generate&#32;a&#32;msi&#32;deployer&#32;that&#32;will&#32;install&#32;my&#32;ribbon&#32;on&#32;any&#32;Outlook&#32;version,&#32;on&#32;any&#32;Windows&#32;version.&#32;&#13;&#10;&#13;&#10;When&#32;I&#32;run&#32;my&#32;msi,&#32;the&#32;application&#32;is&#32;installed,&#32;I&#32;can&#32;see&#32;it&#32;in&#32;&#34;Program&#32;File&#34;&#32;or&#32;&#34;Program&#32;Files&#32;X86&#34;,&#32;but&#32;I&#32;have&#32;to&#32;run&#32;manually&#32;in&#32;cmd&#32;&#34;C&#58;&#92;Windows&#92;Microsoft.NET&#92;Framework64&#92;v4.0.30319&#92;regasm&#32;&#34;path&#92;name.dll&#34;&#34;&#32;to&#32;make&#32;it&#32;works&#32;in&#32;Outlook.&#32;&#13;&#10;&#13;&#10;Thanks&#32;for&#32;your&#32;patience&#32;and&#32;help.">
+        <div class="markDownOutput ">Hi, <br>
+Sorry, I worked on other things... <br>
+I have the latest NO version, the one I gave you was the Toolbox's version. Sorry for the mistake.
+<br>
+<br>
+I'd like to know how to make generate a msi deployer that will install my ribbon on any Outlook version, on any Windows version.
+<br>
+<br>
+When I run my msi, the application is installed, I can see it in &quot;Program File&quot; or &quot;Program Files X86&quot;, but I have to run manually in cmd &quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\regasm &quot;path\name.dll&quot;&quot; to make
+ it works in Outlook. <br>
+<br>
+Thanks for your patience and help.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1343895" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1343904">
+    <td id="PostDetailsCell_1343904" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1343904"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/aesir7">aesir7</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/21/2015 8:30:10 PM" LocalTimeTicks="1421901010">Jan 21, 2015 at 8:30 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="1/22/2015 11:39:31 PM" LocalTimeTicks="1421998771">Jan 22, 2015 at 11:39 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1343904" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Just&#32;as&#32;MarieChristine,&#32;I&#32;am&#32;looking&#32;for&#32;the&#32;same&#32;tool,&#32;but&#32;with&#32;InstallShield&#32;and&#32;not&#32;msi.&#10;&#10;EDIT&#58;&#32;&#10;I&#32;think&#32;the&#32;solution&#32;is&#32;in&#32;the&#32;&#91;tutorial&#32;11&#93;&#40;http&#58;&#47;&#47;netoffice.codeplex.com&#47;wikipage&#63;title&#61;Tutorial11_DE_CS&#41;&#32;which&#32;is&#32;only&#32;in&#32;german&#32;and&#32;in&#32;a&#32;.msi&#32;version.&#32;I&#32;don&#39;t&#32;understand&#32;german&#32;and&#32;i&#32;use&#32;InstallShield.">
+        <div class="markDownOutput ">Just as MarieChristine, I am looking for the same tool, but with InstallShield and not msi.<br>
+<br>
+EDIT: <br>
+I think the solution is in the <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS"  rel="nofollow">
+tutorial 11</a> which is only in german and in a .msi version. I don't understand german and i use InstallShield.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1343904" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1345593">
+    <td id="PostDetailsCell_1345593" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1345593"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/25/2015 9:32:34 AM" LocalTimeTicks="1422207154">Jan 25, 2015 at 9:32 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1345593" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="An&#32;Office&#32;addin&#32;is&#32;a&#32;COM&#32;component&#32;&#40;except&#32;for&#32;document-based&#32;addins&#41;&#13;&#10;&#13;&#10;You&#32;have&#32;to&#32;register&#32;a&#32;COM&#32;component&#32;on&#32;the&#32;target&#32;system&#32;in&#32;any&#32;case.&#13;&#10;You&#32;can&#32;do&#32;this&#32;at&#32;hand&#32;with&#32;regasm.exe&#32;or&#32;let&#32;the&#32;installer&#32;of&#32;your&#32;choice&#32;do&#32;this&#32;for&#32;you.&#13;&#10;&#13;&#10;I&#32;have&#32;tried&#32;to&#32;use&#32;google&#32;with&#32;&#34;C&#35;&#32;install&#32;shield&#32;register&#32;com&#32;interop&#34;&#13;&#10;and&#32;this&#32;topic&#32;looks&#32;promising.&#32;&#13;&#10;&#13;&#10;http&#58;&#47;&#47;stackoverflow.com&#47;questions&#47;15104982&#47;how-to-make-my-c-sharp-dll-a-self-registering-dll&#13;&#10;&#13;&#10;&#40;Scroll&#32;down&#32;to&#32;the&#32;screenshot.&#41;&#13;&#10;&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">An Office addin is a COM component (except for document-based addins) <br>
+<br>
+You have to register a COM component on the target system in any case. <br>
+You can do this at hand with regasm.exe or let the installer of your choice do this for you.
+<br>
+<br>
+I have tried to use google with &quot;C# install shield register com interop&quot;
+<br>
+and this topic looks promising. <br>
+<br>
+<a href="http://stackoverflow.com/questions/15104982/how-to-make-my-c-sharp-dll-a-self-registering-dll"  rel="nofollow">http://stackoverflow.com/questions/15104982/how-to-make-my-c-sharp-dll-a-self-registering-dll</a>
+<br>
+<br>
+(Scroll down to the screenshot.) <br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1345593" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="a2b5c895-d472-459c-88b6-4ea163012959">
+    <script class="options" defer="defer" id="a2b5c895-d472-459c-88b6-4ea163012959" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_f445a231-527f-4523-a2a5-c88494cae1d9">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_e871cb44-66fb-48f6-b61d-fa68393a55f9">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_f445a231-527f-4523-a2a5-c88494cae1d9" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_e871cb44-66fb-48f6-b61d-fa68393a55f9" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/577323';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

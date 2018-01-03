@@ -1,0 +1,2358 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Discussions</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions?searchText=&amp;size=100&amp;page=1&amp;ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions?searchText=&amp;size=100&amp;page=1&amp;ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="2NzCt4ewHYWhu-DsUrEN3eIHFXAUcRcPUUw8KfNwZxBrKY_CMb1PBj9b4be1R8oD8BY_z-yG6B6mxGAM4TAiFpHTbvJHSw1IVqsSIq1aT6UDaAmGwbiRFKhb5aymapRKR7i4rQ2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken24ce1ea99-1ce3-475c-bcca-36519d482621" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:33 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%3fsearchText%3d%26size%3d100%26page%3d1" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="4dff4d2c-9b74-4bf4-a0a3-244eae73da7b">
+                
+                    <script class="options" defer="defer" id="4dff4d2c-9b74-4bf4-a0a3-244eae73da7b" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div id="discussionList" class="top_border">
+    <div id="left_column">
+        <script type="text/javascript" language="javascript">
+
+            $(function() {
+                $('.ThreadContent').width($('.ThreadOuterFrame').width()-$('.ThreadInfoBox').width()-12);
+            });
+
+        </script>
+
+        
+<p><strong>Microsoft has been left off Codeplex. There is no notification mail you got when writing a topic here and recieve an asnwer. Please keep this in your mind. Your must pull this Site again and again for an answer. (I watch the discussions 2-3 times
+ per week)</strong></p>
+
+        
+                    <div id="discussion_row_container_0">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="7/31/2015 5:08:27 PM" LocalTimeTicks="1438387707">Jul 31, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="7/31/2015 5:08:27 PM" LocalTimeTicks="1438387707">5:08 PM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/642048">ProcessId  </a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/642048#post1436302">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/lorenzopapa">lorenzopapa</a></span> wrote: When i create a new MSProjectApplication I can see that a new WInPr...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/642048#post1436780">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: hello,  the first what i have to say is about multi-application sce...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_1">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="7/20/2015 1:01:42 PM" LocalTimeTicks="1437422502">Jul 20, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="7/20/2015 1:01:42 PM" LocalTimeTicks="1437422502">1:01 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/641590">Insert Column in Excel</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/641590#post1435083">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/Maciejk_pl">Maciejk_pl</a></span> wrote: Hi,
+
+  Can anyone show me how to insert new column in Excel in C# ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_2">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="7/13/2015 12:46:09 AM" LocalTimeTicks="1436773569">Jul 13, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="7/13/2015 12:46:09 AM" LocalTimeTicks="1436773569">12:46 AM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/641245">Word page number using NetOffice</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/641245#post1434074">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/AlaaM">AlaaM</a></span> wrote: Hello, 
+
+I am using NetOffice C# to read some word documents, and I...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_3">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="7/11/2015 11:19:37 AM" LocalTimeTicks="1436638777">Jul 11, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="7/11/2015 11:19:37 AM" LocalTimeTicks="1436638777">11:19 AM</span><br />(10 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/641158">(SOLVED) (DE) Problem mit PageSetup-Befehlen</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/641158#post1433771">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/axelwickenkamp">axelwickenkamp</a></span> wrote: Hey,
+
+ich nutze die aktuelle Version von NetOffice und finde die e...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/641158#post1433989">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: Hallo,  Diese Pfade (&quot;c:\Users\Sebastian\Desktop\Kopie von Source\N...</p>
+                            
+                            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/641158#post1433949">answered by:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: Ich kann dir nicht wirklich folgen aber folgender Code funktioniert...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_4">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="7/9/2015 9:20:40 PM" LocalTimeTicks="1436502040">Jul 9, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="7/9/2015 9:20:40 PM" LocalTimeTicks="1436502040">9:20 PM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/640091">NetOffice Outlook Plugin Deployment - No Idea How</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/640091#post1430867">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/unknownentity">unknownentity</a></span> wrote: Hi Sebastian,
+
+first of all thanks for the great library you have ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/640091#post1433814">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/bstabile">bstabile</a></span> wrote: At the hedge fund where I recently worked we deployed VSTO add-ins ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_5">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="7/6/2015 7:07:44 PM" LocalTimeTicks="1436234864">Jul 6, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="7/6/2015 7:07:44 PM" LocalTimeTicks="1436234864">7:07 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/640960">ILMerge Issues</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/640960#post1433189">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jamesfaix">jamesfaix</a></span> wrote: Like some other posters, I am having trouble using NetOffice with I...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/640960#post1433269">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: *first what i have to say:  its first time for me to face an ILMerg...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_6">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="6/25/2015 2:54:53 PM" LocalTimeTicks="1435269293">Jun 25, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="6/25/2015 2:54:53 PM" LocalTimeTicks="1435269293">2:54 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/640445">How to embed an image in email body</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/640445#post1431840">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/AlexQwerty">AlexQwerty</a></span> wrote: Hi! I need to embed images (but not references) in email body with ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_7">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="6/22/2015 4:17:29 PM" LocalTimeTicks="1435015049">Jun 22, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="6/22/2015 4:17:29 PM" LocalTimeTicks="1435015049">4:17 PM</span><br />(10 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/587582">Office 2016 support</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/587582#post1366108">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/nicograf">nicograf</a></span> wrote: Hi Sebastian,
+
+NetOffice is a very good library to develop native ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/587582#post1431340">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/hotn">hotn</a></span> wrote: Hi Sebastian,  I haven&#39;t personally tried NetOffice with Office 201...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_8">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="6/4/2015 8:20:29 AM" LocalTimeTicks="1433431229">Jun 4, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="6/4/2015 8:20:29 AM" LocalTimeTicks="1433431229">8:20 AM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/638960">RequestComAddinAutomationService Netoffice</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/638960#post1428116">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/dodi000">dodi000</a></span> wrote: In VSTO, it is possible to expose the addin object by overriding th...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/638960#post1428722">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/dodi000">dodi000</a></span> wrote: Hi Sebastian,  thank you very much, your solution works perfectly. ...</p>
+                            
+                            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/638960#post1428714">answered by:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: hello dominik,  thanks for pointing this out. i did not realize vst...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_9">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="5/27/2015 2:45:12 AM" LocalTimeTicks="1432719912">May 27, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="5/27/2015 2:45:12 AM" LocalTimeTicks="1432719912">2:45 AM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/638827">Merge Columns in a Table</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/638827#post1427721">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/gsegree">gsegree</a></span> wrote: How do I merge columns in a table and set the with for the overall ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_10">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="5/26/2015 3:44:29 PM" LocalTimeTicks="1432680269">May 26, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="5/26/2015 3:44:29 PM" LocalTimeTicks="1432680269">3:44 PM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/260171">Will Netoffice support optional parameter and named arguments in C#?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/260171#post622838">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/csharpbird">csharpbird</a></span> wrote: Can the following statement simplified?newDocument.SaveAs(documentF...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/260171#post1427650">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: hello,  im understand how important it is to support optional argum...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_11">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="5/20/2015 12:14:50 AM" LocalTimeTicks="1432106090">May 20, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="5/20/2015 12:14:50 AM" LocalTimeTicks="1432106090">12:14 AM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/638348">How to test Type of Office.IRibbonControl control &quot;Context&quot;</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/638348#post1426469">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/HerveRoux">HerveRoux</a></span> wrote: Hi everybody,
+
+I&#39;m having the following VSTO Code working:
+if (cont...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_12">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="5/12/2015 1:19:54 PM" LocalTimeTicks="1431461994">May 12, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="5/12/2015 1:19:54 PM" LocalTimeTicks="1431461994">1:19 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/637799">Add donate button somewhere</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/637799#post1424884">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/asdandRizzo">asdandRizzo</a></span> wrote: Hi,
+
+Good project. Add donate button.
+
+Thanks
+</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/637799#post1424937">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: no need.  *Sebastian</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_13">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="5/12/2015 9:33:27 AM" LocalTimeTicks="1431448407">May 12, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="5/12/2015 9:33:27 AM" LocalTimeTicks="1431448407">9:33 AM</span><br />(6 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/634200">Sporadic RPC_E_WRONG_THREAD on Dispose()</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/634200#post1419365">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/alantan">alantan</a></span> wrote: Hi,
+
+I wanted to thank you for NetOffice, it is a truly fantastic ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/634200#post1424894">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/alantan">alantan</a></span> wrote: My stack trace is missing one line - at ProductName.Addin.AddinShut...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_14">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="5/6/2015 9:17:41 AM" LocalTimeTicks="1430929061">May 6, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="5/6/2015 9:17:41 AM" LocalTimeTicks="1430929061">9:17 AM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/636839">Regarding Presentation Creation</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/636839#post1423219">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/Indresh1210">Indresh1210</a></span> wrote: Hi,
+
+I am creating presentation file using net office. On My machi...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_15">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="5/5/2015 10:21:52 PM" LocalTimeTicks="1430889712">May 5, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="5/5/2015 10:21:52 PM" LocalTimeTicks="1430889712">10:21 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/633373">How to deploy NetOffice Excel to IIS7 ASP.NET web server</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/633373#post1418317">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/cobbcalv">cobbcalv</a></span> wrote: I&#39;m working with a web site that was built with ASP/VB__.NET Framew...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/633373#post1423122">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/izsak">izsak</a></span> wrote: You must install Excel on the web server.</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_16">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="5/4/2015 3:31:13 PM" LocalTimeTicks="1430778673">May 4, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="5/4/2015 3:31:13 PM" LocalTimeTicks="1430778673">3:31 PM</span><br />(9 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/619217">Woud a WIX installer example be useful?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/619217#post1402036">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/dingosharken">dingosharken</a></span> wrote: Hi Sebastian,
+
+I remember when I started with NetOffice and I had ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/619217#post1422739">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/taotaomy">taotaomy</a></span> wrote: I already use the Visual Studio Installer to deploy my project succ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_17">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/29/2015 3:56:32 AM" LocalTimeTicks="1430304992">Apr 29, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/29/2015 3:56:32 AM" LocalTimeTicks="1430304992">3:56 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/634576">Something wrong with the commandbar in Word 2003</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/634576#post1419778">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/taotaomy">taotaomy</a></span> wrote: Hello, everyone!
+
+I&#39;m trying to make an Addin for  word. And now I...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/634576#post1420814">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/taotaomy">taotaomy</a></span> wrote: Hello everyone!  About this problem, finally I solved it. In order ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_18">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/28/2015 7:57:40 AM" LocalTimeTicks="1430233060">Apr 28, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/28/2015 7:57:40 AM" LocalTimeTicks="1430233060">7:57 AM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/634839">Getting mail address of the recipients of a MailItem</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/634839#post1420057">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/tronbe">tronbe</a></span> wrote: I am working on an Outlook add-in. After sending a mail I am going ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_19">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/27/2015 3:41:28 PM" LocalTimeTicks="1430174488">Apr 27, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/27/2015 3:41:28 PM" LocalTimeTicks="1430174488">3:41 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/633937">Before delete event for folder?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/633937#post1419043">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/rsw68">rsw68</a></span> wrote: I am creating an addin for outlook, in which I want to be able to c...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_20">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/27/2015 3:30:51 PM" LocalTimeTicks="1430173851">Apr 27, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/27/2015 3:30:51 PM" LocalTimeTicks="1430173851">3:30 PM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/625780">NetOffice Outlook Add-in</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/625780#post1408942">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/rsw68">rsw68</a></span> wrote: I&#39;m new to netoffice and a relative novice when it comes to program...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/625780#post1419020">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/rsw68">rsw68</a></span> wrote: NO version is 1.7.3  I amended the RegisterErrorHandler to try to s...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_21">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/22/2015 4:52:31 PM" LocalTimeTicks="1429746751">Apr 22, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/22/2015 4:52:31 PM" LocalTimeTicks="1429746751">4:52 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/631964">Some problems when use Netoffice to create commandbar in word 2003</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/631964#post1416315">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/taotaomy">taotaomy</a></span> wrote: Hello everyone, it&#39;s me again!
+
+I use the NEToffice to create a pr...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/631964#post1416867">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/taotaomy">taotaomy</a></span> wrote: Thank you very much!!!  But it&#39;s too late today, I&#39;m in China, and ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_22">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/22/2015 3:30:29 PM" LocalTimeTicks="1429741829">Apr 22, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/22/2015 3:30:29 PM" LocalTimeTicks="1429741829">3:30 PM</span><br />(5 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/631772">Some Problem when I switch to NETOffice</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/631772#post1415951">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/taotaomy">taotaomy</a></span> wrote: I developed a word addin with MS VSTO. And recently, I try to switc...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/631772#post1416817">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/taotaomy">taotaomy</a></span> wrote: I already try the way you told me, just like this:       Applicatio...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_23">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/22/2015 2:11:34 PM" LocalTimeTicks="1429737094">Apr 22, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/22/2015 2:11:34 PM" LocalTimeTicks="1429737094">2:11 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/632123">How to populate dynamic RibbonControls at runtime?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/632123#post1416622">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/tvoigt77">tvoigt77</a></span> wrote: Hi there!
+
+I&#39;d like to migrate an existing VSTO Excel Application ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/632123#post1416785">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: hey thomas,  Its a NetOffice Tools Addin or just implement IExtensi...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_24">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/20/2015 10:08:57 AM" LocalTimeTicks="1429549737">Apr 20, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/20/2015 10:08:57 AM" LocalTimeTicks="1429549737">10:08 AM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/627847">Develop Addins for  a Word with a Classical UI and Ribbon UI compatiblity</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/627847#post1411246">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/taotaomy">taotaomy</a></span> wrote: Hello everyone
+I am a starter as a VSTO learner and NEToffice lear...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/627847#post1415871">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/taotaomy">taotaomy</a></span> wrote: Finally, I use another computer to create a Netoffice project and i...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_25">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/13/2015 5:29:59 PM" LocalTimeTicks="1428971399">Apr 13, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/13/2015 5:29:59 PM" LocalTimeTicks="1428971399">5:29 PM</span><br />(6 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/587938">How do I create a new instance of Worksheet?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/587938#post1366724">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/siki">siki</a></span> wrote: I&#39;d like to subclass the NetOffice.ExcelApi.Worksheet class because...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/587938#post1409898">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/siki">siki</a></span> wrote: Thanks Sebastian again. I read your answer on Stackoverflow and I l...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_26">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/13/2015 2:47:23 PM" LocalTimeTicks="1428961643">Apr 13, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/13/2015 2:47:23 PM" LocalTimeTicks="1428961643">2:47 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/622975">Save Excel worksheet to PDF</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/622975#post1406041">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/sonhospa">sonhospa</a></span> wrote: Hi all,
+I&#39;m trying to convert a VBA Add-In using Visual Studio 2010...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/622975#post1409528">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/sonhospa">sonhospa</a></span> wrote: Hi Sebastian,
+
+yes I guess I&#39;m that same thankful Mick :-) but I st...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_27">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="4/2/2015 5:59:29 AM" LocalTimeTicks="1427979569">Apr 2, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="4/2/2015 5:59:29 AM" LocalTimeTicks="1427979569">5:59 AM</span><br />(7 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/314466">Deployment - AddIn</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/314466#post765342">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/devcr">devcr</a></span> wrote: HiWhat a great project you put together here. I can imaging you spe...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/314466#post1398840">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/hitendramalviya">hitendramalviya</a></span> wrote: Hi Sebastian,  You have provided documentation on inbuilt msi setup...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_28">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="3/20/2015 1:15:13 PM" LocalTimeTicks="1426882513">Mar 20, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="3/20/2015 1:15:13 PM" LocalTimeTicks="1426882513">1:15 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/588314">how register the dlls</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/588314#post1367234">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/joanferrer">joanferrer</a></span> wrote: Hi,
+
+I&#39;m using the dlls in a script Task and they are not recogniz...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/588314#post1367498">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: hey men,  Go to the project references and set the option &quot;Embed In...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_29">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="3/18/2015 3:34:20 PM" LocalTimeTicks="1426718060">Mar 18, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="3/18/2015 3:34:20 PM" LocalTimeTicks="1426718060">3:34 PM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/587736">just open an excel and read some cells</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/587736#post1366333">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/joanferrer">joanferrer</a></span> wrote: Hi,
+
+I just want to open an Excel that already exists and read som...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/587736#post1366663">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: nearly correct. its:  Excel.Application app = new Excel.Application...</p>
+                            
+                            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/587736#post1366663">answered by:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: nearly correct. its:  Excel.Application app = new Excel.Application...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_30">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="3/17/2015 3:23:41 PM" LocalTimeTicks="1426631021">Mar 17, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="3/17/2015 3:23:41 PM" LocalTimeTicks="1426631021">3:23 PM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/562002">Is shared add-in possible?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/562002#post1292982">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/praful_hunde">praful_hunde</a></span> wrote: Is it possible to develop an add-in that can work with multiple off...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/562002#post1366114">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: hey men,  hmm.. its hard to explain because i dont know your experi...</p>
+                            
+                            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/562002#post1293709">answered by:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: Of course its possible.  You can find an example in the download pa...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_31">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="3/17/2015 9:12:51 AM" LocalTimeTicks="1426608771">Mar 17, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="3/17/2015 9:12:51 AM" LocalTimeTicks="1426608771">9:12 AM</span><br />(16 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/586370">MS Project AddIn</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/586370#post1363556">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/joergl87">joergl87</a></span> wrote: Hi,
+
+why can&#39;t I create an MS Project AddIn with Ribbon with the To...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/586370#post1366021">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/joergl87">joergl87</a></span> wrote: Ein Traum. L&#228;uft. Vielen Dank.</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_32">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="3/13/2015 7:59:51 PM" LocalTimeTicks="1426301991">Mar 13, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="3/13/2015 7:59:51 PM" LocalTimeTicks="1426301991">7:59 PM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/586132">DAOApi.Property Assignment Error =&gt; Class not exists: NetOffice.ExcelApi.Property</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/586132#post1362738">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/GordonH">GordonH</a></span> wrote: Hi Sebastian,
+
+Firstly thanks for such a great product. We have mu...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/586132#post1363239">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: A sample project is greatly appreciated.   please send to: public.s...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_33">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="3/13/2015 12:07:59 PM" LocalTimeTicks="1426273679">Mar 13, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="3/13/2015 12:07:59 PM" LocalTimeTicks="1426273679">12:07 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/578629">Configuration file (App.config).</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/578629#post1345956">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/DDawid">DDawid</a></span> wrote: Hi
+
+I love the project, it&#39;s the second add-on that i&#39;m creating us...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/578629#post1363085">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/DDawid">DDawid</a></span> wrote: I&#39;m affraid that you can&#39;t use configuration files for addons. I&#39;ve...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_34">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="3/6/2015 7:31:49 AM" LocalTimeTicks="1425655909">Mar 6, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="3/6/2015 7:31:49 AM" LocalTimeTicks="1425655909">7:31 AM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/584731">Outlook error - </a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/584731#post1360324">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/long1000">long1000</a></span> wrote: Hi,
+
+When trying to run the following code during the COMAddin star...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_35">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="3/6/2015 1:42:08 AM" LocalTimeTicks="1425634928">Mar 6, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="3/6/2015 1:42:08 AM" LocalTimeTicks="1425634928">1:42 AM</span><br />(8 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/579856">How do you get a com addin working?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/579856#post1350444">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/toogooda">toogooda</a></span> wrote: I have used VSTO for years but can&#39;t even get a HelloWorld working ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/579856#post1360296">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/long1000">long1000</a></span> wrote: No, it wasn&#39;t dependency. Its a registration problem. 
+I got it wor...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_36">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="2/25/2015 7:05:43 PM" LocalTimeTicks="1424919943">Feb 25, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="2/25/2015 7:05:43 PM" LocalTimeTicks="1424919943">7:05 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/581839">Error Propagation In Access </a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/581839#post1355720">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/timetopat">timetopat</a></span> wrote: Hello,
+
+I am using NetOffice for a project where I have a VB macro...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_37">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="2/18/2015 12:24:03 PM" LocalTimeTicks="1424291043">Feb 18, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="2/18/2015 12:24:03 PM" LocalTimeTicks="1424291043">12:24 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/581171">Show Ribbon-Tab only in Main-Window (Outlook Addin)</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/581171#post1353343">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/iwasready">iwasready</a></span> wrote: Dear together
+
+I&#39;ve successfully developed a Outlook Addin with Ne...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/581171#post1353686">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/iwasready">iwasready</a></span> wrote: Hi Sebastian  You brought me to the right path!  At the end I solve...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_38">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="2/17/2015 2:08:25 PM" LocalTimeTicks="1424210905">Feb 17, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="2/17/2015 2:08:25 PM" LocalTimeTicks="1424210905">2:08 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/581191">Editing Active Sheet with COM Wrapper</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/581191#post1353394">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/whamtet">whamtet</a></span> wrote: I have a C# user defined function that I wish to use to edit the ac...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_39">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="2/15/2015 11:44:01 AM" LocalTimeTicks="1424029441">Feb 15, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="2/15/2015 11:44:01 AM" LocalTimeTicks="1424029441">11:44 AM</span><br />(14 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/579745">error at first attempt using Project Wizard</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/579745#post1350060">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/RICNET">RICNET</a></span> wrote: downloaded &quot;NetOffice 1.7.2.zip&quot; and unzipped it
+run &quot;DeveloperTool...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/579745#post1352878">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/RICNET">RICNET</a></span> wrote: it all works from E drive, too  thank you  Riccardo</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_40">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="2/15/2015 10:52:15 AM" LocalTimeTicks="1424026335">Feb 15, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="2/15/2015 10:52:15 AM" LocalTimeTicks="1424026335">10:52 AM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/576745">Simple Example for editing Word</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/576745#post1338719">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/AlainTV">AlainTV</a></span> wrote: Hi,
+
+I&#39;m new to NetOffice, and I wish to know if is possible to si...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/576745#post1352872">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/AlainTV">AlainTV</a></span> wrote:  Hi Sebastian,
+ 
+ While the method that you explain on those samp...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_41">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="2/1/2015 4:56:35 PM" LocalTimeTicks="1422838595">Feb 1, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="2/1/2015 4:56:35 PM" LocalTimeTicks="1422838595">4:56 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/579157">Copy Tables from Doc to Excel without using clipboard</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/579157#post1347990">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/bedantaguru">bedantaguru</a></span> wrote: I had couple of word doc file containing multiple tables in it. My ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_42">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="1/25/2015 9:32:34 AM" LocalTimeTicks="1422207154">Jan 25, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="1/25/2015 9:32:34 AM" LocalTimeTicks="1422207154">9:32 AM</span><br />(11 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/577323">Deployment Outlook addin VS 2013 for Office 2000-2013</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/577323#post1340496">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/MarieChristine">MarieChristine</a></span> wrote: Hi, 
+I&#39;m using Visual Studio 2013 with NetOffice, and I try to dep...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/577323#post1345593">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: An Office addin is a COM component (except for document-based addin...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_43">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="1/23/2015 1:50:08 PM" LocalTimeTicks="1422049808">Jan 23, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="1/23/2015 1:50:08 PM" LocalTimeTicks="1422049808">1:50 PM</span><br />(8 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/573837">StackOverflow Exception in CurrentDomain_AssemblyResolve in Sample.ExcelAddin</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573837#post1328135">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jcollum">jcollum</a></span> wrote: I downloaded the 1.7.2 code and opened the Google Translation solut...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573837#post1345338">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jpd30">jpd30</a></span> wrote: Hi Sebastian,
+
+We&#39;ve seen this with an out-of-process application t...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_44">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="1/22/2015 7:51:58 AM" LocalTimeTicks="1421941918">Jan 22, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="1/22/2015 7:51:58 AM" LocalTimeTicks="1421941918">7:51 AM</span><br />(8 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/577752">Register C# EventHandler with OLE TextBox int PowerPoint presentation</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/577752#post1342124">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/GebhardStopper">GebhardStopper</a></span> wrote: I&#39;m launching a PowerPoint presentation from a C# application. This...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/577752#post1345015">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/GebhardStopper">GebhardStopper</a></span> wrote: It works, thanks a lot!  I just used your example and hacked a smal...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_45">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="1/21/2015 2:00:13 PM" LocalTimeTicks="1421877613">Jan 21, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="1/21/2015 2:00:13 PM" LocalTimeTicks="1421877613">2:00 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/578083">Excel ActiveWorkbook null</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/578083#post1343331">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/grokthol">grokthol</a></span> wrote: I am trying to read the current Workbook in Excel.
+
+I call:
+
+Exce...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/578083#post1343796">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: GetActiveInstance() gives you the first instance in memory. may you...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_46">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="1/15/2015 6:41:47 AM" LocalTimeTicks="1421332907">Jan 15, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="1/15/2015 6:41:47 AM" LocalTimeTicks="1421332907">6:41 AM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/577692">NetOffice 1.7.2: ComFactory initialization</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/577692#post1341804">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/dfankhau">dfankhau</a></span> wrote: Hi Guys
+
+I&#39;m coming from NetOffice 1.6 and asked myself how to ini...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/577692#post1342070">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/dfankhau">dfankhau</a></span> wrote: Ah cool, works like a charm, thanks!</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_47">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="1/14/2015 4:21:16 PM" LocalTimeTicks="1421281276">Jan 14, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="1/14/2015 4:21:16 PM" LocalTimeTicks="1421281276">4:21 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/577634">Disable document macro&#39;s</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/577634#post1341541">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/KenBerube">KenBerube</a></span> wrote: I would like to disable all macros if document is of type docm. How...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/577634#post1341834">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: may the automationsecurity property can handle this.  http://msdn.m...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_48">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="1/13/2015 2:46:54 PM" LocalTimeTicks="1421189214">Jan 13, 2015</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="1/13/2015 2:46:54 PM" LocalTimeTicks="1421189214">2:46 PM</span><br />(8 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/576228">NetOffice Saving Excel Sheet to .PDF</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/576228#post1337031">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/mix30">mix30</a></span> wrote: using System;
+using System.Collections.Generic;
+using System.Linq;
+...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/576228#post1341460">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/mix30">mix30</a></span> wrote: Based on what I just updated. Would you say it is what I am wanting...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_49">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/25/2014 9:25:13 AM" LocalTimeTicks="1419528313">Dec 25, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/25/2014 9:25:13 AM" LocalTimeTicks="1419528313">9:25 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/575516">Excel opens visible when not run as admin</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/575516#post1332687">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/OneAccordSoft">OneAccordSoft</a></span> wrote: Even if you set visible = false on the application object, Excel op...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/575516#post1337102">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: i need more info to reproduce the scenario.  Operating System Versi...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_50">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/16/2014 2:21:40 PM" LocalTimeTicks="1418768500">Dec 16, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/16/2014 2:21:40 PM" LocalTimeTicks="1418768500">2:21 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/574613">Riboon UI With Classic UI in Office 2003</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574613#post1330838">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ye4241">ye4241</a></span> wrote: The Ribbon functions fire correctly.
+but when I create user interfa...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574613#post1332876">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ye4241">ye4241</a></span> wrote: A free addin to improve powerpoint fuctions. I used vsto before, an...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_51">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/15/2014 9:45:10 AM" LocalTimeTicks="1418665510">Dec 15, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/15/2014 9:45:10 AM" LocalTimeTicks="1418665510">9:45 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/574839">New document ,in Powerpiont and Excel to call .Save(), is not same as in Word to show the &quot;Save as&quot;Dialog.</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574839#post1331533">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jeson006">jeson006</a></span> wrote: Hello,
+ComAddin for Word, Powerpoint, Excel.
+New document in Powerp...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574839#post1331943">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: no idea about powerpoint. excel and word is pretty the same. Save()...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_52">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/12/2014 12:16:11 PM" LocalTimeTicks="1418415371">Dec 12, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/12/2014 12:16:11 PM" LocalTimeTicks="1418415371">12:16 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/574520">Image Transparency on a VBE Tool Bar</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574520#post1330596">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ChristopherSpicer">ChristopherSpicer</a></span> wrote: I am adding a custom icon to my tool bar button using button.PasteF...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574520#post1331289">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: what i use in my addin projects here is stdole.IPictureDisp very si...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_53">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/11/2014 4:08:05 AM" LocalTimeTicks="1418299685">Dec 11, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/11/2014 4:08:05 AM" LocalTimeTicks="1418299685">4:08 AM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/259487">Integrating with the office UI</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/259487#post620158">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/Nilzor">Nilzor</a></span> wrote: Hi, I just came over this project. Looks really interesting. One qu...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/259487#post1330841">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ye4241">ye4241</a></span> wrote: @SebastianDotNet Thanks for your great idea!</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_54">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/10/2014 11:29:04 AM" LocalTimeTicks="1418239744">Dec 10, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/10/2014 11:29:04 AM" LocalTimeTicks="1418239744">11:29 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/574442">Output ROT</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574442#post1330252">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/thirtysix">thirtysix</a></span> wrote: Hi Sebastian, 
+
+Is there any way to output the ROT to the screen o...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574442#post1330534">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/panewman">panewman</a></span> wrote: There was a Tool called IROTVIEW.EXE in Visual Studio once. But Goo...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_55">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/9/2014 6:05:40 PM" LocalTimeTicks="1418177140">Dec 9, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/9/2014 6:05:40 PM" LocalTimeTicks="1418177140">6:05 PM</span><br />(8 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/471162">Need help with optional parameters</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/471162#post1129074">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/themightylc">themightylc</a></span> wrote: Hi beautiful people  - great effort with the library, Sebastian!!
+
+...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/471162#post1330238">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/thirtysix">thirtysix</a></span> wrote: Hi Sebastian, yes, I am aware that this is a MS Office bug, not Net...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_56">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/6/2014 1:38:20 PM" LocalTimeTicks="1417901900">Dec 6, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/6/2014 1:38:20 PM" LocalTimeTicks="1417901900">1:38 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/574189">Operation unavailable Exception from HRESULT: 0x800401e3</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574189#post1329278">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ehudklein">ehudklein</a></span> wrote: Hi Sebastian,
+
+How are you? I upgraded to the 1.7.1 and it solved ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/574189#post1329361">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ehudklein">ehudklein</a></span> wrote: Problem Solved.  Thank you very much!</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_57">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/4/2014 9:32:43 AM" LocalTimeTicks="1417714363">Dec 4, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/4/2014 9:32:43 AM" LocalTimeTicks="1417714363">9:32 AM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/573964">The type or namespace name &#39;NetOffice&#39; could not be found (are you missing a using directive or an assembly reference?)</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573964#post1328625">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/naibprabhanjan">naibprabhanjan</a></span> wrote: Hi,
+
+I am referring the required NetOffice dlls in a Windows servi...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573964#post1328670">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/naibprabhanjan">naibprabhanjan</a></span> wrote: Hi,  &quot;.Net Framework&quot; was set to 3.5  After changing Target framewo...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_58">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/3/2014 2:55:15 PM" LocalTimeTicks="1417647315">Dec 3, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/3/2014 2:55:15 PM" LocalTimeTicks="1417647315">2:55 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/573846">Howto add an Excel chart series programatically</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573846#post1328158">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/southmark">southmark</a></span> wrote: Please can you help me? In VBA what I want would be:
+
+ActiveSheet....</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573846#post1328411">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/southmark">southmark</a></span> wrote: Solution appears to be to call SeriesCollection.Add with a dummy ra...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_59">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="12/2/2014 7:47:52 AM" LocalTimeTicks="1417535272">Dec 2, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="12/2/2014 7:47:52 AM" LocalTimeTicks="1417535272">7:47 AM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/573617">How to Create different CustomUI from different xml file for Office</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573617#post1327519">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ye4241">ye4241</a></span> wrote: Need different CustomUI from different xml file, but Net Office def...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573617#post1327933">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ye4241">ye4241</a></span> wrote: Thanks so much. Net Office is really a great job~</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_60">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/29/2014 5:55:52 PM" LocalTimeTicks="1417312552">Nov 29, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/29/2014 5:55:52 PM" LocalTimeTicks="1417312552">5:55 PM</span><br />(10 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/572719">NuGet</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/572719#post1324604">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/Haro">Haro</a></span> wrote: Hello,
+
+when will the NuGet packages updated? They are currently s...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/572719#post1327251">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/CaioProiete">CaioProiete</a></span> wrote: @Sebastian: I&#39;ve just checked and we are good...  VBIDEApi is alrea...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_61">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/27/2014 9:51:33 AM" LocalTimeTicks="1417110693">Nov 27, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/27/2014 9:51:33 AM" LocalTimeTicks="1417110693">9:51 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/573230">Worksheet: Klasse nicht registriert (Ausnahme von HRESULT: 0x80040154 (REGDB_E_CLASSNOTREG))</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573230#post1326421">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/mattesth">mattesth</a></span> wrote: Hi,
+
+I have a strange problem I can&#39;t resolve. On my local maschine...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573230#post1326738">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: looks for a security issue. make sure your code is running in a loc...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_62">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/26/2014 1:36:16 PM" LocalTimeTicks="1417037776">Nov 26, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/26/2014 1:36:16 PM" LocalTimeTicks="1417037776">1:36 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/573201">ClickOnce Install still requires interop assembly to be in GAC</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573201#post1326345">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ErwinFK">ErwinFK</a></span> wrote: Hi, I created a VS2013 C# forms application. At first i used early ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573201#post1326383">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: hey men,  the problem is i have no experience with clickonce (becau...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_63">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/25/2014 5:23:16 PM" LocalTimeTicks="1416964996">Nov 25, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/25/2014 5:23:16 PM" LocalTimeTicks="1416964996">5:23 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/573122">How to read formatted text from ms word ?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/573122#post1325999">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jha_jee">jha_jee</a></span> wrote: Could anyone help me on that.
+ I am trying to display formatted tex...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_64">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/21/2014 3:41:08 PM" LocalTimeTicks="1416613268">Nov 21, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/21/2014 3:41:08 PM" LocalTimeTicks="1416613268">3:41 PM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/572747">Project won&#39;t compile with V1.7.2 but 1.5.2 will</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/572747#post1324689">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/KenBerube">KenBerube</a></span> wrote: I updated my project to use the latest version and it won&#39;t compile...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/572747#post1324764">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: this is strange :O the fast way to help(today!) is send me your sol...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_65">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/14/2014 10:28:19 AM" LocalTimeTicks="1415989699">Nov 14, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/14/2014 10:28:19 AM" LocalTimeTicks="1415989699">10:28 AM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/571364">How to create a button in Excel with Netoffice</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571364#post1319337">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/reyem10">reyem10</a></span> wrote: Hello,
+
+Is it possible to create a button Excel which execute a co...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571364#post1322108">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/reyem10">reyem10</a></span> wrote: That works fine ! Thank you</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_66">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/13/2014 7:24:32 AM" LocalTimeTicks="1415892272">Nov 13, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/13/2014 7:24:32 AM" LocalTimeTicks="1415892272">7:24 AM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/571948">New document ,in Powerpiont and Excel to call .Save(), is not same as in Word. </a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571948#post1321558">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jeson006">jeson006</a></span> wrote: ComAddin for Word, Powerpoint, Excel.
+New document in Powerpiont an...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_67">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/12/2014 6:58:04 PM" LocalTimeTicks="1415847484">Nov 12, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/12/2014 6:58:04 PM" LocalTimeTicks="1415847484">6:58 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/565086">Multiple fonts in a single Word Table Cell (C#)</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/565086#post1298623">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/JeremyMartin2014">JeremyMartin2014</a></span> wrote: I&#39;ve seen a lot of VB examples where you specify a start and length...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/565086#post1321364">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/Jeremy2014">Jeremy2014</a></span> wrote: Bump - This is still working great changing 1 character at a time, ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_68">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/11/2014 2:41:31 PM" LocalTimeTicks="1415745691">Nov 11, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/11/2014 2:41:31 PM" LocalTimeTicks="1415745691">2:41 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/271628">PowerPoint - HWND property</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/271628#post668099">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/gialnial">gialnial</a></span> wrote: Hi,i wonder if possibile fill the HWND (now throw an exception: {&quot;M...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/271628#post1320904">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ye4241">ye4241</a></span> wrote: Thanks a lot~</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_69">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/10/2014 10:28:56 PM" LocalTimeTicks="1415687336">Nov 10, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/10/2014 10:28:56 PM" LocalTimeTicks="1415687336">10:28 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/571730">Deploying a sample Outlook 2013 Plug In.</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571730#post1320706">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ClayDavis">ClayDavis</a></span> wrote: I found the info by translating the german document to english
+rega...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_70">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/9/2014 7:23:45 PM" LocalTimeTicks="1415589825">Nov 9, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/9/2014 7:23:45 PM" LocalTimeTicks="1415589825">7:23 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/571629">Create and deploy VBIDE add-in with NetOffice 1.7</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571629#post1320393">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/mlukasz">mlukasz</a></span> wrote: Hi,
+
+I&#39;m trying to create VBIDE addin with NetOffice v1.7.1.
+It&#39;s...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_71">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/6/2014 3:35:36 PM" LocalTimeTicks="1415316936">Nov 6, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/6/2014 3:35:36 PM" LocalTimeTicks="1415316936">3:35 PM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/571171">How to create a TaskPanel like control (Action Pane?) in Office 2003</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571171#post1318654">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jonatastrafaniuc">jonatastrafaniuc</a></span> wrote: Hi,
+
+I successfully created an TaskPane with an control UI to inse...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571171#post1319677">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jonatastrafaniuc">jonatastrafaniuc</a></span> wrote: I solve my problem by creating and displaying a form as UI. It is u...</p>
+                            
+                            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571171#post1319677">answered by:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jonatastrafaniuc">jonatastrafaniuc</a></span> wrote: I solve my problem by creating and displaying a form as UI. It is u...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_72">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/3/2014 9:48:45 AM" LocalTimeTicks="1415036925">Nov 3, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/3/2014 9:48:45 AM" LocalTimeTicks="1415036925">9:48 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/571137">How do you create a copy/clone of existing NetOffice object?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571137#post1318530">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/thirtysix">thirtysix</a></span> wrote: How do you create a copy (or clone) of a NetOffice object so when y...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571137#post1318545">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: you can&#39;t clone the real instance. the real instance is not allive ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_73">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/3/2014 9:18:47 AM" LocalTimeTicks="1415035127">Nov 3, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/3/2014 9:18:47 AM" LocalTimeTicks="1415035127">9:18 AM</span><br />(5 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/571011">[Solved] Tutorial 9: Trying to access a running word instance using VB</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571011#post1317986">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/tohuuu">tohuuu</a></span> wrote: Hi, i&#39;m trying to write an AddIn for WinWord that should work with ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/571011#post1318541">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/tohuuu">tohuuu</a></span> wrote: Oh - sorry, i should have taken a look into Examples\Word\VB\COMAdd...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_74">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="11/1/2014 12:11:59 PM" LocalTimeTicks="1414869119">Nov 1, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="11/1/2014 12:11:59 PM" LocalTimeTicks="1414869119">12:11 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/568929">NetOffice 1.7 Release</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568929#post1310101">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/CaioProiete">CaioProiete</a></span> wrote: Hi Sebastian,
+
+Do you have any plans to create an official release...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568929#post1318194">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/izsak">izsak</a></span> wrote: Hi,  would it be possible to even migrate the project to some bette...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_75">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/23/2014 1:06:00 AM" LocalTimeTicks="1414051560">Oct 23, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/23/2014 1:06:00 AM" LocalTimeTicks="1414051560">1:06 AM</span><br />(7 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/541578">Accessing MAPIOBJECT fails</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/541578#post1231755">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/Guenni1972">Guenni1972</a></span> wrote: Hi,
+
+we currently developing an Outlook addin for outlook 2010 and...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/541578#post1315844">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/johnny_minty">johnny_minty</a></span> wrote: Hi Subastian,  Did you ever figure out a way to access the underlyi...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_76">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/22/2014 10:35:14 AM" LocalTimeTicks="1413999314">Oct 22, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/22/2014 10:35:14 AM" LocalTimeTicks="1413999314">10:35 AM</span><br />(9 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/453346">Can&#39;t delete file after renaming due to Word file handle still present</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/453346#post1080357">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/KnS">KnS</a></span> wrote: Hi All,
+
+I have some code that allows the user to open a file, edit...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/453346#post1315615">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/gnv_ravindra">gnv_ravindra</a></span> wrote: Before  the statement
+IO.File.Delete(oldFileName)
+
+you have to clos...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_77">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/21/2014 4:33:12 PM" LocalTimeTicks="1413934392">Oct 21, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/21/2014 4:33:12 PM" LocalTimeTicks="1413934392">4:33 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/570352">Feature Request - Mail Item Attachment - Stream</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/570352#post1315364">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/accessguru">accessguru</a></span> wrote: I couldn&#39;t find any examples on attachments and the MailItem.Attach...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_78">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/16/2014 6:33:17 PM" LocalTimeTicks="1413509597">Oct 16, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/16/2014 6:33:17 PM" LocalTimeTicks="1413509597">6:33 PM</span><br />(6 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/568922">Deployment of outlook plugin</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568922#post1310071">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ehudklein">ehudklein</a></span> wrote: Hi,
+
+im trying to deploy an outlook plugin without success so far....</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568922#post1314053">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ehudklein">ehudklein</a></span> wrote: Hi,  I found what the problem was. For some reason, although the re...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_79">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/16/2014 6:18:07 PM" LocalTimeTicks="1413508687">Oct 16, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/16/2014 6:18:07 PM" LocalTimeTicks="1413508687">6:18 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/569979">Issue with reference to OfficeApi.Dll</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/569979#post1314048">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ehudklein">ehudklein</a></span> wrote: Hi Sebastian, 
+
+How are you?
+
+I&#39;m having the following issue. I h...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_80">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/16/2014 4:42:17 PM" LocalTimeTicks="1413502937">Oct 16, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/16/2014 4:42:17 PM" LocalTimeTicks="1413502937">4:42 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/569880">Distributing Office AddIn with NetOffice in a single .DLL</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/569880#post1313685">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/chadknudson">chadknudson</a></span> wrote: I would like to distribute my addin in a single .DLL file instead o...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/569880#post1314014">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/chadknudson">chadknudson</a></span> wrote: I work primarily with large enterprise customers in my day-to-day b...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_81">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/4/2014 6:22:06 AM" LocalTimeTicks="1412428926">Oct 4, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/4/2014 6:22:06 AM" LocalTimeTicks="1412428926">6:22 AM</span><br />(17 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/459474">Deploying Outlook Addin to LOCAL_MACHINE</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/459474#post1100153">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/andyluiz">andyluiz</a></span> wrote: First I want to say that it is a great project.
+
+I&#39;m developing an...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/459474#post1310410">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: This is a known NO bug specialy on 64Bit systems  :(   I suggest yo...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_82">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/2/2014 11:23:15 AM" LocalTimeTicks="1412274195">Oct 2, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/2/2014 11:23:15 AM" LocalTimeTicks="1412274195">11:23 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/568795">EMBEDDING NETOFFICE IN WPF</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568795#post1309608">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/gabrielelanza">gabrielelanza</a></span> wrote: Hello,
+
+How can I embedd NetOffice in a WPF project. I would like u...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568795#post1309868">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: hello,   this answer is related to your mail(codeplex direct messag...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_83">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/1/2014 8:10:34 PM" LocalTimeTicks="1412219434">Oct 1, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/1/2014 8:10:34 PM" LocalTimeTicks="1412219434">8:10 PM</span><br />(5 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/568464">How not dispose of child objects?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568464#post1308466">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/thirtysix">thirtysix</a></span> wrote: I want to create my own custom collection of Word objects, but I do...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568464#post1309689">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/thirtysix">thirtysix</a></span> wrote: Perfect! Thank you, Sebastian. RemoveChildObject() is what I was lo...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_84">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/1/2014 7:15:56 PM" LocalTimeTicks="1412216156">Oct 1, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/1/2014 7:15:56 PM" LocalTimeTicks="1412216156">7:15 PM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/568709">Outlook, attach inline image from local resource.</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568709#post1309366">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/stevenjeffries">stevenjeffries</a></span> wrote: Hello everyone.
+
+I am using C# with VS 2013. I have some images sa...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568709#post1309668">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/stevenjeffries">stevenjeffries</a></span> wrote: Update:  This isn&#39;t the ideal solution, because I won&#39;t be able to ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_85">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="10/1/2014 5:50:37 PM" LocalTimeTicks="1412211037">Oct 1, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="10/1/2014 5:50:37 PM" LocalTimeTicks="1412211037">5:50 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/568801">Remove minimize</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/568801#post1309629">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/gabrielelanza">gabrielelanza</a></span> wrote: How can I remove minimize button? 
+</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_86">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="9/29/2014 6:29:21 PM" LocalTimeTicks="1412040561">Sep 29, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="9/29/2014 6:29:21 PM" LocalTimeTicks="1412040561">6:29 PM</span><br />(5 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/567622">StackOverflow Exception When Creating new Excel.Application</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/567622#post1305353">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/lkamerman">lkamerman</a></span> wrote: This is driving me crazy, not sure what I&#39;m missing.
+
+This line of...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/567622#post1308979">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/lkamerman">lkamerman</a></span> wrote: Just sent the source to your address.  Will check the difference in...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_87">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="9/27/2014 8:24:18 AM" LocalTimeTicks="1411831458">Sep 27, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="9/27/2014 8:24:18 AM" LocalTimeTicks="1411831458">8:24 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/562918">debugging NetOffice.ExcelApi.Worksheet in VS2010 causes Outlook Wizard to start</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/562918#post1295257">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/jcollum">jcollum</a></span> wrote: I swear. Seen this happen 10 times today. 
+
+Code: 
+protected virtua...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/562918#post1308559">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: I know this problem. This is an MS Office-problem. Some years ago, ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_88">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="9/26/2014 8:51:35 AM" LocalTimeTicks="1411746695">Sep 26, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="9/26/2014 8:51:35 AM" LocalTimeTicks="1411746695">8:51 AM</span><br />(4 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/435827">Read .pst or .ost file</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/435827#post1012085">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/RussSuter">RussSuter</a></span> wrote: I need to be able to search through .pst and .ost files that are st...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/435827#post1308278">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/viljemt">viljemt</a></span> wrote: Hi guys!  I am also looking for _RemoveStore() method_. Did you fin...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_89">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="9/26/2014 12:37:11 AM" LocalTimeTicks="1411717031">Sep 26, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="9/26/2014 12:37:11 AM" LocalTimeTicks="1411717031">12:37 AM</span><br />(5 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/542724">Few errors in VS Express and SharpDevelop</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/542724#post1235784">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/pablopla">pablopla</a></span> wrote: Hi
+
+I&#39;m trying to create Office ribbon add-in with an installer.
+...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/542724#post1308222">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></span> wrote: hey niknah,  i can&#39;t show you the right direction so far because i ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_90">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="9/16/2014 8:27:08 PM" LocalTimeTicks="1410924428">Sep 16, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="9/16/2014 8:27:08 PM" LocalTimeTicks="1410924428">8:27 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/567602">Filling in a word template</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/567602#post1305316">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/Abinonos">Abinonos</a></span> wrote: Hello;
+i was seeking some similar solution to get some data from a...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_91">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="9/16/2014 5:24:37 AM" LocalTimeTicks="1410870277">Sep 16, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="9/16/2014 5:24:37 AM" LocalTimeTicks="1410870277">5:24 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/567512">Hello World or install instructions</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/567512#post1305021">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/toogooda">toogooda</a></span> wrote: Hi,
+I have previously used VSTO but would like to move to NetOffice...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/567512#post1305029">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/toogooda">toogooda</a></span> wrote: Solved myself, followed the link through to the MS doc and it said ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_92">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="8/20/2014 12:30:07 PM" LocalTimeTicks="1408563007">Aug 20, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="8/20/2014 12:30:07 PM" LocalTimeTicks="1408563007">12:30 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/561666">PowerPoint API a few questions (about alignement)</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/561666#post1291649">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/sodevrom">sodevrom</a></span> wrote: Hello,
+ I have been searching for 2 days, but found now answer.
+ ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_93">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="8/15/2014 6:22:35 PM" LocalTimeTicks="1408152155">Aug 15, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="8/15/2014 6:22:35 PM" LocalTimeTicks="1408152155">6:22 PM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/561178">Any issue when I reference Excel Object Model in a separate thread?</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/561178#post1290085">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/toosensitive">toosensitive</a></span> wrote: My addin has a refresh all button. When it is clicked, I will look ...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/561178#post1290528">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/toosensitive">toosensitive</a></span> wrote: I created a sample project to show the issue @ http://1drv.ms/1phJS...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_94">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="8/15/2014 12:19:14 AM" LocalTimeTicks="1408087154">Aug 15, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="8/15/2014 12:19:14 AM" LocalTimeTicks="1408087154">12:19 AM</span><br />(2 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/561097">First steps with NetOffice</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/561097#post1289793">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/VBobCat">VBobCat</a></span> wrote: I&#39;m a VB.NET amateur programmer, and I&#39;m developing a new applicati...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/561097#post1290212">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/VBobCat">VBobCat</a></span> wrote: In other (and simpler) words, how do I get to have the Word.Applica...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_95">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="8/14/2014 6:29:30 PM" LocalTimeTicks="1408066170">Aug 14, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="8/14/2014 6:29:30 PM" LocalTimeTicks="1408066170">6:29 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/561191">How to force to open an file in specific version of EXCEL</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/561191#post1290124">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/arzamm">arzamm</a></span> wrote: Hi all
+
+I have a PC with Windows Vista Pro,  Visual Studio 2008,  ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_96">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="8/11/2014 5:17:19 AM" LocalTimeTicks="1407759439">Aug 11, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="8/11/2014 5:17:19 AM" LocalTimeTicks="1407759439">5:17 AM</span><br />(3 posts)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/554781">NetOffice for Dynamics</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/554781#post1279784">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ayseff">ayseff</a></span> wrote: Is there any possibility that functionality would be added for Micr...</p>
+                            
+			    	            <p></p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/554781#post1288726">latest post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/ayseff">ayseff</a></span> wrote: Sebastian--you&#39;re awesome.  Thanks!  I&#39;ve been looking, but so far,...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_97">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="8/8/2014 8:31:34 PM" LocalTimeTicks="1407555094">Aug 8, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="8/8/2014 8:31:34 PM" LocalTimeTicks="1407555094">8:31 PM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/560625">word.document.PrintOut issue</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/560625#post1288180">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/psc0425">psc0425</a></span> wrote: To All,
+
+I tried using the word.document.printout function, can&#39;t ...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_98">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="8/2/2014 11:00:24 AM" LocalTimeTicks="1407002424">Aug 2, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="8/2/2014 11:00:24 AM" LocalTimeTicks="1407002424">11:00 AM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/555284">Custom Task Pane for each Powerpoint document</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/555284#post1280732">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/tbasler">tbasler</a></span> wrote: Hi,
+
+is there an easy way to manage a custom task pane for multipl...</p>
+                            
+			            </div>
+                    </div>
+                
+                    <div id="discussion_row_container_99">
+			            <div class="post_info">
+				            <p class="post_date"><span id="Date" class="smartDate dateOnly" title="7/31/2014 8:46:42 AM" LocalTimeTicks="1406821602">Jul 31, 2014</span></p>
+				            <p class="post_time"><span id="Time" class="smartDate timeOnly" title="7/31/2014 8:46:42 AM" LocalTimeTicks="1406821602">8:46 AM</span><br />(1 post)</p>
+			            </div>
+			
+			            <div class="post_content">
+                            
+				            <h3><a href="http://netoffice.codeplex.com/discussions/554689">Read data from Excel Spreadsheet</a></h3>
+				            <p><span class="bold_post"><a href="http://netoffice.codeplex.com/discussions/554689#post1279451">first post:</a></span> <span class="author"><a href="http://www.codeplex.com/site/users/view/iggyweb">iggyweb</a></span> wrote: Is it possible to use the ExcelApi to read data from an Excel sprea...</p>
+                            
+			            </div>
+                    </div>
+                
+
+		    <div class="clear"></div>
+    
+    <ul id="discussion_pagination">
+        <li><span class="Selected">101</span>-<span class="Selected">200</span> of <span class="Selected">588</span> discussions</li><ul class="pagination_pages">
+	<li><a href="#" onclick="CodePlexPaging.gotoPage(&#39;http://netoffice.codeplex.com/discussions&#39;, 0);return false;">Previous</a></li><li><a onclick="CodePlexPaging.gotoPage(&#39;http://netoffice.codeplex.com/discussions&#39;, 0);return false;" href="#">1</a></li><li><span class="Selected">2</span></li><li><a onclick="CodePlexPaging.gotoPage(&#39;http://netoffice.codeplex.com/discussions&#39;, 2);return false;" href="#">3</a></li><li><a onclick="CodePlexPaging.gotoPage(&#39;http://netoffice.codeplex.com/discussions&#39;, 3);return false;" href="#">4</a></li><li><a onclick="CodePlexPaging.gotoPage(&#39;http://netoffice.codeplex.com/discussions&#39;, 4);return false;" href="#">5</a></li><li><a class="" href="#" onclick="CodePlexPaging.gotoPage(&#39;http://netoffice.codeplex.com/discussions&#39;, 5);return false;">...<span class="screenReaderAdditionalText">Further Results</span></a></li><li class="last"><a href="#" onclick="CodePlexPaging.gotoPage(&#39;http://netoffice.codeplex.com/discussions&#39;, 2);return false;">Next</a></li>
+</ul>
+        <ul class="discussion_right">
+	<li>Showing</li><li><a href="#" onclick="CodePlexPaging.gotoPageSize(&#39;http://netoffice.codeplex.com/discussions&#39;, 10);return false;">10</a></li><li><a href="#" onclick="CodePlexPaging.gotoPageSize(&#39;http://netoffice.codeplex.com/discussions&#39;, 25);return false;">25</a></li><li><a href="#" onclick="CodePlexPaging.gotoPageSize(&#39;http://netoffice.codeplex.com/discussions&#39;, 50);return false;">50</a></li><li><span class="Selected">100</span></li><li>discussions</li>
+</ul><a href="http://netoffice.codeplex.com/discussions?size=2147483647" class="Link" style="display: none;">View All</a>
+    </ul>
+
+    </div>
+</div>
+
+        
+<div id="right_sidebar_noborder">
+    <div id="configure_view">
+    	<h2>configure view</h2>
+
+        <input MaxLength="500" id="discussion_search" name="discussion_search" title="Search Discussions" type="text" value="" />
+        <a id="discussion_search_button" class="discussion_magnify" href="#" title="Search Discussions"></a>
+
+        <script type="text/javascript" language="javascript">
+
+            $(function () {
+
+                $('#discussion_search_button').click(search);
+
+                $('#discussion_search').keydown(function (e) {
+                    if ($keyCode(e) == 13) return search();
+                });
+
+                function search() {
+                    CodePlex.UpdateProgress.displayPanelAndDisableControls('Loading...');
+                    window.location = 'http://netoffice.codeplex.com/discussions' + '?searchText=' + $('#discussion_search').val();
+                    return false;
+                }
+            });
+
+            function getSearchParams() {
+                var params = "?searchText=" + $('#discussion_search').val() + '&page=1&size=100';
+                return params;
+            }
+
+            CodePlexPaging.initialize('getSearchParams');
+
+        </script>
+
+		<div class="clear"></div>
+
+            <p>Filter</p>
+       
+        <p>
+             <input id="showUnansweredThreadsOnly" name="showUnansweredThreadsOnly" type="checkbox" value="true" /><label for="showUnansweredThreadsOnly">Unanswered only</label><input name="showUnansweredThreadsOnly" type="hidden" value="false" />
+                <img src='http://download-codeplex.sec.s-msft.com/Images/v21066/HelpIcon.png' style="padding-left:.1em;vertical-align: bottom"
+                    alt="Show only discussions that don't have a post marked as an answer." 
+                    title="Show only discussions that don't have a post marked as an answer." />
+                
+                <script type="text/javascript">
+                    $(function () {
+                        $('#showUnansweredThreadsOnly').click(function (x) {
+                            CodePlex.UpdateProgress.show();
+                            window.location = 'http://netoffice.codeplex.com/discussions?showUnansweredThreadsOnly=' + $('#showUnansweredThreadsOnly').is(':checked');
+                        });
+                    });
+                </script>
+        </p>
+
+		<ul class="configure_links">
+            
+				<li class="configure_sort">topic:</li>
+				<ul class="right">
+                    
+                        <li>All Topics
+    </li>
+                    
+                        <li>
+    <a id="CoordinatorTopicFilterLink" href="http://netoffice.codeplex.com/discussions/topics/general">General</a>
+</li>
+                    
+				</ul>
+                <script type="text/javascript" language="javascript">
+                    $(function () {
+                        $('#CoordinatorTopics a').click(function (x) {
+                            CodePlex.UpdateProgress.show();
+                        });
+                    });
+                </script>
+            
+		</ul>
+        <div class="clear"></div>
+	</div>
+
+    
+<script type="text/javascript">
+    function saveSubscriptionDataDirectly(type) {
+        return saveSubscriptionDataCore(type, false);
+    }
+
+    function saveSubscriptionData() {
+        var callingComponent = $('#subscriptionSettings #callingComponent').val();
+        closeSubscriptionDialog();
+
+        var type = $('input[name=EmailSubscriptionTypeList]:checked').val();
+        if (type === '')
+            return false;
+        var removeIndividual = $('input[name=StopNotificationsCheckBox]:checked').val();
+        if (removeIndividual === undefined)
+            removeIndividual = false;
+        $('#subscriptionSettings').remove();
+        return saveSubscriptionDataCore(type, removeIndividual, callingComponent);
+    }
+
+    function saveSubscriptionDataCore(type, removeIndividual, callingComponent) {
+
+        var isSubscribed = $('#SubscribeCheckBox').is(':checked') && $('#SubscribeCheckBox').is(':enabled');
+        CodePlex.UpdateProgress.show();
+        $('#subscriptionContent').load('http://netoffice.codeplex.com/subscriptions/Thread/save',
+                                       { isIndividualSubscribed: isSubscribed, deliveryStatus: type, displayType: 'Full', removeIndividualSubscriptions: removeIndividual },
+                                       function () {
+                                           CodePlex.UpdateProgress.hide();
+                                           if (callingComponent) {
+                                               $('#actionBar_placeholder').load('http://netoffice.codeplex.com/workitem/ActionBar',
+                                                   { activeView: 'AdvancedView' });
+                                           }
+                                       });
+        if (type === '1' || type === '2') {
+            $('#unsubscribeSection').show();
+        }
+        else {
+            $('#unsubscribeSection').hide();
+            $('#stopNotificationsDiv').hide();
+        }
+
+        return false;
+    }
+
+    function saveIndividualSubscription(type) {
+
+        CodePlex.UpdateProgress.show();
+        $('#subscriptionContent').load('',
+                                       { deliveryStatus: type },
+                                       function () { CodePlex.UpdateProgress.hide(); });
+        suppressUnsavedData();
+        
+        return false;
+    }
+
+    function showSubscriptionSelection() {
+        OpenDialog('#subscriptionSettings', true, '37em');
+        
+        // Remove unsaved data prompt from subscription items
+        // this should not make the page dirty.
+        $('input, textarea, select', '#subscriptionSettings').unbind("change");
+
+        return false;
+    }
+
+    function closeSubscriptionDialog() {
+        OpenDialog('#subscriptionSettings', false);
+        adjustEmailLinkPlacement();
+        adjustSubscriptionLinkPlacement();
+        return false;
+    }
+    
+    function adjustSubscriptionLinkPlacement() {
+        var $changeSubLink = $("#ShowSubscriptionSelection"),
+            $changeSubPlaceHolder = $("#ShowSubscriptionSelectionPlaceHolder"),
+            currentOffsetLeft,
+            offsetLeft,
+            currentOffsetTop,
+            offsetTop,
+            ieOffset = $.browser.msie ? 1 : 0,
+            lineHeight = parseInt($changeSubPlaceHolder.css('line-height'));
+        
+        if ($changeSubLink.length != 0 && $changeSubPlaceHolder.length != 0) {
+            currentOffsetLeft = parseInt($changeSubLink.css("left")),
+            offsetLeft = $changeSubPlaceHolder.offset().left - $changeSubLink.offset().left + 1, // the +1 just centers the text between the parens more evenly
+            
+            currentOffsetTop = parseInt($changeSubLink.css("top")),
+            offsetTop = $changeSubPlaceHolder.offset().top - $changeSubLink.offset().top - lineHeight + 5, // the -5 just centers the text between the parens more evenly
+
+            $changeSubLink.css("left", currentOffsetLeft + offsetLeft + ieOffset);
+            $changeSubLink.css("top", currentOffsetTop + offsetTop + ieOffset);
+        }
+    }
+
+    function adjustEmailLinkPlacement() {
+        var $changeEmailLink = $("#ChangeProfileLink"),
+            $changeEmailPlaceHolder = $("#ChangeProfileLinkPlaceHolder"),
+            currentOffsetLeft,
+            offsetLeft,
+            currentOffsetTop,
+            offsetTop,
+            ieOffset = $.browser.msie ? 1 : 0,
+            lineHeight = parseInt($changeEmailPlaceHolder.css('line-height'));
+
+        if ($changeEmailLink.length != 0 && $changeEmailPlaceHolder.length != 0) {
+            currentOffsetLeft = parseInt($changeEmailLink.css("left")),
+            offsetLeft = $changeEmailPlaceHolder.offset().left - $changeEmailLink.offset().left + 1, // the +1 just centers the text between the parens more evenly
+            
+            currentOffsetTop = parseInt($changeEmailLink.css("top")),
+            offsetTop = $changeEmailPlaceHolder.offset().top - $changeEmailLink.offset().top - lineHeight + 5, // the -5 just centers the text between the parens more evenly
+
+            $changeEmailLink.css("left", currentOffsetLeft + offsetLeft + ieOffset);
+            $changeEmailLink.css("top", currentOffsetTop + offsetTop + ieOffset);
+        }
+    }
+    
+    function showStopNotifications() {
+        $('#stopNotificationsDiv').hide();
+        $('#StopNotificationsCheckBox').attr('checked', false);
+    }
+
+    var currentToolTipHeight = null;
+
+    function showUnsubscribeToolTip() {
+      if (currentToolTipHeight == null) { currentToolTipHeight = $('#unsubscribeToolTip').height()+30 };
+      var toolTip = $('#unsubscribeToolTipImage');
+      var msg = $('#unsubscribeToolTip')[0];
+
+      $('[id=unsubscribeToolTip]').dialog('destroy').remove();
+      $(msg).dialog({
+        height: currentToolTipHeight, 
+        width: 275, 
+        position: [toolTip.offset().left-$(window).scrollLeft()+10, toolTip.offset().top-$(window).scrollTop()+10],
+        dialogClass: 'tooltip',
+        open: function() { $('#unsubscribeToolTip').show(); } 
+      });
+
+    }
+
+    function hideUnsubscribeToolTip() {
+        $('[id=unsubscribeToolTip]').dialog('destroy');
+    }
+</script>
+
+<div id="subscriptionContent">
+    
+	<p><div class="email_icon">e-mail icon</div>Discussion notifications</p>
+	<p><a id="subscriptionSignIn" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions">Sign in</a> to display notification settings.</p>
+
+<div id="subscriptionSettings" class="modal" style="display:none; width: 250px;">
+    <div class="row">
+        <h2>Discussion Notifications <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Keep up with what's going on in this project's discussions</p>
+        <div class="ModalDialogContentBody">
+            <div style="margin-top: 2px; margin-bottom: 5px;">
+                Email me 
+                <span id="changeEmailAddressLink">
+                    <a target="_blank"  href="https://www.codeplex.com/site/users/update">
+                        (change e-mail address)
+                    </a>
+                </span>
+            </div>
+            <ul class="button_wrap">
+                <li>
+                    <input type="radio" id="EmailSubscription_EachNewIssue" name="EmailSubscriptionTypeList" value="1" onclick="$('#stopNotificationsDiv').hide()"  />
+                    <label for="EmailSubscription_EachNewIssue">Each new discussion or response as they come in</label>
+                </li>
+                <li>
+                    <input type="radio" id="EmailSubscription_DailyDigest" name="EmailSubscriptionTypeList" value="2" onclick="$('#stopNotificationsDiv').hide()"  />
+                    <label for="EmailSubscription_DailyDigest">A daily digest (summary) of new discussions and responses</label>
+                </li>
+                <li id="unsubscribeSection" style="display:none;"><input type="radio" id="EmailSubscription_Unsubscribe" name="EmailSubscriptionTypeList" value="0" onclick="$('#stopNotificationsDiv').show()" checked="checked" /><label for="EmailSubscription_Unsubscribe">Unsubscribe</label></li>
+            </ul>
+            
+            <div class="ClearBoth"></div>
+            <div id="stopNotificationsDiv" style="display:none;overflow:hidden;margin-top:4px;" class="EmailSubscriptionCheck">
+                <div style="float: left; width:24px;">
+                <input id="StopNotificationsCheckBox" name="StopNotificationsCheckBox" type="checkbox" value="true" /><input name="StopNotificationsCheckBox" type="hidden" value="false" />
+                </div>
+                <div style="float: left;">
+                <label for="StopNotificationsCheckBox">
+                    Also stop notifications for <i>individual</i> issue(s) I subscribed to.
+                    <img id="unsubscribeToolTipImage" src="http://download-codeplex.sec.s-msft.com/Images/v21066/helpicon.png" onmouseover="showUnsubscribeToolTip()" onmouseout="hideUnsubscribeToolTip()" />
+                </label>
+                </div>
+                <div id="unsubscribeToolTip" style="display: none;">
+                Besides your subscription to all discussions, you have also chosen to be notified for <b>0</b> individual discussions, including:<ul></ul> Check the box if you wish to stop receiving emails about these <b>0</b> discussions as well.
+                </div>
+            </div>
+        </div>
+        <div class="modal_buttons">
+            <input id="CancelButton" type="button" value="Cancel" class="cancel" onclick="return closeSubscriptionDialog()"/>
+            <input id="SaveButton" type="button" value="Save" class="ok" onclick="saveSubscriptionData();" />
+        </div>
+        <div class="ClearBoth"></div>
+    </div>
+    <input type="hidden" id="callingComponent"/>
+</div>
+
+<input type="hidden" name="SelectedSubscriptionItem" value="0" />
+
+<script>
+    $(document).ready(function () {
+        adjustEmailLinkPlacement();
+        adjustSubscriptionLinkPlacement();
+    });
+</script>
+
+</div>
+</div>
+
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

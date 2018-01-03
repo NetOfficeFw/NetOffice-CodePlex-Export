@@ -1,0 +1,760 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Distributing Office AddIn with NetOffice in a single .DLL</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/569880?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/569880?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="NhVa4laDEtYaRZCFQ-S6Jc2C8YUtcWQrC9wq1wPa7Ik2LqsqzO2soKtYFtGF9yB9WuBdiIgfdVhxVP675LdRQrkuG901SGnPlGzcVKRfYIPRCgqaYdaiXb3g1l6T8iVhUl8s1g2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken2518730a9-e71b-42f6-a1ce-749f72b3c61b" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:56 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f569880" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="4082d931-9e58-40de-abf5-b5c09ee49ff8">
+                
+                    <script class="options" defer="defer" id="4082d931-9e58-40de-abf5-b5c09ee49ff8" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Distributing Office AddIn with NetOffice in a single .DLL
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:569880]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="06239daf-8407-44bf-8f9a-97a831484b1a">
+    <script class="options" defer="defer" id="06239daf-8407-44bf-8f9a-97a831484b1a" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/569880","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1313685">
+    <td id="PostDetailsCell_1313685" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1313685"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/chadknudson">chadknudson</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/15/2014 6:18:11 PM" LocalTimeTicks="1413422291">Oct 15, 2014 at 6:18 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1313685" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="I&#32;would&#32;like&#32;to&#32;distribute&#32;my&#32;addin&#32;in&#32;a&#32;single&#32;.DLL&#32;file&#32;instead&#32;of&#32;having&#32;to&#32;create&#32;an&#32;installer&#32;that&#32;puts&#32;in&#32;all&#32;of&#32;the&#32;necessary&#32;NetOffice&#32;.DLL&#32;files&#32;--&#32;effectively&#32;giving&#32;me&#32;a&#32;file&#32;copy&#32;deployment.&#32;&#13;&#10;&#13;&#10;I&#32;built&#32;out&#32;my&#32;solution&#32;with&#32;NetOffice&#32;and&#32;all&#32;worked&#32;great&#33;&#32;&#32;I&#32;modified&#32;it&#32;to&#32;combine&#32;the&#32;dependent&#32;DLLs&#32;with&#32;my&#32;addin&#39;s&#32;DLL&#32;and&#32;now&#32;I&#39;m&#32;not&#32;getting&#32;called&#32;for&#32;the&#32;document&#32;before&#32;save&#32;event&#32;in&#32;Word.&#32;&#32;Under&#32;the&#32;debugger&#32;I&#32;am&#32;getting&#32;called&#32;for&#32;the&#32;initialization&#32;that&#32;sets&#32;up&#32;the&#32;event&#32;handler,&#32;and&#32;I&#32;also&#32;get&#32;called&#32;in&#32;the&#32;shutdown&#32;process,&#32;but&#32;the&#32;document&#32;before&#32;save&#32;event&#32;isn&#39;t&#32;firing.&#32;&#32;I&#32;didn&#39;t&#32;make&#32;any&#32;other&#32;changes&#32;to&#32;the&#32;project&#32;other&#32;than&#32;using&#32;ILMerge&#32;to&#32;pack&#32;the&#32;NetOffice&#32;DLLs&#32;into&#32;my&#32;DLL.&#13;&#10;&#13;&#10;The&#32;addin&#32;I&#32;am&#32;playing&#32;around&#32;with&#32;here&#32;is&#32;a&#32;little&#32;utility&#32;that&#32;helps&#32;template&#32;developers&#32;utilize&#32;revision&#32;control&#32;systems.&#32;&#32;When&#32;the&#32;user&#32;saves&#32;the&#32;document&#32;template&#32;in&#32;Word,&#32;the&#32;addin&#32;creates&#32;a&#32;folder&#32;beneath&#32;the&#32;template&#32;file&#32;and&#32;serializes&#32;all&#32;of&#32;the&#32;forms,&#32;classes,&#32;and&#32;code&#32;modules&#32;to&#32;independent&#32;files&#32;so&#32;that&#32;revision&#32;control&#32;systems&#32;can&#32;manage&#32;those&#32;details&#32;at&#32;a&#32;granular&#32;level.">
+        <div class="markDownOutput ">I would like to distribute my addin in a single .DLL file instead of having to create an installer that puts in all of the necessary NetOffice .DLL files -- effectively giving me a file copy deployment.
+<br>
+<br>
+I built out my solution with NetOffice and all worked great! I modified it to combine the dependent DLLs with my addin's DLL and now I'm not getting called for the document before save event in Word. Under the debugger I am getting called for the initialization
+ that sets up the event handler, and I also get called in the shutdown process, but the document before save event isn't firing. I didn't make any other changes to the project other than using ILMerge to pack the NetOffice DLLs into my DLL.
+<br>
+<br>
+The addin I am playing around with here is a little utility that helps template developers utilize revision control systems. When the user saves the document template in Word, the addin creates a folder beneath the template file and serializes all of the forms,
+ classes, and code modules to independent files so that revision control systems can manage those details at a granular level.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1313685" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1313802">
+    <td id="PostDetailsCell_1313802" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1313802"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/16/2014 3:55:17 AM" LocalTimeTicks="1413456917">Oct 16, 2014 at 3:55 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1313802" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="no&#32;idea&#32;about&#32;your&#32;single&#32;demployment&#32;concept&#40;i&#32;like&#32;the&#32;idea,&#32;of&#32;course&#32;because&#32;im&#32;a&#32;developer&#41;....&#32;in&#32;fact&#58;&#13;&#10;what&#32;i&#39;m&#32;understand&#32;so&#32;far&#32;is&#32;as&#32;follows&#58;&#13;&#10;&#13;&#10;-&#32;your&#32;solution&#32;works&#32;fine&#32;so&#32;far&#32;on&#32;prod&#32;system&#13;&#10;-&#32;now&#32;you&#32;add&#47;delete&#47;change&#32;some&#32;reference&#32;assemblies&#32;and&#32;the&#32;before&#32;save&#32;event&#32;stop&#32;working&#40;on&#32;same&#32;system,&#32;same&#32;office&#32;version&#41;&#13;&#10;&#13;&#10;true&#63;&#32;&#40;try&#32;MS&#32;FusionLog&#32;in&#32;this&#32;case,&#32;becaue&#32;a&#32;refrence&#32;can&#39;t&#32;resolve&#32;and&#32;the&#32;runtime&#32;stops&#32;working&#41;&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;">
+        <div class="markDownOutput ">no idea about your single demployment concept(i like the idea, of course because im a developer).... in fact:
+<br>
+what i'm understand so far is as follows:<br>
+<ul>
+<li>your solution works fine so far on prod system </li><li>now you add/delete/change some reference assemblies and the before save event stop working(on same system, same office version)<br>
+</li></ul>
+true? (try MS FusionLog in this case, becaue a refrence can't resolve and the runtime stops working)
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1313802" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1314014">
+    <td id="PostDetailsCell_1314014" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1314014"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/chadknudson">chadknudson</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/16/2014 4:42:17 PM" LocalTimeTicks="1413502937">Oct 16, 2014 at 4:42 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1314014" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="I&#32;work&#32;primarily&#32;with&#32;large&#32;enterprise&#32;customers&#32;in&#32;my&#32;day-to-day&#32;business.&#32;&#32;I&#32;have&#32;a&#32;software&#32;company&#32;that&#32;provide&#32;document&#32;automation&#32;solutions&#32;to&#32;large&#32;banks.&#32;&#32;In&#32;these&#32;environments,&#32;I&#32;often&#32;face&#32;some&#32;pretty&#32;strict&#32;constraints&#32;over&#32;how&#32;solutions&#32;can&#32;be&#32;deployed.&#32;&#32;I&#32;have&#32;to&#32;have&#32;a&#32;deployment&#32;procedure&#32;that&#32;does&#32;not&#32;require&#32;administrative&#32;access&#32;on&#32;the&#32;PC.&#32;&#32;The&#32;bank&#8217;s&#32;IT&#32;departments&#32;are&#32;very&#32;risk&#32;aversive&#32;so&#32;they&#32;try&#32;to&#32;thwart&#32;any&#32;possible&#32;entry&#32;points&#32;in&#32;their&#32;system&#32;that&#32;could&#32;be&#32;potential&#32;security&#32;breaches.&#13;&#10;&#13;&#10;I&#32;can&#32;try&#32;to&#32;explain&#32;in&#32;greater&#32;detail.&#32;&#32;I&#32;created&#32;a&#32;Word&#32;AddIn&#32;.DLL&#32;file&#32;using&#32;NetOffice&#32;and&#32;with&#32;a&#32;traditional&#32;deployment,&#32;everything&#32;worked&#32;properly.&#32;&#32;The&#32;solution&#32;requires&#32;my&#32;DLL&#32;plus&#32;the&#32;dependent&#32;NetOffice&#32;DLLs&#32;so&#32;I&#32;ended&#32;up&#32;requiring&#32;5&#32;DLLs&#32;to&#32;install&#32;for&#32;this&#32;to&#32;work&#32;properly&#58;&#13;&#10;&#13;&#10;&#9;WordSourceControl.dll&#9;&#60;--&#32;My&#32;Word&#32;AddIn&#32;DLL&#13;&#10;&#9;NetOffice.dll&#13;&#10;&#9;OfficeApi.dll&#13;&#10;&#9;WordApi.dll&#13;&#10;&#9;VBIDEApi.dll&#13;&#10;&#13;&#10;Upon&#32;creating&#32;the&#32;system&#32;I&#32;wrote&#32;up&#32;a&#32;short&#32;little&#32;setup&#32;program&#32;using&#32;Inno&#32;Setup.&#32;&#32;This&#32;setup&#32;program&#32;installed&#32;my&#32;DLL&#32;along&#32;with&#32;the&#32;four&#32;NetOffice&#32;dependent&#32;DLLs.&#32;&#32;I&#32;tested&#32;the&#32;system&#32;out&#32;on&#32;several&#32;virtual&#32;machines&#32;running&#32;different&#32;versions&#32;of&#32;Office&#32;&#40;2007,&#32;2010,&#32;2013&#41;&#32;and&#32;everything&#32;worked&#32;great.&#13;&#10;&#13;&#10;I&#32;decided&#32;that&#32;I&#32;would&#32;also&#32;like&#32;to&#32;support&#32;a&#32;single&#32;file&#32;&#47;&#32;copy&#32;file&#32;deployment.&#32;&#32;This&#32;would&#32;enable&#32;the&#32;add&#32;in&#32;to&#32;be&#32;installed&#32;just&#32;by&#32;being&#32;copying&#32;the&#32;single&#32;.DLL&#32;file&#32;into&#32;the&#32;user&#8217;s&#32;Word&#32;STARTUP&#32;folder&#32;C&#58;&#92;Users&#92;&#123;username&#125;&#92;AppData&#92;Roaming&#92;Microsoft&#92;Word&#92;STARTUP.&#32;&#32;When&#32;Word&#32;encounters&#32;DLLs&#32;in&#32;that&#32;folder,&#32;it&#32;will&#32;attempt&#32;to&#32;load&#32;them&#32;as&#32;a&#32;global&#32;addin.&#13;&#10;&#13;&#10;I&#32;added&#32;ILMerge&#32;to&#32;my&#32;build&#32;process&#32;&#40;there&#8217;s&#32;a&#32;NuGet&#32;package&#32;that&#32;makes&#32;it&#32;really&#32;easy&#32;to&#32;do.&#41;&#32;&#32;As&#32;part&#32;of&#32;that&#32;process&#32;you&#32;simply&#32;list&#32;the&#32;assemblies&#32;that&#32;you&#32;want&#32;to&#32;combine&#58;&#13;&#10;&#13;&#10;&#35;&#32;this&#32;file&#32;contains&#32;the&#32;partial&#32;list&#32;of&#32;the&#32;merged&#32;assemblies&#32;in&#32;the&#32;merge&#32;order&#13;&#10;&#35;&#32;you&#32;can&#32;fill&#32;it&#32;from&#32;the&#32;obj&#92;CONFIG&#92;PROJECT.ilmerge&#32;generated&#32;on&#32;every&#32;build&#13;&#10;&#35;&#32;and&#32;finetune&#32;merge&#32;order&#32;to&#32;your&#32;satisfaction&#13;&#10;WordSourceControl.dll&#13;&#10;NetOffice.dll&#13;&#10;OfficeApi.dll&#13;&#10;VBIDEApi.dll&#13;&#10;WordApi.dll&#13;&#10;&#13;&#10;At&#32;the&#32;end&#32;of&#32;the&#32;build&#32;process,&#32;ILmerge&#32;is&#32;invoked&#32;to&#32;combine&#32;all&#32;of&#32;the&#32;assemblies&#32;into&#32;a&#32;single&#32;assembly&#32;&#40;the&#32;first&#32;one&#32;listed&#32;serves&#32;as&#32;the&#32;target&#32;assembly.&#41;&#32;&#32;So&#32;far,&#32;so&#32;good.&#32;&#32;I&#32;looked&#32;at&#32;the&#32;generated&#32;assembly&#32;and&#32;it&#32;all&#32;looks&#32;to&#32;be&#32;there.&#13;&#10;&#13;&#10;When&#32;I&#32;run&#32;the&#32;AddIn&#32;in&#32;Word,&#32;however,&#32;I&#32;am&#32;no&#32;longer&#32;receiving&#32;the&#32;BeforeDocumentSave&#32;event.&#13;&#10;&#13;&#10;In&#32;the&#32;debugger,&#32;I&#32;traced&#32;through&#32;the&#32;execution&#32;and&#32;found&#32;that&#32;the&#32;AddIn&#32;starts&#32;up&#32;correctly.&#32;&#32;The&#32;AddIn&#32;constructor&#32;gets&#32;hit,&#32;I&#32;setup&#32;the&#32;event&#32;handlers&#32;for&#32;OnConnection&#32;and&#32;OnDisconnection&#32;and&#32;do&#32;in&#32;fact&#32;receive&#32;the&#32;events&#32;for&#32;both&#32;of&#32;those.&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;public&#32;class&#32;ThisAddin&#32;&#58;&#32;COMAddin&#13;&#10;&#32;&#32;&#32;&#32;&#123;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;WordSourceControl&#32;wordSourceControl&#32;&#61;&#32;null&#59;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public&#32;ThisAddin&#40;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnConnection&#32;&#43;&#61;&#32;new&#32;OnConnectionEventHandler&#40;OnConnectionEvent&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this.OnDisconnection&#32;&#43;&#61;&#32;new&#32;OnDisconnectionEventHandler&#40;OnDisconnectionEvent&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;private&#32;void&#32;OnConnectionEvent&#40;object&#32;Application,&#32;ext_ConnectMode&#32;ConnectMode,&#32;object&#32;AddInInst,&#32;ref&#32;Array&#32;custom&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AutoDocsCore.WordApp&#32;&#61;&#32;&#40;Word.Application&#41;this.Application&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;wordSourceControl&#32;&#61;&#32;new&#32;WordSourceControl&#40;AutoDocsCore.WordApp&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;wordSourceControl.Initialize&#40;&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;private&#32;void&#32;OnDisconnectionEvent&#40;ext_DisconnectMode&#32;RemoveMode,&#32;ref&#32;Array&#32;custom&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;wordSourceControl.Shutdown&#40;&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;wordSourceControl&#32;&#61;&#32;null&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AutoDocsCore.WordApp&#32;&#61;&#32;null&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#13;&#10;&#32;&#32;&#32;&#32;&#125;&#13;&#10;&#13;&#10;You&#8217;ll&#32;see&#32;that&#32;in&#32;the&#32;OnConnection&#32;event&#32;I&#8217;m&#32;creating&#32;my&#32;WordSourceCountrol&#32;object&#32;and&#32;calling&#32;into&#32;its&#32;Initialize&#32;method,&#32;which&#32;only&#32;serves&#32;to&#32;set&#32;up&#32;the&#32;event&#32;handler&#32;for&#32;the&#32;DocumentBeforeSave&#32;event&#58;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public&#32;void&#32;Initialize&#40;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;application.DocumentBeforeSaveEvent&#32;&#43;&#61;&#32;new&#32;Word.Application_DocumentBeforeSaveEventHandler&#40;DocumentBeforeSaveEvent&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#13;&#10;&#13;&#10;The&#32;issue&#32;that&#32;I&#8217;m&#32;running&#32;into&#32;is&#32;that&#32;I&#32;never&#32;receive&#32;the&#32;DocumentBeforeSave&#32;event.&#13;&#10;&#13;&#10;I&#32;actually&#32;made&#32;no&#32;code&#32;changes&#32;to&#32;the&#32;project&#32;from&#32;the&#32;multi-file&#32;deployment.&#32;&#32;The&#32;only&#32;thing&#32;I&#32;did&#32;was&#32;pack&#32;the&#32;assemblies&#32;into&#32;a&#32;single&#32;.DLL&#32;assembly&#32;which&#32;normally&#32;works&#32;fine.&#32;&#32;&#13;&#10;&#13;&#10;When&#32;writing&#32;.EXE&#32;files&#32;I&#32;will&#32;sometimes&#32;pack&#32;the&#32;dependent&#32;assemblies&#32;as&#32;embedded&#32;resources&#32;and&#32;add&#32;a&#32;resolver&#32;to&#32;load&#32;them&#32;up.&#32;That&#32;way&#32;I&#32;can&#32;have&#32;an&#32;executable&#32;that&#32;doesn&#8217;t&#32;require&#32;a&#32;setup&#32;program&#32;at&#32;all&#32;&#58;-&#41;&#13;&#10;&#13;&#10;I&#8217;m&#32;not&#32;sure&#32;if&#32;I&#32;was&#32;better&#32;able&#32;to&#32;describe&#32;this&#32;to&#32;you&#32;but&#32;I&#32;thought&#32;I&#32;would&#32;give&#32;it&#32;a&#32;try.&#32;&#32;I&#32;will&#32;check&#32;in&#32;with&#32;FusionLog&#32;to&#32;see&#32;if&#32;that&#32;shows&#32;anything&#32;out&#32;of&#32;the&#32;ordinary.&#13;&#10;&#13;&#10;Chad&#13;&#10;">
+        <div class="markDownOutput ">I work primarily with large enterprise customers in my day-to-day business. I have a software company that provide document automation solutions to large banks. In these environments, I often face some pretty strict constraints over how solutions can be
+ deployed. I have to have a deployment procedure that does not require administrative access on the PC. The bankâ€™s IT departments are very risk aversive so they try to thwart any possible entry points in their system that could be potential security breaches.
+<br>
+<br>
+I can try to explain in greater detail. I created a Word AddIn .DLL file using NetOffice and with a traditional deployment, everything worked properly. The solution requires my DLL plus the dependent NetOffice DLLs so I ended up requiring 5 DLLs to install
+ for this to work properly:<br>
+<pre><code>WordSourceControl.dll   &lt;-- My Word AddIn DLL
+NetOffice.dll
+OfficeApi.dll
+WordApi.dll
+VBIDEApi.dll
+</code></pre>
+Upon creating the system I wrote up a short little setup program using Inno Setup. This setup program installed my DLL along with the four NetOffice dependent DLLs. I tested the system out on several virtual machines running different versions of Office (2007,
+ 2010, 2013) and everything worked great. <br>
+<br>
+I decided that I would also like to support a single file / copy file deployment. This would enable the add in to be installed just by being copying the single .DLL file into the userâ€™s Word STARTUP folder C:\Users{username}\AppData\Roaming\Microsoft\Word\STARTUP.
+ When Word encounters DLLs in that folder, it will attempt to load them as a global addin.
+<br>
+<br>
+I added ILMerge to my build process (thereâ€™s a NuGet package that makes it really easy to do.) As part of that process you simply list the assemblies that you want to combine:<br>
+<h1>this file contains the partial list of the merged assemblies in the merge order</h1>
+<h1>you can fill it from the obj\CONFIG\PROJECT.ilmerge generated on every build</h1>
+<h1>and finetune merge order to your satisfaction</h1>
+WordSourceControl.dll <br>
+NetOffice.dll <br>
+OfficeApi.dll <br>
+VBIDEApi.dll <br>
+WordApi.dll <br>
+<br>
+At the end of the build process, ILmerge is invoked to combine all of the assemblies into a single assembly (the first one listed serves as the target assembly.) So far, so good. I looked at the generated assembly and it all looks to be there.
+<br>
+<br>
+When I run the AddIn in Word, however, I am no longer receiving the BeforeDocumentSave event.
+<br>
+<br>
+In the debugger, I traced through the execution and found that the AddIn starts up correctly. The AddIn constructor gets hit, I setup the event handlers for OnConnection and OnDisconnection and do in fact receive the events for both of those.<br>
+<pre><code>public class ThisAddin : COMAddin
+{
+    WordSourceControl wordSourceControl = null;
+
+    public ThisAddin()
+    {
+        this.OnConnection &#43;= new OnConnectionEventHandler(OnConnectionEvent);
+        this.OnDisconnection &#43;= new OnDisconnectionEventHandler(OnDisconnectionEvent);
+    }
+
+    private void OnConnectionEvent(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)
+    {
+        AutoDocsCore.WordApp = (Word.Application)this.Application;
+        wordSourceControl = new WordSourceControl(AutoDocsCore.WordApp);
+        wordSourceControl.Initialize();
+    }
+
+    private void OnDisconnectionEvent(ext_DisconnectMode RemoveMode, ref Array custom)
+    {
+        wordSourceControl.Shutdown();
+        wordSourceControl = null;
+        AutoDocsCore.WordApp = null;
+    }
+}
+</code></pre>
+Youâ€™ll see that in the OnConnection event Iâ€™m creating my WordSourceCountrol object and calling into its Initialize method, which only serves to set up the event handler for the DocumentBeforeSave event:<br>
+<pre><code>    public void Initialize()
+    {
+        application.DocumentBeforeSaveEvent &#43;= new Word.Application_DocumentBeforeSaveEventHandler(DocumentBeforeSaveEvent);
+    }
+</code></pre>
+The issue that Iâ€™m running into is that I never receive the DocumentBeforeSave event.
+<br>
+<br>
+I actually made no code changes to the project from the multi-file deployment. The only thing I did was pack the assemblies into a single .DLL assembly which normally works fine.<br>
+<br>
+When writing .EXE files I will sometimes pack the dependent assemblies as embedded resources and add a resolver to load them up. That way I can have an executable that doesnâ€™t require a setup program at all :-)
+<br>
+<br>
+Iâ€™m not sure if I was better able to describe this to you but I thought I would give it a try. I will check in with FusionLog to see if that shows anything out of the ordinary.
+<br>
+<br>
+Chad<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1314014" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="08d13559-4c74-4238-8aec-811acbfe74f1">
+    <script class="options" defer="defer" id="08d13559-4c74-4238-8aec-811acbfe74f1" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_179ac2e4-7dbb-4bf3-b38e-f854b0fed549">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_92ae8899-e84d-4402-a253-d60bc8de6c60">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_179ac2e4-7dbb-4bf3-b38e-f854b0fed549" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_92ae8899-e84d-4402-a253-d60bc8de6c60" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/569880';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

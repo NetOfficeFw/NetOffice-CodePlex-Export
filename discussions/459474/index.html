@@ -1,0 +1,1268 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Deploying Outlook Addin to LOCAL_MACHINE</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/459474?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/459474?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="Akyhvk69IwiXyD1-VAz6GYR4gLJHPbTMbAxMOPlpATi0eEp1mitznJtc8UEVSkHaJwFtiE1DDws5ALzb97pdqmBvql-oS7_COv_opaoNZXUi5kpkpBsDZjNplZbYh6kevO9KbQ2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken27a686e9f-3b6b-41a9-9a8a-437dd3c43bb9" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:56 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f459474" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="1cc58e45-a67c-43cd-a00e-dac81621c67a">
+                
+                    <script class="options" defer="defer" id="1cc58e45-a67c-43cd-a00e-dac81621c67a" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Deploying Outlook Addin to LOCAL_MACHINE
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:459474]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="c0079442-f0c3-4b51-94d1-b8b3f34bb7b5">
+    <script class="options" defer="defer" id="c0079442-f0c3-4b51-94d1-b8b3f34bb7b5" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/459474","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1100153">
+    <td id="PostDetailsCell_1100153" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1100153"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/andyluiz">andyluiz</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/27/2013 4:14:33 PM" LocalTimeTicks="1380323673">Sep 27, 2013 at 4:14 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1100153" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="First&#32;I&#32;want&#32;to&#32;say&#32;that&#32;it&#32;is&#32;a&#32;great&#32;project.&#13;&#10;&#13;&#10;I&#39;m&#32;developing&#32;an&#32;Outlook&#32;addin&#32;for&#32;archiving&#32;outgoing&#32;mails.&#13;&#10;It&#32;is&#32;installed&#32;by&#32;a&#32;software&#32;distributor&#32;system,&#32;so&#32;I&#32;need&#32;to&#32;install&#32;for&#32;all&#32;users&#32;on&#32;a&#32;target&#32;maschine.&#13;&#10;My&#32;try&#58;&#13;&#10;&#13;&#10;...&#13;&#10;&#91;COMAddin&#40;&#34;add1&#32;Addin&#34;,&#32;&#34;This&#32;is&#32;the&#32;DMS&#32;Addin&#32;V.0.1.5.&#34;,&#32;3&#41;&#93;&#13;&#10;&#32;&#32;&#32;&#32;&#91;GuidAttribute&#40;&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;&#41;,&#13;&#10;&#32;&#32;&#32;&#32;ProgId&#40;&#34;addins.dmsidx&#34;&#41;&#93;&#13;&#10;&#32;&#32;&#32;&#32;&#91;RegistryLocation&#40;RegistrySaveLocation.LocalMachine&#41;&#93;&#13;&#10;&#32;&#32;&#32;&#32;public&#32;class&#32;add1&#32;&#58;&#32;COMAddin&#32;...&#13;&#10;&#13;&#10;After&#32;registration&#40;with&#32;regasm&#41;,&#32;a&#32;key&#32;is&#32;generated&#32;&#58;&#32;CURRENT_USER&#92;Software&#92;Microsoft&#92;Office&#92;Outlook&#92;AddIns&#92;addins.dmsidx.&#32;Except&#32;the&#32;standard&#32;value&#32;nothing&#32;in&#32;it.&#13;&#10;Note&#32;that&#32;it&#32;is&#32;under&#32;CURRENT_USER.&#32;Under&#32;LOCAL_MACHINE&#32;is&#32;no&#32;key&#32;generated.&#13;&#10;&#13;&#10;With&#32;&#32;&#91;RegistryLocation&#40;RegistrySaveLocation.CurrentUser&#41;&#93;&#32;is&#32;the&#32;addin&#32;registered&#32;under&#32;the&#32;same&#32;key&#32;correctly&#32;and&#32;functioning&#32;properly.&#32;Unfortunately,&#32;of&#32;course,&#32;only&#32;for&#32;the&#32;current&#32;user.&#13;&#10;&#13;&#10;The&#32;developer&#32;environment&#32;is&#32;XP&#47;32&#32;but&#32;the&#32;same&#32;effect&#32;occurs&#32;on&#32;a&#32;test&#32;target&#32;machine&#32;with&#32;Win7&#47;64.&#32;NetOffice&#32;version&#32;is&#32;1.6.0.&#13;&#10;&#13;&#10;Does&#32;anyone&#32;have&#32;an&#32;idea&#32;what&#32;is&#32;going&#32;wrong&#63;&#13;&#10;&#13;&#10;Thanks&#32;in&#32;advance&#13;&#10;&#13;&#10;Andr&#225;s">
+        <div class="markDownOutput ">First I want to say that it is a great project. <br>
+<br>
+I'm developing an Outlook addin for archiving outgoing mails. <br>
+It is installed by a software distributor system, so I need to install for all users on a target maschine.
+<br>
+My try: <br>
+<br>
+... <br>
+[COMAddin(&quot;add1 Addin&quot;, &quot;This is the DMS Addin V.0.1.5.&quot;, 3)]<br>
+<pre><code>[GuidAttribute(&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;),
+ProgId(&quot;addins.dmsidx&quot;)]
+[RegistryLocation(RegistrySaveLocation.LocalMachine)]
+public class add1 : COMAddin ...
+</code></pre>
+After registration(with regasm), a key is generated : CURRENT_USER\Software\Microsoft\Office\Outlook\AddIns\addins.dmsidx. Except the standard value nothing in it.
+<br>
+Note that it is under CURRENT_USER. Under LOCAL_MACHINE is no key generated. <br>
+<br>
+With [RegistryLocation(RegistrySaveLocation.CurrentUser)] is the addin registered under the same key correctly and functioning properly. Unfortunately, of course, only for the current user.
+<br>
+<br>
+The developer environment is XP/32 but the same effect occurs on a test target machine with Win7/64. NetOffice version is 1.6.0.
+<br>
+<br>
+Does anyone have an idea what is going wrong? <br>
+<br>
+Thanks in advance <br>
+<br>
+AndrÃ¡s<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1100153" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1100684">
+    <td id="PostDetailsCell_1100684" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1100684"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/29/2013 11:03:44 PM" LocalTimeTicks="1380521024">Sep 29, 2013 at 11:03 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1100684" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="&#32;looks&#32;like&#32;a&#32;bug.&#32;i&#32;want&#32;check&#32;and&#32;fix&#32;this&#32;tomorrow&#33;&#32;&#40;monday&#41;&#32;thanks&#32;for&#32;pointing&#32;this&#32;out.&#32;&#13;&#10;&#13;&#10;&#42;sebastian">
+        <div class="markDownOutput ">looks like a bug. i want check and fix this tomorrow! (monday) thanks for pointing this out.
+<br>
+<br>
+*sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1100684" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1101052">
+    <td id="PostDetailsCell_1101052" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1101052"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/30/2013 9:31:59 PM" LocalTimeTicks="1380601919">Sep 30, 2013 at 9:31 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1101052" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="i&#32;confirm&#32;the&#32;horrible&#32;bug.&#32;i&#32;fix&#32;the&#32;bug&#32;and&#32;add&#32;NetOffice&#32;1.6.1&#32;to&#32;the&#32;download&#32;section.&#32;&#40;upload&#32;is&#32;currently&#32;in&#32;progress&#41;&#13;&#10;its&#32;marked&#32;as&#32;preview&#32;because&#32;its&#32;only&#32;source&#47;assemblies&#47;examples&#47;tutorial&#32;for&#32;.NET&#32;4.&#13;&#10;i&#32;need&#32;few&#32;days&#32;to&#32;create&#32;a&#32;fully&#32;loaded&#32;release&#32;with&#32;all&#32;improvements&#32;and&#32;.net&#32;versions.&#13;&#10;if&#32;you&#32;need&#32;another&#32;.net&#32;version&#32;i&#32;suggest&#32;you&#32;to&#32;replace&#32;the&#32;register&#47;unregisters&#32;methods&#32;with&#32;the&#32;NetOffice&#32;RegisterFunction&#32;attribute&#32;and&#32;the&#32;replace&#32;argument&#32;&#40;tools&#32;addin&#32;-&#32;extended&#32;example&#41;.&#13;&#10;&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">i confirm the horrible bug. i fix the bug and add NetOffice 1.6.1 to the download section. (upload is currently in progress)
+<br>
+its marked as preview because its only source/assemblies/examples/tutorial for .NET 4.
+<br>
+i need few days to create a fully loaded release with all improvements and .net versions.
+<br>
+if you need another .net version i suggest you to replace the register/unregisters methods with the NetOffice RegisterFunction attribute and the replace argument (tools addin - extended example).
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1101052" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1102832">
+    <td id="PostDetailsCell_1102832" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1102832"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/charleslales">charleslales</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/2/2013 5:59:03 PM" LocalTimeTicks="1380761943">Oct 2, 2013 at 5:59 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1102832" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#13;&#10;&#13;&#10;Thanks&#32;for&#32;the&#32;fix,&#32;quiet&#32;same&#32;pb&#32;I&#32;think..&#13;&#10;Due&#32;to&#32;company&#32;security&#32;restriction,&#32;I&#32;have&#32;to&#32;install&#32;with&#32;adm&#32;account..&#32;and&#32;make&#32;it&#32;available&#32;for&#32;all&#32;users.&#13;&#10;COMAddin&#32;examples&#32;work&#32;fine&#32;after&#32;modification&#32;to&#32;Registry.LocalMachine..&#32;but&#32;not&#32;possible&#32;to&#32;get&#32;same&#32;behaviour&#32;from&#32;NetOffice&#32;Tools&#32;ones.&#13;&#10;Tried&#32;to&#32;play&#32;a&#32;bit&#32;with&#32;src&#32;when&#32;modifying&#32;mother&#32;class&#32;NetOffice.PowerPointApi.Tools.COMAddin&#32;RegisterFunction&#32;meth&#13;&#10;&#13;&#10;&#96;&#96;&#96;&#13;&#10;RegistryKey&#32;key&#32;&#61;&#32;Registry.ClassesRoot.CreateSubKey&#40;&#34;CLSID&#92;&#92;&#123;&#34;&#32;&#43;&#32;type.GUID.ToString&#40;&#41;.ToUpper&#40;&#41;&#32;&#43;&#32;&#34;&#125;&#92;&#92;InprocServer32&#92;&#92;&#34;&#32;&#43;&#32;GetAssemblyVersionString&#40;type.Assembly&#41;&#41;&#59;&#13;&#10;&#96;&#96;&#96;&#13;&#10;replaced&#32;by&#13;&#10;&#96;&#96;&#96;&#13;&#10;RegistryKey&#32;key&#32;&#61;&#32;Registry.ClassesRoot.CreateSubKey&#40;&#34;CLSID&#92;&#92;&#123;&#34;&#32;&#43;&#32;type.GUID.ToString&#40;&#41;.ToUpper&#40;&#41;&#32;&#43;&#32;&#34;&#125;&#92;&#92;InprocServer32&#34;&#41;&#59;&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#13;&#10;and&#13;&#10;location&#32;bifurcation&#32;as&#32;follow&#13;&#10;&#96;&#96;&#96;&#13;&#10;RegistryKey&#32;regKeyWord&#32;&#61;&#32;null&#59;&#13;&#10;Registry.ClassesRoot.CreateSubKey&#40;&#64;&#34;CLSID&#92;&#123;&#34;&#32;&#43;&#32;type.GUID.ToString&#40;&#41;.ToUpper&#40;&#41;&#32;&#43;&#32;&#64;&#34;&#125;&#92;Programmable&#34;&#41;&#59;&#13;&#10;if&#32;&#40;location.Value&#32;&#61;&#61;&#32;RegistrySaveLocation.LocalMachine&#41;&#13;&#10;&#123;&#13;&#10;&#9;Registry.LocalMachine.CreateSubKey&#40;_addinOfficeRegistryKey&#32;&#43;&#32;progId.Value&#41;&#59;&#13;&#10;&#9;regKeyWord&#32;&#61;&#32;Registry.LocalMachine.OpenSubKey&#40;_addinOfficeRegistryKey&#32;&#43;&#32;progId.Value,&#32;true&#41;&#59;&#13;&#10;&#125;&#13;&#10;else&#13;&#10;&#123;&#13;&#10;&#9;Registry.CurrentUser.CreateSubKey&#40;_addinOfficeRegistryKey&#32;&#43;&#32;progId.Value&#41;&#59;&#13;&#10;&#9;regKeyWord&#32;&#61;&#32;Registry.CurrentUser.OpenSubKey&#40;_addinOfficeRegistryKey&#32;&#43;&#32;progId.Value,&#32;true&#41;&#59;&#13;&#10;&#125;&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#13;&#10;but..&#32;still&#32;no&#32;good&#32;result.&#13;&#10;Will&#32;check&#32;then&#32;your&#32;fix,&#32;cool&#32;to&#32;find&#32;it&#32;just&#32;at&#32;the&#32;end&#32;of&#32;the&#32;day&#33;&#13;&#10;&#13;&#10;NB&#58;&#32;really&#32;nice&#32;job&#32;this&#32;project&#33;">
+        <div class="markDownOutput ">Hi, <br>
+<br>
+Thanks for the fix, quiet same pb I think.. <br>
+Due to company security restriction, I have to install with adm account.. and make it available for all users.
+<br>
+COMAddin examples work fine after modification to Registry.LocalMachine.. but not possible to get same behaviour from NetOffice Tools ones.
+<br>
+Tried to play a bit with src when modifying mother class NetOffice.PowerPointApi.Tools.COMAddin RegisterFunction meth<br>
+<pre><code>RegistryKey key = Registry.ClassesRoot.CreateSubKey(&quot;CLSID\\{&quot; &#43; type.GUID.ToString().ToUpper() &#43; &quot;}\\InprocServer32\\&quot; &#43; GetAssemblyVersionString(type.Assembly));</code></pre>
+replaced by<br>
+<pre><code>RegistryKey key = Registry.ClassesRoot.CreateSubKey(&quot;CLSID\\{&quot; &#43; type.GUID.ToString().ToUpper() &#43; &quot;}\\InprocServer32&quot;);</code></pre>
+and <br>
+location bifurcation as follow<br>
+<pre><code>RegistryKey regKeyWord = null;
+Registry.ClassesRoot.CreateSubKey(@&quot;CLSID\{&quot; &#43; type.GUID.ToString().ToUpper() &#43; @&quot;}\Programmable&quot;);
+if (location.Value == RegistrySaveLocation.LocalMachine)
+{
+    Registry.LocalMachine.CreateSubKey(_addinOfficeRegistryKey &#43; progId.Value);
+    regKeyWord = Registry.LocalMachine.OpenSubKey(_addinOfficeRegistryKey &#43; progId.Value, true);
+}
+else
+{
+    Registry.CurrentUser.CreateSubKey(_addinOfficeRegistryKey &#43; progId.Value);
+    regKeyWord = Registry.CurrentUser.OpenSubKey(_addinOfficeRegistryKey &#43; progId.Value, true);
+}</code></pre>
+but.. still no good result. <br>
+Will check then your fix, cool to find it just at the end of the day! <br>
+<br>
+NB: really nice job this project!<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1102832" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1102835">
+    <td id="PostDetailsCell_1102835" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1102835"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/2/2013 6:14:54 PM" LocalTimeTicks="1380762894">Oct 2, 2013 at 6:14 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1102835" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="not&#32;sure&#32;i&#39;m&#32;understand&#32;the&#32;problem..&#13;&#10;you&#32;mean&#32;COMAddin&#32;still&#32;doesnt&#32;create&#32;the&#32;reg&#32;keys&#32;in&#32;local&#32;machine&#63;&#13;&#10;&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">not sure i'm understand the problem.. <br>
+you mean COMAddin still doesnt create the reg keys in local machine? <br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1102835" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1102849">
+    <td id="PostDetailsCell_1102849" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1102849"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/charleslales">charleslales</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/2/2013 6:49:08 PM" LocalTimeTicks="1380764948">Oct 2, 2013 at 6:49 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1102849" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi&#32;Sebastian,&#13;&#10;&#13;&#10;Good&#32;fix&#32;this&#32;1.6.1&#32;modulo&#32;little&#32;modif&#32;to&#32;follow&#32;evolution&#32;of&#32;NetOffice.PowerPointApi.Tools.ITaskPane.OnConnection,&#32;at&#32;least&#32;on&#32;powepoint&#32;examples.&#13;&#10;&#13;&#10;&#34;NetOffice&#32;Tools&#32;-&#32;Simple&#34;,&#32;&#32;NetOfficeTools.SimplePPointCS4.dll,&#32;works&#32;fine...&#32;congrats&#32;&#33;&#13;&#10;&#13;&#10;But&#32;&#34;NetOffice&#32;Tools&#32;-&#32;Extended&#34;,&#32;NetOfficeTools.ExtendedPPointCS4.dll,&#32;&#32;still&#32;doesn&#39;t&#32;&#58;-o&#13;&#10;-&#62;&#32;admin&#32;account&#32;it&#32;is&#32;fine,&#32;task&#32;pane&#32;and&#32;ribbon&#32;with&#32;smilley&#32;are&#32;loaded&#13;&#10;-&#62;&#32;user&#32;account..&#32;not&#32;even&#32;listed&#32;in&#32;COM&#32;add-ins&#32;list&#32;of&#32;PPT..&#13;&#10;&#13;&#10;Sehr&#32;sch&#246;n&#32;Reaktivit&#228;t&#33;&#13;&#10;Charles">
+        <div class="markDownOutput ">Hi Sebastian, <br>
+<br>
+Good fix this 1.6.1 modulo little modif to follow evolution of NetOffice.PowerPointApi.Tools.ITaskPane.OnConnection, at least on powepoint examples.
+<br>
+<br>
+&quot;NetOffice Tools - Simple&quot;, NetOfficeTools.SimplePPointCS4.dll, works fine... congrats !
+<br>
+<br>
+But &quot;NetOffice Tools - Extended&quot;, NetOfficeTools.ExtendedPPointCS4.dll, still doesn't :-o
+<br>
+-&gt; admin account it is fine, task pane and ribbon with smilley are loaded <br>
+-&gt; user account.. not even listed in COM add-ins list of PPT.. <br>
+<br>
+Sehr schÃ¶n ReaktivitÃ¤t! <br>
+Charles<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1102849" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1102859">
+    <td id="PostDetailsCell_1102859" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1102859"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/2/2013 7:15:44 PM" LocalTimeTicks="1380766544">Oct 2, 2013 at 7:15 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1102859" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="oh&#32;yes&#32;i&#32;know,&#32;the&#32;ITaskpane-&#62;OnConnection&#32;has&#32;a&#32;third&#32;argument&#32;Office._CustomTaskpane&#32;parent&#32;because&#32;you&#32;have&#32;set&#32;with&#32;or&#32;height&#47;visible&#32;for&#32;your&#32;panel&#32;control&#32;here&#32;and&#32;think&#32;its&#32;easier&#32;with&#32;these&#32;argument.&#32;its&#32;fixed&#32;in&#32;the&#32;full&#32;release,&#32;i&#32;currently&#32;working&#32;on&#32;it.&#13;&#10;&#13;&#10;i&#32;test&#32;the&#32;machine&#32;key&#32;load&#32;problem&#32;today&#32;and&#32;give&#32;you&#32;request&#32;immediately.&#13;&#10;&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">oh yes i know, the ITaskpane-&gt;OnConnection has a third argument Office._CustomTaskpane parent because you have set with or height/visible for your panel control here and think its easier with these argument. its fixed in the full release, i currently
+ working on it. <br>
+<br>
+i test the machine key load problem today and give you request immediately. <br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1102859" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1102867">
+    <td id="PostDetailsCell_1102867" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1102867"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/charleslales">charleslales</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/2/2013 7:35:29 PM" LocalTimeTicks="1380767729">Oct 2, 2013 at 7:35 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1102867" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#13;&#10;Do&#32;not&#32;worry&#32;Sebastian,&#32;here&#32;in&#32;Bavarian&#32;we&#32;are&#32;already&#32;in&#32;long&#32;we..&#32;then&#32;can&#32;wait&#32;up&#32;to&#32;next&#32;week&#33;&#13;&#10;Another&#32;question..&#32;is&#32;there&#32;a&#32;system&#32;to&#32;install&#32;add-in&#32;just&#32;for&#32;the&#32;current&#32;user,&#32;ie&#32;without&#32;admin&#32;right&#32;&#47;&#32;unable&#32;to&#32;modify&#32;root&#32;registry&#32;key..&#63;&#13;&#10;If&#32;it&#32;is&#32;the&#32;case,&#32;would&#32;it&#32;be&#32;possible&#32;to&#32;pass&#32;as&#32;class&#32;attribute&#32;such&#32;option,&#32;following&#32;registry&#32;location&#32;one&#63;&#13;&#10;Kind&#32;regards,&#13;&#10;Charles">
+        <div class="markDownOutput ">Hi, <br>
+Do not worry Sebastian, here in Bavarian we are already in long we.. then can wait up to next week!
+<br>
+Another question.. is there a system to install add-in just for the current user, ie without admin right / unable to modify root registry key..?
+<br>
+If it is the case, would it be possible to pass as class attribute such option, following registry location one?
+<br>
+Kind regards, <br>
+Charles<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1102867" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1102921">
+    <td id="PostDetailsCell_1102921" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1102921"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/2/2013 9:12:27 PM" LocalTimeTicks="1380773547">Oct 2, 2013 at 9:12 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1102921" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="okay&#32;weils&#32;schon&#32;sp&#228;t&#32;ist&#32;mach&#32;ich&#32;jetzt&#32;in&#32;deutsch&#32;weiter.&#13;&#10;mein&#32;test&#32;f&#252;r&#32;das&#32;extended&#32;sample&#32;ist&#32;wunderbar&#32;verlaufen,&#32;keine&#32;probleme.&#32;die&#32;taskpane&#32;die&#32;du&#32;siehst&#32;kommt&#32;doch&#32;auch&#32;aus&#32;dem&#32;extended&#32;sample.&#32;die&#32;simple&#32;variante&#32;bietet&#32;keine&#32;taskpane&#32;und&#32;auch&#32;keine&#32;ribbon&#32;buttons.&#32;daher&#32;verstehe&#32;ich&#32;jetzt&#32;nicht&#32;so&#32;recht&#32;das&#32;du&#32;meinst&#32;das&#32;extended&#32;sample&#32;wird&#32;nicht&#32;geladen.&#32;scheinbar&#32;ja&#32;doch.&#13;&#10;&#13;&#10;die&#32;frage&#32;nach&#32;den&#32;admin&#32;rechten&#32;und&#32;dem&#32;current&#32;user&#32;kann&#32;ich&#32;aus&#32;dem&#32;kopf&#32;gerade&#32;nicht&#32;beantworten.&#32;es&#32;gibt&#32;ein&#32;deplyoment&#40;.msi&#41;&#32;sample&#32;im&#32;download&#32;bereich&#32;das&#32;dass&#32;assembly&#32;im&#32;gac&#32;registriert&#32;und&#32;msi&#32;die&#32;office&#32;keys&#32;im&#32;current&#32;user&#32;der&#32;office&#32;anwendung&#32;eintragen&#32;l&#228;sst.&#32;ausserdem&#32;&#252;bernimmt&#32;msi&#32;gleich&#32;die&#32;com&#32;registrierung,&#32;ruft&#32;dabei&#32;aber&#32;nicht&#32;die&#32;statischen&#32;register&#32;funktionen&#32;auf&#32;&#40;das&#32;kann&#32;msi&#32;nur&#32;mit&#32;unmanaged&#32;addins&#41;.&#32;wenn&#32;das&#32;ohne&#32;admin&#32;rechte&#32;nicht&#32;klappt&#32;dann&#32;seh&#32;ich&#32;da&#32;auch&#32;keinen&#32;weg.&#32;das&#32;problem&#32;sind&#32;auch&#32;weniger&#32;die&#32;keys&#32;im&#32;current&#32;user&#32;der&#32;office&#32;andwenung&#32;sondern&#32;das&#32;registerieren&#32;des&#32;assemblies&#32;als&#32;systemweite&#32;com&#32;componente&#40;com&#32;kennt&#32;keine&#32;user&#32;einschr&#228;nkungen&#41;&#32;und&#32;fallweise&#32;das&#32;registrieren&#32;des&#32;assemblies&#32;im&#32;GAC.&#13;&#10;&#13;&#10;&#42;sebastian&#13;&#10;&#13;&#10;">
+        <div class="markDownOutput ">okay weils schon spÃ¤t ist mach ich jetzt in deutsch weiter. <br>
+mein test fÃ¼r das extended sample ist wunderbar verlaufen, keine probleme. die taskpane die du siehst kommt doch auch aus dem extended sample. die simple variante bietet keine taskpane und auch keine ribbon buttons. daher verstehe ich jetzt nicht so recht das
+ du meinst das extended sample wird nicht geladen. scheinbar ja doch. <br>
+<br>
+die frage nach den admin rechten und dem current user kann ich aus dem kopf gerade nicht beantworten. es gibt ein deplyoment(.msi) sample im download bereich das dass assembly im gac registriert und msi die office keys im current user der office anwendung eintragen
+ lÃ¤sst. ausserdem Ã¼bernimmt msi gleich die com registrierung, ruft dabei aber nicht die statischen register funktionen auf (das kann msi nur mit unmanaged addins). wenn das ohne admin rechte nicht klappt dann seh ich da auch keinen weg. das problem sind auch
+ weniger die keys im current user der office andwenung sondern das registerieren des assemblies als systemweite com componente(com kennt keine user einschrÃ¤nkungen) und fallweise das registrieren des assemblies im GAC.
+<br>
+<br>
+*sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1102921" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1102939">
+    <td id="PostDetailsCell_1102939" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1102939"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/charleslales">charleslales</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/2/2013 10:25:05 PM" LocalTimeTicks="1380777905">Oct 2, 2013 at 10:25 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1102939" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hum..&#32;sorry&#32;but&#32;not&#32;so&#32;at&#32;ease&#32;in&#32;German..&#32;sounds&#32;interesting&#32;but&#32;would&#32;take&#32;long&#32;to&#32;me&#32;to&#32;translate&#32;everything&#32;and&#32;avoiding&#32;mistakes&#32;&#58;-o&#13;&#10;Kind&#32;regards,&#13;&#10;Charles">
+        <div class="markDownOutput ">Hum.. sorry but not so at ease in German.. sounds interesting but would take long to me to translate everything and avoiding mistakes :-o
+<br>
+Kind regards, <br>
+Charles<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1102939" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1103739">
+    <td id="PostDetailsCell_1103739" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1103739"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/4/2013 6:44:41 PM" LocalTimeTicks="1380937481">Oct 4, 2013 at 6:44 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1103739" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="okay&#32;once&#32;again.&#13;&#10;&#13;&#10;my&#32;test&#32;works&#32;glady.&#32;you&#32;told&#32;me&#32;you&#32;see&#32;the&#32;taskpane&#32;and&#32;the&#32;happy&#32;face&#32;buttons.&#32;this&#32;buttons&#32;and&#32;pane&#32;comes&#32;from&#32;the&#32;extended&#32;sample&#32;and&#32;and&#32;i&#39;m&#32;dont&#32;understand&#32;why&#32;you&#32;say&#32;the&#32;extended&#32;sample&#32;is&#32;not&#32;working&#32;in&#32;office.&#13;&#10;&#13;&#10;about&#32;the&#32;admin&#32;rights&#58;&#13;&#10;not&#32;sure&#32;but&#32;please&#32;try&#32;the&#32;netoffice&#32;msi&#32;deployment&#32;sample&#40;in&#32;the&#32;download&#32;sections,&#32;c&#35;&#32;and&#32;vb&#32;available&#41;.&#32;these&#32;sample&#32;deploy&#32;project&#32;register&#32;the&#32;addin&#32;assemby&#32;in&#32;GAC&#32;and&#32;set&#32;the&#32;office&#32;specific&#32;addin&#32;hive&#32;keys&#32;at&#32;hand.&#40;msi&#32;register&#32;the&#32;addin&#32;for&#32;the&#32;COM&#32;runtime&#32;also&#41;&#32;msi&#32;doesnt&#32;call&#32;the&#32;static&#32;register&#47;unregister&#32;methods&#32;in&#32;your&#32;addin&#40;this&#32;is&#32;only&#32;available&#32;for&#32;unmanaged&#32;addins.&#32;this&#32;is&#32;why&#32;you&#32;have&#32;to&#32;create&#32;the&#32;office&#32;keys&#32;at&#32;hand&#32;in&#32;the&#32;deployment&#32;project&#41;&#32;if&#32;this&#32;is&#32;not&#32;working&#32;you&#32;have&#32;no&#32;chance&#32;to&#32;deploy&#32;an&#32;addin&#32;without&#32;admin&#32;rights.&#32;the&#32;security&#32;issue&#32;is&#32;not&#32;the&#32;office&#32;keys.&#32;as&#32;far&#32;i&#32;know&#32;you&#32;can&#32;modify&#32;the&#32;current&#32;user&#32;hivekey&#32;without&#32;admin&#32;rights.&#32;the&#32;problem&#32;is&#32;to&#32;register&#32;the&#32;addin&#32;as&#32;COM&#32;component&#32;for&#32;the&#32;complete&#32;machine&#40;COM&#32;cant&#32;register&#32;a&#32;component&#32;just&#32;for&#32;the&#32;user&#41;&#32;and&#32;register&#32;the&#32;assembly&#32;in&#32;GAC.&#13;&#10;&#13;&#10;nice&#32;to&#32;know&#58;&#32;&#13;&#10;its&#32;not&#32;nessecary&#32;to&#32;register&#32;an&#32;addin&#32;in&#32;the&#32;global&#32;assembly&#32;cache.&#32;but&#32;if&#32;you&#32;dont&#32;do&#32;that&#32;you&#32;to&#32;create&#32;a&#32;sepific&#32;codebase&#32;entry&#32;in&#32;the&#32;local&#32;machine&#32;registry.&#32;now,&#32;mscorlib&#32;knows&#32;the&#32;location&#32;of&#32;the&#32;assembly.&#32;you&#32;can&#32;do&#32;that&#32;with&#32;regasm&#32;on&#32;you&#32;local&#32;machine&#32;and&#32;the&#32;&#47;codebase&#32;argument&#32;but&#32;of&#32;course&#32;this&#32;not&#32;usable&#32;for&#32;deployment.&#32;what&#32;is&#32;your&#32;deployment&#32;strategy&#63;&#63;&#32;&#32;the&#32;comaddin&#32;base&#32;class&#32;in&#32;NO&#32;try&#32;to&#32;create&#32;the&#32;codebase&#32;machine&#32;in&#32;the&#32;register&#32;method&#32;key&#32;but&#32;of&#32;course&#32;an&#32;exception&#32;occured&#32;without&#32;admin&#32;rights&#40;may&#32;i&#32;can&#32;do&#32;that&#32;better&#32;and&#32;try&#32;do&#32;detect&#32;for&#32;GAC&#32;registration&#47;admin&#32;rights&#32;and&#32;dont&#32;try&#32;to&#32;create&#32;this&#32;key&#41;&#13;&#10;&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">okay once again. <br>
+<br>
+my test works glady. you told me you see the taskpane and the happy face buttons. this buttons and pane comes from the extended sample and and i'm dont understand why you say the extended sample is not working in office.
+<br>
+<br>
+about the admin rights: <br>
+not sure but please try the netoffice msi deployment sample(in the download sections, c# and vb available). these sample deploy project register the addin assemby in GAC and set the office specific addin hive keys at hand.(msi register the addin for the COM
+ runtime also) msi doesnt call the static register/unregister methods in your addin(this is only available for unmanaged addins. this is why you have to create the office keys at hand in the deployment project) if this is not working you have no chance to deploy
+ an addin without admin rights. the security issue is not the office keys. as far i know you can modify the current user hivekey without admin rights. the problem is to register the addin as COM component for the complete machine(COM cant register a component
+ just for the user) and register the assembly in GAC. <br>
+<br>
+nice to know: <br>
+its not nessecary to register an addin in the global assembly cache. but if you dont do that you to create a sepific codebase entry in the local machine registry. now, mscorlib knows the location of the assembly. you can do that with regasm on you local machine
+ and the /codebase argument but of course this not usable for deployment. what is your deployment strategy?? the comaddin base class in NO try to create the codebase machine in the register method key but of course an exception occured without admin rights(may
+ i can do that better and try do detect for GAC registration/admin rights and dont try to create this key)
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1103739" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1106045">
+    <td id="PostDetailsCell_1106045" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1106045"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/charleslales">charleslales</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/10/2013 4:35:36 PM" LocalTimeTicks="1381448136">Oct 10, 2013 at 4:35 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1106045" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#13;&#10;&#13;&#10;Just&#32;a&#32;bit&#32;more&#32;precision&#32;dealing&#32;with&#32;what&#32;is&#32;not&#32;working&#32;to&#32;me.&#13;&#10;Both&#32;NetOffice&#32;ppt&#32;examples&#32;are&#32;deployed&#32;thanks&#32;to&#32;Inno&#32;setup,&#32;one&#32;given&#32;on&#32;this&#32;forum.&#13;&#10;Then&#32;both&#32;addin&#32;are&#32;loaded&#32;and&#32;available&#32;if&#32;I&#32;run&#32;ppt&#32;as&#32;admin,&#32;whereas&#32;just&#32;the&#32;simple&#32;one&#32;is&#32;correctly&#32;loaded&#32;when&#32;ppt&#32;is&#32;launched&#32;as&#32;normal&#32;user.&#13;&#10;As&#32;normal&#32;user&#32;there&#39;s&#32;then&#32;no&#32;taskpane&#32;neither&#32;happy&#32;face&#32;buttons..&#32;&#58;-o&#13;&#10;&#13;&#10;Thanks&#32;for&#32;complementary&#32;info,&#32;will&#32;try&#32;to&#32;understand&#32;them&#32;at&#32;next&#32;coffee&#32;pause&#32;&#59;&#41;&#13;&#10;&#13;&#10;Kind&#32;regards,&#13;&#10;Charles">
+        <div class="markDownOutput ">Hi, <br>
+<br>
+Just a bit more precision dealing with what is not working to me. <br>
+Both NetOffice ppt examples are deployed thanks to Inno setup, one given on this forum.
+<br>
+Then both addin are loaded and available if I run ppt as admin, whereas just the simple one is correctly loaded when ppt is launched as normal user.
+<br>
+As normal user there's then no taskpane neither happy face buttons.. :-o <br>
+<br>
+Thanks for complementary info, will try to understand them at next coffee pause ;)
+<br>
+<br>
+Kind regards, <br>
+Charles<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1106045" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1106304">
+    <td id="PostDetailsCell_1106304" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1106304"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/charleslales">charleslales</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/11/2013 8:46:23 AM" LocalTimeTicks="1381506383">Oct 11, 2013 at 8:46 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1106304" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#13;&#10;&#13;&#10;Deployment&#32;strategy&#32;would&#32;consist&#32;in&#32;providing&#32;to&#32;enduser&#32;the&#32;addin&#32;and&#32;ask&#32;them&#32;to&#32;do&#32;the&#32;installation,&#32;ie&#32;with&#32;limited&#32;rights.&#13;&#10;If&#32;admin&#32;rights&#32;are&#32;needed,&#32;could&#32;still&#32;be&#32;ok..&#32;but&#32;just&#32;for&#32;installation&#32;and&#32;not&#32;for&#32;launching&#32;ppt..&#13;&#10;&#13;&#10;You&#32;gave&#32;me&#32;an&#32;intuition&#32;about&#32;inno&#32;setup&#32;file&#58;&#32;in&#32;the&#32;example&#32;given&#32;in&#32;the&#32;forum&#32;you&#32;could&#32;add&#32;&#34;PrivilegesRequired&#34;&#32;param&#32;to&#32;let&#32;user&#32;go&#32;through&#32;the&#32;installation&#32;process.&#32;Here&#32;is&#32;the&#32;complete&#32;file&#32;used&#58;&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#91;Setup&#93;&#13;&#10;AppName&#61;MSPPTExporterAddin&#13;&#10;AppVersion&#61;1.0&#13;&#10;DefaultDirName&#61;&#123;pf&#125;&#92;MSPPTExporterAddin&#13;&#10;PrivilegesRequired&#61;none&#13;&#10;&#91;Files&#93;&#13;&#10;Source&#58;&#32;bin&#92;Release&#92;NetOfficeTools.ExtendedPPointCS4.dll&#59;&#32;DestDir&#58;&#32;&#123;app&#125;&#13;&#10;Source&#58;&#32;bin&#92;Release&#92;NetOffice.dll&#59;&#32;DestDir&#58;&#32;&#123;app&#125;&#13;&#10;Source&#58;&#32;bin&#92;Release&#92;OfficeApi.dll&#59;&#32;DestDir&#58;&#32;&#123;app&#125;&#13;&#10;Source&#58;&#32;bin&#92;Release&#92;PowerPointApi.dll&#59;&#32;DestDir&#58;&#32;&#123;app&#125;&#13;&#10;Source&#58;&#32;bin&#92;Release&#92;VBIDEApi.dll&#59;&#32;DestDir&#58;&#32;&#123;app&#125;&#13;&#10;&#91;Run&#93;&#13;&#10;Filename&#58;&#32;&#34;&#123;dotnet40&#125;&#92;regasm.exe&#34;&#59;&#32;Parameters&#58;&#32;&#47;register&#32;&#47;codebase&#32;&#47;tlb&#32;NetOfficeTools.ExtendedPPointCS4.dll&#59;&#32;WorkingDir&#58;&#32;&#123;app&#125;&#59;&#32;StatusMsg&#58;&#32;&#34;Registering&#32;Addin.&#34;&#59;&#32;Flags&#58;&#32;runminimized&#13;&#10;&#91;UninstallRun&#93;&#13;&#10;Filename&#58;&#32;&#34;&#123;dotnet40&#125;&#92;regAsm.exe&#34;&#59;&#32;Parameters&#58;&#32;&#47;unregister&#32;NetOfficeTools.ExtendedPPointCS4.dll&#59;&#32;WorkingDir&#58;&#32;&#123;app&#125;&#59;&#32;StatusMsg&#58;&#32;&#34;Unregistering&#32;Addin.&#34;&#59;&#32;Flags&#58;&#32;runminimized&#13;&#10;&#96;&#96;&#96;&#13;&#10;But..&#32;doesn&#39;t&#32;change&#32;the&#32;thing.&#13;&#10;Here&#32;is&#32;a&#32;test&#32;result&#32;tab,&#32;KO&#32;means&#32;that&#32;the&#32;addin&#32;is&#32;not&#32;loaded&#32;&#40;ribbon&#32;Developer&#32;&#62;&#32;Com&#32;addins&#41;&#13;&#10;NB&#58;&#32;3&#32;OK&#32;and&#32;5&#32;KO&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#9;&#9;&#9;installation&#32;admin&#9;&#9;installation&#32;local&#13;&#10;ppt&#32;admin&#9;netoffice&#32;simple&#32;OK&#9;&#9;netoffice&#32;simple&#32;KO&#13;&#10;&#9;&#9;&#9;netoffice&#32;extended&#32;OK&#9;netoffice&#32;extended&#32;KO&#13;&#10;ppt&#32;local&#9;netoffice&#32;simple&#32;OK&#9;&#9;netoffice&#32;simple&#32;KO&#13;&#10;&#9;&#9;&#9;netoffice&#32;extended&#32;KO&#9;netoffice&#32;extended&#32;KO&#13;&#10;&#96;&#96;&#96;&#13;&#10;Kind&#32;regards,&#13;&#10;Charles">
+        <div class="markDownOutput ">Hi, <br>
+<br>
+Deployment strategy would consist in providing to enduser the addin and ask them to do the installation, ie with limited rights.
+<br>
+If admin rights are needed, could still be ok.. but just for installation and not for launching ppt..
+<br>
+<br>
+You gave me an intuition about inno setup file: in the example given in the forum you could add &quot;PrivilegesRequired&quot; param to let user go through the installation process. Here is the complete file used:<br>
+<pre><code>[Setup]
+AppName=MSPPTExporterAddin
+AppVersion=1.0
+DefaultDirName={pf}\MSPPTExporterAddin
+PrivilegesRequired=none
+[Files]
+Source: bin\Release\NetOfficeTools.ExtendedPPointCS4.dll; DestDir: {app}
+Source: bin\Release\NetOffice.dll; DestDir: {app}
+Source: bin\Release\OfficeApi.dll; DestDir: {app}
+Source: bin\Release\PowerPointApi.dll; DestDir: {app}
+Source: bin\Release\VBIDEApi.dll; DestDir: {app}
+[Run]
+Filename: &quot;{dotnet40}\regasm.exe&quot;; Parameters: /register /codebase /tlb NetOfficeTools.ExtendedPPointCS4.dll; WorkingDir: {app}; StatusMsg: &quot;Registering Addin.&quot;; Flags: runminimized
+[UninstallRun]
+Filename: &quot;{dotnet40}\regAsm.exe&quot;; Parameters: /unregister NetOfficeTools.ExtendedPPointCS4.dll; WorkingDir: {app}; StatusMsg: &quot;Unregistering Addin.&quot;; Flags: runminimized</code></pre>
+But.. doesn't change the thing. <br>
+Here is a test result tab, KO means that the addin is not loaded (ribbon Developer &gt; Com addins)
+<br>
+NB: 3 OK and 5 KO<br>
+<pre><code>            installation admin      installation local
+ppt admin   netoffice simple OK     netoffice simple KO
+            netoffice extended OK   netoffice extended KO
+ppt local   netoffice simple OK     netoffice simple KO
+            netoffice extended KO   netoffice extended KO</code></pre>
+Kind regards, <br>
+Charles<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1106304" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1109934">
+    <td id="PostDetailsCell_1109934" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1109934"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/21/2013 12:40:14 PM" LocalTimeTicks="1382384414">Oct 21, 2013 at 12:40 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1109934" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="i&#32;create&#32;NO&#32;1.7&#40;alpha&#32;preview&#41;&#32;&#32;today&#32;with&#32;new&#32;code&#32;and&#32;diagnostics&#40;in&#32;the&#32;download&#32;section&#41;.&#32;i&#32;create&#32;2&#32;new&#32;addin&#32;main&#32;tests&#32;to&#32;see&#32;how&#32;it&#32;works&#32;and&#32;looks&#32;good.&#32;you&#32;want&#32;tryout&#32;this&#32;and&#32;gimme&#32;response.&#32;please&#32;also&#32;let&#32;me&#32;know&#58;&#32;this&#32;works&#32;not&#32;on&#32;your&#32;system&#32;or&#32;the&#32;developer&#32;system&#63;">
+        <div class="markDownOutput ">i create NO 1.7(alpha preview) today with new code and diagnostics(in the download section). i create 2 new addin main tests to see how it works and looks good. you want tryout this and gimme response. please also let me know: this works not on your system
+ or the developer system?<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1109934" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1117092">
+    <td id="PostDetailsCell_1117092" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1117092"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/charleslales">charleslales</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/4/2013 9:08:12 AM" LocalTimeTicks="1383584892">Nov 4, 2013 at 9:08 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1117092" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#13;&#10;&#13;&#10;I&#32;dev&#32;an&#32;addin&#32;&#40;re&#41;offering&#32;PowerPoint&#32;hidden&#32;format&#32;as&#32;html&#32;and&#32;mhtml,&#32;thx&#32;to&#32;your&#32;great&#32;job&#32;it&#32;is&#32;working&#32;fine&#32;on&#32;my&#32;personnal&#32;laptop&#32;&#40;Win7&#32;32bit&#41;.&#13;&#10;But&#32;then,&#32;at&#32;work,&#32;it&#32;is&#32;not&#32;working&#32;so&#32;fine..&#32;WinXP&#32;32bits&#32;with&#32;strong&#32;restriction&#32;on&#32;normal&#32;user.&#13;&#10;The&#32;only&#32;way&#32;to&#32;get&#32;it&#32;working&#32;properly&#32;is&#32;installation&#32;admin&#32;&#47;&#32;ppt&#32;admin..&#32;a&#32;bit&#32;constraining&#32;for&#32;my&#32;colleagues&#32;&#58;-o&#13;&#10;I&#32;should&#32;use&#32;de&#32;diagnostic&#32;tool&#32;to&#32;follow&#32;the&#32;load&#32;process..&#32;but&#32;already&#32;wondering&#32;why&#32;I&#32;don&#39;t&#32;see&#32;my&#32;addin&#32;in&#32;tab&#32;Developer&#32;&#62;&#32;COM&#32;Add-Ins&#32;when&#32;launching&#32;ppt&#32;in&#32;local&#32;mode..&#13;&#10;&#13;&#10;Kind&#32;regards,&#13;&#10;Charles">
+        <div class="markDownOutput ">Hi, <br>
+<br>
+I dev an addin (re)offering PowerPoint hidden format as html and mhtml, thx to your great job it is working fine on my personnal laptop (Win7 32bit).
+<br>
+But then, at work, it is not working so fine.. WinXP 32bits with strong restriction on normal user.
+<br>
+The only way to get it working properly is installation admin / ppt admin.. a bit constraining for my colleagues :-o
+<br>
+I should use de diagnostic tool to follow the load process.. but already wondering why I don't see my addin in tab Developer &gt; COM Add-Ins when launching ppt in local mode..
+<br>
+<br>
+Kind regards, <br>
+Charles<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1117092" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1309962">
+    <td id="PostDetailsCell_1309962" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1309962"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/ehudklein">ehudklein</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/2/2014 5:18:49 PM" LocalTimeTicks="1412295529">Oct 2, 2014 at 5:18 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1309962" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#13;&#10;&#13;&#10;i&#32;have&#32;the&#32;same&#32;issue&#32;as&#32;andyluiz.&#32;I&#32;cant&#32;find&#32;the&#32;1.6.1&#32;download&#32;under&#32;the&#32;downloads&#32;section.&#13;&#10;&#13;&#10;Where&#32;can&#32;i&#32;get&#32;it&#63;&#13;&#10;&#13;&#10;Thanx&#32;for&#32;the&#32;help&#32;and&#32;for&#32;this&#32;great&#32;project.">
+        <div class="markDownOutput ">Hi, <br>
+<br>
+i have the same issue as andyluiz. I cant find the 1.6.1 download under the downloads section.
+<br>
+<br>
+Where can i get it? <br>
+<br>
+Thanx for the help and for this great project.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1309962" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1310410">
+    <td id="PostDetailsCell_1310410" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1310410"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/4/2014 6:22:06 AM" LocalTimeTicks="1412428926">Oct 4, 2014 at 6:22 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1310410" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="This&#32;is&#32;a&#32;known&#32;NO&#32;bug&#32;specialy&#32;on&#32;64Bit&#32;systems&#32;&#32;&#58;&#40;&#32;&#32;&#32;I&#32;suggest&#32;you&#32;as&#32;hotfix&#32;to&#32;overwrite&#32;the&#32;register&#32;methods&#32;and&#32;create&#32;the&#32;reg&#32;keys&#32;at&#32;hand.&#32;I&#39;m&#32;very&#32;very&#32;sorry&#32;&#58;&#40;&#13;&#10;No&#32;idea&#32;how&#32;this&#32;happen&#32;&#58;&#40;&#32;but&#32;i&#32;want&#32;fix&#32;this.&#13;&#10;&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">This is a known NO bug specialy on 64Bit systems :( I suggest you as hotfix to overwrite the register methods and create the reg keys at hand. I'm very very sorry :(
+<br>
+No idea how this happen :( but i want fix this. <br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1310410" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="176b658c-414f-4923-bbb8-9330b3671254">
+    <script class="options" defer="defer" id="176b658c-414f-4923-bbb8-9330b3671254" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_2f4c9b20-005f-448e-9b3f-a04880a3eb1c">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_1b0b6f2e-318b-4ade-869b-ef44d77e61a5">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_2f4c9b20-005f-448e-9b3f-a04880a3eb1c" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_1b0b6f2e-318b-4ade-869b-ef44d77e61a5" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/459474';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,758 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - ProcessId  </title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/642048?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/642048?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="eLHtSXNu8rR1HujD64Ovxwrmiq7aqQU2fhisXAozKIMd5pRW-nGs0XKEgEavdHWJ_zWUZw5QgHBcj04eX8tiqBDyGJEj3QaNn-EkMQf550drVhCNemhPVsP16nvIZ0wb5Os99w2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken246165751-b65d-401d-996c-f0eb2f6b2b26" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:33 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f642048" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="9d81fb90-fa8c-4a71-bb31-58bf1915fb1d">
+                
+                    <script class="options" defer="defer" id="9d81fb90-fa8c-4a71-bb31-58bf1915fb1d" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                ProcessId  
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:642048]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="e214b8e3-ae70-4ea4-936d-69a11ab9261e">
+    <script class="options" defer="defer" id="e214b8e3-ae70-4ea4-936d-69a11ab9261e" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/642048","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1436302">
+    <td id="PostDetailsCell_1436302" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1436302"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/lorenzopapa">lorenzopapa</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="7/28/2015 3:59:51 PM" LocalTimeTicks="1438124391">Jul 28, 2015 at 3:59 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1436302" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="When&#32;i&#32;create&#32;a&#32;new&#32;MSProjectApplication&#32;I&#32;can&#32;see&#32;that&#32;a&#32;new&#32;WInProj.Exe&#32;process&#32;starts,&#32;How&#32;can&#32;I&#32;obtain&#32;the&#32;PID&#32;of&#32;this&#32;process&#63;&#32;I&#32;need&#32;It&#32;&#39;cause&#32;i&#32;would&#32;like&#32;to&#32;be&#32;able&#32;to&#32;kill&#32;that&#32;process&#13;&#10;&#13;&#10;My&#32;Office&#32;application&#32;run&#32;in&#32;background.&#13;&#10;&#13;&#10;">
+        <div class="markDownOutput ">When i create a new MSProjectApplication I can see that a new WInProj.Exe process starts, How can I obtain the PID of this process? I need It 'cause i would like to be able to kill that process
+<br>
+<br>
+My Office application run in background.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1436302" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1436529">
+    <td id="PostDetailsCell_1436529" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1436529"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="7/29/2015 8:15:20 PM" LocalTimeTicks="1438226120">Jul 29, 2015 at 8:15 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1436529" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="I&#32;can&#32;show&#32;how&#32;you&#32;enumerate&#32;all&#32;MSProject&#32;main&#32;windows&#40;from&#32;the&#32;desktop&#32;with&#32;some&#32;NetOffice&#32;utils&#32;classes&#41;&#32;and&#32;get&#32;the&#32;associated&#32;PID&#40;&#39;s&#41;&#32;from&#32;them.&#13;&#10;But&#32;this&#32;is&#32;a&#32;wrong&#32;way&#32;of&#32;course.&#32;&#40;a&#32;well&#32;known&#32;anti-pattern..&#32;&#42;the&#32;abort&#32;hammer&#42;&#41;&#13;&#10;&#13;&#10;Do&#32;you&#32;have&#32;problems&#32;because&#32;MSProject&#32;is&#32;not&#32;going&#32;down&#32;after&#32;quit&#47;exit&#63;&#13;&#10;NetOffice&#32;spend&#32;a&#32;lot&#32;of&#32;help&#32;here&#32;to&#32;make&#32;sure&#32;you&#32;dont&#32;leave&#32;the&#32;place&#32;with&#32;open&#32;&#40;COM&#41;references.&#32;&#40;just&#32;1&#32;call&#32;more...&#41;&#13;&#10;&#13;&#10;let&#32;me&#32;know...and&#32;choose&#13;&#10;&#13;&#10;1&#58;&#41;&#32;i&#32;want&#32;kill&#32;&#33;&#33;&#33;&#32;no&#32;matters&#32;for&#32;your&#32;blabla...&#13;&#10;2&#41;&#32;how&#32;i&#32;can&#32;make&#32;this&#32;better&#13;&#10;&#13;&#10;&#13;&#10;&#42;Sebastian&#32;">
+        <div class="markDownOutput ">I can show how you enumerate all MSProject main windows(from the desktop with some NetOffice utils classes) and get the associated PID('s) from them.
+<br>
+But this is a wrong way of course. (a well known anti-pattern.. <em>the abort hammer</em>)
+<br>
+<br>
+Do you have problems because MSProject is not going down after quit/exit? <br>
+NetOffice spend a lot of help here to make sure you dont leave the place with open (COM)references. (just 1 call more...)
+<br>
+<br>
+let me know...and choose <br>
+<br>
+1:) i want kill !!! no matters for your blabla... <br>
+2) how i can make this better <br>
+<br>
+<br>
+*Sebastian <br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1436529" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1436600">
+    <td id="PostDetailsCell_1436600" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1436600"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/lorenzopapa">lorenzopapa</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="7/30/2015 9:11:36 AM" LocalTimeTicks="1438272696">Jul 30, 2015 at 9:11 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1436600" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="The&#32;problem&#32;I&#32;need&#32;to&#32;solve&#32;is&#32;this&#32;one,&#32;&#58;&#32;&#13;&#10;I&#32;have&#32;a&#32;WCF&#32;service&#32;that&#32;operate&#32;with&#32;MSProject,&#32;MSProject&#32;is&#32;STA&#32;and&#32;I&#32;need&#32;to&#32;operate&#32;in&#32;an&#32;MTA&#32;context,&#32;with&#32;multiple&#32;instances&#32;of&#32;MSProject&#32;that&#32;might&#32;work&#32;at&#32;the&#32;sime&#32;time&#32;in&#32;response&#32;of&#32;the&#32;simoultaneus&#32;client&#32;requests,&#32;for&#32;solve&#32;this&#32;&#32;I&#32;have&#32;created&#32;a&#32;pool&#32;of&#32;users&#32;that&#32;instance&#32;the&#32;MSproject,&#32;when&#32;I&#32;receive&#32;a&#32;request&#32;i&#32;serach&#32;for&#32;an&#32;user&#32;&#32;that&#32;is&#32;free&#32;and&#32;call&#32;a&#32;thread&#32;impersonated&#32;with&#32;the&#32;user&#32;tha&#32;open&#32;the&#32;MSProject&#32;app&#32;and&#32;work&#32;with&#32;this.&#32;so&#32;I&#32;can&#32;have&#32;more&#32;instances&#32;of&#32;the&#32;MSProject&#32;that&#32;can&#32;work&#32;at&#32;the&#32;same&#32;time.&#13;&#10;I&#32;would&#32;like&#32;to&#32;manage&#32;a&#32;list&#32;that&#32;report&#32;the&#32;User&#32;that&#32;have&#32;actualy&#32;instanciated&#32;the&#32;MSProject,&#32;the&#32;MSProject&#32;Instances&#32;reference&#32;and&#32;a&#32;timestamp&#32;that&#32;reeport&#32;when&#32;the&#32;MSProject&#32;was&#32;Instanciated&#32;&#32;&#13;&#10;If&#32;there&#32;are&#32;no&#32;problems&#32;the&#32;MSProject&#32;app&#32;is&#32;closed&#32;and&#32;the&#32;thread&#32;released&#32;and&#32;the&#32;user&#32;return&#32;free&#32;&#40;release&#32;the&#32;user&#32;from&#32;the&#32;List&#41;.&#13;&#10;If&#32;there&#32;are&#32;problems,&#32;sometimes&#32;MSProject&#32;app&#32;hangs&#32;and&#32;I&#32;need&#32;to&#32;manually&#32;kill&#32;the&#32;process&#32;but&#32;If&#32;I&#39;Ve&#32;more&#32;instances&#32;at&#32;the&#32;same&#32;time&#32;I&#39;m&#32;not&#32;able&#32;to&#32;kill&#32;it&#32;in&#32;a&#32;secure&#32;way,&#32;for&#32;avoiding&#32;this&#32;If&#32;I&#32;can&#32;associate&#32;the&#32;user&#32;with&#32;the&#32;process&#32;Id&#32;of&#32;the&#32;MS&#32;Project&#32;when&#32;pass&#32;10&#32;minutes&#32;form&#32;the&#32;timestamp&#32;i&#32;can&#32;decide&#32;that&#32;the&#32;MSProject&#32;is&#32;hanging&#32;and&#32;so&#32;kill&#32;them&#32;by&#32;code&#32;and&#32;release&#32;the&#32;user&#32;from&#32;the&#32;list.&#13;&#10;In&#32;my&#32;context&#32;MSProject&#32;work&#32;in&#32;a&#32;background&#32;way&#32;without&#32;open&#32;Windows.&#13;&#10;Can&#32;you&#32;help&#32;me&#32;to&#32;solve&#32;this&#32;problem&#63;&#13;&#10;&#13;&#10;&#32;">
+        <div class="markDownOutput ">The problem I need to solve is this one, : <br>
+I have a WCF service that operate with MSProject, MSProject is STA and I need to operate in an MTA context, with multiple instances of MSProject that might work at the sime time in response of the simoultaneus client requests, for solve this I have created
+ a pool of users that instance the MSproject, when I receive a request i serach for an user that is free and call a thread impersonated with the user tha open the MSProject app and work with this. so I can have more instances of the MSProject that can work
+ at the same time. <br>
+I would like to manage a list that report the User that have actualy instanciated the MSProject, the MSProject Instances reference and a timestamp that reeport when the MSProject was Instanciated<br>
+If there are no problems the MSProject app is closed and the thread released and the user return free (release the user from the List).
+<br>
+If there are problems, sometimes MSProject app hangs and I need to manually kill the process but If I'Ve more instances at the same time I'm not able to kill it in a secure way, for avoiding this If I can associate the user with the process Id of the MS Project
+ when pass 10 minutes form the timestamp i can decide that the MSProject is hanging and so kill them by code and release the user from the list.
+<br>
+In my context MSProject work in a background way without open Windows. <br>
+Can you help me to solve this problem?<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1436600" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1436780">
+    <td id="PostDetailsCell_1436780" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1436780"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="7/31/2015 5:08:27 PM" LocalTimeTicks="1438387707">Jul 31, 2015 at 5:08 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1436780" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="hello,&#13;&#10;&#13;&#10;the&#32;first&#32;what&#32;i&#32;have&#32;to&#32;say&#32;is&#32;about&#32;multi-application&#32;scenarios.&#13;&#10;its&#32;more&#32;safe&#47;isolated&#32;to&#32;create&#32;an&#32;own&#32;NetOffice&#32;core&#32;for&#32;each&#32;application.&#13;&#10;&#40;NetOffice.Core&#32;manage&#32;all&#32;open&#32;com&#32;proxies,&#32;make&#32;sure&#32;to&#32;dispose&#32;the&#32;root&#32;object&#32;i.e&#32;application&#32;to&#32;cleanup&#32;your&#32;environment&#41;&#13;&#10;MSProject&#32;has&#32;also&#32;problems&#32;sometimes&#32;with&#32;the&#32;automation&#32;api&#32;&#40;RPC_REJECTED_EXCEPTION&#41;&#13;&#10;a&#32;good&#32;way&#32;is&#32;to&#32;use&#32;something&#32;like&#32;this.&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public&#32;static&#32;MSProject.Application&#32;CreateApplication&#40;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;NetOffice.Core&#32;core&#32;&#61;&#32;new&#32;NetOffice.Core&#40;&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;core.Settings.MessageFilter.Enabled&#32;&#61;&#32;true&#59;&#32;&#47;&#47;&#32;MSProject&#32;has&#32;known&#32;issues&#32;without&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;&#32;core.ProxyCount&#32;&#60;&#61;&#32;watch&#32;the&#32;current&#32;open&#32;proxies&#32;always&#32;a&#32;bit.&#32;more&#32;than&#32;1000&#32;is&#32;very&#32;exceptional&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;&#32;NetOffice&#32;doesnt&#32;spend&#32;the&#32;right&#32;ctor&#32;to&#32;give&#32;an&#32;own&#32;core&#32;if&#32;application&#32;is&#32;created&#32;at&#32;hand.&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;&#32;we&#32;fool&#32;the&#32;application&#32;a&#32;bit&#32;and&#32;create&#32;an&#32;application&#32;instance&#32;with&#32;ouer&#32;own&#32;core.&#32;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;&#32;&#40;default&#32;core&#32;is&#32;always&#32;NetOffice.Core.Default&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;MSProject.Application&#32;application&#32;&#61;&#32;new&#32;MSProject.Application&#40;&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;application&#32;&#61;&#32;new&#32;MSProject.Application&#40;core,&#32;null,&#32;application.UnderlyingObject&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;application&#59;&#32;&#47;&#47;&#32;make&#32;sure&#32;to&#32;call&#32;dispose&#32;after&#32;quit&#32;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#13;&#10;&#13;&#10;For&#32;the&#32;PID&#32;its&#32;good&#32;to&#32;use&#32;the&#32;Win&#32;Api&#32;here.&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#91;DllImport&#40;&#34;user32.dll&#34;,&#32;SetLastError&#32;&#61;&#32;true&#41;&#93;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;static&#32;extern&#32;int&#32;GetWindowThreadProcessId&#40;int&#32;hWnd,&#32;out&#32;int&#32;processId&#41;&#59;&#13;&#10;&#13;&#10;But&#32;unfourtently,&#32;MSProject&#32;doesnt&#32;have&#32;an&#32;accessible&#32;main&#32;window&#32;handle.&#32;for&#32;this&#32;reason&#32;use&#32;a&#32;bypass&#32;trick&#58;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;int&#32;pid&#32;&#61;&#32;0&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;GetWindowThreadProcessId&#40;application.VBE.MainWindow.HWnd,&#32;out&#32;pid&#41;&#59;&#13;&#10;&#13;&#10;This&#32;sample&#32;use&#32;the&#32;integrated&#32;VBA&#32;window&#32;instead.&#32;Works&#32;fine&#32;and&#32;no&#32;security&#32;hurdles&#32;for&#32;the&#32;readonly&#32;access.&#13;&#10;&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;&#13;&#10;&#13;&#10;">
+        <div class="markDownOutput ">hello, <br>
+<br>
+the first what i have to say is about multi-application scenarios. <br>
+its more safe/isolated to create an own NetOffice core for each application. <br>
+(NetOffice.Core manage all open com proxies, make sure to dispose the root object i.e application to cleanup your environment)
+<br>
+MSProject has also problems sometimes with the automation api (RPC_REJECTED_EXCEPTION)
+<br>
+a good way is to use something like this.<br>
+<pre><code>    public static MSProject.Application CreateApplication()
+    {
+        NetOffice.Core core = new NetOffice.Core();
+        core.Settings.MessageFilter.Enabled = true; // MSProject has known issues without
+        // core.ProxyCount &lt;= watch the current open proxies always a bit. more than 1000 is very exceptional
+
+        // NetOffice doesnt spend the right ctor to give an own core if application is created at hand.
+        // we fool the application a bit and create an application instance with ouer own core. 
+        // (default core is always NetOffice.Core.Default)
+        MSProject.Application application = new MSProject.Application();
+        application = new MSProject.Application(core, null, application.UnderlyingObject);
+        return application; // make sure to call dispose after quit 
+    }
+</code></pre>
+For the PID its good to use the Win Api here.<br>
+<pre><code>  [DllImport(&quot;user32.dll&quot;, SetLastError = true)]
+  static extern int GetWindowThreadProcessId(int hWnd, out int processId);
+</code></pre>
+But unfourtently, MSProject doesnt have an accessible main window handle. for this reason use a bypass trick:<br>
+<pre><code> int pid = 0;
+ GetWindowThreadProcessId(application.VBE.MainWindow.HWnd, out pid);
+</code></pre>
+This sample use the integrated VBA window instead. Works fine and no security hurdles for the readonly access.
+<br>
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1436780" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="8ee2f390-55a9-41b7-a0b0-a7cb237d4e6c">
+    <script class="options" defer="defer" id="8ee2f390-55a9-41b7-a0b0-a7cb237d4e6c" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_b50b61cf-c5cb-4160-985c-a247d95a43df">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_c775f9e3-a8d6-4b77-b854-4dd5b7d06d6d">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_b50b61cf-c5cb-4160-985c-a247d95a43df" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_c775f9e3-a8d6-4b77-b854-4dd5b7d06d6d" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/642048';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

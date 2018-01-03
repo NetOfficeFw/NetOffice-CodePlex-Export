@@ -1,0 +1,797 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Calling VBA method of loaded addin in PowerPoint</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/402559?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/402559?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="eyEnJMUmlkiSs2NBVmsFTii6_sKXZCDHbo3VxDqHFI75jh7mmyfJzL_Xo_9QeWj4ECs9bKV-W3AJFZ7mikFxUnQP-6_wCDmy6Narl1Q4mIb6vwQZvh1jKDvPM53rV4ILXBrA1g2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken2b0688716-a69a-4adb-b104-44841e071bf7" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:52:09 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f402559" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="8094cf3d-4b27-40fc-bb26-901a98cc65dc">
+                
+                    <script class="options" defer="defer" id="8094cf3d-4b27-40fc-bb26-901a98cc65dc" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Calling VBA method of loaded addin in PowerPoint
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:402559]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="665712a6-11f7-4f8c-9e78-42780bb418e5">
+    <script class="options" defer="defer" id="665712a6-11f7-4f8c-9e78-42780bb418e5" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/402559","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="939118">
+    <td id="PostDetailsCell_939118" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post939118"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/buehlert">buehlert</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/9/2012 2:20:44 PM" LocalTimeTicks="1352499644">Nov 9, 2012 at 2:20 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_939118" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;Hi&#32;all&#33;&#32;First&#32;of&#32;all,&#32;thanks&#32;a&#32;lot&#32;for&#32;this&#32;fantastic&#32;library&#33;&#32;I&#32;have&#32;been&#32;working&#32;&#40;and&#32;fighting&#41;&#32;with&#32;interop&#32;calls&#32;to&#32;MS&#32;Office&#32;via&#32;.Net&#32;for&#32;so&#32;many&#32;years&#32;and&#32;now&#32;it&#39;s&#32;so&#32;easy&#32;to&#32;work&#32;with&#32;it.&#32;I&#32;have&#32;a&#32;question&#32;concerning&#32;a&#32;problem&#32;which&#32;occurred&#32;today&#32;when&#32;I&#32;was&#32;trying&#32;to&#32;access&#32;a&#32;VBA&#32;method&#32;inside&#32;an&#32;addin.&#32;The&#32;application&#32;is&#32;loaded&#32;like&#32;this,&#32;also&#32;the&#32;addin&#32;is&#32;loaded&#58;&#32;&#32;&#32;var&#32;app&#32;&#61;&#32;new&#32;Application&#40;&#41;&#59;&#32;var&#32;addin&#32;&#61;&#32;app.AddIns.Add&#40;&#38;quot&#59;addinFileName.ppam&#38;quot&#59;&#41;&#59;&#32;addin.AutoLoad&#32;&#61;&#32;MsoTriState.msoFalse&#59;&#32;addin.Loaded&#32;&#61;&#32;MsoTriState.msoTrue&#59;&#32;&#32;&#32;&#32;When&#32;I&#32;set&#32;the&#32;visibility&#32;of&#32;the&#32;PowerPoint&#32;to&#32;true,&#32;I&#32;can&#32;see&#32;the&#32;addin&#32;is&#32;loaded&#32;properly.&#32;Next,&#32;I&#32;open&#32;a&#32;presentation&#32;&#40;I&#32;don&#39;t&#32;add&#32;the&#32;code&#32;because&#32;this&#32;is&#32;not&#32;important&#41;.&#32;And&#32;now,&#32;I&#32;try&#32;to&#32;access&#32;a&#32;test&#32;method&#32;in&#32;the&#32;addin&#32;like&#32;this&#58;&#32;&#32;var&#32;result&#32;&#61;&#32;app.Run&#40;&#38;quot&#59;addinFileName.ppam&#33;TestAddin&#38;quot&#59;,&#32;&#38;quot&#59;test&#38;quot&#59;&#41;&#59;&#32;&#32;Before&#32;executing&#32;this&#32;code&#32;I&#32;tested&#32;the&#32;way&#32;I&#32;access&#32;the&#32;macro&#32;code&#32;&#40;which&#32;is&#32;a&#32;simple&#32;public&#32;function&#32;expecting&#32;a&#32;string&#32;and&#32;returning&#32;also&#32;a&#32;string&#41;&#32;inside&#32;the&#32;PowerPoint&#32;VBA&#32;editor&#32;directly....this&#32;works.&#32;When&#32;I&#32;execute&#32;the&#32;above&#32;C&#35;&#32;code&#32;I&#32;always&#32;get&#32;a&#32;COM&#32;exception&#32;saying&#58;&#32;&#38;quot&#59;Sub&#32;or&#32;function&#32;not&#32;defined&#38;quot&#59;&#32;Does&#32;anybody&#32;out&#32;there&#32;have&#32;ever&#32;tried&#32;to&#32;access&#32;a&#32;macro&#32;of&#32;an&#32;addin&#32;with&#32;NetOffice&#63;&#32;Thanks&#32;a&#32;lot&#32;in&#32;advance.&#32;&#38;nbsp&#59;&#32;Best&#32;regards,&#32;Thomas&#32;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#32;">
+        
+<p>Hi all!</p>
+<p>First of all, thanks a lot for this fantastic library! I have been working (and fighting) with interop calls to MS Office via .Net for so many years and now it's so easy to work with it.</p>
+<p>I have a question concerning a problem which occurred today when I was trying to access a VBA method inside an addin.</p>
+<p>The application is loaded like this, also the addin is loaded:</p>
+<p></p>
+<div style="color:black; background-color:white">
+<pre><span style="color:blue">var</span> app = <span style="color:blue">new</span> Application();
+<span style="color:blue">var</span> addin = app.AddIns.Add(<span style="color:#a31515">&quot;addinFileName.ppam&quot;</span>);
+addin.AutoLoad = MsoTriState.msoFalse;
+addin.Loaded = MsoTriState.msoTrue;
+
+</pre>
+</div>
+<p></p>
+<p>When I set the visibility of the PowerPoint to true, I can see the addin is loaded properly.<br>
+Next, I open a presentation (I don't add the code because this is not important).<br>
+And now, I try to access a test method in the addin like this:</p>
+<p></p>
+<pre>var result = app.Run(&quot;addinFileName.ppam!TestAddin&quot;, &quot;test&quot;);</pre>
+<p></p>
+<p>Before executing this code I tested the way I access the macro code (which is a simple public function expecting a string and returning also a string) inside the PowerPoint VBA editor directly....this works.</p>
+<p>When I execute the above C# code I always get a COM exception saying:</p>
+<p>&quot;Sub or function not defined&quot;</p>
+<p>Does anybody out there have ever tried to access a macro of an addin with NetOffice?</p>
+<p>Thanks a lot in advance.</p>
+<p>&nbsp;</p>
+<p>Best regards,</p>
+<p>Thomas</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_939118" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="939138">
+    <td id="PostDetailsCell_939138" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post939138"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/buehlert">buehlert</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/9/2012 2:37:24 PM" LocalTimeTicks="1352500644">Nov 9, 2012 at 2:37 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="11/9/2012 2:38:09 PM" LocalTimeTicks="1352500689">Nov 9, 2012 at 2:38 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_939138" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;Sorry,&#32;I&#32;put&#32;wrong&#32;code&#32;here&#58;&#32;The&#32;code&#32;to&#32;call&#32;the&#32;addin&#32;methods&#32;looks&#32;like&#32;this&#58;&#32;&#38;nbsp&#59;&#32;&#32;var&#32;result&#32;&#61;&#32;app.Run&#40;&#38;quot&#59;addinFileName.ppam&#33;TestAddin&#38;quot&#59;,&#32;new&#32;object&#91;&#93;&#32;&#123;&#38;quot&#59;test&#38;quot&#59;&#125;&#41;&#59;&#32;&#32;&#32;&#38;nbsp&#59;&#32;And&#32;also&#32;I&#32;found&#32;out,&#32;that&#32;calling&#32;a&#32;method&#32;without&#32;parameters&#32;work&#33;&#32;Also&#32;the&#32;return&#32;value&#32;is&#32;available&#33;&#32;But&#32;methods&#32;with&#32;a&#32;parameter&#32;fail.&#32;Just&#32;one&#32;thought&#32;from&#32;my&#32;side&#58;&#32;If&#32;the&#32;past&#32;I&#32;was&#32;working&#32;with&#32;a&#32;SafeComWrapper&#32;code&#32;here&#32;http&#58;&#47;&#47;www.codeproject.com&#47;Articles&#47;10888&#47;SafeCOMWrapper-Managed-Disposable-Strongly-Typed-s&#32;It&#32;had&#32;exactly&#32;the&#32;same&#32;problem&#33;&#32;I&#32;was&#32;able&#32;to&#32;solve&#32;this&#32;issue&#32;by&#32;adjusting&#32;the&#32;way&#32;parameters&#32;are&#32;passed&#32;to&#32;the&#32;interop&#32;object.&#32;The&#32;problem&#32;could&#32;be&#32;inside&#32;the&#32;NetOffice&#32;implementation&#32;that&#32;the&#32;parameters&#32;I&#32;add&#32;to&#32;be&#32;passed&#32;to&#32;the&#32;VBA&#32;method&#32;will&#32;be&#32;added&#32;to&#32;the&#32;interop&#32;object&#32;itself&#33;&#32;What&#32;do&#32;you&#32;think&#63;&#32;Thanks&#32;and&#32;best&#32;regards,&#32;Thomas&#32;">
+        
+<p>Sorry, I put wrong code here:</p>
+<p>The code to call the addin methods looks like this:</p>
+<p>&nbsp;</p>
+<div style="color:black; background-color:white">
+<pre><span style="color:blue">var</span> result = app.Run(<span style="color:#a31515">&quot;addinFileName.ppam!TestAddin&quot;</span>, <span style="color:blue">new</span> <span style="color:blue">object</span>[] {<span style="color:#a31515">&quot;test&quot;</span>});
+</pre>
+</div>
+<p>&nbsp;</p>
+<p>And also I found out, that calling a method without parameters work! Also the return value is available!</p>
+<p>But methods with a parameter fail.</p>
+<p>Just one thought from my side:</p>
+<p>If the past I was working with a SafeComWrapper code here</p>
+<p>http://www.codeproject.com/Articles/10888/SafeCOMWrapper-Managed-Disposable-Strongly-Typed-s</p>
+<p>It had exactly the same problem!</p>
+<p>I was able to solve this issue by adjusting the way parameters are passed to the interop object.</p>
+<p>The problem could be inside the NetOffice implementation that the parameters I add to be passed to the VBA method will be added to the interop object itself!</p>
+<p>What do you think?</p>
+<p>Thanks and best regards,</p>
+<p>Thomas</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_939138" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="939178">
+    <td id="PostDetailsCell_939178" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post939178"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/buehlert">buehlert</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/9/2012 3:38:52 PM" LocalTimeTicks="1352504332">Nov 9, 2012 at 3:38 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_939178" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="I&#32;have&#32;checked&#32;the&#32;code&#32;and&#32;can&#32;offer&#32;a&#32;workaround&#32;&#40;but&#32;I&#32;think&#32;you&#32;should&#32;make&#32;it&#32;cleaner&#41;&#58;&#32;The&#32;class&#32;NetOffice.Invoker.cs&#32;contains&#32;the&#32;MethodReturn&#32;method&#32;expecting&#32;the&#32;parameters.&#32;There&#32;I&#32;have&#32;added&#32;an&#32;additional&#32;parameter&#32;&#40;isRunMacroMethod&#41;&#32;which&#32;should&#32;be&#32;set&#32;in&#32;the&#32;_Application.Run&#32;method.&#32;Besides,&#32;I&#32;check&#32;if&#32;the&#32;parameters&#32;are&#32;available&#32;and&#32;contain&#32;both&#32;the&#32;VBA&#32;method&#32;name&#32;and&#32;the&#32;object&#32;array&#32;with&#32;the&#32;parameters.&#32;&#32;&#32;&#32;&#32;public&#32;static&#32;object&#32;MethodReturn&#40;COMObject&#32;comObject,&#32;string&#32;name,&#32;object&#91;&#93;&#32;paramsArray,&#32;bool&#32;isRunMacroMethod&#32;&#61;&#32;false&#41;&#32;&#123;&#32;try&#32;&#123;&#32;if&#32;&#40;comObject.IsDisposed&#41;&#32;throw&#32;new&#32;InvalidComObjectException&#40;&#41;&#59;&#32;if&#32;&#40;&#40;Settings.EnableSafeMode&#41;&#32;&#38;amp&#59;&#38;amp&#59;&#32;&#40;&#33;comObject.EntityIsAvailable&#40;name,&#32;SupportEntityType.Method&#41;&#41;&#41;&#32;throw&#32;new&#32;EntityNotSupportedException&#40;string.Format&#40;&#34;Method&#32;&#123;0&#125;&#32;is&#32;not&#32;available.&#34;,&#32;name&#41;&#41;&#59;&#32;object&#32;returnValue&#59;&#32;if&#32;&#40;isRunMacroMethod&#32;&#38;amp&#59;&#38;amp&#59;&#32;paramsArray&#32;&#33;&#61;&#32;null&#32;&#38;amp&#59;&#38;amp&#59;&#32;paramsArray.Length&#32;&#61;&#61;&#32;2&#32;&#38;amp&#59;&#38;amp&#59;&#32;paramsArray&#91;0&#93;.GetType&#40;&#41;&#32;&#61;&#61;&#32;typeof&#40;string&#41;&#32;&#38;amp&#59;&#38;amp&#59;&#32;paramsArray&#91;1&#93;.GetType&#40;&#41;&#32;&#61;&#61;&#32;typeof&#40;object&#91;&#93;&#41;&#41;&#32;&#123;&#32;var&#32;newParas&#32;&#61;&#32;new&#32;List&#38;lt&#59;object&#38;gt&#59;&#32;&#123;paramsArray&#91;0&#93;&#125;&#59;&#32;newParas.AddRange&#40;&#40;object&#91;&#93;&#41;paramsArray&#91;1&#93;&#41;&#59;&#32;returnValue&#32;&#61;&#32;comObject.InstanceType.InvokeMember&#40;name,&#32;BindingFlags.InvokeMethod&#32;&#124;&#32;BindingFlags.GetProperty,&#32;null,&#32;comObject.UnderlyingObject,&#32;newParas.ToArray&#40;&#41;,&#32;Settings.ThreadCulture&#41;&#59;&#32;&#125;&#32;else&#32;&#123;&#32;returnValue&#32;&#61;&#32;comObject.InstanceType.InvokeMember&#40;name,&#32;BindingFlags.InvokeMethod&#32;&#124;&#32;BindingFlags.GetProperty,&#32;null,&#32;comObject.UnderlyingObject,&#32;paramsArray,&#32;Settings.ThreadCulture&#41;&#59;&#32;&#125;&#32;return&#32;returnValue&#59;&#32;&#125;&#32;catch&#32;&#40;Exception&#32;throwedException&#41;&#32;&#123;&#32;DebugConsole.WriteException&#40;throwedException&#41;&#59;&#32;throw&#32;new&#32;System.Runtime.InteropServices.COMException&#40;GetExceptionMessage&#40;throwedException&#41;,&#32;throwedException&#41;&#59;&#32;&#125;&#32;&#125;&#32;&#32;&#32;&#32;Passing&#32;the&#32;VBA&#32;method&#32;parameters&#32;like&#32;this&#32;to&#32;the&#32;underlying&#32;COM&#32;object&#32;will&#32;allow&#32;you&#32;to&#32;access&#32;VBA&#32;methods&#32;with&#32;parameters.&#32;I&#32;hope&#32;you&#32;can&#32;take&#32;my&#32;approach&#32;to&#32;fix&#32;that&#32;issue&#32;and&#32;to&#32;release&#32;a&#32;new&#32;version&#32;of&#32;your&#32;library.&#32;&#32;Thanks&#32;and&#32;best&#32;regards,&#32;Thomas">
+        
+<p>I have checked the code and can offer a workaround (but I think you should make it cleaner):</p>
+<div style="color:black; background-color:white">The class NetOffice.Invoker.cs contains the MethodReturn method expecting the parameters.</div>
+<div style="color:black; background-color:white">There I have added an additional parameter (isRunMacroMethod) which should be set in the _Application.Run method.</div>
+<div style="color:black; background-color:white">Besides, I check if the parameters are available and contain both the VBA method name and the object array with the parameters.</div>
+<div style="color:black; background-color:white"></div>
+<div style="color:black; background-color:white">
+<div style="color:black; background-color:white">
+<pre> <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> MethodReturn(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray, <span style="color:blue">bool</span> isRunMacroMethod = <span style="color:blue">false</span>)
+        {
+            <span style="color:blue">try</span>
+            {
+                <span style="color:blue">if</span> (comObject.IsDisposed)
+                    <span style="color:blue">throw</span> <span style="color:blue">new</span> InvalidComObjectException();
+
+                <span style="color:blue">if</span> ((Settings.EnableSafeMode) &amp;&amp; (!comObject.EntityIsAvailable(name, SupportEntityType.Method)))
+                    <span style="color:blue">throw</span> <span style="color:blue">new</span> EntityNotSupportedException(<span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;Method {0} is not available.&quot;</span>, name));
+                
+                <span style="color:blue">object</span> returnValue;
+                <span style="color:blue">if</span> (isRunMacroMethod &amp;&amp; paramsArray != <span style="color:blue">null</span> &amp;&amp; paramsArray.Length == 2 &amp;&amp; paramsArray[0].GetType() == <span style="color:blue">typeof</span>(<span style="color:blue">string</span>) &amp;&amp; paramsArray[1].GetType() == <span style="color:blue">typeof</span>(<span style="color:blue">object</span>[]))
+                {
+                    <span style="color:blue">var</span> newParas = <span style="color:blue">new</span> List&lt;<span style="color:blue">object</span>&gt; {paramsArray[0]};
+                    newParas.AddRange((<span style="color:blue">object</span>[])paramsArray[1]);
+                    
+                    returnValue = comObject.InstanceType.InvokeMember(name, BindingFlags.InvokeMethod | BindingFlags.GetProperty, <span style="color:blue">null</span>,
+                   comObject.UnderlyingObject, newParas.ToArray(), Settings.ThreadCulture);
+                }
+                <span style="color:blue">else</span>
+                {
+                    returnValue = comObject.InstanceType.InvokeMember(name, BindingFlags.InvokeMethod | BindingFlags.GetProperty, <span style="color:blue">null</span>,
+                    comObject.UnderlyingObject, paramsArray, Settings.ThreadCulture);
+                }
+                
+                <span style="color:blue">return</span> returnValue;
+            }
+            <span style="color:blue">catch</span> (Exception throwedException)
+            {
+                DebugConsole.WriteException(throwedException);
+                <span style="color:blue">throw</span> <span style="color:blue">new</span> System.Runtime.InteropServices.COMException(GetExceptionMessage(throwedException), throwedException);
+            }
+        }
+</pre>
+</div>
+</div>
+<div style="color:black; background-color:white">Passing the VBA method parameters like this to the underlying COM object will allow you to access VBA methods with parameters.</div>
+<div style="color:black; background-color:white">I hope you can take my approach to fix that issue and to release a new version of your library.</div>
+<div style="color:black; background-color:white"></div>
+<div style="color:black; background-color:white">Thanks and best regards,</div>
+<div style="color:black; background-color:white">Thomas</div>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_939178" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="939186">
+    <td id="PostDetailsCell_939186" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post939186"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/buehlert">buehlert</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/9/2012 3:52:36 PM" LocalTimeTicks="1352505156">Nov 9, 2012 at 3:52 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_939186" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Sorry&#32;for&#32;this&#32;way&#32;of&#32;posting...I&#32;have&#32;created&#32;a&#32;new&#32;entry&#32;in&#32;the&#32;issue&#32;tracker.">
+        
+<p>Sorry for this way of posting...I have created a new entry in the issue tracker.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_939186" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="955f6c44-b973-40f4-a401-d5f6d7f88c96">
+    <script class="options" defer="defer" id="955f6c44-b973-40f4-a401-d5f6d7f88c96" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_395f548d-08e8-4531-88ff-07275b0f5e73">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_6e2f7f8d-b185-460e-bd2e-eb32f29bffa0">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_395f548d-08e8-4531-88ff-07275b0f5e73" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_6e2f7f8d-b185-460e-bd2e-eb32f29bffa0" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/402559';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

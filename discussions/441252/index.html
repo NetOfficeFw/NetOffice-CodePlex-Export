@@ -1,0 +1,1090 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Need help due to COMException</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/441252?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/441252?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="6rNjA_oxTZK0YfRE4mXkBUkn6kHn92LQMQ2A6HR0lMFzQGGo5mnHZ_ap9VsfPxb_nqWa57Qn479ppzK62xhQJV07JMNZl7b14gFCgZB4uozvejc9gTbKBmawVdueB3cAk0FeuA2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken295467372-7c0b-48a7-b858-9d6207854481" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:51:46 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f441252" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="0e2f3325-bd03-4b88-8e2b-c69cdbd2a930">
+                
+                    <script class="options" defer="defer" id="0e2f3325-bd03-4b88-8e2b-c69cdbd2a930" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Need help due to COMException
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:441252]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="b2681101-a9f4-41e3-993c-238a42b14e4f">
+    <script class="options" defer="defer" id="b2681101-a9f4-41e3-993c-238a42b14e4f" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/441252","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1034354">
+    <td id="PostDetailsCell_1034354" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034354"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/whitewoolve">whitewoolve</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 8:32:53 AM" LocalTimeTicks="1366731173">Apr 23, 2013 at 8:32 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="4/23/2013 9:12:24 AM" LocalTimeTicks="1366733544">Apr 23, 2013 at 9:12 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034354" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Following&#32;COMException&#32;indicates&#32;a&#32;busy&#32;application&#32;while&#32;iterating&#32;through&#32;the&#32;cells.&#10;I&#32;don&#39;t&#32;really&#32;know,&#32;why&#32;the&#32;exception&#32;is&#32;thrown.&#32;In&#32;the&#32;table&#32;i&#32;want&#32;to&#32;iterate&#32;through&#32;25x13&#32;cells.&#10;&#10;-&#9;&#9;InnerException&#9;&#123;&#34;Durch&#32;den&#32;Messagefilter&#32;wurde&#32;angezeigt,&#32;dass&#32;die&#32;Anwendung&#32;ausgelastet&#32;ist.&#32;&#40;Ausnahme&#32;von&#32;HRESULT&#58;&#32;0x8001010A&#32;&#40;RPC_E_SERVERCALL_RETRYLATER&#41;&#41;&#34;&#125;&#9;System.Exception&#32;&#123;System.Runtime.InteropServices.COMException&#125;&#10;&#10;The&#32;range&#32;will&#32;be&#32;set&#32;by&#10;&#96;&#96;&#96;&#10;Excel.Range&#32;dataRange&#32;&#61;&#32;&#40;&#40;&#40;Excel.Worksheet&#41;cscExcelApp.ActiveWorkbook.ActiveSheet&#41;&#41;.get_Range&#40;&#34;A&#34;&#32;&#43;&#32;rowNumber&#32;&#43;&#32;&#34;&#58;M&#34;&#32;&#43;&#32;rowNumber&#41;&#59;&#10;&#96;&#96;&#96;&#10;&#10;I&#32;wanna&#32;put&#32;every&#32;row&#32;in&#32;a&#32;object&#32;&#40;every&#32;cell&#32;is&#32;like&#32;a&#32;property&#32;in&#32;the&#32;object&#41;&#32;having&#32;property&#32;getters&#32;and&#32;setters&#32;to&#32;pick&#32;up&#32;later&#32;the&#32;values&#32;for&#32;further&#32;processing&#32;in&#32;another&#32;worksheet.&#32;Every&#32;row&#32;is&#32;logically&#32;indepent&#32;of&#32;the&#32;others&#32;except&#32;the&#32;fact&#32;that&#32;every&#32;column&#32;has&#32;a&#32;special&#32;property&#32;e.g.&#32;column1&#32;indicates&#32;the&#32;name&#32;property&#32;of&#32;the&#32;data&#32;object&#10;&#10;You&#32;should&#32;know,&#32;i&#32;am&#32;regular&#32;a&#32;java&#32;developer,&#32;so&#32;i&#32;am&#32;used&#32;to&#32;beans&#32;to&#32;abstract&#32;to&#32;real&#32;world&#32;object.&#10;For&#32;my&#32;special&#32;task&#32;i&#32;use&#32;C&#35;.&#10;Have&#32;i&#32;use&#32;System.Data.DataTable&#32;to&#32;convert&#32;the&#32;cells&#32;or&#32;is&#32;there&#32;a&#32;short&#32;way&#32;&#40;independent&#32;of&#32;ole&#32;db&#41;&#63;">
+        <div class="markDownOutput ">Following COMException indicates a busy application while iterating through the cells.<br>
+I don't really know, why the exception is thrown. In the table i want to iterate through 25x13 cells.<br>
+<ul>
+<li>InnerException {&quot;Durch den Messagefilter wurde angezeigt, dass die Anwendung ausgelastet ist. (Ausnahme von HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER))&quot;} System.Exception {System.Runtime.InteropServices.COMException}<br>
+</li></ul>
+The range will be set by<br>
+<pre><code>Excel.Range dataRange = (((Excel.Worksheet)cscExcelApp.ActiveWorkbook.ActiveSheet)).get_Range(&quot;A&quot; &#43; rowNumber &#43; &quot;:M&quot; &#43; rowNumber);</code></pre>
+I wanna put every row in a object (every cell is like a property in the object) having property getters and setters to pick up later the values for further processing in another worksheet. Every row is logically indepent of the others except the fact that every
+ column has a special property e.g. column1 indicates the name property of the data object<br>
+<br>
+You should know, i am regular a java developer, so i am used to beans to abstract to real world object.<br>
+For my special task i use C#.<br>
+Have i use System.Data.DataTable to convert the cells or is there a short way (independent of ole db)?<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034354" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034373">
+    <td id="PostDetailsCell_1034373" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034373"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/mike27015">mike27015</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 9:31:28 AM" LocalTimeTicks="1366734688">Apr 23, 2013 at 9:31 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034373" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hello,&#13;&#10;&#13;&#10;There&#32;are&#32;several&#32;ways&#32;to&#32;do&#32;it.&#13;&#10;&#13;&#10;The&#32;one&#32;I&#39;m&#32;using&#32;is&#32;to&#32;say,&#32;that&#32;every&#32;object&#32;in&#32;Excel&#32;is&#32;a&#32;shape,&#32;which&#32;means&#32;it&#32;can&#32;have&#32;an&#32;AlternativeText&#13;&#10;&#13;&#10;&#96;&#96;&#96;&#13;&#10;shape.AlternativeText&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#13;&#10;Now,&#32;when&#32;I&#32;put&#32;an&#32;object&#32;into&#32;a&#32;row,&#32;I&#32;give&#32;him&#32;an&#32;alternative&#32;text&#13;&#10;&#13;&#10;&#96;&#96;&#96;&#13;&#10;shape.AlternativeText&#32;&#61;&#32;ConvertToAlphaColumnReferenceFromInteger&#40;sheet.Application.ActiveCell.Column&#41;&#43;&#32;sheet.Application.ActiveCell.Row&#13;&#10;&#96;&#96;&#96;&#13;&#10;If&#32;you&#32;want&#32;to&#32;keep&#32;it&#39;s&#32;reference,&#32;while&#32;Drag&#38;Drop&#32;you&#32;can&#32;give&#32;him&#32;as&#32;Alternative&#32;text&#32;the&#32;current&#32;cell&#32;that&#32;you&#32;select.&#13;&#10;&#13;&#10;For&#32;the&#32;procedure,&#32;you&#32;might&#32;want&#32;to&#32;look&#32;it&#32;up&#32;here&#58;&#32;http&#58;&#47;&#47;stackoverflow.com&#47;questions&#47;181596&#47;how-to-convert-a-column-number-eg-127-into-an-excel-column-eg-aa&#13;&#10;&#13;&#10;Now&#32;in&#32;order&#32;to&#32;simulate&#32;that&#32;object&#32;you&#32;can&#32;use&#32;the&#32;class&#13;&#10;&#13;&#10;&#96;&#96;&#96;&#13;&#10;using&#32;System.Object&#59;&#13;&#10;using&#32;System.Windows.Forms.DragDropEffects&#59;&#13;&#10;using&#32;BrightIdeaSoftware.SimpleDragSource&#59;&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#13;&#10;With&#32;those,&#32;you&#32;can&#32;work&#32;with&#32;the&#32;object&#32;and&#32;simulate&#32;the&#32;Drag&#32;and&#32;Drop.&#13;&#10;&#13;&#10;Now&#32;for&#32;your&#32;getters&#32;and&#32;setters.&#13;&#10;&#13;&#10;Since&#32;every&#32;object&#32;that&#32;you&#32;import,&#32;is&#32;actually&#32;a&#32;shape,&#32;you&#32;can&#32;access&#32;its&#32;properties&#32;with&#13;&#10;&#13;&#10;&#96;&#96;&#96;&#13;&#10;worksheetnumber&#32;&#61;&#32;1&#59;&#13;&#10;foreach&#32;&#40;Excel.Worksheet&#32;sheet&#32;in&#32;workbook.Sheets&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sheet.Activate&#40;&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;workSheet&#32;&#61;&#32;&#40;Excel.Worksheet&#41;xlsApp.Worksheets&#91;worksheetnumber&#93;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Console.WriteLine&#40;workSheet.Name&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;foreach&#32;&#40;Excel.Range&#32;cell&#32;in&#32;workSheet.UsedRange&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;rowIndex&#32;&#61;&#32;cell.Row&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;columnIndex&#32;&#61;&#32;cell.Column&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;&#40;cell.Text.Equals&#40;&#34;&#60;some&#32;test&#62;&#34;&#41;&#41;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#123;&#32;&#32;&#32;&#32;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cell.Value&#32;&#61;&#32;&#60;your&#32;new&#32;value&#62;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#47;&#47;Console.WriteLine&#40;&#34;Changement&#32;done.&#34;&#32;&#43;&#32;cell.Text&#41;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;worksheetnumber&#43;&#43;&#59;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#125;&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#13;&#10;If&#32;you&#32;want&#32;to&#32;test&#32;what&#32;type&#32;the&#32;shape&#32;is&#32;of&#32;your&#32;object&#13;&#10;&#96;&#96;&#96;&#13;&#10;shape.Type.ToString&#40;&#41;.Equals&#40;&#34;msoTable&#34;&#41;&#59;&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#13;&#10;You&#32;want&#32;probably&#32;to&#32;change&#32;your&#32;object&#47;shape&#63;&#13;&#10;&#13;&#10;&#96;&#96;&#96;&#13;&#10;sheet.Range&#40;&#34;A1&#34;&#41;.PasteSpecial&#40;&#41;&#59;&#32;&#47;&#47;Paste&#32;a&#32;new&#32;object&#32;in&#32;your&#32;current&#32;row&#47;column&#13;&#10;&#96;&#96;&#96;&#13;&#10;If&#32;you&#32;want&#32;only&#32;the&#32;used&#32;data&#32;in&#32;your&#32;worksheet,&#32;you&#32;can&#32;use&#58;&#13;&#10;&#96;&#96;&#96;&#13;&#10;sheet.UsedRange&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#13;&#10;I&#32;think,&#32;you&#32;have&#32;now&#32;enough&#32;answers&#32;to&#32;start&#32;with&#32;something.&#13;&#10;&#13;&#10;If&#32;you&#32;are&#32;interested&#32;in&#32;something&#32;more&#32;complex,&#32;you&#32;might&#32;have&#32;a&#32;look&#32;at&#32;http&#58;&#47;&#47;www.microsoft.com&#47;en-us&#47;download&#47;details.aspx&#63;id&#61;5124&#13;&#10;&#13;&#10;Open&#32;XML&#32;SDK,&#32;this&#32;is&#32;the&#32;next&#32;generation&#32;to&#32;work&#32;with.&#13;&#10;&#13;&#10;This&#32;was&#32;one&#32;of&#32;my&#32;post&#32;and&#32;the&#32;reply&#32;of&#32;the&#32;forum&#32;master&#58;&#32;http&#58;&#47;&#47;social.msdn.microsoft.com&#47;Forums&#47;en-US&#47;officegeneral&#47;thread&#47;90e639e5-1acc-460a-bb02-094f089c3693&#13;&#10;&#13;&#10;&#13;&#10;">
+        <div class="markDownOutput ">Hello, <br>
+<br>
+There are several ways to do it. <br>
+<br>
+The one I'm using is to say, that every object in Excel is a shape, which means it can have an AlternativeText<br>
+<pre><code>shape.AlternativeText</code></pre>
+Now, when I put an object into a row, I give him an alternative text<br>
+<pre><code>shape.AlternativeText = ConvertToAlphaColumnReferenceFromInteger(sheet.Application.ActiveCell.Column)&#43; sheet.Application.ActiveCell.Row</code></pre>
+If you want to keep it's reference, while Drag&amp;Drop you can give him as Alternative text the current cell that you select.
+<br>
+<br>
+For the procedure, you might want to look it up here: <a href="http://stackoverflow.com/questions/181596/how-to-convert-a-column-number-eg-127-into-an-excel-column-eg-aa"  rel="nofollow">
+http://stackoverflow.com/questions/181596/how-to-convert-a-column-number-eg-127-into-an-excel-column-eg-aa</a>
+<br>
+<br>
+Now in order to simulate that object you can use the class<br>
+<pre><code>using System.Object;
+using System.Windows.Forms.DragDropEffects;
+using BrightIdeaSoftware.SimpleDragSource;</code></pre>
+With those, you can work with the object and simulate the Drag and Drop. <br>
+<br>
+Now for your getters and setters. <br>
+<br>
+Since every object that you import, is actually a shape, you can access its properties with<br>
+<pre><code>worksheetnumber = 1;
+foreach (Excel.Worksheet sheet in workbook.Sheets)
+                    {
+                        sheet.Activate();
+                        workSheet = (Excel.Worksheet)xlsApp.Worksheets[worksheetnumber];
+                        Console.WriteLine(workSheet.Name);
+                        foreach (Excel.Range cell in workSheet.UsedRange)
+                        {
+                            int rowIndex = cell.Row;
+                            int columnIndex = cell.Column;
+                            if (cell.Text.Equals(&quot;&lt;some test&gt;&quot;))
+                            {    
+                                cell.Value = &lt;your new value&gt;
+                                //Console.WriteLine(&quot;Changement done.&quot; &#43; cell.Text);
+                            }
+                        }
+                        worksheetnumber&#43;&#43;;
+                    }</code></pre>
+If you want to test what type the shape is of your object<br>
+<pre><code>shape.Type.ToString().Equals(&quot;msoTable&quot;);</code></pre>
+You want probably to change your object/shape?<br>
+<pre><code>sheet.Range(&quot;A1&quot;).PasteSpecial(); //Paste a new object in your current row/column</code></pre>
+If you want only the used data in your worksheet, you can use:<br>
+<pre><code>sheet.UsedRange</code></pre>
+I think, you have now enough answers to start with something. <br>
+<br>
+If you are interested in something more complex, you might have a look at <a href="http://www.microsoft.com/en-us/download/details.aspx?id=5124"  rel="nofollow">
+http://www.microsoft.com/en-us/download/details.aspx?id=5124</a> <br>
+<br>
+Open XML SDK, this is the next generation to work with. <br>
+<br>
+This was one of my post and the reply of the forum master: <a href="http://social.msdn.microsoft.com/Forums/en-US/officegeneral/thread/90e639e5-1acc-460a-bb02-094f089c3693"  rel="nofollow">
+http://social.msdn.microsoft.com/Forums/en-US/officegeneral/thread/90e639e5-1acc-460a-bb02-094f089c3693</a><br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034373" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034382">
+    <td id="PostDetailsCell_1034382" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034382"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/whitewoolve">whitewoolve</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 9:51:46 AM" LocalTimeTicks="1366735906">Apr 23, 2013 at 9:51 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034382" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Thx&#32;Mike,&#13;&#10;&#13;&#10;i&#32;have&#32;now&#32;another&#32;approach.&#32;I&#32;wanna&#32;share&#32;it&#32;l8ter.">
+        <div class="markDownOutput ">Thx Mike, <br>
+<br>
+i have now another approach. I wanna share it l8ter.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034382" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034439">
+    <td id="PostDetailsCell_1034439" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034439"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/whitewoolve">whitewoolve</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 11:29:14 AM" LocalTimeTicks="1366741754">Apr 23, 2013 at 11:29 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="4/23/2013 12:37:19 PM" LocalTimeTicks="1366745839">Apr 23, 2013 at 12:37 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034439" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi&#32;all,&#10;&#10;i&#32;am&#32;not&#32;an&#32;expert&#32;of&#32;.NETOffice,&#32;but&#32;i&#32;think&#32;there&#39;s&#32;sth&#32;wrong&#32;with&#32;the&#32;release&#32;of&#32;the&#32;COM&#32;Objects.&#10;As&#32;i&#32;am&#32;using&#32;.NETOffice&#32;to&#32;accomplish&#32;my&#32;task,&#32;i&#39;ve&#32;found&#32;a&#32;hint&#32;which&#32;brings&#32;me&#32;to&#32;this&#32;conclusion&#10;&#10;&#62;&#32;To&#32;avoid&#32;these&#32;errors,&#32;implement&#32;an&#32;IOleMessageFilter&#32;handler&#32;function&#32;in&#32;your&#32;application.&#32;When&#32;you&#32;do&#32;this,&#32;if&#32;your&#32;external&#32;application&#32;thread&#32;calls&#32;into&#32;Visual&#32;Studio&#32;and&#32;is&#32;rejected&#32;&#40;that&#32;is,&#32;it&#32;returns&#32;SERVERCALL_RETRYLATER&#32;from&#32;the&#32;IOleMessageFilter.HandleIncomingCall&#32;method&#41;,&#32;then&#32;your&#32;application&#32;can&#32;handle&#32;it&#32;and&#32;either&#32;retry&#32;or&#32;cancel&#32;the&#32;call.&#32;To&#32;do&#32;this,&#32;initiate&#32;the&#32;new&#32;thread&#32;from&#32;your&#32;Visual&#32;Studio&#32;application&#32;in&#32;a&#32;single-threaded&#32;apartment&#32;&#40;STA&#41;&#32;and&#32;surround&#32;your&#32;automation&#32;code&#32;with&#32;the&#32;IOleMessageFilter&#32;handler.&#10;&#10;Well,&#32;i&#39;ve&#32;also&#32;read&#32;that&#32;NetOffice&#32;will&#32;accomplish&#32;the&#32;release&#32;of&#32;the&#32;COM&#32;objects&#32;for&#32;me.&#32;I&#32;have&#32;only&#32;to&#32;dispose&#32;the&#32;app&#32;like&#32;in&#32;the&#32;examples.&#32;Am&#32;i&#32;rght&#63;&#32;So&#32;why&#32;I&#39;ve&#32;got&#32;still&#32;SERVERCALL_RETRYLATER&#63;&#32;I&#32;don&#39;t&#32;think&#32;that&#32;i&#32;have&#32;to&#32;implement&#32;an&#32;IOleMessageFilter.&#10;&#10;Isn&#39;t&#32;my&#32;console&#32;application&#32;per&#32;default&#32;a&#32;STAThread&#63;&#32;Should&#32;i&#32;have&#32;to&#32;be&#32;aware&#32;about&#32;the&#32;COM&#63;&#10;&#10;Please&#32;don&#39;t&#32;misunderstand&#32;me,&#32;i&#32;appreciate&#32;the&#32;work&#32;in&#32;NetOffice&#33;&#32;">
+        <div class="markDownOutput ">Hi all,<br>
+<br>
+i am not an expert of .NETOffice, but i think there's sth wrong with the release of the COM Objects.<br>
+As i am using .NETOffice to accomplish my task, i've found a hint which brings me to this conclusion<br>
+<blockquote>To avoid these errors, implement an IOleMessageFilter handler function in your application. When you do this, if your external application thread calls into Visual Studio and is rejected (that is, it returns SERVERCALL_RETRYLATER from the IOleMessageFilter.HandleIncomingCall
+ method), then your application can handle it and either retry or cancel the call. To do this, initiate the new thread from your Visual Studio application in a single-threaded apartment (STA) and surround your automation code with the IOleMessageFilter handler.<br>
+</blockquote>
+Well, i've also read that NetOffice will accomplish the release of the COM objects for me. I have only to dispose the app like in the examples. Am i rght? So why I've got still SERVERCALL_RETRYLATER? I don't think that i have to implement an IOleMessageFilter.<br>
+<br>
+Isn't my console application per default a STAThread? Should i have to be aware about the COM?<br>
+<br>
+Please don't misunderstand me, i appreciate the work in NetOffice! <br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034439" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034488">
+    <td id="PostDetailsCell_1034488" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034488"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 1:28:41 PM" LocalTimeTicks="1366748921">Apr 23, 2013 at 1:28 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034488" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="excel&#32;is&#32;not&#32;acessable&#32;trough&#32;code&#32;in&#32;some&#32;situations.&#32;while&#32;calculate&#32;macros&#32;or&#32;the&#32;user&#32;is&#32;editing&#32;a&#32;cell&#32;for&#32;example.&#13;&#10;you&#32;got&#32;the&#32;RETRYLATER&#32;exception&#32;in&#32;this&#32;case.&#13;&#10;&#13;&#10;the&#32;latest&#32;source&#32;state&#32;contains&#32;a&#32;message&#32;filter&#32;with&#32;more&#32;support&#32;to&#32;handle&#32;this&#32;scenario.&#13;&#10;you&#32;can&#32;do&#32;something&#32;like&#32;this&#58;&#13;&#10;&#13;&#10;NetOffice.Settings.MessageFilter.RetryMode&#32;&#61;&#32;RetryMessageFilterMode.Delayed&#59;&#13;&#10;NetOffice.Settings.MessageFilter.Enabled&#32;&#61;&#32;true&#59;&#13;&#10;&#13;&#10;Sebastian">
+        <div class="markDownOutput ">excel is not acessable trough code in some situations. while calculate macros or the user is editing a cell for example.
+<br>
+you got the RETRYLATER exception in this case. <br>
+<br>
+the latest source state contains a message filter with more support to handle this scenario.
+<br>
+you can do something like this: <br>
+<br>
+NetOffice.Settings.MessageFilter.RetryMode = RetryMessageFilterMode.Delayed; <br>
+NetOffice.Settings.MessageFilter.Enabled = true; <br>
+<br>
+Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034488" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034527">
+    <td id="PostDetailsCell_1034527" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034527"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/whitewoolve">whitewoolve</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 2:36:43 PM" LocalTimeTicks="1366753003">Apr 23, 2013 at 2:36 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="4/23/2013 2:37:58 PM" LocalTimeTicks="1366753078">Apr 23, 2013 at 2:37 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034527" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Thx&#32;Sebastian&#32;&#59;&#41;&#10;&#10;2&#32;issues&#32;blocked&#32;my&#32;coding.&#10;&#10;1.&#32;I&#32;holded&#32;the&#32;information&#32;in&#32;a&#32;collection,&#32;so&#32;it&#32;was&#32;my&#32;responsibilty&#32;to&#32;clear&#32;the&#32;list&#32;in&#32;the&#32;end&#32;after&#32;processing&#32;the&#32;data.&#10;2.&#32;Following&#32;assignment&#32;was&#32;called&#32;too&#32;early&#10;&#96;&#96;&#96;&#10;myExcelApp.DisplayAlerts&#32;&#61;&#32;false&#59;&#10;&#96;&#96;&#96;&#10;This&#32;assignment&#32;should&#32;be&#32;called&#32;as&#32;late&#32;as&#32;possible.&#32;The&#32;reason&#32;was&#32;a&#32;messagebox&#32;which&#32;popped&#32;up&#32;asking&#32;read&#47;access&#32;mode.&#32;So&#32;i&#32;used&#32;it&#32;before&#32;disposing&#32;the&#32;app.&#32;Afterwards&#32;everything&#32;was&#32;ok.&#32;But&#32;i&#32;wanna&#32;use&#32;your&#32;recommendation&#32;if&#32;this&#32;happens&#32;again.">
+        <div class="markDownOutput ">Thx Sebastian ;)<br>
+<br>
+2 issues blocked my coding.<br>
+<ol>
+<li>I holded the information in a collection, so it was my responsibilty to clear the list in the end after processing the data.
+</li><li>Following assignment was called too early </li></ol>
+<pre><code>myExcelApp.DisplayAlerts = false;</code></pre>
+This assignment should be called as late as possible. The reason was a messagebox which popped up asking read/access mode. So i used it before disposing the app. Afterwards everything was ok. But i wanna use your recommendation if this happens again.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034527" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034552">
+    <td id="PostDetailsCell_1034552" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034552"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/whitewoolve">whitewoolve</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 3:13:49 PM" LocalTimeTicks="1366755229">Apr 23, 2013 at 3:13 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034552" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi&#32;Sebastian,&#32;are&#32;you&#32;sure&#32;about&#32;the&#32;suggested&#32;above&#32;assignments.&#32;It&#32;seems&#32;that&#32;NetOffice.Settings&#32;has&#32;no&#32;definition&#32;for&#32;MessageFilter.&#13;&#10;&#13;&#10;I&#32;have&#32;only&#32;found&#32;this&#58;&#13;&#10;NetOffice.Settings.EnableMessageFilter&#32;&#61;&#32;true&#59;">
+        <div class="markDownOutput ">Hi Sebastian, are you sure about the suggested above assignments. It seems that NetOffice.Settings has no definition for MessageFilter.
+<br>
+<br>
+I have only found this: <br>
+NetOffice.Settings.EnableMessageFilter = true;<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034552" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034567">
+    <td id="PostDetailsCell_1034567" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034567"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 3:27:07 PM" LocalTimeTicks="1366756027">Apr 23, 2013 at 3:27 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034567" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="yes,&#32;im&#32;sure.&#32;please&#32;read&#32;my&#32;message&#32;again.&#32;specialy&#32;the&#32;part&#32;&#39;latest&#32;source&#32;state&#39;">
+        <div class="markDownOutput ">yes, im sure. please read my message again. specialy the part 'latest source state'<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034567" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034592">
+    <td id="PostDetailsCell_1034592" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034592"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/whitewoolve">whitewoolve</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 3:55:07 PM" LocalTimeTicks="1366757707">Apr 23, 2013 at 3:55 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="4/23/2013 3:59:41 PM" LocalTimeTicks="1366757981">Apr 23, 2013 at 3:59 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034592" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="My&#32;latest&#32;download&#32;is&#32;&#32;NetOffice&#32;1.5.1.2&#32;&#91;RC&#93;.&#32;Isn&#39;t&#32;it&#32;the&#32;latest&#32;source&#32;state&#63;&#10;What&#39;s&#32;your&#32;suggestion&#63;&#32;Should&#32;i&#32;take&#32;the&#32;latest&#32;source&#32;and&#32;compile&#32;it&#32;on&#32;my&#32;own&#63;&#10;&#10;Sorry&#32;for&#32;the&#32;dumb&#32;question&#33;">
+        <div class="markDownOutput ">My latest download is NetOffice 1.5.1.2 [RC]. Isn't it the latest source state?<br>
+What's your suggestion? Should i take the latest source and compile it on my own?<br>
+<br>
+Sorry for the dumb question!<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034592" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034640">
+    <td id="PostDetailsCell_1034640" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034640"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/23/2013 5:00:25 PM" LocalTimeTicks="1366761625">Apr 23, 2013 at 5:00 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034640" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="this&#32;means&#32;the&#32;latest&#32;release.&#13;&#10;please&#32;checkout&#58;&#13;&#10;https&#58;&#47;&#47;netoffice.codeplex.com&#47;SourceControl&#47;list&#47;changesets&#13;&#10;the&#32;latest&#32;state&#32;is&#58;&#32;98664&#13;&#10;&#13;&#10;Sebastian">
+        <div class="markDownOutput ">this means the latest release. <br>
+please checkout: <br>
+<a href="https://netoffice.codeplex.com/SourceControl/list/changesets"  rel="nofollow">https://netoffice.codeplex.com/SourceControl/list/changesets</a>
+<br>
+the latest state is: 98664 <br>
+<br>
+Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034640" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034959">
+    <td id="PostDetailsCell_1034959" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034959"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/whitewoolve">whitewoolve</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/24/2013 8:03:44 AM" LocalTimeTicks="1366815824">Apr 24, 2013 at 8:03 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034959" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Ok,&#32;thx.&#32;I&#32;am&#32;just&#32;checking&#32;out">
+        <div class="markDownOutput ">Ok, thx. I am just checking out<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034959" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1034987">
+    <td id="PostDetailsCell_1034987" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1034987"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/whitewoolve">whitewoolve</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/24/2013 9:08:25 AM" LocalTimeTicks="1366819705">Apr 24, 2013 at 9:08 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="4/24/2013 12:02:38 PM" LocalTimeTicks="1366830158">Apr 24, 2013 at 12:02 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1034987" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Still&#32;get&#32;COMException&#32;with&#32;&#32;HRESULT&#58;&#32;0x8001010A&#32;&#40;RPC_E_SERVERCALL_RETRYLATER&#41;&#10;InnerException&#32;with&#32;-&#62;&#32;HRESULT&#32;-2147467259&#10;&#10;Stacktrace&#58;&#10;&#32;&#32;&#32;bei&#32;System.RuntimeType.InvokeDispMethod&#40;String&#32;name,&#32;BindingFlags&#32;invokeAttr,&#32;Object&#32;target,&#32;Object&#91;&#93;&#32;args,&#32;Boolean&#91;&#93;&#32;byrefModifiers,&#32;Int32&#32;culture,&#32;String&#91;&#93;&#32;namedParameters&#41;&#10;&#32;&#32;&#32;bei&#32;System.RuntimeType.InvokeMember&#40;String&#32;name,&#32;BindingFlags&#32;bindingFlags,&#32;Binder&#32;binder,&#32;Object&#32;target,&#32;Object&#91;&#93;&#32;providedArgs,&#32;ParameterModifier&#91;&#93;&#32;modifiers,&#32;CultureInfo&#32;culture,&#32;String&#91;&#93;&#32;namedParams&#41;&#10;&#32;&#32;&#32;bei&#32;System.Type.InvokeMember&#40;String&#32;name,&#32;BindingFlags&#32;invokeAttr,&#32;Binder&#32;binder,&#32;Object&#32;target,&#32;Object&#91;&#93;&#32;args,&#32;CultureInfo&#32;culture&#41;&#10;&#32;&#32;&#32;bei&#32;NetOffice.Invoker.Method&#40;COMObject&#32;comObject,&#32;String&#32;name,&#32;Object&#91;&#93;&#32;paramsArray&#41;&#10;&#10;&#10;Any&#32;idea&#63;">
+        <div class="markDownOutput ">Still get COMException with HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER)<br>
+InnerException with -&gt; HRESULT -2147467259<br>
+<br>
+Stacktrace:<br>
+bei System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br>
+bei System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br>
+bei System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)<br>
+bei NetOffice.Invoker.Method(COMObject comObject, String name, Object[] paramsArray)<br>
+<br>
+<br>
+Any idea?<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1034987" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1036006">
+    <td id="PostDetailsCell_1036006" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1036006"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/whitewoolve">whitewoolve</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="4/26/2013 11:13:21 AM" LocalTimeTicks="1367000001">Apr 26, 2013 at 11:13 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="4/26/2013 11:14:38 AM" LocalTimeTicks="1367000078">Apr 26, 2013 at 11:14 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1036006" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="A&#32;heavy&#32;burden,&#32;but&#32;I&#39;ve&#32;got&#32;it.&#32;As&#32;i&#32;opened&#32;the&#32;workbook&#32;i&#32;havn&#39;t&#32;set&#32;notification&#32;to&#32;false&#32;&#40;only&#32;Type.Missing&#32;was&#32;set&#41;.&#32;Due&#32;to&#32;this&#32;there&#32;was&#32;a&#32;hidden&#32;dialog&#32;behind&#32;the&#32;excel&#32;app.&#10;It&#32;has&#32;broken&#32;the&#32;further&#32;processing&#32;of&#32;the&#32;code&#32;and&#32;caused&#32;a&#32;COMException&#32;&#40;unhappily&#32;i&#32;couldn&#39;t&#32;really&#32;locate&#32;the&#32;problem&#41;.&#32;Luckily&#32;i&#32;read&#32;in&#32;a&#32;VBA&#32;forum&#32;that&#32;there&#32;is&#32;a&#32;notify&#32;property&#32;when&#32;open&#32;method&#32;of&#32;workbook&#32;is&#32;used.&#32;So&#32;i&#32;tried&#32;it&#32;and&#32;succeeded&#32;&#58;&#41;">
+        <div class="markDownOutput ">A heavy burden, but I've got it. As i opened the workbook i havn't set notification to false (only Type.Missing was set). Due to this there was a hidden dialog behind the excel app.<br>
+It has broken the further processing of the code and caused a COMException (unhappily i couldn't really locate the problem). Luckily i read in a VBA forum that there is a notify property when open method of workbook is used. So i tried it and succeeded :)<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1036006" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="81857a43-b70c-4ccd-8b6e-0e307b3c2cbc">
+    <script class="options" defer="defer" id="81857a43-b70c-4ccd-8b6e-0e307b3c2cbc" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_68cc1058-ecd1-4b19-a71f-94e92c23f3b2">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_67f5c461-a979-47b7-b3d9-fba905aecff7">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_68cc1058-ecd1-4b19-a71f-94e92c23f3b2" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_67f5c461-a979-47b7-b3d9-fba905aecff7" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/441252';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

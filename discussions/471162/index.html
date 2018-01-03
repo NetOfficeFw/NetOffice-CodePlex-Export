@@ -1,0 +1,982 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Need help with optional parameters</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/471162?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/471162?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="w0XDeleMhfXqA_RUFxmrDbBaEzdpsI1ogj89UmzWCIhT49uMzDrrr3Su-XDJ-5YEKe-PvwxwlqcB5yqb4FPMHOiqZywucoRdqARAgD86ez3V4qs8_ZdH2c7UlrgnCbwbnDlNYw2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken26aa3640e-df46-4169-8230-db28cc18a601" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:49 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f471162" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="c092a445-d48b-4141-904a-74bf26d4f8a7">
+                
+                    <script class="options" defer="defer" id="c092a445-d48b-4141-904a-74bf26d4f8a7" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Need help with optional parameters
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:471162]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="ccf85c52-b091-4a1c-bd22-9b526ce067ab">
+    <script class="options" defer="defer" id="ccf85c52-b091-4a1c-bd22-9b526ce067ab" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/471162","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1129074">
+    <td id="PostDetailsCell_1129074" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1129074"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/themightylc">themightylc</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/26/2013 8:53:00 AM" LocalTimeTicks="1385484780">Nov 26, 2013 at 8:53 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="11/26/2013 8:56:07 AM" LocalTimeTicks="1385484967">Nov 26, 2013 at 8:56 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1129074" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi&#32;beautiful&#32;people&#32;&#32;-&#32;great&#32;effort&#32;with&#32;the&#32;library,&#32;Sebastian&#33;&#33;&#10;&#10;I&#32;have&#32;a&#32;simple&#32;question&#32;-&#32;how&#32;do&#32;i&#32;omit&#32;the&#32;optional&#32;parameters&#32;that&#32;are&#32;not&#32;declared&#32;as&#32;optional&#32;in&#32;the&#32;API&#32;methods&#63;&#10;&#10;I&#32;want&#32;to&#32;use&#32;the&#32;WordApi.ContentControl.SetPlaceholderText&#40;&#41;&#32;method&#32;that&#32;is&#32;defined&#32;as&#32;follows&#32;&#40;http&#58;&#47;&#47;msdn.microsoft.com&#47;en-us&#47;library&#47;office&#47;bb256831&#40;v&#61;office.12&#41;.aspx&#41;&#10;&#10;expression.SetPlaceholderText&#40;BuildingBlock,&#32;Range,&#32;Text&#41;&#10;Only&#32;one&#32;of&#32;the&#32;parameters&#32;is&#32;used&#32;when&#32;specifying&#32;placeholder&#32;text.&#32;If&#32;more&#32;than&#32;one&#32;parameter&#32;is&#32;used,&#32;Microsoft&#32;Office&#32;Word&#32;uses&#32;the&#32;text&#32;specified&#32;in&#32;the&#32;first&#32;parameter.&#32;If&#32;all&#32;parameters&#32;are&#32;omitted,&#32;the&#32;placeholder&#32;text&#32;is&#32;blank.&#10;&#10;Naturally&#32;I&#32;want&#32;to&#32;pass&#32;the&#32;Text&#32;&#40;String&#41;&#32;parameter&#32;from&#32;within&#32;my&#32;VB.NET&#32;code.&#32;How&#32;do&#32;I&#32;do&#32;that&#63;&#10;&#10;SetPlaceholderText&#32;has&#32;4&#32;Overloads&#32;in&#32;the&#32;WordApi&#58;&#10;SetPlaceholderText&#40;&#41;&#10;SetPlaceholderText&#40;BuildingBlock&#41;&#10;SetPlaceholderText&#40;BuildingBlock,&#32;Range&#41;&#10;SetPlaceholderText&#40;BuildingBlock,&#32;Range,&#32;Text&#41;&#10;&#10;with&#32;the&#32;last&#32;one&#32;being&#32;the&#32;only&#32;one&#32;giving&#32;me&#32;access&#32;to&#32;the&#32;Text&#32;parameter.&#10;&#10;I&#32;cannot&#32;omit&#32;the&#32;other&#32;parameters&#32;as&#32;they&#32;are&#32;not&#32;declared&#32;optional.&#10;I&#32;have&#32;tried&#32;any&#32;combination&#32;of&#32;Type.Missing&#32;and&#32;Missing.Value&#32;&#40;leads&#32;to&#32;InvalidCastException&#32;within&#32;Word&#41;&#32;as&#32;well&#32;as&#32;creating&#32;and&#32;passing&#32;empty&#32;stub&#32;objects&#32;or&#32;simply&#32;&#34;Nothing&#34;&#32;for&#32;BuildingBlock&#32;and&#32;Range&#32;&#40;leads&#32;to&#32;very&#32;confusing&#32;COMExceptions&#32;&#34;DISP_E_TYPEMISMATCH&#34;&#32;within&#32;Word&#41;.&#10;&#10;How&#32;do&#32;I&#32;use&#32;this&#63;&#32;I&#32;have&#32;tried&#32;to&#32;research&#32;this,&#32;but&#32;no&#32;success.&#10;&#10;Thanks&#32;a&#32;bunch&#33;&#10;&#10;Christoph">
+        <div class="markDownOutput ">Hi beautiful people - great effort with the library, Sebastian!!<br>
+<br>
+I have a simple question - how do i omit the optional parameters that are not declared as optional in the API methods?<br>
+<br>
+I want to use the WordApi.ContentControl.SetPlaceholderText() method that is defined as follows (<a href="http://msdn.microsoft.com/en-us/library/office/bb256831(v=office.12).aspx"  rel="nofollow">http://msdn.microsoft.com/en-us/library/office/bb256831(v=office.12).aspx</a>)<br>
+<br>
+expression.SetPlaceholderText(BuildingBlock, Range, Text)<br>
+Only one of the parameters is used when specifying placeholder text. If more than one parameter is used, Microsoft Office Word uses the text specified in the first parameter. If all parameters are omitted, the placeholder text is blank.<br>
+<br>
+Naturally I want to pass the Text (String) parameter from within my VB.NET code. How do I do that?<br>
+<br>
+SetPlaceholderText has 4 Overloads in the WordApi:<br>
+SetPlaceholderText()<br>
+SetPlaceholderText(BuildingBlock)<br>
+SetPlaceholderText(BuildingBlock, Range)<br>
+SetPlaceholderText(BuildingBlock, Range, Text)<br>
+<br>
+with the last one being the only one giving me access to the Text parameter.<br>
+<br>
+I cannot omit the other parameters as they are not declared optional.<br>
+I have tried any combination of Type.Missing and Missing.Value (leads to InvalidCastException within Word) as well as creating and passing empty stub objects or simply &quot;Nothing&quot; for BuildingBlock and Range (leads to very confusing COMExceptions &quot;DISP_E_TYPEMISMATCH&quot;
+ within Word).<br>
+<br>
+How do I use this? I have tried to research this, but no success.<br>
+<br>
+Thanks a bunch!<br>
+<br>
+Christoph<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1129074" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1129181">
+    <td id="PostDetailsCell_1129181" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1129181"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/26/2013 2:23:43 PM" LocalTimeTicks="1385504623">Nov 26, 2013 at 2:23 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1129181" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="SetPlaceHolderText&#32;contains&#32;a&#32;bug&#32;in&#32;the&#32;default&#32;arguments.&#32;you&#32;have&#32;to&#32;set&#32;the&#32;3&#32;arguments&#32;at&#32;hand.&#13;&#10;here&#32;you&#32;can&#32;find&#32;an&#32;old&#32;msdn&#32;discussion&#32;post&#32;from&#32;me&#32;with&#32;more&#32;details&#32;for&#32;the&#32;bug.&#13;&#10;&#13;&#10;http&#58;&#47;&#47;social.msdn.microsoft.com&#47;Forums&#47;office&#47;en-US&#47;0c03837b-aca1-4cb6-81b7-f4fac8f36a04&#47;possible-bug-in-wordcontentcontrol&#63;forum&#61;worddev&#32;&#13;&#10;&#13;&#10;&#42;Sebastian">
+        <div class="markDownOutput ">SetPlaceHolderText contains a bug in the default arguments. you have to set the 3 arguments at hand.
+<br>
+here you can find an old msdn discussion post from me with more details for the bug.
+<br>
+<br>
+<a href="http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol?forum=worddev"  rel="nofollow">http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol?forum=worddev</a>
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1129181" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1243297">
+    <td id="PostDetailsCell_1243297" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1243297"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/themightylc">themightylc</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="5/8/2014 10:35:44 PM" LocalTimeTicks="1399613744">May 8, 2014 at 10:35 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="5/8/2014 10:45:12 PM" LocalTimeTicks="1399614312">May 8, 2014 at 10:45 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1243297" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Sorry&#32;for&#32;reviving&#32;this&#32;old&#32;topic,&#32;but&#32;I&#32;came&#32;around&#32;to&#32;try&#32;this&#32;again&#32;and&#32;i&#32;am&#32;Stuck&#32;at&#32;the&#32;same&#32;place.&#10;I&#32;don&#39;t&#32;fully&#32;understand&#32;the&#32;discussion&#32;you&#32;linked&#32;but&#32;in&#32;a&#32;nutshell&#32;-&#32;does&#32;this&#32;mean&#32;there&#32;is&#32;no&#32;way&#32;to&#32;set&#32;the&#32;placeholder&#32;text&#32;from&#32;.Net&#63;&#10;&#10;&#34;NetOffice&#32;unterst&#252;tzt&#32;derzeit&#32;keine&#32;optionalen&#47;benannten&#32;Parameter&#32;da&#32;es&#32;in&#32;C&#35;&#32;geschrieben&#32;ist&#32;und&#32;auch&#32;mit&#32;fr&#252;heren&#32;.NET&#32;Versionen&#32;kompatibel&#32;sein&#32;will&#32;wo&#32;C&#35;&#32;diese&#32;F&#228;higkeit&#32;noch&#32;nicht&#32;hatte.&#32;Ausserdem&#32;w&#252;rde&#32;das&#32;Konzept&#32;der&#32;Attribute&#32;und&#32;Quellcodekommentare&#32;mit&#32;Hinweisen&#32;zur&#32;Versionsunterst&#252;tzung&#32;dann&#32;nicht&#32;mehr&#32;funktionieren.&#32;Deswegen&#32;stellt&#32;NO&#32;f&#252;r&#32;Methoden&#47;Properties&#32;mit&#32;optionalen&#32;Parametern&#32;die&#32;entsprechende&#32;Anzahl&#32;an&#32;&#220;berladungen&#32;bereit.&#32;&#10;&#10;Sebastian&#34;&#32;&#40;sorry,&#32;only&#32;found&#32;the&#32;german&#32;quote&#32;&#59;&#41;&#41;&#10;&#10;I&#32;don&#39;t&#32;understand&#32;this...&#32;SetPlaceholderText&#40;&#41;&#32;has&#32;4&#32;overloads&#58;&#10;&#10;&#96;&#96;&#96;&#10;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public&#32;void&#32;SetPlaceholderText&#40;&#41;&#59;&#10;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public&#32;void&#32;SetPlaceholderText&#40;BuildingBlock&#32;buildingBlock&#41;&#59;&#10;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public&#32;void&#32;SetPlaceholderText&#40;BuildingBlock&#32;buildingBlock,&#32;Range&#32;range&#41;&#59;&#10;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public&#32;void&#32;SetPlaceholderText&#40;BuildingBlock&#32;buildingBlock,&#32;Range&#32;range,&#32;string&#32;text&#41;&#59;&#10;&#96;&#96;&#96;&#10;How&#32;can&#32;I&#32;use&#32;this&#32;if&#32;i&#32;wanted&#32;to&#32;pass&#32;only&#32;the&#32;&#34;text&#34;&#32;argument...&#32;I&#32;am&#32;very&#32;confused&#32;again&#32;to&#32;the&#32;point&#32;where&#32;I&#32;will&#32;lose&#32;interest&#32;in&#32;finishing&#32;my&#32;application&#32;&#58;&#41;">
+        <div class="markDownOutput ">Sorry for reviving this old topic, but I came around to try this again and i am Stuck at the same place.<br>
+I don't fully understand the discussion you linked but in a nutshell - does this mean there is no way to set the placeholder text from .Net?<br>
+<br>
+&quot;NetOffice unterstÃ¼tzt derzeit keine optionalen/benannten Parameter da es in C# geschrieben ist und auch mit frÃ¼heren .NET Versionen kompatibel sein will wo C# diese FÃ¤higkeit noch nicht hatte. Ausserdem wÃ¼rde das Konzept der Attribute und Quellcodekommentare
+ mit Hinweisen zur VersionsunterstÃ¼tzung dann nicht mehr funktionieren. Deswegen stellt NO fÃ¼r Methoden/Properties mit optionalen Parametern die entsprechende Anzahl an Ãœberladungen bereit.
+<br>
+<br>
+Sebastian&quot; (sorry, only found the german quote ;))<br>
+<br>
+I don't understand this... SetPlaceholderText() has 4 overloads:<br>
+<pre><code>
+        public void SetPlaceholderText();
+
+        public void SetPlaceholderText(BuildingBlock buildingBlock);
+
+        public void SetPlaceholderText(BuildingBlock buildingBlock, Range range);
+
+        public void SetPlaceholderText(BuildingBlock buildingBlock, Range range, string text);</code></pre>
+How can I use this if i wanted to pass only the &quot;text&quot; argument... I am very confused again to the point where I will lose interest in finishing my application :)<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1243297" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1243308">
+    <td id="PostDetailsCell_1243308" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1243308"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="5/8/2014 11:07:15 PM" LocalTimeTicks="1399615635">May 8, 2014 at 11:07 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1243308" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="It&#32;looks&#32;like&#32;you&#32;a&#32;german&#32;native&#32;speaker&#58;&#13;&#10;I&#32;want&#32;answer&#32;in&#32;german.&#32;if&#32;it&#32;doesnt,&#32;please&#32;let&#32;me&#32;know.&#13;&#10;&#13;&#10;Ja&#32;hey&#32;kein&#32;Problem,&#32;ich&#32;bin&#32;mir&#32;noch&#32;nicht&#32;sicher&#32;was&#32;deine&#32;Frage&#32;ist&#32;aber&#32;ich&#32;antworte&#32;zuerst&#32;mal&#32;auf&#32;das&#32;typische&#32;Problem&#32;zu&#32;dieser&#32;Methode.&#13;&#10;&#13;&#10;Da&#32;hast&#32;du&#32;die&#32;eine&#32;Methode&#32;in&#32;Word&#32;gefunden&#32;die&#32;Microsoft&#32;leider&#32;gr&#252;ndlich&#32;versaut&#32;hat.&#13;&#10;Ich&#32;habe&#32;mich&#32;wegen&#32;der&#32;Methode&#32;schon&#32;mal&#32;vor&#32;einem&#32;Jahr&#32;im&#32;Microsoft&#32;Support&#32;gestritten&#58;&#13;&#10;Das&#32;ist&#32;der&#32;Link&#32;dazu&#40;Ich&#32;bin&#32;Alfred&#32;Tetzlaf&#41;&#58;&#13;&#10;http&#58;&#47;&#47;social.msdn.microsoft.com&#47;Forums&#47;office&#47;en-US&#47;0c03837b-aca1-4cb6-81b7-f4fac8f36a04&#47;possible-bug-in-wordcontentcontrol&#13;&#10;&#13;&#10;Die&#32;Zusammenfassung&#58;&#32;Du&#32;musst&#32;die&#32;ersten&#32;beiden&#32;Parameter&#32;immer&#32;angeben,&#32;obwohl&#32;sie&#32;eigentlich&#32;optional&#32;sind.&#32;Die&#32;von&#32;Microsoft&#32;definierten&#32;Default&#32;Values&#32;f&#252;r&#32;diese&#32;Parameter&#32;sind&#32;n&#228;mlich&#32;schlichtweg&#32;Bullshit&#32;und&#32;f&#252;hren&#32;zu&#32;einem&#32;Fehler.&#32;Danach&#32;hats&#32;in&#32;meinen&#32;Tests&#32;immer&#32;funktioniert.&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;&#13;&#10;&#32;">
+        <div class="markDownOutput ">It looks like you a german native speaker: <br>
+I want answer in german. if it doesnt, please let me know. <br>
+<br>
+Ja hey kein Problem, ich bin mir noch nicht sicher was deine Frage ist aber ich antworte zuerst mal auf das typische Problem zu dieser Methode.
+<br>
+<br>
+Da hast du die eine Methode in Word gefunden die Microsoft leider grÃ¼ndlich versaut hat.
+<br>
+Ich habe mich wegen der Methode schon mal vor einem Jahr im Microsoft Support gestritten:
+<br>
+Das ist der Link dazu(Ich bin Alfred Tetzlaf): <br>
+<a href="http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol"  rel="nofollow">http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol</a>
+<br>
+<br>
+Die Zusammenfassung: Du musst die ersten beiden Parameter immer angeben, obwohl sie eigentlich optional sind. Die von Microsoft definierten Default Values fÃ¼r diese Parameter sind nÃ¤mlich schlichtweg Bullshit und fÃ¼hren zu einem Fehler. Danach hats in meinen
+ Tests immer funktioniert. <br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1243308" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1243398">
+    <td id="PostDetailsCell_1243398" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1243398"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/themightylc">themightylc</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="5/9/2014 9:27:55 AM" LocalTimeTicks="1399652875">May 9, 2014 at 9:27 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1243398" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;Hi&#32;und&#32;danke&#32;f&#252;r&#32;die&#32;Antwort&#32;&#58;&#41;&#32;&#32;&#32;ich&#32;hab&#39;&#32;halt&#32;einfach&#32;keine&#32;Ahnung&#32;was&#32;ich&#32;f&#252;r&#32;die&#32;ersten&#32;beiden&#32;Parameter&#32;angeben&#32;soll,&#32;geschweige&#32;denn&#32;was&#32;sie&#32;bringen,&#32;auch&#32;nach&#32;studieren&#32;der&#32;msdn&#32;&#40;BuildingBlock&#32;-&#32;ist&#32;das&#32;nicht&#32;ein&#32;Textbaustein&#63;&#41;&#32;Wenn&#32;ich&#32;zwei&#32;stub-Objekte&#32;mit&#32;new&#32;erzeuge,&#32;erhalte&#32;ich&#32;immer&#32;noch&#32;einen&#32;Fehler&#32;in&#32;Word&#32;-&#32;ich&#32;hab&#32;schon&#32;soviel&#32;Trial&#32;&#38;&#32;Error&#32;hinter&#32;mir&#32;das&#32;ich&#32;fast&#32;den&#32;Verstand&#32;verliere.&#32;&#32;&#32;Kurz&#58;&#32;hast&#32;Du&#32;ein&#32;Beispiel&#32;im&#32;Kopf,&#32;das&#32;einfach&#32;angibt,&#32;wie&#32;ich&#32;die&#32;Methode&#32;aufrufen&#32;soll&#63;&#32;Ich&#32;mach&#32;ja&#32;nur&#32;diese&#32;beiden&#32;Zeilen&#58;&#32;&#32;&#32;&#32;NetOffice.WordApi.ContentControl&#32;cc&#32;&#61;&#32;currentDocument.ContentControls.Add&#40;NetOffice.WordApi.Enums.WdContentControlType.wdContentControlText,&#32;MyApplication.Selection.Range&#41;&#59;&#32;cc.Title&#32;&#61;&#32;currentValue&#59;&#32;&#32;&#32;&#32;&#32;Und&#32;w&#252;rde&#32;nun&#32;gern&#32;den&#32;bekloppten&#32;Platzhalter-Text&#32;ersetzen.&#32;&#32;&#32;Vielen&#32;Dank&#33;&#32;&#58;&#41;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Am&#32;9.&#32;Mai&#32;2014&#32;00&#58;07&#32;schrieb&#32;SebastianDotNet&#32;&#38;lt&#59;&#91;email&#32;removed&#93;&#38;gt&#59;&#58;&#32;&#32;&#32;From&#58;&#32;SebastianDotNet&#32;It&#32;looks&#32;like&#32;you&#32;a&#32;german&#32;native&#32;speaker&#58;&#32;&#32;I&#32;want&#32;answer&#32;in&#32;german.&#32;if&#32;it&#32;doesnt,&#32;please&#32;let&#32;me&#32;know.&#32;&#32;&#32;Ja&#32;hey&#32;kein&#32;Problem,&#32;ich&#32;bin&#32;mir&#32;noch&#32;nicht&#32;sicher&#32;was&#32;deine&#32;Frage&#32;ist&#32;aber&#32;ich&#32;antworte&#32;zuerst&#32;mal&#32;auf&#32;das&#32;typische&#32;Problem&#32;zu&#32;dieser&#32;Methode.&#32;&#32;&#32;Da&#32;hast&#32;du&#32;die&#32;eine&#32;Methode&#32;in&#32;Word&#32;gefunden&#32;die&#32;Microsoft&#32;leider&#32;gr&#252;ndlich&#32;versaut&#32;hat.&#32;&#32;Ich&#32;habe&#32;mich&#32;wegen&#32;der&#32;Methode&#32;schon&#32;mal&#32;vor&#32;einem&#32;Jahr&#32;im&#32;Microsoft&#32;Support&#32;gestritten&#58;&#32;&#32;Das&#32;ist&#32;der&#32;Link&#32;dazu&#40;Ich&#32;bin&#32;Alfred&#32;Tetzlaf&#41;&#58;&#32;&#32;http&#58;&#47;&#47;social.msdn.microsoft.com&#47;Forums&#47;office&#47;en-US&#47;0c03837b-aca1-4cb6-81b7-f4fac8f36a04&#47;possible-bug-in-wordcontentcontrol&#32;&#32;&#32;Die&#32;Zusammenfassung&#58;&#32;Du&#32;musst&#32;die&#32;ersten&#32;beiden&#32;Parameter&#32;immer&#32;angeben,&#32;obwohl&#32;sie&#32;eigentlich&#32;optional&#32;sind.&#32;Die&#32;von&#32;Microsoft&#32;definierten&#32;Default&#32;Values&#32;f&#252;r&#32;diese&#32;Parameter&#32;sind&#32;n&#228;mlich&#32;schlichtweg&#32;Bullshit&#32;und&#32;f&#252;hren&#32;zu&#32;einem&#32;Fehler.&#32;Danach&#32;hats&#32;in&#32;meinen&#32;Tests&#32;immer&#32;funktioniert.&#32;&#32;&#32;&#42;Sebastian&#32;&#32;&#32;Read&#32;the&#32;&#32;full&#32;discussion&#32;online.&#32;To&#32;add&#32;a&#32;post&#32;to&#32;this&#32;discussion,&#32;reply&#32;to&#32;this&#32;email&#32;&#40;&#91;email&#32;removed&#93;&#41;&#32;To&#32;start&#32;a&#32;new&#32;discussion&#32;for&#32;this&#32;project,&#32;email&#32;&#91;email&#32;removed&#93;&#32;You&#32;are&#32;receiving&#32;this&#32;email&#32;because&#32;you&#32;subscribed&#32;to&#32;this&#32;discussion&#32;on&#32;CodePlex.&#32;You&#32;can&#32;&#32;unsubscribe&#32;on&#32;CodePlex.com.&#32;Please&#32;note&#58;&#32;Images&#32;and&#32;attachments&#32;will&#32;be&#32;removed&#32;from&#32;emails.&#32;Any&#32;posts&#32;to&#32;this&#32;discussion&#32;will&#32;also&#32;be&#32;available&#32;online&#32;at&#32;CodePlex.com&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;--&#32;&#32;&#32;Mit&#32;freundlichen&#32;Gr&#252;&#223;en&#32;Christoph&#32;Gr&#252;n&#32;-Entwicklung&#32;und&#32;Design&#32;--&#32;Firma&#58;&#32;Dresen&#32;und&#32;Gr&#252;n&#32;GbR&#32;Gesch&#228;ftsf&#252;hrende&#32;Gesellschafter&#58;&#32;Markus&#32;Dresen,&#32;Christoph&#32;Gr&#252;n&#32;Anschrift&#58;&#32;Weilandstr.&#32;1A,&#32;66359&#32;Bous&#32;Telefon&#58;&#32;06898&#32;&#47;&#32;39&#32;04&#32;998&#32;Steuernummer&#58;090&#47;152&#47;00070&#32;&#32;&#32;">
+        
+<div dir="ltr">Hi und danke fÃ¼r die Antwort :)
+<div><br>
+</div>
+<div>ich hab' halt einfach keine Ahnung was ich fÃ¼r die ersten beiden Parameter angeben soll, geschweige denn was sie bringen, auch nach studieren der msdn (BuildingBlock - ist das nicht ein Textbaustein?)</div>
+<div>Wenn ich zwei stub-Objekte mit new erzeuge, erhalte ich immer noch einen Fehler in Word - ich hab schon soviel Trial & Error hinter mir das ich fast den Verstand verliere.</div>
+<div><br>
+</div>
+<div>Kurz: hast Du ein Beispiel im Kopf, das einfach angibt, wie ich die Methode aufrufen soll? Ich mach ja nur diese beiden Zeilen:</div>
+<div><br>
+</div>
+<div>
+<div>NetOffice.WordApi.ContentControl cc = currentDocument.ContentControls.Add(NetOffice.WordApi.Enums.WdContentControlType.wdContentControlText, MyApplication.Selection.Range);</div>
+<div>cc.Title = currentValue;<br>
+</div>
+</div>
+<div><br>
+</div>
+<div>Und wÃ¼rde nun gern den bekloppten Platzhalter-Text ersetzen.</div>
+<div><br>
+</div>
+<div>Vielen Dank! :)</div>
+<div><br>
+</div>
+<div><br>
+</div>
+</div>
+<div><br>
+<br>
+<div>Am 9. Mai 2014 00:07 schrieb SebastianDotNet <span dir="ltr">&lt;[email removed]&gt;</span>:<br>
+<blockquote style="margin:0 0 0 .8ex; border-left:1px #ccc solid; padding-left:1ex">
+<div>
+<p>From: SebastianDotNet</p>
+<div>It looks like you a german native speaker: <br>
+I want answer in german. if it doesnt, please let me know. <br>
+<br>
+Ja hey kein Problem, ich bin mir noch nicht sicher was deine Frage ist aber ich antworte zuerst mal auf das typische Problem zu dieser Methode.
+<br>
+<br>
+Da hast du die eine Methode in Word gefunden die Microsoft leider grÃ¼ndlich versaut hat.
+<br>
+Ich habe mich wegen der Methode schon mal vor einem Jahr im Microsoft Support gestritten:
+<br>
+Das ist der Link dazu(Ich bin Alfred Tetzlaf): <br>
+<a href="http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol" target="_blank" rel="nofollow">http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol</a>
+<br>
+<br>
+Die Zusammenfassung: Du musst die ersten beiden Parameter immer angeben, obwohl sie eigentlich optional sind. Die von Microsoft definierten Default Values fÃ¼r diese Parameter sind nÃ¤mlich schlichtweg Bullshit und fÃ¼hren zu einem Fehler. Danach hats in meinen
+ Tests immer funktioniert. <br>
+<br>
+*Sebastian<br>
+</div>
+<div>
+<p>Read the <a href="http://netoffice.codeplex.com/discussions/471162#post1243308" target="_blank" rel="nofollow">
+full discussion online</a>.</p>
+<p>To add a post to this discussion, reply to this email ([email removed])</p>
+<p>To start a new discussion for this project, email [email removed]</p>
+<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can
+<a href="http://netoffice.codeplex.com/discussions/471162/unsubscribe/" target="_blank" rel="nofollow">
+unsubscribe</a> on CodePlex.com.</p>
+<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com</p>
+</div>
+</div>
+</blockquote>
+</div>
+<br>
+<br clear="all">
+<div><br>
+</div>
+-- <br>
+<div dir="ltr">
+<p>Mit freundlichen GrÃ¼ÃŸen</p>
+<p>Christoph GrÃ¼n -Entwicklung und Design</p>
+<p>--</p>
+<p>Firma: Dresen und GrÃ¼n GbR<br>
+GeschÃ¤ftsfÃ¼hrende Gesellschafter:<br>
+Markus Dresen, Christoph GrÃ¼n</p>
+<p>Anschrift: Weilandstr. 1A, 66359 Bous<br>
+Telefon: 06898 / 39 04 998<br>
+Steuernummer:090/152/00070</p>
+</div>
+</div>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1243398" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1330178">
+    <td id="PostDetailsCell_1330178" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1330178"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/thirtysix">thirtysix</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/9/2014 4:23:56 PM" LocalTimeTicks="1418171036">Dec 9, 2014 at 4:23 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1330178" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hello,&#32;has&#32;this&#32;issue&#32;been&#32;resolved&#63;&#32;Or&#32;is&#32;it&#32;not&#32;possible&#32;to&#32;use&#32;&#34;SetPlaceholderText&#40;BuildingBlock&#32;buildingBlock,&#32;Range&#32;range,&#32;string&#32;text&#41;&#34;&#32;and&#32;only&#32;pass&#32;a&#32;&#34;text&#34;&#32;argument&#32;from&#32;NetOffice&#32;code&#32;due&#32;the&#32;bug&#63;&#13;&#10;&#13;&#10;Using&#32;the&#32;standard&#32;Microsoft.Office.Interop.Word&#32;API&#32;I&#32;can&#32;do&#32;this&#58;&#13;&#10;&#13;&#10;contentControl.SetPlaceholderText&#40;null,&#32;null,&#32;&#34;Placeholder&#32;text&#34;&#41;&#59;&#13;&#10;&#13;&#10;I&#32;am&#32;now&#32;wanting&#32;to&#32;do&#32;the&#32;same&#32;thing&#32;from&#32;NetOffice.&#32;Please&#32;advise.&#32;Thank&#32;you&#33;">
+        <div class="markDownOutput ">Hello, has this issue been resolved? Or is it not possible to use &quot;SetPlaceholderText(BuildingBlock buildingBlock, Range range, string text)&quot; and only pass a &quot;text&quot; argument from NetOffice code due the bug?
+<br>
+<br>
+Using the standard Microsoft.Office.Interop.Word API I can do this: <br>
+<br>
+contentControl.SetPlaceholderText(null, null, &quot;Placeholder text&quot;); <br>
+<br>
+I am now wanting to do the same thing from NetOffice. Please advise. Thank you!<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1330178" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1330227">
+    <td id="PostDetailsCell_1330227" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1330227"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/9/2014 5:53:44 PM" LocalTimeTicks="1418176424">Dec 9, 2014 at 5:53 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1330227" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Please&#32;keep&#32;in&#32;your&#32;mind&#58;&#32;This&#32;is&#32;a&#32;MS-Office&#32;bug&#32;and&#32;not&#32;a&#32;NetOffice&#32;bug.&#32;&#32;Currently&#32;you&#32;have&#32;set&#32;&#91;all&#93;&#32;valid&#32;arguments&#32;at&#32;hand.&#13;&#10;The&#32;good&#32;news&#40;but&#32;not&#32;for&#32;today&#41;&#58;&#32;NO&#32;1.8&#32;want&#32;spend&#32;an&#32;empty&#32;COM&#32;reference&#32;argument&#32;to&#32;handle&#32;this.&#32;&#40;the&#32;problem&#32;here&#32;is&#32;the&#32;&#40;MS&#41;&#32;defined&#32;default&#32;arguments&#32;in&#32;late-binding&#32;are&#32;not&#32;valid&#41;&#13;&#10;&#13;&#10;&#13;&#10;&#42;Sebastian&#32;&#13;&#10;&#13;&#10;">
+        <div class="markDownOutput ">Please keep in your mind: This is a MS-Office bug and not a NetOffice bug. Currently you have set [all] valid arguments at hand.
+<br>
+The good news(but not for today): NO 1.8 want spend an empty COM reference argument to handle this. (the problem here is the (MS) defined default arguments in late-binding are not valid)
+<br>
+<br>
+<br>
+*Sebastian <br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1330227" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1330238">
+    <td id="PostDetailsCell_1330238" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1330238"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/thirtysix">thirtysix</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="12/9/2014 6:05:40 PM" LocalTimeTicks="1418177140">Dec 9, 2014 at 6:05 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1330238" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi&#32;Sebastian,&#32;yes,&#32;I&#32;am&#32;aware&#32;that&#32;this&#32;is&#32;a&#32;MS&#32;Office&#32;bug,&#32;not&#32;NetOffice.&#13;&#10;&#13;&#10;I&#32;wasn&#39;t&#32;sure&#32;if&#32;a&#32;workaround&#32;was&#32;implemented&#32;in&#32;NetOffice&#32;yet&#32;or&#32;not.&#13;&#10;&#13;&#10;Thank&#32;you&#32;for&#32;the&#32;update&#32;and&#32;I&#32;look&#32;forward&#32;to&#32;NO&#32;1.8.">
+        <div class="markDownOutput ">Hi Sebastian, yes, I am aware that this is a MS Office bug, not NetOffice. <br>
+<br>
+I wasn't sure if a workaround was implemented in NetOffice yet or not. <br>
+<br>
+Thank you for the update and I look forward to NO 1.8.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1330238" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="8f94fbee-3937-45cb-bbb0-c727354ef13b">
+    <script class="options" defer="defer" id="8f94fbee-3937-45cb-bbb0-c727354ef13b" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_54044168-5068-4559-94e6-4952872acadf">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_aabcd446-9f7f-43d1-8cd6-ef27e7abfb7b">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_54044168-5068-4559-94e6-4952872acadf" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_aabcd446-9f7f-43d1-8cd6-ef27e7abfb7b" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/471162';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

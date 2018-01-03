@@ -1,0 +1,1579 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Starting a new PowerPoint.Application when PowerPoint is already running causes a CO_E_SERVER_EXEC_FAILURE exception</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/277636?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/277636?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="hgGFdmQufaNoaY3_1Oeym2Jbk1hZpCWLdID5YQQx6Z0xFyfK4jyLomDRuSjPbZoLmFUV0SJUBN4xAzjlJvu7xoTA3SgLJAU4sPw0lwbgMaDFeC4zsQIUa520iO9FjLlGkgSOWw2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken27d823341-a909-4234-81ba-06bca28b00e2" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:52:07 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f277636" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="8f6f72c7-b92a-4fc3-954f-8d163c749414">
+                
+                    <script class="options" defer="defer" id="8f6f72c7-b92a-4fc3-954f-8d163c749414" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Starting a new PowerPoint.Application when PowerPoint is already running causes a CO_E_SERVER_EXEC_FAILURE exception
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:277636]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="80563b8c-23f9-48fa-a052-d1a4d2550d87">
+    <script class="options" defer="defer" id="80563b8c-23f9-48fa-a052-d1a4d2550d87" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/277636","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="691150">
+    <td id="PostDetailsCell_691150" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post691150"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/khiron">khiron</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/29/2011 5:55:34 PM" LocalTimeTicks="1319936134">Oct 29, 2011 at 5:55 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_691150" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;&#32;&#32;Firstly&#32;let&#32;me&#32;thank&#32;you&#32;for&#32;building&#32;and&#32;publishing&#32;this&#32;library.&#32;&#38;nbsp&#59;I&#32;needed&#32;to&#32;automate&#32;PowerPoint&#32;in&#32;a&#32;version&#32;independent&#32;way&#32;and&#32;was&#32;part&#32;way&#32;through&#32;crafting&#32;my&#32;own&#32;wrapper&#32;for&#32;late&#32;binding&#32;to&#32;PowerPoint&#32;when&#32;I&#32;found&#32;this&#32;project.&#32;ok&#32;to&#32;this&#32;error.&#32;&#38;nbsp&#59;Consider&#32;the&#32;following&#32;trivial&#32;app&#32;&#32;&#32;LateBindingApi.Core.Factory.Initialize&#40;&#41;&#59;&#32;PowerPoint.Application&#32;application&#32;&#61;&#32;new&#32;PowerPoint.Application&#40;&#41;&#59;&#32;application.Dispose&#40;&#41;&#32;&#32;&#32;&#32;if&#32;powerpoint&#32;&#40;2007&#41;&#32;is&#32;already&#32;running,&#32;the&#32;app&#32;will&#32;time&#32;out&#32;on&#32;the&#32;new&#32;PowerPoint.Application&#32;statement&#32;eventually&#32;raising&#32;a&#32;CO_E_SERVER_EXEC_FAILURE&#32;exception.&#32;I&#32;tried&#32;a&#32;simple&#32;console&#32;app&#32;that&#32;uses&#32;the&#32;RunningObjectTable&#32;class&#32;from&#32;Examples&#47;Misc&#32;as&#32;follows&#59;&#32;&#38;nbsp&#59;&#32;&#32;static&#32;void&#32;Main&#40;string&#91;&#93;&#32;args&#41;&#32;&#123;&#32;LateBindingApi.Core.Factory.Initialize&#40;&#41;&#59;&#32;PowerPoint.Application&#32;application&#32;&#61;&#32;null&#59;&#32;object&#32;testProxy&#32;&#61;&#32;RunningObjectTable.GetRunningPowerPointInstanceFromROT&#40;&#41;&#59;&#32;if&#32;&#40;null&#32;&#33;&#61;&#32;testProxy&#41;&#32;&#123;&#32;application&#32;&#61;&#32;new&#32;PowerPoint.Application&#40;null,&#32;testProxy&#41;&#59;&#32;&#125;&#32;else&#32;application&#32;&#61;&#32;new&#32;PowerPoint.Application&#40;&#41;&#59;&#32;&#47;&#47;...&#47;&#47;&#32;if&#32;&#40;null&#32;&#61;&#61;&#32;testProxy&#41;&#32;application.Quit&#40;&#41;&#59;&#32;application.Dispose&#40;&#41;&#59;&#32;&#125;&#32;&#32;&#32;&#38;nbsp&#59;&#32;testProxy&#32;is&#32;always&#32;null,&#32;whether&#32;PowerPoint&#32;&#40;2007&#41;&#32;is&#32;loaded&#32;or&#32;not,&#32;and&#32;the&#32;next&#32;line&#32;of&#32;code&#32;that&#32;creates&#32;a&#32;new&#32;PowerPoint.Application&#32;raises&#32;the&#32;exception.&#32;">
+        
+<pre><pre><br></pre>
+</pre>
+<p>Firstly let me thank you for building and publishing this library. &nbsp;I needed to automate PowerPoint in a version independent way and was part way through crafting my own wrapper for late binding to PowerPoint when I found this project.</p>
+<p>ok to this error. &nbsp;Consider the following trivial app</p>
+<p></p>
+<div style="color:black; background-color:white">
+<pre>LateBindingApi.Core.Factory.Initialize();
+PowerPoint.Application application = <span style="color:blue">new</span> PowerPoint.Application();
+application.Dispose()
+</pre>
+</div>
+<p></p>
+<p>if powerpoint (2007) is already running, the app will time out on the new PowerPoint.Application statement eventually raising a CO_E_SERVER_EXEC_FAILURE exception.</p>
+<p>I tried a simple console app that uses the RunningObjectTable class from Examples/Misc as follows;</p>
+<p>&nbsp;</p>
+<div style="color:black; background-color:white">
+<pre><span style="color:blue">static</span> <span style="color:blue">void</span> Main(<span style="color:blue">string</span>[] args)
+{
+    LateBindingApi.Core.Factory.Initialize();
+    PowerPoint.Application application = <span style="color:blue">null</span>;
+    <span style="color:blue">object</span> testProxy = RunningObjectTable.GetRunningPowerPointInstanceFromROT();
+    <span style="color:blue">if</span> (<span style="color:blue">null</span> != testProxy)
+    {
+        application = <span style="color:blue">new</span> PowerPoint.Application(<span style="color:blue">null</span>, testProxy);
+
+    }
+    <span style="color:blue">else</span>
+        application = <span style="color:blue">new</span> PowerPoint.Application();
+    <span style="color:green">//...//</span>
+    <span style="color:blue">if</span> (<span style="color:blue">null</span> == testProxy)
+        application.Quit();
+    application.Dispose();
+}
+</pre>
+</div>
+<p>&nbsp;</p>
+<p>testProxy is always null, whether PowerPoint (2007) is loaded or not, and the next line of code that creates a new PowerPoint.Application raises the exception.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_691150" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="691153">
+    <td id="PostDetailsCell_691153" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post691153"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/29/2011 6:25:23 PM" LocalTimeTicks="1319937923">Oct 29, 2011 at 6:25 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_691153" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="hey&#32;khiron,I&#32;do&#32;2&#32;tests&#32;on&#32;2&#32;virtual&#32;machines&#32;with&#32;xp&#32;and&#32;2007&#32;-&#32;open&#32;a&#32;powerpoint&#32;application-&#32;runs&#32;powerpoint&#32;example01this&#32;works&#32;fine&#32;on&#32;2&#32;systems,&#32;but&#32;the&#32;new&#32;Application&#32;statement&#32;don&#39;t&#32;create&#32;a&#32;new&#32;app,&#32;it&#32;allocates&#32;the&#32;already&#32;running&#32;app.i&#39;m&#32;not&#32;sure&#32;this&#32;is&#32;a&#32;powerpoint&#32;&#39;feature&#39;&#32;or&#32;i&#32;do&#32;a&#32;mistake&#32;but&#32;its&#32;the&#32;same&#32;behavoir&#32;with&#32;the&#32;interop&#32;assemblies.the&#32;second&#32;thing&#32;what&#32;i&#32;do&#32;is&#32;to&#32;GetRunningPowerPointInstanceFromROT&#32;and&#32;it&#32;works&#32;also&#32;fine&#32;on&#32;the&#32;virtual&#32;machines.can&#32;i&#32;have&#32;some&#32;additional&#32;informations,&#32;windows&#32;version&#32;32&#47;64&#32;Office&#32;32&#47;64&#32;Student&#32;Edition&#32;or&#32;something&#32;like&#32;that,&#32;multiple&#32;versions&#32;of&#32;office&#32;installed&#32;and&#32;any&#32;what&#32;is&#32;helpfulto&#32;reproduce&#32;the&#32;error.&#42;Sebastian&#40;&#32;i&#32;see&#32;the&#32;misc&#32;examples&#32;contains&#32;faulty&#32;reference&#32;paths&#32;&#42;damn&#42;&#32;&#41;&#32;&#38;nbsp&#59;">
+        
+<p>hey khiron,<br>
+<br>
+I do 2 tests on 2 virtual machines with xp and 2007</p>
+<p>- open a powerpoint application<br>
+- runs powerpoint example01<br>
+<br>
+this works fine on 2 systems, but the new Application statement don't create a new app, it allocates the already running app.<br>
+i'm not sure this is a powerpoint 'feature' or i do a mistake but its the same behavoir with the interop assemblies.<br>
+the second thing what i do is to GetRunningPowerPointInstanceFromROT and it works also fine on the virtual machines.<br>
+<br>
+can i have some additional informations, windows version 32/64 Office 32/64 Student Edition or something like that, multiple versions of office installed and any what is helpful<br>
+to reproduce the error.<br>
+<br>
+*Sebastian<br>
+<br>
+( i see the misc examples contains faulty reference paths *damn* )</p>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_691153" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="691230">
+    <td id="PostDetailsCell_691230" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post691230"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/khiron">khiron</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="10/30/2011 3:50:12 AM" LocalTimeTicks="1319971812">Oct 30, 2011 at 3:50 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="10/30/2011 4:04:51 AM" LocalTimeTicks="1319972691">Oct 30, 2011 at 4:04 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_691230" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="I&#32;think&#32;I&#32;found&#32;my&#32;problem,&#32;or&#32;at&#32;least&#32;I&#32;reckon&#32;I&#32;can&#32;get&#32;my&#32;problem&#32;to&#32;show&#32;on&#32;your&#32;system.&#32;Try&#32;running&#32;Visual&#32;Studio&#32;elevated&#32;&#40;run&#32;as&#32;Administrator&#41;,&#32;with&#32;Powerpoint&#32;run&#32;normally.&#32;&#38;nbsp&#59;Running&#32;VS&#32;non-elevated&#32;immediately&#32;fixed&#32;my&#32;symptoms.&#32;I&#39;m&#32;running&#32;Office&#32;2007&#32;Ultimate&#32;&#40;only&#32;version&#32;installed&#41;,&#32;VS2010,&#32;on&#32;Windows&#32;7&#32;Ultimate&#32;&#40;x64&#41;">
+        
+<p>I think I found my problem, or at least I reckon I can get my problem to show on your system.</p>
+<p>Try running Visual Studio elevated (run as Administrator), with Powerpoint run normally. &nbsp;Running VS non-elevated immediately fixed my symptoms.</p>
+<p>I'm running Office 2007 Ultimate (only version installed), VS2010, on Windows 7 Ultimate (x64)</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_691230" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="698564">
+    <td id="PostDetailsCell_698564" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post698564"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/cvchristensen">cvchristensen</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/15/2011 7:07:32 PM" LocalTimeTicks="1321412852">Nov 15, 2011 at 7:07 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_698564" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="I&#39;ve&#32;run&#32;into&#32;a&#32;very&#32;similar&#32;issue&#32;both&#38;nbsp&#59;with&#32;Office&#32;2010&#32;and&#32;Office&#32;2000&#32;on&#32;Windows&#32;7&#32;professional&#32;and&#32;home.&#32;It&#32;seems&#32;to&#32;be&#32;related&#32;to&#32;the&#32;elevated&#32;permissions&#32;as&#32;khiron&#32;suggests.&#32;When&#32;I&#32;run&#32;as&#32;administrator&#32;new&#32;PowerPoint.Application&#40;&#41;&#59;&#32;just&#32;freezes,&#32;both&#32;when&#32;PowerPoint&#32;is&#32;already&#32;running&#32;and&#32;when&#32;it&#32;is&#32;not.&#32;If&#32;I&#32;run&#32;normally&#32;then&#32;I&#32;don&#39;t&#32;experience&#32;these&#32;issues,&#32;but&#32;my&#32;app&#32;needs&#32;elevated&#32;permissions.&#32;Any&#32;suggestions&#63;">
+        
+<p>I've run into a very similar issue both&nbsp;with Office 2010 and Office 2000 on Windows 7 professional and home. It seems to be related to the elevated permissions as khiron suggests. When I run as administrator
+<span style="color:blue">new</span> PowerPoint.Application(); just freezes, both when PowerPoint is already running and when it is not. If I run normally then I don't experience these issues, but my app needs elevated permissions. Any suggestions?</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_698564" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="698567">
+    <td id="PostDetailsCell_698567" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post698567"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/15/2011 7:14:28 PM" LocalTimeTicks="1321413268">Nov 15, 2011 at 7:14 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_698567" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="i&#32;do&#32;a&#32;new&#38;nbsp&#59;test&#32;on&#32;a&#32;windows7&#32;x64&#32;VM&#38;nbsp&#59;immediately.do&#32;you&#32;have&#32;2000&#32;and&#32;2010&#32;installed&#32;on&#32;one&#32;single&#38;nbsp&#59;machine&#63;&#32;&#38;nbsp&#59;">
+        
+<p>i do a new&nbsp;test on a windows7 x64 VM&nbsp;immediately.<br>
+do you have 2000 and 2010 installed on one single&nbsp;machine?</p>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_698567" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="698569">
+    <td id="PostDetailsCell_698569" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post698569"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/cvchristensen">cvchristensen</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/15/2011 7:18:26 PM" LocalTimeTicks="1321413506">Nov 15, 2011 at 7:18 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_698569" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="No,&#32;they&#32;are&#32;on&#32;different&#32;machines.">
+        
+<p>No, they are on different machines.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_698569" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="698582">
+    <td id="PostDetailsCell_698582" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post698582"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/15/2011 7:52:40 PM" LocalTimeTicks="1321415560">Nov 15, 2011 at 7:52 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_698582" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="test&#32;is&#32;in&#32;progress.&#32;i&#32;give&#38;nbsp&#59;you&#32;a&#32;response&#32;in&#32;1&#32;hour.">
+        
+<p>test is in progress. i give&nbsp;you a response in 1 hour.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_698582" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="698623">
+    <td id="PostDetailsCell_698623" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post698623"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/15/2011 9:00:45 PM" LocalTimeTicks="1321419645">Nov 15, 2011 at 9:00 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_698623" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="i&#32;start&#32;all&#32;power&#32;point&#32;examples&#32;in&#32;a&#32;vm&#32;as&#32;administrator&#32;and&#32;it&#32;works&#32;wonderfull&#32;for&#32;me.what&#32;i&#32;want&#32;to&#32;do&#38;nbsp&#59;is&#32;create&#32;a&#32;special&#32;diagnostic&#32;version&#32;of&#32;LateBindingApi.Core.dll&#32;to&#32;see&#32;what&#32;exactly&#32;is&#32;the&#32;problem.which&#32;.net&#32;version&#32;do&#32;you&#32;use&#63;&#32;&#38;nbsp&#59;">
+        
+<p>i start all power point examples in a vm as administrator and it works wonderfull for me.<br>
+what i want to do&nbsp;is create a special diagnostic version of LateBindingApi.Core.dll to see what exactly is the problem.<br>
+which .net version do you use?</p>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_698623" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="698625">
+    <td id="PostDetailsCell_698625" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post698625"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/cvchristensen">cvchristensen</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/15/2011 9:03:17 PM" LocalTimeTicks="1321419797">Nov 15, 2011 at 9:03 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_698625" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;Thanks&#32;for&#32;your&#32;help&#32;and&#32;quick&#32;investigation.&#32;We&#32;are&#32;using&#32;2.0&#32;&#32;On&#32;Tue,&#32;Nov&#32;15,&#32;2011&#32;at&#32;2&#58;00&#32;PM,&#32;SebastianDotNet&#32;&#38;lt&#59;notifications&#64;codeplex.com&#38;gt&#59;&#32;wrote&#58;&#32;&#32;&#32;From&#58;&#32;SebastianDotNet&#32;&#32;i&#32;start&#32;all&#32;power&#32;point&#32;examples&#32;in&#32;a&#32;vm&#32;as&#32;administrator&#32;and&#32;it&#32;works&#32;wonderfull&#32;for&#32;me.&#32;what&#32;i&#32;want&#32;to&#32;do&#32;is&#32;create&#32;a&#32;special&#32;diagnostic&#32;version&#32;of&#32;LateBindingApi.Core.dll&#32;to&#32;see&#32;what&#32;exactly&#32;is&#32;the&#32;problem.&#32;which&#32;.net&#32;version&#32;do&#32;you&#32;use&#63;&#32;&#32;&#32;&#32;&#32;Read&#32;the&#32;&#32;full&#32;discussion&#32;online.&#32;To&#32;add&#32;a&#32;post&#32;to&#32;this&#32;discussion,&#32;reply&#32;to&#32;this&#32;email&#32;&#40;netoffice&#64;discussions.codeplex.com&#41;&#32;To&#32;start&#32;a&#32;new&#32;discussion&#32;for&#32;this&#32;project,&#32;email&#32;&#32;netoffice&#64;discussions.codeplex.com&#32;You&#32;are&#32;receiving&#32;this&#32;email&#32;because&#32;you&#32;subscribed&#32;to&#32;this&#32;discussion&#32;on&#32;CodePlex.&#32;You&#32;can&#32;&#32;unsubscribe&#32;on&#32;CodePlex.com.&#32;Please&#32;note&#58;&#32;Images&#32;and&#32;attachments&#32;will&#32;be&#32;removed&#32;from&#32;emails.&#32;Any&#32;posts&#32;to&#32;this&#32;discussion&#32;will&#32;also&#32;be&#32;available&#32;online&#32;at&#32;CodePlex.com&#32;&#32;&#32;&#32;&#32;&#32;&#32;">
+        
+<div>Thanks for your help and quick investigation. We are using 2.0<br>
+</div>
+<div>On Tue, Nov 15, 2011 at 2:00 PM, SebastianDotNet <span dir="ltr">&lt;<a href="mailto:notifications@codeplex.com" rel="nofollow">notifications@codeplex.com</a>&gt;</span> wrote:<br>
+<blockquote style="border-left:#ccc 1px solid; margin:0px 0px 0px 0.8ex; padding-left:1ex">
+<div>
+<p>From: SebastianDotNet</p>
+<div>
+<p>i start all power point examples in a vm as administrator and it works wonderfull for me.<br>
+what i want to do is create a special diagnostic version of LateBindingApi.Core.dll to see what exactly is the problem.<br>
+which .net version do you use?</p>
+<p></p>
+</div>
+<div>
+<div>
+<p>Read the <a href="http://netoffice.codeplex.com/discussions/277636#post698623" target="_blank" rel="nofollow">
+full discussion online</a>.</p>
+<p>To add a post to this discussion, reply to this email (<a href="mailto:netoffice@discussions.codeplex.com?subject=[netoffice:277636]" target="_blank" rel="nofollow">netoffice@discussions.codeplex.com</a>)</p>
+<p>To start a new discussion for this project, email <a href="mailto:netoffice@discussions.codeplex.com" target="_blank" rel="nofollow">
+netoffice@discussions.codeplex.com</a></p>
+<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can
+<a href="https://netoffice.codeplex.com/discussions/277636/unsubscribe/" target="_blank" rel="nofollow">
+unsubscribe</a> on CodePlex.com.</p>
+<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com</p>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+<br>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_698625" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="698731">
+    <td id="PostDetailsCell_698731" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post698731"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/16/2011 1:55:31 AM" LocalTimeTicks="1321437331">Nov 16, 2011 at 1:55 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_698731" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="it&#39;s&#32;done.&#32;i&#32;have&#32;created&#32;a&#32;diagnostic&#32;version&#32;of&#32;the&#32;LateBinding&#32;core.the&#32;dll&#32;is&#32;temporary&#32;available&#32;in&#32;the&#32;download&#32;section&#32;of&#32;NetOffice.please&#32;download,&#32;replace&#32;and&#32;use&#32;the&#32;NetOffice&#32;Debug&#32;Console&#32;&#40;available&#32;since&#32;NetOffice&#32;1.3&#41;use&#32;the&#32;Debug&#32;Console&#32;as&#32;follows&#58;&#32;&#32;DebugConsole.LogFile&#32;&#61;&#32;&#34;C&#58;&#92;&#92;myFile.log&#34;&#59;&#32;DebugConsole.Mode&#32;&#61;&#32;ConsoleMode.LogFile&#59;&#32;&#32;&#32;an&#32;example&#32;for&#32;using&#32;the&#32;debug&#32;console&#32;is&#32;online&#32;available&#58;&#32;http&#58;&#47;&#47;netoffice.codeplex.com&#47;wikipage&#63;title&#61;Misc01copy&#32;the&#32;content&#32;of&#32;the&#32;file&#32;below&#32;your&#32;next&#32;post.it&#39;s&#32;possible&#32;you&#32;create&#32;a&#32;normal&#32;interop&#32;assembly&#32;project&#32;to&#32;see&#32;the&#32;problem&#32;occurs&#32;here&#63;what&#32;NetOffice&#32;is&#32;do&#32;in&#32;the&#32;ctor&#32;is&#32;very&#32;simpel.&#32;&#32;_instanceType&#32;&#61;&#32;System.Type.GetTypeFromProgID&#40;progId&#41;&#59;&#32;_underlyingObject&#32;&#61;&#32;Activator.CreateInstance&#40;_instanceType&#41;&#59;&#32;&#32;&#32;&#38;nbsp&#59;&#32;No&#32;dirty&#32;hacks,&#32;no&#32;tricky&#32;stuff,&#32;but&#32;one&#32;these&#32;method&#32;calls&#32;freeze&#32;your&#32;application.i&#32;have&#32;the&#32;source&#32;code&#38;nbsp&#59;from&#32;.NET&#32;2&#32;installed&#32;on&#32;my&#32;pc&#32;and&#32;see&#32;tomorrow&#32;what&#32;does&#32;these&#32;methods.maybe&#32;i&#32;can&#32;replace&#32;the&#32;problematic&#32;method.&#32;we&#32;find&#32;a&#32;solution&#32;for&#32;your&#32;problem,&#32;i&#39;m&#32;sure&#33;&#32;&#38;nbsp&#59;&#32;&#38;nbsp&#59;">
+        
+<p>it's done. i have created a diagnostic version of the LateBinding core.<br>
+the dll is temporary available in the download section of NetOffice.<br>
+please download, replace and use the NetOffice Debug Console (available since NetOffice 1.3)<br>
+use the Debug Console as follows:<br>
+<br>
+</p>
+<div style="color:black; background-color:white">
+<pre>DebugConsole.LogFile = <span style="color:#a31515">&quot;C:\\myFile.log&quot;</span>;
+DebugConsole.Mode = ConsoleMode.LogFile;
+</pre>
+</div>
+<p><br>
+<br>
+an example for using the debug console is online available: <a href="http://netoffice.codeplex.com/wikipage?title=Misc01" rel="nofollow">
+http://netoffice.codeplex.com/wikipage?title=Misc01</a><br>
+copy the content of the file below your next post.<br>
+it's possible you create a normal interop assembly project to see the problem occurs here?<br>
+what NetOffice is do in the ctor is very simpel.<br>
+<br>
+</p>
+<div style="color:black; background-color:white">
+<pre>_instanceType = System.Type.GetTypeFromProgID(progId);
+_underlyingObject = Activator.CreateInstance(_instanceType);
+</pre>
+</div>
+<p>&nbsp;</p>
+<p>No dirty hacks, no tricky stuff, but one these method calls freeze your application.<br>
+i have the source code&nbsp;from .NET 2 installed on my pc and see tomorrow what does these methods.<br>
+maybe i can replace the problematic method. we find a solution for your problem, i'm sure!</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_698731" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="698883">
+    <td id="PostDetailsCell_698883" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post698883"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/khiron">khiron</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/16/2011 11:37:54 AM" LocalTimeTicks="1321472274">Nov 16, 2011 at 11:37 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_698883" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="I&#32;don&#39;t&#32;think&#32;it&#39;s&#32;in&#32;your&#32;code&#32;Sebastien,&#32;I&#32;could&#32;be&#32;wrong&#32;but&#32;I&#32;suspect&#32;it&#39;s&#32;a&#32;flaw&#32;in&#32;the&#32;design&#32;of&#32;PowerPoint.&#32;&#38;nbsp&#59;The&#32;PowerPoint&#32;instance&#32;is&#32;designed&#32;to&#32;be&#32;a&#32;singleton,&#32;only&#32;one&#32;of&#32;them&#32;on&#32;a&#32;PC&#32;handling&#32;all&#32;requests,&#32;but&#32;it&#32;can&#32;only&#32;be&#32;run&#32;with&#32;the&#32;rights&#32;of&#32;the&#32;logged&#32;in&#32;user&#32;and&#32;doesn&#39;t&#32;handle&#32;requests&#32;from&#32;other&#32;users.&#32;I&#32;can&#32;replicate&#32;the&#32;problem&#32;with&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#32;&#32;&#32;static&#32;void&#32;Main&#40;string&#91;&#93;&#32;args&#41;&#32;&#123;&#32;try&#32;&#123;&#32;Activator.CreateInstance&#40;Type.GetTypeFromProgID&#40;&#34;Powerpoint.Application&#34;&#41;&#41;&#59;&#32;&#125;&#32;catch&#40;Exception&#32;ex&#41;&#32;&#123;&#32;Console.WriteLine&#40;ex.Message&#41;&#59;&#32;Console.ReadKey&#40;&#41;&#59;&#32;&#125;&#32;&#125;&#32;&#32;&#32;&#38;nbsp&#59;&#32;If&#32;my&#32;app&#32;is&#32;running&#32;elevated&#32;and&#32;PowerPoint&#32;is&#32;already&#32;loaded&#32;non-elevated&#32;then&#32;the&#32;call&#32;to&#32;CreateInstance&#32;will&#32;time&#32;out&#32;raising&#32;the&#32;following&#32;exception&#32;&#32;Retrieving&#32;the&#32;COM&#32;class&#32;factory&#32;for&#32;component&#32;with&#32;CLSID&#32;&#123;91493441-5A91-11CF-8700-00AA0060263B&#125;&#32;failed&#32;due&#32;to&#32;the&#32;following&#32;error&#58;&#32;80080005.">
+        
+<p>I don't think it's in your code Sebastien, I could be wrong but I suspect it's a flaw in the design of PowerPoint. &nbsp;The PowerPoint instance is designed to be a singleton, only one of them on a PC handling all requests, but it can only be run with the
+ rights of the logged in user and doesn't handle requests from other users.</p>
+<p>I can replicate the problem with&nbsp;</p>
+<p>&nbsp;</p>
+<div style="color:black; background-color:white">
+<pre>        <span style="color:blue">static</span> <span style="color:blue">void</span> Main(<span style="color:blue">string</span>[] args)
+        {
+            <span style="color:blue">try</span>
+            {
+                Activator.CreateInstance(Type.GetTypeFromProgID(<span style="color:#a31515">&quot;Powerpoint.Application&quot;</span>));
+            }
+            <span style="color:blue">catch</span>(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
+            }
+        }
+</pre>
+</div>
+<p>&nbsp;</p>
+<p>If my app is running elevated and PowerPoint is already loaded non-elevated then the call to CreateInstance will time out raising the following exception</p>
+<p><span style="white-space:pre"></span>Retrieving the COM class factory for component with CLSID {91493441-5A91-11CF-8700-00AA0060263B} failed due to the following error: 80080005.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_698883" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699016">
+    <td id="PostDetailsCell_699016" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699016"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/16/2011 3:44:48 PM" LocalTimeTicks="1321487088">Nov 16, 2011 at 3:44 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699016" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="hey&#32;khiron,nice&#32;to&#32;read&#32;you&#32;again.&#32;yes&#32;i&#32;think&#32;also,&#32;netoffice&#32;does&#32;no&#32;mistake&#32;here&#32;but&#32;anyway,&#32;lets&#32;find&#32;us&#32;a&#32;solution&#33;maybe&#32;i&#32;can&#32;create&#32;a&#32;alternate&#32;failback&#32;class,&#32;1.&#32;take&#32;a&#32;look&#32;in&#32;the&#32;registry&#32;to&#32;see&#32;which&#32;file&#32;path&#32;has&#32;ppoint.exe,&#38;nbsp&#59;1.&#32;create&#32;powerpoint&#32;process&#32;at&#32;hand,&#32;fetch&#32;the&#32;ROT&#32;with&#32;the&#32;proxy&#32;and&#32;returns.but&#32;i&#32;wait&#32;for&#32;the&#32;response&#32;from&#32;cvchristensen&#32;currently.&#42;regardsSebastian">
+        
+<p>hey khiron,<br>
+<br>
+nice to read you again. yes i think also, netoffice does no mistake here but anyway, lets find us a solution!<br>
+maybe i can create a alternate failback class, <br>
+1. take a look in the registry to see which file path has ppoint.exe,&nbsp;1. create powerpoint process at hand, fetch the ROT with the proxy and returns.<br>
+but i wait for the response from cvchristensen currently.<br>
+<br>
+*regards<br>
+Sebastian</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699016" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699062">
+    <td id="PostDetailsCell_699062" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699062"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/cvchristensen">cvchristensen</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/16/2011 5:13:47 PM" LocalTimeTicks="1321492427">Nov 16, 2011 at 5:13 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699062" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Thanks&#32;for&#32;all&#32;your&#32;quick&#32;work&#32;on&#32;this&#32;Sebastian.&#32;We&#39;ll&#32;load&#32;that&#32;new&#32;diagnostic&#32;Latebinding&#32;dll&#32;in&#32;today&#32;and&#32;see&#32;what&#32;happens.&#32;&#32;On&#32;Wed,&#32;Nov&#32;16,&#32;2011&#32;at&#32;8&#58;44&#32;AM,&#32;SebastianDotNet&#32;&#38;lt&#59;notifications&#64;codeplex.com&#38;gt&#59;&#32;wrote&#58;&#32;&#32;&#32;From&#58;&#32;SebastianDotNet&#32;&#32;hey&#32;khiron,&#32;&#32;nice&#32;to&#32;read&#32;you&#32;again.&#32;yes&#32;i&#32;think&#32;also,&#32;netoffice&#32;does&#32;no&#32;mistake&#32;here&#32;but&#32;anyway,&#32;lets&#32;find&#32;us&#32;a&#32;solution&#33;&#32;maybe&#32;i&#32;can&#32;create&#32;a&#32;alternate&#32;failback&#32;class,&#32;&#32;1.&#32;take&#32;a&#32;look&#32;in&#32;the&#32;registry&#32;to&#32;see&#32;which&#32;file&#32;path&#32;has&#32;ppoint.exe,&#32;1.&#32;create&#32;powerpoint&#32;process&#32;at&#32;hand,&#32;fetch&#32;the&#32;ROT&#32;with&#32;the&#32;proxy&#32;and&#32;returns.&#32;but&#32;i&#32;wait&#32;for&#32;the&#32;response&#32;from&#32;cvchristensen&#32;currently.&#32;&#32;&#42;regards&#32;Sebastian&#32;&#32;&#32;&#32;Read&#32;the&#32;&#32;full&#32;discussion&#32;online.&#32;To&#32;add&#32;a&#32;post&#32;to&#32;this&#32;discussion,&#32;reply&#32;to&#32;this&#32;email&#32;&#40;netoffice&#64;discussions.codeplex.com&#41;&#32;To&#32;start&#32;a&#32;new&#32;discussion&#32;for&#32;this&#32;project,&#32;email&#32;&#32;netoffice&#64;discussions.codeplex.com&#32;You&#32;are&#32;receiving&#32;this&#32;email&#32;because&#32;you&#32;subscribed&#32;to&#32;this&#32;discussion&#32;on&#32;CodePlex.&#32;You&#32;can&#32;&#32;unsubscribe&#32;on&#32;CodePlex.com.&#32;Please&#32;note&#58;&#32;Images&#32;and&#32;attachments&#32;will&#32;be&#32;removed&#32;from&#32;emails.&#32;Any&#32;posts&#32;to&#32;this&#32;discussion&#32;will&#32;also&#32;be&#32;available&#32;online&#32;at&#32;CodePlex.com&#32;&#32;&#32;&#32;&#32;&#32;&#32;">
+        Thanks for all your quick work on this Sebastian. We'll load that new diagnostic Latebinding dll in today and see what happens.<br>
+<br>
+<div>On Wed, Nov 16, 2011 at 8:44 AM, SebastianDotNet <span dir="ltr">&lt;<a href="mailto:notifications@codeplex.com" rel="nofollow">notifications@codeplex.com</a>&gt;</span> wrote:<br>
+<blockquote style="border-left:#ccc 1px solid; margin:0px 0px 0px 0.8ex; padding-left:1ex">
+<div>
+<p>From: SebastianDotNet</p>
+<div>
+<p>hey khiron,<br>
+<br>
+nice to read you again. yes i think also, netoffice does no mistake here but anyway, lets find us a solution!<br>
+maybe i can create a alternate failback class, <br>
+1. take a look in the registry to see which file path has ppoint.exe, 1. create powerpoint process at hand, fetch the ROT with the proxy and returns.<br>
+but i wait for the response from cvchristensen currently.<br>
+<br>
+*regards<br>
+Sebastian</p>
+</div>
+<div>
+<div>
+<p>Read the <a href="http://netoffice.codeplex.com/discussions/277636#post699016" target="_blank" rel="nofollow">
+full discussion online</a>.</p>
+<p>To add a post to this discussion, reply to this email (<a href="mailto:netoffice@discussions.codeplex.com?subject=[netoffice:277636]" target="_blank" rel="nofollow">netoffice@discussions.codeplex.com</a>)</p>
+<p>To start a new discussion for this project, email <a href="mailto:netoffice@discussions.codeplex.com" target="_blank" rel="nofollow">
+netoffice@discussions.codeplex.com</a></p>
+<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can
+<a href="https://netoffice.codeplex.com/discussions/277636/unsubscribe/" target="_blank" rel="nofollow">
+unsubscribe</a> on CodePlex.com.</p>
+<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com</p>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+<br>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699062" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699253">
+    <td id="PostDetailsCell_699253" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699253"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/khiron">khiron</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/16/2011 11:21:07 PM" LocalTimeTicks="1321514467">Nov 16, 2011 at 11:21 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699253" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Sebastien,&#32;your&#32;approach&#32;would&#32;be&#32;much&#32;better&#32;than&#32;mine.&#38;nbsp&#59;&#32;What&#32;I&#32;ended&#32;up&#32;doing&#32;is&#32;during&#32;the&#32;call&#32;to&#32;create&#32;the&#32;COM&#32;class,&#38;nbsp&#59;if&#32;my&#32;process&#32;is&#32;running&#32;elevated,&#32;and&#32;PowerPoint&#32;is&#32;already&#32;loaded,&#32;I&#32;raise&#32;an&#32;exception&#32;immediately&#32;rather&#32;than&#32;making&#32;the&#32;user&#32;wait&#32;out&#32;the&#32;timeout&#32;period.&#32;&#38;nbsp&#59;The&#32;message&#32;I&#32;uses&#32;is&#32;&#34;Can&#32;not&#32;connect&#32;to&#32;an&#32;existing&#32;PowerPoint&#32;instance&#32;from&#32;an&#32;elevated&#32;state&#32;&#40;eg&#58;&#32;as&#38;nbsp&#59;Administrator&#41;.&#32;&#38;nbsp&#59;&#32;Close&#32;down&#32;PowerPoint&#32;and&#32;try&#32;again,&#32;or&#32;run&#32;from&#32;a&#32;non-elevated&#32;state&#34;.">
+        
+<p>Sebastien, your approach would be much better than mine.&nbsp;</p>
+<p>What I ended up doing is during the call to create the COM class,&nbsp;if my process is running elevated, and PowerPoint is already loaded, I raise an exception immediately rather than making the user wait out the timeout period. &nbsp;The message I uses
+ is &quot;Can not connect to an existing PowerPoint instance from an elevated state (eg: as&nbsp;Administrator). &nbsp; Close down PowerPoint and try again, or run from a non-elevated state&quot;.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699253" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699323">
+    <td id="PostDetailsCell_699323" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699323"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/17/2011 4:38:40 AM" LocalTimeTicks="1321533520">Nov 17, 2011 at 4:38 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699323" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="i&#32;create&#32;a&#32;small&#32;sample&#32;application&#38;nbsp&#59;to&#32;start&#32;powerpoint&#32;in&#32;a&#32;different&#32;way.please&#32;check&#32;the&#32;download&#32;section&#33;regards&#42;Sebastian">
+        
+<p>i create a small sample application&nbsp;to start powerpoint in a different way.<br>
+please check the download section!<br>
+<br>
+regards<br>
+*Sebastian</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699323" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699434">
+    <td id="PostDetailsCell_699434" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699434"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/khiron">khiron</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/17/2011 9:35:00 AM" LocalTimeTicks="1321551300">Nov 17, 2011 at 9:35 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699434" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="I&#32;had&#32;to&#32;make&#32;a&#32;few&#32;changes&#32;to&#32;your&#32;application&#32;to&#32;get&#32;it&#32;to&#32;work,&#32;on&#32;my&#32;PC&#32;&#40;Win7x64&#41;&#32;the&#32;path&#32;in&#32;the&#32;registry&#32;to&#32;PowerPoint&#32;is&#32;different&#38;nbsp&#59;&#32;&#32;&#32;string&#32;keyPath&#32;&#61;&#32;string.Format&#40;&#34;Software&#92;&#92;Wow6432Node&#92;&#92;Microsoft&#92;&#92;Office&#92;&#92;&#123;0&#125;&#92;&#92;Common&#92;&#92;InstallRoot&#34;,&#32;item&#41;&#59;&#32;&#32;&#32;Also&#32;in&#32;ROTHelper&#32;I&#32;had&#32;to&#32;change&#32;from&#32;Milliseconds&#32;to&#32;TotalMilliseconds&#32;to&#32;get&#32;the&#32;timeout&#32;to&#32;work&#32;as&#32;expected&#38;nbsp&#59;&#32;&#32;&#32;&#32;public&#32;static&#32;PowerPoint.Application&#32;GetRunningPowerPointInstancesFromROT&#40;int&#32;delayMilliSeconds&#41;&#32;&#123;&#32;DateTime&#32;startTime&#32;&#61;&#32;DateTime.Now&#59;&#32;PowerPoint.Application&#32;application&#32;&#61;&#32;GetApplicationInstancesFromROT&#40;new&#32;string&#91;&#93;&#32;&#123;&#32;&#34;PowerPoint&#34;,&#32;&#34;Microsoft&#32;PowerPoint&#34;&#32;&#125;,&#32;&#34;Application&#34;&#41;&#59;&#32;while&#40;&#40;application&#32;&#61;&#61;&#32;null&#41;&#32;&#38;amp&#59;&#38;amp&#59;&#32;&#40;DateTime.Now.Subtract&#40;startTime&#41;.TotalMilliseconds&#32;&#38;lt&#59;&#61;&#32;delayMilliSeconds&#41;&#41;&#32;application&#32;&#61;&#32;GetApplicationInstancesFromROT&#40;new&#32;string&#91;&#93;&#32;&#123;&#32;&#34;PowerPoint&#34;,&#32;&#34;Microsoft&#32;PowerPoint&#34;&#32;&#125;,&#32;&#34;Application&#34;&#41;&#59;&#32;return&#32;application&#59;&#32;&#125;&#32;&#32;&#32;&#32;The&#32;result&#32;for&#32;me&#32;was&#32;if&#32;I&#32;ran&#32;this&#32;app&#32;elevated&#32;&#40;&#32;running&#32;it&#32;inside&#32;VS&#32;which&#32;is&#32;running&#32;&#34;As&#32;Administrator&#34;&#41;&#32;and&#32;if&#32;PowerPoint&#32;was&#32;already&#32;loaded&#32;then&#38;nbsp&#59;GetRunningPowerPointInstancesFromROT&#32;returns&#32;null&#32;&#40;it&#32;times&#32;out&#41;.&#32;The&#32;Problem&#32;seems&#32;to&#32;be&#32;that&#32;the&#32;Running&#32;Object&#32;Table&#32;is&#32;different&#32;depending&#32;on&#32;what&#32;user&#32;your&#32;are&#32;running&#32;as,&#32;Powerpoint&#32;is&#32;running&#32;on&#32;the&#32;ROT&#32;established&#32;by&#32;the&#32;non-elevated&#32;user,&#32;and&#32;this&#32;app&#32;is&#32;querying&#32;the&#32;ROT&#32;for&#32;Administrator&#32;waiting&#32;to&#32;see&#32;a&#32;running&#32;instance&#32;that&#32;never&#32;shows.&#32;Interestingly&#38;nbsp&#59;the&#32;call&#32;to&#38;nbsp&#59;StartVersion&#32;does&#32;push&#32;the&#32;window&#32;of&#32;the&#32;running&#32;instance&#32;of&#32;PowerPoint&#32;to&#32;the&#32;front&#32;of&#32;the&#32;z-order&#32;-&#32;but&#32;unfortunately&#32;there&#32;seems&#32;no&#32;way&#32;to&#32;get&#32;a&#32;hold&#32;of&#32;the&#32;process&#32;from&#32;the&#32;elevated&#32;version&#32;of&#32;the&#32;ROT.&#32;&#38;nbsp&#59;">
+        
+<p>I had to make a few changes to your application to get it to work, on my PC (Win7x64) the path in the registry to PowerPoint is different&nbsp;</p>
+<p></p>
+<div style="color:black; background-color:white">
+<pre><span style="color:blue">string</span> keyPath = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;Software\\Wow6432Node\\Microsoft\\Office\\{0}\\Common\\InstallRoot&quot;</span>, item);</pre>
+</div>
+<p></p>
+<p>Also in ROTHelper I had to change from Milliseconds to TotalMilliseconds to get the timeout to work as expected&nbsp;</p>
+<p></p>
+<div style="color:black; background-color:white">
+<pre>        <span style="color:blue">public</span> <span style="color:blue">static</span> PowerPoint.Application GetRunningPowerPointInstancesFromROT(<span style="color:blue">int</span> delayMilliSeconds)
+        {
+            DateTime startTime = DateTime.Now;
+            PowerPoint.Application application = GetApplicationInstancesFromROT(<span style="color:blue">new</span> <span style="color:blue">string</span>[] { <span style="color:#a31515">&quot;PowerPoint&quot;</span>, <span style="color:#a31515">&quot;Microsoft PowerPoint&quot;</span> }, <span style="color:#a31515">&quot;Application&quot;</span>);
+            <span style="color:blue">while</span>((application == <span style="color:blue">null</span>) &amp;&amp; (DateTime.Now.Subtract(startTime).<span style="text-decoration:underline; color:#ff00ff"><strong>TotalMilliseconds</strong></span> &lt;= delayMilliSeconds))
+                application = GetApplicationInstancesFromROT(<span style="color:blue">new</span> <span style="color:blue">string</span>[] { <span style="color:#a31515">&quot;PowerPoint&quot;</span>, <span style="color:#a31515">&quot;Microsoft PowerPoint&quot;</span> }, <span style="color:#a31515">&quot;Application&quot;</span>);
+            <span style="color:blue">return</span> application;
+        }
+
+</pre>
+</div>
+<p></p>
+<p>The result for me was if I ran this app elevated ( running it inside VS which is running &quot;As Administrator&quot;) and if PowerPoint was already loaded then&nbsp;GetRunningPowerPointInstancesFromROT returns null (it times out).</p>
+<p>The Problem seems to be that the Running Object Table is different depending on what user your are running as, Powerpoint is running on the ROT established by the non-elevated user, and this app is querying the ROT for Administrator waiting to see a running
+ instance that never shows.</p>
+<p>Interestingly&nbsp;the call to&nbsp;StartVersion does push the window of the running instance of PowerPoint to the front of the z-order - but unfortunately there seems no way to get a hold of the process from the elevated version of the ROT.</p>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699434" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699565">
+    <td id="PostDetailsCell_699565" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699565"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/17/2011 2:23:11 PM" LocalTimeTicks="1321568591">Nov 17, 2011 at 2:23 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699565" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="i&#39;m&#32;still&#32;a&#32;happy&#32;xp&#32;user&#32;but&#32;i&#38;nbsp&#59;test&#32;the&#38;nbsp&#59;next&#32;sample&#32;version&#32;in&#32;a&#32;window7&#32;x64&#32;VM.uuups,&#32;sorry&#32;i&#32;create&#32;the&#32;sample,&#32;very&#32;quickly&#32;at&#32;night.&#32;i&#38;nbsp&#59;try&#32;to&#32;improve&#32;the&#38;nbsp&#59;sample&#32;today.">
+        
+<p>i'm still a happy xp user but i&nbsp;test the&nbsp;next sample version in a window7 x64 VM.<br>
+uuups, sorry i create the sample, very quickly at night. i&nbsp;try to improve the&nbsp;sample today.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699565" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699848">
+    <td id="PostDetailsCell_699848" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699848"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/17/2011 9:45:22 PM" LocalTimeTicks="1321595122">Nov 17, 2011 at 9:45 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699848" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="an&#32;updated&#32;example&#32;version&#32;is&#32;available.its&#32;a&#32;little&#32;bit&#32;more&#32;COM&#32;low&#32;level&#32;stuff&#32;inside&#32;but&#32;it&#32;works&#32;on&#32;my&#32;x64&#32;W7&#32;with&#32;office&#32;x64.&#42;regardsSebastian">
+        
+<p>an updated example version is available.<br>
+its a little bit more COM low level stuff inside but it works on my x64 W7 with office x64.<br>
+*regards<br>
+Sebastian</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699848" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699854">
+    <td id="PostDetailsCell_699854" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699854"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/cvchristensen">cvchristensen</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/17/2011 9:58:57 PM" LocalTimeTicks="1321595937">Nov 17, 2011 at 9:58 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="11/17/2011 9:59:11 PM" LocalTimeTicks="1321595951">Nov 17, 2011 at 9:59 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699854" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Sebastian,&#32;We&#32;tried&#32;to&#32;use&#32;the&#32;diagnostic&#32;latebinding&#32;dll&#32;that&#32;we&#32;downloaded&#32;but&#32;had&#32;some&#32;sort&#32;of&#32;version&#32;mismatch&#32;issue&#32;&#40;1.3&#32;vs&#32;1.0&#63;&#41;.&#32;We&#32;have,&#32;however,&#32;found&#32;that&#32;our&#32;app&#32;on&#32;client&#32;machines&#32;doesn&#39;t&#32;need&#32;the&#32;elevated&#32;permissions&#32;it&#32;does&#32;on&#32;our&#32;domain&#32;so&#32;it&#32;has&#32;become&#32;a&#32;non-issue.&#32;Thank&#32;you&#32;for&#32;all&#32;your&#32;work&#32;on&#32;this.&#32;We&#32;appreciate&#32;your&#32;responsiveness.">
+        
+<p>Sebastian,</p>
+<p>We tried to use the diagnostic latebinding dll that we downloaded but had some sort of version mismatch issue (1.3 vs 1.0?). We have, however, found that our app on client machines doesn't need the elevated permissions it does on our domain so it has become
+ a non-issue. Thank you for all your work on this. We appreciate your responsiveness.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699854" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699855">
+    <td id="PostDetailsCell_699855" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699855"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/17/2011 10:05:20 PM" LocalTimeTicks="1321596320">Nov 17, 2011 at 10:05 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="11/18/2011 6:09:33 AM" LocalTimeTicks="1321625373">Nov 18, 2011 at 6:09 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699855" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="version&#32;1.3&#32;is&#32;top&#32;of&#32;1.0&#32;i&#32;make&#32;sure&#32;existing&#32;code&#32;for&#32;previous&#32;NetOffice&#38;nbsp&#59;releases&#32;are&#32;compatible&#32;with&#32;newer&#32;versions.Set&#32;specific&#32;version&#32;in&#32;&#39;references&#39;&#32;to&#32;False.&#32;&#40;right&#32;click&#32;on&#32;the&#32;reference&#41;&#38;nbsp&#59;but&#32;nice&#32;to&#32;hear&#32;your&#32;problem&#32;is&#32;resolved&#33;update&#58;&#32;now&#32;i&#32;realize,&#32;the&#32;other&#32;netoffice&#32;assemblies&#32;needs&#32;LateBindingApi.Core.dl&#32;in&#32;same&#32;version.&#32;my&#32;bad&#33;">
+        
+<p>version 1.3 is top of 1.0 i make sure existing code for previous NetOffice&nbsp;releases are compatible with newer versions.<br>
+Set specific version in 'references' to False. (right click on the reference)&nbsp;but nice to hear your problem is resolved!<br>
+<br>
+update: now i realize, the other netoffice assemblies needs LateBindingApi.Core.dl in same version. my bad!</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699855" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="699976">
+    <td id="PostDetailsCell_699976" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post699976"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/khiron">khiron</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/18/2011 5:25:57 AM" LocalTimeTicks="1321622757">Nov 18, 2011 at 5:25 AM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="11/18/2011 5:28:32 AM" LocalTimeTicks="1321622912">Nov 18, 2011 at 5:28 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_699976" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="I&#32;tried&#32;the&#32;updated&#32;project.&#32;&#38;nbsp&#59;&#32;PowerPoint.Application&#32;GetApplicationInstancesFromROT&#32;fails&#32;when&#32;called&#32;from&#32;an&#32;elevated&#32;application&#32;if&#32;PowerPoint&#32;has&#32;already&#32;been&#32;loaded&#32;from&#32;the&#32;desktop&#32;&#40;loaded&#32;using&#32;my&#32;non-elevated&#32;credentials&#41;.&#32;&#38;nbsp&#59;&#32;It&#32;succeeds&#32;if&#32;run&#32;from&#32;a&#32;non-elevated&#32;state,&#32;and&#32;PowerPoint&#32;is&#32;already&#32;loaded&#32;from&#32;the&#32;desktop.&#32;It&#32;succeeds&#32;when&#32;run&#32;from&#32;an&#32;elevated&#32;or&#32;non-elevated&#32;state&#32;if&#32;PowerPoint&#32;is&#32;not&#32;already&#32;loaded.&#32;Interestingly,&#32;It&#32;succeeds&#32;if&#32;I&#32;previously&#32;load&#32;PowerPoint&#32;in&#32;an&#32;elevated&#32;state&#32;&#40;by&#32;going&#32;to&#32;the&#32;install&#32;location&#32;and&#32;right&#32;clicking&#32;the&#32;PowerPoint.exe&#32;file&#32;and&#32;selecting&#32;to&#32;&#34;Run&#32;as&#32;Administrator&#34;&#41;.&#32;When&#32;it&#32;fails&#32;the&#32;GetApplicationInstancesFromROT&#38;nbsp&#59;method&#32;is&#32;able&#32;to&#32;get&#32;the&#32;ROT&#32;and&#32;iterate&#32;through&#32;it&#32;fine,&#32;but&#32;a&#32;process&#32;serving&#32;the&#32;PowerPoint&#32;interface&#32;just&#32;does&#32;not&#32;appear&#32;on&#32;the&#32;ROT.&#32;&#38;nbsp&#59;It&#32;is&#32;as&#32;if&#32;an&#32;app&#32;invoked&#32;from&#32;one&#32;set&#32;of&#32;credentials&#32;does&#32;not&#32;appear&#32;in&#32;the&#32;ROT&#32;for&#32;any&#32;request&#32;invoked&#32;from&#32;a&#32;different&#32;set,&#32;it&#32;seems&#32;the&#32;two&#32;ROTs&#32;are&#38;nbsp&#59;quarantined&#38;nbsp&#59;from&#32;each&#32;other.&#32;Hope&#32;this&#32;is&#38;nbsp&#59;useful&#38;nbsp&#59;for&#32;tracking&#32;this&#32;down.&#32;&#38;nbsp&#59;I&#32;should&#32;note&#32;that&#32;I&#32;have&#32;worked&#32;around&#32;this&#32;by&#32;just&#32;not&#32;allowing&#32;someone&#32;to&#32;try&#32;to&#32;start&#32;PowerPoint&#32;if&#32;it&#39;s&#32;already&#32;started,&#32;which&#32;solves&#32;my&#32;problem.">
+        
+<p>I tried the updated project. &nbsp;</p>
+<p>PowerPoint.Application GetApplicationInstancesFromROT fails when called from an elevated application if PowerPoint has already been loaded from the desktop (loaded using my non-elevated credentials). &nbsp;</p>
+<p>It succeeds if run from a non-elevated state, and PowerPoint is already loaded from the desktop.</p>
+<p>It succeeds when run from an elevated or non-elevated state if PowerPoint is not already loaded.</p>
+<p>Interestingly, It succeeds if I previously load PowerPoint in an elevated state (by going to the install location and right clicking the PowerPoint.exe file and selecting to &quot;Run as Administrator&quot;).</p>
+<p>When it fails the GetApplicationInstancesFromROT&nbsp;method is able to get the ROT and iterate through it fine, but a process serving the PowerPoint interface just does not appear on the ROT. &nbsp;It is as if an app invoked from one set of credentials
+ does not appear in the ROT for any request invoked from a different set, it seems the two ROTs are&nbsp;quarantined&nbsp;from each other.</p>
+<p>Hope this is&nbsp;useful&nbsp;for tracking this down. &nbsp;I should note that I have worked around this by just not allowing someone to try to start PowerPoint if it's already started, which solves my problem.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_699976" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="700534">
+    <td id="PostDetailsCell_700534" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post700534"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/19/2011 9:32:04 AM" LocalTimeTicks="1321723924">Nov 19, 2011 at 9:32 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_700534" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="i&#32;can&#39;t&#32;reproduce&#32;these&#32;scarry&#32;effect&#32;in&#32;any&#32;virtual&#32;machine.&#32;the&#32;only&#32;problem&#32;here&#32;is&#32;the&#32;2&#32;seconds&#32;delay&#32;is&#32;not&#32;enough&#40;&#32;vm&#39;s&#32;are&#32;slow&#32;of&#32;course&#41;can&#32;you&#32;do&#32;me&#32;a&#32;pleasure&#32;and&#32;add&#32;a&#32;log&#32;output&#38;nbsp&#59;to&#38;nbsp&#59;the&#32;GetApplicationInstancesFromROT&#38;nbsp&#59;method.&#32;please&#32;log&#38;nbsp&#59;the&#38;nbsp&#59;enumerated&#32;interface&#32;guid&#39;s&#32;when&#32;powerpoint&#32;is&#32;running&#32;and&#32;the&#32;method&#32;can&#39;t&#32;find&#32;them.">
+        
+<p>i can't reproduce these scarry effect in any virtual machine. the only problem here is the 2 seconds delay is not enough( vm's are slow of course)<br>
+can you do me a pleasure and add a log output&nbsp;to&nbsp;the GetApplicationInstancesFromROT&nbsp;method.
+<br>
+please log&nbsp;the&nbsp;enumerated interface guid's when powerpoint is running and the method can't find them.</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_700534" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="700725">
+    <td id="PostDetailsCell_700725" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post700725"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/khiron">khiron</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/20/2011 3:29:01 AM" LocalTimeTicks="1321788541">Nov 20, 2011 at 3:29 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_700725" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="I&#32;logged&#32;every&#32;GUID&#32;that&#38;nbsp&#59;GetApplicationInstancesFromROT&#32;found&#32;as&#32;follows&#32;&#32;&#32;Guid&#32;typeGuid&#32;&#61;&#32;GetDispatchID&#40;dispatch&#41;&#59;&#32;if&#32;&#40;Guid.Empty&#32;&#33;&#61;&#32;typeGuid&#41;&#32;&#123;&#32;sw.Write&#40;String.Format&#40;&#34;GUID&#58;&#123;0&#125;&#32;&#34;,&#32;typeGuid&#41;&#41;&#59;&#32;if&#32;&#40;&#40;typeGuid&#32;&#61;&#61;&#32;_powerPointDispatchID32&#41;&#32;&#124;&#124;&#32;&#40;typeGuid&#32;&#61;&#61;&#32;_powerPointDispatchID64&#41;&#41;&#32;isPowerPoint&#32;&#61;&#32;true&#59;&#32;&#125;&#32;The&#32;complete&#32;logs&#32;are&#32;too&#32;big&#32;to&#32;post&#32;as&#32;the&#32;time&#32;out&#32;enabled&#32;routine&#32;cycles&#32;through&#32;many&#32;times&#32;failing&#32;to&#32;find&#32;the&#32;PowerPoint&#32;GUIDs&#32;&#32;The&#32;result&#32;when&#32;VS&#32;is&#32;run&#32;as&#32;Admin&#32;&#40;app&#32;is&#32;elevated&#41;&#32;and&#32;Powerpoint&#32;is&#32;already&#32;loaded&#32;from&#32;the&#32;desktop&#32;&#40;non&#32;elevated&#41;&#32;is&#32;&#32;&#32;&#32;GUID&#58;04a72314-32e9-48e2-9b87-a63603454f3e&#32;GUID&#58;cda7305c-78b6-4d9d-90ad-93ebe71f9341&#32;GUID&#58;04a72314-32e9-48e2-9b87-a63603454f3e&#32;GUID&#58;cda7305c-78b6-4d9d-90ad-93ebe71f9341&#32;&#32;the&#32;above&#32;repeated&#32;over&#32;and&#32;over&#32;until&#32;the&#32;2sec&#32;time&#32;out&#32;is&#32;reached&#32;&#32;The&#32;result&#32;when&#32;VS&#32;is&#32;loaded&#32;elevated&#32;and&#32;PowerPoint&#32;is&#32;not&#32;already&#32;loaded&#32;&#40;so&#32;the&#32;app&#32;can&#32;load&#32;it&#32;elevated&#41;&#32;is&#32;&#32;GUID&#58;04a72314-32e9-48e2-9b87-a63603454f3e&#32;GUID&#58;cda7305c-78b6-4d9d-90ad-93ebe71f9341&#32;GUID&#58;04a72314-32e9-48e2-9b87-a63603454f3e&#32;GUID&#58;cda7305c-78b6-4d9d-90ad-93ebe71f9341&#32;x&#32;29&#32;times&#32;and&#32;then&#38;nbsp&#59;the&#32;powerpoint&#32;interface&#32;shows&#32;up&#32;&#32;GUID&#58;04a72314-32e9-48e2-9b87-a63603454f3e&#32;GUID&#58;91493442-5a91-11cf-8700-00aa0060263b&#32;&#32;&#32;When&#32;I&#32;run&#32;VS&#32;non-elevated&#32;and&#32;Powerpoint&#32;is&#32;already&#32;loaded&#32;non-elevated&#32;the&#32;entire&#32;log&#32;file&#32;is&#32;&#32;&#32;---Start&#32;Logging&#32;20&#47;11&#47;2011&#32;2&#58;26&#58;51&#32;PM&#32;--GetRunningPowerPointInstancesFromROT&#32;GUID&#58;91493442-5a91-11cf-8700-00aa0060263b&#32;---Stop&#32;Logging&#32;20&#47;11&#47;2011&#32;2&#58;26&#58;51&#32;PM&#32;So&#32;it&#39;s&#32;pretty&#32;much&#32;the&#32;first&#32;interface&#32;found&#32;in&#32;the&#32;non&#32;time&#32;out&#32;version&#32;of&#32;GetRunningPowerPointInstancesFromROT&#32;&#32;">
+        
+<p>I logged every GUID that&nbsp;GetApplicationInstancesFromROT found as follows</p>
+<p></p>
+<div style="color:black; background-color:white">
+<pre>Guid typeGuid = GetDispatchID(dispatch);
+<span style="color:blue">if</span> (Guid.Empty != typeGuid)
+{
+    sw.Write(String.Format(<span style="color:#a31515">&quot;GUID:{0} &quot;</span>, typeGuid));
+    <span style="color:blue">if</span> ((typeGuid == _powerPointDispatchID32) || (typeGuid == _powerPointDispatchID64))
+        isPowerPoint = <span style="color:blue">true</span>;
+}</pre>
+<pre>The complete logs are too big to post as the time out enabled routine cycles through many times failing to find the PowerPoint GUIDs
+
+</pre>
+<pre>The result when VS is run as Admin (app is elevated) and Powerpoint is already loaded from the desktop (non elevated) is </pre>
+</div>
+<p></p>
+<pre>GUID:04a72314-32e9-48e2-9b87-a63603454f3e 
+GUID:cda7305c-78b6-4d9d-90ad-93ebe71f9341 
+GUID:04a72314-32e9-48e2-9b87-a63603454f3e 
+GUID:cda7305c-78b6-4d9d-90ad-93ebe71f9341 
+</pre>
+<pre>the above repeated over and over until the 2sec time out is reached</pre>
+<pre><hr></pre>
+<pre>The result when VS is loaded elevated and PowerPoint is not already loaded (so the app can load it elevated) is </pre>
+<pre><pre>GUID:04a72314-32e9-48e2-9b87-a63603454f3e 
+GUID:cda7305c-78b6-4d9d-90ad-93ebe71f9341 
+GUID:04a72314-32e9-48e2-9b87-a63603454f3e 
+GUID:cda7305c-78b6-4d9d-90ad-93ebe71f9341 
+x 29 times and then&nbsp;the powerpoint interface shows up </pre>
+<pre>GUID:04a72314-32e9-48e2-9b87-a63603454f3e 
+GUID:91493442-5a91-11cf-8700-00aa0060263b</pre>
+<hr>
+</pre>
+<pre>When I run VS non-elevated and Powerpoint is already loaded non-elevated the entire log file is </pre>
+<pre><pre> ---Start Logging 20/11/2011 2:26:51 PM
+ --GetRunningPowerPointInstancesFromROT
+GUID:91493442-5a91-11cf-8700-00aa0060263b 
+ ---Stop Logging 20/11/2011 2:26:51 PM</pre>
+So it's pretty much the first interface found in the non time out version of GetRunningPowerPointInstancesFromROT</pre>
+<pre><br><pre><br></pre>
+</pre>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_700725" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="943812">
+    <td id="PostDetailsCell_943812" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post943812"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/ealsmyr">ealsmyr</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="11/19/2012 9:33:00 AM" LocalTimeTicks="1353346380">Nov 19, 2012 at 9:33 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_943812" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;Hi,&#32;&#32;Did&#32;any&#32;of&#32;you&#32;find&#32;a&#32;solution&#32;to&#32;this&#63;&#32;How&#32;to&#32;attach&#32;to&#32;a&#32;running&#32;PowerPoint&#32;instance&#32;if&#32;your&#32;process&#32;in&#32;running&#32;elevated&#32;and&#32;the&#32;PowerPoint&#32;process&#32;is&#32;not&#63;&#32;Regards,&#32;Erik&#38;nbsp&#59;&#32;">
+        
+<p>Hi,<br>
+<br>
+Did any of you find a solution to this? How to attach to a running PowerPoint instance if your process in running elevated and the PowerPoint process is not?</p>
+<p>Regards,<br>
+Erik&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_943812" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="3f483f72-d846-41b0-9dfd-637144e9d78d">
+    <script class="options" defer="defer" id="3f483f72-d846-41b0-9dfd-637144e9d78d" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_c2349de3-a06c-45af-8d0c-a743ff49fc1f">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_f7b4648f-2999-45f9-a0ab-65a3b18ecd20">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_c2349de3-a06c-45af-8d0c-a743ff49fc1f" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_f7b4648f-2999-45f9-a0ab-65a3b18ecd20" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/277636';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

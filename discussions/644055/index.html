@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Slides.Range&#40;&#41;.Shapes&#41;.Count&#39; threw an exception of type &#39;System.Runtime.InteropServices.COMException&#39;</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/644055?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/644055?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="D-UW9it9z9ZGqN6OxikL5rLPnkg6XMKtUCwkAoCHpG4y6CSUgKurDPljNW27wiHuXqlg3NCh1LXXpF6fZQbOSpNKg6d7JL0gz78c3U988IpPGspBhJ8kb2ONUHlWw0yy0cppjQ2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken29d63a659-7117-4b99-bdaf-29aeffd32480" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:50:31 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f644055" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="239e6de1-e388-422c-be23-a6bb7c13619d">
+                
+                    <script class="options" defer="defer" id="239e6de1-e388-422c-be23-a6bb7c13619d" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Slides.Range&#40;&#41;.Shapes&#41;.Count&#39; threw an exception of type &#39;System.Runtime.InteropServices.COMException&#39;
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:644055]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="006de304-439b-452f-bbca-281a97f66d5b">
+    <script class="options" defer="defer" id="006de304-439b-452f-bbca-281a97f66d5b" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/644055","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1441420">
+    <td id="PostDetailsCell_1441420" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1441420"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/tritonit">tritonit</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="8/23/2015 1:08:41 AM" LocalTimeTicks="1440317321">Aug 23, 2015 at 1:08 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1441420" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hallo,&#13;&#10;&#13;&#10;ich&#32;versuche&#32;innerhalb&#32;von&#32;meinem&#32;PowerPoint&#32;AddIn&#32;alle&#32;Shapes&#32;einer&#32;Pr&#228;sentation&#32;zu&#32;holen,&#32;leider&#32;erfolglos.&#32;&#13;&#10;Meine&#32;letzte&#32;Hoffnung&#32;war,&#32;dass&#32;dies&#32;&#252;ber&#32;Slides.Range&#40;&#41;.Shapes&#32;gehen&#32;w&#252;rde,&#32;allerdings&#32;kriege&#32;ich&#32;&#32;dann&#32;folgende&#32;Exception&#40;Der&#32;Aufruf&#32;ist&#32;im&#32;Immediate&#32;Window&#41;&#58;&#13;&#10;&#13;&#10;&#96;&#96;&#96;&#13;&#10;&#62;NetOffice.PowerPointApi.Application.GetActiveInstance&#40;&#41;.ActivePresentation.Slides.Range&#40;&#41;.Shapes&#13;&#10;&#13;&#10;&#123;NetOffice.PowerPointApi.Shapes&#125;&#13;&#10;&#32;&#32;&#32;&#32;Application&#58;&#32;&#123;NetOffice.PowerPointApi.Application&#125;&#13;&#10;&#32;&#32;&#32;&#32;Count&#58;&#32;&#39;&#40;NetOffice.PowerPointApi.Application.GetActiveInstance&#40;&#41;.ActivePresentation.Slides.Range&#40;&#41;.Shapes&#41;.Count&#39;&#32;threw&#32;an&#32;exception&#32;of&#32;type&#32;&#39;System.Runtime.InteropServices.COMException&#39;&#13;&#10;&#32;&#32;&#32;&#32;Creator&#58;&#32;1347899476&#13;&#10;&#32;&#32;&#32;&#32;HasTitle&#58;&#32;&#39;&#40;NetOffice.PowerPointApi.Application.GetActiveInstance&#40;&#41;.ActivePresentation.Slides.Range&#40;&#41;.Shapes&#41;.HasTitle&#39;&#32;threw&#32;an&#32;exception&#32;of&#32;type&#32;&#39;System.Runtime.InteropServices.COMException&#39;&#13;&#10;&#32;&#32;&#32;&#32;InstanceType&#58;&#32;&#123;Name&#32;&#61;&#32;&#34;__ComObject&#34;&#32;FullName&#32;&#61;&#32;&#34;System.__ComObject&#34;&#125;&#13;&#10;&#32;&#32;&#32;&#32;IsCurrentlyDisposing&#58;&#32;false&#13;&#10;&#32;&#32;&#32;&#32;IsDisposed&#58;&#32;false&#13;&#10;&#32;&#32;&#32;&#32;IsEventBinding&#58;&#32;false&#13;&#10;&#32;&#32;&#32;&#32;IsEventBridgeInitialized&#58;&#32;false&#13;&#10;&#32;&#32;&#32;&#32;IsWithEventRecipients&#58;&#32;false&#13;&#10;&#32;&#32;&#32;&#32;Parent&#58;&#32;&#123;NetOffice.PowerPointApi.SlideRange&#125;&#13;&#10;&#32;&#32;&#32;&#32;ParentObject&#58;&#32;&#123;NetOffice.PowerPointApi.SlideRange&#125;&#13;&#10;&#32;&#32;&#32;&#32;Placeholders&#58;&#32;&#39;&#40;NetOffice.PowerPointApi.Application.GetActiveInstance&#40;&#41;.ActivePresentation.Slides.Range&#40;&#41;.Shapes&#41;.Placeholders&#39;&#32;threw&#32;an&#32;exception&#32;of&#32;type&#32;&#39;System.Runtime.InteropServices.COMException&#39;&#13;&#10;&#32;&#32;&#32;&#32;Title&#58;&#32;&#39;&#40;NetOffice.PowerPointApi.Application.GetActiveInstance&#40;&#41;.ActivePresentation.Slides.Range&#40;&#41;.Shapes&#41;.Title&#39;&#32;threw&#32;an&#32;exception&#32;of&#32;type&#32;&#39;System.Runtime.InteropServices.COMException&#39;&#13;&#10;&#32;&#32;&#32;&#32;UnderlyingComponentName&#58;&#32;&#34;&#34;&#13;&#10;&#32;&#32;&#32;&#32;UnderlyingObject&#58;&#32;&#123;System.__ComObject&#125;&#13;&#10;&#32;&#32;&#32;&#32;UnderlyingTypeName&#58;&#32;&#34;Shapes&#34;&#13;&#10;&#32;&#32;&#32;&#32;_callQuitInDispose&#58;&#32;false&#13;&#10;&#32;&#32;&#32;&#32;_instanceType&#58;&#32;&#123;Name&#32;&#61;&#32;&#34;__ComObject&#34;&#32;FullName&#32;&#61;&#32;&#34;System.__ComObject&#34;&#125;&#13;&#10;&#32;&#32;&#32;&#32;_isCurrentlyDisposing&#58;&#32;false&#13;&#10;&#32;&#32;&#32;&#32;_isDisposed&#58;&#32;false&#13;&#10;&#32;&#32;&#32;&#32;_isEnumerator&#58;&#32;false&#13;&#10;&#32;&#32;&#32;&#32;_listChildObjects&#58;&#32;Count&#32;&#61;&#32;2&#13;&#10;&#32;&#32;&#32;&#32;_parentObject&#58;&#32;&#123;NetOffice.PowerPointApi.SlideRange&#125;&#13;&#10;&#32;&#32;&#32;&#32;_underlyingObject&#58;&#32;&#123;System.__ComObject&#125;&#13;&#10;&#32;&#32;&#32;&#32;Results&#32;View&#58;&#32;Expanding&#32;the&#32;Results&#32;View&#32;will&#32;enumerate&#32;the&#32;IEnumerable&#13;&#10;&#96;&#96;&#96;&#13;&#10;Ich&#32;denke,&#32;es&#32;ist&#32;sehr&#32;wahrscheinlich,&#32;dass&#32;ich&#32;auf&#32;dieser&#32;Art&#32;die&#32;Shapes&#32;nicht&#32;&#32;holen&#32;kann,&#32;aber&#32;ich&#32;bin&#32;mir&#32;nicht&#32;ganz&#32;&#32;sicher...">
+        <div class="markDownOutput ">Hallo, <br>
+<br>
+ich versuche innerhalb von meinem PowerPoint AddIn alle Shapes einer PrÃ¤sentation zu holen, leider erfolglos.
+<br>
+Meine letzte Hoffnung war, dass dies Ã¼ber Slides.Range().Shapes gehen wÃ¼rde, allerdings kriege ich dann folgende Exception(Der Aufruf ist im Immediate Window):<br>
+<pre><code>&gt;NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes
+
+{NetOffice.PowerPointApi.Shapes}
+    Application: {NetOffice.PowerPointApi.Application}
+    Count: '(NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes).Count' threw an exception of type 'System.Runtime.InteropServices.COMException'
+    Creator: 1347899476
+    HasTitle: '(NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes).HasTitle' threw an exception of type 'System.Runtime.InteropServices.COMException'
+    InstanceType: {Name = &quot;__ComObject&quot; FullName = &quot;System.__ComObject&quot;}
+    IsCurrentlyDisposing: false
+    IsDisposed: false
+    IsEventBinding: false
+    IsEventBridgeInitialized: false
+    IsWithEventRecipients: false
+    Parent: {NetOffice.PowerPointApi.SlideRange}
+    ParentObject: {NetOffice.PowerPointApi.SlideRange}
+    Placeholders: '(NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes).Placeholders' threw an exception of type 'System.Runtime.InteropServices.COMException'
+    Title: '(NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes).Title' threw an exception of type 'System.Runtime.InteropServices.COMException'
+    UnderlyingComponentName: &quot;&quot;
+    UnderlyingObject: {System.__ComObject}
+    UnderlyingTypeName: &quot;Shapes&quot;
+    _callQuitInDispose: false
+    _instanceType: {Name = &quot;__ComObject&quot; FullName = &quot;System.__ComObject&quot;}
+    _isCurrentlyDisposing: false
+    _isDisposed: false
+    _isEnumerator: false
+    _listChildObjects: Count = 2
+    _parentObject: {NetOffice.PowerPointApi.SlideRange}
+    _underlyingObject: {System.__ComObject}
+    Results View: Expanding the Results View will enumerate the IEnumerable</code></pre>
+Ich denke, es ist sehr wahrscheinlich, dass ich auf dieser Art die Shapes nicht holen kann, aber ich bin mir nicht ganz sicher...<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1441420" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1441893">
+    <td id="PostDetailsCell_1441893" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1441893"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="8/25/2015 9:07:27 PM" LocalTimeTicks="1440562047">Aug 25, 2015 at 9:07 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1441893" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hallo,&#13;&#10;&#13;&#10;Ich&#32;hab&#32;das&#32;NetOffice&#32;Standard&#32;Beispiel&#32;1&#32;angepasst&#32;und&#32;folgende&#32;Zeile&#32;laufen&#32;lassen.&#13;&#10;&#13;&#10;&#32;int&#32;i&#32;&#61;&#32;NetOffice.PowerPointApi.Application.GetActiveInstance&#40;&#41;.ActivePresentation.Slides.Range&#40;&#41;.Shapes.Count&#59;&#13;&#10;&#13;&#10;Hat&#32;problemlos&#32;funktioniert.&#32;&#13;&#10;Kannst&#32;du&#32;genauer&#32;bestimmen&#32;ob&#32;jetzt&#32;die&#32;Range&#40;&#41;&#32;Methode&#32;oder&#32;der&#32;Zugriff&#32;auf&#32;Slides&#32;das&#32;Problem&#32;verursacht&#63;&#13;&#10;&#40;Bei&#32;Office&#32;Anwendungen&#32;ist&#32;es&#32;oft&#32;so&#32;gerade&#32;bei&#32;den&#32;Collections&#32;alles&#32;lazy&#32;initialisiert&#32;wird.&#13;&#10;Wenn&#32;also&#32;keine&#32;Slides&#32;da&#32;sind&#40;&#61;&#61;0&#41;&#32;schl&#228;gt&#32;der&#32;Zugriff&#32;auf&#32;die&#32;Collection&#32;evtl.&#32;fehl.&#41;&#13;&#10;&#13;&#10;&#13;&#10;&#42;Sebastian&#13;&#10;">
+        <div class="markDownOutput ">Hallo, <br>
+<br>
+Ich hab das NetOffice Standard Beispiel 1 angepasst und folgende Zeile laufen lassen.
+<br>
+<br>
+int i = NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes.Count;
+<br>
+<br>
+Hat problemlos funktioniert. <br>
+Kannst du genauer bestimmen ob jetzt die Range() Methode oder der Zugriff auf Slides das Problem verursacht?
+<br>
+(Bei Office Anwendungen ist es oft so gerade bei den Collections alles lazy initialisiert wird.
+<br>
+Wenn also keine Slides da sind(==0) schlÃ¤gt der Zugriff auf die Collection evtl. fehl.)
+<br>
+<br>
+<br>
+*Sebastian<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1441893" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1442071">
+    <td id="PostDetailsCell_1442071" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1442071"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/tritonit">tritonit</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="8/26/2015 11:27:28 PM" LocalTimeTicks="1440656848">Aug 26, 2015 at 11:27 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1442071" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Hi,&#13;&#10;&#13;&#10;danke,&#32;dass&#32;du&#32;&#252;berpr&#252;ft&#32;hast.&#32;&#13;&#10;Ich&#32;habe&#32;jetzt&#32;geschaut&#32;und&#32;siehe&#32;da,&#32;es&#32;ist&#32;mein&#32;Fehler,&#32;denn&#32;ich&#32;hab&#32;einfach&#32;die&#32;Aufrufe&#32;zu&#32;einem&#32;Zeitpunkt&#32;gemacht,&#32;zu&#32;dem&#32;die&#32;Objekte&#32;nicht&#32;mehr&#32;da&#32;sind...&#13;&#10;Asche&#32;auf&#32;mein&#32;Haupt&#33;&#13;&#10;">
+        <div class="markDownOutput ">Hi, <br>
+<br>
+danke, dass du Ã¼berprÃ¼ft hast. <br>
+Ich habe jetzt geschaut und siehe da, es ist mein Fehler, denn ich hab einfach die Aufrufe zu einem Zeitpunkt gemacht, zu dem die Objekte nicht mehr da sind...
+<br>
+Asche auf mein Haupt!<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1442071" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="9a8adeca-f7b5-4774-825d-68577962993a">
+    <script class="options" defer="defer" id="9a8adeca-f7b5-4774-825d-68577962993a" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_13adb722-2fe0-40a7-9f89-e59868dff50a">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_79991cdc-0cb2-4220-8618-efeec069c063">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_13adb722-2fe0-40a7-9f89-e59868dff50a" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_79991cdc-0cb2-4220-8618-efeec069c063" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/644055';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,1016 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Object reference not set to an instance of an object</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/273070?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/273070?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="OOqtKCg5FiT9daCr7kKJb0JRTd36KzP0BK9AHfcuSxkdBsNPjXm_lWvHmcSxqHrUQ6BGC1XsL-mP7OpssD8MMP8C4ZyaCzBrGyY-D66Sc-394qTGgk_A8rLX_EMPB-CK3nc-iA2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken25f64dca1-d4dc-44c7-9a08-283cf60e452f" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:52:41 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f273070" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="fca42c00-8119-4989-ac49-b001b378e6a3">
+                
+                    <script class="options" defer="defer" id="fca42c00-8119-4989-ac49-b001b378e6a3" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Object reference not set to an instance of an object
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:273070]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="53835775-9e04-461b-8154-ceb72d838bba">
+    <script class="options" defer="defer" id="53835775-9e04-461b-8154-ceb72d838bba" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/273070","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="673674">
+    <td id="PostDetailsCell_673674" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post673674"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/yaxay">yaxay</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/19/2011 3:16:24 PM" LocalTimeTicks="1316470584">Sep 19, 2011 at 3:16 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_673674" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;Hello,&#32;I&#32;have&#32;a&#32;problem&#32;with&#32;the&#32;creation&#32;of&#32;a&#32;word&#32;file&#32;througth&#32;a&#32;.net&#32;application.&#32;locally&#32;on&#32;my&#32;PC&#32;all&#32;works&#32;fine,&#32;the&#32;.doc&#32;file&#32;is&#32;created&#32;and&#32;I&#32;can&#32;open&#32;it&#32;properly.&#32;But&#32;when&#32;I&#32;publish&#32;my&#32;site&#32;to&#32;the&#32;server&#32;I&#32;encounter&#32;this&#32;error&#32;when&#32;I&#32;try&#32;to&#32;create&#32;the&#32;file&#58;&#32;&#32;Object&#32;reference&#32;not&#32;set&#32;to&#32;an&#32;instance&#32;of&#32;an&#32;object.&#32;Description&#58;&#32;An&#32;unhandled&#32;exception&#32;occurred&#32;during&#32;the&#32;execution&#32;of&#32;the&#32;current&#32;web&#32;request.&#32;Please&#32;review&#32;the&#32;stack&#32;trace&#32;for&#32;more&#32;information&#32;about&#32;the&#32;error&#32;and&#32;where&#32;it&#32;originated&#32;in&#32;the&#32;code.&#32;&#32;&#32;Exception&#32;Details&#58;&#32;System.Exception&#58;&#32;Object&#32;reference&#32;not&#32;set&#32;to&#32;an&#32;instance&#32;of&#32;an&#32;object.&#32;&#32;Source&#32;Error&#58;&#32;&#32;&#32;&#32;&#32;&#32;&#32;An&#32;unhandled&#32;exception&#32;was&#32;generated&#32;during&#32;the&#32;execution&#32;of&#32;the&#32;current&#32;web&#32;request.&#32;Information&#32;regarding&#32;the&#32;origin&#32;and&#32;location&#32;of&#32;the&#32;exception&#32;can&#32;be&#32;identified&#32;using&#32;the&#32;exception&#32;stack&#32;trace&#32;below.&#32;&#32;&#32;&#32;&#32;...&#32;&#38;nbsp&#59;&#32;And&#32;this&#32;is&#32;the&#32;portion&#32;of&#32;Code&#32;where&#32;the&#32;error&#32;appear&#58;&#32;&#32;&#32;&#35;region&#32;Start&#32;word&#32;and&#32;turn&#32;off&#32;msg&#32;boxes&#32;wordApplication&#32;&#61;&#32;new&#32;Word.Application&#40;&#41;&#59;&#32;wordApplication.DisplayAlerts&#32;&#61;&#32;WdAlertLevel.wdAlertsNone&#59;&#32;&#35;endregion&#32;&#35;region&#32;Add&#32;a&#32;new&#32;document&#32;Word.Document&#32;newDocument&#32;&#61;&#32;wordApplication.Documents.Add&#40;&#41;&#59;&#32;&#35;endregion&#32;&#35;region&#32;Header&#32;of&#32;Document&#32;foreach&#32;&#40;Word.Section&#32;section&#32;in&#32;newDocument.Sections&#41;&#123;&#32;string&#32;picturePath&#32;&#61;&#32;&#64;&#38;quot&#59;C&#58;&#92;&#92;Temp&#92;&#92;logo.gif&#38;quot&#59;&#59;&#32;section.Headers&#91;WdHeaderFooterIndex.wdHeaderFooterPrimary&#93;.Range.InlineShapes.AddPicture&#40;picturePath&#41;&#59;&#32;section.Headers&#91;WdHeaderFooterIndex.wdHeaderFooterPrimary&#93;.Range.ParagraphFormat.Alignment&#32;&#61;&#32;WdParagraphAlignment.wdAlignParagraphRight&#59;&#32;&#125;&#32;&#35;endregion&#32;&#32;&#32;&#32;The&#32;null&#32;reference&#32;exception&#32;is&#32;on&#32;the&#32;foreach&#32;loop,&#32;I&#32;think&#32;that&#32;the&#32;variable&#32;newDocument&#32;is&#32;null..&#32;but&#32;why&#32;&#63;&#32;I&#39;m&#32;missing&#32;something&#32;on&#32;the&#32;server&#32;&#63;&#32;I&#32;will&#32;be&#32;very&#32;appreciate&#32;if&#32;someone&#32;can&#32;help&#32;me...&#32;thanks&#32;">
+        
+<p>Hello,</p>
+<p>I have a problem with the creation of a word file througth a .net application.</p>
+<p>locally on my PC all works fine, the .doc file is created and I can open it properly.</p>
+<p>But when I publish my site to the server I encounter this error when I try to create the file:<em><br>
+<br>
+<strong>Object reference not set to an instance of an object.</strong></em></p>
+<p><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif"><strong>Description:
+</strong>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+<br>
+<br>
+<strong>Exception Details: </strong>System.Exception: Object reference not set to an instance of an object.<br>
+<br>
+<strong>Source Error:</strong> <br>
+<br>
+</span></p>
+<table width="100%" bgcolor="#ffffcc">
+<tbody>
+<tr>
+<td><code>An unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.</code></td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif"></span></p>
+<p>...</p>
+<p>&nbsp;</p>
+<p>And this is the portion of Code where the error appear:</p>
+<p></p>
+<div style="color:black; background-color:white">
+<pre><span style="color:blue">#region</span> Start word and turn off msg boxes
+wordApplication = <span style="color:blue">new</span> Word.Application();
+wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
+<span style="color:blue">#endregion</span>
+
+<span style="color:blue">#region</span> Add a new document
+Word.Document newDocument = wordApplication.Documents.Add();
+<span style="color:blue">#endregion</span>
+
+<span style="color:blue">#region</span> Header of Document
+<span style="color:blue">foreach</span> (Word.Section section <span style="color:blue">in</span> newDocument.Sections)<br>{
+<span style="color:blue">string</span> picturePath = <span style="color:#a31515">@&quot;C:\\Temp\\logo.gif&quot;</span>;
+section.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary].Range.InlineShapes.AddPicture(picturePath);
+section.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary].Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+}
+<span style="color:blue">#endregion</span>
+</pre>
+</div>
+<p></p>
+<p>The null reference exception is on the foreach loop,<br>
+I think that the variable newDocument is null.. but why ?</p>
+<p>I'm missing something on the server ?</p>
+<p>I will be very appreciate if someone can help me...</p>
+<p>thanks</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_673674" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="673681">
+    <td id="PostDetailsCell_673681" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post673681"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/19/2011 3:27:09 PM" LocalTimeTicks="1316471229">Sep 19, 2011 at 3:27 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_673681" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="can&#32;you&#32;clarify&#32;the&#32;exactly&#32;codeline&#32;with&#32;the&#32;exception&#63;i&#32;do&#32;a&#32;test&#32;with&#32;your&#32;code&#32;and&#32;works&#32;fine&#32;but&#32;one&#32;of&#32;your&#32;codelines&#32;are&#32;wrong&#32;string&#32;picturePath&#32;&#61;&#32;&#64;&#34;C&#58;&#92;&#92;Temp&#92;&#92;logo.gif&#34;&#59;the&#32;&#64;&#32;means&#32;you&#32;dont&#32;have&#32;to&#32;use&#32;&#34;&#92;&#92;&#34;.&#32;remove&#32;the&#32;&#64;&#32;or&#32;change&#32;&#34;&#92;&#92;&#34;&#32;to&#32;&#34;&#92;&#34;&#42;Sebastian&#32;&#38;nbsp&#59;">
+        
+<p>can you clarify the exactly codeline with the exception?<br>
+i do a test with your code and works fine but one of your codelines are wrong</p>
+<pre><span style="color:blue">string</span> picturePath = <span style="color:#a31515">@&quot;C:\\Temp\\logo.gif&quot;</span>;<br><br>the @ means you dont have to use &quot;\\&quot;. remove the @ or change &quot;\\&quot; to &quot;\&quot;<br><br><br>*Sebastian</pre>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_673681" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="674024">
+    <td id="PostDetailsCell_674024" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post674024"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/yaxay">yaxay</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/20/2011 6:46:03 AM" LocalTimeTicks="1316526363">Sep 20, 2011 at 6:46 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_674024" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Hi&#32;Sebastian,&#32;thank&#32;for&#32;your&#32;reply....&#32;Locally&#32;all&#32;works&#32;fine,&#32;I&#32;don&#39;t&#32;know&#32;what&#32;is&#32;wrong...&#32;this&#32;is&#32;the&#32;exact&#32;error&#58;&#32;&#32;Object&#32;reference&#32;not&#32;set&#32;to&#32;an&#32;instance&#32;of&#32;an&#32;object.&#32;Description&#58;&#32;An&#32;unhandled&#32;exception&#32;occurred&#32;during&#32;the&#32;execution&#32;of&#32;the&#32;current&#32;web&#32;request.&#32;Please&#32;review&#32;the&#32;stack&#32;trace&#32;for&#32;more&#32;information&#32;about&#32;the&#32;error&#32;and&#32;where&#32;it&#32;originated&#32;in&#32;the&#32;code.&#32;Exception&#32;Details&#58;&#32;System.NullReferenceException&#58;&#32;Object&#32;reference&#32;not&#32;set&#32;to&#32;an&#32;instance&#32;of&#32;an&#32;object.Source&#32;Error&#58;&#32;&#32;&#32;&#32;&#32;&#32;An&#32;unhandled&#32;exception&#32;was&#32;generated&#32;during&#32;the&#32;execution&#32;of&#32;the&#32;current&#32;web&#32;request.&#32;Information&#32;regarding&#32;the&#32;origin&#32;and&#32;location&#32;of&#32;the&#32;exception&#32;can&#32;be&#32;identified&#32;using&#32;the&#32;exception&#32;stack&#32;trace&#32;below.&#32;&#32;&#32;&#32;&#32;Stack&#32;Trace&#58;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#91;NullReferenceException&#58;&#32;Object&#32;reference&#32;not&#32;set&#32;to&#32;an&#32;instance&#32;of&#32;an&#32;object.&#93;&#32;ShipmentRequest.ctrl_Invoice.ctrl_popUpInvoiceCreate_Click&#40;Object&#32;sender,&#32;EventArgs&#32;e&#41;&#32;in&#32;C&#58;&#92;ShipmentRequest&#92;ctrl_Invoice.ascx.cs&#58;114&#32;DevExpress.Web.ASPxEditors.ASPxButton.OnClick&#40;EventArgs&#32;e&#41;&#32;&#43;96&#32;DevExpress.Web.ASPxEditors.ASPxButton.RaisePostBackEvent&#40;String&#32;eventArgument&#41;&#32;&#43;539&#32;DevExpress.Web.ASPxClasses.ASPxWebControl.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent&#40;String&#32;eventArgument&#41;&#32;&#43;13&#32;System.Web.UI.Page.RaisePostBackEvent&#40;IPostBackEventHandler&#32;sourceControl,&#32;String&#32;eventArgument&#41;&#32;&#43;13&#32;System.Web.UI.Page.RaisePostBackEvent&#40;NameValueCollection&#32;postData&#41;&#32;&#43;36&#32;System.Web.UI.Page.ProcessRequestMain&#40;Boolean&#32;includeStagesBeforeAsyncPoint,&#32;Boolean&#32;includeStagesAfterAsyncPoint&#41;&#32;&#43;5563&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#38;nbsp&#59;&#32;Thank&#32;you">
+        
+<p>Hi Sebastian,</p>
+<p>thank for your reply....</p>
+<p>Locally all works fine, I don't know what is wrong...</p>
+<p>this is the exact error:</p>
+<p><span></p>
+<h2><em>Object reference not set to an instance of an object.</em></h2>
+</span><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif"><strong>Description:
+</strong>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+<br>
+<br>
+<strong>Exception Details: </strong>System.NullReferenceException: Object reference not set to an instance of an object.<br>
+<br>
+<strong>Source Error:</strong> <br>
+<br>
+</span>
+<p></p>
+<table width="100%" bgcolor="#ffffcc">
+<tbody>
+<tr>
+<td><code>An unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.</code></td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif"><br>
+<strong>Stack Trace:</strong> <br>
+<br>
+</span></p>
+<table width="100%" bgcolor="#ffffcc">
+<tbody>
+<tr>
+<td>
+<pre>[NullReferenceException: Object reference not set to an instance of an object.]
+   ShipmentRequest.ctrl_Invoice.ctrl_popUpInvoiceCreate_Click(Object sender, EventArgs e) in C:\ShipmentRequest\ctrl_Invoice.ascx.cs:114
+   DevExpress.Web.ASPxEditors.ASPxButton.OnClick(EventArgs e) &#43;96
+   DevExpress.Web.ASPxEditors.ASPxButton.RaisePostBackEvent(String eventArgument) &#43;539
+   DevExpress.Web.ASPxClasses.ASPxWebControl.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument) &#43;13
+   System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument) &#43;13
+   System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData) &#43;36
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) &#43;5563
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif"></span></p>
+<p>&nbsp;</p>
+<p>Thank you</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_674024" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="674227">
+    <td id="PostDetailsCell_674227" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post674227"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/20/2011 4:02:14 PM" LocalTimeTicks="1316559734">Sep 20, 2011 at 4:02 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="9/20/2011 4:04:34 PM" LocalTimeTicks="1316559874">Sep 20, 2011 at 4:04 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_674227" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="i&#32;see&#32;no&#32;indicator&#32;the&#32;exception&#32;comes&#32;from&#32;netoffice&#32;in&#32;your&#32;stacktrace.&#39;NetOffice&#32;throws&#32;strictly&#32;COMException&#39;s.its&#32;possible&#32;to&#32;test&#32;your&#32;netoffice&#32;code&#32;in&#32;a&#32;winforms&#32;application&#63;can&#32;you&#32;debug&#32;your&#32;aspx&#32;code&#63;&#32;&#40;i&#39;m&#32;not&#32;an&#32;asp&#32;expert&#41;&#32;in&#32;that&#32;case&#32;goto&#32;visual&#32;studio&#32;menu&#47;debug&#47;exceptions&#32;and&#32;activate&#32;the&#32;checkbox&#32;&#39;Common&#32;Language&#32;Runtime&#32;Exceptions&#39;.&#32;the&#32;debugger&#32;stops&#32;now&#32;for&#32;you&#38;nbsp&#59;on&#38;nbsp&#59;the&#32;code&#32;line&#32;with&#32;the&#32;exception.btw&#58;&#32;whats&#32;your&#32;word&#32;version&#63;&#32;section&#32;headers&#32;was&#32;related&#32;to&#32;print&#32;layout&#32;right&#63;i&#32;know&#32;from&#32;excel&#32;the&#32;accessing&#32;of&#32;headers&#32;and&#32;footers&#32;failed&#32;in&#32;case&#32;of&#32;the&#32;spooler&#32;service&#32;is&#32;not&#32;running.&#32;&#38;nbsp&#59;&#32;&#38;nbsp&#59;">
+        
+<p>i see no indicator the exception comes from netoffice in your stacktrace.'<br>
+NetOffice throws strictly COMException's.<br>
+its possible to test your netoffice code in a winforms application?<br>
+can you debug your aspx code? (i'm not an asp expert) in that case goto visual studio menu/debug/exceptions and
+<br>
+activate the checkbox 'Common Language Runtime Exceptions'. the debugger stops now for you&nbsp;on&nbsp;the code line with the exception.<br>
+btw: whats your word version?</p>
+<p>section headers was related to print layout right?<br>
+i know from excel the accessing of headers and footers failed in case of the spooler service is not running.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_674227" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="674732">
+    <td id="PostDetailsCell_674732" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post674732"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/yaxay">yaxay</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/21/2011 3:40:11 PM" LocalTimeTicks="1316644811">Sep 21, 2011 at 3:40 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_674732" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Thank&#32;for&#32;your&#32;reply....&#32;I&#32;cann&#39;t&#32;debug&#32;the&#32;code&#32;because&#32;it&#32;is&#32;on&#32;server..&#32;I&#32;think&#32;that&#32;the&#32;problem&#32;by&#32;executing&#32;Word&#32;on&#32;server&#32;is&#32;that&#32;the&#32;application&#32;&#40;Word&#41;&#32;try&#32;to&#32;start&#32;with&#32;the&#32;Internet&#32;Guest&#32;Account&#32;but&#32;cann&#39;t&#32;start...&#32;I&#32;have&#32;playing&#32;a&#32;little&#32;bit&#32;with&#32;permissions&#32;on&#32;the&#32;COM&#32;Object&#32;permission,&#32;but&#32;now&#32;a&#32;new&#32;Exception&#32;appear...&#32;&#32;Server&#32;Error&#32;in&#32;&#39;&#47;ShipmentRequest&#39;&#32;Application.&#32;&#32;&#32;There&#32;is&#32;insufficient&#32;memory.&#32;Save&#32;the&#32;document&#32;now.&#32;Description&#58;&#32;An&#32;unhandled&#32;exception&#32;occurred&#32;during&#32;the&#32;execution&#32;of&#32;the&#32;current&#32;web&#32;request.&#32;Please&#32;review&#32;the&#32;stack&#32;trace&#32;for&#32;more&#32;information&#32;about&#32;the&#32;error&#32;and&#32;where&#32;it&#32;originated&#32;in&#32;the&#32;code.&#32;Exception&#32;Details&#58;&#32;System.Runtime.InteropServices.COMException&#58;&#32;There&#32;is&#32;insufficient&#32;memory.&#32;Save&#32;the&#32;document&#32;now.Source&#32;Error&#58;&#32;&#32;&#32;&#32;&#32;&#32;An&#32;unhandled&#32;exception&#32;was&#32;generated&#32;during&#32;the&#32;execution&#32;of&#32;the&#32;current&#32;web&#32;request.&#32;Information&#32;regarding&#32;the&#32;origin&#32;and&#32;location&#32;of&#32;the&#32;exception&#32;can&#32;be&#32;identified&#32;using&#32;the&#32;exception&#32;stack&#32;trace&#32;below.&#32;&#32;&#32;&#32;&#32;Stack&#32;Trace&#58;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#91;COMException&#32;&#40;0x800a13e9&#41;&#58;&#32;There&#32;is&#32;insufficient&#32;memory.&#32;Save&#32;the&#32;document&#32;now.&#93;&#32;&#91;TargetInvocationException&#58;&#32;Exception&#32;has&#32;been&#32;thrown&#32;by&#32;the&#32;target&#32;of&#32;an&#32;invocation.&#93;&#32;System.RuntimeType.InvokeDispMethod&#40;String&#32;name,&#32;BindingFlags&#32;invokeAttr,&#32;Object&#32;target,&#32;Object&#91;&#93;&#32;args,&#32;Boolean&#91;&#93;&#32;byrefModifiers,&#32;Int32&#32;culture,&#32;String&#91;&#93;&#32;namedParameters&#41;&#32;&#43;0&#32;System.RuntimeType.InvokeMember&#40;String&#32;name,&#32;BindingFlags&#32;bindingFlags,&#32;Binder&#32;binder,&#32;Object&#32;target,&#32;Object&#91;&#93;&#32;providedArgs,&#32;ParameterModifier&#91;&#93;&#32;modifiers,&#32;CultureInfo&#32;culture,&#32;String&#91;&#93;&#32;namedParams&#41;&#32;&#43;2584&#32;LateBindingApi.Core.Invoker.MethodReturn&#40;COMObject&#32;comObject,&#32;String&#32;name,&#32;Object&#91;&#93;&#32;paramsArray&#41;&#32;&#43;68&#32;&#91;COMException&#32;&#40;0x80004005&#41;&#58;&#32;See&#32;inner&#32;exception&#32;for&#32;details.&#93;&#32;LateBindingApi.Core.Invoker.MethodReturn&#40;COMObject&#32;comObject,&#32;String&#32;name,&#32;Object&#91;&#93;&#32;paramsArray&#41;&#32;&#43;105&#32;NetOffice.WordApi.Documents.Add&#40;&#41;&#32;&#43;22&#32;ShipmentRequest.ctrl_Invoice.ctrl_popUpInvoiceCreate_Click&#40;Object&#32;sender,&#32;EventArgs&#32;e&#41;&#32;in&#32;C&#58;&#92;ShipmentRequest&#92;ctrl_Invoice.ascx.cs&#58;110&#32;DevExpress.Web.ASPxEditors.ASPxButton.OnClick&#40;EventArgs&#32;e&#41;&#32;&#43;96&#32;DevExpress.Web.ASPxEditors.ASPxButton.RaisePostBackEvent&#40;String&#32;eventArgument&#41;&#32;&#43;539&#32;DevExpress.Web.ASPxClasses.ASPxWebControl.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent&#40;String&#32;eventArgument&#41;&#32;&#43;13&#32;System.Web.UI.Page.RaisePostBackEvent&#40;IPostBackEventHandler&#32;sourceControl,&#32;String&#32;eventArgument&#41;&#32;&#43;13&#32;System.Web.UI.Page.RaisePostBackEvent&#40;NameValueCollection&#32;postData&#41;&#32;&#43;36&#32;System.Web.UI.Page.ProcessRequestMain&#40;Boolean&#32;includeStagesBeforeAsyncPoint,&#32;Boolean&#32;includeStagesAfterAsyncPoint&#41;&#32;&#43;5563&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;In&#32;the&#32;C&#58;&#92;ShipmentRequest&#92;ctrl_Invoice.ascx.cs&#32;page&#32;on&#32;line&#32;110&#32;i&#32;have&#32;this&#32;code&#58;&#32;&#32;&#32;&#32;Word.Document&#32;newDocument&#32;&#61;&#32;wordApplication.Documents.Add&#40;&#41;&#59;&#32;&#32;&#32;And&#32;WordApplication&#32;is&#32;declared&#32;before&#32;like&#32;this&#58;&#32;&#32;wordApplication&#32;&#61;&#32;new&#32;Word.Application&#40;&#41;&#59;&#32;&#32;&#32;I&#32;don&#39;t&#32;know&#32;wath&#32;to&#32;do...&#32;If&#32;someone&#32;can&#32;give&#32;me&#32;more&#32;clarifcation&#32;about&#32;this&#32;problem&#32;will&#32;be&#32;very&#32;appreciate...&#32;&#32;">
+        
+<p>Thank for your reply....</p>
+<p>I cann't debug the code because it is on server..</p>
+<p>I think that the problem by executing Word on server is that the application (Word) try to start with the Internet Guest Account but cann't start...</p>
+<p>I have playing a little bit with permissions on the COM Object permission, but now a new Exception appear...</p>
+<p><span></p>
+<h1>Server Error in '/ShipmentRequest' Application.
+<hr size="1">
+</h1>
+<h2><em>There is insufficient memory. Save the document now.</em></h2>
+</span><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif"><strong>Description:
+</strong>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+<br>
+<br>
+<strong>Exception Details: </strong>System.Runtime.InteropServices.COMException: There is insufficient memory. Save the document now.<br>
+<br>
+<strong>Source Error:</strong> <br>
+<br>
+</span>
+<p></p>
+<table width="100%" bgcolor="#ffffcc">
+<tbody>
+<tr>
+<td><code>An unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.</code></td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif"><br>
+<strong>Stack Trace:</strong> <br>
+<br>
+</span></p>
+<table width="100%" bgcolor="#ffffcc">
+<tbody>
+<tr>
+<td>
+<pre>[COMException (0x800a13e9): There is insufficient memory. Save the document now.]
+
+[TargetInvocationException: Exception has been thrown by the target of an invocation.]
+   System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters) &#43;0
+   System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams) &#43;2584
+   LateBindingApi.Core.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray) &#43;68
+
+[COMException (0x80004005): See inner exception for details.]
+   LateBindingApi.Core.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray) &#43;105
+   NetOffice.WordApi.Documents.Add() &#43;22
+   ShipmentRequest.ctrl_Invoice.ctrl_popUpInvoiceCreate_Click(Object sender, EventArgs e) in C:\ShipmentRequest\ctrl_Invoice.ascx.cs:110
+   DevExpress.Web.ASPxEditors.ASPxButton.OnClick(EventArgs e) &#43;96
+   DevExpress.Web.ASPxEditors.ASPxButton.RaisePostBackEvent(String eventArgument) &#43;539
+   DevExpress.Web.ASPxClasses.ASPxWebControl.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument) &#43;13
+   System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument) &#43;13
+   System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData) &#43;36
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) &#43;5563
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif"></span></p>
+<p><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif">In the</span> C:\ShipmentRequest\ctrl_Invoice.ascx.cs page on line 110 i have this code:</p>
+<p><span style="font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif"></span></p>
+<p></p>
+<div style="color:black; background-color:white">
+<pre><div style="color:black; background-color:white"><pre>Word.Document newDocument = wordApplication.Documents.Add();
+</pre>
+</div>
+And WordApplication is declared before like this:<br>
+<div style="color:black; background-color:white">
+<pre>wordApplication = <span style="color:blue">new</span> Word.Application();
+</pre>
+</div>
+<br>I don't know wath to do... If someone can give me more clarifcation about this problem will be very appreciate...<br><br></pre>
+</div>
+<p></p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_674732" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="674774">
+    <td id="PostDetailsCell_674774" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post674774"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/21/2011 4:32:26 PM" LocalTimeTicks="1316647946">Sep 21, 2011 at 4:32 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_674774" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="please&#32;read&#32;this&#38;nbsp&#59;topic&#32;completly&#32;http&#58;&#47;&#47;objectmix.com&#47;cold-fusion&#47;765392-automationexception-0x800a13e9.htmlhttp&#58;&#47;&#47;stackoverflow.com&#47;questions&#47;1491123&#47;system-unauthorizedaccessexception-retrieving-the-com-class-factory-for-componen">
+        
+<p>please read this&nbsp;topic completly</p>
+<p><a href="http://objectmix.com/cold-fusion/765392-automationexception-0x800a13e9.html" rel="nofollow">http://objectmix.com/cold-fusion/765392-automationexception-0x800a13e9.html</a><br>
+<br>
+<a href="http://stackoverflow.com/questions/1491123/system-unauthorizedaccessexception-retrieving-the-com-class-factory-for-componen" rel="nofollow">http://stackoverflow.com/questions/1491123/system-unauthorizedaccessexception-retrieving-the-com-class-factory-for-componen</a><br>
+<br>
+</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_674774" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="675112">
+    <td id="PostDetailsCell_675112" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post675112"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/yaxay">yaxay</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/22/2011 8:17:31 AM" LocalTimeTicks="1316704651">Sep 22, 2011 at 8:17 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_675112" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="I&#32;have&#32;solved&#32;the&#32;issue&#32;by&#32;adding&#32;this&#32;in&#32;my&#32;web.config&#32;file&#58;">
+        
+<p>I have solved the issue by adding this in my web.config file:</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_675112" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="675114">
+    <td id="PostDetailsCell_675114" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post675114"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/yaxay">yaxay</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/22/2011 8:18:49 AM" LocalTimeTicks="1316704729">Sep 22, 2011 at 8:18 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_675114" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="sorry&#32;for&#32;double&#32;post...&#32;&#38;nbsp&#59;&#32;solved&#32;by&#32;adding&#32;this&#32;in&#32;my&#32;web.config&#32;file&#58;&#32;&#32;&#32;&#38;lt&#59;identity&#32;impersonate&#61;&#34;true&#34;&#32;userName&#61;&#34;Domain&#32;or&#32;ComputerName&#92;UserName&#34;&#32;password&#61;&#34;Password&#34;&#47;&#38;gt&#59;&#32;&#32;&#32;&#32;Thnak&#32;you&#32;very&#32;much&#32;for&#32;your&#32;help...&#32;&#38;nbsp&#59;">
+        
+<p>sorry for double post...</p>
+<p>&nbsp;</p>
+<p>solved by adding this in my web.config file:</p>
+<p></p>
+<div style="color:black; background-color:white">
+<pre>&lt;identity impersonate=<span style="color:#a31515">&quot;true&quot;</span> userName=<span style="color:#a31515">&quot;Domain or ComputerName\UserName&quot;</span> password=<span style="color:#a31515">&quot;Password&quot;</span>/&gt;
+</pre>
+</div>
+<p></p>
+<p>Thnak you very much for your help...</p>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_675114" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="2c5c3c87-3b1f-400b-b180-9b2070a425aa">
+    <script class="options" defer="defer" id="2c5c3c87-3b1f-400b-b180-9b2070a425aa" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_962b29c2-59d0-4186-ae41-da98aa1abebc">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_3dfaf8a4-c179-44d8-bace-cb7b05a5b809">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_962b29c2-59d0-4186-ae41-da98aa1abebc" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_3dfaf8a4-c179-44d8-bace-cb7b05a5b809" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/273070';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

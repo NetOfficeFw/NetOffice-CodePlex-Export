@@ -1,0 +1,865 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - SHIMMING</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/285331?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/285331?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="9e6EfsseoLH82ZSPYvKEe3X5stzwNmPN1J9lazJxQHo_9QrfoyfaoarJSx_GKCX4WUF8FnQN6i5ums__xX_resrgkrJkI2UxlbnuDFHXWVKlr1LhEiobmkpcjtfOyLODmpsMtA2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken2fef7287c-3909-4198-a0bb-a1b80b6714aa" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:52:35 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f285331" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="9511eee7-0cf3-4698-8c55-d129ce80ab49">
+                
+                    <script class="options" defer="defer" id="9511eee7-0cf3-4698-8c55-d129ce80ab49" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                SHIMMING
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:285331]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="e9b7e65e-1c9a-4034-8a06-10a539559173">
+    <script class="options" defer="defer" id="e9b7e65e-1c9a-4034-8a06-10a539559173" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/285331","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="721917">
+    <td id="PostDetailsCell_721917" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post721917"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SPolaco">SPolaco</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/7/2012 8:38:32 PM" LocalTimeTicks="1325997512">Jan 7, 2012 at 8:38 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_721917" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="&#32;&#38;nbsp&#59;&#32;&#32;&#32;I&#39;m&#32;from&#38;nbsp&#59;Argentina.&#38;nbsp&#59;I&#39;m&#32;an&#32;engineer&#38;nbsp&#59;and&#32;for&#32;several&#38;nbsp&#59;years&#32;I&#32;have&#32;developed&#38;nbsp&#59;analysis&#38;nbsp&#59;tools&#38;nbsp&#59;using&#32;Excel&#32;and&#38;nbsp&#59;VBA.&#38;nbsp&#59;Last&#32;year&#38;nbsp&#59;I&#32;decided&#38;nbsp&#59;it&#32;was&#32;time&#32;to&#38;nbsp&#59;change&#32;and&#32;now&#38;nbsp&#59;I&#39;m&#38;nbsp&#59;slowly&#38;nbsp&#59;developing&#38;nbsp&#59;my&#32;tools&#32;in&#32;.NET&#32;&#40;C&#35;&#41;.&#38;nbsp&#59;&#32;I&#39;ve&#32;been&#38;nbsp&#59;exploring&#32;your&#38;nbsp&#59;fantastic&#38;nbsp&#59;project&#32;for&#38;nbsp&#59;about&#32;three&#32;weeks.&#38;nbsp&#59;I&#32;was&#32;able&#32;to&#38;nbsp&#59;combine&#38;nbsp&#59;DNA&#47;NetOffice,&#38;nbsp&#59;follow&#32;your&#38;nbsp&#59;examples&#32;for&#32;developing&#38;nbsp&#59;COM&#38;nbsp&#59;Add-ins&#38;nbsp&#59;using&#32;only&#38;nbsp&#59;NetOffice&#38;nbsp&#59;&#40;I&#32;prefer&#38;nbsp&#59;this&#32;approach&#32;because&#38;nbsp&#59;I&#32;did&#32;not&#32;find&#38;nbsp&#59;similar&#32;tools&#38;nbsp&#59;for&#32;Word&#32;or&#38;nbsp&#59;PowerPoint&#38;nbsp&#59;DNA&#41;,&#32;etc..&#32;&#32;And&#32;now&#38;nbsp&#59;I&#32;have&#32;the&#32;following&#38;nbsp&#59;concerns&#58;&#32;Many&#38;nbsp&#59;authors&#32;recommend&#38;nbsp&#59;Shimming&#58;&#38;nbsp&#59;&#38;nbsp&#59;avoid&#38;nbsp&#59;&#38;nbsp&#59;MSCOREE.DLL&#38;nbsp&#59;Hell&#32;&#40;eg&#38;nbsp&#59;Andrew&#38;nbsp&#59;Whitechapel&#41;.&#32;&#38;nbsp&#59;&#32;Your&#38;nbsp&#59;examples&#38;nbsp&#59;finish&#32;a&#38;nbsp&#59;step&#32;before,&#32;registering&#32;the&#38;nbsp&#59;dll&#38;nbsp&#59;as&#32;they&#32;have&#32;been&#38;nbsp&#59;compiled.&#32;What&#32;are&#32;your&#38;nbsp&#59;recommendations&#63;&#32;Have&#32;you&#32;tried&#38;nbsp&#59;shimming&#32;the&#32;solution&#63;&#32;You&#32;have&#32;developed&#38;nbsp&#59;an&#32;example&#38;nbsp&#59;we&#32;can&#38;nbsp&#59;follow&#63;&#32;&#38;nbsp&#59;&#32;Thanks&#32;Marco&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#38;nbsp&#59;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#38;nbsp&#59;&#32;&#38;nbsp&#59;&#32;">
+        
+<p>&nbsp;</p>
+<div id="gt-res-wrap">
+<div id="gt-res-content">
+<div dir="ltr"><span id="result_box" lang="en"><span>I'm from</span>&nbsp;<span>Argentina.</span>&nbsp;<span>I'm an engineer</span>&nbsp;<span>and for several</span>&nbsp;<span>years I have developed</span><span>&nbsp;analysis</span>&nbsp;tools&nbsp;<span>using
+ Excel and</span>&nbsp;<span>VBA.</span>&nbsp;<span>Last year</span>&nbsp;<span>I decided</span>&nbsp;<span>it was time to</span>&nbsp;<span>change and now</span>&nbsp;<span>I'm&nbsp;</span><span>slowly</span>&nbsp;<span>developing</span>&nbsp;<span>my tools
+ in .</span>NET (C#)</span>.&nbsp;</div>
+<div dir="ltr"><span>I've been</span>&nbsp;<span>exploring your</span>&nbsp;<span>fantastic</span>&nbsp;<span>project for</span>&nbsp;<span>about three weeks.</span>&nbsp;<span>I was able to</span>&nbsp;<span>combine</span>&nbsp;<span>DNA/</span><span>NetOffice</span>,&nbsp;<span>follow
+ your</span>&nbsp;<span>examples for developing&nbsp;</span><span>COM</span>&nbsp;<span>Add-</span>ins&nbsp;<span>using only</span>&nbsp;<span>NetOffice</span>&nbsp;<span>(I prefer</span>&nbsp;<span>this approach because</span>&nbsp;<span>I did not find</span>&nbsp;<span>similar
+ tools</span>&nbsp;<span>for Word or</span>&nbsp;<span>PowerPoint</span>&nbsp;<span>DNA)</span>, etc..</div>
+<div dir="ltr"></div>
+<div dir="ltr"><span id="result_box" lang="en"><span>And now</span>&nbsp;<span>I have the following</span>&nbsp;<span>concerns</span>: Many&nbsp;<span>authors recommend</span>&nbsp;S<span>himming</span>:&nbsp;&nbsp;<span>avoid</span>&nbsp;&nbsp;<span>MSCOREE.DLL&nbsp;</span><span>Hell
+ (</span>eg&nbsp;<span>Andrew</span>&nbsp;<span>Whitechapel</span>).<br>
+<span>&nbsp;</span></span></div>
+<div dir="ltr"><span>Your</span>&nbsp;<span>examples</span>&nbsp;<span>finish a</span>&nbsp;<span>step before</span>, registering the&nbsp;<span>dll</span>&nbsp;<span>as they have been</span>&nbsp;<span>compiled.</span></div>
+<div dir="ltr"><span id="result_box" lang="en"><span>What are your</span><span>&nbsp;</span><span>recommendations?</span><br>
+<span>Have you tried</span><span>&nbsp;</span><span>shimming the solution</span><span>?</span><br>
+<span>You have developed</span><span>&nbsp;</span><span>an example</span><span>&nbsp;</span><span>we can</span><span>&nbsp;</span><span>follow?</span></span></div>
+<div dir="ltr"><span id="result_box" lang="en"><span>&nbsp;</span><br>
+<span>Thanks</span><br>
+<span>Marco</span></span></div>
+</div>
+<div id="gt-res-tools">
+<div id="gt-res-tools-r">
+<div id="gt-res-rate">
+<div>
+<div>
+<div>
+<div><span>&nbsp;</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_721917" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="722160">
+    <td id="PostDetailsCell_722160" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post722160"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/8/2012 8:17:51 PM" LocalTimeTicks="1326082671">Jan 8, 2012 at 8:17 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_722160" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="hello&#32;marco,&#32;the&#32;following&#32;workarround&#32;works&#32;with&#32;NetOffice&#32;and&#32;the&#32;MS&#32;Interop&#32;Assemblies&#32;as&#32;well.&#32;1.&#41;&#32;Make&#32;sure&#32;you&#32;have&#32;VC&#43;&#43;&#32;installed&#32;in&#32;Visual&#32;Studio2.&#41;&#32;Install&#32;the&#32;COM&#32;Shim&#32;Wizard&#32;for&#32;VS2010&#32;http&#58;&#47;&#47;blogs.msdn.com&#47;b&#47;mshneer&#47;archive&#47;2010&#47;03&#47;19&#47;com-shim-wizards-for-vs-2010.aspx3.&#41;&#32;Create&#32;a&#32;Addin&#32;project&#32;with&#32;NetOffice&#32;or&#32;Interop&#32;assemblies4.&#41;&#32;don&#32;register&#32;this&#32;addin&#32;project&#32;for&#32;COM&#32;Interop5.&#41;&#32;add&#32;a&#32;COM&#32;Shim&#32;project&#32;to&#32;the&#32;solution,&#32;follow&#32;the&#32;wizard&#32;and&#32;read&#32;http&#58;&#47;&#47;msdn.microsoft.com&#47;en-us&#47;library&#47;bb508939.aspx&#35;IsolatingMicrosoftExtensionsCOMShimWizard2-3_HowtheCOMShimWizardWorks6.&#41;&#32;now&#32;you&#32;have&#32;a&#32;native&#32;Shim&#32;proxy&#32;for&#32;your&#32;addin&#40;need&#32;a&#32;register&#32;with&#32;regsvr32&#32;or&#32;install&#32;api&#32;on&#32;other&#32;systems&#41;&#32;i&#32;create&#32;an&#32;excel&#32;addin&#32;sample&#32;and&#32;add&#32;the&#32;project&#32;to&#32;the&#32;download&#32;section&#42;best&#32;regards&#32;to&#32;ArgentinaSebastian">
+        
+<p>hello marco,</p>
+<p>the following workarround works with NetOffice and the MS Interop Assemblies as well.</p>
+<p>1.) Make sure you have VC&#43;&#43; installed in Visual Studio<br>
+2.) Install the COM Shim Wizard for VS2010 http://blogs.msdn.com/b/mshneer/archive/2010/03/19/com-shim-wizards-for-vs-2010.aspx<br>
+3.) Create a Addin project with NetOffice or Interop assemblies<br>
+4.) don register this addin project for COM Interop<br>
+5.) add a COM Shim project to the solution, follow the wizard and read http://msdn.microsoft.com/en-us/library/bb508939.aspx#IsolatingMicrosoftExtensionsCOMShimWizard2-3_HowtheCOMShimWizardWorks<br>
+6.) now you have a native Shim proxy for your addin(need a register with regsvr32 or install api on other systems)</p>
+<p>i create an excel addin sample and add the project to the download section<br>
+<br>
+*best regards to Argentina<br>
+Sebastian</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_722160" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="722185">
+    <td id="PostDetailsCell_722185" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post722185"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SPolaco">SPolaco</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/8/2012 11:01:35 PM" LocalTimeTicks="1326092495">Jan 8, 2012 at 11:01 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_722185" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Thank&#32;you&#32;very&#32;much,&#32;It&#39;s&#32;amazing&#38;nbsp&#59;you&#32;can&#32;respond&#38;nbsp&#59;so&#32;quickly&#33;&#32;I&#32;downloaded&#38;nbsp&#59;your&#32;example&#38;nbsp&#59;and&#32;I&#32;will&#38;nbsp&#59;try&#32;your&#38;nbsp&#59;recommendations&#32;this&#32;week.As&#38;nbsp&#59;I&#32;am&#32;a&#32;user&#38;nbsp&#59;of&#32;&#35;&#38;nbsp&#59;Develop,&#38;nbsp&#59;I&#39;m&#32;downloading&#38;nbsp&#59;Visual&#38;nbsp&#59;C&#38;nbsp&#59;&#43;&#32;&#43;&#38;nbsp&#59;Express&#38;nbsp&#59;to&#32;test&#38;nbsp&#59;COM&#38;nbsp&#59;Shim&#38;nbsp&#59;Wizard&#38;nbsp&#59;and&#32;analyze&#38;nbsp&#59;your&#32;example.&#38;nbsp&#59;&#40;I&#32;hope&#38;nbsp&#59;can&#32;use&#38;nbsp&#59;this&#32;version&#38;nbsp&#59;of&#38;nbsp&#59;VS&#41;&#32;I&#39;ll&#32;let&#32;you&#32;know&#38;nbsp&#59;my&#32;progress.Thanks&#32;again,regardsMarco">
+        
+<p><span>Thank you very much</span>,</p>
+<p><span>It's amazing</span>&nbsp;<span>you can respond</span>&nbsp;<span>so quickly!</span></p>
+<p><span>I downloaded</span><span>&nbsp;</span><span>your example</span><span>&nbsp;</span><span>and I will</span><span>&nbsp;</span><span>try your</span><span>&nbsp;</span><span>recommendations this week</span><span>.</span><br>
+<span>As</span><span>&nbsp;</span><span>I am a user</span><span>&nbsp;</span><span>of #</span><span>&nbsp;</span><span>Develop,</span><span>&nbsp;</span><span>I'm downloading</span><span>&nbsp;</span><span>Visual</span><span>&nbsp;</span><span>C</span><span>&nbsp;</span><span>&#43;
+ &#43;</span><span>&nbsp;</span><span>Express</span><span>&nbsp;to test&nbsp;</span><span>COM</span><span>&nbsp;</span><span>Shim</span><span>&nbsp;</span><span>Wizard</span><span>&nbsp;</span><span>and analyze</span><span>&nbsp;</span><span>your example.&nbsp;<span>(</span><span>I
+ hope</span><span>&nbsp;</span><span>can use</span><span>&nbsp;</span><span>this version</span><span>&nbsp;</span><span>of</span><span>&nbsp;</span><span>VS</span><span>)</span></span></p>
+<p><span><span><span>I</span><span>'ll let you know</span><span>&nbsp;</span><span>my progress.</span><br>
+<span>Thanks again,</span><br>
+<span>regards</span><br>
+<span>Marco</span><br>
+</span></span></p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_722185" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="722187">
+    <td id="PostDetailsCell_722187" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post722187"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/govert">govert</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/8/2012 11:06:57 PM" LocalTimeTicks="1326092817">Jan 8, 2012 at 11:06 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_722187" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Hi&#32;Marco,&#32;If&#32;you&#32;are&#32;using&#32;Excel-DNA&#32;with&#32;NetOffice,&#32;and&#32;making&#32;an&#32;Excel-DNA&#32;add-in&#32;that&#32;references&#32;the&#32;NetOffice&#32;assemblies&#32;&#40;instead&#32;of&#32;a&#32;COM&#32;add-in&#32;that&#32;is&#32;registered&#32;in&#32;the&#32;registry&#32;directly&#41;,&#32;your&#32;add-in&#32;is&#32;effectively&#32;shimmed&#32;already.&#32;The&#32;unmanaged&#32;part&#32;of&#32;the&#32;Excel-DNA&#32;.xll&#32;will&#32;load&#32;the&#32;.NET&#32;runtime&#32;and&#32;create&#32;a&#32;separate&#32;AppDomain&#32;where&#32;your&#32;add-in&#32;will&#32;reside.&#32;So&#32;you&#32;need&#32;no&#32;other&#32;C&#43;&#43;&#32;shim&#32;in&#32;this&#32;case.&#32;Of&#32;course&#32;this&#32;only&#32;applies&#32;to&#32;Excel&#32;add-ins.&#32;Regards,&#32;Govert">
+        
+<p>Hi Marco,</p>
+<p>If you are using Excel-DNA with NetOffice, and making an Excel-DNA add-in that references the NetOffice assemblies (instead of a COM add-in that is registered in the registry directly), your add-in is effectively shimmed already. The unmanaged part of the
+ Excel-DNA .xll will load the .NET runtime and create a separate AppDomain where your add-in will reside. So you need no other C&#43;&#43; shim in this case.</p>
+<p>Of course this only applies to Excel add-ins.</p>
+<p>Regards,</p>
+<p>Govert</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_722187" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="722227">
+    <td id="PostDetailsCell_722227" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post722227"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SPolaco">SPolaco</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/9/2012 2:34:35 AM" LocalTimeTicks="1326105275">Jan 9, 2012 at 2:34 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_722227" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Hi&#32;Govert.&#32;I&#32;know,&#32;In&#32;fact,&#32;while&#32;waiting&#32;for&#32;the&#32;response&#32;of&#32;Sebastian,&#32;I&#32;read&#32;the&#32;Discussion&#32;http&#58;&#47;&#47;exceldna.codeplex.com&#47;discussions&#47;252721.&#32;Your&#32;final&#32;post&#32;clarifies&#32;the&#32;situation.&#32;Then,&#32;I&#32;tried&#32;&#92;&#32;Distribution&#32;&#92;&#32;Samples&#32;&#92;&#32;ComServer.&#32;&#38;nbsp&#59;&#32;Some&#32;things&#32;I&#39;d&#32;like&#32;to&#32;know&#32;more&#32;detail&#32;are&#58;&#32;&#40;Taking&#32;the&#32;example&#32;of&#32;ComServer&#41;&#32;&#38;nbsp&#59;&#32;&#42;&#32;BuildSample.bat&#58;&#38;nbsp&#59;&#32;What&#32;exactly&#32;happens&#32;when&#32;you&#32;run&#32;regsvr32.exe&#32;ComServerPacked.xll&#63;&#32;What&#32;are&#32;the&#32;entries&#32;that&#32;are&#32;included&#32;in&#32;the&#32;registry&#63;&#32;Have&#32;you&#32;Know&#32;any&#32;utility&#32;that&#32;allows&#32;capture&#32;those&#32;entries&#63;&#32;&#40;I&#32;think&#32;something&#32;like&#32;regasm&#32;regfile&#32;&#58;...&#41;&#32;&#38;nbsp&#59;&#32;&#42;&#32;ComServerSample.dna&#58;&#32;What&#32;exactly&#32;happens&#32;when&#32;you&#32;run&#32;ComServer.&#32;&#40;un&#41;&#32;DllRegisterServer&#32;&#40;&#41;&#63;&#32;What&#32;are&#32;the&#32;entries&#32;that&#32;are&#32;included&#32;in&#32;the&#32;registry&#63;&#32;I&#32;have&#32;analyzed&#32;the&#32;source&#32;code,&#32;but&#32;as&#32;I&#32;have&#32;never&#32;programmed,&#32;I&#32;can&#32;hardly&#32;keep&#32;your&#32;code.&#32;&#38;nbsp&#59;&#32;&#42;&#32;How&#32;are&#32;handled&#32;dependencies&#32;when&#32;running&#32;ExcelDnaPack.exe&#63;&#32;I&#32;understand&#32;that,&#32;as&#32;indicated&#32;PackDep.dna,&#32;the&#32;libraries&#32;are&#32;included&#32;in&#32;the&#32;xll&#32;if&#32;specified&#32;&#38;lt&#59;Reference&#32;Pack&#61;&#34;true&#34;&#32;AssemblyPath&#61;&#34;DepLib.dll&#34;&#32;&#47;&#38;gt&#59;&#32;What&#32;are&#32;your&#32;recommendations&#63;&#32;NetOffice&#32;libraries&#32;and&#32;other&#32;&#40;eg,&#32;usually&#32;I&#32;have&#32;my&#32;own&#32;library&#32;of&#32;utilities&#41;&#32;It&#32;should&#32;be&#32;packaged&#32;or&#32;leave&#32;them&#32;outside&#63;&#32;What&#32;are&#32;the&#32;advantages&#32;of&#32;each&#32;method&#63;&#32;&#38;nbsp&#59;&#32;thank&#32;you&#32;very&#32;muchregards&#32;Marco">
+        
+<p>Hi Govert.</p>
+<p>I know,</p>
+<p>In fact, while waiting for the response of Sebastian, I read the Discussion http://exceldna.codeplex.com/discussions/252721.</p>
+<p>Your final post clarifies the situation.</p>
+<p>Then, I tried \ Distribution \ Samples \ ComServer.</p>
+<p>&nbsp;</p>
+<p>Some things I'd like to know more detail are: (Taking the example of ComServer)</p>
+<p>&nbsp;</p>
+<p>* BuildSample.bat:&nbsp;</p>
+<p>What exactly happens when you run regsvr32.exe ComServerPacked.xll?</p>
+<p>What are the entries that are included in the registry?</p>
+<p>Have you Know any utility that allows capture those entries? (I think something like regasm regfile :...)</p>
+<p>&nbsp;</p>
+<p>* ComServerSample.dna:</p>
+<p>What exactly happens when you run ComServer. (un) DllRegisterServer ()?</p>
+<p>What are the entries that are included in the registry?</p>
+<p>I have analyzed the source code, but as I have never programmed, I can hardly keep your code.</p>
+<p>&nbsp;</p>
+<p>* How are handled dependencies when running ExcelDnaPack.exe?</p>
+<p>I understand that, as indicated PackDep.dna, the libraries are included in the xll if specified &lt;Reference Pack=&quot;true&quot; AssemblyPath=&quot;DepLib.dll&quot; /&gt;</p>
+<p>What are your recommendations?</p>
+<p>NetOffice libraries and other (eg, usually I have my own library of utilities)</p>
+<p>It should be packaged or leave them outside? What are the advantages of each method?</p>
+<p>&nbsp;</p>
+<p><span>thank you very much</span><br>
+<span>regards</span></p>
+<p><span>Marco</span></p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_722227" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="722282">
+    <td id="PostDetailsCell_722282" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post722282"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/govert">govert</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="1/9/2012 7:45:35 AM" LocalTimeTicks="1326123935">Jan 9, 2012 at 7:45 AM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_722282" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post " 
+        data-markdown="Hi&#32;Marco,&#32;The&#32;Excel-DNA&#32;part&#32;of&#32;this&#32;discussion&#32;is&#32;probably&#32;better&#32;to&#32;continue&#32;on&#32;the&#32;Excel-DNA&#32;Google&#32;group&#58;&#32;&#38;nbsp&#59;http&#58;&#47;&#47;groups.google.com&#47;group&#47;exceldna.&#32;Registration&#32;of&#32;the&#32;Com&#32;Server&#32;classes&#32;is&#32;under&#38;nbsp&#59;HKEY_CURRENT_USER&#92;Software&#92;Classes&#92;.&#32;You&#39;ll&#32;easily&#38;nbsp&#59;see&#32;what&#39;s&#32;going&#32;on&#32;if&#32;you&#32;look&#32;in&#32;the&#32;registry,&#32;but&#32;the&#32;code&#32;is&#32;in&#32;ExcelDna.Integration&#92;ComServer.cs.&#32;Invoking&#32;regsvr32.exe&#32;will&#32;eventually&#32;call&#32;ComServer.DllRegisterServer&#40;&#41;,&#32;so&#32;they&#32;do&#32;exactly&#32;the&#32;same&#32;work.&#32;Entries&#32;are&#32;basically&#58;&#32;&#38;nbsp&#59;&#32;&#32;&#32;&#34;HKEY_CURRENT_USER&#92;Software&#92;Classes&#92;&#34;&#32;&#43;&#32;ProgId&#32;&#34;HKEY_CURRENT_USER&#92;Software&#92;Classes&#92;&#34;&#32;&#43;&#32;ClsId&#32;&#43;&#32;....&#32;&#40;InprocServer32&#32;etc.&#41;&#32;&#32;&#32;&#38;nbsp&#59;&#32;and&#32;possibly&#32;a&#32;TypeLib&#32;entry&#32;under&#32;HKEY_CURRENT_USER&#92;Software&#92;Classes&#92;TypeLib&#92;.&#32;The&#32;&#34;server&#34;&#32;for&#32;the&#32;COM&#32;type&#32;is&#32;registered&#32;as&#32;the&#32;.xll,&#32;which&#32;has&#32;the&#32;correct&#32;exports&#32;to&#32;be&#32;a&#32;COM&#32;Server.&#32;You&#32;can&#32;have&#32;the&#32;various&#32;NetOffice&#32;assemblies&#32;packed&#32;by&#32;adding&#32;the&#32;&#38;lt&#59;Reference&#32;Path&#61;&#34;...&#34;&#32;Pack&#61;&#34;true&#34;&#32;&#47;&#38;gt&#59;&#32;tags&#32;in&#32;the&#32;.dna&#32;file,&#32;exactly&#32;as&#32;you&#32;show.&#32;It&#32;does&#32;not&#32;work&#32;for&#32;mixed&#32;code&#32;&#40;assemblies&#32;that&#32;contain&#32;native&#32;code&#41;.&#32;I&#32;packed&#32;the&#32;files&#32;LateBinding.Core.dll,&#32;ExcepApi.dll,&#32;OfficeApi.dll,&#32;DaoApi.dll&#32;and&#32;a&#32;small&#32;add-in&#32;library&#32;into&#32;an&#32;.xll&#32;recently,&#32;and&#32;the&#32;resulting&#32;size&#32;was&#32;726KB.&#38;nbsp&#59;&#32;The&#32;packing&#32;works&#32;fine&#32;in&#32;my&#32;experience,&#32;and&#32;it&#39;s&#32;pretty&#32;nice&#32;to&#32;have&#32;a&#32;single-file&#32;add-in.&#32;Packing&#32;does&#32;change&#32;how&#32;those&#32;assemblies&#32;are&#32;loaded&#32;by&#32;.NET&#32;&#40;they&#32;are&#32;in&#32;a&#32;different&#32;&#34;Load&#32;context&#34;&#41;&#32;which&#32;can&#32;sometimes&#32;cause&#32;confusion.&#38;nbsp&#59;It&#32;just&#32;makes&#32;deployment&#32;much&#32;easier,&#32;but&#32;is&#32;not&#32;crucial&#32;to&#32;the&#32;add-in&#32;structure&#32;or&#32;how&#32;it&#32;works.&#38;nbsp&#59;If&#32;you&#32;want&#32;to&#32;have&#32;many&#32;add-ins&#32;in&#32;the&#32;same&#32;directory&#32;that&#32;share&#32;the&#32;NetOffice&#32;libraries,&#32;it&#32;might&#32;make&#32;sense&#32;not&#32;to&#32;pack&#32;them.&#32;Packing&#32;or&#32;not&#32;is&#32;a&#32;decision&#32;you&#32;can&#32;take&#32;very&#32;late,&#32;once&#32;everything&#32;works.&#32;Regards,&#32;Govert">
+        
+<p>Hi Marco,</p>
+<p>The Excel-DNA part of this discussion is probably better to continue on the Excel-DNA Google group: &nbsp;<a href="http://groups.google.com/group/exceldna" rel="nofollow">http://groups.google.com/group/exceldna</a>.</p>
+<p>Registration of the Com Server classes is under&nbsp;HKEY_CURRENT_USER\Software\Classes\. You'll easily&nbsp;see what's going on if you look in the registry, but the code is in ExcelDna.Integration\ComServer.cs. Invoking regsvr32.exe will eventually call
+ ComServer.DllRegisterServer(), so they do exactly the same work.</p>
+<p>Entries are basically:</p>
+<p>&nbsp;</p>
+<div style="color:black; background-color:white">
+<pre> &quot;HKEY_CURRENT_USER\Software\Classes\&quot; &#43; ProgId
+ &quot;HKEY_CURRENT_USER\Software\Classes\&quot; &#43; ClsId &#43; .... (InprocServer32 etc.)
+</pre>
+</div>
+<p>&nbsp;</p>
+<p>and possibly a TypeLib entry under HKEY_CURRENT_USER\Software\Classes\TypeLib\. The &quot;server&quot; for the COM type is registered as the .xll, which has the correct exports to be a COM Server.</p>
+<p>You can have the various NetOffice assemblies packed by adding the &lt;Reference Path=&quot;...&quot; Pack=&quot;true&quot; /&gt; tags in the .dna file, exactly as you show. It does not work for mixed code (assemblies that contain native code). I packed the files LateBinding.Core.dll,
+ ExcepApi.dll, OfficeApi.dll, DaoApi.dll and a small add-in library into an .xll recently, and the resulting size was 726KB.&nbsp;</p>
+<p>The packing works fine in my experience, and it's pretty nice to have a single-file add-in. Packing does change how those assemblies are loaded by .NET (they are in a different &quot;Load context&quot;) which can sometimes cause confusion.&nbsp;It just makes deployment
+ much easier, but is not crucial to the add-in structure or how it works.&nbsp;If you want to have many add-ins in the same directory that share the NetOffice libraries, it might make sense not to pack them.</p>
+<p>Packing or not is a decision you can take very late, once everything works.</p>
+<p>Regards,</p>
+<p>Govert</p>
+
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_722282" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="8a676fb4-2b24-41b7-8995-50c19ea0512f">
+    <script class="options" defer="defer" id="8a676fb4-2b24-41b7-8995-50c19ea0512f" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_1e87f4f4-2b6c-4d2e-9746-ba0ae7cf4529">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_da6de0d8-e6b4-47e3-ad32-2935e17efb1a">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_1e87f4f4-2b6c-4d2e-9746-ba0ae7cf4529" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_da6de0d8-e6b4-47e3-ad32-2935e17efb1a" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/285331';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>

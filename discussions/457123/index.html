@@ -1,0 +1,1007 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#">
+    
+    
+    
+    
+
+    
+    <head>
+        <meta id="CompatabilityMode" http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://download-codeplex.sec.s-msft.com/css/v21066/i1970439/StyleSheet.ashx" id="MasterCss" rel="stylesheet" type="text/css" />
+        <link rel="SHORTCUT ICON" href="http://www.codeplex.com/favicon.ico" />
+        <title>NetOffice - MS Office in .NET - Automating Netoffice</title>
+        
+       
+                    <script src="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.js"></script>
+        
+                    <link rel="stylesheet" type="text/css" href="https://uhf.microsoft.com/mscc/statics/mscc-0.3.7.min.css" />
+        
+            <script type="text/javascript">
+                var msccHadCookieBannerAtPageStart = true;
+            </script>
+        
+
+        <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code,
+        not by Microsoft.  See ASP.NET Ajax CDN Terms of Use â€“ http://www.asp.net/ajaxlibrary/CDN.ashx.
+        -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            if (typeof jQuery.ui === 'undefined') {
+                document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+            }
+        </script>
+
+        
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ProjectStyles" type="text/css">
+        .SiteHeader, .SiteHeaderLeft {
+            height:45px !important;
+            overflow:hidden;
+        }
+        .SiteContent 
+        {
+            padding: 0 0 1em 0;
+            margin-top:0;
+            min-height:225px;
+            border-right: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-bottom: 1px solid lightgrey;
+        }
+        .IE table.MinWidthContent
+        {
+	        table-layout: auto !important;	
+        }
+    </style>
+    
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+    
+    
+    <meta id="WTProjectName" name="WT.pi" content="netoffice"/>
+    
+
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href='http://netoffice.codeplex.com/rsd' />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href='/wlwmanifest.xml' />
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" url="http://netoffice.codeplex.com/project/feeds/rss"/>
+    
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Discussions" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Issues" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice"/>
+        
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Downloads" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Reviews" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice"/>
+        
+    
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Source&#32;code" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice"/>
+        <link rel="alternate" type="application/rss+xml" title="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET&#32;-&#32;Wiki" url="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice"/>
+    
+        
+    
+        <meta content="summary" name="twitter:card" /><meta content="@CodePlex" name="twitter:site" /><meta content="http://netoffice.codeplex.com/discussions/457123?ProjectName=netoffice" name="twitter:url" /><meta content="NetOffice - MS Office in .NET" name="twitter:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" name="twitter:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" name="twitter:image" /><meta content="CodePlex" property="og:site_name" /><meta content="http://netoffice.codeplex.com/discussions/457123?ProjectName=netoffice" property="og:url" /><meta content="object" property="og:type" /><meta content="NetOffice - MS Office in .NET" property="og:title" /><meta content=".NET wrapper assemblies for version independent using Microsoft Office, Excel, Word, Outlook, PowerPoint, Access, Project, Visio, Publisher" property="og:description" /><meta content="http://www.codeplex.com/Images/codeplex.png" property="og:image" />
+        
+
+    </head>
+    
+    <body>
+         
+            <div><div id='msccBanner' dir='ltr' data-site-name='CodePlex' data-mscc-version='0.3.6' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'><div class='cc-container'><svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'><circle cx='22' cy='22' r='20' stroke-width='2'></circle><line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line><line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line></svg> <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span> <a href='https://go.microsoft.com/fwlink/?linkid=845480' aria-label='Learn more about Microsoft&#39;s Cookie Policy' id='msccLearnMore' class='cc-link cc-v-center cc-float-right' data-mscc-ic='false'>Learn more</a></div></div></div>
+        <script src="http://download-codeplex.sec.s-msft.com/scripts/v21066/i5/ScriptLoader.ashx" type="text/javascript"></script>
+        <form id="aspnetForm" autocomplete="off" method="POST" enctype="multipart/form-data">
+            <input name="__RequestVerificationToken" type="hidden" value="twDuxKF66LvppKptcu8stcnl4fvrbxY1Sgb9aNv7Nyq3hzAytNw5U2dqLKWHwqZY8RrmEQE5kpHq-EbrJ9pyIbQIr96-oKHWIgLWceFGJJbpdJVRJWof0lx6thbYIl6zK6nXDA2" /><input name="__RequestVerificationToken2" type="hidden" value="__RequestVerificationToken2e3854865-9af6-4934-bb95-c8c90da84c10" />
+            
+            <div id="UpdateProgressPanel" class="loading_animation" style="display:none;">
+                <div class="row">
+                    <h2 class="anim_h2">
+                        <span id="UpdateProgressText">Updating...</span>
+                        <span id="animatedLoadingIconContainer">
+                            <img id="animatedLoadingIcon" src="http://download-codeplex.sec.s-msft.com/Images/v21066/loading_animation.gif" class="anim_img"/>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            
+            <div style="display:none;">
+                
+                <img id="BlankImage" style="width:0;height:0;" src="http://download-codeplex.sec.s-msft.com/Images/v21066/blank.png" onload="self.logoImageLoaded=true;"/>
+
+                <script language="javascript" type="text/javascript">
+                    var date = new Date();
+                    var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                    var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                    var firstTimeSetTimezoneCookie = false;
+
+                    if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                        firstTimeSetTimezoneCookie = true;
+                        document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com;expires=Thu, 3 Jan 2019 10:51:27 UTC';
+                    }
+                </script>
+            </div>
+            
+            
+            <div id="banner">
+                <div id="message">
+                    <strong>CodePlex is going read-only starting November 27th.  </strong><a href="https://aka.ms/codeplex-readonly">Learn more and find next steps.</a>
+                </div>
+            </div>
+            
+
+            <div id="header">
+                <div id="header_wrap" class="row">
+                    <p id="logo"><a href="http://www.codeplex.com">Code<span class="semi">Plex</span></a><span id="tagline">Project Hosting for Open Source Software</span></p>
+                    
+
+<ul id="nav">
+
+    <li><a href="/site/register/new" id="registerLink" class="ZoomFix">Register</a></li>
+    <li ><a class="SignInLink" href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fnetoffice.codeplex.com%2fdiscussions%2f457123" id="signInLink">Sign In</a></li>
+  
+    <li class="last"><a class="rss_site_icon" href="http://www.codeplex.com/site/feeds/rss" type="application/rss+xml" rel="Alternate" title="CodePlex Site Activity"></a></li>
+</ul>
+                    <input id="searchsite" name="searchsite" maxlength="500" type="text" value="" /><span id="search_mag"><a id="submitSearch" name="submitSearch" class="magnify" title="Search" href="#"></a></span>
+                    <script>
+	$(document).ready(function() {
+    var searchButton = $('#submitSearch'),
+        searchBar = $('#searchsite');
+
+    // Register our own handler for the search event while we wait for the SearchBox script to load.
+    searchButton.bind('click.backupSearchBox', doProjectSearch);
+    searchBar.bind('keypress.backupSearchBox', function(e) { if ($keyCode(e) === 13) { doProjectSearch(); return false; } });
+
+    function cleanupSearchEvents() {
+        // If the SearchBox was loaded, unregister our handlers.
+        if (epx_loaded) {
+            searchButton.unbind('.backupSearchBox');
+            searchBar.unbind('.backupSearchBox');
+        }
+    }
+
+    $loadScript('http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?appid=1000&scopeid=1&boxId=searchsite&btnId=submitSearch&watermark=Search%20all%20projects&overrideWatermark=true&searchLocation=%2fsite%2fsearch&allowEmptySearch=true&focusOnInit=False&minimumTermLength=3', cleanupSearchEvents);
+})
+function doProjectSearch() {
+    
+    var url = '/site/search';
+
+    //If search term is not same as watermark
+    if($('#searchsite').val() != 'Search all projects')    
+    {        
+        url = url + '?query=' + encodeURIComponent($('#searchsite').val());
+    }
+
+    
+    var callback = '';
+    if (callback.length > 0 && eval('typeof ' + callback) != 'undefined')
+        url += eval(callback + '()');
+
+    window.location.href = url;
+    return false;
+}
+</script>
+                </div>
+            </div>
+            
+            <div id="wrap">
+                
+    <div id="sub_heading" class="row">
+        
+        <div id="ProjectHeader">
+            <div id="project_title_row" class="row">
+                <div id="project_logo">
+                    
+    
+    <div id="project_logo_and_text">
+        <div class="logo_left">
+            <a href="http://netoffice.codeplex.com/"><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&DownloadId=236782&Build=21066" alt="NetOffice&#32;-&#32;MS&#32;Office&#32;in&#32;.NET" /></a>
+        </div>
+        <h1 class="text_right"><div><a href="http://netoffice.codeplex.com/" id="ProjectTitle4">NetOffice - MS Office in .NET</a></div></h1>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="ProjectDetailsDiv">
+            
+        </div>
+		<div class="clear"></div>
+        
+                <div id="ProjectMigrationBanner" class="ProjectRedOnly""><strong>This project has moved and is read-only.  For the latest updates, please </strong><a href="https&#58;&#47;&#47;osdn.net&#47;projects&#47;netoffice">go here</a>.</div>
+            
+
+<ul id="page_box_links">
+	<li id="homeTabCell" style="width: 63px;"><a id="homeTab" href="http://netoffice.codeplex.com/" class="box_home">home</a><div></div></li>
+    
+	<li id="sourceTabCell" style="width:113px;"><a id="sourceTab" href="http://netoffice.codeplex.com/SourceControl/latest" class="box_source">source code</a><div></div></li>
+    
+	<li id="releasesTabCell" style="width:105px;"><a id="releasesTab" href="http://netoffice.codeplex.com/releases" class="box_downloads">downloads</a><div></div></li>
+    
+    <li id="documentationTabCell" style="width:143px;"><a id="documentationTab" href="http://netoffice.codeplex.com/documentation" class="box_documentation">documentation</a><div></div></li>
+    
+	<li id="discussionTabCell" style="width:112px;"><a id="discussionTab" href="http://netoffice.codeplex.com/discussions" class="discussions_active">discussions</a><div></div></li>
+    
+	<li id="workItemsTabCell" style="width:70px;"><a id="workItemsTab" href="http://netoffice.codeplex.com/workitem/list/basic" class="box_issue">issues</a><div></div></li>
+    
+	<li id="peopleTabCell" style="width:70px;"><a id="peopleTab" href="http://netoffice.codeplex.com/team/view" class="box_people">people</a><div></div></li>
+	<li id="licenseTabCell" style="width:70px;"><a id="licenseTab" href="http://netoffice.codeplex.com/license" class="box_license">license</a><div></div></li>
+    
+    <span class="stretch"></span>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page_box_links').applyLastClassToList();
+    });
+</script>
+		    <div class="clear"></div>
+            
+     <td>
+       
+
+<div>
+    
+    <div id="actionBar" class="action_bar">
+        <ul id="actionBar_ul" class="actionBar_sublinks subtab_right" style="vertical-align: middle;">
+
+            
+
+                <li id="li_actionbar_subscribe" data-action-id="actionbar_subscribe" data-action-type="PopUp" class="actionBar_sublinks" data-options-id="8bb26f1b-5a7d-44db-a622-654121bb18d9">
+                
+                    <script class="options" defer="defer" id="8bb26f1b-5a7d-44db-a622-654121bb18d9" type="application/json">{}</script> 
+                    
+                    <div class="actionBar_custom_content">
+
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth" style="display: none">
+        <ul id="3_FeedsPanel" class="RssFeedsPanel">
+            <li>
+                <a id="ProjectRssLink" href="http://netoffice.codeplex.com/project/feeds/rss" class="ArrowSmall NoUnderline">All Project Updates</a>
+            </li>
+            
+            <li>
+                <a id="DiscussionRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fnetoffice" class="ArrowSmall NoUnderline">Discussions</a>
+            </li>
+            
+            <li>
+                <a id="IssueTrackerRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fnetoffice" class="ArrowSmall NoUnderline">Issue Tracker</a>
+            </li>
+            
+            <li>
+                <a id="ReleasesRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fnetoffice" class="ArrowSmall NoUnderline">Downloads</a>
+            </li>
+            <li>
+                <a id="ReviewsRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2freview%2fnetoffice" class="ArrowSmall NoUnderline">Reviews</a>
+            </li>
+            
+            <li>
+                <a id="SourceControlRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fnetoffice" class="ArrowSmall NoUnderline">Source Code</a>
+            </li>
+            <li>
+                <a id="WikiRssLink" href="http://netoffice.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fnetoffice" class="ArrowSmall NoUnderline">Wiki &amp; Documentation</a>
+            </li>
+        </ul>
+</div></div>
+
+                    <a href="#" id="actionbar_subscribe" title="Subscribe to project updates in RSS feeds." class="action_bar_item_link">
+                        <img id="img_actionbar_subscribe" class="action_bar_item_image" src="http://download-codeplex.sec.s-msft.com/Images/v21066/actionbar_subscribe.png" style="vertical-align: middle" />
+                        Subscribe
+                    </a>
+
+                </li>
+
+            
+        </ul>
+    </div>
+</div>
+     </td>
+
+        
+
+    </div>
+    
+    
+<div class="Threads">
+    <div class="ViewThread">
+        
+        
+        
+            <h1 class="page_title WordWrapBreakWord">
+                Automating Netoffice
+            </h1>
+
+            <!-- Private Discussion header -->
+            
+
+            <!-- Posts List Header: Topics and Wiki Link -->
+            <table class="PostsListHeader">
+                <tr>
+                    <td>
+                     
+                    </td>
+                    <td>
+                        <div class="WikiLink">
+                            <span title="Paste this into a wiki page to link to this discussion">
+                                Wiki Link: [discussion:457123]
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- The list of posts -->
+            
+
+<div id="discussionsPostList" data-options-id="796970c3-705c-445d-a8fa-103e5f505934">
+    <script class="options" defer="defer" id="796970c3-705c-445d-a8fa-103e5f505934" type="application/json">{"threadUrl":"http://netoffice.codeplex.com/discussions/457123","showEditor":false,"checkImageUrl":"http://download-codeplex.sec.s-msft.com/Images/v21066/check_answer.png"}</script>
+
+    <div class="Posts" style="margin-top: 10px;">
+    
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 0px; table-layout:fixed">
+    
+
+<tr id="PostPanel" class="Post" d:forid="1093327">
+    <td id="PostDetailsCell_1093327" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1093327"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/brianlangbecker">brianlangbecker</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/16/2013 11:12:08 PM" LocalTimeTicks="1379398328">Sep 16, 2013 at 11:12 PM</span></div>
+            
+            <div style="white-space: normal" class="SubText" id="UpdatedDiv">Edited <span class="smartDate" title="9/16/2013 11:30:00 PM" LocalTimeTicks="1379399400">Sep 16, 2013 at 11:30 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1093327" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="Yes,&#32;I&#32;know&#32;MS&#32;does&#32;not&#32;like&#32;this&#32;nor&#32;supports&#32;it&#32;but...I&#32;would&#32;like&#32;to&#32;do&#32;so.&#10;&#10;In&#32;user&#32;mode&#32;my&#32;code&#32;works&#32;fine,&#32;but&#32;when&#32;running&#32;as&#32;a&#32;windows&#32;service&#32;the&#32;following&#32;line&#32;of&#32;code&#32;returns&#32;null.&#32;&#32;How&#32;determine&#32;the&#32;error&#32;that&#32;causing&#32;it&#32;to&#32;return&#32;as&#32;null&#63;&#10;&#10;&#32;Word.Document&#32;newDocument&#32;&#61;&#32;wordApplication.Documents.Open&#40;tempFile&#41;&#59;&#10;&#10;I&#32;am&#32;hoping&#32;to&#32;load&#32;up&#32;a&#32;document&#32;and&#32;use&#32;this&#32;to&#32;convert&#32;it&#32;to&#32;text&#32;for&#32;downstream&#32;parsing.&#32;&#32;But&#32;this&#32;returns&#32;null.&#32;&#32;No&#32;exception.&#32;&#32;And&#32;I&#32;cannot&#32;find&#32;any&#32;errors&#32;in&#32;the&#32;event&#32;log.&#10;&#10;&#91;Update&#93;&#32;&#32;I&#32;put&#32;the&#32;debug&#32;console&#32;on&#32;and&#32;it&#32;says&#32;&#34;Failed&#32;to&#32;Resolve&#32;Assembly&#34;&#32;but&#32;I&#32;have&#32;noticed&#32;that&#32;in&#32;the&#32;user&#32;mode&#32;and&#32;it&#32;does&#32;not&#32;seem&#32;to&#32;stop&#32;it.">
+        <div class="markDownOutput ">Yes, I know MS does not like this nor supports it but...I would like to do so.<br>
+<br>
+In user mode my code works fine, but when running as a windows service the following line of code returns null. How determine the error that causing it to return as null?<br>
+<br>
+Word.Document newDocument = wordApplication.Documents.Open(tempFile);<br>
+<br>
+I am hoping to load up a document and use this to convert it to text for downstream parsing. But this returns null. No exception. And I cannot find any errors in the event log.<br>
+<br>
+[Update] I put the debug console on and it says &quot;Failed to Resolve Assembly&quot; but I have noticed that in the user mode and it does not seem to stop it.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1093327" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1093481">
+    <td id="PostDetailsCell_1093481" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1093481"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/17/2013 12:17:56 PM" LocalTimeTicks="1379445476">Sep 17, 2013 at 12:17 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1093481" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="this&#32;means&#32;newDocument&#32;is&#32;null&#63;&#32;which&#32;assembly&#32;failed&#32;to&#32;resolve&#63;&#13;&#10;can&#32;i&#32;see&#32;the&#32;complete&#32;console&#32;log&#63;&#32;">
+        <div class="markDownOutput ">this means newDocument is null? which assembly failed to resolve? <br>
+can i see the complete console log? <br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1093481" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1093566">
+    <td id="PostDetailsCell_1093566" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1093566"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/brianlangbecker">brianlangbecker</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/17/2013 3:55:36 PM" LocalTimeTicks="1379458536">Sep 17, 2013 at 3:55 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1093566" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="So&#32;I&#32;am&#32;running&#32;this&#32;in&#32;application&#32;that&#32;leads&#32;me&#32;loads&#32;DLLS,&#32;essentially&#32;and&#32;run&#32;them&#32;in&#32;App&#32;Domain.&#32;&#32;The&#32;Debug&#32;log&#32;is&#32;pretty&#32;large&#32;so&#32;this&#32;is&#32;the&#32;first&#32;portion.&#32;&#32;Any&#32;insights&#32;appreciated.&#32;&#32;Do&#32;I&#32;need&#32;to&#32;change&#32;the&#32;DCOM&#32;Config&#63;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#91;0&#93;&#9;&#34;NetOffice.Factory.Initialize&#40;&#41;&#32;DeepLevel&#58;True&#34;&#9;string&#13;&#10;&#9;&#9;&#91;1&#93;&#9;&#34;Try&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;2&#93;&#9;&#34;Try&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;3&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;4&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;5&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;6&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;7&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;8&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;WordApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;9&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;10&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;11&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;12&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;13&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;14&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;15&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;16&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;17&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;18&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;19&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;20&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;21&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;22&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;23&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;24&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;25&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;OfficeApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;26&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;27&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;28&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;29&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;30&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;31&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;32&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;33&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#34;&#9;string&#13;&#10;&#9;&#9;&#91;34&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;35&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;36&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;37&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;38&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;39&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;40&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;41&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;42&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;43&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;VBIDEApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;44&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;45&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;46&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;47&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;48&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;49&#93;&#9;&#34;IFactoryInfo&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;50&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;51&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;52&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;53&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;54&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;55&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;56&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;57&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;58&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;59&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;60&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;61&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;62&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;OfficeApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;63&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;64&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;65&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;66&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;67&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;68&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;69&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;70&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#34;&#9;string&#13;&#10;&#9;&#9;&#91;71&#93;&#9;&#34;IFactoryInfo&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#34;&#9;string&#13;&#10;&#9;&#9;&#91;72&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;73&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;74&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;75&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;76&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;77&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;78&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;79&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;80&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;81&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;VBIDEApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;82&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;83&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;84&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;85&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;86&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;87&#93;&#9;&#34;IFactoryInfo&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;88&#93;&#9;&#34;IFactoryInfo&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;89&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;90&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;91&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;92&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;93&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;94&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;95&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;96&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;97&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;98&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;99&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;100&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;101&#93;&#9;&#34;NetOffice.Factory.Initialize&#40;&#41;&#32;passed&#34;&#9;string&#13;&#10;&#9;&#9;&#91;102&#93;&#9;&#34;NetOffice.Factory.Initialize&#40;&#41;&#32;DeepLevel&#58;True&#34;&#9;string&#13;&#10;&#9;&#9;&#91;103&#93;&#9;&#34;Try&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;104&#93;&#9;&#34;Try&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;105&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;106&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;107&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;108&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;109&#93;&#9;&#34;Failed&#32;to&#32;resolve&#32;Assembly&#34;&#9;string&#13;&#10;&#9;&#9;&#91;110&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;WordApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;111&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;112&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;113&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#34;&#9;string&#13;&#10;&#9;&#9;&#91;114&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;115&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;116&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;117&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;118&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;119&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;120&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;121&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;122&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;123&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;124&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;125&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string">
+        <div class="markDownOutput ">So I am running this in application that leads me loads DLLS, essentially and run them in App Domain. The Debug log is pretty large so this is the first portion. Any insights appreciated. Do I need to change the DCOM Config?<br>
+<pre><code>           [0]  &quot;NetOffice.Factory.Initialize() DeepLevel:True&quot; string
+    [1] &quot;Try to resolve Assembly&quot;   string
+    [2] &quot;Try to resolve Assembly&quot;   string
+    [3] &quot;Failed to resolve Assembly&quot;    string
+    [4] &quot;Failed to resolve Assembly&quot;    string
+    [5] &quot;Failed to resolve Assembly&quot;    string
+    [6] &quot;Failed to resolve Assembly&quot;    string
+    [7] &quot;Failed to resolve Assembly&quot;    string
+    [8] &quot;Detect NetOffice assembly WordApi.&quot;    string
+    [9] &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [10]    &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [11]    &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [12]    &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [13]    &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [14]    &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [15]    &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [16]    &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [17]    &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [18]    &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [19]    &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [20]    &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [21]    &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [22]    &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [23]    &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [24]    &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [25]    &quot;Detect NetOffice assembly OfficeApi.&quot;  string
+    [26]    &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [27]    &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [28]    &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [29]    &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [30]    &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [31]    &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [32]    &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [33]    &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e&quot;  string
+    [34]    &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [35]    &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [36]    &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [37]    &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [38]    &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [39]    &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [40]    &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [41]    &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [42]    &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [43]    &quot;Detect NetOffice assembly VBIDEApi.&quot;   string
+    [44]    &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [45]    &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [46]    &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [47]    &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [48]    &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot;   string
+    [49]    &quot;IFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot; string
+    [50]    &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [51]    &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [52]    &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [53]    &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [54]    &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [55]    &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [56]    &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [57]    &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [58]    &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [59]    &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [60]    &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [61]    &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [62]    &quot;Detect NetOffice assembly OfficeApi.&quot;  string
+    [63]    &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [64]    &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [65]    &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [66]    &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [67]    &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [68]    &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [69]    &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [70]    &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e&quot;  string
+    [71]    &quot;IFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e&quot;    string
+    [72]    &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [73]    &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [74]    &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [75]    &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [76]    &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [77]    &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [78]    &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [79]    &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [80]    &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [81]    &quot;Detect NetOffice assembly VBIDEApi.&quot;   string
+    [82]    &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [83]    &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [84]    &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [85]    &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [86]    &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot;   string
+    [87]    &quot;IFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot; string
+    [88]    &quot;IFactoryInfo:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot;  string
+    [89]    &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [90]    &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [91]    &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [92]    &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [93]    &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [94]    &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [95]    &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [96]    &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [97]    &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [98]    &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [99]    &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [100]   &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [101]   &quot;NetOffice.Factory.Initialize() passed&quot; string
+    [102]   &quot;NetOffice.Factory.Initialize() DeepLevel:True&quot; string
+    [103]   &quot;Try to resolve Assembly&quot;   string
+    [104]   &quot;Try to resolve Assembly&quot;   string
+    [105]   &quot;Failed to resolve Assembly&quot;    string
+    [106]   &quot;Failed to resolve Assembly&quot;    string
+    [107]   &quot;Failed to resolve Assembly&quot;    string
+    [108]   &quot;Failed to resolve Assembly&quot;    string
+    [109]   &quot;Failed to resolve Assembly&quot;    string
+    [110]   &quot;Detect NetOffice assembly WordApi.&quot;    string
+    [111]   &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [112]   &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [113]   &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089&quot;    string
+    [114]   &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [115]   &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [116]   &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [117]   &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [118]   &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [119]   &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [120]   &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [121]   &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [122]   &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [123]   &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [124]   &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [125]   &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string</code></pre>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1093566" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1093567">
+    <td id="PostDetailsCell_1093567" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1093567"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/brianlangbecker">brianlangbecker</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/17/2013 3:56:22 PM" LocalTimeTicks="1379458582">Sep 17, 2013 at 3:56 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1093567" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="2nd&#32;portion&#13;&#10;&#13;&#10;&#9;&#9;&#91;120&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;121&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;122&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;123&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;124&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;125&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;126&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;127&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;128&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;OfficeApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;129&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;130&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;131&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;132&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;133&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;134&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;135&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;136&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#34;&#9;string&#13;&#10;&#9;&#9;&#91;137&#93;&#9;&#34;IFactoryInfo&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#34;&#9;string&#13;&#10;&#9;&#9;&#91;138&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;139&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;140&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;141&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;142&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;143&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;144&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;145&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;146&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;147&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;VBIDEApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;148&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;149&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;150&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;151&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;152&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;153&#93;&#9;&#34;IFactoryInfo&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;154&#93;&#9;&#34;IFactoryInfo&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;155&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;156&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;157&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;158&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;159&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;160&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;161&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;162&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;163&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;164&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;165&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;166&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;167&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;OfficeApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;168&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;169&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;170&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;171&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;172&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;173&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;174&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;175&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#34;&#9;string&#13;&#10;&#9;&#9;&#91;176&#93;&#9;&#34;IFactoryInfo&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#34;&#9;string&#13;&#10;&#9;&#9;&#91;177&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;178&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;179&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;180&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;181&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;182&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;183&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;184&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;185&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;186&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;VBIDEApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;187&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;188&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;189&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;190&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;191&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;192&#93;&#9;&#34;IFactoryInfo&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;193&#93;&#9;&#34;IFactoryInfo&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#58;VBIDEApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;931cec8882205047&#34;&#9;string&#13;&#10;&#9;&#9;&#91;194&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;195&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;196&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;197&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;198&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;199&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;200&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;201&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;202&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;203&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;204&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;205&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;206&#93;&#9;&#34;Detect&#32;NetOffice&#32;assembly&#32;OfficeApi.&#34;&#9;string&#13;&#10;&#9;&#9;&#91;207&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.ImportedFromTypeLibAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;208&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.CompilationRelaxationsAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;209&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;210&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTitleAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;211&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyFileVersionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;212&#93;&#9;&#34;Attribute&#58;System.Runtime.InteropServices.GuidAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;213&#93;&#9;&#34;Attribute&#58;NetOffice.NetOfficeAssemblyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;214&#93;&#9;&#34;IFactoryInfo&#58;WordApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;f66d74591aaf8089&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#34;&#9;string&#13;&#10;&#9;&#9;&#91;215&#93;&#9;&#34;IFactoryInfo&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#58;OfficeApi,&#32;Version&#61;1.6.0.0,&#32;Culture&#61;neutral,&#32;PublicKeyToken&#61;a39beb0835c43c8e&#34;&#9;string&#13;&#10;&#9;&#9;&#91;216&#93;&#9;&#34;Attribute&#58;System.Runtime.Versioning.TargetFrameworkAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;217&#93;&#9;&#34;Attribute&#58;System.Diagnostics.DebuggableAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;218&#93;&#9;&#34;Attribute&#58;System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;219&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyDescriptionAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;220&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyConfigurationAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;221&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCompanyAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;222&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyProductAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;223&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyCopyrightAttribute&#34;&#9;string&#13;&#10;&#9;&#9;&#91;224&#93;&#9;&#34;Attribute&#58;System.Reflection.AssemblyTrademarkAttribute&#34;&#9;string">
+        <div class="markDownOutput ">2nd portion<br>
+<pre><code>    [120]   &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [121]   &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [122]   &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [123]   &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [124]   &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [125]   &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [126]   &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [127]   &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [128]   &quot;Detect NetOffice assembly OfficeApi.&quot;  string
+    [129]   &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [130]   &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [131]   &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [132]   &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [133]   &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [134]   &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [135]   &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [136]   &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e&quot;  string
+    [137]   &quot;IFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e&quot;    string
+    [138]   &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [139]   &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [140]   &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [141]   &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [142]   &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [143]   &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [144]   &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [145]   &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [146]   &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [147]   &quot;Detect NetOffice assembly VBIDEApi.&quot;   string
+    [148]   &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [149]   &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [150]   &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [151]   &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [152]   &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot;   string
+    [153]   &quot;IFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot; string
+    [154]   &quot;IFactoryInfo:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot;  string
+    [155]   &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [156]   &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [157]   &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [158]   &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [159]   &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [160]   &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [161]   &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [162]   &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [163]   &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [164]   &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [165]   &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [166]   &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [167]   &quot;Detect NetOffice assembly OfficeApi.&quot;  string
+    [168]   &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [169]   &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [170]   &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [171]   &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [172]   &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [173]   &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [174]   &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [175]   &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e&quot;  string
+    [176]   &quot;IFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e&quot;    string
+    [177]   &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [178]   &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [179]   &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [180]   &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [181]   &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [182]   &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [183]   &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [184]   &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [185]   &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [186]   &quot;Detect NetOffice assembly VBIDEApi.&quot;   string
+    [187]   &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [188]   &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [189]   &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [190]   &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [191]   &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot;   string
+    [192]   &quot;IFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot; string
+    [193]   &quot;IFactoryInfo:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047&quot;  string
+    [194]   &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [195]   &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [196]   &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [197]   &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [198]   &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [199]   &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [200]   &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [201]   &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [202]   &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [203]   &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string
+    [204]   &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [205]   &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [206]   &quot;Detect NetOffice assembly OfficeApi.&quot;  string
+    [207]   &quot;Attribute:System.Runtime.InteropServices.ImportedFromTypeLibAttribute&quot; string
+    [208]   &quot;Attribute:System.Runtime.CompilerServices.CompilationRelaxationsAttribute&quot; string
+    [209]   &quot;Attribute:System.Runtime.InteropServices.PrimaryInteropAssemblyAttribute&quot;  string
+    [210]   &quot;Attribute:System.Reflection.AssemblyTitleAttribute&quot;    string
+    [211]   &quot;Attribute:System.Reflection.AssemblyFileVersionAttribute&quot;  string
+    [212]   &quot;Attribute:System.Runtime.InteropServices.GuidAttribute&quot;    string
+    [213]   &quot;Attribute:NetOffice.NetOfficeAssemblyAttribute&quot;    string
+    [214]   &quot;IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=f66d74591aaf8089:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e&quot;  string
+    [215]   &quot;IFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e&quot;    string
+    [216]   &quot;Attribute:System.Runtime.Versioning.TargetFrameworkAttribute&quot;  string
+    [217]   &quot;Attribute:System.Diagnostics.DebuggableAttribute&quot;  string
+    [218]   &quot;Attribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute&quot;   string
+    [219]   &quot;Attribute:System.Reflection.AssemblyDescriptionAttribute&quot;  string
+    [220]   &quot;Attribute:System.Reflection.AssemblyConfigurationAttribute&quot;    string
+    [221]   &quot;Attribute:System.Reflection.AssemblyCompanyAttribute&quot;  string
+    [222]   &quot;Attribute:System.Reflection.AssemblyProductAttribute&quot;  string
+    [223]   &quot;Attribute:System.Reflection.AssemblyCopyrightAttribute&quot;    string
+    [224]   &quot;Attribute:System.Reflection.AssemblyTrademarkAttribute&quot;    string</code></pre>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1093567" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1093578">
+    <td id="PostDetailsCell_1093578" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1093578"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/brianlangbecker">brianlangbecker</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/17/2013 4:13:38 PM" LocalTimeTicks="1379459618">Sep 17, 2013 at 4:13 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1093578" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="If&#32;i&#32;create&#32;simple&#32;dummy&#32;call&#32;and&#32;put&#32;into&#32;a&#32;basic&#32;thread&#32;versus&#32;an&#32;application&#32;domain&#32;I&#32;get&#32;the&#32;following&#58;&#13;&#10;&#13;&#10;&#32;&#32;&#32;&#32;&#32;Attempt&#32;has&#32;been&#32;made&#32;to&#32;use&#32;a&#32;COM&#32;object&#32;that&#32;does&#32;not&#32;have&#32;a&#32;backing&#32;class&#32;factory.&#13;&#10;&#13;&#10;I&#32;just&#32;tried&#32;that&#32;morning&#32;to&#32;see&#32;if&#32;I&#32;get&#32;closer&#32;to&#32;what&#32;is&#32;going&#32;on.&#32;&#32;The&#32;logs&#32;from&#32;above&#32;are&#32;from&#32;an&#32;App&#32;Domain&#32;implementation.">
+        <div class="markDownOutput ">If i create simple dummy call and put into a basic thread versus an application domain I get the following:<br>
+<pre><code> Attempt has been made to use a COM object that does not have a backing class factory.
+</code></pre>
+I just tried that morning to see if I get closer to what is going on. The logs from above are from an App Domain implementation.<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1093578" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+        <tr><td colspan="3"><div class="PostSeparator"></div></td></tr>
+        
+
+<tr id="PostPanel" class="Post" d:forid="1093738">
+    <td id="PostDetailsCell_1093738" style="vertical-align: top; border: solid #BBB 1px; border-bottom: none; border-left: none; border-top: none; width: 114px" class="Post">
+        <div class="Details">
+            <a name="post1093738"></a>
+            <div class="UserName" style="white-space: pre-wrap; word-wrap: break-word;"><a class="UserProfileLink" href="http://www.codeplex.com/site/users/view/SebastianDotNet">SebastianDotNet</a></div>
+            <div class="UserRole"></div>
+            <div style="white-space: normal" class="SubText"><span class="smartDate" title="9/17/2013 10:06:00 PM" LocalTimeTicks="1379480760">Sep 17, 2013 at 10:06 PM</span></div>
+            
+        </div>
+    </td>
+    <td id="PostContent_1093738" style="width: 100%; vertical-align: top;" 
+        class=" discussionPost discussionListContent WordWrapBreakWord Post markDownOutput" 
+        data-markdown="&#34;&#32;Attempt&#32;has&#32;been&#32;made&#32;to&#32;use&#32;a&#32;COM&#32;object&#32;that&#32;does&#32;not&#32;have&#32;a&#32;backing&#32;class&#32;factory.&#34;&#13;&#10;this&#32;message&#32;means&#32;the&#32;original&#32;memory&#32;instance&#40;in&#32;word&#32;application&#32;memoryi&#41;&#32;behind&#32;the&#32;com&#32;proxy&#32;is&#32;dead.&#32;not&#32;sure&#32;why...&#13;&#10;i&#32;want&#32;add&#32;the&#32;beta&#32;release&#32;NetOffice&#32;1.6.1&#32;in&#32;this&#32;week&#32;and&#32;create&#32;a&#32;concept&#32;test&#32;&#34;use&#32;NetOffice&#32;in&#32;system&#32;service&#34;&#13;&#10;you&#32;can&#32;help&#32;me&#32;and&#32;send&#32;a&#32;me&#32;a&#32;simplified&#32;project&#40;remove&#32;private&#32;code&#41;&#32;to&#32;analyze&#32;the&#32;problem&#32;to&#58;&#32;public&#91;dot&#93;sebastian&#91;at&#93;web.de&#13;&#10;i&#32;want&#32;help&#32;you&#32;as&#32;fast&#32;as&#32;possible&#32;before&#32;i&#32;create&#32;a&#32;new&#32;release.&#32;&#13;&#10;i&#32;see&#32;also&#32;the&#32;current&#32;debugconsole&#32;is&#32;not&#32;very&#32;helpful.&#32;sorry&#32;is&#32;a&#32;very&#32;old&#32;feature.&#32;as&#32;i&#32;start&#32;with&#32;netoffice&#32;this&#32;output&#32;was&#32;helpful&#32;for&#32;me&#32;but&#32;i&#32;see&#32;its&#32;not&#32;for&#32;each&#32;other.&#32;NO&#32;1.6.1&#32;includes&#32;much&#32;more&#32;options&#32;for&#32;diagnostics.&#32;&#58;&#41;&#32;&#40;external&#32;console&#32;observer,&#32;&#32;ipc&#32;debug&#32;channels&#32;and&#32;many&#32;more&#41;">
+        <div class="markDownOutput ">&quot; Attempt has been made to use a COM object that does not have a backing class factory.&quot;
+<br>
+this message means the original memory instance(in word application memoryi) behind the com proxy is dead. not sure why...
+<br>
+i want add the beta release NetOffice 1.6.1 in this week and create a concept test &quot;use NetOffice in system service&quot;
+<br>
+you can help me and send a me a simplified project(remove private code) to analyze the problem to: public[dot]sebastian[at]web.de
+<br>
+i want help you as fast as possible before i create a new release. <br>
+i see also the current debugconsole is not very helpful. sorry is a very old feature. as i start with netoffice this output was helpful for me but i see its not for each other. NO 1.6.1 includes much more options for diagnostics. :) (external console observer,
+ ipc debug channels and many more)<br>
+</div>
+        
+    </td>
+    <td style="vertical-align: top; width: 134px;" class="Post ">
+        
+        <div id="Options_1093738" class="Options" >
+            
+        </div>
+        
+    </td>
+</tr>
+
+</table>
+    </div>
+
+    
+
+
+    <div id="PostEditorContainer">
+        <a name="editor"></a>
+        <div id="Editor" style="display: none;">
+            
+
+<div class="MarkdownEditor" data-options-id="21e2079f-6f04-44df-bebc-6cfbb1a29d63">
+    <script class="options" defer="defer" id="21e2079f-6f04-44df-bebc-6cfbb1a29d63" type="application/json">{"maxLength":10000,"styleSheetLocation":""}</script>
+
+    <div class="MarkdownEditorControls">
+        <a href="#" tabindex="-1" class="control md_help" title="Markdown Syntax Guide"></a>
+        <div class="control md_divider"></div>
+        <a href="#" tabindex="-1" class="control md_header" title="Insert Header (CTRL + H)"></a>
+        <a href="#" tabindex="-1" class="control md_code" title="Insert Code (CTRL + K)"></a>
+        <a href="#" tabindex="-1" class="control md_quote" title="Insert Quote (CTRL + Q)"></a>
+        <a href="#" tabindex="-1" class="control md_img" title="Insert Img (CTRL + G)"></a>
+        <a href="#" tabindex="-1" class="control md_link" title="Insert Link (CTRL + L)"></a>
+        <a href="#" tabindex="-1" class="control md_ulist" title="Unordered List (CTRL + U)"></a>
+        <a href="#" tabindex="-1" class="control md_olist" title="Ordered List (CTRL + O)"></a>
+        <a href="#" tabindex="-1" class="control md_italics" title="Italic Text (CTRL + I)"></a>
+        <a href="#" tabindex="-1" class="control md_bold" title="Bold Text (CTRL + B)"></a>
+    </div>
+
+    
+
+<div class="tab_control">
+    <!-- Generate the basic HTML for the tabs. -->
+    
+        <div id="Compose"
+              class="tab selected"
+              data-custom-header-id=""
+              data-tab-contents-id="compose_contents_43676822-27f9-4a90-b3fb-5e4125cef5db">
+            Compose
+        </div>
+    
+        <div id="Preview"
+              class="tab "
+              data-custom-header-id=""
+              data-tab-contents-id="preview_contents_6fca1478-f379-41bf-9983-70376146f9cd">
+            Preview
+        </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+    <div id="compose_contents_43676822-27f9-4a90-b3fb-5e4125cef5db" class="compose_tab_content">
+        <textarea class=" MarkdownEditorDimensions" cols="20" id="MarkdownEditor" name="content" rows="2">
+</textarea>
+        <div class="ClearBoth"></div>
+
+        <div class="markdownGuide" style="display: none">
+            <table>
+                <tr>
+                    <td class="markdownGuideColumn">
+                        <h1>Text Formatting</h1>
+                        <div># Header 1</div>
+                        <div>## Header 2</div>
+                        <br />
+                        <div>*italics* (or _italics_)</div>
+                        <div>**bold** (or __bold__)</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Lists</h1>
+                        <div>* Unordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp * SubItem</div>
+                        <br />
+                        <div>1. Ordered List</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. SubItem</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Quotes</h1>
+                        <div>> Lorem ipsum</div>
+                        <div>dolor sitamet </div>
+                        <div>non. Lectus at</div>
+                        <div>nam nunc...</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>Code</h1>
+                        <div>`Inline Code`</div>
+                        <br />
+                        <div>``` C#</div>
+                        <div>if (foo==bar)</div>
+                        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbar++</div>
+                        <div>```</div>
+                    </td>
+                    <td class="markdownGuideColumn">
+                        <h1>References</h1>
+                        <div>[Link Text](URL)</div>
+                        <br />
+                        <div>![Image](URL)</div>
+                        <br />
+                        <a class="Reference" target="_blank" href="http://codeplex.codeplex.com/wikipage?title=Markdown&referringTitle=Documentation">Markdown Reference</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="preview_contents_6fca1478-f379-41bf-9983-70376146f9cd" class="preview_tab_content markDownOutput">
+        
+            <div></div>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+
+            
+            <div class="row" id="recaptcha_row">
+                
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#recaptcha_reload').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_refresh.png');
+        $('#recaptcha_switch_audio').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_audio.png');
+        $('#recaptcha_switch_img').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_text.png');
+        $('#recaptcha_whatsthis').attr('src', 'http://download-codeplex.sec.s-msft.com/Images/v21066/recaptcha_help.png');
+        $('#recaptcha_area tr:first').attr('height', '35');
+    });
+</script>
+
+                <div class="clear"></div>
+                <span id="ReCaptchaError"></span>
+            </div>
+            <div style="padding-top: 6px;">
+                <input type="button" id="SaveButton" value="Save" class="ok" />
+                <input type="button" id="CancelButton" value="Cancel" class="cancel" />
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeletePostPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Post <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this post? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="ClosePostCancel" value="Cancel" class="cancel" />
+            <input type="button" id="ClosePostOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+        
+            <!-- Email notification / Subscription details -->
+            
+    </div>
+</div>
+    
+<div id="DeleteThreadPanel" class="modal" style="display:none">
+    <div class="row">
+        <h2>Delete Thread <a href="javascript:return false;" class="close">X</a></h2>
+    </div>
+    <div class="modal_info">
+        <p>Are you sure you want to delete this thread? You will not be able to recover it later.</p>
+        <p class="modal_buttons">
+            <input type="button" id="CloseThreadCancel" value="Cancel" class="cancel" />
+            <input type="button" id="CloseThreadOk" value="Delete" class="ok" />
+        </p>
+        <div class="ClearBoth"></div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $('#recaptcha_response_field')
+            .bind('keypress', function (event) { return $submitKeyPressElement(this, event); });
+
+
+        if ($('#DeleteThreadLink')) {
+            $('#DeleteThreadLink').click(function () {
+                OpenDialog('#DeleteThreadPanel', true, '41em');
+            });
+        }
+        
+        $('#DeleteThreadPanel #CloseThreadOk').click(function () {
+            var url = 'http://netoffice.codeplex.com/discussions/457123';
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (x) {
+                    location.href = x.RedirectUrl;
+                }
+            });
+        });
+    });
+
+    workItemMention = new codeplex.ui.WorkItemMention();
+    workItemMention.addLinks(".discussionPost");
+</script>
+
+
+        
+        
+                
+                <div class="clear"></div>
+                
+                <div id="footer">
+                    <div class="row">
+                        <hr />
+                        <ul>
+                            <li>Â© 2006-2018 Microsoft</li>
+                            <li><a href="http://www.codeplex.com/site/help">Get Help</a></li>
+                            <li><a href="/site/legal/privacy">Privacy Statement</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/terms">Terms of Use</a></li>
+                            <li><a href="http://www.codeplex.com/site/legal/conduct">Code of Conduct</a></li>
+                            <li><a href="http://developermedia.com/" target="_blank">Advertise With Us</a></li>
+                            <li>Version 11.9.2017.21066</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>
