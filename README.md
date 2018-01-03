@@ -10,7 +10,7 @@ website netoffice.codeplex.com after CodePlex hosting was shutdown.
 
 * `wiki\raw` folder contains raw CodePlex code of the **Documentation** wiki.
 * `wiki\docs` folder contains **Documentation** wiki code converted to Markdown
-* `issues` folder contains all issues exported to XML format.
+* `issues` folder contains all issues exported in JSON format.
 
 ## License
 
