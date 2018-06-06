@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "XP, VS 2010, Excel 2003, VB.NET\n\n\"Namespace or type specified in the Imports 'NetOffice.ExcelApi' doesn't contain any public member or cannot be found. Make sure the namespace or the type is defined and contains at least one public member. Make sure the imported element name doesn't use any aliases.\"\n\n\"Namespace or type specified in the Imports 'NetOffice.ExcelApi.Enums' doesn't contain any public member or cannot be found. Make sure the namespace or the type is defined and contains at least one public member. Make sure the imported element name doesn't use any aliases.\"\n\nSo this is the actual problem. Before I had switched to a new computer without testing so I wasn't sure exactly what was going on.\n\nLet me know if you need more information. Thanks!",
+    "LastUpdatedDate": "2013-02-21T17:38:52.923-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-11-14T09:58:28.507-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NetOffice 1.5.1.2 \"Doesn't contain any public member...\"",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18922
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "holy.... WTF?\r\n\r\ncan you attach a minimal project with these problem to the isssue?\r\n\r\nSebastian",
+      "PostedDate": "2012-11-14T15:24:15.563-08:00",
+      "Id": 203114
+    },
+    {
+      "Message": "Just as an update. When I updated my projects that weren't setup as an automation add-in they worked just fine (of course, I needed to change .Address to .get_Address). But it is the automation project that had problems (as described above).\r\n\r\nTypically the problem is that you don't have the reference set but you do have a project set toImports 'NamespaceSo all you should need to do is set a reference to that project. Of course, in my case the reference was already set and not working.\r\n\r\nWhen I set up a new automation add-in project, the problem with the old automation add-in went away. So I'm thinking maybe it is some setting somewhere for registration of the dll? But now my original automation add-in won't hook up to Excel anymore since it:\r\n\r\nLoad behavior: Not loaded. A runtime error occurred during the loading of the COM add-in.\r\n\r\nI'll work on getting that minimal project to you to take a look at, if I can replicate the problem.",
+      "PostedDate": "2012-11-28T06:42:17.15-08:00",
+      "Id": 203115
+    },
+    {
+      "Message": "It appears that it is an issue related to the registration of the COM add-in, since my test project is working great with the same start up code.",
+      "PostedDate": "2012-11-28T10:34:43.12-08:00",
+      "Id": 203116
+    },
+    {
+      "Message": "Not sure what the core issue was. But I think not all the projects had been changed to the new version. Also, it showed one of the NetOffice dlls was showing that it was being used. So, I did a restart of the computer and then it worked.\r\n\r\nI had another issue where the Excel wouldn't recognize my add-in any more (like it was thinking some other project was my dll). I finally just created a new project and imported all my old data.",
+      "PostedDate": "2012-11-29T15:40:10.45-08:00",
+      "Id": 203117
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Would like to use NetOffice to automate OneNote 2010 and 2013, but cannot find any support for it. Will this be put on the roadmap?",
+    "LastUpdatedDate": "2013-09-23T02:02:10.33-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-02-15T12:25:12.583-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Will NetOffice support OneNote?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 19353
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "i have no experience with one note at all. i want clearify the situation(check for legal licenses and the COM Api) when its possible you have to help to create tests and examples ok?\r\n\r\nSebastian",
+      "PostedDate": "2013-02-17T01:27:17.573-08:00",
+      "Id": 203123
+    }
+  ]
+}

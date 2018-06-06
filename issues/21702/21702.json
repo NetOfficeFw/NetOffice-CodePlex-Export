@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "I have an Excel Addin using Excel-DNA. I recently update my code to switch from Interop to NetOffice.\n\nMy code all compiles fine, but when I start the add-in, I get this exception on the first line of code that executes (doesn't seem to matter which line of code it is):\n\n> System.InvalidCastException: Unable to cast COM object of type 'System.__ComObject' to class type 'NetOffice.ExcelApi.Application'. Instances of types that represent COM components cannot be cast to types that do not represent COM components; however they can be cast to interfaces as long as the underlying COM component supports QueryInterface calls for the IID of the interface.\n\nDoes anyone have an idea of why this is happening and how I can fix it?",
+    "LastUpdatedDate": "2015-02-01T11:42:35.103-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-01-31T23:00:05.22-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "System.InvalidCastException as soon as NetOffice Excel Addin loads",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21702
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I found and fixed the problem. It was because I was trying to cast an Excel DNA application to a Net Office Application\r\n\r\n```//useinternal static Excel.Application ExcelApp = new Excel.Application(null, ExcelDnaUtil.Application);\r\n\r\n//instead of//internal static Excel.Application ExcelApp = (Excel.Application) ExcelDnaUtil.Application;```",
+      "PostedDate": "2015-02-01T11:42:35.103-08:00",
+      "Id": 203289
+    }
+  ]
+}

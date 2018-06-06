@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Hi,\n\nI just tried downloading the latest source and 'Tools\\Utils\\ApplicationUtils.cs' is missing from the WordApi project.  So I can't build the solution currently.  \n\nCheers\n\nRoss",
+    "LastUpdatedDate": "2015-06-18T14:40:55.64-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-06-12T22:23:10.467-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Missing source file",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21907
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for pointing this out.\r\n\r\nwhat is it ? release package, preview release or latest source state?\r\n\r\n*Sebastian",
+      "PostedDate": "2015-06-15T12:26:04.467-07:00",
+      "Id": 203322
+    },
+    {
+      "Message": "Sorry for the late reply, Codeplex has been down for a few days.\r\n\r\nYes, it is  the latest source state (https://netoffice.codeplex.com/SourceControl/latest).  I'm not sure if it is missing elsewhere.\r\n\r\nRegards\r\n\r\nRoss",
+      "PostedDate": "2015-06-18T14:40:55.64-07:00",
+      "Id": 203323
+    }
+  ]
+}

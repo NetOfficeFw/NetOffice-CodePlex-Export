@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "In the standard libraries, Worksheet.Range is implemented as an indexer, but in NetOffice it is a simple method.  This strikes me as weird since .Cells[] and .Offset[] both are indexers, using [] instead of ().\r\n\r\nStandard Excel Interop:\r\n```\r\nvar formattingRange = pivotSheet.Range[firstCell, lastCell];\r\n```\r\n\r\nNetOffice:\r\n```\r\nvar formattingRange = pivotSheet.Range(firstCell, lastCell);\r\n```\r\n\r\nI had to edit some 400 instances of this when I converted a project to NetOffice, so I think I'm not the only one who would appreciate support for the .Range[a, b] syntax.",
+    "LastUpdatedDate": "2016-09-28T10:35:13.493-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-09-28T03:50:52.897-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Worksheet.Range is not an indexer (C#)",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22314
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This looks like an issue. The problem behind is in the c# syntax that didnt support properties with optional arguments. The normal interop assemblies doesnt support this also. The Primary Interop Assemblies(PIA) from Microsoft does this better.\n\nSo Excel.Worksheet need a -real-simple Range property in NetOffice.\n(The indexer comes from the Excel.Range class in your scenario)\nThis is easy to fix in a minute :)  Thanks for pointing this out.\n\nSebastian\n\n\n",
+      "PostedDate": "2016-09-28T10:35:13.493-07:00",
+      "Id": 204388
+    }
+  ]
+}

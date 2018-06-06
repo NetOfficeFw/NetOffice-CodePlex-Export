@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Office 2007 / 2010, I can use key hook, stop the add new row action. \nWord 2013, key hook do nothing.",
+    "LastUpdatedDate": "2014-07-19T05:00:39.457-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-07-19T00:36:34.69-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "How to Stop Tab Key add new row, Word 2013",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21158
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Sub NextCell()'' NextCell Macro' Moves to the next table cell''    Selection.MoveRight Unit:=wdCell End Sub\r\n\r\ncombine with KeyBindings override shotcut key",
+      "PostedDate": "2014-07-19T01:49:00.583-07:00",
+      "Id": 203254
+    },
+    {
+      "Message": "BUT I lost the default action when selection is out of tab. :( ",
+      "PostedDate": "2014-07-19T05:00:39.457-07:00",
+      "Id": 203255
+    }
+  ]
+}

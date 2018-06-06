@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "for a detail description please see http://netoffice.codeplex.com/discussions/435265\n\ntldr:\nsetting NetOffice.OutlookSecurity.Supress.Enabled = true \n\n- not working if Outlook is working in the Background. Outlook icon in the task bar starts blinking. You have to bring it to the front, then the security dialog pops up for a short time and disapears. You get in big troubles because sometime you can't bring the dialog to the front\n- as this function only tries to click a button, it tries this also in other Outlook dialogs, which makes working with Outlook impossible\n\n\nThx in advance",
+    "LastUpdatedDate": "2013-04-10T01:11:52.093-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-03-13T01:23:07.443-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Missbehaviour NetOffice.OutlookSecurity.Supress.Enabled",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 19460
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-10-27T16:11:21.69-07:00",
+    "CommentCount": 13,
+    "Custom": "",
+    "Description": "When I try to get back what button was pressed in the spelling box like :\nReturn value\tDescription\n-2\tThe Close button.\n-1\tThe OK button.\n0 (zero)\tThe Cancel button.\n> 0 (zero)\tA command button: 1 is the first button, 2 is the second button, and so on.\n \nhttp://msdn.microsoft.com/en-us/library/aa211931(v=office.11).aspx\nError is a casting problem because when a dug deeper it was and inner excretion and looks like it could not find the dialog.\nhere is code it work before i used the NetOffice stuff I think it is because of the late bind\nobject timeOut = 1000;\n\t\t\t\t \n\t\t\t\tdoc1.CheckSpelling();\n \n                int vis = app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar].Display(timeOut);",
+    "LastUpdatedDate": "2013-05-16T04:50:57.387-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-07-12T14:48:46.04-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar].Display  cant find object i think",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18357
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hello,\r\n\r\nplease help me a bit and copy the full exception content. my first test(word 2007, winXP) works without any exception but i cant see a dialog, the method returns immediately with -1. \r\n\r\nyou can use the NetOffice DebugConsole too: http://netoffice.codeplex.com/wikipage?title=Misc01\r\n",
+      "PostedDate": "2012-07-13T15:07:57.233-07:00",
+      "Id": 203061
+    },
+    {
+      "Message": "ups, THE MOST IMPORTANT THING: did you use NetOffice 1.5.1 ???\r\n\r\nthe 1.5.1 release includes a bug fix for numeric return values. the result definition for Display is int in the COM type library but Word is always a bit funny and returns double values for some methods with int returns. this cause casting problems in older NetOffice versions. the 1.5.1 release use System.Convert and not hard-coded plain stupid casts.  ",
+      "PostedDate": "2012-07-13T15:23:40.66-07:00",
+      "Id": 203062
+    },
+    {
+      "Message": "Do i use the Release Candidate 1.5.1?  that is what I am downloading now.   Well on thing that I tried was \r\nLateBindingApi.Core.Invoker.MethodReturn(app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar], \"Display\", new object[] { 10 });  but every time i get -1 even if cancel or close it  which should be -2 or 0. What I really am trying to do an can tell me is trying to capture the ignore button in the speller but I was never able to find anything but this. I am going to try to install and well comment back but if you have anything else about the Ignore button that would help. thanks\r\n                ",
+      "PostedDate": "2012-07-18T08:50:15.273-07:00",
+      "Id": 203063
+    },
+    {
+      "Message": "Ok So the Error is gone but it is not getting the correct numbers back like I was thinking that it was going to so it should be\r\n-2\tThe Close button.\r\n-1\tThe OK button.\r\n0 (zero)\tThe Cancel button.\r\nbut all i get is -1\r\njust need to capture what button is clicked",
+      "PostedDate": "2012-07-18T10:43:27.26-07:00",
+      "Id": 203064
+    },
+    {
+      "Message": "i do a small test\r\n\r\nWord.Document newDocument = wordApplication.Documents.Add();\r\nwordApplication.Selection.TypeText(\"This textX containZ sume bahd wordZ\");\r\nWord.Dialog dlg = wordApplication.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar];\r\nint result = dlg.Display();\r\n\r\ni see the dialog doesnt comes if no errors or no text detected.(by design from word himself)\r\ni see also the dialog doesnt have the typical close/ok button. you get 0 for the abort button and -1 for any other button (ignore/change) this is not a netoffice mistake, its just word. :/\r\n\r\n",
+      "PostedDate": "2012-07-19T14:43:12.797-07:00",
+      "Id": 203065
+    },
+    {
+      "Message": "Thanks for your reply What i was trying to say is that  when you go here (this worked before)\r\n\r\nhttp://msdn.microsoft.com/en-us/library/aa211931(v=office.11).aspx\r\n\r\nyou will see that i should get 0 -1 -2 So when you open up the spell checker and you press cancel acouring to msdn i should get 0 but i get -1 and close is -2 and i get -1 again   ignore btn and change button (aka OK) -1.  This worked before I used this and i was using office 2003 so not sure if that changed later on. So what do you think of why iam not getting this.  And the biggest thing is there another way to get what button is clicked that I am not aware of  with this DLL?\r\n\r\nThanks Brent",
+      "PostedDate": "2012-07-20T13:11:46.997-07:00",
+      "Id": 203066
+    },
+    {
+      "Message": "hmmm okay, gimme a day to create a native interop solution. did you use VBA/VB6 before?",
+      "PostedDate": "2012-07-21T06:16:11.857-07:00",
+      "Id": 203067
+    },
+    {
+      "Message": "i do 2 tests with the microsoft interop assemblies in word 2007 and word 2003 in different virtual machines.\r\nthe behaviour was the exactly the same. 0 for cancel button and -1 for each other. please show me the code there worked before.\r\n\r\n",
+      "PostedDate": "2012-07-22T21:52:47.24-07:00",
+      "Id": 203068
+    },
+    {
+      "Message": "using System;\r\nusing System.Reflection;\r\nusing System.Collections.Generic;\r\nusing System.ComponentModel;\r\nusing System.Data;\r\nusing System.Drawing;\r\nusing System.Text;\r\nusing System.Windows.Forms;\r\n\r\nusing Word = NetOffice.WordApi;\r\nusing Office = NetOffice.OfficeApi;\r\nusing NetOffice.WordApi.Enums;\r\nusing NetOffice.OfficeApi.Enums;\r\n\r\n\r\n\r\nnamespace WFROI\r\n{\r\n\t/// \r\n\t/// Summary description for WordSpellChecker.\r\n\t/// \r\n\tpublic class WordSpellChecker\r\n\t{\r\n\t\tpublic WordSpellChecker( )\r\n\t\t{\r\n\t\t\t\r\n\t\t}\r\n        int vis;\r\n       // Word.Application app;\r\n\t\tpublic bool CheckSpelling(TextBox textBox)\r\n\t\t\t\r\n\t\t{\r\n            Word.Application app = new Word.Application();\r\n            Word._Document\tdoc1 ;\r\n            doc1 = app.Documents.Add();\r\n            app.Width = 100;\r\n            app.Height = 100;\r\n\t\t\tif (textBox.Text.Length > 0)\r\n\t\t\t{\r\n\t\t\t\tapp.Visible = false;\r\n\t\t\t\t// Setting these variables is comparable to passing null to the function.\r\n\t\t\t\t// This is necessary because the C# null cannot be passed by reference.\r\n\t\t\t    doc1.ShowSpellingErrors = true;\r\n                doc1.Words.First.InsertBefore(textBox.Text);\r\n                doc1.Application.Height = 100;\r\n                doc1.Application.Width = 100;\r\n                doc1.ActiveWindow.SetFocus();\r\n                Word.Dialog dlg = app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar];\r\n                dlg.Application.Options.CheckSpellingAsYouType = true;\r\n                dlg.Application.Options.CheckGrammarAsYouType = false;\r\n                dlg.Application.Options.CheckGrammarWithSpelling = false;\r\n                doc1.CheckSpelling();\r\n              //  vis = dlg.Display();\r\n            //  doc1.CheckSpelling();\r\n            //  vis = app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar].Show();\r\n            //  doc1.ActiveWindow.Height = 100;\r\n            //  doc1.ActiveWindow.Width = 100;\r\n            //  vis = -1;\r\n                textBox.Text = doc1.Range().Text.Replace(\"\\r\", \"\"); ;\r\n                \r\n\t\t\t\tif(vis == -1)\r\n\t\t\t\t{\r\n                    doc1.ActiveWindow.Visible = false;\r\n\t\t\t\t\trecheck( doc1,textBox);\r\n\t\t\t\t}\r\n\t\t}\r\n            object saveChanges = false;\r\n\t\t\tobject originalFormat = Missing.Value;\r\n\t\t\tobject routeDocument = Missing.Value;\r\n\t\t\t\r\n\t\t\tapp.Quit(saveChanges);\r\n\t\t\treturn true;\r\n\t\t}\r\n\r\n       \r\n\r\n\t\tprotected void recheck(Word._Document doc,TextBox textBox)\r\n\t\t{\r\n\t\t\t\r\n\t\t\tdoc.SpellingChecked =false;\r\n\t\t\tif(doc.SpellingErrors.Count == 0)\r\n\t\t\t{\r\n\t\t\t\tdoc.SpellingChecked = true;\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\r\n\t\t\t\t//Word.ProofreadingErrors spellErrorsColl = doc.SpellingErrors;\r\n\t\t\t\t//IEnumerator myRange = spellErrorsColl.GetEnumerator();\r\n\t\t\t//\tstring Errors =\"\";\r\n\t\t\t\tint Errors = doc.SpellingErrors.Count;\r\n\t\t\t\t//for(int i=0; i2)\r\n\t\t\t\t{\r\n\t\t\t\t\tmessage = \"Spell Checker has detected that there are still \" + Errors + \" miss spelled words.\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tmessage = \"Spell Checker has detected that there is still \" + Errors + \" miss spelled word.\";\r\n\t\t\t\t}\r\n\t\t\t\r\n\t\t\tDialogResult result1 = MessageBox.Show( message + \"\\n\\n Press OK to accept the miss spelling(s).  \\n\\n Press CANCLE to recheck and change the errors.\\n\",\"Spelling Errors\",MessageBoxButtons.OKCancel );\r\n\t\t\t\tswitch (result1)\r\n\t\t\t\t{\r\n\t\t\t\t\tcase DialogResult.OK:\r\n\t\t\t\t\t\tdoc.SpellingChecked = true;\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase DialogResult.Cancel:\r\n\t\t\t\t\tobject optional = Missing.Value;\r\n                    CheckSpelling(textBox);\r\n\t\t\t\t\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\t\tobject first = 0;\r\n\t\t\t\t\tobject last = doc.Characters.Count - 1;\r\n                    textBox.Text = doc.Range(first, last).Text.Replace(\"\\r\", \"\");\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t}\r\n}\r\n",
+      "PostedDate": "2012-07-24T12:16:13.697-07:00",
+      "Id": 203069
+    },
+    {
+      "Message": "So I put up my code so when I use dlg.Display(); (I have commented out) the dialog wont get focus and is behind everything, unlike if I use doc1.CheckSpelling(); it does have focus. And also I still get -1 lol. not sure why. ",
+      "PostedDate": "2012-07-24T12:21:02.84-07:00",
+      "Id": 203070
+    },
+    {
+      "Message": "p.s. Sorry un-comment out  vis = -1;",
+      "PostedDate": "2012-07-24T12:27:33.317-07:00",
+      "Id": 203071
+    },
+    {
+      "Message": "you want display a dialog with an invisible word. this cause problems and is never a good idea. i know 99% of the dialogs returns 0,1,2 but some dialogs doesnt do that. you say this works before but i think your previous code calls another dialog. true?",
+      "PostedDate": "2012-07-24T14:03:09.22-07:00",
+      "Id": 203072
+    },
+    {
+      "Message": "It used the dll for office 2003 so i had to use app.Dialogs[Word.WdWordDialog.wdDialogToolsSpellingAndGrammar].Display();  and not sure about \"an invisible word\" I send in the text from a text box i check if there is text at all before calling this function. If you are refusing to putting app. viability = false. I don't want people to see the word document with the text in it because they will be confused, because i am checking a text-box.text  I could be doing this the wrong way so i am please let me know., like if i should not use the word. document at all.",
+      "PostedDate": "2012-07-26T14:09:14.523-07:00",
+      "Id": 203073
+    }
+  ]
+}

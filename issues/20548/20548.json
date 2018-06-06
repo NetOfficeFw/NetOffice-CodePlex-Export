@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 5,
+    "Custom": "",
+    "Description": "From stack trace:\n\"System.ArgumentException was caught\n  HResult=-2147024809\n  Message=component\n  Source=System\n  StackTrace:\n       at System.ComponentModel.TypeDescriptor.GetDescriptor(Object component, Boolean noCustomTypeDesc)\n       at System.ComponentModel.TypeDescriptor.GetClassName(Object component)\n       at NetOffice.RunningObjectTable.GetActiveProxyFromROT(String componentName, String className, Boolean throwOnError)\n       at NetOffice.ExcelApi.Application.GetActiveInstance()\n       at ITSR2.Bricks.Excel.ExcelApp.GetRunningInstance()\n  InnerException: \"\nDo you have an ideas about possible reason and how to solve it?",
+    "LastUpdatedDate": "2017-04-10T09:05:51.593-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-12-20T04:34:24.357-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Application.GetActiveInstance throws ArgumentException \"component\"",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 20548
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600197,
+      "FileName": "capture.PNG",
+      "DownloadUrl": ".\\1600197"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I am experiencing the same issue on some code that used to work in the past.I suspect that some Office updates (?) occured and changes some things.",
+      "PostedDate": "2014-01-06T06:43:29.973-08:00",
+      "Id": 203200
+    },
+    {
+      "Message": "I have the same problem with a system running Windows 7 64bit- the admin just recently uninstalled a 32bit version of MS Office 2010 and installed a 64bit edition of MS Office 2010. My application manipulates Excel Sheets using NetOffice from an external application not an addon.\r\n\r\nWhile Excel is running in RAM all goes right (including all functionalities) but when it is not running actually I get the exact same exception as in this issue mentioned.\r\n\r\nMy best guess is to just ignore this specific exception but I would like to have this solved in a more valid way.",
+      "PostedDate": "2015-02-05T08:10:21.027-08:00",
+      "Id": 203201
+    },
+    {
+      "Message": "hey Riffer\r\n\r\nwhich NO version ???\r\n\r\ni have changed the implementation in NO 1.7.2 specialy for MS-Excel.NO 1.7.2 doesnt use the Running Object Table for Excel in GetActiveInstance(s)please make sure to use the latest NO version.\r\n\r\n*Sebastian",
+      "PostedDate": "2015-02-05T10:43:45.84-08:00",
+      "Id": 203202
+    },
+    {
+      "Message": "Sorry for my late response. Problem occuring in with NO 1.6. Will upgrade to newest version as adviced.\r\n\r\nThank you for your reply!",
+      "PostedDate": "2015-02-10T05:41:40.75-08:00",
+      "Id": 203203
+    },
+    {
+      "Message": "Hello! I am using version 1.7.3 and I am getting the same error, but not on the first attempt, that is to say,\nfrom the second attempt and forward. I am trying to get the body text from the current email message on the keyup event (caught by a keyboard hook). I observed that this error is not thrown when I use NetOffice out of the scope of the keyboard hook.\n\nAny ideas?",
+      "PostedDate": "2017-04-10T09:05:51.593-07:00",
+      "Id": 208113
+    }
+  ]
+}

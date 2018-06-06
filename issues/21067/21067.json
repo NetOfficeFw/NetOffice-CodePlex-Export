@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "When to release the newContentControl, DO I NEED to release it by myself, or NetOffice release it?\n\nIn the DocumentEvents2.cs\npublic void ContentControlOnExit([In, MarshalAs(UnmanagedType.IDispatch)] object contentControl, [In] [Out] ref object cancel)\n\t\t{\n\t\t\tDelegate[] recipients = _eventBinding.GetEventRecipients(\"ContentControlOnExit\");\n\t\t\tif( (true == _eventClass.IsCurrentlyDisposing) || (recipients.Length == 0) )\n\t\t\t{\n\t\t\t\tInvoker.ReleaseParamsArray(contentControl, cancel);\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tNetOffice.WordApi.ContentControl newContentControl = NetOffice.Factory.CreateObjectFromComProxy(_eventClass, contentControl) as NetOffice.WordApi.ContentControl;\n\t\t\tobject[] paramsArray = new object[2];\n\t\t\tparamsArray[0] = newContentControl;\n\t\t\tparamsArray.SetValue(cancel, 1);\n\t\t\t_eventBinding.RaiseCustomEvent(\"ContentControlOnExit\", ref paramsArray);\n\n\t\t\tcancel = (bool)paramsArray[1];\n\t\t}",
+    "LastUpdatedDate": "2014-06-11T20:52:59.793-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-06-10T21:37:19.573-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "When to release event's COMObject?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21067
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "the newContentControl is a child from _eventclass(may Word.Document) now in NO com proxy management.(Dispose the document instance(_eventclass) means also to dispose all the childs *your turn.)\r\n\r\nThe common way is to dispose newContentControl at last in the event trigger to keep the memory usage low, otherwise newContentControl lives so long as the parent is alive.\r\n\r\n*Sebastian\r\n\r\n",
+      "PostedDate": "2014-06-10T23:58:36.527-07:00",
+      "Id": 203235
+    },
+    {
+      "Message": "If have more ContentControlOnExit event handler, dispose the contentcontrol shoud be careful!",
+      "PostedDate": "2014-06-11T03:01:01.26-07:00",
+      "Id": 203236
+    },
+    {
+      "Message": "2014-06-11 21:47:21,440 [1] DEBUG Change: 935 >> After start word with my AddIn  ProxyCount = 935 Add Many COM Proxy from external code.",
+      "PostedDate": "2014-06-11T06:51:03.71-07:00",
+      "Id": 203237
+    },
+    {
+      "Message": "Open Source Project, Debug find the error code !",
+      "PostedDate": "2014-06-11T20:52:59.793-07:00",
+      "Id": 203238
+    }
+  ]
+}

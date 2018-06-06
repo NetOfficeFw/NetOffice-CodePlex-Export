@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "I try to save active workbook to SharePoint library. The same code works for Word and\nPowerPoint but throws exception for Excel application (see exception in attachments).\n\n=== cut ===\n    NetOffice.OfficeApi.FileDialog dialog = excelApp.FileDialog(MsoFileDialogType.msoFileDialogSaveAs);\n    dialog.Title = \"Save To Library\";\n    dialog.AllowMultiSelect = false;\n    dialog.InitialFileName = String.Format(\"{0}/{1}\", url, excelApp.ActiveWorkbook.Name);\n\n    try\n    {\n        if (dialog.Show() == -1) dialog.Execute();\n    }\n    catch (Exception ex)\n    {\n        MessageBox.Show(ex.ToString(), MessageBoxCaption);\n    }\n=== cut ===\n\nDo you have any idea why it happens?",
+    "LastUpdatedDate": "2013-05-31T03:08:18.947-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-05-31T01:59:02.943-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MS Excel 2010 FileDialog failed on Execute()",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 19790
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600188,
+      "FileName": "excel_app_error.png",
+      "DownloadUrl": ".\\1600188"
+    }
+  ],
+  "Comments": []
+}

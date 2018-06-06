@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "I can't figure out how to install the Project Wizard into Visual Studio Pro 2010. I can't find any instructions on how to do this. I don't see the Project Wizard in the Online Templates and I don't see it in the downloads section of the NetOffice web site. The Project Wizard in the Toolbox does not work for Visual Studio Pro because it generates a project for Visual Studio Express, which is incompatible with Visual Studio Pro. If there is a Project Wizard in the Toolbox that can be installed into Visual Studio Pro, please explain how. Please help me get the Project Wizard installed in Visual Studio Pro 2010. Thank you!",
+    "LastUpdatedDate": "2014-01-06T15:53:36.187-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-01-06T15:53:36.187-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Visual Studio Project Wizard",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20599
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

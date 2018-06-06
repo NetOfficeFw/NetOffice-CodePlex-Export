@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "The InlineResponse event on the Explorer object is supported but the InlineResponseClose is not. Please implement it in the next version.",
+    "LastUpdatedDate": "2016-01-05T13:37:42.38-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-08-02T23:59:48.237-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Outlook's Explorer.InlineResponseClose event is not supported",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21959
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for pointing this out.i have no idea why its missing. i use the last public beta from office 2013 to create the NetOffice source code.  may it was not included here. i want add the InlineResponseClose event to NetOffice 1.4 tomorrow.\r\n\r\nTHX!*Sebastian",
+      "PostedDate": "2015-08-06T11:47:05.923-07:00",
+      "Id": 203331
+    },
+    {
+      "Message": "The latest source code with this fix has bugged out both InlineResponse and InlineResponseClose events.\r\n\r\nThe DispId attribute needs to be changed for the InlineResponseClose delegate from 64658 to 64662 in: Outlook/EventInterfaces/ExplorerEvents_10.cs\r\n\r\n[SupportByVersionAttribute(\"Outlook\", 15)][PreserveSig, MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime), DispId(__64662__)]void InlineResponseClose();",
+      "PostedDate": "2016-01-05T13:37:42.38-08:00",
+      "Id": 203332
+    }
+  ]
+}

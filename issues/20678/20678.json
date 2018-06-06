@@ -1,0 +1,51 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Our application has embedded ressources in various assemblies used the the netoffice plugin.\n\nThe application crashes when accessing these resources.\nIf all ressources are moved to a seperate assembly the problem goes away.\n\nHowever a fix in the netoffice code can also solve the problem.\n\nAttached is a PDF document with the fix.\nWill you apply this fix in upcomming release of the Netoffice components.",
+    "LastUpdatedDate": "2014-01-28T19:19:38.123-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-01-28T05:37:04.18-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Crash when accessing ressources",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20678
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600198,
+      "FileName": "netoffice.pdf",
+      "DownloadUrl": ".\\1600198"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "when its possible, please send me a sample solution[public.sebastian[at]web.de) to clearify the problem. it looks like the ressource feature use the assembly resolve service and i'm not aware to handle this. i want fix this immediately(first time i face this problem)\r\n\r\nSebastian",
+      "PostedDate": "2014-01-28T19:19:38.123-08:00",
+      "Id": 203212
+    }
+  ]
+}

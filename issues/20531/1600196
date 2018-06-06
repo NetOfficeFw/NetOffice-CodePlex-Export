@@ -1,0 +1,145 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using ExampleBase;
+
+using NetOffice;
+using Excel = NetOffice.ExcelApi;
+using NetOffice.ExcelApi.Enums;
+using NetOffice.VBIDEApi.Enums;
+using NetOffice.OfficeApi.Enums;
+using System.IO;
+using NetOffice.ExcelApi;
+
+namespace ExcelExamplesCS4
+{
+
+    class Example10 : IExample
+    {
+        IHost _hostApplication;
+
+        public void RunExample()
+        {
+            var donkey = MakeNewWorkSheet();
+
+            Excel.Application excelApplication = new Excel.Application();
+
+            excelApplication.Visible = true;
+            excelApplication.EnableEvents = true;
+
+            excelApplication.WorkbookOpenEvent += new Application_WorkbookOpenEventHandler(excelApplication_WorkbookOpenEvent);
+
+            excelApplication.ProtectedViewWindowDeactivateEvent += new Excel.Application_ProtectedViewWindowDeactivateEventHandler(excelApplication_ProtectedViewWindowDeactivateEvent);
+            excelApplication.ProtectedViewWindowActivateEvent += new Application_ProtectedViewWindowActivateEventHandler(excelApplication_ProtectedViewWindowActivateEvent);
+            excelApplication.ProtectedViewWindowBeforeCloseEvent += new Application_ProtectedViewWindowBeforeCloseEventHandler(excelApplication_ProtectedViewWindowBeforeCloseEvent);
+            excelApplication.ProtectedViewWindowBeforeEditEvent += new Application_ProtectedViewWindowBeforeEditEventHandler(excelApplication_ProtectedViewWindowBeforeEditEvent);
+            excelApplication.ProtectedViewWindowOpenEvent += new Application_ProtectedViewWindowOpenEventHandler(excelApplication_ProtectedViewWindowOpenEvent);
+            excelApplication.ProtectedViewWindowResizeEvent += new Application_ProtectedViewWindowResizeEventHandler(excelApplication_ProtectedViewWindowResizeEvent);
+
+            excelApplication.ProtectedViewWindows.Open(donkey);
+
+        }
+
+        void excelApplication_WorkbookOpenEvent(Workbook Wb)
+        {
+            if (Wb.Application != null)
+            {
+                var name = Wb.Application.ActiveWorkbook.FullName;
+            }
+
+            NetOffice.ExcelApi.ProtectedViewWindow window = Wb.Application.ActiveProtectedViewWindow;
+            if (window != null)
+            {
+                
+            }
+
+        }
+
+        void excelApplication_ProtectedViewWindowResizeEvent(ProtectedViewWindow Pvw)
+        {
+
+        }
+
+        void excelApplication_ProtectedViewWindowOpenEvent(ProtectedViewWindow Pvw)
+        {
+
+        }
+
+        void excelApplication_ProtectedViewWindowBeforeEditEvent(ProtectedViewWindow Pvw, ref bool Cancel)
+        {
+
+        }
+
+        void excelApplication_ProtectedViewWindowBeforeCloseEvent(ProtectedViewWindow Pvw, XlProtectedViewCloseReason Reason, ref bool Cancel)
+        {
+
+        }
+
+        void excelApplication_ProtectedViewWindowActivateEvent(ProtectedViewWindow Pvw)
+        {
+        }
+
+        void excelApplication_ProtectedViewWindowDeactivateEvent(Excel.ProtectedViewWindow Pvw)
+        {
+
+        }
+
+        private static string MakeNewWorkSheet()
+        {
+            var donkey = new FileInfo(Path.Combine(Path.GetTempPath(), "donkey.xlsx".AppendTimeStamp()));
+
+            Excel.Application excelApplication = new Excel.Application();
+
+            // add a new workbook
+            Excel.Workbook workBook = excelApplication.Workbooks.Add();
+
+            Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];
+
+            workSheet.Cells[1, 1].Value = "test excel file.";
+
+            workSheet.SaveAs(donkey.FullName);
+
+            excelApplication.Quit();
+            excelApplication.Dispose();
+
+            //donkey.IsReadOnly = true;
+
+            return donkey.FullName;
+        }
+
+        public void Connect(IHost hostApplication)
+        {
+            _hostApplication = hostApplication;
+        }
+
+        public string Caption
+        {
+            get { return _hostApplication.LCID == 1033 ? "Example10" : "Donkey10"; }
+        }
+
+        public string Description
+        {
+            get { return _hostApplication.LCID == 1033 ? "Protected Mode events" : "Protected Mode events"; }
+        }
+
+        public UserControl Panel
+        {
+            get { return null; }
+        }
+    }
+
+
+    public static class ExtentionMethods
+    {
+        public static string AppendTimeStamp(this string fileName)
+        {
+            return string.Concat(
+                Path.GetFileNameWithoutExtension(fileName),
+                DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+                Path.GetExtension(fileName)
+                );
+        }
+    }
+}

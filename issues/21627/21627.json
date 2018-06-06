@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "When Call the method of ShapeRange.MergeShapes,\nThe VSTO works even in Office 2010, and the NetOffice comes error.\nThe Microsoft Office don't support this methos in vba of Office 2010, but supported in VSTO for Office 2010. (The online help is in the vba program. )\nAny idea to solve this problem?",
+    "LastUpdatedDate": "2014-12-30T17:34:22.64-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-12-30T01:35:09.913-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MergeShapes Should Work for Office 2010",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21627
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "any error details/exception log?\r\n\r\n*Sebastian",
+      "PostedDate": "2014-12-30T02:31:16.637-08:00",
+      "Id": 203280
+    },
+    {
+      "Message": "@SebastianDotNetUnknown name. (Exception from HRESULT:0x80020006 (DISP_E_UNKNOWNNAME))\r\n\r\nIn code:```comObject.InstanceType.InvokeMember(name, BindingFlags.InvokeMethod, null, comObject.UnderlyingObject, paramsArray, Settings.Default.ThreadCulture);```\r\n\r\nThe VBA model don't include this method, however the method is supported by VSTO.\r\n\r\n",
+      "PostedDate": "2014-12-30T17:34:22.64-08:00",
+      "Id": 203281
+    }
+  ]
+}

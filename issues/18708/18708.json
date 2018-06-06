@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-10-27T16:10:46.25-07:00",
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Problem: NetOffice v1.4.1 throws an InvalidCastException when trying to get the values of NetOffice.OutlookApi.ContactItem.Gender because the Gender property tries to cast an Int16 value to OlGender enum which defaults to Int32. The above problem surfaced when Outlook2003 was used.\n \nSolution: Change the declaration of OlGender \nfrom: public enum OlGender\nto: public enum OlGender : short",
+    "LastUpdatedDate": "2013-05-16T04:50:56.723-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-09-26T22:34:02.867-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "InvalidCastException thrown when accessing Outlook Gender Property",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18708
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "my tests with NetOffice 1.5.1.2 [RC] works fine.\r\nplease try latest release (older releases performs a hard cast, newer versions use Convert.To...)\r\n",
+      "PostedDate": "2012-09-27T00:19:44.983-07:00",
+      "Id": 203102
+    }
+  ]
+}

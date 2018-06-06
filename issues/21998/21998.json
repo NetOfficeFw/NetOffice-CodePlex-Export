@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Just noticed what looks like a bug in /Source/NetOffice/Tools/CustomUIAttribute.cs, line 67 in version 1.7.3 in that the line ending:\n\nassemblyNamespace.Substring(resourcePath.Length - 1) };\n\nshould, I believe be:\n\nassemblyNamespace.Substring(assemblyNamespace.Length - 1) };\n\nNot an issue for me, or probably most people, but thought it worth mentioning just in case it causes problems for someone.",
+    "LastUpdatedDate": "2015-09-14T08:28:40.62-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-09-08T14:48:06.093-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Minor bug in CustomUIAttribute.BuildPath()",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21998
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "absolutely!!!\r\n\r\nthanks for pointing this out!i want fix this very soon and give a comment to your advise.\r\n\r\n*Sebastian",
+      "PostedDate": "2015-09-14T08:28:40.62-07:00",
+      "Id": 203351
+    }
+  ]
+}

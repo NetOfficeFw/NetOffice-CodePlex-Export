@@ -1,0 +1,642 @@
+[
+  {
+    "Id": 15922,
+    "Title": "System.AccessViolationException when writing Excel Cells"
+  },
+  {
+    "Id": 16026,
+    "Title": "Error when opening Word samples in Word 2007"
+  },
+  {
+    "Id": 16220,
+    "Title": "wrap all exceptions from office COM Server in a COMException"
+  },
+  {
+    "Id": 16314,
+    "Title": "Exception while add Event Trigger in actual Office Versions"
+  },
+  {
+    "Id": 16323,
+    "Title": "Please provide a NuGet package"
+  },
+  {
+    "Id": 16324,
+    "Title": "Shape.Line and Shape.Fill throw exceptions in NetOffice"
+  },
+  {
+    "Id": 16644,
+    "Title": "(delete)"
+  },
+  {
+    "Id": 16739,
+    "Title": "Some lists are not Enumerable in Outlook"
+  },
+  {
+    "Id": 16898,
+    "Title": "Missing indexer for some properties"
+  },
+  {
+    "Id": 16994,
+    "Title": "Exception while using custom Enumerators"
+  },
+  {
+    "Id": 17015,
+    "Title": "Word Window.GetPoint does not return values"
+  },
+  {
+    "Id": 17043,
+    "Title": "Attach to instance of MSOffice App"
+  },
+  {
+    "Id": 17050,
+    "Title": "wrong entity type: IRibbonUI, ICustomTaskPaneConsumer"
+  },
+  {
+    "Id": 17223,
+    "Title": "More method overloads"
+  },
+  {
+    "Id": 17224,
+    "Title": "create vba-style overloads for properties with parameters"
+  },
+  {
+    "Id": 17339,
+    "Title": "NetOffice.WordApi.Document.Revisions.AcceptAll() does not accept footnote changes"
+  },
+  {
+    "Id": 17377,
+    "Title": "Error loading Excel Add-In"
+  },
+  {
+    "Id": 17551,
+    "Title": "InvalidCastException in Word Dialog.Show"
+  },
+  {
+    "Id": 17665,
+    "Title": "major bug in NetOffice 1.4.0"
+  },
+  {
+    "Id": 17855,
+    "Title": "InvalidCastException for some enum properties"
+  },
+  {
+    "Id": 17856,
+    "Title": "Syntactical issue with parametrized properties"
+  },
+  {
+    "Id": 17986,
+    "Title": "Please add 'Trace' ConsoleMode to DebugConsole"
+  },
+  {
+    "Id": 17992,
+    "Title": "bad color"
+  },
+  {
+    "Id": 18003,
+    "Title": "Resharper/MSpec Assembly bind erros with 1.5.1"
+  },
+  {
+    "Id": 18020,
+    "Title": "config loadFromRemoteSources needed?"
+  },
+  {
+    "Id": 18047,
+    "Title": "Error when trying to get Excel.Selection.Name.Name"
+  },
+  {
+    "Id": 18357,
+    "Title": "app.Dialogs[WdWordDialog.wdDialogToolsSpellingAndGrammar].Display  cant find object i think"
+  },
+  {
+    "Id": 18383,
+    "Title": "Resize doesn't resize range"
+  },
+  {
+    "Id": 18563,
+    "Title": "MS Project: COM error when hooking up event"
+  },
+  {
+    "Id": 18641,
+    "Title": "Lose Excel objects after hiding form"
+  },
+  {
+    "Id": 18708,
+    "Title": "InvalidCastException thrown when accessing Outlook Gender Property"
+  },
+  {
+    "Id": 18736,
+    "Title": "Example01 VB, Finishdialog"
+  },
+  {
+    "Id": 18843,
+    "Title": "Error"
+  },
+  {
+    "Id": 18875,
+    "Title": "Excel Range Address Stops Working in NetOffice Release 1.5.1.2"
+  },
+  {
+    "Id": 18896,
+    "Title": "Cannot call VBA methods with parameters"
+  },
+  {
+    "Id": 18922,
+    "Title": "NetOffice 1.5.1.2 \"Doesn't contain any public member...\""
+  },
+  {
+    "Id": 18999,
+    "Title": "Error"
+  },
+  {
+    "Id": 19041,
+    "Title": "Not enough storage is available to complete this operation - when opening a pptx"
+  },
+  {
+    "Id": 19314,
+    "Title": "Failure opening Access-mdb-Database"
+  },
+  {
+    "Id": 19353,
+    "Title": "Will NetOffice support OneNote?"
+  },
+  {
+    "Id": 19363,
+    "Title": "Blurred taskbar icon for Developer Toolbox"
+  },
+  {
+    "Id": 19460,
+    "Title": "Missbehaviour NetOffice.OutlookSecurity.Supress.Enabled"
+  },
+  {
+    "Id": 19533,
+    "Title": "Outlook Addin Failing to Load on Win7-32"
+  },
+  {
+    "Id": 19683,
+    "Title": "Application.GetActiveInstance throws ArgumentException \"The object's type must be __ComObject...\""
+  },
+  {
+    "Id": 19705,
+    "Title": "Outlook 2010 Windows 8 Error"
+  },
+  {
+    "Id": 19742,
+    "Title": "Convert Microsoft.Office.Interop.Word.ApplicationClass to NetOffice.COMObject"
+  },
+  {
+    "Id": 19765,
+    "Title": "how to use on a system without installing MS Office?"
+  },
+  {
+    "Id": 19790,
+    "Title": "MS Excel 2010 FileDialog failed on Execute()"
+  },
+  {
+    "Id": 19839,
+    "Title": "how to debug the sample?"
+  },
+  {
+    "Id": 19909,
+    "Title": "Outlook address book opens in background"
+  },
+  {
+    "Id": 19950,
+    "Title": "Can't install it on windows 8"
+  },
+  {
+    "Id": 19965,
+    "Title": "Address Property of Range Object has no parameters (NetOffice 1.6.0)"
+  },
+  {
+    "Id": 19974,
+    "Title": "Entirerow and Entirecolumn methods/properties not in range object."
+  },
+  {
+    "Id": 20087,
+    "Title": "NetOffice 1.6.0 - ExcelApi. Range and Hidden"
+  },
+  {
+    "Id": 20112,
+    "Title": "ExcelApi.FormatConditions throws error during enumeration"
+  },
+  {
+    "Id": 20151,
+    "Title": "Compile error in Tutorial 10 of v1.6"
+  },
+  {
+    "Id": 20295,
+    "Title": "Parameter not optional exception thrown"
+  },
+  {
+    "Id": 20313,
+    "Title": "ExcelApi.Application.GetActiveInstances returns the same Instances"
+  },
+  {
+    "Id": 20431,
+    "Title": "Bug with group selection PowerPoint"
+  },
+  {
+    "Id": 20450,
+    "Title": "Permanent exception Class not exists: NetOffice.*Api.[ClassName]"
+  },
+  {
+    "Id": 20470,
+    "Title": "NetOffice.ExcelApi.Application.GetActiveInstance return null"
+  },
+  {
+    "Id": 20484,
+    "Title": "Document.MailMerge.OpenDataSource open without selected table menu"
+  },
+  {
+    "Id": 20491,
+    "Title": "Crash during word 2003 document open"
+  },
+  {
+    "Id": 20525,
+    "Title": "contactItem.Display not working"
+  },
+  {
+    "Id": 20531,
+    "Title": "Excel ProtectedViewWindowDeactivateEvent not firing"
+  },
+  {
+    "Id": 20548,
+    "Title": "Application.GetActiveInstance throws ArgumentException \"component\""
+  },
+  {
+    "Id": 20599,
+    "Title": "Visual Studio Project Wizard"
+  },
+  {
+    "Id": 20615,
+    "Title": "No COM Addin example runs under W8/Office 2013"
+  },
+  {
+    "Id": 20643,
+    "Title": "WordAPI, Selection.Goto wdGoToBookmark Error"
+  },
+  {
+    "Id": 20678,
+    "Title": "Crash when accessing ressources"
+  },
+  {
+    "Id": 20704,
+    "Title": "Excel XmlImportXml does not work"
+  },
+  {
+    "Id": 20707,
+    "Title": "VS Project Wizard creates project in wrong folder (option Custom)"
+  },
+  {
+    "Id": 20708,
+    "Title": "Wrong namespace in created AddIn C# project"
+  },
+  {
+    "Id": 20744,
+    "Title": "DeveloperToolbox can not start in Windows 8 with .NET 4.0"
+  },
+  {
+    "Id": 20765,
+    "Title": "Generate FormRegionStartup interface in OutlookApi"
+  },
+  {
+    "Id": 20809,
+    "Title": "Access to the path 'Custom\\MyAssembly\\MyAssembly' is denied. | UnauthorizedAccessException | Void WinIOError(Int32, System.String)"
+  },
+  {
+    "Id": 20909,
+    "Title": "How to open template file (.xltx) for editing"
+  },
+  {
+    "Id": 20929,
+    "Title": "SlideShowWindow.HWND Member not found"
+  },
+  {
+    "Id": 20980,
+    "Title": "SaveAs2 Error"
+  },
+  {
+    "Id": 20987,
+    "Title": "Excel: TargetInvocationException with larger amount of Range accesses"
+  },
+  {
+    "Id": 20989,
+    "Title": "NetOffice font misinterpretation?"
+  },
+  {
+    "Id": 21009,
+    "Title": "Toolbox 1.2 won't start - loadFromRemoteSources"
+  },
+  {
+    "Id": 21030,
+    "Title": "COM Exceptions in NetOffice (Excel)"
+  },
+  {
+    "Id": 21059,
+    "Title": "Com Exception when set cell values"
+  },
+  {
+    "Id": 21067,
+    "Title": "When to release event's COMObject?"
+  },
+  {
+    "Id": 21075,
+    "Title": "How to return a COMObject In a Collection?"
+  },
+  {
+    "Id": 21086,
+    "Title": "Excel Pivot Table SourceData Range >65536 Crashes"
+  },
+  {
+    "Id": 21090,
+    "Title": "Detect NetOffice assembly OfficeApi. Type:SEHException Message:外部组件发生异常。"
+  },
+  {
+    "Id": 21097,
+    "Title": "3th party mail client hangs when sending mail"
+  },
+  {
+    "Id": 21130,
+    "Title": "Using SaveAs on Workbook not working"
+  },
+  {
+    "Id": 21132,
+    "Title": "Is there a way to make Word open in readonly and not be able to edit the document"
+  },
+  {
+    "Id": 21133,
+    "Title": "Is it possible to open a Word document and place the document viewer in a winforms form area?"
+  },
+  {
+    "Id": 21139,
+    "Title": "Error loading COMAddin in PowerPoint"
+  },
+  {
+    "Id": 21158,
+    "Title": "How to Stop Tab Key add new row, Word 2013"
+  },
+  {
+    "Id": 21224,
+    "Title": "An extra \"CodeBase\" registry value for COM Addin"
+  },
+  {
+    "Id": 21347,
+    "Title": "Download is not working"
+  },
+  {
+    "Id": 21423,
+    "Title": "Issue iterating through Range.Fields"
+  },
+  {
+    "Id": 21440,
+    "Title": "Problem when running in release mode"
+  },
+  {
+    "Id": 21468,
+    "Title": "Use In Powershell"
+  },
+  {
+    "Id": 21483,
+    "Title": "how to solve The message filter indicated that the application is busy. (Exception from HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER))"
+  },
+  {
+    "Id": 21514,
+    "Title": "\"Collection was modified\" error when disposing application"
+  },
+  {
+    "Id": 21558,
+    "Title": "Memory Leak when not cleanly used"
+  },
+  {
+    "Id": 21612,
+    "Title": "Range.Font.Bold asks for int when it should be a boolean"
+  },
+  {
+    "Id": 21627,
+    "Title": "MergeShapes Should Work for Office 2010"
+  },
+  {
+    "Id": 21654,
+    "Title": "OfficeCompatibility Report button throws InvalidOperationException"
+  },
+  {
+    "Id": 21664,
+    "Title": "Retrieving the COM class factory failed"
+  },
+  {
+    "Id": 21697,
+    "Title": "NetOffice.OutlookAPI.Items.Sort() is erroring with an Out of Memory exception."
+  },
+  {
+    "Id": 21702,
+    "Title": "System.InvalidCastException as soon as NetOffice Excel Addin loads"
+  },
+  {
+    "Id": 21712,
+    "Title": "Decimal separator is always dot (.) when saving an excel file to text file"
+  },
+  {
+    "Id": 21736,
+    "Title": "Problem with windows 8.1 ,visual studio 2013 and outlook 2013"
+  },
+  {
+    "Id": 21810,
+    "Title": "Addin suddenly not loaded"
+  },
+  {
+    "Id": 21823,
+    "Title": "Access to COM Object throws a COM exception when VBA editor is opened"
+  },
+  {
+    "Id": 21832,
+    "Title": "setting up NetOffice (\"using\" assemblies)"
+  },
+  {
+    "Id": 21833,
+    "Title": "Regarding office version"
+  },
+  {
+    "Id": 21837,
+    "Title": "Cannot get HWND of a PowerPoint SlideShow window"
+  },
+  {
+    "Id": 21854,
+    "Title": "WordApi.MailMerge.Execute it boolean, but receives object"
+  },
+  {
+    "Id": 21855,
+    "Title": "NetOffice.NefOfficeException when Outlook addin is loading"
+  },
+  {
+    "Id": 21861,
+    "Title": "Debugging in Visual Studio 2010"
+  },
+  {
+    "Id": 21878,
+    "Title": "Outlook-Addin / Inspector.currentitem"
+  },
+  {
+    "Id": 21906,
+    "Title": "OutLook add 2000 contacts with high cpu usage"
+  },
+  {
+    "Id": 21907,
+    "Title": "Missing source file"
+  },
+  {
+    "Id": 21928,
+    "Title": "SlideShowSettings.Run() freezes thread if presentation contains external media objects"
+  },
+  {
+    "Id": 21946,
+    "Title": "Multiple NetOffice Excel Add-ins"
+  },
+  {
+    "Id": 21953,
+    "Title": "NetOffice ExcelAPI Causing 500 Error"
+  },
+  {
+    "Id": 21959,
+    "Title": "Outlook's Explorer.InlineResponseClose event is not supported"
+  },
+  {
+    "Id": 21962,
+    "Title": "cannot access to Rows property in ExcelAPI"
+  },
+  {
+    "Id": 21972,
+    "Title": "Unable to get attachment filename"
+  },
+  {
+    "Id": 21974,
+    "Title": "PresentationBeforeCloseEvent did not trigger"
+  },
+  {
+    "Id": 21994,
+    "Title": "Memory leak using Excel workbook"
+  },
+  {
+    "Id": 21998,
+    "Title": "Minor bug in CustomUIAttribute.BuildPath()"
+  },
+  {
+    "Id": 22001,
+    "Title": "DAO version support"
+  },
+  {
+    "Id": 22027,
+    "Title": "excel add-n no longer loads since windows 10 upgrade"
+  },
+  {
+    "Id": 22035,
+    "Title": "Extracolors property is not IENumerable in powerpoint 2007"
+  },
+  {
+    "Id": 22037,
+    "Title": "NullReferenceException on ExcelApi.Application.GetActiveInstances()"
+  },
+  {
+    "Id": 22069,
+    "Title": "How can I initialize NetOffice.WordApi objects using a Microsoft.Office.Interop objects?"
+  },
+  {
+    "Id": 22101,
+    "Title": "Dispose() do not make the winword.exe quit"
+  },
+  {
+    "Id": 22144,
+    "Title": "Launch ComAddin from from VBA"
+  },
+  {
+    "Id": 22149,
+    "Title": "Word Document Print Preview"
+  },
+  {
+    "Id": 22155,
+    "Title": "Class not exists: NetOffice.OfficeApi.Document"
+  },
+  {
+    "Id": 22164,
+    "Title": "Excel: Names.Add Method"
+  },
+  {
+    "Id": 22175,
+    "Title": "Outlook: Automation beaks Addin"
+  },
+  {
+    "Id": 22178,
+    "Title": "Excel FormatConditions do not resolve to derived types"
+  },
+  {
+    "Id": 22208,
+    "Title": "Conflict between task panes and XLA since Excel 2013"
+  },
+  {
+    "Id": 22223,
+    "Title": "Trusted publisher signing"
+  },
+  {
+    "Id": 22231,
+    "Title": "Stack overflow in COMObject.Dispose"
+  },
+  {
+    "Id": 22264,
+    "Title": "Word that has opened from Sharepoint"
+  },
+  {
+    "Id": 22284,
+    "Title": "Problem with property OLEDBConnection.ADOConnection"
+  },
+  {
+    "Id": 22288,
+    "Title": "Deploying Custom Taskpane in other computer"
+  },
+  {
+    "Id": 22309,
+    "Title": "CustomXMLNode.AddNode throws exception; type mismatch"
+  },
+  {
+    "Id": 22310,
+    "Title": "Workbook.ExportAsFixedFormat followed by Workbook.Close crashes the Excel app but no exception is thrown"
+  },
+  {
+    "Id": 22311,
+    "Title": "Exception thrown with Visio Page.GetFormulas"
+  },
+  {
+    "Id": 22312,
+    "Title": "Range.Offset[] does not work"
+  },
+  {
+    "Id": 22313,
+    "Title": "Named arguments do not work as expected (C#)"
+  },
+  {
+    "Id": 22314,
+    "Title": "Worksheet.Range is not an indexer (C#)"
+  },
+  {
+    "Id": 22315,
+    "Title": "Class not found in loaded NetOffice Assemblies"
+  },
+  {
+    "Id": 22316,
+    "Title": "Start multiple Excel instances"
+  },
+  {
+    "Id": 22317,
+    "Title": "Wrong calculation of offset after cells are merged"
+  },
+  {
+    "Id": 22318,
+    "Title": "Error while Installing package from nuget for .net core 1.1 "
+  },
+  {
+    "Id": 22319,
+    "Title": "Excel Addin sample does not show task pane"
+  },
+  {
+    "Id": 22320,
+    "Title": "Create Outlook TaskPane"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "an issue is reported by ngx.\n \nhttp://netoffice.codeplex.com/discussions/281614\n \ncustom enumerators use a wrong array range in NetOffice, as outcome an exception was thrown.\ntask: change used array range and make sure it works good.",
+    "LastUpdatedDate": "2013-06-14T00:33:17.96-07:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2011-12-02T07:55:28.737-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Exception while using custom Enumerators",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16994
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "issue fixed.\r\nan upated release is available.\r\n*have a nice day",
+      "PostedDate": "2011-12-02T09:27:09.317-08:00",
+      "Id": 203021
+    }
+  ]
+}

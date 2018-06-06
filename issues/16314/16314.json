@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "a major bug is reported by Boris Hurinek.\nNetOffice creates the eventbridge for an object always with the lowest available EventInterface.\nas outcome you got an exception while add an event trigger or your specific event was not fired in actual office versions.\nThe problem is located in SinkHelper.cs in LateBindingApi.Core.dll \nnext release with fixed issue comes in 2-3 days. \nthe error is resolved in latest source code: NetOffice\\Source\\Net v2.0 v3.0 v3.5 as hotfix",
+    "LastUpdatedDate": "2013-06-14T00:33:18.8-07:00",
+    "PlannedForRelease": "NetOffice Release 1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2011-07-28T16:22:48.893-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Exception while add Event Trigger in actual Office Versions",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16314
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "bug terminated\r\nnew release 1.1 available\r\nissue closed\r\n\r\n*have a nice day",
+      "PostedDate": "2011-07-30T11:20:10.997-07:00",
+      "Id": 202992
+    }
+  ]
+}

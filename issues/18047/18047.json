@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "If I name cell A1, \"MyCell\", and select that cell, then in VBA I can do the following:\n \nDebug.Print Application.Selection.Name & \" ... \" & Application.Selection.Name.Name\n \n=Sheet1!$A$1 ... MyCell\n \nI can't seem to make this work from within NetOffice.  Instead I get the following:\n \nDebug.Print Application.Selection.Name.ToString\n \nNetOffice.ExcelApi.Name\n \n \nAm I stuck?  Is there some other way to get the cell name of the currently selected cell via NetOffice?\n \nThanks,\nMike",
+    "LastUpdatedDate": "2013-06-14T00:33:15.603-07:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-05-11T14:07:44.447-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error when trying to get Excel.Selection.Name.Name",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18047
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "as hotfix:\r\nchange: Application.Selection.Name.Name\r\nto:         Application.Selection.Name.get_Name()\r\n\r\ni fix the issue tomorrow\r\n*sorry\r\nSebastian",
+      "PostedDate": "2012-05-12T06:42:58.733-07:00",
+      "Id": 203058
+    },
+    {
+      "Message": "an updated 1.5 release is available.\r\n",
+      "PostedDate": "2012-05-13T18:00:47.523-07:00",
+      "Id": 203059
+    },
+    {
+      "Message": "Wow...impressive response time.  I downloaded the new release and it seems to be working.  Thanks!",
+      "PostedDate": "2012-05-14T09:52:55.86-07:00",
+      "Id": 203060
+    }
+  ]
+}

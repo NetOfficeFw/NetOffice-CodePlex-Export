@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi,\n\nI've developed an extension based on NetOffice. My office configuration requires applications to be signed by Trusted Publishers. I tried signing the output DLL with signtool.exe, with a valid certificate, but unfortunately, Office says \"There is no digital signature available\".\n\nThe option can be enabled via: File->Options->Trust Center->Trust Center Settings -> Add-ins -> Require application Add-ins to be signed by Trusted Publisher\n\nWhat's the appropriate method for signing the DLL? \n\nIt seems that when using VSTO ClickOnce handles the signing, also there's a .manifest file that is created for the DLL, I'm not sure if its required or not but I'm unable to create one for class libraries.\n\nhttps://msdn.microsoft.com/en-us/library/bb772096(v=vs.120).aspx\nhttps://msdn.microsoft.com/en-us/library/bb386179.aspx\nhttps://msdn.microsoft.com/en-us/library/che5h906.aspx",
+    "LastUpdatedDate": "2016-03-24T09:04:52.393-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-03-24T09:04:52.393-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Trusted publisher signing",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22223
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

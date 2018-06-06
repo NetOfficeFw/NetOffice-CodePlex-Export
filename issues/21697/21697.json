@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "When reading calendar appointments from Outlook, there's an option called \"IncludeRecurrences\" that should add all future recurrences to the list of items. For example: if I have a recurring appointment that happens every Wednesday, when my list of appointments return, I should see a future entries for my Wednesday appointment.\n\nThis works great using the Office.Interop, but when I switch my code to NetOffice, I receive an error message after I set IncludeRecurrences to true, and then try and Sort.  The Sort() method does not work correctly, and errors out saying \"Exception of type 'System.OutOfMemoryException' was thrown.\"\n\nHere is the stack trace:\n((System.Exception)((new System.Linq.SystemCore_EnumerableDebugView<object>(OutlookItems)).Items)).StackTrace at NetOffice.OutlookApi._Items.d__7.MoveNext() at NetOffice.OutlookApi._Items.d__0.MoveNext() at System.Linq.SystemCore_EnumerableDebugView`1.get_Items()\n\nWould it be possible to make this work similar to the Office.Interop?\n\nHere is my code:\n\n        public List<Appointment> GetAppointmentsInRange()\n        {\n            var result = new List<Appointment>();\n\n            Items OutlookItems = outlookCalendar.Items as Items;\n            OutlookItems.IncludeRecurrences = true;\n            OutlookItems.Sort(\"[Start]\");\n\n            if (OutlookItems != null)\n            {\n                DateTime min = DateTime.Now.AddDays(-1);\n                DateTime max = DateTime.Now.AddDays(+30);\n\n     string filter = \"[End] >= '\" + min + \"' AND [Start] < '\" + max + \"'\";\n\n                var filteredAppoinments = OutlookItems.Restrict(filter);\n                foreach (AppointmentItem ai in filteredAppoinments)\n                {\n                    result.Add(GetOutlookAppointment(ai));\n                }\n            }\n            return result;\n        }",
+    "LastUpdatedDate": "2015-02-10T10:15:49.733-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-01-29T08:52:43.253-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NetOffice.OutlookAPI.Items.Sort() is erroring with an Out of Memory exception.",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21697
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600205,
+      "FileName": "Capture.PNG",
+      "DownloadUrl": ".\\1600205"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Here is a screenshot of the error message in Visual Studio.",
+      "PostedDate": "2015-01-29T15:15:18.337-08:00",
+      "Id": 203285
+    },
+    {
+      "Message": "The Enumerator in Outlook.Items is a custom NetOffice enumerator.This is a special NO service for scenarios with a low amount of data.\r\n\r\nMicrosoft doesnt spend an enumerator here because the count of items(mails or whatever) was too big to handle this completly in local memory. (typical in an Exchange scenario)\r\n\r\nso you have to use the low level enumerator methods. (GetNext, etc.) and sort them at hand.\r\n\r\n*Sebastian\r\n\r\n",
+      "PostedDate": "2015-02-06T14:10:44.83-08:00",
+      "Id": 203286
+    },
+    {
+      "Message": "Sebastian,\r\n\r\nCould you give me an example of how to sort them at hand, using a low level enumerator? I can't seem to figure it out.  Any help you can provide is greatly appreciated.",
+      "PostedDate": "2015-02-06T21:06:32.757-08:00",
+      "Id": 203287
+    },
+    {
+      "Message": "this is the common way for example:(https://msdn.microsoft.com/en-us/en-us/library/office/ff860338.aspx)\r\n\r\nobject item = inboxFolder.Items.GetFirst();while (null != item){     item = inboxFolder.Items.GetNext();}\r\n\r\nnice to know, the NetOffice custom enumerator:[from NetOffice metadata]public class _Items{        //        // Zusammenfassung:        //     SupportByVersionAttribute Outlook, 9,10,11,12,14,15 This is a custom enumerator        //     from NetOffice        [CustomEnumerator]        public IEnumerator GetEnumerator();}\r\n\r\n*Sebastian",
+      "PostedDate": "2015-02-10T10:15:49.733-08:00",
+      "Id": 203288
+    }
+  ]
+}

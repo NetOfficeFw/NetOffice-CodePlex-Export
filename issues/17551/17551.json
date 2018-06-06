@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 8,
+    "Custom": "",
+    "Description": "I get an InvalidCastException when using the Dialog.Show method in a Word add-in.\nIt may be caused by a cast of 'object' to 'int' the NetOffice code , while the return object is in fact 'Int16'",
+    "LastUpdatedDate": "2013-06-14T00:33:17.087-07:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-03-08T01:56:52.3-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "InvalidCastException in Word Dialog.Show",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17551
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for the info, thats strange, i do a test now.\r\n\r\nas hotfix please use: \r\nobject returnValue = LateBindingApi.Core.Invoker.MethodReturn(this, \"Show\", new object[]{10});\r\n// 10 is the sample enum index",
+      "PostedDate": "2012-03-08T02:44:06.927-08:00",
+      "Id": 203039
+    },
+    {
+      "Message": "update: the definition for the return value for Show in the COM type library is VT_I4. this means an a 4-byte(=32Bit) signed integer. at runtime the method returns a short(16Bit Integer) and an InvalidCastException is the result. what i have to do now is, change the implementation for all methods, properties with numeric result as follows:\r\n\r\n// old\r\nobject returnItem = Invoker.MethodReturn(this, \"Show\", paramsArray);\r\nreturn (Int32)returnItem;\r\n\r\n// new\r\nobject returnItem = Invoker.MethodReturn(this, \"Show\", paramsArray);\r\nreturn Convert.ToInt32(returnItem);\r\n\r\nneeds a day!\r\n*sorry for the trouble\r\n",
+      "PostedDate": "2012-03-08T06:20:58.493-08:00",
+      "Id": 203040
+    },
+    {
+      "Message": "Thanks! I'm temporary using the quick fix for now.\r\nAnother Office quirk I guess ;)",
+      "PostedDate": "2012-03-09T03:03:35.713-08:00",
+      "Id": 203041
+    },
+    {
+      "Message": "its done. i have heavy svn trouble at the moment and can't commit anything. i dont know why.\r\nits the following error: http://codeplex.codeplex.com/workitem/25805\r\nhope this problem is resolved for me tomorrow.",
+      "PostedDate": "2012-03-09T19:37:28.343-08:00",
+      "Id": 203042
+    },
+    {
+      "Message": "NetOffice 1.4 is available with fixed issue.\r\n\r\n*have a nice day ",
+      "PostedDate": "2012-03-11T17:27:43.383-07:00",
+      "Id": 203043
+    },
+    {
+      "Message": "Unfortunately, it does not seem to be fixed (completely) yet (1.5.1 rc).\r\nThere still is a direct cast to Int32:\r\n\r\n\t[CustomMethodAttribute]\r\n\t\t[SupportByVersionAttribute(\"Word\", 9,10,11,12,14)]\r\n\t\tpublic Int32 Show()\r\n\t\t{\r\n\t\t\tobject[] paramsArray = null;\r\n\t\t\tobject returnItem = Invoker.MethodReturn(this, \"Show\", paramsArray);\r\n\t\t\treturn (Int32)returnItem;\r\n\t\t}",
+      "PostedDate": "2012-05-03T23:34:50.977-07:00",
+      "Id": 203044
+    },
+    {
+      "Message": "holy sh... i cant believe that but its true. i have changed this in prev. versions, *damn SVN* i change them again today.\r\n\r\nthank you very much for your hint!",
+      "PostedDate": "2012-05-03T23:57:56.247-07:00",
+      "Id": 203045
+    },
+    {
+      "Message": "an updated 1.5.1 RC is available with fixed conversion\r\n\r\n*have a nice day",
+      "PostedDate": "2012-05-04T10:14:50.79-07:00",
+      "Id": 203046
+    }
+  ]
+}

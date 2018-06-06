@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 5,
+    "Custom": "",
+    "Description": "Hi,\n \nthe following piece of code throws an System.AccessViolationException\n \nusing System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;\nusing Excel = NetOffice.ExcelApi;\nusing System.Diagnostics;\n \nnamespace ConsoleApplication1\n{\n    class Program\n    {\n        static void Main(string[] args)\n        {\n            // Initialize Api COMObject Support\n            LateBindingApi.Core.Factory.Initialize();\n \n            Excel.Application excelApplication = new Excel.Application();\n            Excel.Workbook workbook = excelApplication.Workbooks.Add(); //._Open(@\"D:\\Visual Studio 2008\\Projects\\QIMSIECAInterface\\QIMSIECAInterface\\Templates\\General.xls\");\n \n            excelApplication.Visible = true;\n \n            Excel.Worksheet sheet = (Excel.Worksheet)workbook.Worksheets[1];\n \n            for (int i = 12; i < 100; i++)\n            {\n                Excel.Range r = sheet.Cells[i, 1];\n                Debug.WriteLine(i);\n                i++;\n            }\n \n            excelApplication.Quit();\n            excelApplication.Dispose();\n        }\n    }\n}\n \nException details are the following: \nSystem.AccessViolationException was unhandled\n  Message=\"Attempted to read or write protected memory. This is often an indication that other memory is corrupt.\"\n  Source=\"mscorlib\"\n  StackTrace:\n       at System.AppDomain._nExecuteAssembly(Assembly assembly, String[] args)\n       at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)\n       at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n       at System.Threading.ThreadHelper.ThreadStart_Context(Object state)\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n       at System.Threading.ThreadHelper.ThreadStart()\n  InnerException: \n \nHope you can help.\n \nThanks in advance.",
+    "LastUpdatedDate": "2013-06-14T00:33:19.34-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2011-05-27T03:21:25.283-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "System.AccessViolationException when writing Excel Cells",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15922
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "can you tell me more about your environment and anything else whats interestend?\r\noperation system 32 or 64 bit\r\noffice version 32 or 64 bit\r\n.net version\r\n\r\ni test your code with same environment and see whats the problem (hopely )",
+      "PostedDate": "2011-05-30T07:14:22.81-07:00",
+      "Id": 202982
+    },
+    {
+      "Message": "some google research: http://social.msdn.microsoft.com/Forums/en-US/csharpgeneral/thread/6adca20b-649f-41a4-8fa1-09534882d76c\r\n\r\npeople with the same problem says this help:\r\n\r\nTools->Options\r\nDebugging->General\r\nuncheck option \"Suppress JIT optimization on module load\"\r\n\r\n",
+      "PostedDate": "2011-05-30T07:52:20.213-07:00",
+      "Id": 202983
+    },
+    {
+      "Message": "Hi,\r\n\r\nthanks for your help!\r\n\r\nOS: Windows XP SP3\r\nVisual Studio 2008 Express Edition\r\n.NET v. 3.5 SP1\r\nOffice 2003\r\n\r\nFurthermore, this problem does not occur when using the pervious LateBindingApi.\r\n\r\nI can provide more details tomorrow if required.\r\n\r\nBest Regards,\r\nPeter",
+      "PostedDate": "2011-05-30T09:25:23.8-07:00",
+      "Id": 202984
+    },
+    {
+      "Message": "I can reproduce the problem. its not generic but sometimes.\r\nthe underlying problem occurs in the function LateBindingApi.Factory.GetParentLibraryGuid.\r\ni do some tests and hope i can fix this problem tonight.\r\n\r\ni'm sorry for the problem.",
+      "PostedDate": "2011-05-30T13:32:24.307-07:00",
+      "Id": 202985
+    },
+    {
+      "Message": "update: problem fixed! issue closed.\r\nthanks for using issue tracker and not discussion board :)\r\n ",
+      "PostedDate": "2011-05-30T16:14:44.797-07:00",
+      "Id": 202986
+    }
+  ]
+}

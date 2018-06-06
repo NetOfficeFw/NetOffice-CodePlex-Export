@@ -1,0 +1,77 @@
+
+System.Array a;
+page.GetFormulasU(SID_SRCStream, out a);
+
+System.Runtime.InteropServices.COMException was unhandled
+  ErrorCode=-2147467259
+  HResult=-2147467259
+  Message=See inner exception(s) for details.
+  Source=NetOffice
+  StackTrace:
+       at NetOffice.Invoker.Method(COMObject comObject, String name, Object[] paramsArray, ParameterModifier[] paramModifiers)
+       at NetOffice.VisioApi.IVPage.GetFormulasU(Int16[] sID_SRCStream, Object[]& formulaArray)
+       at ConsoleApplication1.Program.Page_SetFormulas222() in d:\test_visio\ConsoleApplication1\ConsoleApplication1\Program.cs:line 54
+       at ConsoleApplication1.Program.Main(String[] args) in d:\test_visio\ConsoleApplication1\ConsoleApplication1\Program.cs:line 16
+       at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+       at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+       at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+       at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+       at System.Threading.ThreadHelper.ThreadStart()
+  InnerException: 
+       HResult=-2146232828
+       Message=Exception has been thrown by the target of an invocation.
+       Source=mscorlib
+       StackTrace:
+            at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)
+            at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)
+            at NetOffice.Invoker.Method(COMObject comObject, String name, Object[] paramsArray, ParameterModifier[] paramModifiers)
+       InnerException: 
+            ErrorCode=-2147352571
+            HResult=-2147352571
+            Message=Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))
+            InnerException: 
+
+
+
+====================
+=====================
+====================
+
+
+
+object[] a = new object[0];
+page.GetFormulasU(SID_SRCStream, out a);
+
+
+System.Runtime.InteropServices.COMException was unhandled
+  ErrorCode=-2147467259
+  HResult=-2147467259
+  Message=See inner exception(s) for details.
+  Source=NetOffice
+  StackTrace:
+       at NetOffice.Invoker.Method(COMObject comObject, String name, Object[] paramsArray, ParameterModifier[] paramModifiers)
+       at NetOffice.VisioApi.IVPage.GetFormulasU(Int16[] sID_SRCStream, Object[]& formulaArray)
+       at ConsoleApplication1.Program.Page_SetFormulas222() in d:\test_visio\ConsoleApplication1\ConsoleApplication1\Program.cs:line 54
+       at ConsoleApplication1.Program.Main(String[] args) in d:\test_visio\ConsoleApplication1\ConsoleApplication1\Program.cs:line 16
+       at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+       at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+       at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+       at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+       at System.Threading.ThreadHelper.ThreadStart()
+  InnerException: 
+       HResult=-2146232828
+       Message=Exception has been thrown by the target of an invocation.
+       Source=mscorlib
+       StackTrace:
+            at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)
+            at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)
+            at NetOffice.Invoker.Method(COMObject comObject, String name, Object[] paramsArray, ParameterModifier[] paramModifiers)
+       InnerException: 
+            ErrorCode=-2147352571
+            HResult=-2147352571
+            Message=Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))
+            InnerException: 

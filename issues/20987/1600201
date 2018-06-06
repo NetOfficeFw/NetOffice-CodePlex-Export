@@ -1,0 +1,20 @@
+System.Runtime.InteropServices.COMException occurred
+  Message=See inner exception(s) for details.
+  Source=NetOffice
+  ErrorCode=-2147467259
+  StackTrace:
+       bei NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)
+       bei NetOffice.ExcelApi.Range.get_Item(Object rowIndex, Object columnIndex)
+       bei BCON.Project.Data.Export.XlsxExport.writeMeterData(Workbook exportBook, Worksheet exportSheet) in D:\Works\wCoding\C#\BCON\HistoryDataExport\HistoryDataExport\XlsxExport-internal.cs:Zeile 151.
+  InnerException: System.Reflection.TargetInvocationException
+       Message=Ein Aufrufziel hat einen Ausnahmefehler verursacht.
+       Source=mscorlib
+       StackTrace:
+            bei System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)
+            bei System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)
+            bei System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)
+            bei NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)
+       InnerException: System.Runtime.InteropServices.COMException
+            Message=Ausnahme von HRESULT: 0x800A01A8
+            ErrorCode=-2146827864
+            InnerException: 

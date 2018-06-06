@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Hello,\nThank you for this great project.\nI'm using it for my excel addin.\nRecently I encountered the following problem.\n\nI create many Range objects from some source Range using Range[], Application.Range, Application.Union methods. In that case the source Range object contains many many children objects of type Application, Range, etc.\nWhen I disposing the source Range object, Stack overflow exception occurs.\n\nNow I'm using reflection to get whole object graph to unbind objects from their parents and to dispose objects separately.\n\nPlease fix it. Thank you.",
+    "LastUpdatedDate": "2016-04-19T23:16:20.96-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-04-06T22:40:05.58-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Stack overflow in COMObject.Dispose",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22231
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for reporting the issue.\r\n\r\nhow many proxies you have in your application when it fails?(you see that typically in NetOffice.Core.Default.ProxyCount i.e. in a NetOffice Tools addin project MyAddin.Core.ProxyCount) This is an indicator for me its truly recursion issue. (the count is not the point but, the parent-child relations must heavy in your scenario or i do something wrong)\r\n\r\n(you can disable the proxy management in the Core.Settings temporaily if you want)\r\n\r\n*Sebastian",
+      "PostedDate": "2016-04-07T01:58:52.79-07:00",
+      "Id": 203373
+    },
+    {
+      "Message": "Hello Sebastian,\r\n\r\nI have checked, It is not truly recursion issue. The children tree has 14646 levels and 29532 objects. All objects are different. ProxyCount shows me 29915.\r\n\r\nThank you,Anton",
+      "PostedDate": "2016-04-19T23:16:20.96-07:00",
+      "Id": 203374
+    }
+  ]
+}

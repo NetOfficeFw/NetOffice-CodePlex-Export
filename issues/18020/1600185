@@ -1,0 +1,738 @@
+NetOffice: NetOffice.Factory.Initialize()
+NetOffice: Load assembly ExcelApi.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel\v4.0_4.0.0.0__b77a5c561934e089\System.ServiceModel.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xaml\v4.0_4.0.0.0__b77a5c561934e089\System.Xaml.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\devlop\TFS\Hannes\GGG\bin_x86\Debug\GMap.NET.WindowsForms.dll', Symbols loaded.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Load assembly ExcelApi.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\devlop\TFS\Hannes\GGG\bin_x86\Debug\GMap.NET.Core.dll', Symbols loaded.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Management\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Management.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Serialization.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Security\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Security.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\Accessibility\v4.0_4.0.0.0__b03f5f7f11d50a3a\Accessibility.dll'
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Deployment\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Deployment.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization.Formatters.Soap\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Runtime.Serialization.Formatters.Soap.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Data.DataSetExtensions\v4.0_4.0.0.0__b77a5c561934e089\System.Data.DataSetExtensions.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\assembly\GAC_MSIL\System.Data.SqlServerCe\4.0.0.0__89845dcd8080cc91\System.Data.SqlServerCe.dll'
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\devlop\TFS\Hannes\GGG\bin_x86\Debug\HtmlAgilityPack.dll', Symbols loaded.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Type:NotSupportedException
+Message:An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+Target:System.Reflection.RuntimeAssembly nLoadFile(System.String, System.Security.Policy.Evidence)
+Stack:   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at NetOffice.Factory.Initialize()
+
+
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+'GGG_Crawler.exe' (Managed (v4.0.30319)): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Data.SqlXml\v4.0_4.0.0.0__b77a5c561934e089\System.Data.SqlXml.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Assembly OfficeApi.dll not found.
+NetOffice: Try to load dependent assembly VBIDEApi.dll.
+NetOffice: Assembly VBIDEApi.dll not found.
+NetOffice: Try to load dependent assembly OfficeApi.dll.
+NetOffice: Type:NotSupportedException
+Message:The invoked member is not supported in a dynamic assembly.
+Target:System.String get_CodeBase()
+Stack:   at System.Reflection.Emit.InternalAssemblyBuilder.get_CodeBase()
+   at NetOffice.Factory.Initialize()
+
+
+A first chance exception of type 'System.NotSupportedException' occurred in NetOffice.dll

@@ -1,0 +1,65 @@
+' Public C# signatures.
+#If CSharp Then
+
+        Public ReadOnly Property Offset() As NetOffice.ExcelApi.Range
+            Get
+                Dim paramsArray As Object() = Nothing
+                Return Offset(paramsArray)
+            End Get
+        End Property
+
+
+        ' Legacy C# methods.
+        Public Function get_Offset(rowOffset As Object, columnOffset As Object) As NetOffice.ExcelApi.Range
+            Return Offset(rowOffset, columnOffset)
+        End Function
+
+
+        Public Function get_Offset(rowOffset As Object) As NetOffice.ExcelApi.Range
+            Return Offset(rowOffset)
+        End Function
+
+' Public VB signatures.
+#Else
+    
+    Public Function Offset() As NetOffice.ExcelApi.Rang    Dim paramsArray As Object() = Nothing
+        Return Offset(paramsArray)
+    End Function
+
+#End If
+
+
+    ' Common language methods.
+    Public Function Offset(rowOffset As Object) As NetOffice.ExcelApi.Range
+        Dim paramsArray As Object() = Invoker.ValidateParamsArray(rowOffset)
+        Return Offset(paramsArray)
+    End Function
+
+
+    Public Function Offset(rowOffset As Object, columnOffset As Object) As NetOffice.ExcelApi.Range
+        Dim paramsArray As Object() = Invoker.ValidateParamsArray(rowOffset, columnOffset)
+        Return Offset(paramsArray)
+    End Function
+
+
+    ' Private method which consolidates the code for all the Offset functions.
+    Private Function Offset(paramsArray As Object()) As NetOffice.ExcelApi.Range
+        Dim returnItem As Object = Invoker.PropertyGet(Me, "Offset", paramsArray)
+        Dim newObject As NetOffice.ExcelApi.Range = TryCast(NetOffice.Factory.CreateKnownObjectFromComProxy(Me, returnItem, NetOffice.ExcelApi.Range.LateBindingApiWrapperType), NetOffice.ExcelApi.Range)
+        Return newObject
+    End Function
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

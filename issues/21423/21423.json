@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "When iterating through Range.Fields, after calling field.Update() (which may update the list of fields in Word), there's an issue with the iterator of fields. It throws a COMException saying \"Object has been deleted\".  \n\nThe code with NetOffice:\n    // If ToArray is not called, then it throws the exception when iterating for the second time.\n    foreach (var field in storyRange.Fields.ToArray())\n    {\n        try\n        {\n            // Throws an exception COMException (\"Object has been deleted\") the second time possibly because some fields have been deleted and the current field doesn't exist anymore in Word.\n            field.Update();\n        }\n        catch (COMException)\n        {\n        }\n    }\n\nThe code with the Microsoft Word Interop:\n    // With the Interop, the list of fields is updated on the fly. In my case, if I count the number of fields in the range, it starts at 41 fields for the first iteration, and then drops to 31 fields the second iteration.\n    foreach (var field in storyRange.Fields.Cast<Word.Field>()))\n    {\n        // No exception is thrown.\n        field.Update();\n    }\n\nI know it might trigger a bigger refactor, but it would be nice if those lists (not only the fields) could behave like the Interop. \n\nIf you need a repro project with a Word document, let me know.\n\nThanks.",
+    "LastUpdatedDate": "2017-12-11T15:04:29.147-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-10-08T07:08:39.327-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Issue iterating through Range.Fields",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 3,
+    "Id": 21423
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "of course, please send me your sample project to: public.sebastian.web.de to reproduce the problem.\r\n\r\n(also) let me know about your op system version(32/64bit) and your office product/version(32/64bit) and NetOffice version.\r\n\r\nits looks like i need also your office document (remove any private data, also in code, but make sure the problem still occurs)\r\n\r\n*Sebastian",
+      "PostedDate": "2014-10-08T14:35:16.02-07:00",
+      "Id": 203258
+    },
+    {
+      "Message": "Its an issue in the NO enumerator logic. \r\n\r\nAfter some tests i realize MS-Word reject existing field proxies after field.Update(). This occurs also in interop. The problem in NO is the enumerator get one more field proxy as expected(see below).I want fix this as fast as possible but if you need a change today you can modify the NO code at hand of course(just switch 2 code lines in 2 methods).\r\n\r\nLocation:    Utils.cs (NetOffice.dll)Methods:  IEnumerator GetProxyEnumeratorAsProperty(COMObject comObject)  IEnumerator GetProxyEnumeratorAsMethod(COMObject comObject)\r\n\r\nWrong Code:COMObject returnClass = Factory.CreateObjectFromComProxy(enumerator, itemProxy);isMoveNextTrue = (bool)Invoker.MethodReturnWithoutSafeMode(enumerator, \"MoveNext\", null);yield return returnClass;\r\n\r\nCorrect Code:COMObject returnClass = Factory.CreateObjectFromComProxy(enumerator, itemProxy);yield return returnClass;isMoveNextTrue = (bool)Invoker.MethodReturnWithoutSafeMode(enumerator, \"MoveNext\", null);\r\n\r\n*Sebastian\r\n\r\n\r\n\r\n",
+      "PostedDate": "2014-10-09T13:59:59.66-07:00",
+      "Id": 203259
+    },
+    {
+      "Message": "Alright, thanks for your prompt support.",
+      "PostedDate": "2014-10-09T14:18:28.22-07:00",
+      "Id": 203260
+    },
+    {
+      "Message": "NetOffice 1.7.1(RTM) is now available and resolve this issue.\r\n\r\n*happy coding\r\n\r\n",
+      "PostedDate": "2014-11-02T01:22:04.917-08:00",
+      "Id": 203261
+    }
+  ]
+}

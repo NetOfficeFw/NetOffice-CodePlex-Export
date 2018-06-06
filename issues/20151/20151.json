@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "I tried to compile the C# Tutorials.sln in NetOffice1.6\\NET4.5\\Tutorials\\C# in VS2012Premium.  The output was an error in Tutorials\\Tutorials\\Tutorial10.cs on line 39 and line 48.  EnableMessageFilter is not a member of NetOffice.Settings.  I comment out line 39 and revise line 40 so that it does not refer to bool messageFilter, and the solution compiles.\n\nThe same compilation error occurs in the .NET4.0 version of the tutorials.",
+    "LastUpdatedDate": "2013-11-28T02:43:21.887-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-08-29T12:12:45.087-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Compile error in Tutorial 10 of v1.6",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20151
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Similar Error in the VB version. Using VS2013. All tutorial projects giving teh said error.",
+      "PostedDate": "2013-11-28T02:43:21.887-08:00",
+      "Id": 203167
+    }
+  ]
+}

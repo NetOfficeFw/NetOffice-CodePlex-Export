@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "IFactoryInfo:WordApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=4ce962cc9e5644e3:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1\nIFactoryInfo:OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=1208423a019d3443:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1\nIFactoryInfo:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1:VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1\nAttribute:System.Diagnostics.DebuggableAttribute\nAttribute:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute\nAttribute:System.Reflection.AssemblyTitleAttribute\nAttribute:System.Reflection.AssemblyDescriptionAttribute\nAttribute:System.Reflection.AssemblyConfigurationAttribute\nAttribute:System.Reflection.AssemblyCompanyAttribute\nAttribute:System.Reflection.AssemblyProductAttribute\nAttribute:System.Reflection.AssemblyCopyrightAttribute\nAttribute:System.Reflection.AssemblyTrademarkAttribute\nAttribute:System.Reflection.AssemblyFileVersionAttribute\nNetOffice.Factory.Initialize() passed\nNetOffice.Factory.Initialize() DeepLevel:True\nFailed to resolve Assembly\nTry to resolve Assembly\nFailed to resolve Assembly\nFailed to resolve Assembly\nFailed to resolve Assembly\nFailed to resolve Assembly\nFailed to resolve Assembly\nDetect NetOffice assembly OfficeApi.\nType:SEHException\nMessage:外部组件发生异常。\nTarget:System.RuntimeMethodHandle ResolveMethod(Int32, System.RuntimeTypeHandle*, Int32, System.RuntimeTypeHandle*, Int32)\nStack:   在 System.ModuleHandle.ResolveMethod(Int32 methodToken, RuntimeTypeHandle* typeInstArgs, Int32 typeInstCount, RuntimeTypeHandle* methodInstArgs, Int32 methodInstCount)\n   在 System.ModuleHandle.ResolveMethodHandle(Int32 methodToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)\n   在 System.ModuleHandle.ResolveMethodHandle(Int32 methodToken)\n   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, Module decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, RuntimeMethodHandle& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)\n   在 System.Reflection.CustomAttribute.GetCustomAttributes(Module decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes)\n   在 System.Reflection.CustomAttribute.GetCustomAttributes(Assembly assembly, RuntimeType caType)\n   在 System.Reflection.Assembly.GetCustomAttributes(Boolean inherit)\n   在 NetOffice.Factory.AddAssembly(String name, Assembly itemAssembly)\n   在 NetOffice.Factory.AddNetOfficeAssemblies(Boolean deepLevel)\n   在 NetOffice.Factory.Initialize()",
+    "LastUpdatedDate": "2014-06-20T15:49:14.833-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-06-18T22:10:08.26-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Detect NetOffice assembly OfficeApi. Type:SEHException Message:外部组件发生异常。",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21090
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "i need more details or a sample solution to pin point the problem.please send a sample solution to public.sebastian[at]web.de. (please include the NO assemblies)*sebastian",
+      "PostedDate": "2014-06-19T19:51:41.837-07:00",
+      "Id": 203245
+    },
+    {
+      "Message": "Sorry for not write the reason late.\r\n\r\nBUG is Not For NetOffice.  I start a new trhead to monitor a variable which hold the COMObjects of Word, So  that I can Dipose them when timeout.\r\n\r\nI start the thread in DoConnection as:\r\n\r\n private bool DoConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst) {            if (_wordApplication != null)                return true;            try {                AssemblyResolver.Register();                //NetOffice.Factory.ProxyCountChanged += new NetOffice.Factory.ProxyCountChangedHandler(Factory_ProxyCountChanged);                //StartMonitor();\r\n\r\n                System.AppDomain domain = AppDomain.CurrentDomain;                log4n.Info(domain.BaseDirectory);                Step(\"Startup OK...\");                Step(\"OnConnection 0\" + Application);                _wordApplication = new WordAPI.Application(null, Application);                Step(\"OnConnection 1\");                _commandBars = _wordApplication.CommandBars;\r\n\r\nThis code runs OK in WIN7, BUT in XP raise SEHException.\r\n\r\n",
+      "PostedDate": "2014-06-20T15:49:14.833-07:00",
+      "Id": 203246
+    }
+  ]
+}

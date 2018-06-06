@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Right now, the DebugConsole class has options to log to the console, file or memorylist.\nCould you please add 'Trace' as an option which logs a message using the .NET framework trace logging system.\nA call to System.Diagnostics.Trace.WriteLine(message) will do fine.\n \nI request this because it is the most easy way to find problems when developing Add-Ins for us (there is no console available for an add-in). \nBy default,  System.Diagnostics.Trace.WriteLine, messages are written to the Windows debug output. Those messages are displayed in the Visual Studio debug output window in debug mode, and can also be shown using the sysinternals 'DebugView' tool.\nBy using the app.config,  the user can even log the trace output to other outputs.\n \nThank you for this great product, much much better than VSTO!",
+    "LastUpdatedDate": "2013-06-14T00:33:16.377-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-05-03T23:43:14.603-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Please add 'Trace' ConsoleMode to DebugConsole",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17986
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Trace is available in the updated 1.5.1 RC\r\n\r\n*have a nice day",
+      "PostedDate": "2012-05-04T10:15:07.81-07:00",
+      "Id": 203047
+    }
+  ]
+}

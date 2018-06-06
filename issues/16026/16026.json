@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "When I run the word C# samples I get an error dialog when opening the resulting doc afterwords.\nThe dialog says:\nTitle: C# WordRibbonAddin\nText: An error occured in OnAction.\n        Error accessing resource Stream",
+    "LastUpdatedDate": "2013-06-14T00:33:19.18-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2011-06-07T12:06:35.56-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error when opening Word samples in Word 2007",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16026
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for request.\r\ncan you tell me the .net framework version ?",
+      "PostedDate": "2011-06-07T13:46:30.03-07:00",
+      "Id": 202987
+    },
+    {
+      "Message": "now i see the mistake. *damn it\r\nthe method to read the embedded xml file in COM Addin Ribbon Example was wrong.\r\nthe problem is not associated to the normal examples.\r\nneeds one day to fix it.\r\nissue is in progress now.",
+      "PostedDate": "2011-06-07T14:11:40.907-07:00",
+      "Id": 202988
+    },
+    {
+      "Message": "fixed! :-)",
+      "PostedDate": "2011-06-08T08:23:11.86-07:00",
+      "Id": 202989
+    },
+    {
+      "Message": "Thx!",
+      "PostedDate": "2011-06-09T02:51:20.563-07:00",
+      "Id": 202990
+    }
+  ]
+}

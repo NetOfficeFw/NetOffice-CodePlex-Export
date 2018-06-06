@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 7,
+    "Custom": "",
+    "Description": "I tried to run any outlook COM Add-in under W8 and Office 2013, but neither works. The addins registered successfully and they are visible in the COM Add-In dialog, but all time disabled. Trying to load the Add-In manually produces a message, which states, that \" ... is not a valid Office Add-In.\"",
+    "LastUpdatedDate": "2014-01-26T22:39:12.84-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-01-12T10:17:38.917-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "No COM Addin example runs under W8/Office 2013",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20615
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "please let me know more about the machine and the office version.windows is 64bit?office is 32bit?your addin use .net 4.5 ?fusion log viewer say, no missing dependencies?vb or c# solution?its works fine in w7(same bitness scenario)?\r\n\r\n*sebastian ",
+      "PostedDate": "2014-01-13T07:06:19.053-08:00",
+      "Id": 203204
+    },
+    {
+      "Message": "Windows is 8 Pro 64, Office 2013 32 bit (15.0.4551.1007), tried all C# addins 4.0 and 4.5, any CPU, x86 and x64 without success; found out, that's not a NetOffice - problem. Following step by step the instruction under http://msdn.microsoft.com/en-us/library/office/ff868772.aspx leads to the same. Fusion Log viewer keeps still for any scenario\r\n\r\nRogerLae",
+      "PostedDate": "2014-01-13T08:38:48.777-08:00",
+      "Id": 203205
+    },
+    {
+      "Message": "I am having the exact same problem as OP.\r\n\r\nI am running Windows 8.1 64-bit with Office 2013 and 2010 64-bit installed on the machine.\r\n\r\nI tried my own extension, which loads on Windows 7 32-bit with Office 2010, but I recompiled it targeting x86-64, and the same behavior occurs, as when I target NetOffice 1.7.0 (Preview)\\NET 4.0\\Examples\\Word\\C#\\NetOffice COMAddin Examples\\Extended\\bin\\Debug\\NetOfficeTools.ExtendedWordCS4.dll\r\n\r\nI do manual regasm with /codebase with admin privileges to make sure it registers, and the registry keys look OK, but the \"Location\" in the MS Word Add-in list is empty for these NetOffice addins.\r\n\r\nI am able to load addins developed with Visual Studio 2013 and VSTO just fine.\r\n\r\nI tried both Office 2010 and Office 2013 to see if they were any different -- nope, neither one will load any NetOffice addins, even if they are compiled for 64-bit and bundled with all dependencies. In fact I used the same MSI (compiled with WiX) to install my addin that runs fine on Windows 7 32-bit, and still no go.\r\n\r\nLooks like NetOffice is simply broken on Windows 8 / 8.1 64-bit with Office 2013 installed, even if Office 2013 is 32-bit or 64-bit, even if you have a parallel install of Office 2010. :(",
+      "PostedDate": "2014-01-24T21:05:18.477-08:00",
+      "Id": 203206
+    },
+    {
+      "Message": "Addendum: I can reproduce the problem on both NetOffice 1.6.0, and NetOffice 1.7.0 Preview.",
+      "PostedDate": "2014-01-25T00:19:20.213-08:00",
+      "Id": 203207
+    },
+    {
+      "Message": "As I stated in my comment 13.1. this is not a problem of NetOffice. Reproducing the steps of MS - tutorial under http://msdn.microsoft.com/en-us/library/office/ff868772.aspx leads to the same result.",
+      "PostedDate": "2014-01-25T01:06:33.06-08:00",
+      "Id": 203208
+    },
+    {
+      "Message": "Then we are experiencing different issues, since VSTO works for me.",
+      "PostedDate": "2014-01-25T14:39:45.68-08:00",
+      "Id": 203209
+    },
+    {
+      "Message": "This is not the tutorial for using VSTO (may be it works), but for COMAddins via IDTExtensibility2 Interface (the same technique, which use Sebastian)",
+      "PostedDate": "2014-01-26T22:39:12.84-08:00",
+      "Id": 203210
+    }
+  ]
+}

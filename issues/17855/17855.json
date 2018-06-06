@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "in some situations, office returns the value for an enum as double.\ntypical is integer, but it is what is is. in this situation an InvalidCastException ocurred.\ntask: fix the problem",
+    "LastUpdatedDate": "2013-06-14T00:33:16.757-07:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-04-15T21:19:37.113-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "InvalidCastException for some enum properties",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17855
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

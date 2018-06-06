@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "I can open a Word document as readonly so the [Read-only] shows but I want to disable the editing too.  Is there additional options to stop people from being able to edit the document?",
+    "LastUpdatedDate": "2014-07-17T11:10:25.007-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-07-08T07:01:30.26-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Is there a way to make Word open in readonly and not be able to edit the document",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21132
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "http://office.microsoft.com/en-us/excel-help/what-is-protected-view-HA010355931.aspx\r\n\r\ncreate a NetOffice.WordApi.ProtectedViewWindow for your document.\r\n\r\n```//detecting if in protected mode.NetOffice.WordApi.ProtectedViewWindow protectedViewWindow = Application.ActiveProtectedViewWindow;            if (protectedViewWindow != null)            {                return;            }```",
+      "PostedDate": "2014-07-09T10:14:43.78-07:00",
+      "Id": 203248
+    },
+    {
+      "Message": "So I have a word document this is not in protected mode but I want to open it in read only protected mode.  I don't see how that works in code.",
+      "PostedDate": "2014-07-16T04:39:58.207-07:00",
+      "Id": 203249
+    },
+    {
+      "Message": "Apply protection mode.\r\n\r\n```NetOffice.WordApi.Application app = new NetOffice.WordApi.Application();app.DisplayAlerts = NetOffice.WordApi.Enums.WdAlertLevel.wdAlertsNone;app.Visible = true;\r\n\r\nNetOffice.WordApi.Document doc = app.Documents.Open(filename, false, true);            doc.Protect(NetOffice.WordApi.Enums.WdProtectionType.wdAllowOnlyReading, false, \"password\");            ```\r\n\r\n```NetOffice.WordApi.Application app = new NetOffice.WordApi.Application();app.Visible = true;NetOffice.WordApi.ProtectedViewWindow window = app.ProtectedViewWindows.Open(filename);\r\n\r\n```",
+      "PostedDate": "2014-07-17T11:10:25.007-07:00",
+      "Id": 203250
+    }
+  ]
+}

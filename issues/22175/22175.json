@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Problem:\n* If Outlook is started via automation the Addin ist not fully loaded.\n\nSteps to reproduce:\n* Install the \"NetOffice COMAddin Examples\\Extended\" Plugin in Outlook\n* Close Outlook\n* Execute the following PS:\n```\n$outlook = new-object -com outlook.application;\n$mail = $outlook.CreateItem(0)  \n$mail.Recipients.Add(\"info@example.de\")  \n$mail.Subject = \"test e-mail\"  \n$mail.save()\n```\n* DD-Click Outlook in the \"Notification Area\"\n\nExpected Results:\n* The Addin is fully loaded\n\nResulst:\n* The Addin is visible in the ribbon but the buttons have no affect.",
+    "LastUpdatedDate": "2016-02-23T01:28:45.17-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-02-23T01:28:45.17-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Outlook: Automation beaks Addin",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22175
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

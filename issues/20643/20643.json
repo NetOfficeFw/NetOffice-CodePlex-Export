@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "In WordAPI for jumping to then next bookmark \"Firstline\" in a document, I've tried to use \nApplication.Selection.Goto(What:=wdGoToBookmark, Name:=\"Firstline\") \n\nbut got the error: \"For parameter \"which\" the argument ist missed\".\n\nFor the argument wdGoToBookmark only the parameter \"name\" is required, in Word interopts, this is functional but nut in NetOffice, WordAPI.\n\nI found no way, to fix this.\nAny Ideas?\n\nThanks\nJoerg",
+    "LastUpdatedDate": "2014-08-10T15:05:41.747-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-01-17T03:38:58.59-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "WordAPI, Selection.Goto wdGoToBookmark Error",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20643
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The use of Bookmarks in WordAPI does not seem to follow Word API, Try using Bookmarks.Item, it does not exist, nor can one fine a way to use predefined bookmarks.\r\n\r\nIf anyone could shed some light on this?\r\n\r\nThanksRudy",
+      "PostedDate": "2014-08-10T15:05:41.747-07:00",
+      "Id": 203211
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 15,
+    "Custom": "",
+    "Description": "Hi,\n\nI've just started using Netoffice and I've found that Entirerow and Entirecolumn properties/methods are not available from the range object.  I use these to get a reference to the entire row/column so that I can insert one or more rows/columns.  Is there a workaround for this?\n\nCheers",
+    "LastUpdatedDate": "2017-12-11T15:04:29.147-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-07-16T17:42:28.96-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Entirerow and Entirecolumn methods/properties not in range object.",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 19974
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600192,
+      "FileName": "code.txt",
+      "DownloadUrl": ".\\1600192"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "OK I've found that the properties are in actual fact present and seem to work.  But they are marked as hidden from intellisense.  Any reason for this?",
+      "PostedDate": "2013-07-16T18:30:03.37-07:00",
+      "Id": 203148
+    },
+    {
+      "Message": "oops, this is an issue. \r\n\r\nNetOffice has some special workarrounds for parametrized properties(not supported in C#). the property version without parameters is a normal property and the property version/overload with parameters is a method in a dumy base class because its no allowed to have a method and a property with the same name in the same class. NetOffice has also corresponding methods with the 'get_'/'set' prefix to hold compatibility with existing standard interop assembly c# code. these methods are hidden in intellisense and thats all(normally...) i do an update at weekend and fix the problem.(may more properties has this problem, i have to clearify the situation)\r\n\r\nSebastian",
+      "PostedDate": "2013-07-16T22:32:22.543-07:00",
+      "Id": 203149
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nThanks for the response.  I had some further questions, some of which you have answered.\r\n\r\nTo confirm my understanding:\r\n\r\nC# doesn't support parameterised properties which is why you have put corresponding methods into a base class.  This doesn't apply to VB.Net as far as I can tell - correct me if I'm wrong.\r\n\r\nI have seen the hidden 'get_'/'set' methods for various properties.  You say its for compatibility with existing C# code.  Does it have any impact on VB.net code?  The reason I ask is that I have to use the get_Offset() and get_Resize methods/properties on the Range object for them to work.  The intellisense options, Offset() and Resize() do not work.",
+      "PostedDate": "2013-07-17T02:06:05.49-07:00",
+      "Id": 203150
+    },
+    {
+      "Message": "Ok, I discovered what the cause of the problem is.  The reason I currently need to use get_Resize() etc instead of just Resize() etc is:\r\n\r\nThe VB.net compiler thinks that when I use Range.Resize(a, b) that I am referring to the default property (.Item) of the Range object returned by the Range.Resize() property rather than seeing the overloaded methods in the base class.  \r\n\r\nI think this is why you needed to put the methods in the base class in the first place because the compiler didn't know whether you wanted the method or the property.  The workaround is to use the get_Resize method.  So Range_.Resize(a, b) is not actually accessible.\r\n\r\nIt would be good if we could eliminate this issue though.  I wonder if the Range.Resize property is even necessary.  When is it useful?\r\n\r\nThe same arguments would be made for .Offset(...) etc.",
+      "PostedDate": "2013-07-17T02:36:05.083-07:00",
+      "Id": 203151
+    },
+    {
+      "Message": "hello,\r\n\r\nvb.net supports parametrized properties, indeed. but netoffice is written in c#. \r\n\r\nabout get_/set:if you want call a paramtrized property with the standard interop assembly(not PIA) the compiler shows you the get_/set_ method version.(thats what it is inside of the IL code).\r\n\r\nabout vb:the vb.net language has an issue in a scenario with a property that have 2 optional parameters(for example). the property overload without a parameter is located in the main class and the corresponding methods in the base class and i dont know why but vb.net can't see the methods in the base class in this case. the property in the derived class(Range) hides the methods in the base class(Range_) for visual basic.(no problem in c#) this is the reason you have to use the get_ or set_ version in vb.net sometimes. i hope microsoft resolve this issue very very soon.\r\n\r\nSebastian",
+      "PostedDate": "2013-07-17T02:41:30.98-07:00",
+      "Id": 203152
+    },
+    {
+      "Message": "edit OffSet and Resize is accessible of course without parameters.a useful trick is to cast the instance to Range_\r\n\r\nSebastian",
+      "PostedDate": "2013-07-17T02:46:11.403-07:00",
+      "Id": 203153
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nI had just guessed that NetOffice would be written in C#!  Unfortunately the Codeplex server is very slow for me at least and I wasn't able to look at it myself.  I had just been inspecting the MSIL.\r\n\r\nI was reading that parameterised properties accessed by C# code are automatically \"converted\" into get_/set_ methods.  I wonder if it would be useful to re-write some of the code in VB.net?  Then you can write parameterised properties which will automatically generate the get_/set_ methods.\r\n\r\nRoss",
+      "PostedDate": "2013-07-17T03:34:06.01-07:00",
+      "Id": 203154
+    },
+    {
+      "Message": "i have multiple challenges to handle. its just one more as parametrized properties. c# has the better/more powerful event concept and i need native enumerators to. in summary: c# works better or in other words. if do netoffice in vb then c# devs has much more problems as vb devs when i do netoffice in c#.for example:if i do that in vb then the c# developer has to use get_ and set_ in any case and i think this is a no-go for c# devs.vb devs have this one issue at the moment but i hope i find a solution for that(or ms fix this problem) i try some compiler attributes, explicitly interfaces, linq extensions but the methods in the base class was not acessible\r\n\r\n",
+      "PostedDate": "2013-07-17T04:16:54.93-07:00",
+      "Id": 203155
+    },
+    {
+      "Message": "ooops Ctrl+S triggers the submit button..suprisei have one last idea and try them next weekend.wish me luck dude ^^",
+      "PostedDate": "2013-07-17T04:20:19.543-07:00",
+      "Id": 203156
+    },
+    {
+      "Message": "Is there a better place to discuss this?\r\n\r\nAlso have you considered condensing down the number of method overloads by using optional parameters?\r\n\r\nhttp://msdn.microsoft.com/en-us/vstudio/ee460905.aspx\r\n\r\n",
+      "PostedDate": "2013-07-21T02:34:25.307-07:00",
+      "Id": 203157
+    },
+    {
+      "Message": "You might have to use a stronger type for the inputs (leaving it as object seemed to cause a problem) but I can't think of any valid argument other than an integer (int might not be the correct size to use).\r\n\r\n\t\tpublic NetOffice.ExcelApi.Range Offset(int rowOffset = 0, int columnOffset = 0)\t\t{\t\t\t// ...\t\t}",
+      "PostedDate": "2013-07-21T02:45:00.437-07:00",
+      "Id": 203158
+    },
+    {
+      "Message": "i cant use optional parameters because i still want support .NET 2another reason is the supportbylibrary annotation and xml comments, its impossible to do this with one method overload.\r\n\r\nupdate: the problem is the properties EntireRow and EntireColumn was marked as [nonbrowsable] in the COM type library\r\n\r\nall entities in NetOffice are hidden if the entity are marked as [hidden] and/or [nonbrowsable] in the COM typelibrary.\r\n\r\ni want change this. only [hidden] entities should be hidden.",
+      "PostedDate": "2013-07-26T11:11:32.913-07:00",
+      "Id": 203159
+    },
+    {
+      "Message": "Fair enough.  What about putting all the logic part of the method into a hidden or private method and then write the overloaded public methods so that they utilise the hidden or private method?  If you consolidate in this way you could then use conditional compilation to provide the correct signatures to each language.  Eg.\r\n\r\n' Public C# signatures.#If CSharp Then\r\n\r\n        Public ReadOnly Property Offset() As NetOffice.ExcelApi.Range            Get                Dim paramsArray As Object() = Nothing                Return Offset(paramsArray)            End Get        End Property\r\n\r\n        ' Legacy C# methods.        Public Function get_Offset(rowOffset As Object, columnOffset As Object) As NetOffice.ExcelApi.Range            Return Offset(rowOffset, columnOffset)        End Function\r\n\r\n        Public Function get_Offset(rowOffset As Object) As NetOffice.ExcelApi.Range            Return Offset(rowOffset)        End Function\r\n\r\n' Public VB signatures.#Else        Public Function Offset() As NetOffice.ExcelApi.Rang    Dim paramsArray As Object() = Nothing        Return Offset(paramsArray)    End Function\r\n\r\n#End If\r\n\r\n    ' Common language methods.    Public Function Offset(rowOffset As Object) As NetOffice.ExcelApi.Range        Dim paramsArray As Object() = Invoker.ValidateParamsArray(rowOffset)        Return Offset(paramsArray)    End Function\r\n\r\n    Public Function Offset(rowOffset As Object, columnOffset As Object) As NetOffice.ExcelApi.Range        Dim paramsArray As Object() = Invoker.ValidateParamsArray(rowOffset, columnOffset)        Return Offset(paramsArray)    End Function\r\n\r\n    ' Private method which consolidates the code for all the Offset functions.    Private Function Offset(paramsArray As Object()) As NetOffice.ExcelApi.Range        Dim returnItem As Object = Invoker.PropertyGet(Me, \"Offset\", paramsArray)        Dim newObject As NetOffice.ExcelApi.Range = TryCast(NetOffice.Factory.CreateKnownObjectFromComProxy(Me, returnItem, NetOffice.ExcelApi.Range.LateBindingApiWrapperType), NetOffice.ExcelApi.Range)        Return newObject    End Function",
+      "PostedDate": "2013-07-28T14:03:41.943-07:00",
+      "Id": 203160
+    },
+    {
+      "Message": "Sorry looks like the #If ... #Else ... #End If are escaped as titles in this forum.  ",
+      "PostedDate": "2013-07-28T14:04:58.027-07:00",
+      "Id": 203161
+    },
+    {
+      "Message": "Try the attached code for reference.  Also I apologise its in VB.  I don't trust my conversion skills into C# but hopefully you can understand it and convert it to C#.",
+      "PostedDate": "2013-07-28T14:06:53.237-07:00",
+      "Id": 203162
+    }
+  ]
+}

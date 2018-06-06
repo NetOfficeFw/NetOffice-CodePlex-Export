@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 11,
+    "Custom": "",
+    "Description": "After adding a line to the worksheet with the Worksheet.Shapes.AddLine method, the .Line property of the returned Excel.Shape cannot be accessed. A LateBindingApi.Core.LateBindingApiException is thrown with the message that the LineFormat class is not found in LateBindingApi. When using the interop directly (Microsoft.Office.Interop.Excel instead of using NetOffice), we are able to access the .Line property of the returned Shape object.\n \n \nusing Excel = NetOffice.ExcelApi;\n \nLateBindingApi.Core.Factory.Initialize();\nExcel.Application XL = new Excel.Application(null, ExcelDnaUtil.Application); // We're using ExcelDna here\n \nExcel.Worksheet ws = (Excel.Worksheet)XL.ActiveSheet;\nExcel.Shape arrow = ws.Shapes.AddLine(288.0F, 218.5F, 592.0F, 218.5F); // Randomly add a line\nExcel.LineFormat lf = arrow.Line; // Throws exception\n \n// arrow.Line.DashStyle = (MsoLineDashStyle)2; // This throws an exception as we cannot access the .Line object\n \nException:\nSystem.Exception {LateBindingApi.Core.LateBindingApiException}\n{\"LineFormat class not found in LateBindingApi.\"}\n \n \nWe can get around this by accessing the ComObject directly:\n \ndynamic proxy = arrow.UnderlyingObject;\nproxy.Line.DashStyle = 2;\n \n \n \nAlso, when trying to access the Shape.Fill property, it is always set to null in NetOffice:\n \nusing Excel = NetOffice.ExcelApi;\n \nLateBindingApi.Core.Factory.Initialize();\nExcel.Application XL = new Excel.Application(null, ExcelDnaUtil.Application); // We're using ExcelDna here\n \ndynamic comment = XL.ActiveSheet.Comments[1]; // Get the first comment on the current worksheet\ntry\n{\n  comment.Shape.Fill.ForeColor.RGB = 255; // This throws an error as .Fill is null in NetOffice proxy object\n}\ncatch\n{\n  dynamic comment_interop = comment.UnderlyingObject; // We must set it directly thru the underlying proxy object\n  comment_interop.Shape.Fill.ForeColor.RGB = 255; // This works\n}\n \nException Thrown:\nSystem.Exception {Microsoft.CSharp.RuntimeBinder.RuntimeBinderException}\n{\"Cannot perform runtime binding on a null reference\"}",
+    "LastUpdatedDate": "2013-06-14T00:33:18.637-07:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2011-08-01T22:25:03.19-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Shape.Line and Shape.Fill throw exceptions in NetOffice",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 16324
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "i do a test and have the same exception \"class not found\"\r\ngive me few moments to see whats the problem.\r\n",
+      "PostedDate": "2011-08-02T02:58:40.973-07:00",
+      "Id": 202994
+    },
+    {
+      "Message": "temp update:\r\nLineFormat is defined in Excel and in Office\r\nthe assembly try to convert the comproxy as Excel LineFormat(so defined in typelib) but the comproxy at runtime means he comes from Office. \r\ni'm not sure in prev versions of excel the type comes from excel and now he comes from office.\r\ncurrently my codegenerator can't handle this scenario i believe. this need a little bit more research :( but i think i can fix it in 1 day.\r\n\r\n",
+      "PostedDate": "2011-08-02T05:45:17.4-07:00",
+      "Id": 202995
+    },
+    {
+      "Message": "temp update:\r\nokay now i see\r\nShape.Line means defined LineFormat in Office and not the defined LineFormat in Excel.\r\nthis is a very rare situation, 2 defined types with the same name and LineFormat Line means the other component type.\r\nthats also the reason for Shape.Fill is null. Fill means the FillFormat in Office and not in Excel.\r\nthe result of wrong as cast is null. i do a fix now.\r\n",
+      "PostedDate": "2011-08-02T12:01:10.593-07:00",
+      "Id": 202996
+    },
+    {
+      "Message": "temp update:\r\nthe bug is located in TLI API from Microsoft. \r\nthe api makes possible to analyze a COM Type Library and the API says the specified objects are not external defined and thats wrong.\r\ni will try to create a workarround...\r\n\r\n ",
+      "PostedDate": "2011-08-02T13:56:42.353-07:00",
+      "Id": 202997
+    },
+    {
+      "Message": "Wow, that is a rare situation. Thank you for shedding some light on the problem. \r\n\r\nFor now, the only workaround is to do something like this (for anyone that is interested):\r\n\r\ndynamic arrow = worksheet.Shapes.AddLine((float)startx, (float)starty, (float)endx, (float)endy);\r\ndynamic proxy = arrow.UnderlyingObject; // Get the underlying Shape object from NetOffice\r\ndynamic line = proxy.Line; // Store this as we are creating a new \"unmanaged\" proxy object outside of NetOffice\r\ndynamic fc = line.ForeColor; // Store this as well since we are creating a new proxy object\r\nfc.RGB = 255; // Set the property\r\n\r\nMarshal.ReleaseComObject(fc); // We must release our proxy objects that aren't managed by NetOffice\r\nMarshal.ReleaseComObject(line);\r\n//Marshal.ReleaseComObject(proxy); // Do NOT release the 'UnderlyingObject' provided by NetOffice as proxy count problems are encountered as NetOffice should dispose of this object for you, but you must release the other objects you create\r\n\r\nThanks Sebastian!!",
+      "PostedDate": "2011-08-02T21:00:22.637-07:00",
+      "Id": 202998
+    },
+    {
+      "Message": "i think i can find a way to check out the type is external defined or not without the bugy TLI API method.\r\ni hope this evening.",
+      "PostedDate": "2011-08-03T07:29:44.693-07:00",
+      "Id": 202999
+    },
+    {
+      "Message": "its done.\r\na new release with fixed issue comes this week,\r\n",
+      "PostedDate": "2011-08-08T06:20:24.17-07:00",
+      "Id": 203000
+    },
+    {
+      "Message": "the best workarround for your current code today is:\r\n\r\nExcel.Shape shape  = comment.Shape;\r\nobject proxy = LateBindingApi.Core.Invoker.PropertyGet(shape, \"Fill\");\r\nExcel.FillFormat fill = new Excel.FillFormat(shape, proxy);\r\n\r\n//now you have a serious Fill object managed by NetOffice\r\n\r\n",
+      "PostedDate": "2011-08-08T06:29:52.217-07:00",
+      "Id": 203001
+    },
+    {
+      "Message": "finally i have it, the problem occurs if two interfaces in different components has the same interface id.\r\nthis is not allowed in COM but Microsoft do that (i dont know why) i create a small analyzer \r\nto see what happen. the result is as follows.\r\n\r\n\r\nLineFormat\r\nFillFormat\r\nAdjustments\r\nCalloutFormat\r\nColorFormat\r\nShapeNode\r\nPictureFormat\r\nShadowFormat\r\nTextEffectFormat\r\nThreeDFormat\r\nDiagramNodes\r\nDiagramNode\r\nDiagramNodeChildren\r\nTextFrame2\r\n\r\n\r\nall these types are defined in office and excel with the same interface id and also same properties and methods(thats the reason for it works early bind without problems)\r\nnice to know: these scary effect is only affected to excel and office.\r\nas outcome you have problems with these types in NetOffice, null or exception while using.\r\nnow, i have a workaround and in next release(NetOffice 1.2), the problem is resolved.",
+      "PostedDate": "2011-08-10T13:38:27.457-07:00",
+      "Id": 203002
+    },
+    {
+      "Message": "Amazing!\r\n\r\nGreat work Sebastian! I hope this discovery and fix helps people out.",
+      "PostedDate": "2011-08-13T03:21:00.237-07:00",
+      "Id": 203003
+    },
+    {
+      "Message": "an updated release tag is now available. issue closed.\r\n*have a nice day",
+      "PostedDate": "2011-08-13T18:40:55.44-07:00",
+      "Id": 203004
+    }
+  ]
+}

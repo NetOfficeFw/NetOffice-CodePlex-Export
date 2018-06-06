@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "I made a setup project(vs2010,office2007) and build the setup file on windows 7.\nIt's no problem to install it on windows 7. But when I installed it on windows 8.\nThere is no com addin appeared in office addin list.\nThe ribbon is also not displayed.\nI also changed x86 of the setup project to x64. It's the same result.\nDoes any who met this problem? How did you settled it?\n\nBy the way, I am using netoffice 3.5(.net framework).",
+    "LastUpdatedDate": "2013-09-13T00:11:05.33-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-07-08T23:48:04.837-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Can't install it on windows 8",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 19950
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600189,
+      "FileName": "Setup.pdf",
+      "DownloadUrl": ".\\1600189"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The function ComRegisterFunctionAttribute: RegisterFunction wasn't executed.",
+      "PostedDate": "2013-07-08T23:53:40.613-07:00",
+      "Id": 203132
+    },
+    {
+      "Message": "setup",
+      "PostedDate": "2013-07-09T22:29:11.62-07:00",
+      "Id": 203133
+    },
+    {
+      "Message": "msi doesnt call the register/unregister methods. never!you have to set the reg keys in the setup project.see the deployment sample in the download section.",
+      "PostedDate": "2013-07-10T14:38:25.287-07:00",
+      "Id": 203134
+    },
+    {
+      "Message": "Maybe this helps?http://support.microsoft.com/kb/2792179",
+      "PostedDate": "2013-09-13T00:11:05.33-07:00",
+      "Id": 203135
+    }
+  ]
+}

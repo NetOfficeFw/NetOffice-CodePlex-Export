@@ -1,0 +1,51 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Hi Sebastian,\n\nwhile I was trying to add names automatically i discovered the following:\n\nIf I add a name in VBA i always have to use the english formula (in the RefersTo parameter; as described under https://msdn.microsoft.com/de-de/library/office/ff835300.aspx the formula needs to be in english).\n\nExample: I want to add a formula in german \"=BEREICH.VERSCHIEBEN(A1;0;0;10;1)\". To add this formula automatically via VBA i would write something like\n\n```\nSub example()\n    ActiveWorkbook.Names.Add Name:=\"name\", RefersTo:=\"=Offset($A$1,0,0,10,1)\"\nEnd Sub\n```\n\na new name \"=BEREICH.VERSCHIEBEN(Tabelle1!$A$1;0;0;10;1)\" is created in my Workbook (I have a german installation).\n\nHowever, this doesn't work with NetOffice. I tried 2 versions.\n\n1. This one simply crashes with an error that says that this is not a correct formula\n```\nActiveSheet.Names.Add(\"name\", \"=Offset($A$1,0,0,10,1)\");\n```\n\n2. Replaced \",\" with \";\"\n```\nActiveSheet.Names.Add(\"name\", \"=Offset($A$1;0;0;10;1)\");\n```\n\nThis results in a new name with the formula \"=Offset($A$1;0;0;10;1)\" but of course my german version does not know \"offset\".\n\nSo i guess that there is some sort of translation from the english formula version to your local language which is currently nut supported by NetOffice. Couly you please have a look? Happy to provide additional details if needed.\n\nregards,\n\ncoheedld",
+    "LastUpdatedDate": "2016-02-06T14:44:39.843-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-02-06T14:36:29.7-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel: Names.Add Method",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22164
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600209,
+      "FileName": "Unbenannt25.JPG",
+      "DownloadUrl": ".\\1600209"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Error message of option 1 as described above.\r\n\r\n",
+      "PostedDate": "2016-02-06T14:44:39.843-08:00",
+      "Id": 203369
+    }
+  ]
+}

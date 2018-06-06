@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 8,
+    "Custom": "",
+    "Description": "Some properties are missing the indexer to access an item. Especially BuiltInDocumentProperties and CustomDocumentProperties on Word.Document should have it.\nFor BuiltInDocumentProperties it should be possible to access an item using the WdBuiltInProperty enum (BuiltInDocumentProperties[WdBuiltInProperty.wdPropertyAuthor])",
+    "LastUpdatedDate": "2013-06-14T00:33:18.163-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2011-11-11T17:01:59.757-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Missing indexer for some properties",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16898
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600183,
+      "FileName": "_Document.cs",
+      "DownloadUrl": ".\\1600183"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "for collection classes with an enum type as this indexer parameter, netoffice doesnt support custom enumerators currently.\r\ni change them fast as possible.",
+      "PostedDate": "2011-11-12T14:11:56.467-08:00",
+      "Id": 203013
+    },
+    {
+      "Message": "I've found the real problem for this issue.\r\nThe propertis \"BuiltInDocumentProperties\" and \"CustomDocumentProperties\" on \"NetOffice.WordApi._Document\" should return \"NetOffice.OfficeApi.DocumentProperties\" instead of \"COMObject\". If \"DocumentProperties\" is returned the indexer is present and the collections are enumerable (see my comment on #16739 as well).\r\n\r\nI attached the corrected document class\r\n",
+      "PostedDate": "2011-11-14T00:40:39.777-08:00",
+      "Id": 203014
+    },
+    {
+      "Message": "the properties are defined as VT_Dispatch in COM type library. this means an anyonym COM proxy. in NetOffice an anyonym COM proxy is represented as COMObject.\r\nwhy it is an anonym proxy? 2 different reasons are possible. 1) the type can be changed in context of situation. 2) all office application use these common base type from office and some applications replace the property with an own type here. \r\nyou have to cast the type at runtime, not realy cool i know but i'm in trouble with other office applications maybe if i change them. is that okay for you?\r\n",
+      "PostedDate": "2011-11-14T12:44:42.287-08:00",
+      "Id": 203015
+    },
+    {
+      "Message": "Not really okay but I can live with it.\r\nKeep in mind that Microsofts original PIAs return a typed DocumentProperties collection for BuiltInDocumentProperties and CustomDocumentProperties (http://msdn.microsoft.com/de-de/library/microsoft.office.tools.word.document.builtindocumentproperties.aspx). Your library would be more compatible if it would do so as well.",
+      "PostedDate": "2011-12-11T23:21:24.967-08:00",
+      "Id": 203016
+    },
+    {
+      "Message": "\r\n\n\n** Closed by SebastianDotNet 09.12.2011 17:57",
+      "PostedDate": "2011-12-12T15:23:47.277-08:00",
+      "Id": 203017
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-12T15:23:48.41-08:00",
+      "Id": 203018
+    },
+    {
+      "Message": "the definition behind the link is: Object BuiltInDocumentProperties { get; }\r\nat runtime the property returns a DocumentProperties object. NetOffice does the same.\r\ni'm misunderstood you?",
+      "PostedDate": "2011-12-12T15:26:47.573-08:00",
+      "Id": 203019
+    },
+    {
+      "Message": "Hi Sebastian\r\nI see your point now. The VS2010 Intellisense and the dynamic return value of the MS PIAs confused me. With the VS2010 PIAs BuiltInDocumentProperties and CustomDocumentProperties seem to return a typed DocumentProperties collection. No cast is required.\r\nBut NetOffice has to support different .NET versions and does not support \"dynamic\". That's why a cast is required.",
+      "PostedDate": "2012-01-30T16:05:24.563-08:00",
+      "Id": 203020
+    }
+  ]
+}

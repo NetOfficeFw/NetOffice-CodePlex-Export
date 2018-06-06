@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "When I've already have excel aplication with opened Workbook\n\t\t\t\tinstance = NetOffice.ExcelApi.Application.GetActiveInstance();\nreturns existing instance and it's correct. \nBut if the user change cell  and leave the cell in Editing-Mode  \nthe result of instance = NetOffice.ExcelApi.Application.GetActiveInstance() is null.\n\nI need use exiting application anyway and not create new. How to get it?\n\nP.S. It doesn't happen using Interop: the result is always correct \ninstance = (Application)System.Runtime.InteropServices.Marshal.GetActiveObject(\"Excel.Application\");",
+    "LastUpdatedDate": "2014-11-13T02:44:43.037-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-11-29T11:53:33.577-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NetOffice.ExcelApi.Application.GetActiveInstance return null",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 20470
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600194,
+      "FileName": "NetOfficeBug2.zip",
+      "DownloadUrl": ".\\1600194"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "excel reject all programmatic access while calculate and edit cells but i'm wondering it works in interop. i want clearify the situation. as hotfix i suggest you to use interop. something like this:\r\n\r\nvar proxy = GetActiveObject(\"Excel.Application\");new NetOffice.ExcelApi.Application(null, proxy);\r\n\r\nor a process window technique that is demonstrated in latest source state (folder tests\\concept tests\\object from window) (this technique is used by default for GetActiveInstance(s) in NO 1.7, coming soon)\r\n\r\nSebastian ",
+      "PostedDate": "2013-11-29T13:45:24.673-08:00",
+      "Id": 203194
+    },
+    {
+      "Message": "I've attached sample",
+      "PostedDate": "2013-11-29T15:07:36.43-08:00",
+      "Id": 203195
+    }
+  ]
+}

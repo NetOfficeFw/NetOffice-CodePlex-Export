@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-10-27T16:09:19.06-07:00",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Hi,\n\nwhere is \"FinishDialog\" defined?\n\nI Get:\n\nError\t1\tType 'FinishDialog' is not defined.\t\n\nFrom example:\n        Dim fDialog As New FinishDialog(\"Workbook saved.\", workbookFile)\n        fDialog.ShowDialog(Me)",
+    "LastUpdatedDate": "2013-05-16T04:50:56.583-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-10-02T01:29:43.53-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Example01 VB, Finishdialog",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18736
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi again,\r\n\r\nI found it - it is a Form dialog that I have to create.",
+      "PostedDate": "2012-10-02T04:42:00.25-07:00",
+      "Id": 203103
+    },
+    {
+      "Message": "FinishDialog is defined in ExampleBase.dll\r\n\r\nwhich office product and .net version you have tried?",
+      "PostedDate": "2012-10-02T05:21:11.147-07:00",
+      "Id": 203104
+    }
+  ]
+}

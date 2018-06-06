@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "Hi Sebastian,\r\n\r\nPlease take a look at attached screens to clarify.\r\nI try to merge 2 cells making a loop for say 60 rows and 4 columns. I always start from my reference cell (say \"B5\") and make a step (each time 2 rows) to receive new starting cell (say \"B7\", \"B9\" and so on) for next merge operation (say \"B5:B6\", \"B7:B8\" and so on). Unfortunatelly calculated cell starting address is wrong (\"B8\" instead of \"B7\").\r\n\r\nWhat am I missing here?\r\n",
+    "LastUpdatedDate": "2017-01-09T07:18:00.017-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2017-01-06T09:28:40.283-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Wrong calculation of offset after cells are merged",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22317
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1628962,
+      "FileName": "OffsetAddressAfterCellsMerge3.png",
+      "DownloadUrl": ".\\1628962"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "You may face a bad trap here and work against the wrong indexer.\n(Dont use the underline \"_\" at the end please.)\n\nPlease try \n\nvar test = workSheet.get_Range(\"B5\").get_Offset(2, 0).Address;\n\n(This is a Visual Basic syntax problem - not easy to explain...)\n\n*Sebastian\n\n",
+      "PostedDate": "2017-01-09T00:02:26.74-08:00",
+      "Id": 205927
+    },
+    {
+      "Message": "Sebastian,\n\nYou've already explained me by the way of my another problem about VB syntax. This is not a problem here.\nFor you information: resize_ and offset_ are my extension methods:\n\n```\n<Extension()>\nPublic Function Resize_(rng As NetOfficeExcel.Range, y As Integer, x As Integer) As NetOfficeExcel.Range\n  Return rng.get_Resize(y, x)\nEnd Function\n\n<Extension()>\nPublic Function Offset_(rng As NetOfficeExcel.Range, y As Integer, x As Integer) As NetOfficeExcel.Range\n  Return rng.get_Offset(y, x)\nEnd Function\n```\n\nget_Resize and get_Offset are not in intelisense so I made my own. \nAnyway problem is: if you iterate through cells like me (parameter 'y') in column 'B' and during this operation merging is done also on column 'B', address of cells are wrongly calculated. But if I iterate through cells in column 'A' and then make offset by 1 column to the 'B' and then merge 'B' all is ok.\n\nSee below example (the only difference is value x in get_offset (1 vs 0), method 1 merges cells 1 column to the right, method 2 merges the column:\n\n```\nConsole.WriteLine(\"Method 1\")\nConsole.WriteLine(\"------------------------------------------------\")\nFor y = 0 To 39 Step 2\n    Dim rng As Excel.Range = .Range(\"B5\").get_Offset(y, 1).get_Resize(2, 1)\n    rng.Merge()\n    Console.WriteLine(\"Row: {0}, Address: {1}\", y, rng.Address)\nNext\nConsole.WriteLine(\"------------------------------------------------\")\nConsole.WriteLine()\n\nConsole.WriteLine(\"Method 2\")\nConsole.WriteLine(\"------------------------------------------------\")\nFor y = 0 To 39 Step 2\n    Dim rng As Excel.Range = .Range(\"B5\").get_Offset(y, 0).get_Resize(2, 1)\n    rng.Merge()\n    Console.WriteLine(\"Row: {0}, Address: {1}\", y, rng.Address)\nNext\nConsole.WriteLine(\"------------------------------------------------\")\n```\n\nResults:\n\n```\nMethod 1\n------------------------------------------------\nRow: 0, Address: $C$5:$C$6\nRow: 2, Address: $C$7:$C$8\nRow: 4, Address: $C$9:$C$10\nRow: 6, Address: $C$11:$C$12\n...\nRow: 38, Address: $C$43:$C$44\n------------------------------------------------\n\nMethod 2\n------------------------------------------------\nRow: 0, Address: $B$5:$B$6\nRow: 2, Address: $B$8:$B$9 <======= from here wrong range!\nRow: 4, Address: $B$10:$B$11\nRow: 6, Address: $B$12:$B$13\n...\nRow: 38, Address: $B$44:$B$45\n------------------------------------------------\n```\n\nAnother sample:\n\n```\nConsole.WriteLine(.get_Range(\"B50\").get_Offset(2, 0).Address) ' <= should be $B$52 => OK\n  .get_Range(\"B50\").get_Offset(0, 0).get_Resize(2, 1).Merge() '<= we merge $B$50:$B$51\nConsole.WriteLine(.get_Range(\"B50\").get_Offset(2, 0).Address) ' <= should be $B$52 => NOK ($B$53)\n  .get_Range(\"B50\").get_Offset(2, 0).get_Resize(2, 1).Merge() '<= we merge $B$52:$B$53\nConsole.WriteLine(.get_Range(\"B50\").get_Offset(4, 0).Address) ' <= should be $B$54 => NOK ($B$55)\n\nand so on...\n```\n\nAnd output:\n\n```\n$B$52\n$B$53\n$B$55\n```\n\nThe same like above but more clearer...\n```\nConsole.WriteLine(.get_Range(\"B50\").get_Offset(0, 0).Address) ' <= should be $B$50 => OK\n  .get_Range(\"B50\").get_Offset(0, 0).get_Resize(2, 1).Merge() '<= we merge $B$50:$B$51\nConsole.WriteLine(.get_Range(\"B50\").get_Offset(0, 0).Address) ' <= should be $B$50 => OK\n\nConsole.WriteLine(.get_Range(\"B50\").get_Offset(2, 0).Address) ' <= should be $B$52 => NOK ($B$53)\n  .get_Range(\"B50\").get_Offset(2, 0).get_Resize(2, 1).Merge() '<= we want to merge $B$52:$B$53\nConsole.WriteLine(.get_Range(\"B50\").get_Offset(2, 0).Address) ' <= should be $B$52 => NOK ($B$53)\n```\n\nResult:\n```\n$B$50\n$B$50\n$B$53\n$B$53\n```",
+      "PostedDate": "2017-01-09T07:18:00.017-08:00",
+      "Id": 205938
+    }
+  ]
+}

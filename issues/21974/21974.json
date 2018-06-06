@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 6,
+    "Custom": "",
+    "Description": "Hi All,\n\nI'm implementing a event for beforeclose for Word, Excel and Powerpoint.\nBoth Word and Excel works as expected.\nHOwever, for PowerPoint, the beforeclosevent is not triggered.\nIs this a bug?\n\nThanks.\n\nregards,\nlong",
+    "LastUpdatedDate": "2015-08-26T01:50:56.3-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-08-15T04:00:48.147-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "PresentationBeforeCloseEvent did not trigger",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21974
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "PowerPoint has some known event issues.A very common problem is PowerPoint must visible or some events didnt fire.May this is the problem?\r\n\r\n*Sebastian\r\n\r\n ",
+      "PostedDate": "2015-08-15T16:46:41.607-07:00",
+      "Id": 203341
+    },
+    {
+      "Message": "Hi,\r\n\r\nI'm using the File->Close menu to close the presentation, so it is visible.When I trace the code, the event didn't fire.\r\n\r\nIs there any fix to this?Thanks.",
+      "PostedDate": "2015-08-18T20:17:12.867-07:00",
+      "Id": 203342
+    },
+    {
+      "Message": "The event works fine in my tests.Sure the instance where the event come from is still alive?\r\n\r\n*Sebastian",
+      "PostedDate": "2015-08-19T02:34:00.46-07:00",
+      "Id": 203343
+    },
+    {
+      "Message": "I believe the instance is still alive.I'm can follow other parts of the codes and I also have a breakpoint in the event handler.But when I close powerpoint, it did not trigger the event.Word and Excel do not have this problem.",
+      "PostedDate": "2015-08-21T19:25:39.557-07:00",
+      "Id": 203344
+    },
+    {
+      "Message": "1. the event is only supported in power point 14(2010) and above. whats your power point version?2. can you verify breakpoints works in general?3. i create an OnDispose event for each NetOffice class. you can trigger them to make sure your instance is alive.\r\n\r\n*sebastian",
+      "PostedDate": "2015-08-21T23:57:32.177-07:00",
+      "Id": 203345
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\n1. Oh, that explains it. I'm using Office 2007.The Word and Excel works properly so I thought Powerpoint should also work properly.Thanks.\r\n\r\nWould u be able to help on the other issue about Outlook attachment?I've raised it as another issue: 21972.Thanks.",
+      "PostedDate": "2015-08-26T01:50:56.3-07:00",
+      "Id": 203346
+    }
+  ]
+}

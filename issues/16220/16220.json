@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Interop Assemblies wrap all exceptions from the COM Server in a COMException.\nNetOffice doesnt do that and existing code there using interop assemblies are not portable without changes maybe.\ntask: wrap all exceptions in a COMException.",
+    "LastUpdatedDate": "2013-06-14T00:33:19.023-07:00",
+    "PlannedForRelease": "NetOffice Release 0.9b",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2011-07-06T06:50:33.233-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "wrap all exceptions from office COM Server in a COMException",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 16220
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "fixed :)",
+      "PostedDate": "2011-07-08T01:24:57.493-07:00",
+      "Id": 202991
+    }
+  ]
+}

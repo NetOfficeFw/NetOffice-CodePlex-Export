@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Update: My computer was doing some funky things. I'll try the new release again tomorrow just to make sure it wasn't something I did.\n\nWindows XP, Excel 2003, VB.NET 2010, .NET 4.0\n\nI switched to the new dlls (NetOffice Release 1.5.1.2) and the address from the range shows only two options.\n\nAddress() As String\nChars(index As Integer) As Char\n\n(I have no idea where the Chars comes from).\n\nThis is what I have written and it gives an error with the second parameter (rng is a NetOffice.ExcelAPI.Range):\n\nDim sAddress As String = rng.Address(True, True)",
+    "LastUpdatedDate": "2013-02-21T17:38:53.257-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-11-07T12:05:56.577-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel Range Address Stops Working in NetOffice Release 1.5.1.2",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18875
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "the problem is related to your issue: http://netoffice.codeplex.com/workitem/18383use rng.get_Address(True, True) instead of rng.Address(True,True)the problem occurs only in visual basic because vb is not very intelligent in oop programming.i want a create a special VB version in NetOffice 1.6 to remove this problem once and for all! Sebastian",
+      "PostedDate": "2012-11-08T07:05:46.45-08:00",
+      "Id": 203107
+    }
+  ]
+}

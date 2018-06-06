@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Hi,\r\n\r\nIs it possible to start multiple Excel instances with NetOffice?\r\nWhen using the default COM way with new Application, the ROT will always return the instance that had been created at last. Two possible solutions:\r\n\r\n- When I start the Excel instance on my own (also to avoid loading AddIns that I dont need) I get an Interop.Excel Application instance. I would like to pass it over to NetOffice and initialize NetOffice with that interop instance. Is that possible?\r\n- Starting Excel instance with/ without addins via net office.\r\n\r\nMany thanks\r\nHolger",
+    "LastUpdatedDate": "2016-12-14T00:24:43.63-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-12-12T08:19:58.467-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Start multiple Excel instances",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22316
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "NetOffice spend a ROT bypass if you want.\nIt is a static method on Excel.Application which is called GetActiveInstances.\n(This method use the IAccessible interface by enumerate all windows on the desktop)\n\nYou can wrap an interop proxy like this:\nNetOffice.ExcelApi.Application app = new NetOffice.ExcelApi.Application(null, interopProxy);\n\n*Sebastian",
+      "PostedDate": "2016-12-14T00:24:43.63-08:00",
+      "Id": 205581
+    }
+  ]
+}

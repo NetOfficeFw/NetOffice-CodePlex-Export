@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "I open 2 Excel Applications, then I iterate through the result array of ExcelApi.Application.GetActiveInstances.\n\nEach of the 2 returned Application has the same result for hwnd. So both Application objects refer to the first Excel.\n\nI use Windows 7 and NetOffice 1.6.0",
+    "LastUpdatedDate": "2017-12-11T15:04:29.147-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-10-15T03:24:17.277-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ExcelApi.Application.GetActiveInstances returns the same Instances",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 5,
+    "Id": 20313
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I confirm the issue and i do some some tests and research and the main problem is IRunningObjectTable::GetObject does soemethin wrong(returns wrong instance http://www.tech-archive.net/Archive/Development/microsoft.public.win32.programmer.ole/2004-09/0121.html). I currently looking for a solution.\r\n\r\n*Sebastian",
+      "PostedDate": "2013-10-15T19:46:42.833-07:00",
+      "Id": 203183
+    },
+    {
+      "Message": "Maybe going through windows is a solution.This gets the first Application, but you could easily loop through every XLMAIN window. This does fail, if there is no ExcelApi.Window (EXCEL7).```IntPtr w = FindWindowEx(IntPtr.Zero, IntPtr.Zero, \"XLMAIN\", null);            Console.WriteLine(w);\r\n\r\n            IntPtr w1 = FindWindowEx(w, IntPtr.Zero, \"XLDESK\", null);            Console.WriteLine(w1);\r\n\r\n            IntPtr w2 = FindWindowEx(w1, IntPtr.Zero, \"EXCEL7\", null);            Console.WriteLine(w2);\r\n\r\n            Guid guid = new Guid(\"{00020400-0000-0000-C000-000000000046}\");            object obj = null;            int retVal = AccessibleObjectFromWindow(w2, (uint)0xFFFFFFF0, ref guid, ref obj);            Console.WriteLine(obj.ToString() + \" \" + TypeDescriptor.GetClassName(obj) + \" \" + TypeDescriptor.GetComponentName(obj));            NetOffice.ExcelApi.Window wind = new NetOffice.ExcelApi.Window(null, obj);            NetOffice.ExcelApi.Application appl = wind.Application;\r\n\r\n            Console.WriteLine(appl.Name + \" \" + wind.Caption);\r\n\r\n            wind.Dispose();```",
+      "PostedDate": "2013-10-17T11:11:35.44-07:00",
+      "Id": 203184
+    },
+    {
+      "Message": "thanks for reply. you use can EnumWindow to enumerate all the open window handles (but this solution may doesnt works gladly when the current appdomain doesnt have elevated permissions). currently i try to find a solution in my books about about the COM standard(very old books man) if its failed i want spend a solution in the win api way(gimme 2 days more)  ",
+      "PostedDate": "2013-10-17T12:55:04.423-07:00",
+      "Id": 203185
+    },
+    {
+      "Message": "i create a concept test today. you find this in latest source state: Tests\\Concept Tests\\ObjectFromWindow\r\n\r\ni have to test this in serveral virtual machines(all excel versions from 2000-2013) and when its good i change the GetActiveInstances implementation in Excel.Application immediately.\r\n\r\n*Sebastian",
+      "PostedDate": "2013-10-26T18:45:30.083-07:00",
+      "Id": 203186
+    }
+  ]
+}

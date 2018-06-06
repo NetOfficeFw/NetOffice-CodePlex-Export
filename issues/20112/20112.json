@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "ExcelApi.FormatConditions.GetEnumerator() throws an exception when iterating through existing formats in a sheet when the sheet has an IconSetCondition\n\nFix is to change the IEnumerable to object (from FormatCondition) and then check on the calling end what type of format is being processed.\n\n```\npublic class FormatConditions : COMObject ,IEnumerable<object>\n\n.. snip..\n\n[SupportByVersionAttribute(\"Excel\", 9,10,11,12,14,15)]\npublic IEnumerator<object> GetEnumerator()  \n{\n       NetRuntimeSystem.Collections.IEnumerable innerEnumerator = (this as NetRuntimeSystem.Collections.IEnumerable);\n       foreach (object item in innerEnumerator)\n              yield return item;\n}\n```",
+    "LastUpdatedDate": "2017-12-11T15:04:29.147-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-08-21T04:21:00.043-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ExcelApi.FormatConditions throws error during enumeration",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20112
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

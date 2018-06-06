@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "I have a small application that opens a MS Word template, inserts some data into some bookmarks and saves the result as PDF.\n\nHowever, some of the fonts in the template are barcodes and when I open the resulting PDF, the values just come out as regular characters instead of barcodes.\n\nPreviously (before migrating to NetOffice) this worked and the result showed barcodes where it was supposed to, but not anymore.\n\nAny idea as to what the problem is here or is this not supported by NotOffice?\n\n(the font is located where all other fonts are located).",
+    "LastUpdatedDate": "2014-05-19T00:57:26.75-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-05-14T00:39:34.38-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NetOffice font misinterpretation?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20989
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "not sure...\r\n\r\nwhat i see is some of the following problems\r\n\r\n1) the font is not installed on the current system (i see: its not the problem)2) the pdf printer has problems to understand what happen (but it works formerly, please explain more about your previous solution, this means its VBA, Interop, VSTO, whatever?)3) you may use an incompatible ThreadCulture or Codepage (my favourite) \r\n\r\nAs far i'm understand, you have an pdf printer installed on your system and use just the Print or PrintOut method for your result, aren't so? Its much helpful for me to see a codesnippet to clearify the problem.\r\n\r\n*Sebastian",
+      "PostedDate": "2014-05-14T16:53:22.15-07:00",
+      "Id": 203223
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nI'm sorry to say that I had to migrate back to the previous solution which was Office 2010 interop.I wanted to try out NetOffice to get rid of the Office version dependency but in order to get this to work, I had to go back.\r\n\r\nActually I wasn't printing the document because it kept stalling my process (saying that the application was busy), so I first tried to save it as PDF and then let some other application take care of the printing.But the PDF was saved as I describe with characters instead of barcodes. I also tried to save to DocX but the result was the same.\r\n\r\nI tried using ___SaveAs___, ___SaveAs2___ and ___ExportAsFixedFormat___ but the result remained the same - no barcodes.\r\n\r\nSo I had to go back to where I came from, using a virtualbox image with this older Office (2010) to re-build the service.\r\n\r\nI found out one thing though, and that is not to deploy local copies of the Office assemblies with the application - this was causing the Winword process to hang - as soon as I deleted these from the deploy folder, that issue disappeared.\r\n\r\nI wonder how this would be done with NetOffice - should the NetOffice assemblies not be distributed with the application but instead be installed on the system (GAC)?I'm wondering this because I was seeing the same hanging process issue when I tried printing directly from the Word.Application with NetOffice - that is why I started the whole PDF thing in the first place.\r\n\r\n/Aidal\r\n\r\n ",
+      "PostedDate": "2014-05-19T00:57:26.75-07:00",
+      "Id": 203224
+    }
+  ]
+}

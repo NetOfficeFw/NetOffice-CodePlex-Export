@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 15,
+    "Custom": "",
+    "Description": "Hi,\n\nI'm working through an example tutorial to create a VBA addin using VB.net.  The tutorial is here:\nhttp://www.mztools.com/articles/2012/MZ2012013.aspx\n\nI'm deviating from the tutorial by utilising NetOffice interop assemblies instead of the tutorial recommendation to create my own private assemblies.  I have managed to get most of the code working but get a \"Parameter not optional\" exception when I try to press one of the custom buttons on the menu.\n\nMy code can be accessed at:\nhttps://github.com/rossknudsen/VbaAddin/tree/master\n\nThe error occurs at line 128 of connect.vb.  Any help to understand what is going on would be much appreciated.\n\nRegards\n\nRoss",
+    "LastUpdatedDate": "2017-12-11T15:04:29.147-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-10-09T14:47:36.737-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Parameter not optional exception thrown",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 20295
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "\r\n\r\nException details:System.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details. ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.Runtime.InteropServices.COMException: Parameter not optional. (Exception from HRESULT: 0x8002000F (DISP_E_PARAMNOTOPTIONAL))   --- End of inner exception stack trace ---   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)   at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)   at NetOffice.VBIDEApi._Windows.CreateToolWindow(AddIn addInInst, String progId, String caption, String guidPosition, Object docObj)   at MyVbaAddin.Connect.CreateToolWindow(String toolWindowCaption, String toolWindowGuid, UserControl toolWindowUserControl) in C:\\Users\\Ross\\Documents\\GitHub\\VbaAddin\\MyVbaAddin\\MyVbaAddin\\Connect.vb:line 128   at MyVbaAddin.Connect._CommandBarButton1_Click(CommandBarButton Ctrl, Boolean& CancelDefault) in C:\\Users\\Ross\\Documents\\GitHub\\VbaAddin\\MyVbaAddin\\MyVbaAddin\\Connect.vb:line 152",
+      "PostedDate": "2013-10-09T15:15:52.36-07:00",
+      "Id": 203168
+    },
+    {
+      "Message": "hello,\r\n\r\nthe last argument is not marked as out parameter in NetOffice(currently not sure why)please do me a pleasure and try this linq exstension method instead of CreateToolWindowEx(and gimme reponse how it works)\r\n\r\npublic static class WindowsExtension        {            public static NetOffice.VBIDEApi.Window CreateToolWindowEx(this NetOffice.VBIDEApi._Windows windows, NetOffice.VBIDEApi.AddIn addInInst, string progId, string caption, string guidPosition, ref object docObj)            {                ParameterModifier[] modifiers = Invoker.CreateParamModifiers(false, false, false, false, true);                object[] paramsArray = Invoker.ValidateParamsArray(addInInst, progId, caption, guidPosition, docObj);                object returnItem = Invoker.MethodReturn(windows, \"CreateToolWindow\", paramsArray, modifiers);                docObj = paramsArray[4];                NetOffice.VBIDEApi.Window newObject = NetOffice.Factory.CreateKnownObjectFromComProxy(windows, returnItem, NetOffice.VBIDEApi.Window.LateBindingApiWrapperType) as NetOffice.VBIDEApi.Window;                return newObject;            }        }\r\n\r\n",
+      "PostedDate": "2013-10-13T23:54:25.693-07:00",
+      "Id": 203169
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nI got a \"type mismatch\" exception:\r\n\r\nSystem.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details. ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.Runtime.InteropServices.COMException: Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))   --- End of inner exception stack trace ---   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray, ParameterModifier[] paramModifiers) in c:\\Users\\Ross\\Documents\\GitHub\\VbaAddin\\MyVbaAddin\\NetOffice\\Invoker.cs:line 229   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray, ParameterModifier[] paramModifiers) in c:\\Users\\Ross\\Documents\\GitHub\\VbaAddin\\MyVbaAddin\\NetOffice\\Invoker.cs:line 237   at WindowsExtension.CreateToolWindowEx(_Windows windows, AddIn addInInst, String progId, String caption, String guidPosition, Object& docObj) in c:\\Users\\Ross\\Documents\\GitHub\\VbaAddin\\MyVbaAddin\\VBIDE\\Classes\\WindowsExtension.cs:line 10   at MyVbaAddin.Connect.CreateToolWindow(String toolWindowCaption, String toolWindowGuid, UserControl toolWindowUserControl) in C:\\Users\\Ross\\Documents\\GitHub\\VbaAddin\\MyVbaAddin\\MyVbaAddin\\Connect.vb:line 129   at MyVbaAddin.Connect._CommandBarButton1_Click(CommandBarButton Ctrl, Boolean& CancelDefault) in C:\\Users\\Ross\\Documents\\GitHub\\VbaAddin\\MyVbaAddin\\MyVbaAddin\\Connect.vb:line 153",
+      "PostedDate": "2013-10-14T17:42:39.34-07:00",
+      "Id": 203170
+    },
+    {
+      "Message": "I just added two import statements:\"using System.Reflection;using NetOffice;\"\r\n\r\nI also imported the NetOffice source into the project on Github if you want.  That should take care of all the external dependencies.",
+      "PostedDate": "2013-10-14T17:44:52.297-07:00",
+      "Id": 203171
+    },
+    {
+      "Message": "I have been playing around a bit and found that I can instantiate a toolwindow from VBA when the Addin is loaded using the following VBA code:\r\n\r\n```Sub test()        Dim wnd As Object    Dim doc As Object    Set wnd = Application.VBE.Windows.CreateToolWindow( _        Application.VBE.AddIns.Item(1), _        \"MyVbaAddin.UserControlHost\", _        \"A caption goes here\", _        \"{e80c0630-a44c-44ad-86b5-61d8bf664d42}\", _        doc)    \r\n\r\n    wnd.Visible = True\r\n\r\nEnd Sub```\r\n\r\nI can't get this to work from the addin itself using the NetOffice interop methods or even a direct call on the objects themselves.  I'm not sure that the problem lies in NetOffice now so I can try posting to StackExchange if you think it would be more useful.",
+      "PostedDate": "2013-10-15T14:21:11.167-07:00",
+      "Id": 203172
+    },
+    {
+      "Message": "hey man,please send me your solution to: public.sebastian[at]web.de and i can do some tests to analyze the problem.\r\n\r\n*sebastian",
+      "PostedDate": "2013-10-15T19:42:56.85-07:00",
+      "Id": 203173
+    },
+    {
+      "Message": "update:i create a new topic for the issue:http://social.msdn.microsoft.com/Forums/vstudio/en-US/74074dc6-0109-43f2-b8f6-44712300f77c/how-i-can-use-interop-latebing-with-a-ref-argument-that-returns-controlaxsourcingsite?forum=clr",
+      "PostedDate": "2013-10-16T23:38:22.867-07:00",
+      "Id": 203174
+    },
+    {
+      "Message": "Hey thanks for taking an interest in my code.  I just tried to Gmail the source to you and it decided to block the attachment.\r\n\r\nYou can download the source from GitHub using the download as zip option on the RHS which should give you everything.  (link = https://github.com/rossknudsen/VbaAddin/archive/master.zip)",
+      "PostedDate": "2013-10-17T03:15:09.82-07:00",
+      "Id": 203175
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nI've been trying a bunch of different things to get this working.  I went back and created my own private interop assemblies as per the original blog post.  It works fine when doing it that way.\r\n\r\nI would love to get the NetOffice libraries working though so I thought I would post back the interop signature method in case that helps you understand what's going wrong:```        Public Overridable Function CreateToolWindow( _          AddInInst As AddIn, _          ProgId As String, _          Caption As String, _          GuidPosition As String, _           ByRef DocObj As Object) _        As  Window\r\n\r\n    End Function```",
+      "PostedDate": "2013-11-01T22:38:37.223-07:00",
+      "Id": 203176
+    },
+    {
+      "Message": "Not sure if this is anything to do with it but Invoker.ValidateParam() returns Type.Missing when given Nothing/Null.  I am supplying the last parameter, DocObj, as nothing as it gets set by the CreateToolWindow method.  I'm just wondering if Type.Missing is not correct considering the above post shows that it is expecting an IDispatch interface?",
+      "PostedDate": "2013-11-02T00:05:47.133-07:00",
+      "Id": 203177
+    },
+    {
+      "Message": "OK I solved it!!!!!!\r\n\r\n1. The CreateToolWindowEx() extension method solves the initial \"Parameter Not Optional\" COMException so I recommend you update the actual CreateToolWindow method to include this code.\r\n\r\n2. After that problem I was getting the \"Type Mismatch\" COMException.  This wasn't related to the first problem but secondary.  The problem was the DocObj parameter and my passing in Nothing/null.  Invoker.ValidateParam() was turning it into Type.Missing.  It seems that this is NOT an acceptable reference to pass in to this method.  It seems we have to pass in some sort of IDispatch interface.\r\n\r\nAs a hack I created a new instance of the UserControl class and passed that in as DocObj.  Then the code runs as desired, creating the toolwindows.  This is a bit ugly as I expect that the VBE creates another UserControl and replaces the DocObj reference with the second instance.  Hence the first UserControl instance I passed in is a waste.\r\n\r\nI think this issue could happen elsewhere when you pass in a ByRef parameter as Nothing/null.  So its probably worth addressing.",
+      "PostedDate": "2013-11-02T00:46:40.707-07:00",
+      "Id": 203178
+    },
+    {
+      "Message": "Any plans on fixing this? It makes your beautiful project worthless for trying to create VBE add-ins.",
+      "PostedDate": "2015-06-11T12:56:01.887-07:00",
+      "Id": 203179
+    },
+    {
+      "Message": "The same problem exists with CodeModule.Find(). Many of the parameters are defined as values when they should be defined as `ref` params.",
+      "PostedDate": "2015-06-11T14:02:21.493-07:00",
+      "Id": 203180
+    },
+    {
+      "Message": "the problem is identified.\r\n\r\nin fact: NetOffice replace null argument values with System.Reflection.Type.Missing. (also for ref arguments) this replacement behavior cause problems for the ref's. (i'm sorry, ref argument in methods is a very rare scenario and i dont test this yet. btw: NetOffice is aware of ref arguments in event triggers. )\r\n\r\nas hot fix: initialize your ref argument with \"new object();\" to avoid the NetOffice \"replace behavior\". if its not null then NetOffice dont touch them.\r\n\r\n*Sebastian\r\n\r\n",
+      "PostedDate": "2015-06-13T17:03:48.147-07:00",
+      "Id": 203181
+    },
+    {
+      "Message": "Hi Sebastian,\r\n\r\nI've uploaded a patch for this issue.  Now I review the issue after a few more years experience (and now knowing C#) I understand what is going on.\r\n\r\nPoint of interest is the [DispatchWrapper](https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.dispatchwrapper(v=vs.100).aspx) class which provides the key functionality.\r\n\r\nHope that you can make sense of what I've uploaded and can make NetOffice better.\r\n\r\nRegards\r\n\r\nRoss",
+      "PostedDate": "2015-06-13T23:27:07.017-07:00",
+      "Id": 203182
+    }
+  ]
+}

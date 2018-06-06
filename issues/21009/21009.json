@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 5,
+    "Custom": "",
+    "Description": "Hi,\n\nI tried to install NetOffice 1.6 and the corresponding Toolbox 1.2 because I use Visual Studio Express 2013.\n\nThe toolbox is located on C:\\tools\\... but when I try to start it, I get an error message (see attached screenshot):\n```\n1 | An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information. | NotSupportedException | Void .ctor()\n```\nI run on Windows 7 64bit with Office 2010 and .NET 4.5.\n\nAny ideas?\nThanks.",
+    "LastUpdatedDate": "2015-01-23T12:59:49.893-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-05-21T00:57:51.697-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Toolbox 1.2 won't start - loadFromRemoteSources",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 21009
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600202,
+      "FileName": "2014-05-21 09_53_59-Error.png",
+      "DownloadUrl": ".\\1600202"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "hey man,\r\n\r\nin fact: its not allowed to execute a .NET assembly from a network location.(default .net policy)\r\n\r\nchange the .NET policy(management console) or shift the solution to local hard drive and try again.\r\n\r\nhelps?*let me know\r\n\r\nSebastian",
+      "PostedDate": "2014-05-21T12:52:27.737-07:00",
+      "Id": 203225
+    },
+    {
+      "Message": "By the way... I found a copy of the toolbox version 1.1 on a backup drive. This version installs perfectly.\r\n\r\nCheersFelix",
+      "PostedDate": "2014-05-21T13:42:59.66-07:00",
+      "Id": 203226
+    },
+    {
+      "Message": "> in fact: its not allowed to execute a .NET assembly from a network location.(default .net policy)> change the .NET policy(management console) or shift the solution to local hard drive and try again. It is not located on a network drive.Btw version 1.1 does start perfectly from the same location.",
+      "PostedDate": "2014-05-21T13:45:22.7-07:00",
+      "Id": 203227
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-06-23T09:19:48.71-07:00",
+      "Id": 203228
+    },
+    {
+      "Message": "This happened to me too using Windows 7, but it was an easy fix.\r\n\r\nThe problem is that the zip file comes from the internet, so Windows 7 tags everything as \"blocked\" until you unblock it. You don't want to unzip the files first or you will have to manually unblock each file.\r\n\r\nThe trick is to unblock the downloaded zip file first, which unblocks everything inside. \r\n\r\nTo unblock, right-click the zip file, choose properties, then click \"Unblock\" at the bottom.",
+      "PostedDate": "2014-09-12T13:47:24.877-07:00",
+      "Id": 203229
+    }
+  ]
+}

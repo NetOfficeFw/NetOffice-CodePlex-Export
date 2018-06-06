@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "The Project Wizard at \"Choose the Poject folder\" \"Custom\" option does not tkae the directory that I input, but continues to use the string \"Custom\" etc. as the folder to work in.\n\nIf I use another option, say \"User Folder\" the project is properly assembled there. If I then move the folder to my SharpDevelop working directory this message is returned \" Access to the path 'Custom\\MyAssembly\\MyAssembly' is denied. | UnauthorizedAccessException | Void WinIOError(Int32, System.String)\"\n\nSurely \"Custom\" should be replaced with the input directory name?\n\nRegards",
+    "LastUpdatedDate": "2017-12-11T15:04:29.147-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-03-11T05:08:46.233-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Access to the path 'Custom\\MyAssembly\\MyAssembly' is denied. | UnauthorizedAccessException | Void WinIOError(Int32, System.String)",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20809
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

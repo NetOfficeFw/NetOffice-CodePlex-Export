@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "1. Place on slide several shapes.\n2. Group them.\n3. Select child shape.\n4. Press CTRL and select group\n5. Try to enumerate Selection.ShapeRange\n\nAn exception of type 'AddinExpress.MSO.ADXExternalException' occurred. Additional information: \nAn error has occurred in the code of the add-in. (AddinExpress.MSO.ADXExternalException)\n-->\nSee inner exception(s) for details. (System.Runtime.InteropServices.COMException)\n-->\nException has been thrown by the target of an invocation. (System.Reflection.TargetInvocationException)\n-->\nException from HRESULT: 0x800A01A8 (System.Runtime.InteropServices.COMException)\n\nCould you help?",
+    "LastUpdatedDate": "2013-11-18T05:42:22.227-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-11-18T00:02:18.477-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Bug with group selection PowerPoint",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20431
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Stack trace:\r\n\r\n-->   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name)   at NetOffice.Utils.d__0.MoveNext()   at NetOffice.PowerPointApi.ShapeRange.d__0.MoveNext()   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()   at System.Linq.Enumerable.d__14`2.MoveNext()   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)",
+      "PostedDate": "2013-11-18T05:42:22.227-08:00",
+      "Id": 203187
+    }
+  ]
+}

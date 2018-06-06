@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 5,
+    "Custom": "",
+    "Description": "Hi Sebastian,\n\nThere seems to be s small bug concerning the destruction of com-objects of inspector.currentitem in outlook in Netoffice 1.7.3\nYou can reproduce it by creating an instance of the class below in Addin_OnStartupComplete and then\ne.g. copy a mail from the inbox in Outlook to the desktop, open it, close it, and then try to delete it or try to reopen it.\n\nThere will appear messageboxes saying that the object is in use.\n_________________________\npublic class AddinTester\n    {\n        Outlook.NameSpace olNs;\n        Outlook.Application Outl;\n        Outlook.Inspectors olInsp;\n\n        public AddinTester(ref Outlook.Application OlApp)\n        {\n            Outl = OlApp;\n            olNs = (Outlook.NameSpace)Outl.GetNamespace(\"MAPI\");\n\n            olInsp = (Outlook.Inspectors)OlApp.Inspectors;\n\n            olInsp.NewInspectorEvent += olInsp_NewInspectorEvent;       \n        }\n\n        void olInsp_NewInspectorEvent(Outlook._Inspector Inspector)\n        {\n            if (Inspector.CurrentItem is Outlook.AppointmentItem)\n                System.Windows.Forms.MessageBox.Show(\"Appointment\");\n            else\n                System.Windows.Forms.MessageBox.Show(\"No Appointment\");\n        }\n    }\n\n\nBest Regards,\n\nAndreas",
+    "LastUpdatedDate": "2015-09-29T23:55:37.023-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-05-20T05:13:54.67-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Outlook-Addin / Inspector.currentitem",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21878
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600207,
+      "FileName": "OlErrmsg.PNG",
+      "DownloadUrl": ".\\1600207"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "hey men,\r\n\r\nin other words: Inspector.CurrentItem is null in olInsp_NewInspectorEvent?(may its not an appointment but not null.....)\r\n\r\n*Sebastian\r\n\r\nbtw: ich habs glaub ich nicht genau verstanden. kopieren/öffnen/schliessen ? vielleicht klappts in deutsch besser. falls du das hier lesen kannst dann tuh mir bitte den gefallen ;)\r\n\r\n",
+      "PostedDate": "2015-05-26T07:54:17.543-07:00",
+      "Id": 203314
+    },
+    {
+      "Message": "Hallo Sebastian,\r\n\r\nsorry für den lag, Urlaubszeit etc ... \r\n\r\nok, also das Problem ist etwas exotisch:User hier in der Firma legen Mails, Termine etc auf den Desktop, oder in einen Ordner im Filesystem (warum auch immer).Zu irgend einem Zeitpunkt wollen sie den Termin / die Mail öffnen, und erhalten eine Fehlermeldung, dass das  Objekt noch in Use ist. Sie können den Termin weder öffnen, noch löchen. Mit der Klasse oben kannst du das reproduzieren\r\n\r\nGruß\r\n\r\nAndreas",
+      "PostedDate": "2015-08-04T03:32:25.127-07:00",
+      "Id": 203315
+    },
+    {
+      "Message": "da muss ich nochmal nachfragen. von wem kommt denn der fehler?ist das eine exception wenn ja wo?(die datei-endung ist .msg? - damit ich auchs richtig reproduziere)\r\n\r\n*Sebastian",
+      "PostedDate": "2015-08-06T11:53:04.113-07:00",
+      "Id": 203316
+    },
+    {
+      "Message": "Ok, zum reporduzieren:- Termin (ist *.msg) per drag & drop auf den Desktop ziehen- Termin öffnen und wieder schliessen (ohne Änderung)- Versuchen, den Termin zu löschen- Fehlermeldung poppt auf (file attached)",
+      "PostedDate": "2015-08-06T23:48:42.59-07:00",
+      "Id": 203317
+    },
+    {
+      "Message": "Hallo Sebastian,\r\n\r\ngibt es irgend welche Fortschritte in der Sache?\r\n\r\nGruß\r\n\r\nAndreas",
+      "PostedDate": "2015-09-29T23:55:37.023-07:00",
+      "Id": 203318
+    }
+  ]
+}

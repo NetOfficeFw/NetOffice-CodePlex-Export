@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi,\ni had made my plugin for Word with netoffice 1.7.3 and compile it. Most times it start allright and i can select my Plugin and enable it but now Word didn´t Show me the plugin... I had registered it manually like in the docs with the right regasm Version but i didn´t see the plugin....\n\nI use Word 2013 64 Bit and Visual Studio 2013 and i compile the solution again .net 4.5",
+    "LastUpdatedDate": "2015-04-16T07:36:59.333-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-04-16T07:36:59.333-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Addin suddenly not loaded",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21810
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

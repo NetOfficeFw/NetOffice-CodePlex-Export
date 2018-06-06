@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "MainForm.Form1_Resize throw nullreferenceexception\n\nfix it by this: (add null judge at first)\n\n\n        private void Form1_Resize(object sender, EventArgs e)\n        {\n            if (TrayIcon == null) return;\n            try\n            {\n                if ((FormWindowState.Minimized == this.WindowState) && (true == checkBoxMinimizeToTray.Checked))\n                {\n                    TrayIcon.Visible = true;\n                    this.Hide();\n                }\n                else\n                {\n                    TrayIcon.Visible = false;\n                    ResizeControls();\n                }\n\n            }\n            catch (Exception exception)\n            {\n                ErrorForm.ShowError(this, exception, ErrorCategory.NonCritical, CurrentLanguageID);\n            }\n        }",
+    "LastUpdatedDate": "2014-02-18T23:10:00.297-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-02-18T23:10:00.297-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "DeveloperToolbox can not start in Windows 8 with .NET 4.0",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20744
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

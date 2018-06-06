@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "my outlook can't response any operation and my cpu 100% usage,when I added 500 contacts\n\nmy test Environment is __Intel(R)Pentium(R) CPU G2010 @2.8GHz 2.79GHz__\n\nHere is my code:\n\n```\n var folderContacts = _outlookApplication.GetNamespace(\"MAPI\").GetDefaultFolder(OlDefaultFolders.olFolderContacts);\n\n            var a = folderContacts.Folders.Add(string.Format(\"test contacts{0}\", folderContacts.Folders.Count));\n            a.ShowAsOutlookAB = true;\n\n            var watch = new Stopwatch();\n            watch.Start();\n\n            for (var i = 0; i < 100; i++)\n            {\n                var newContact = (NetOffice.OutlookApi.ContactItem)_outlookApplication.CreateItem(OlItemType.olContactItem);\n\n                newContact.FirstName = \"first\" + i;\n                newContact.MiddleName = \"middle\" + i;\n                newContact.LastName = \"last\" + i;\n                newContact.CompanyName = \"Intsig\";\n                newContact.Department = \"Windows\";\n                newContact.JobTitle = \"coder\";\n                newContact.Email1Address = \"aaa@yopmail.com\";\n                newContact.Email2Address = \"bbb@yopmail.com\";\n                newContact.Email3Address = \"ccc@yopmail.com\";\n                newContact.Birthday = DateTime.Now;\n                newContact.BusinessAddressCity = \"ShangHai\";\n                newContact.BusinessAddressCountry = \"China\";\n                newContact.BusinessAddressPostalCode = \"200000\";\n                newContact.BusinessAddressState = \"Yang Pu\";\n                newContact.BusinessAddressStreet = \"East NanJing Road\";\n                newContact.MobileTelephoneNumber = \"14258796543\";\n                newContact.HomeFaxNumber = \"021-32183231\";\n                newContact.HomeTelephoneNumber = \"021-38847282\";\n                newContact.Home2TelephoneNumber = \"021-33843739\";\n                newContact.BusinessTelephoneNumber = \"12548795642\";\n                newContact.Business2TelephoneNumber = \"13648572492\";\n                newContact.Categories = \"Role\";\n                newContact.AssistantName = \"Cortana\";\n                newContact.WebPage = \"www.baidu.com\";\n                newContact.IMAddress = \"45879542135\";\n                newContact.NickName = \"nick name\";\n                newContact.Body = \"just for test\";\n\n                newContact.Move(a);\n\n                //Thread.Sleep(100);\n            }\n```",
+    "LastUpdatedDate": "2015-06-10T23:51:26.79-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-06-10T03:10:07.32-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "OutLook add 2000 contacts with high cpu usage",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21906
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "is there anybody help me?",
+      "PostedDate": "2015-06-10T03:11:38.513-07:00",
+      "Id": 203319
+    },
+    {
+      "Message": "its outlook work together with MS-Exchange server in your scenario?\r\n\r\n*Sebastian\r\n\r\n",
+      "PostedDate": "2015-06-10T21:07:16.04-07:00",
+      "Id": 203320
+    },
+    {
+      "Message": "@SebastianDotNetMy test machine is working without any email server.",
+      "PostedDate": "2015-06-10T23:51:26.79-07:00",
+      "Id": 203321
+    }
+  ]
+}

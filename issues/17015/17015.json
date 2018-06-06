@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "The GetPoint function of a Word application Window object, does not return any values in NetOffice. \nGetPoint(int,int,int,int,object)\n \nIt should work like the interop method:\nhttp://msdn.microsoft.com/en-us/library/microsoft.office.interop.word.window.getpoint(v=office.14).aspx\n \nGetPoint(out int,out int,out int,out int,object)",
+    "LastUpdatedDate": "2013-06-14T00:33:17.807-07:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2011-12-09T03:08:25.66-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Word Window.GetPoint does not return values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17015
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "the out qualifier is missing in NetOffice, its the first time i see a method with out params in ms-office.\r\nthats the reason for i dont implement the out flag. my bad :/ i fix this bug tomorrow.\r\n\r\nthanks for report the issue !!!\r\n*Sebastian",
+      "PostedDate": "2011-12-09T18:18:45.243-08:00",
+      "Id": 203022
+    },
+    {
+      "Message": "a nice to know update:\r\n\r\nThe following table shows all methods in office applications with one or more out parameters.\r\n\r\n\r\nWord\r\n----------------\r\nWord.Window.GetPoint\r\nWord.ConnectorFormat.BeginConnect\r\nWord.ConnectorFormat.EndConnect\r\nWord.DiagramNode.MoveNode\r\nWord.DiagramNode.ReplaceNode\r\nWord.DiagramNode.SwapNode\r\nWord.DiagramNode.TransferChildren\r\n\r\n\r\nExcel\r\n----------------\r\nExcel.IXmlMap.ExportXml\r\nExcel._Workbook.XmlImport\r\nExcel._Workbook.XmlImportXml\r\n\r\n\r\nPowerPoint\r\n----------------\r\nPowerPoint.ShapeRange.GetPolygonalRepresentation\r\nPowerPoint.TextRange.RotatedBounds\r\n\r\n\r\nOutlook\r\n----------------\r\nNo.entries\r\n\r\n\r\nAccess\r\n----------------\r\nAccess._LabelEvents.DblClick\r\nAccess._RectangleEvents.DblClick\r\nAccess._ImageEvents.DblClick\r\nAccess._CommandButtonEvents.Exit\r\nAccess._CommandButtonEvents.DblClick\r\nAccess._OptionButtonEvents.BeforeUpdate\r\nAccess._OptionButtonEvents.Exit\r\nAccess._OptionButtonEvents.DblClick\r\nAccess._CheckBoxEvents.BeforeUpdate\r\nAccess._CheckBoxEvents.Exit\r\nAccess._CheckBoxEvents.DblClick\r\nAccess._OptionGroupEvents.BeforeUpdate\r\nAccess._OptionGroupEvents.Exit\r\nAccess._OptionGroupEvents.DblClick\r\nAccess._BoundObjectFrameEvents.BeforeUpdate\r\nAccess._BoundObjectFrameEvents.Exit\r\nAccess._BoundObjectFrameEvents.DblClick\r\nAccess._TextBoxEvents.BeforeUpdate\r\nAccess._TextBoxEvents.Exit\r\nAccess._TextBoxEvents.DblClick\r\nAccess._TextBoxEvents.Dirty\r\nAccess._TextBoxEvents.Undo\r\nAccess._ListBoxEvents.BeforeUpdate\r\nAccess._ListBoxEvents.Exit\r\nAccess._ListBoxEvents.DblClick\r\nAccess._ComboBoxEvents.BeforeUpdate\r\nAccess._ComboBoxEvents.NotInList\r\nAccess._ComboBoxEvents.Exit\r\nAccess._ComboBoxEvents.DblClick\r\nAccess._ComboBoxEvents.Dirty\r\nAccess._ComboBoxEvents.Undo\r\nAccess._ObjectFrameEvents.Exit\r\nAccess._ObjectFrameEvents.DblClick\r\nAccess._ToggleButtonEvents.BeforeUpdate\r\nAccess._ToggleButtonEvents.Exit\r\nAccess._ToggleButtonEvents.DblClick\r\nAccess._PaletteButtonEvents.BeforeUpdate\r\nAccess._PaletteButtonEvents.Exit\r\nAccess._PaletteButtonEvents.DblClick\r\nAccess._SubFormEvents.Exit\r\nAccess._SubReportEvents.Exit\r\nAccess._CustomControlEvents.Exit\r\nAccess._TabControlEvents.DblClick\r\nAccess._PageEvents.DblClick\r\nAccess._SectionEvents.DblClick\r\nAccess._SectionInReportEvents.Format\r\nAccess._SectionInReportEvents.Print\r\nAccess._SectionInReportEvents.DblClick\r\nAccess._PageHdrFtrInReportEvents.Format\r\nAccess._PageHdrFtrInReportEvents.Print\r\nAccess._PageHdrFtrInReportEvents.DblClick\r\nAccess._FormEvents.BeforeInsert\r\nAccess._FormEvents.BeforeUpdate\r\nAccess._FormEvents.Delete\r\nAccess._FormEvents.BeforeDelConfirm\r\nAccess._FormEvents.Open\r\nAccess._FormEvents.Unload\r\nAccess._FormEvents.DblClick\r\nAccess._FormEvents.Error\r\nAccess._FormEvents.Filter\r\nAccess._FormEvents.ApplyFilter\r\nAccess._FormEvents.Dirty\r\nAccess._FormEvents.Undo\r\nAccess._FormEvents.RecordExit\r\nAccess._FormEvents.BeginBatchEdit\r\nAccess._FormEvents.UndoBatchEdit\r\nAccess._FormEvents.BeforeBeginTransaction\r\nAccess._FormEvents.BeforeCommitTransaction\r\nAccess._ReportEvents.Open\r\nAccess._ReportEvents.Error\r\nAccess._ReportEvents.NoData\r\nAccess._FormEvents2.BeforeInsert\r\nAccess._FormEvents2.BeforeUpdate\r\nAccess._FormEvents2.Delete\r\nAccess._FormEvents2.BeforeDelConfirm\r\nAccess._FormEvents2.Open\r\nAccess._FormEvents2.Unload\r\nAccess._FormEvents2.DblClick\r\nAccess._FormEvents2.Error\r\nAccess._FormEvents2.Filter\r\nAccess._FormEvents2.ApplyFilter\r\nAccess._FormEvents2.Dirty\r\nAccess._FormEvents2.Undo\r\nAccess._FormEvents2.RecordExit\r\nAccess._FormEvents2.BeginBatchEdit\r\nAccess._FormEvents2.UndoBatchEdit\r\nAccess._ReportEvents2.Open\r\nAccess._ReportEvents2.Error\r\nAccess._ReportEvents2.NoData\r\nAccess._ReportEvents2.Unload\r\nAccess._ReportEvents2.DblClick\r\nAccess._ReportEvents2.Filter\r\nAccess._ReportEvents2.ApplyFilter\r\nAccess.DispAttachmentEvents.BeforeUpdate\r\nAccess.DispAttachmentEvents.Exit\r\nAccess.DispAttachmentEvents.Dirty\r\nAccess.DispAttachmentEvents.DblClick\r\nAccess.DispCommandButtonEvents.Exit\r\nAccess.DispCommandButtonEvents.DblClick\r\nAccess.DispBoundObjectFrameEvents.BeforeUpdate\r\nAccess.DispBoundObjectFrameEvents.Exit\r\nAccess.DispBoundObjectFrameEvents.DblClick\r\nAccess.DispObjectFrameEvents.Exit\r\nAccess.DispObjectFrameEvents.DblClick\r\nAccess.DispCustomControlEvents.Exit\r\nAccess.DispCheckBoxEvents.BeforeUpdate\r\nAccess.DispCheckBoxEvents.Exit\r\nAccess.DispCheckBoxEvents.DblClick\r\nAccess.DispOptionButtonEvents.BeforeUpdate\r\nAccess.DispOptionButtonEvents.Exit\r\nAccess.DispOptionButtonEvents.DblClick\r\nAccess.DispToggleButtonEvents.BeforeUpdate\r\nAccess.DispToggleButtonEvents.Exit\r\nAccess.DispToggleButtonEvents.DblClick\r\nAccess.DispRectangleEvents.DblClick\r\nAccess.DispImageEvents.DblClick\r\nAccess.DispListBoxEvents.BeforeUpdate\r\nAccess.DispListBoxEvents.Exit\r\nAccess.DispListBoxEvents.DblClick\r\nAccess.DispOptionGroupEvents.BeforeUpdate\r\nAccess.DispOptionGroupEvents.Exit\r\nAccess.DispOptionGroupEvents.DblClick\r\nAccess.DispTextBoxEvents.BeforeUpdate\r\nAccess.DispTextBoxEvents.Exit\r\nAccess.DispTextBoxEvents.DblClick\r\nAccess.DispTextBoxEvents.Dirty\r\nAccess.DispTextBoxEvents.Undo\r\nAccess.DispComboBoxEvents.BeforeUpdate\r\nAccess.DispComboBoxEvents.NotInList\r\nAccess.DispComboBoxEvents.Exit\r\nAccess.DispComboBoxEvents.DblClick\r\nAccess.DispComboBoxEvents.Dirty\r\nAccess.DispComboBoxEvents.Undo\r\nAccess.DispSubFormEvents.Exit\r\nAccess.DispSubReportEvents.Exit\r\nAccess.DispSectionEvents.DblClick\r\nAccess.DispSectionInReportEvents.Format\r\nAccess.DispSectionInReportEvents.Print\r\nAccess.DispSectionInReportEvents.DblClick\r\nAccess.DispPaletteButtonEvents.BeforeUpdate\r\nAccess.DispPaletteButtonEvents.Exit\r\nAccess.DispPaletteButtonEvents.DblClick\r\nAccess.DispPageHdrFtrInReportEvents.Format\r\nAccess.DispPageHdrFtrInReportEvents.Print\r\nAccess.DispPageHdrFtrInReportEvents.DblClick\r\nAccess.DispTabControlEvents.DblClick\r\nAccess.DispPageEvents.DblClick\r\nAccess.DispLabelEvents.DblClick\r\n\r\nOffice.Core\r\n----------------\r\n\r\nOffice.IDocumentInspector.GetInfo\r\nOffice.IDocumentInspector.Inspect\r\nOffice.IDocumentInspector.Fix\r\nOffice.IDocumentInspector.GetInfo\r\nOffice.IDocumentInspector.Inspect\r\nOffice.IDocumentInspector.Fix\r\nOffice.IConverterPreferences.HrGetMacroEnabled\r\nOffice.IConverterPreferences.HrCheckFormat\r\nOffice.IConverterPreferences.HrGetLossySave\r\nOffice.IConverterApplicationPreferences.HrGetLcid\r\nOffice.IConverterApplicationPreferences.HrGetHwnd\r\nOffice.IConverterApplicationPreferences.HrGetApplication\r\nOffice.IConverterApplicationPreferences.HrCheckFormat\r\nOffice.IConverterUICallback.HrMessageBox\r\nOffice.IConverterUICallback.HrInputBox\r\nOffice.IConverter.HrInitConverter\r\nOffice.IConverter.HrImport\r\nOffice.IConverter.HrExport\r\nOffice.IConverter.HrGetFormat\r\nOffice.IConverter.HrGetErrorString\r\nOffice.IAccessible.accLocation\r\nOffice.CommandBar.accLocation\r\nOffice.CommandBarControl.accLocation\r\nOffice._CommandBarButton.accLocation\r\nOffice.CommandBarPopup.accLocation\r\nOffice._CommandBarComboBox.accLocation\r\nOffice._CommandBarActiveX.accLocation\r\nOffice.DocumentInspector.Inspect\r\nOffice.DocumentInspector.Fix\r\nOffice.TextRange2.RotatedBounds\r\nOffice.IMsoChart.Evaluate\r\nOffice.EncryptionProvider.Authenticate\r\nOffice.EncryptionProvider.ShowSettings\r\nOffice.IBlogExtensibility.BlogProviderProperties\r\nOffice.IBlogExtensibility.SetupBlogAccount\r\nOffice.IBlogExtensibility.GetUserBlogs\r\nOffice.IBlogExtensibility.GetRecentPosts\r\nOffice.IBlogExtensibility.Open\r\nOffice.IBlogExtensibility.PublishPost\r\nOffice.IBlogExtensibility.RepublishPost\r\nOffice.IBlogExtensibility.GetCategories\r\nOffice.IBlogPictureExtensibility.BlogPictureProviderProperties\r\nOffice.IBlogPictureExtensibility.PublishPicture\r\nOffice.IAccessible.accLocation\r\nOffice.CommandBar.accLocation\r\nOffice.CommandBarControl.accLocation\r\nOffice._CommandBarButton.accLocation\r\nOffice.CommandBarPopup.accLocation\r\nOffice._CommandBarComboBox.accLocation\r\nOffice._CommandBarActiveX.accLocation\r\nOffice.DocumentInspector.Inspect\r\nOffice.DocumentInspector.Fix\r\nOffice.TextRange2.RotatedBounds\r\nOffice.IMsoChart.Evaluate\r\nOffice.EncryptionProvider.Authenticate\r\nOffice.EncryptionProvider.ShowSettings\r\nOffice.IBlogExtensibility.BlogProviderProperties\r\nOffice.IBlogExtensibility.SetupBlogAccount\r\nOffice.IBlogExtensibility.GetUserBlogs\r\nOffice.IBlogExtensibility.GetRecentPosts\r\nOffice.IBlogExtensibility.Open\r\nOffice.IBlogExtensibility.PublishPost\r\nOffice.IBlogExtensibility.RepublishPost\r\nOffice.IBlogExtensibility.GetCategories\r\nOffice.IBlogPictureExtensibility.BlogPictureProviderProperties\r\nOffice.IBlogPictureExtensibility.PublishPicture\r\n\r\nVBE\r\n----------------\r\nVBIDE._CodePane.GetSelection",
+      "PostedDate": "2011-12-10T09:52:17.66-08:00",
+      "Id": 203023
+    },
+    {
+      "Message": "done. an updated release is available.\r\n*have a nice day",
+      "PostedDate": "2011-12-11T11:46:56.777-08:00",
+      "Id": 203024
+    },
+    {
+      "Message": "Great! Good to see this is fixed so quickly and in the same time for all other methods with output values too.\r\n",
+      "PostedDate": "2011-12-13T02:54:31.113-08:00",
+      "Id": 203025
+    }
+  ]
+}

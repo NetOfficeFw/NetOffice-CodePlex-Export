@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "When I open the datasource always  opens a window which lets me choose the existing Tables. \nBut I need open documen automaticaly without selected table menu. How to do it?\n\nobject sqlStatement = string.Format(\"SELECT * FROM `{0}`\", DataSourceTableName);\ndoc.MailMerge.OpenDataSource(dataSourceFile.GetOSFullPath(),sqlStatement );",
+    "LastUpdatedDate": "2013-12-04T07:30:27.32-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-12-03T01:32:07.11-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Document.MailMerge.OpenDataSource open without selected table menu",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20484
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I've already found the solution:doc.MailMerge.OpenDataSource(dataSourceFile.GetOSFullPath(), null, null, null, null, null, null, null, null,\t                                         null, null, null, sqlStatement, null, null, null);\r\n\r\nSorry for a trouble",
+      "PostedDate": "2013-12-04T07:30:27.32-08:00",
+      "Id": 203196
+    }
+  ]
+}

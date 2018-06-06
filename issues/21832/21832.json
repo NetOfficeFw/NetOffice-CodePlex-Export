@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Hi,\n\nI'm interested in OUTLOOK using NetOffice.\n\nI have the following assemblies imported and referenced in my project: OutlookAPI, OfficeAPI, NetOffice.\n\nI was using the standard MS Interop assembly, and referenced it like this:\n\n     using Outlook = Microsoft.Office.Interop.Outlook;\n\nI have also now added:\n\n     using OutlookApi;\n     using NetOffice;\n     using OfficeApi;\n\n...all my code breaks, example:\n\n      Outlook.Application usersOutlook = new Outlook.Application();\n\"The type or namespace 'Outlook' could not be found'...\n\nWhat am I missing ?\n\nThanks,\n\nBarry",
+    "LastUpdatedDate": "2015-07-24T12:05:44.12-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-05-01T10:11:21.493-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "setting up NetOffice (\"using\" assemblies)",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21832
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Having the same issue\r\n\r\nExcel.Application works but Outlook.Application does not",
+      "PostedDate": "2015-07-24T11:59:39.693-07:00",
+      "Id": 203292
+    },
+    {
+      "Message": "Found Solution:\r\n\r\nusing Outlook = NetOffice.OutlookApi;\r\n\r\nNetOffice Wizard only does this for Console Apps and not Windows Apps",
+      "PostedDate": "2015-07-24T12:05:44.12-07:00",
+      "Id": 203293
+    }
+  ]
+}

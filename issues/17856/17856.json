@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "for properties with optional parameters and 0 properties in the minimal version you need the get_ Method overload to use them, but the get_ Overload is hidden in intellisense. this is a good way.\ntask: clearify the situation and make the get_ overloads visible in Intellisense in this situation.",
+    "LastUpdatedDate": "2013-06-14T00:33:16.55-07:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-04-15T21:26:26.47-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Syntactical issue with parametrized properties",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17856
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

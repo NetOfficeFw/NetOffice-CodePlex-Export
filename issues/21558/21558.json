@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "As the COMObject base class and the Factory class both contain a List<COMObject> of \"currently used\" Proxies, the GC can never release those. (as they are always referenced as long as the application lives)\n\nIn our old code base (which is sadly not clean at all), we can't use \"DisposeChildInstances\" as this does also invalidate proxies we are still keeping a reference to.\n\nThe cleanest solution for me (as a \"managed C# developer\") is to replace the List<COMObject> in the mentioned classes by \"WeakCollection<COMObject>\" (e.g. using the \"Weakly\" Nuget package).\nThen you also have to fix two \"compiler errors\" in Factory and COMObject:\n- Factory.DisposeAllCOMProxies() should call Dispose on \"First()\" (import Linq namespace) instead of [0] and\n- the ListChildObjects property on COMObject should return a ICollection<> instead of a List<>.\n\nCheers,\nBibo",
+    "LastUpdatedDate": "2017-12-11T15:04:29.147-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-11-14T01:05:21.213-08:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Memory Leak when not cleanly used",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21558
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hi,\r\n\r\nbig thx for the audit !\r\n\r\nhmmm... i hope i understand you correctly\r\n\r\nAbout \"compiler errors\" (quality issues)\r\n\r\nI agree the with your IEnumerable ListChildObjects suggestion to avoid the ToArray() callbut i can't use Linq because NetOffice want support .Net 2 as long as possible. (EDIT: may its possible to use an #if condition..i want see) but what makes the linq extension better(except for the coolness) ?\r\n\r\nDispose means to release the proxy inside and you mean the dead proxy is keeping alive in memory as long as the application domain lives?\r\n\r\n(if you want keep child references alive you have to remove the child from its parent.)\r\n\r\n*Sebastian\r\n\r\nBTW: I dont use Nuget",
+      "PostedDate": "2014-11-15T04:36:13.107-08:00",
+      "Id": 203276
+    },
+    {
+      "Message": "update:\r\n\r\ni want change \r\n\r\nCOMObject[] ListChildObjects { get ;} \r\n\r\nto: \r\n\r\nIEnumurable ChildObjects {get;} // or just \"Childs\"\r\n\r\n*Sebastian",
+      "PostedDate": "2014-11-15T04:50:37.28-08:00",
+      "Id": 203277
+    },
+    {
+      "Message": "update:\r\n\r\nList ListChildObjects has been changed to IEnumerable ChildObjects in lastest source and release.",
+      "PostedDate": "2014-11-15T12:30:00.083-08:00",
+      "Id": 203278
+    }
+  ]
+}

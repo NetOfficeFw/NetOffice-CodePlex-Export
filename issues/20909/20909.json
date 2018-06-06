@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "I try to open my template file as:\n var doc = ExcelApp.Workbooks.Open('myTemplate.xltx', false, false);\nBut, instead  of opening template  Excell create new file, based on template.\n\ndoc = ExcelApp.Workbooks.Open(filename: tName, updateLinks: false, readOnly: false, editable: true); - doesn't work  (Error\t1\tThe best overload for 'Open' does not have a parameter named 'editable')\n\nPlease, explain how  to open template file (.xltx)",
+    "LastUpdatedDate": "2014-04-14T01:42:55.513-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-04-10T06:19:36.423-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "How to open template file (.xltx) for editing",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20909
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "NO doesnt use optional parameters. this is because you can't use named arguments.app.Workbooks.Open(@\"C:\\Mappe1.xltx\",null, null, null, null, null, null, null, null,true);\r\n\r\n\r\n\r\n*Sebastian",
+      "PostedDate": "2014-04-14T01:42:55.513-07:00",
+      "Id": 203218
+    }
+  ]
+}

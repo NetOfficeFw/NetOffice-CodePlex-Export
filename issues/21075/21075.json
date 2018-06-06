@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 5,
+    "Custom": "",
+    "Description": "internal static bool TryGetCustumXMLPart(this Document doc, string namespaceURI, out CustomXMLPart checkedPart) {\n            checkedPart = null;\n            using (CustomXMLParts parts = doc.CustomXMLParts) {\n                foreach (CustomXMLPart part in doc.CustomXMLParts) {\n                    string partNamespaceURI = part.NamespaceURI;\n                    if (partNamespaceURI == namespaceURI) {\n                        checkedPart = new CustomXMLPart(part); << ERROR\n                        return true;\n                    }\n                }\n            }\n            return false;\n        }",
+    "LastUpdatedDate": "2014-07-19T15:42:32.023-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-06-11T23:46:08.23-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "How to return a COMObject In a Collection?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21075
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600203,
+      "FileName": "CustomXmlPartsUtil.zip",
+      "DownloadUrl": ".\\1600203"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Did you try\r\n\r\n```part.ParentObject.RemoveChildObject(part);```",
+      "PostedDate": "2014-06-12T02:16:54.543-07:00",
+      "Id": 203239
+    },
+    {
+      "Message": "  internal static T Detach(this T COMObj) where T : COMObject {            if (COMObj != null) {                COMObject p = COMObj.ParentObject;                if (p != null) {                    p.RemoveChildObject(COMObj);                }            }            return COMObj;        }",
+      "PostedDate": "2014-06-14T01:19:14.81-07:00",
+      "Id": 203240
+    },
+    {
+      "Message": "please send me a sample solution(btw: i use VS2010, NET 4)  to public.sebastian[at]web.de i need to reproduce the problem. \r\n\r\nstill not sure, whats the exception? whats the problem?, i see something goes wrong, but no chance for me to pin point the problem here. some code, no error/exception message..hey man! i'm not a sorcerer ;) gimme more input and will i help you as best i can you know.\r\n\r\nAnyway: your code looks cool, just 1% percent of all my customers use the com proxy management directly.*just nice to know* why you do this?\r\n\r\n*Sebastian(again: send me a sample solution if possible)",
+      "PostedDate": "2014-07-18T21:55:29.79-07:00",
+      "Id": 203241
+    },
+    {
+      "Message": "internal static bool TryGetCustumXMLPart(this Document doc, string namespaceURI, out CustomXMLPart checkedPart) {        checkedPart = null;        using (CustomXMLParts parts = doc.CustomXMLParts) {            foreach (CustomXMLPart part in doc.CustomXMLParts) {                string partNamespaceURI = part.NamespaceURI;                if (partNamespaceURI == namespaceURI) {                    checkedPart = part.Detach(); //CALL extension method， This COMObject should be dispose explicit, after not using.                    return true;                }            }        }        return false;    }",
+      "PostedDate": "2014-07-19T00:23:26.38-07:00",
+      "Id": 203242
+    },
+    {
+      "Message": "Instead of iterating all the custom xml use this api method and expect to only get one instance.  I don't think your supposed to have more than one of the same namespace stored.\r\n\r\nCustomXMLParts.SelectByNamespace(classNameSpace)\r\n\r\nHave a utility class for Storing and Loading a xml serialized class.See attached solution.\r\n\r\n```NetOffice.WordApi.Application app = new NetOffice.WordApi.Application();app.DisplayAlerts = NetOffice.WordApi.Enums.WdAlertLevel.wdAlertsNone;app.Visible = true;\r\n\r\n// add a new documentNetOffice.WordApi.Document doc = app.Documents.Add();\r\n\r\n//create a new storage class instancevar info = new InfoStore() { ID = 112233, Name = \"hello\" };\r\n\r\n//store info into the document custom xml partsCustomXmlPartUtil.Store(doc.CustomXMLParts, info);      //load the serialized xml infoStore.var infoSaved = CustomXmlPartUtil.Load(doc.CustomXMLParts);\r\n\r\napp.Quit();app.Dispose();```",
+      "PostedDate": "2014-07-19T15:42:32.023-07:00",
+      "Id": 203243
+    }
+  ]
+}

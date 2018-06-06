@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "i'm download the  [add-in sample](https://netoffice.codeplex.com/downloads/get/325616)\n and build it in visual studio 2012 ,but i don't know how to debug the sample can you tell me ?",
+    "LastUpdatedDate": "2013-06-22T09:24:20.707-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-06-11T04:14:19.897-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "how to debug the sample?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 19839
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm very interested as well. The compiled sample is registered, but Word reports an error on load. I have no way of finding out what's wrong with it.",
+      "PostedDate": "2013-06-22T08:34:11.337-07:00",
+      "Id": 203129
+    },
+    {
+      "Message": "hello,let me explain, NetOffice is a fully 1:1 Wrapper to the Microsoft Office COM Automation Modell. NetOffice is a dirty little helper, not a library with an own idea. You have to know the basics to create a simple Office Addin. Sorry, i'm, a single person i try to help but its not easy for me.\r\n\r\nOkay!\r\n\r\n1. Just open a NetOffice Sample Addin Solution. You find a solution in the donwloaded release or latest source state. Just klick in the Solution Explorer with a right click on your main solution. Now you see special with some options. Please click on Debugging(or something like that, sorry ia'm german..) Now click on the radio button \"Start External Program\" and coose your desired Office Application. Now save the solution and start debugging. you will see all your breakpoints and so in works fine ;)",
+      "PostedDate": "2013-06-22T09:21:23.463-07:00",
+      "Id": 203130
+    },
+    {
+      "Message": "edit: this is may not helpfull to you. what excatatly is your problem? btw: most of time the an dependent asssemly is missing in a trouble scenario.",
+      "PostedDate": "2013-06-22T09:24:20.707-07:00",
+      "Id": 203131
+    }
+  ]
+}

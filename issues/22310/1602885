@@ -1,0 +1,36 @@
+<Query Kind="Statements">
+  <NuGetReference>NetOffice.Excel.Net45</NuGetReference>
+  <Namespace>NetOffice.ExcelApi</Namespace>
+  <Namespace>NetOffice.ExcelApi.Enums</Namespace>
+</Query>
+
+var s = $@"C:\users\{Environment.UserName}\desktop\test.xlsx";
+var d = $@"C:\users\{Environment.UserName}\desktop\test.pdf";
+
+var app = new Application() { Visible = true };
+
+try
+{
+	var wb = app.Workbooks.Open(s);
+	wb.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF, d, XlFixedFormatQuality.xlQualityMinimum, false, null, null, null, false);
+
+	// 2. Adding the sleep for at least 16ms on my machine makes it succeed.
+	//Thread.Sleep(20);
+
+	// 1. It crashes on the following line.
+	wb.Close(false);
+	
+	// 3. Note that calling Close on the COM object works and properly closes the workbook.
+	//((dynamic)wb.UnderlyingObject).Close(false);
+	
+	Console.WriteLine("Done");
+}
+catch (Exception ex)
+{
+	ex.Dump();
+}
+finally
+{
+	app.Quit();
+	app.Dispose();
+}

@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-02-17T02:33:41.09-08:00",
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "I am not able to create and load the Excel Add-In. Here is what I did:\n \n1. Downloaded NetOffice 1.3.2\n \n2. From the rar archive I have extracted folders:\n   Net4.0\\Assemblies\n   Net4.0\\Examples\\Excel\\C#\\COMAddinRibbonExample\n \n3. I have loaded the *.csproj file in Visual Studio 2010 Express (running it as Administrator)\n \n4. I have added references to the assemblies and compiled the project. The compile works OK and the registry keys were created (HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\Excel\\Addins\\ExcelRibbonAddinCSharp.Addin)\n \n5. When I start Excel, nothing happens. The Ribbon is not modified. When I check File -> Options -> Add-ins, then select COM add-ins at the bottom of the screen, I get the list of all COM add-ins where I can see the add-in just created (C#ExcelRibbonAddIn) and when I select it, I can see the following error message: Not Loaded. A runtime error occurred during the loading of the COM Add-in\n \nI am using Windows 7 Professional, 64 bit. I am running MS Office 2010 64 bit.\n \nPlease advise. Many thanks.",
+    "LastUpdatedDate": "2013-05-16T04:50:59.787-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-02-08T04:44:22.9-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error loading Excel Add-In",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17377
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hello there,\r\n\r\nwhat i think the problem is, you have to set the assembly to x64.\r\ndo you know the 32/64Bit compatibility guide?\r\nhttp://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_32Bit_64Bit\r\n\r\n*sebastian",
+      "PostedDate": "2012-02-08T05:57:23.343-08:00",
+      "Id": 203037
+    },
+    {
+      "Message": "Yes, this was a great hint. What has to be done is to do the following:\r\n\r\n6. Uncheck \"Register for COM interop\" in the Properties -> Build page\r\n\r\n7. Set the target CPU as per this StackOverflow question:\r\n\r\nhttp://stackoverflow.com/questions/4104228/change-target-cpu-settings-in-visual-studio-2010-express\r\n\r\n8. Add the following post-build step to Properties -> Build Events:\r\n\r\n\"%Windir%\\Microsoft.NET\\Framework64\\v4.0.30319\\regasm\" \"$(TargetPath)\"\r\n\r\n(Based on this MS KB article: http://support.microsoft.com/kb/956933)\r\n\r\nNow everything works, thanks again.",
+      "PostedDate": "2012-02-08T06:23:23.59-08:00",
+      "Id": 203038
+    }
+  ]
+}

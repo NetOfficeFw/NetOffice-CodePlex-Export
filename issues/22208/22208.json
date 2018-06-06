@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "Hi\n\nI'm faced with a weird behavior.\nNet Office task panes are not visible anymore in Excel 2013 when an XLA is enabled.\nTo reproduce the problem, I used any of the samples provided creating a task pane, and I active an XLA.\nEach of \"Solver addin\", \"Euro currency tools\" and \"analysis toolpak\" XLA provided with Excel 2013 creates the problem.\n\nA workaround is to uncheck \"Show the Start screen when this application starts\" in Excel options \"General\" (at the bottom)\n\nAny idea what is going on ?\n\nThanks",
+    "LastUpdatedDate": "2016-03-17T04:01:55.37-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-03-15T09:00:19.073-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Conflict between task panes and XLA since Excel 2013",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22208
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "After further investigations, moving the creation of a task pane (ICTPFactory.CreateCTP) outside of the ICustomTaskPaneConsumer.CTPFactoryAvailable method solve the problem.If that helps ...",
+      "PostedDate": "2016-03-17T03:06:34.83-07:00",
+      "Id": 203370
+    },
+    {
+      "Message": "I have no idea whats going on :o What happen? \r\n\r\nThe pane disappear?",
+      "PostedDate": "2016-03-17T03:40:42.947-07:00",
+      "Id": 203371
+    },
+    {
+      "Message": "Yes, exactly, the pane is not visible, but there is no exception anywhere, all code run as it should.",
+      "PostedDate": "2016-03-17T04:01:55.37-07:00",
+      "Id": 203372
+    }
+  ]
+}

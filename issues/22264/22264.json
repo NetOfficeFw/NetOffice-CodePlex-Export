@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi, \n\nI have made an application that uses the WordApi.\n\nWhen I am trying to \"connect\" with a word that is saved to a Sharepoint and then close it the next time that the Application.GetActiveInstance(); method is called, it does not respode. \nNothing is returned not even an exception, instead of this the application freezes at this line.",
+    "LastUpdatedDate": "2016-05-12T07:02:40.66-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-05-12T07:02:40.66-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Word that has opened from Sharepoint",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22264
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

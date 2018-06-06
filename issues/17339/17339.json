@@ -1,0 +1,61 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "no problem, you can create a new issue or re-open this one any time.\r\n*sebastian",
+    "ClosedDate": "2012-02-08T05:59:13.227-08:00",
+    "CommentCount": 3,
+    "Custom": "",
+    "Description": "Accidentally discovered this while processing some Word Documents that were undergoing massive revision. The Revisions.AcceptAll() method does not actually accept any of the changes in Word footnotes.\n \nBy contrast, _Document.AcceptAllRevisions() method accepts everything.\n \nSample documents and code are attached.",
+    "LastUpdatedDate": "2013-05-16T04:50:59.91-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2012-02-02T13:39:07.017-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NetOffice.WordApi.Document.Revisions.AcceptAll() does not accept footnote changes",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17339
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600184,
+      "FileName": "AcceptAllWordChangesTest.zip",
+      "DownloadUrl": ".\\1600184"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Forgot to mention: I'm using the NetOffice Api build 1.3.2.\r\n\r\nThanks,\r\nToby",
+      "PostedDate": "2012-02-02T13:39:49.64-08:00",
+      "Id": 203034
+    },
+    {
+      "Message": "are you sure this is a NetOffice issue?\r\nin other words: working with interop assemblies works as well and NetOffice ignore the footnotes?\r\ni do a test with the interop assemblies in vs2010 and word 2007 and i have exactly the same behavior.",
+      "PostedDate": "2012-02-02T17:06:41.9-08:00",
+      "Id": 203035
+    },
+    {
+      "Message": "It didn't occur to me that it might be a fundamental issue with the Microsoft API, but it looks as if you're right.\r\n\r\nThanks for checking into it.",
+      "PostedDate": "2012-02-03T08:34:32.68-08:00",
+      "Id": 203036
+    }
+  ]
+}

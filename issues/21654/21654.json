@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Developer Toolbox",
+      "DisplayName": "Developer Toolbox"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Последовательность не содержит соответствующий элемент\n\nSystem.InvalidOperationException: Последовательность не содержит соответствующий элемент\n\n   в System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)\n\n   в NetOffice.DeveloperToolbox.Translation.Translator.AutoTranslateControls(Control control, String componentName, String ressourceFileName, Int32 lanuageID)\n\n   в NetOffice.DeveloperToolbox.ToolboxControls.OfficeCompatibility.ReportControl..ctor(AnalyzerResult report, Int32 currentLanguageID)\n\n   в NetOffice.DeveloperToolbox.ToolboxControls.OfficeCompatibility.OfficeCompatibilityControl.buttonReport_Click(Object sender, EventArgs e)",
+    "LastUpdatedDate": "2015-01-09T13:06:30.537-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-01-09T04:49:09.497-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "OfficeCompatibility Report button throws InvalidOperationException",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21654
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hey crew member,\r\n\r\ni create NO Toolbox 1.4.2(beta) to fix this problem. its available in the download section.\r\n\r\nthanks for pointing this out !!! *Sebastian",
+      "PostedDate": "2015-01-09T13:06:30.537-08:00",
+      "Id": 203282
+    }
+  ]
+}

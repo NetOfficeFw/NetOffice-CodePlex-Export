@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "hello, as I try to open a word document:\n\nprivate Word.Application wordApplication = null;\nprivate Word.Document WordDocument = null;\n\n\nwordApplication = new Word.Application();\nwordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;\nwordApplication.Visible = true;\nobject documentFile = (object)@Word_Filename;\nWordDocument = wordApplication.Documents.Open(@documentFile);\n\nit works fine with office 2010 but crashes on word 2003.\n\n\nSystem.runtime.interopservices.comexception(0x800004005)...\nsystem.reflection.targetinvocationexception....\nnetoffice.wordapi.documents.open\n\ncuold you please help me.\n\nThanks",
+    "LastUpdatedDate": "2013-12-05T06:24:48.72-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2013-12-05T05:54:23.33-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Crash during word 2003 document open",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20491
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1600195,
+      "FileName": "errore.jpg",
+      "DownloadUrl": ".\\1600195"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "error image",
+      "PostedDate": "2013-12-05T05:56:46.43-08:00",
+      "Id": 203197
+    },
+    {
+      "Message": "please remove private data from the document and send to public.sebastian[at]web.de so i can do few tests.\r\n\r\n*thxSebbastin",
+      "PostedDate": "2013-12-05T06:24:48.72-08:00",
+      "Id": 203198
+    }
+  ]
+}

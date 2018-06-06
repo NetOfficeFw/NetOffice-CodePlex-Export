@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hello,\n\nI have been trying to use NetOffice from powershell to automate excel.\n\nAt most I can open a new spreadsheet but it seems I cannot access any worksheets. I suspect this is because the indexers do not work in powershell. The following code opens the spreadsheet but trying to get a Worksheet object simply delivers a null object.\n\n```\nadd-type -Path .\\4.0\\ExcelApi.dll\nadd-type -Path .\\4.0\\NetOffice.dll\nadd-type -Path .\\4.0\\OfficeApi.dll\n#add-type -path .\\4.0\\VBIDEApi.dll\n\n$excel = new-object NetOffice.ExcelApi.Application\n[NetOffice.ExcelApi.Workbook]$wkBk = [NetOffice.ExcelApi.Workbook]$excel.Workbooks.Add()\n$wkbk.GetType()\n$sht = $wkBk.Worksheets[1]\n$sht.GetType()\n$excel.Dispose()\n\n```\nThe result is:-\n\n\nIsPublic IsSerial Name                                     BaseType\n-------- -------- ----                                     --------\nTrue     False    Workbook                                 NetOffice.ExcelApi._Workbook\nYou cannot call a method on a null-valued expression.\nAt D:\\PowershellScripts\\NetOffice\\Test-NetOffice4.0.ps1:30 char:1\n+ $sht.GetType()\n+ ~~~~~~~~~~~~~~\n    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException\n    + FullyQualifiedErrorId : InvokeMethodOnNull\n\n\n\nIs there a way of using NetOffice assembies with Powershell?",
+    "LastUpdatedDate": "2014-10-20T02:10:06.283-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-10-20T02:10:06.283-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Use In Powershell",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21468
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

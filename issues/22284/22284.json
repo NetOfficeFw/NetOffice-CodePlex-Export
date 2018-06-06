@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "Decided to start a new thread as it is specific to Excel but I think it's the same macanisim as another thread called \"Class not exists: NetOffice.OfficeApi.Document\"\n\nMy issue is related to WorkbookConnection class\n\nI got a valid WorkbookConnection objet using:\n                    powerPivotConnection = book.Connections\n                        .OfType<WorkbookConnection>()\n                        .Where(n => n.Name == \"PowerPivot Data\" || n.Name == \"ThisWorkbookDataModel\")\n                        .FirstOrDefault();\n\nthen I use this to reconnect:\npowerPivotConnection.OLEDBConnection.Reconnect();\n\neverything is fine until I try to get this property:\npowerPivotConnection.OLEDBConnection.ADOConnection\n\nIt raises an Exception (stack here):\n\n   à NetOffice.Core.CreateObjectFromComProxy(IFactoryInfo factoryInfo, COMObject caller, Object comProxy, Type comProxyType, String className, String fullClassName)\n   à NetOffice.Core.CreateObjectFromComProxy(COMObject caller, Object comProxy)\n   à NetOffice.ExcelApi.OLEDBConnection.get_ADOConnection()\n   à Powerpivot_Refresh.ExcelUtilities.TryRefreshPowerPivot(Workbook book) dans c:\\Users\\pasielskyf\\Documents\\Dev\\PSO_tools\\Powerpivot_Refresh\\ExcelUtilities.cs:ligne 143\n   à PSO_tools.Addin.Btn_importDiver_Click(IRibbonControl Ctrl) dans c:\\Users\\pasielskyf\\Documents\\Dev\\PSO_tools\\PSO_tools\\Addin.cs:ligne 301\n\nI managed this using reflection as discussed in \"Class not exists: NetOffice.OfficeApi.Document\" topic, but I'm sure there is better to do.\n\nIf you need additionnal information, let me know",
+    "LastUpdatedDate": "2016-06-20T08:26:00.637-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-06-01T02:46:26.097-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Problem with property OLEDBConnection.ADOConnection",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22284
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Please include/reference all MS Access Assemblies.\r\n\r\nwhat do you awaiting in result of ADOConnection?which type is that ???\r\n\r\n(NetOffice 1.7.3  has a known issue with external assemblies here)\r\n\r\nSebastian",
+      "PostedDate": "2016-06-12T22:24:08.903-07:00",
+      "Id": 203375
+    },
+    {
+      "Message": "I'm afraid this doesn't seem to be related to Access at all.\r\n\r\nhere is the target class\r\n\r\npublic OLEDBConnection NetOffice.ExcelApi.WorkbookConnection.OLEDBConnection { get; }Summary: SupportByVersion Excel 12, 14, 15 Get MSDN Online Documentation: http://msdn.microsoft.com/en-us/en-us/library/office/ff838417.aspx\r\n\r\nThis class contains a Property that is ADOConnection (type is object)\r\n\r\nIf it does help you, I'm trying to port to NetOffice a project that allow users to refresh a powerpivot excel file automatically : https://excelrefresher.codeplex.com/ (that uses VSTO instead of NetOffice)This project will be a helper to mine. I decided that NetOffice is the best way to develop on Office using C#, I really want it to work :-)",
+      "PostedDate": "2016-06-20T08:26:00.637-07:00",
+      "Id": 203376
+    }
+  ]
+}

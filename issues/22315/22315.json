@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 6,
+    "Custom": null,
+    "Description": "Applied to Microsoft Access.\r\nI received similar exception when use property Parent for any control if Parent is Form.\r\nYou could see one of them in example (button0 on Form1 )\r\n\r\nNetOffice.NetOfficeException: Class 49b38fa1-b771-41e1-a8d6-8e65b81fcf97:Form_Form1 not found in loaded NetOffice Assemblies\r\n",
+    "LastUpdatedDate": "2016-10-20T03:52:13.45-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-10-13T03:21:12.307-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Class not found in loaded NetOffice Assemblies",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22315
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1613330,
+      "FileName": "NetOfficeAccessTest.zip",
+      "DownloadUrl": ".\\1613330"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Have you tried to add a reference to MSFormsApi.dll ?\n\nSebastian",
+      "PostedDate": "2016-10-14T00:21:04.653-07:00",
+      "Id": 204669
+    },
+    {
+      "Message": "I tried, but it did not help.\nWhich connection can be between Access.Form and MSForms?\n\nSerge",
+      "PostedDate": "2016-10-14T01:56:58.46-07:00",
+      "Id": 204671
+    },
+    {
+      "Message": "MSFormsApi is the \"Forms 2.0\" COM library which contains TextBox, Button, Label, etc.\nYou need this libray if you want to access controls like these in office applications.\n\nI can not open the database right now with my access 2007. can you see whats the class name of the parent interop proxy?\n\nSebastian\n\n\n",
+      "PostedDate": "2016-10-14T04:53:29.16-07:00",
+      "Id": 204672
+    },
+    {
+      "Message": ">MSFormsApi is the \"Forms 2.0\" COM library which contains TextBox, Button, Label, etc.\n\nI know about MSForms.\nAccess.Form and MSForm.Userform are two different objects.\nAlso Access.CommandButton and MSForm.CommandButton etc.\n\n>I can not open the database right now with my access 2007.\n\nYou can create own database file with one form (Form1) wich contains one CommandButton\n\nSerge",
+      "PostedDate": "2016-10-15T00:00:23.037-07:00",
+      "Id": 204682
+    },
+    {
+      "Message": "Yes i know, it was just an idea.\n\nI have to ask on more time because this is the most important question.\nWhat type is this interop proxy with the interface id 49b38fa1-b771-41e1-a8d6-8e65b81fcf97 ?\nwhat its type or (class) name? (your see that in your alternate interop solution)\nYou can see that in the debugger or recieve informations with:\nSystem.ComponentModel.TypeDescriptor.GetClassName(object instance);\n\n\n*Sebastian\n\n",
+      "PostedDate": "2016-10-17T12:25:51.54-07:00",
+      "Id": 204720
+    },
+    {
+      "Message": "Sebastian, \n\nSystem.ComponentModel.TypeDescriptor.GetClassName(ctl.Parent) return Form_Form1.\nThis is evident in the first message. \n\nGuid changes with each opening of the Access Application, but the same for different foms:\n\nNetOffice.NetOfficeException: Class f47e1d09-6f8c-46c1-8952-c26dfb5d4e5d:Form_Form1 not found in loaded NetOffice Assemblies\n\nNetOffice.NetOfficeException: Class f47e1d09-6f8c-46c1-8952-c26dfb5d4e5d:Form_Form2 not found in loaded NetOffice Assemblies\n\nSerge",
+      "PostedDate": "2016-10-20T03:52:13.45-07:00",
+      "Id": 204773
+    }
+  ]
+}

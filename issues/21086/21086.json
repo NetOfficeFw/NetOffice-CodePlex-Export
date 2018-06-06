@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Hi Guys.\n\nRunning 1.6 and am trying to create a Pivot Table in Excel.  I can get it to generate fine as long as the SourceData range does not go over 65536.  If I go to 65537 I get:\n\n```\n{\"Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))\"}\n```\n\nIf I create the table in Excel manually it works fine.  I assume there is a ushort variable limit to blame here?  Here is the code that causes the problem (abbreviated to save space):\n\n```\nvar workbook = ExcelApplication.ActiveWorkbook;\nif (workbook == null)\n\treturn;\n\nvar DataWorksheet = (Worksheet)workbook.Worksheets.FirstOrDefault(ws => ((Worksheet)ws).Name == \"Data\");\nif (DataWorksheet == null)\n\treturn;\n\nvar pivotsheet = workbook.Worksheets.Add() as Worksheet;\nif (pivotsheet == null)\n\treturn;\n\n// THE EVENTUAL PROBLEM WHEN > 65536\t\nvar usedrange = DataWorksheet.Range(\"A1:U65537\"); \n\n//THIS LINE WILL CAUSE THE EXCEPTION WHEN usedrange IS > 65536\nvar pivotcache = workbook.PivotCaches().Add(XlPivotTableSourceType.xlDatabase, usedrange);\n\nvar pivottables = pivotsheet.PivotTables() as PivotTables;\n\nif (pivottables != null)\n{\n\tvar pivottable = pivottables.Add(pivotcache, pivotsheet.Range(\"A1\"), \"PivotTable1\");\n\tpivottable.InGridDropZones = false;\n}\n```\n\nThanks\nErnie",
+    "LastUpdatedDate": "2014-07-24T12:25:18.563-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-06-17T09:02:41.447-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel Pivot Table SourceData Range >65536 Crashes",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21086
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Anything?  At least a workaround?",
+      "PostedDate": "2014-07-24T12:25:18.563-07:00",
+      "Id": 203244
+    }
+  ]
+}

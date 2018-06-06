@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": "",
+    "Description": "I had tried to run the Example01 of wordapi, but at this line has some errors:\n\n... other code\n\n// close word and dispose reference\nwordApplication.Quit();\nwordApplication.Dispose();  // <----- the winword.exe do not quit, and program do not countinue until I kill the winword.exe process manually.\n\nI am using Office 2013. How to solve it, thanks.",
+    "LastUpdatedDate": "2015-12-05T08:09:16.88-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2015-11-28T10:43:36.107-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Dispose() do not make the winword.exe quit",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22101
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hey men, \r\n\r\nplease help me , you mean the [unmodifed] example01 cause proplems and winword doesnt shutdown?this is very exceptional because no trouble in this way for more than 5 years.(i face the problem some years ago and the reason was a third party plugin btw.)\r\n\r\nPlease let me know your NetOffice version and operation system (win 32/64) too. moreover: its a terminal session/remotedesktop in your scenario or not.\r\n\r\n*i can't believe itSebastian",
+      "PostedDate": "2015-11-30T13:28:56.38-08:00",
+      "Id": 203362
+    },
+    {
+      "Message": "I tried it again. I compiled the UNMODIFED example from NetOffice 1.7.3\\NET 3.5\\Examples\\Word\\C#\\Standard Examples\\WordExamples.sln and run the WordExamplesCS35.exe. And then selected Example01, click \"Start Example\". The finish dialog don't show until I kill the winword.exe.\r\n\r\nBut the examples of Excel is normal. All Excel.exe will be end automatically.I am using Chinese edition Win7 64 and Office 2013 and NetOffice 1.7.3 and not in remotedesktop. I am close all necessary processes. I am step into the source code and it stop at that line:\r\n\r\n[EditorBrowsable(EditorBrowsableState.Advanced)]public void ReleaseCOMProxy(){    // release himself from COM Runtime System    if (!Object.ReferenceEquals(_underlyingObject, null))    {        if (_isEnumerator)        {            ICustomAdapter adapter = _underlyingObject as ICustomAdapter;            Marshal.ReleaseComObject(adapter.GetUnderlyingObject());        }        else        {            Marshal.ReleaseComObject(_underlyingObject); // ----> stop here and winword.exe still there        }        Factory.RemoveObjectFromList(this);        _underlyingObject = null;    }}",
+      "PostedDate": "2015-12-05T08:09:16.88-08:00",
+      "Id": 203363
+    }
+  ]
+}

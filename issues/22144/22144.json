@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "",
+    "Description": "Hi there,\n\nIs it possible to use VBA to launch/fire an addin procedure in any way?\n\nI am currently using NetOffice, I have a Comaddin, and used the wizard to create the com addin.\n\nI have the basic addin creating a ribbon command, this ribbon command opens a form created using a Windows Form.\n\nThe code I have is c#.\n\nSo I want to launch my form from VBA instead of using a ribbon control.\n\nIs this possible?",
+    "LastUpdatedDate": "2016-01-20T02:49:16.09-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-01-14T14:37:17.833-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Launch ComAddin from from VBA",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 22144
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

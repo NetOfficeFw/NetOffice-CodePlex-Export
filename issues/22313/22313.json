@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "In standard Excel interop, this is enough to add a worksheet in C#:\r\n\r\n```\r\nvar sheet = worksheets.Add(After: addAfterSheet);\r\n```\r\n\r\nHowever, in NetOffice, I have to do this:\r\n\r\n```\r\nvar sheet = worksheets.Add(before: Type.Missing, after: addAfterSheet);\r\n```\r\n\r\nIs this by design? It's a bit of a shame, since one of the greatest improvement for Interop in C# lately was the ability to use named arguments instead of Type.Missing everywhere...",
+    "LastUpdatedDate": "2016-09-28T23:38:21.283-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2016-09-28T03:44:45.59-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Named arguments do not work as expected (C#)",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22313
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "NetOffice supports optionals arguments but didnt support -so called- named arguments like \n\"argName := argValue\"\n\nNetOffice doesnt use optional arguments for compatibility reasons because optional arguments is not supported by all .net languages in any version. To level this problem NetOffice spend all possible method overloads. For your Worksheet=>Add example this means NetOffice API offers the following API:\n\npublic object Add(object before);\npublic object Add(object before, object after);\npublic object Add(object before, object after, object count);\npublic object Add(object before, object after, object count, object type);\n\nThis means if you want to set the second \"after\" argument, you have to give the first \"before\" argument also. This call interface design was born in Year of 2009 btw. (My personal opinion is to change that with the next .Net version which is means to drop  .Net 3.0 and below because C# didnt support optional arguments here)\n\nSebastian\n\n",
+      "PostedDate": "2016-09-28T10:59:16.517-07:00",
+      "Id": 204391
+    },
+    {
+      "Message": "Ah, I understand. Thanks for your reply Sebastian!",
+      "PostedDate": "2016-09-28T23:38:21.283-07:00",
+      "Id": 204406
+    }
+  ]
+}

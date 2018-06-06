@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "Hi,\n\nI am manipulating tables in a Word document. \nI have a simple test code which checks whether a table cell is odd or even, and sets it to bold if it's odd.\n\nIf I try to assign a boolean value, the compiler gives me a 'cannot convert bool to int'error. \nIf I try to assign an integer value, the code compiles but raises an exception. \n\n//bc is boolean and initialized to true.\n//dbg() is a helper function and works.\n//tcel is word table's cell and works. getting the value and getting a ToString() gives me 0 or -1.\n\nif(bc == true){\n    //dbg(\"tcel.Range.Font.Bold == \" + tcel.Range.Font.Bold.ToString());\n    tcel.Range.Font.Bold = -1;\n}else{\n    //dbg(\"tcel.Range.Font.Bold == \" + tcel.Range.Font.Bold.ToString());\n    tcel.Range.Font.Bold = 0;\n}",
+    "LastUpdatedDate": "2017-12-11T15:04:29.147-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-12-16T11:25:35.16-08:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Range.Font.Bold asks for int when it should be a boolean",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21612
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "thanks for pointing this out.i want fix this as fast as possible\r\n\r\n*Sebastian",
+      "PostedDate": "2014-12-17T12:37:14.77-08:00",
+      "Id": 203279
+    }
+  ]
+}

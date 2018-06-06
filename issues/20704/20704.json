@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 7,
+    "Custom": "",
+    "Description": "I have a function that imports xml data into a range in Excel. This have been working fine using the Excel interop, but when I changed to NetOffice it didn't work anymore.\n\nI've tried to use the function differently, but no luck so far.... \nSample:\nstrXML contains the XML to be inserted\n\n```\n                Dim excel As NetOffice.ExcelApi.Application = Nothing\n                Dim exWb As NetOffice.ExcelApi.Workbook\n                Dim sht As NetOffice.ExcelApi.Worksheet\n                \n                excel = New NetOffice.ExcelApi.Application\n                Dim xsd As NetOffice.ExcelApi.XmlMap = Nothing\n                exWb.XmlImportXml(strXML, xsd, True, sht.Range(\"A1\"))\n\n```\n\nError:\nParameter not optional. (Exception from HRESULT: 0x8002000F (DISP_E_PARAMNOTOPTIONAL))\n\nAll parameters has been filled. The xsd parameter is an out parameter...\nI've tried to reduce to (strXML, xsd) parameters. But same result.\n\nI've also tried to go directly from a dataset with dataset.GetXML and dataset.GetXmlSchema\nSame result.",
+    "LastUpdatedDate": "2016-09-28T23:54:53.74-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-02-04T04:13:10.837-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel XmlImportXml does not work",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20704
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi,\n\nI came accross the same issue when I tried to convert a project today. Please fix it!\n\nSomething is definitely going wrong in the wrapper library, because if I use .UnderlyingObject, I do get working code:\n\n```\n            var destination = sheet.Cells[1, 1];\n            var map = workbook.XmlMaps.Add(schema).UnderlyingObject;\n            dynamic x = workbook.UnderlyingObject;\n            x.XmlImportXml(xml, out map, true, destination.UnderlyingObject);\n\n```\n\nThis code throws the same exception as mentioned by the thread starter, however:\n\n```\n          var destination = sheet.Cells[1, 1];\n          var map = workbook.XmlMaps.Add(schema);\n          workbook.XmlImportXml(xml, out map, true, destination);\n\n```",
+      "PostedDate": "2016-09-26T07:41:55.513-07:00",
+      "Id": 204299
+    },
+    {
+      "Message": "I have no experience with xml import at all.\n(I looks like an optional argument is missing)\nWould you help me to reproduce the issue please?\n\n*Sebastian",
+      "PostedDate": "2016-09-26T11:28:42.583-07:00",
+      "Id": 204305
+    },
+    {
+      "Message": "Dear Sebastian,\n\nWould you like me to set up a working/failing example with the snippets I posted, or what do you need of me?\n\nKind regards,\nJohan",
+      "PostedDate": "2016-09-27T00:00:13.143-07:00",
+      "Id": 204326
+    },
+    {
+      "Message": "Using Excel 2010 and NetOffice for .NET 4.5 obtained as a NuGet package\n\n```\nusing System;\nusing Excel = NetOffice.ExcelApi;\nusing System.IO;\n\nnamespace NetOfficeBugs\n{\n    class Program\n    {\n        private static string _schema = \"<xs:schema attributeFormDefault=\\\"unqualified\\\" elementFormDefault=\\\"qualified\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:element name=\\\"ArrayOfCommentInfo\\\">\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:element name=\\\"CommentInfo\\\" maxOccurs=\\\"unbounded\\\" minOccurs=\\\"0\\\">\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:element type=\\\"xs:byte\\\" name=\\\"CommentId\\\"/>\\r\\n              <xs:element type=\\\"xs:short\\\" name=\\\"NodeId\\\"/>\\r\\n              <xs:element type=\\\"xs:string\\\" name=\\\"TicketTitle\\\"/>\\r\\n              <xs:element type=\\\"xs:string\\\" name=\\\"DateFormatted\\\"/>\\r\\n              <xs:element type=\\\"xs:string\\\" name=\\\"Complaint\\\"/>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\";\n\n\n        static void Main(string[] args)\n        {\n            using (var exApp = new Excel.Application())\n            {\n                Console.WriteLine($\"Excel Version: {exApp.Version}\");\n\n                var xml = File.ReadAllText(\"example.xml\");\n\n                exApp.Visible = true;\n\n                var workbook = exApp.Workbooks.Add();\n                var sheet = (Excel.Worksheet)workbook.Worksheets[1];\n\n\n                //Uncomment what you want to test\n                //ImportXmlUnderlyingObject(xml, workbook, sheet); \n                //ImportXmlNetOffice(xml, workbook, sheet);\n\n            }\n\n            Console.WriteLine();\n            Console.WriteLine(\"Done executing!\");\n            Console.ReadLine();\n        }\n\n        private static void ImportXmlNetOffice(string xml, Excel.Workbook workbook, Excel.Worksheet sheet)\n        {\n            //This code works if you use the standard Excel libraries from Microsoft\n\n            var destination = sheet.Cells[1, 1];\n            var map = workbook.XmlMaps.Add(_schema);\n            workbook.XmlImportXml(xml, out map, true, destination);\n\n            //But causes this exception in NetOffice:\n\n            /*\n            System.Runtime.InteropServices.COMException was unhandled\n              ErrorCode=-2147467259\n              HResult=-2147467259\n              Message=See inner exception(s) for details.\n              Source=NetOffice\n              StackTrace:\n                   bij NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)\n                   bij NetOffice.ExcelApi._Workbook.XmlImportXml(String data, XmlMap& importMap, Object overwrite, Object destination)\n                   bij NetOfficeBugs.Program.ImportXmlNetOffice(String xml, Workbook workbook, Worksheet sheet) in C:\\Users\\johanb\\Source\\Repos\\TicketSystemTools\\NetOfficeBugs\\Program.cs:regel 47\n                   bij NetOfficeBugs.Program.Main(String[] args) in C:\\Users\\johanb\\Source\\Repos\\TicketSystemTools\\NetOfficeBugs\\Program.cs:regel 31\n                   bij System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)\n                   bij System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)\n                   bij Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n                   bij System.Threading.ThreadHelper.ThreadStart_Context(Object state)\n                   bij System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)\n                   bij System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)\n                   bij System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n                   bij System.Threading.ThreadHelper.ThreadStart()\n              InnerException: \n                   HResult=-2146232828\n                   Message=Het doel van een aanroep heeft een uitzondering veroorzaakt.\n                   Source=mscorlib\n                   StackTrace:\n                        bij System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n                        bij System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n                        bij NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)\n                   InnerException: \n                        ErrorCode=-2147352561\n                        HResult=-2147352561\n                        Message=Parameter niet optioneel. (Uitzondering van HRESULT: 0x8002000F (DISP_E_PARAMNOTOPTIONAL))\n                        InnerException: \n\n            */\n        }\n\n        private static void ImportXmlUnderlyingObject(string xml, Excel.Workbook workbook, Excel.Worksheet sheet)\n        {\n            var destination = sheet.Cells[1, 1];\n\n            var map = workbook.XmlMaps.Add(_schema).UnderlyingObject;\n\n            dynamic dynamicWorkbook = workbook.UnderlyingObject;\n            dynamicWorkbook.XmlImportXml(xml, out map, true, destination.UnderlyingObject);\n        }\n    }\n}\n\n```",
+      "PostedDate": "2016-09-28T03:29:27.67-07:00",
+      "Id": 204372
+    },
+    {
+      "Message": "Sorry, forgot the contents of example.xml:\n\n```\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ArrayOfCommentInfo xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n  <CommentInfo>\n    <CommentId>80</CommentId>\n    <NodeId>156</NodeId>\n    <TicketTitle>Blabla</TicketTitle>\n    <DateFormatted>6-4-2016</DateFormatted>\n    <Complaint>false</Complaint>\n  </CommentInfo>\n  <CommentInfo>\n    <CommentId>81</CommentId>\n    <NodeId>159</NodeId>\n    <TicketTitle>Blabla2</TicketTitle>\n    <DateFormatted>6-4-2016</DateFormatted>\n    <Complaint>false</Complaint>\n  </CommentInfo>\n</ArrayOfCommentInfo>\n```",
+      "PostedDate": "2016-09-28T03:30:14.84-07:00",
+      "Id": 204373
+    },
+    {
+      "Message": "Thanks!\n\nNow i want clearify the situation asap.\n(Right now, i believe in the idea that the out argument cause issues)\n\n*Sebastian",
+      "PostedDate": "2016-09-28T10:02:21.983-07:00",
+      "Id": 204385
+    },
+    {
+      "Message": "Alright, good luck!\n\nAnd... the code for importing XML data is such a mess... I have no idea what the out param is about here..",
+      "PostedDate": "2016-09-28T23:54:53.74-07:00",
+      "Id": 204407
+    }
+  ]
+}

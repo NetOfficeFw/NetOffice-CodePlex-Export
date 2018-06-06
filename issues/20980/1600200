@@ -1,0 +1,171 @@
+************* Exception Text **************
+System.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details. ---> System.Runtime.InteropServices.COMException (0x80020006): Unknown name. (Exception from HRESULT: 0x80020006 (DISP_E_UNKNOWNNAME))
+   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)
+   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)
+   at NetOffice.Invoker.Method(COMObject comObject, String name, Object[] paramsArray)
+   at NetOffice.Invoker.Method(COMObject comObject, String name, Object[] paramsArray)
+   at NetOffice.WordApi._Document.SaveAs2(Object fileName, Object fileFormat)
+   at BabyNames.general.genpdfnum() in D:\MY Projects\BabyNames\BabyNames\BabyNames\general.vb:line 537
+   at BabyNames.Numbabyname.cmdsubit_Click(Object sender, EventArgs e) in D:\MY Projects\BabyNames\BabyNames\BabyNames\Numbabyname.vb:line 32
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+
+
+************** Loaded Assemblies **************
+mscorlib
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 (RTMRel.030319-0100)
+    CodeBase: file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/mscorlib.dll
+----------------------------------------
+BabyNames
+    Assembly Version: 7.0.0.0
+    Win32 Version: 7.0.0.0
+    CodeBase: file:///C:/Program%20Files/BabyNames/FineTamilBabyNames/BabyNames.exe
+----------------------------------------
+Microsoft.VisualBasic
+    Assembly Version: 10.0.0.0
+    Win32 Version: 10.0.30319.1 built by: RTMRel
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/Microsoft.VisualBasic/v4.0_10.0.0.0__b03f5f7f11d50a3a/Microsoft.VisualBasic.dll
+----------------------------------------
+System.Windows.Forms
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 built by: RTMRel
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/System.Windows.Forms/v4.0_4.0.0.0__b77a5c561934e089/System.Windows.Forms.dll
+----------------------------------------
+System.Drawing
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 built by: RTMRel
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/System.Drawing/v4.0_4.0.0.0__b03f5f7f11d50a3a/System.Drawing.dll
+----------------------------------------
+System
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 built by: RTMRel
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/System/v4.0_4.0.0.0__b77a5c561934e089/System.dll
+----------------------------------------
+System.Runtime.Remoting
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 (RTMRel.030319-0100)
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/System.Runtime.Remoting/v4.0_4.0.0.0__b77a5c561934e089/System.Runtime.Remoting.dll
+----------------------------------------
+AxInterop.ciaXPLabel30
+    Assembly Version: 1.0.0.0
+    Win32 Version: 1.0.0.0
+    CodeBase: file:///C:/Program%20Files/BabyNames/FineTamilBabyNames/AxInterop.ciaXPLabel30.DLL
+----------------------------------------
+Interop.ciaXPLabel30
+    Assembly Version: 1.0.0.0
+    Win32 Version: 1.0.0.0
+    CodeBase: file:///C:/Program%20Files/BabyNames/FineTamilBabyNames/Interop.ciaXPLabel30.DLL
+----------------------------------------
+Interop.VBRUN
+    Assembly Version: 6.0.0.0
+    Win32 Version: 6.0.0.0
+    CodeBase: file:///C:/Program%20Files/BabyNames/FineTamilBabyNames/Interop.VBRUN.DLL
+----------------------------------------
+System.Core
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 built by: RTMRel
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/System.Core/v4.0_4.0.0.0__b77a5c561934e089/System.Core.dll
+----------------------------------------
+System.Management
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 (RTMRel.030319-0100)
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/System.Management/v4.0_4.0.0.0__b03f5f7f11d50a3a/System.Management.dll
+----------------------------------------
+Accessibility
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 built by: RTMRel
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/Accessibility/v4.0_4.0.0.0__b03f5f7f11d50a3a/Accessibility.dll
+----------------------------------------
+MySql.Data
+    Assembly Version: 6.7.4.0
+    Win32 Version: 6.7.4.0
+    CodeBase: file:///C:/Program%20Files/BabyNames/FineTamilBabyNames/MySql.Data.DLL
+----------------------------------------
+System.Data
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 (RTMRel.030319-0100)
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_32/System.Data/v4.0_4.0.0.0__b77a5c561934e089/System.Data.dll
+----------------------------------------
+System.Transactions
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 (RTMRel.030319-0100)
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_32/System.Transactions/v4.0_4.0.0.0__b77a5c561934e089/System.Transactions.dll
+----------------------------------------
+System.Configuration
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 (RTMRel.030319-0100)
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/System.Configuration/v4.0_4.0.0.0__b03f5f7f11d50a3a/System.Configuration.dll
+----------------------------------------
+System.Xml
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 built by: RTMRel
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_MSIL/System.Xml/v4.0_4.0.0.0__b77a5c561934e089/System.Xml.dll
+----------------------------------------
+System.EnterpriseServices
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 (RTMRel.030319-0100)
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_32/System.EnterpriseServices/v4.0_4.0.0.0__b03f5f7f11d50a3a/System.EnterpriseServices.dll
+----------------------------------------
+WordApi
+    Assembly Version: 1.6.0.0
+    Win32 Version: 1.6.0.0
+    CodeBase: file:///C:/Program%20Files/BabyNames/FineTamilBabyNames/WordApi.DLL
+----------------------------------------
+NetOffice
+    Assembly Version: 1.6.0.0
+    Win32 Version: 1.6.0.0
+    CodeBase: file:///C:/Program%20Files/BabyNames/FineTamilBabyNames/NetOffice.DLL
+----------------------------------------
+OfficeApi
+    Assembly Version: 1.6.0.0
+    Win32 Version: 1.6.0.0
+    CodeBase: file:///C:/Program%20Files/BabyNames/FineTamilBabyNames/OfficeApi.DLL
+----------------------------------------
+VBIDEApi
+    Assembly Version: 1.6.0.0
+    Win32 Version: 1.6.0.0
+    CodeBase: file:///C:/Program%20Files/BabyNames/FineTamilBabyNames/VBIDEApi.DLL
+----------------------------------------
+Microsoft.Office.Interop.Word
+    Assembly Version: 12.0.0.0
+    Win32 Version: 12.0.4518.1014
+    CodeBase: file:///C:/Windows/assembly/GAC/Microsoft.Office.Interop.Word/12.0.0.0__71e9bce111e9429c/Microsoft.Office.Interop.Word.dll
+----------------------------------------
+office
+    Assembly Version: 12.0.0.0
+    Win32 Version: 12.0.4518.1014
+    CodeBase: file:///C:/Windows/assembly/GAC/office/12.0.0.0__71e9bce111e9429c/office.dll
+----------------------------------------
+CustomMarshalers
+    Assembly Version: 4.0.0.0
+    Win32 Version: 4.0.30319.1 (RTMRel.030319-0100)
+    CodeBase: file:///C:/Windows/Microsoft.Net/assembly/GAC_32/CustomMarshalers/v4.0_4.0.0.0__b03f5f7f11d50a3a/CustomMarshalers.dll
+----------------------------------------
+
+************** JIT Debugging **************
+To enable just-in-time (JIT) debugging, the .config file for this
+application or computer (machine.config) must have the
+jitDebugging value set in the system.windows.forms section.
+The application must also be compiled with debugging
+enabled.
+
+For example:
+
+<configuration>
+    <system.windows.forms jitDebugging="true" />
+</configuration>
+
+When JIT debugging is enabled, any unhandled exception
+will be sent to the JIT debugger registered on the computer
+rather than be handled by this dialog box.
+
+

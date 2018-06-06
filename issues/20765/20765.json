@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 4,
+    "Custom": "",
+    "Description": "Hey, guys\n\nI am create an outlook add-in by NetOffice. \nBut I don't know how to create a custom form region?\n\nI checked some discussions on Internet, still do not have any solve.\n\nCan anyone give me an example or some codes? \nThank you very much.",
+    "LastUpdatedDate": "2014-02-26T08:18:53.363-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-02-25T01:46:06.59-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Generate FormRegionStartup interface in OutlookApi",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20765
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "[Chapter 13: Creating Form Regions](http://msdn.microsoft.com/ru-ru/library/cc513845.aspx)",
+      "PostedDate": "2014-02-25T08:22:13.6-08:00",
+      "Id": 203214
+    },
+    {
+      "Message": "This is adiscussion topic rather than NetOffice issue.",
+      "PostedDate": "2014-02-25T08:25:39.12-08:00",
+      "Id": 203215
+    },
+    {
+      "Message": "OK, I will move it to discussion section.Thanks again.",
+      "PostedDate": "2014-02-25T16:53:12.123-08:00",
+      "Id": 203216
+    },
+    {
+      "Message": "Currently there is no FormRegionStartup interface so it's impossible to implement it in Outlook addins with form regions.https://netoffice.codeplex.com/discussions/428189",
+      "PostedDate": "2014-02-26T08:18:53.363-08:00",
+      "Id": 203217
+    }
+  ]
+}

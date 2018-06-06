@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": "",
+    "Description": "When I am creating new project and option \"Custom\" is selected for \"Project Folder\" then project is created in subfolder \"Custom\" created in folder where NetOffice Developper Toolbox is. Selected project folder is empty.",
+    "LastUpdatedDate": "2017-12-11T15:04:28.893-08:00",
+    "PlannedForRelease": "NetOffice 1.7.4.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "netoffice",
+    "ReportedDate": "2014-02-04T12:09:25.647-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "VS Project Wizard creates project in wrong folder (option Custom)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20707
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Fixed in revision 106580.",
+      "PostedDate": "2014-02-05T10:26:22.867-08:00",
+      "Id": 203213
+    }
+  ]
+}
