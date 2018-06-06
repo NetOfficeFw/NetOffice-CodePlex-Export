@@ -1,0 +1,204 @@
+[
+  {
+    "Id": "0",
+    "Name": "NetOffice Release 1.0",
+    "DevelopmentStatus": "Stable",
+    "Description": "*Changes:*\n\n- sign all assemblies\n- fix issue 16220\n\n*Includes:*\n\n- Runtime Binaries and Source Code for .NET Framework:......*v2.0, v3.0, v3.5, v4.0*\n- Tutorials in C# and VB.Net:..............................................................*COM Proxy Management, Events, etc.*\n- Examples in C# and VB.Net:............................................................*Excel, Word, Outlook, PowerPoint, Access*\n- COMAddin Examples in C# and VB.Net: ....................................*Excel, Word, Outlook, PowerPoint, Access*\n- Documentation:...................................................................................*English, German*",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-07-08T01:19:26.727-07:00",
+    "Files": [
+      {
+        "Id": "4e37fc6d-a992-45d9-b680-a37bb282611b",
+        "FileName": "NetOffice Release 1.0.rar",
+        "Url": "./0/4e37fc6d-a992-45d9-b680-a37bb282611b",
+        "Type": "Application",
+        "UploadDate": "2011-07-08T01:19:25.413-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "NetOffice Release 0.9b",
+    "DevelopmentStatus": "Stable",
+    "Description": "Changes:\n\n- fix critical issue 262334 (AccessViolationException while using events in a COMAddin)\n- remove x64 Assemblies (not necessary)\n\nIncludes:\n\n- Runtime Binaries and Source Code for .NET Framework:......*v2.0, v3.0, v3.5, v4.0*\n- Tutorials in C# and VB.Net:..............................................................*COM Proxy Management, Events, etc.*\n- Examples in C# and VB.Net:............................................................*Excel, Word, Outlook, PowerPoint, Access*\n- COMAddin Examples in C# and VB.Net: ....................................*Excel, Word, Outlook, PowerPoint, Access*\n- Documentation:...................................................................................*English, German*",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-06-23T15:14:01.723-07:00",
+    "Files": [
+      {
+        "Id": "9acc00ab-f986-4990-98ea-6bdab5859ab3",
+        "FileName": "NetOffice Release 0.9.rar",
+        "Url": "./1/9acc00ab-f986-4990-98ea-6bdab5859ab3",
+        "Type": "Application",
+        "UploadDate": "2011-06-23T15:14:00.173-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "NetOffice Release 0.9",
+    "DevelopmentStatus": "Beta",
+    "Description": "*Changes:*\n\n- fix examples (include issue 16026)\n- add new examples\n- 32Bit/64Bit Walkthrough is now available in technical Documentation.\n\n\n*Includes:*\n\n- Runtime Binaries and Source Code for .NET Framework:......*v2.0, v3.0, v3.5, v4.0*\n- Tutorials in C# and VB.Net:..............................................................*COM Proxy Management, Events, etc.*\n- Examples in C# and VB.Net:............................................................*Excel, Word, Outlook, PowerPoint, Access*\n- COMAddin Examples in C# and VB.Net: ....................................*Excel, Word, Outlook, PowerPoint, Access*\n- Documentation:...................................................................................*English, German*\n\n\n*Release Notes: *This is a Release Candidate for version 1.0",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-06-09T02:43:19.153-07:00",
+    "Files": [
+      {
+        "Id": "69f4b034-2882-4f1f-b4e1-822728a22cca",
+        "FileName": "NetOffice Release 0.9.rar",
+        "Url": "./2/69f4b034-2882-4f1f-b4e1-822728a22cca",
+        "Type": "Application",
+        "UploadDate": "2011-06-09T02:43:09.747-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "3",
+    "Name": "NetOffice Release 0.8b",
+    "DevelopmentStatus": "Alpha",
+    "Description": "Changes:\n\n- fix critical issue 15922(AccessViolationException) once and for all\n...update is strongly recommended \n\nKnown Issues:\n\n- some addin ribbon examples has a COM Register function with missing codebase entry(win32 registry)\n...the problem is only affected to c# examples. fixed in latest source code. NetOffice\\ReleaseTags\\NetOffice Release 0.8.rar\n\nIncludes:\n\n- Runtime Binaries and Source Code for .NET Framework:......*v2.0, v3.0, v3.5, v4.0*\n- Tutorials in C# and VB.Net:..............................................................*COM Proxy Management, Events, etc.*\n- Examples in C# and VB.Net:............................................................*Excel, Word, Outlook, PowerPoint, Access*\n- COMAddin Examples in C# and VB.Net: ....................................*Excel, Word, Outlook, PowerPoint, Access*\n- Documentation:...................................................................................*English, German*",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-06-03T00:50:31.863-07:00",
+    "Files": [
+      {
+        "Id": "03f5bc87-a559-4ac3-947a-ede80211f761",
+        "FileName": "NetOffice Release 0.8.rar",
+        "Url": "./3/03f5bc87-a559-4ac3-947a-ede80211f761",
+        "Type": "Application",
+        "UploadDate": "2011-05-31T02:29:38.463-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "4",
+    "Name": "NetOffice Release 0.8a",
+    "DevelopmentStatus": "Alpha",
+    "Description": "Changes:\n\n- fix examples\n- fix issue 15922\n- remove optional parameter qualifier in .NET4. Visual Basic.NET can't handle this.\n\nIncludes:\n\n- Runtime Binaries and Source Code for .NET Framework:......*v2.0, v3.0, v3.5, v4.0*\n- Tutorials in C# and VB.Net:..............................................................*COM Proxy Management, Events, etc.*\n- Examples in C# and VB.Net:............................................................*Excel, Word, Outlook, PowerPoint, Access*\n- COMAddin Examples in C# and VB.Net: ....................................*Excel, Word, Outlook, PowerPoint, Access*\n- Documentation:...................................................................................*English, German*",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-05-30T22:47:29.797-07:00",
+    "Files": [
+      {
+        "Id": "4882b962-44ee-465c-aa19-3a550318453b",
+        "FileName": "NetOffice Release 0.8.rar",
+        "Url": "./4/4882b962-44ee-465c-aa19-3a550318453b",
+        "Type": "Application",
+        "UploadDate": "2011-05-30T22:47:28.623-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "5",
+    "Name": "NetOffice Release 0.8",
+    "DevelopmentStatus": "Alpha",
+    "Description": "Changes:\n\n- fix examples\n- fix issue 15922\n- remove optional parameter qualifier in .NET4. Visual Basic.NET can't handle this.\n\nIncludes:\n\n- Runtime Binaries and Source Code for .NET Framework:.......*v2.0, v3.0, v3.5, v4.0*\n- Tutorials in C# and VB.Net:..............................................................*COM Proxy Management, Events, etc.*\n- Examples in C# and VB.Net:............................................................*Excel, Word, Outlook, PowerPoint, Access*\n- COMAddin Examples in C# and VB.Net: ....................................*Excel, Word, Outlook, PowerPoint, Access*\n- Documentation:...................................................................................*English, German*",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-05-30T19:18:26.403-07:00",
+    "Files": [
+      {
+        "Id": "79fc44a4-f611-47d2-9582-eca214c733ba",
+        "FileName": "NetOffice Release 0.8.rar",
+        "Url": "./5/79fc44a4-f611-47d2-9582-eca214c733ba",
+        "Type": "Application",
+        "UploadDate": "2011-05-30T19:18:25.387-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "6",
+    "Name": "NetOffice Release 0.7a",
+    "DevelopmentStatus": "Alpha",
+    "Description": "- Runtime Binaries and Source Code for .NET Framework:.......v2.0, v3.0, v3.5, v4.0\n- Tutorials in C# and VB.Net:..............................................................COM Proxy Management, Events, etc.\n- Examples in C# and VB.Net:............................................................Excel, Word, Outlook, PowerPoint, Access\n- COMAddin Examples in C# and VB.Net: ....................................Excel, Word, Outlook, PowerPoint, Access\n- Documentation:...................................................................................English, German",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-05-25T18:01:48.907-07:00",
+    "Files": [
+      {
+        "Id": "c8b5bcfb-20fc-44cc-80b4-667eec747c38",
+        "FileName": "NetOffice Release 0.7.rar",
+        "Url": "./6/c8b5bcfb-20fc-44cc-80b4-667eec747c38",
+        "Type": "Application",
+        "UploadDate": "2011-05-25T18:01:47.737-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "7",
+    "Name": "NetOffice Release 0.7",
+    "DevelopmentStatus": "Stable",
+    "Description": "- Runtime Binaries and Source Code for .NET Framework:.......*v2.0*,   *v3.0*,   *v3.5*,   *v4.0*\n\n- Tutorials in C# and VB.Net:..............................................................*COM Proxy Management, Events, etc.*\n- Examples in C# and VB.Net:............................................................*Excel, Word, Outlook, PowerPoint, Access*\n- COMAddin Examples in C# and VB.Net: ....................................*Excel, Word, Outlook, PowerPoint, Access*\n- Documentation:...................................................................................*English, German*",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-05-25T15:14:02.327-07:00",
+    "Files": [
+      {
+        "Id": "fc5acdfc-dae7-4aaa-9fbb-f8da4f3f9613",
+        "FileName": "NetOffice Release 0.7.rar",
+        "Url": "./7/fc5acdfc-dae7-4aaa-9fbb-f8da4f3f9613",
+        "Type": "Application",
+        "UploadDate": "2011-05-25T15:14:01.233-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "8",
+    "Name": "NetOffice 1.7.4.1",
+    "DevelopmentStatus": "Stable",
+    "Description": "This is a zip package - not an installer, AND NOT A DOWNLOADER.\n\n*Download 1: NetOffice Release 1.7.4.1*\n requires .NET 4(Client Profile)\n\n+Includes:+\n- Binaries .NET : v4.0\n- Tutorials/Examples in C#/VB.Net\n- Source Code\n- Developer Toolbox'",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2017-10-16T16:48:01.71-07:00",
+    "Files": [
+      {
+        "Id": "24245dcb-ebdf-451e-b836-57d95b4c5241",
+        "FileName": "NetOffice 1.7.4.1.zip",
+        "Url": "./8/24245dcb-ebdf-451e-b836-57d95b4c5241",
+        "Type": "Application",
+        "UploadDate": "2017-10-10T04:24:41.987-07:00"
+      },
+      {
+        "Id": "13349a27-00f1-4028-9e89-24d2ac09f49f",
+        "FileName": "NetOffice Toolbox 1.5.zip",
+        "Url": "./8/13349a27-00f1-4028-9e89-24d2ac09f49f",
+        "Type": "Application",
+        "UploadDate": "2017-10-10T04:32:36.183-07:00"
+      },
+      {
+        "Id": "13bf2789-9067-4f3a-8900-3d76d927d62a",
+        "FileName": "DeploymentSampleCSharp.zip",
+        "Url": "./8/13bf2789-9067-4f3a-8900-3d76d927d62a",
+        "Type": "Example",
+        "UploadDate": "2014-11-14T22:10:46.213-08:00"
+      },
+      {
+        "Id": "d8313e71-41c1-4ad2-aadc-6af0222076a8",
+        "FileName": "DeploymentSampleVB.zip",
+        "Url": "./8/d8313e71-41c1-4ad2-aadc-6af0222076a8",
+        "Type": "Example",
+        "UploadDate": "2014-11-14T22:10:46.387-08:00"
+      },
+      {
+        "Id": "77e93336-dd81-4f1f-af9e-ce45490b8ffe",
+        "FileName": "ShimmingExample.zip",
+        "Url": "./8/77e93336-dd81-4f1f-af9e-ce45490b8ffe",
+        "Type": "Example",
+        "UploadDate": "2014-11-14T22:10:46.543-08:00"
+      },
+      {
+        "Id": "b74e6929-9f8b-49a3-8f81-fde594e6312c",
+        "FileName": "Migrating Excel VBA Add-in to VB.Net.docx",
+        "Url": "./8/b74e6929-9f8b-49a3-8f81-fde594e6312c",
+        "Type": "Documentation",
+        "UploadDate": "2012-10-15T05:11:23.967-07:00"
+      },
+      {
+        "Id": "a212c99a-9220-4a4c-88f3-320714a0d107",
+        "FileName": "NetOffice 1.7.3.zip",
+        "Url": "./8/a212c99a-9220-4a4c-88f3-320714a0d107",
+        "Type": "Application",
+        "UploadDate": "2017-09-21T22:31:59.99-07:00"
+      },
+      {
+        "Id": "e64ee882-da9a-4cc1-a7c2-62cac54a9612",
+        "FileName": "NO Developer Toolbox 1.4.2.2.zip",
+        "Url": "./8/e64ee882-da9a-4cc1-a7c2-62cac54a9612",
+        "Type": "Application",
+        "UploadDate": "2017-10-05T03:17:53.53-07:00"
+      }
+    ]
+  }
+]
