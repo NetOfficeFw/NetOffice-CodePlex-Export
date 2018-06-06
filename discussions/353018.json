@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "826668",
+    "ThreadId": "353018",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>is there a reason why the current assemblies are not signed any more (having no stong name)?</p>\r\n<p>Is this planned again for the future?</p>\r\n",
+    "PostedDate": "2012-04-20T12:51:38.12-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "826704",
+    "ThreadId": "353018",
+    "Html": "<p>the netoffice assemblies are signed. i made a mistake? which release and .net version u use?<br />Sebastian</p>",
+    "PostedDate": "2012-04-20T14:16:43.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "826800",
+    "ThreadId": "353018",
+    "Html": "<p>I downloaded <a id=\"ChangeSetLink0\" style=\"font-weight: bold;\" title=\"View change set 89488\" href=\"http://netoffice.codeplex.com/SourceControl/changeset/changes/89488\">89488</a>.</p>\r\n<p>When building the source: the \"sign the assembly\" -flag in project properties are disabled, over all projects.</p>\r\n<p>Thanks a lot.</p>",
+    "PostedDate": "2012-04-21T01:32:41.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "826807",
+    "ThreadId": "353018",
+    "Html": "<p>hello,<br /><br />the source code doesnt contains signed solutions. one of the ideas of signing is trusted publishing as far i known. the assembly signing makes sure the assembly is from NetOffice himself. in other words: all release assemblies are signed but never the source. i dont publish the key files here. you can create your own fork and sign of course. if you want a custom version with the original keyfiles please send me your source code. I take look, already was okay and sign your solution(NetOffice is Free Software and dont do evil at all) Why you need a ciustom version of NetOffice. You want to shrink the assemblies?&nbsp; If you have suggestions then i can integrate your ideas in NetOffice.<br /><br />Sebastian<br /><br /><br /></p>",
+    "PostedDate": "2012-04-21T02:37:42.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

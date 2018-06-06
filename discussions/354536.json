@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "832173",
+    "ThreadId": "354536",
+    "Html": "\r\n<p>I would like to read the numeric cell value.Here is what happening:</p>\r\n<p>I am trying to read a value from cell let us suppose 111,111,111 ( rule of excel format it)</p>\r\n<p>but when i am reading this reading like this 111111111. should I have to format data again after reading the cell value?</p>\r\n<p>please suggest.</p>\r\n",
+    "PostedDate": "2012-05-04T06:00:05.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "832200",
+    "ThreadId": "354536",
+    "Html": "<p>Okay i got it , I was using&nbsp;WorkSheet.Cells[excelProps.CellStartCounter, 3].Value &nbsp;instead of Text property..&nbsp;</p>\r\n<p>But what is the&nbsp;difference&nbsp;b/w two of them and what is Value2 used for?</p>\r\n<p>If I can get a documentation it will helpful.</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks in advance</p>",
+    "PostedDate": "2012-05-04T07:16:29.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "832233",
+    "ThreadId": "354536",
+    "Html": "<p>From the Microsoft Documentation: <a href=\"http://msdn.microsoft.com/en-us/library/ff193553.aspx\">http://msdn.microsoft.com/en-us/library/ff193553.aspx</a>&nbsp;&lt;&lt;&lt; click it.<br /><br />\"The only difference between this property and the <strong>Value</strong> property is that the <strong>Value2</strong> property doesn&rsquo;t use the <strong>Currency</strong> and <strong>Date</strong> data types. You can return values formatted with these data types as floating-point numbers by using the <strong>Double</strong> data type.\"<br />Another trick is to use string arrays with range.Value2.<br />&nbsp;<br />Sebastian</p>",
+    "PostedDate": "2012-05-04T08:13:41.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "832269",
+    "ThreadId": "354536",
+    "Html": "<p>Thanks for a quick reply...</p>\r\n<p>Actually my question was \"what is the difference b/w the Text and value property?\"</p>\r\n<p>sorry I was not specific enough ...</p>\r\n<p>Thanks a lot&nbsp;</p>",
+    "PostedDate": "2012-05-04T09:48:40.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "832278",
+    "ThreadId": "354536",
+    "Html": "<p>text is what you see in a specific cell, value is the true value behind. as example:<br /><br />float f = 3.14159<br />range.Value = f;<br />range.NumberFormat = \"#.#\";</p>\r\n<p>range.Value is now: 3.14159 and the shown text(range.Text) in the cell is 3.1 because the NumberFormat change the presentation of the value.<br />this is very typical for reports with formulas and calculations. you can calculate with exact values(formulas for example) and the user see friendly values.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-05-04T10:13:15.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "832279",
+    "ThreadId": "354536",
+    "Html": "<p>thank that is what I was looking for...</p>\r\n<p>very helpful...</p>",
+    "PostedDate": "2012-05-04T10:15:03.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

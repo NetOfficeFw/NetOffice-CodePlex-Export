@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1040022",
+    "ThreadId": "442715",
+    "Html": "Hallo,<br />\n<br />\nich will ein Visio AddIn mit NetOffice erstellen, finde aber unter VS2010 keine Projektvorlage dafür (das NetOffice msi hab ich installiert). Gibt es eine Anleitung  an der ich mich orientieren kann?<br />\n<br />\nGruß<br />\nTritonit<br />\n",
+    "PostedDate": "2013-05-06T11:46:30.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040307",
+    "ThreadId": "442715",
+    "Html": "Hallo,\r<br />\n<br />\nWenn du den NetOffice 1.5.1.2 [RC] + Office 2013(Preview) + .NET 4.5 Support runtergeladen hast unter <a href=\"http://netoffice.codeplex.com/releases/view/70943\" rel=\"nofollow\">http://netoffice.codeplex.com/releases/view/70943</a> dann kannst du einfach das bestehende Projekt benutzen unter &lt;Dein Verzeichnis&gt;\\NetOffice 1.5.1.2 [RC]\\NetOffice 1.5.1.2 [RC]\\&lt;Deine .NET version&gt;\\Examples.\r<br />\n<br />\nDamit du NetOffice benutzen kannst im VSTO, muss du die Referenzen von NetOffice in dein Projekt einbinden unter Projekt-&gt;Neue Referenz, von da aus, muss du die VisioApi.dll und NetOffice.dll (&lt;Dein Verzeichnis&gt;\\NetOffice 1.5.1.2 [RC]\\NetOffice 1.5.1.2 [RC]\\&lt;Deine .NET version&gt;\\Assemblies\\Any CPU\\VisioApi.dll und NetOffice.dll)einbinden in dein Projekt, danach müsstest du im Projekt folgenden Kode einbinden könnten:<br />\n<pre><code>using myVisio = NetOffice.VisioApi;</code></pre>\n\nHoffe du kommst so voran.<br />\n",
+    "PostedDate": "2013-05-07T02:59:10.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040368",
+    "ThreadId": "442715",
+    "Html": "Hi Mike, \r<br />\n<br />\nbesten Dank für den Hinweis!! Ich habe zwar die DLLs referenziert und im Kode eingebunden, aber nicht die DLLs von den entsprechenden .NET Version(...\\NetOffice 1.5.1.2 [RC]\\NetOffice 1.5.1.2 [RC]\\&lt;meine .NET version&gt;\\Assemblies\\Any CPU), sondern vom Ordner ...\\netoffice-98664\\Assemblies\\Any CPU\\\r<br />\n<br />\nIch habs geändert und es klappt, zumindest kommen jetzt keine Fehler am Ende des Kompiliervorgangs. Vermutlich kann ich auf dieser Art und Weise bestehende Visio AddIns migrieren?<br />\n",
+    "PostedDate": "2013-05-07T06:42:33.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041545",
+    "ThreadId": "442715",
+    "Html": "Ja richtig, leg dir quasi selbst eine leere Vorlage an. Ich arbeite gerade noch daran das die Developer Toolbox auch Visio Projekte erzeugen kann. Visio und Project sind erst später zu NetOffice hinzugekommen, daher ist der Service hier noch nicht ganz so weit wie bei den anderen Office Produkten.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-05-09T13:39:48.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

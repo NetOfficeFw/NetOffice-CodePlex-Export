@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1230895",
+    "ThreadId": "541350",
+    "Html": "Dear Sebastian,\r<br />\n<br />\nWhen I try to connect to a running Excel program using Windows.Application(null, piaProxy) I get a &quot;piaProxy does not exist in the current context (CS0103)&quot;. \r<br />\nWhere am I going wrong, please? \r<br />\nRegards,\r<br />\n<br />\nDavid Hyde\r<br />\n<br />\nHere is the code:\r<br />\n<br />\nusing System;\r<br />\nusing System.Diagnostics;\r<br />\nusing NetOffice.VBIDEApi;\r<br />\nusing Office = NetOffice.OfficeApi; \r<br />\nusing Excel = NetOffice.ExcelApi;\r<br />\n<br />\n<br />\npublic class ExcelApp<br />\n<pre><code>{\n    //protected  myApplication;\n    protected Excel.Application myApplication;\n\n    public ExcelApp()\n    { \n\n          myApplication = new Excel.Application(null,piaProxy);\n\n    }</code></pre>\n\n",
+    "PostedDate": "2014-04-06T05:05:34.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1231151",
+    "ThreadId": "541350",
+    "Html": "the piaProxy variable is undefined(not created) or not accessible in current code module. you have to make sure the compiler can find the definition.\r<br />\nBTW: NetOffice spend an option for use a running instance:\r<br />\nmyApplication =Excel.Application.GetActiveInstance();\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-04-07T00:19:00.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1233619",
+    "ThreadId": "541350",
+    "Html": "Thank you, that worked. Now I can move onto another question!\r<br />\n<br />\nRegards,\r<br />\n<br />\nDavid Hyde<br />\n",
+    "PostedDate": "2014-04-13T05:15:19.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

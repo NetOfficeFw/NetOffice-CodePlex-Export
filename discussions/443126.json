@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1041413",
+    "ThreadId": "443126",
+    "Html": "Hi there,\r<br />\n<br />\nWe are having issues trying to attain an instance of NetOffice.OutlookApi.Application through GetActiveInstances and System.Runtime.InteropServices.Marshal.GetActiveObject(&quot;Outlook.Application&quot;); \r<br />\n<br />\nFor GetActiveInstance and GetActiveInstances we are able to retrieve the instance created by our application, but not one created outside the application. When Outlook is opened outside of our application and we call these methods, they return null and an empty Application[] array respectively.\r<br />\n<br />\nWhen trying to use GetActiveObject(&quot;Outlook.Application&quot;); we are presented with a COMException detailing that Outlook.Application does not exist for us to retrieve. The exception is as follows:<br />\nOperation unavailable (Exception from HRESULT: 0x800401E3 (MK_E_UNAVAILABLE)).\r<br />\n<br />\nThis exception appears even if we use the PID or Outlook.Application.14\r<br />\n<br />\nCould you tell us what we are doing wrong? <br />\n",
+    "PostedDate": "2013-05-09T08:16:38.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041540",
+    "ThreadId": "443126",
+    "Html": "a typical problem could be the security. \r<br />\nif your code runs without admin permissions you got all proxies from applications without.\r<br />\nif your code runs with admin permissions you got all proxies from applications with admin permissions(no com proxies without admin privileges)\r<br />\nis this helpful for you?\r<br />\nSebastian<br />\n",
+    "PostedDate": "2013-05-09T13:31:04.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041546",
+    "ThreadId": "443126",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nThanks for the reply.\r<br />\n<br />\nWe are calling this function from Visual Studio with and without debugging while running with administrative privileges. Are you suggesting that doing the same without these privileges will allow us to obtain the reference? Also is this suggestion based on GetActiveObject or GetActiveInstance(s)?\r<br />\n<br />\nWe have also seen mention of a slightly similar error in which the 32 bit instance of Outlook is running on code set to build in 64 bit. This is the case for us although switching build architecture will require quite a few modifications - so only worth trying if it is likely the cause. Also it is fair to expect that clients will use 32 bit Office applications on 64 bit machines.\r<br />\n<br />\nRegards<br />\n",
+    "PostedDate": "2013-05-09T13:41:29.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041558",
+    "ThreadId": "443126",
+    "Html": "did you have skype or msn?<br />\n",
+    "PostedDate": "2013-05-09T14:00:29.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

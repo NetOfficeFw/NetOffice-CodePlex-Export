@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1324689",
+    "ThreadId": "572747",
+    "Html": "I updated my project to use the latest version and it won't compile stating &quot;type or namespace NetOffice cannot be found&quot;. <br />\n<br />\nVS2010<br />\n.Net 4<br />\nWinforms<br />\n<br />\nusing  NetOffice;<br />\nusing Excel = NetOffice.ExcelApi;<br />\nusing NetOffice.ExcelApi.Enums;<br />\n<br />\nEmbed type = false<br />\n<br />\ntried adding a new test project, referenced the 1.7  assemblies and it compiled fine.<br />\n",
+    "PostedDate": "2014-11-21T04:56:59.41-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1324737",
+    "ThreadId": "572747",
+    "Html": "which .NET version and (current) operating system?<br />\n",
+    "PostedDate": "2014-11-21T07:02:48.17-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1324756",
+    "ThreadId": "572747",
+    "Html": ".Net 4 and Vista<br />\n",
+    "PostedDate": "2014-11-21T07:35:22.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1324764",
+    "ThreadId": "572747",
+    "Html": "this is strange :O\r<br />\nthe fast way to help(today!) is send me your solution to public.sebastian{at]web.de\r<br />\n(remove private code if you want)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-11-21T07:41:08.17-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

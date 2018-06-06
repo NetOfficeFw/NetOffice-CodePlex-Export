@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1457108",
+    "ThreadId": "649284",
+    "Html": "Good Morning,<br />\n<br />\niam developing a windows service with NetOffice.<br />\nMy Service connects to an Access Applikation and Print the Reports asPDF.<br />\n<br />\nOn the developmentsystem is Visual Studio 2013 and MS Office 2013 Professional installed. <br />\nThis includes a full version of Access 2013. <br />\n<br />\nOn the Targetsystem is a Runtime of Access 2010 installed.<br />\n<br />\nOn Both Systems i can manually open the Access Database, select the Reports and Print them.<br />\nBut when i use my Service on the Target System i cant connect to Access and get the following error.<br />\n<br />\n&quot;IDispatch wird nicht vom COM-Ziel unterstützt&quot;<br />\n<br />\nHere is my Connectfunction. <br />\n<pre><code>   public bool TryConnect(Logger Log)\n        {\n            try\n            {\n                if (Access == null)\n                    Access = new Application();\n\n                Eventmessages.BeforeOpenAccessDB(Log);\n                Access.OpenCurrentDatabase(this.AccessDBFile);  //Line where the Error Occurs.\n                Eventmessages.AfterOpenAccessDB(Log);           \n                Access.Quit(AcQuitOption.acQuitSaveNone);\n                Eventmessages.QuitSuccessfully(Log,true);\n               // Access.Dispose();\n                Access = null;\n                successfully = true;\n            }\n            catch (Exception ex)\n            {\n                int i = 1;\n                string Error = i + &quot;)&quot; + ex.Message;\n                while (ex.InnerException != null)\n                {\n                    i++;\n                    ex = ex.InnerException;\n                    Error += Environment.NewLine + i + &quot;)&quot; + ex.Message;\n                }\n\n                Access = null;\n                Eventmessages.CouldNotConnectToDB(Log, Error,true);\n                successfully = false;\n            }\n\n            return successfully;\n        }</code></pre>\n\nWhat can i do against that?<br />\n<br />\nGreeting and Merry Christmas<br />\n<br />\nCazza<br />\n",
+    "PostedDate": "2015-12-24T01:25:59.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1457244",
+    "ThreadId": "649284",
+    "Html": "Hello,\r<br />\n<br />\nCan you verify it is not an issue with the service?\r<br />\nBecause is typical running in LocalSystem/Network Account and this cause issues.\r<br />\nI other words: Have you already test this on your development machine as a real service?\r<br />\n(i have to ask because it is very common developers doesnt do this for debugging support and so on)\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-12-27T02:38:44.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1457413",
+    "ThreadId": "649284",
+    "Html": "Hello Sebastian,\r<br />\n<br />\nthe Service is running in the user context on both systems as admin.\r<br />\nI have installed the Service on both machines as WIndows Service. \r<br />\nOn my development machine runs the service without errors.\r<br />\nOn the target system occurs the Error when i try to open the Database with by <br />\n<pre><code>Access.OpenCurrentDatabase(this.AccessDBFile);</code></pre>\n\nBefore i Start it, i check wheter the Access DB file exists. \r<br />\nIf it not exists, the function wouldn´t be caled.\r<br />\n<br />\n<br />\nAs a test i have written a basic test programm.\r<br />\nThis only connects to the Access Database and export a Report as PDF, here happens the same error.\r<br />\n<br />\nCazza<br />\n",
+    "PostedDate": "2015-12-29T03:03:24.44-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1458888",
+    "ThreadId": "649284",
+    "Html": "Its a Savety problem. \r<br />\n<br />\nWhen is use a non compiled Access Database and a Full Installed Access 2010 everything works fine.\r<br />\n<br />\nGreetings<br />\n",
+    "PostedDate": "2016-01-12T01:43:08.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2016-01-12T01:43:13.34-08:00"
+  }
+]

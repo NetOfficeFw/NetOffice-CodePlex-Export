@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1062488",
+    "ThreadId": "448537",
+    "Html": "I have some code that seems to execute fine up until this point:<br />\n<pre><code>excelApp.Run(myProps.Macro);</code></pre>\n\nIt creates the excel instance fine, and open the correct file path, but when it attempts to execute the macro, I continue to get a Error:<br />\n<pre><code>An unhandled exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll</code></pre>\n\nAlso, I have the most recent release of NetOffice, and I found there did not appear to be a need to use:<br />\n<pre><code>LateBindingApi.Core.Initialize()</code></pre>\n\nIs there a replacement for this, or is it automatically used?<br />\n",
+    "PostedDate": "2013-06-28T07:58:52.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

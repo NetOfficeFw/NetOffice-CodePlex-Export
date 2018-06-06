@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "901231",
+    "ThreadId": "392212",
+    "Html": "\r\n<p>I would like to create an exe installer that installs the Add-in I created with NetOffice/#Develop on any computer with Excel and the .NET framework. I used regasm [file] /regfile:[outputpath] to create a .reg file. I was surprised to find that there are\r\n no references to the specific location of the dll's in the .reg file. How does Excel know where the .dll's are stored? Does anyone have experience create an exe installer?</p>\r\n<p>My plan was to use IExpress.exe to package the needed dll's and supply a .INF file (converted from the .reg using Reg2Inf). I'm not sure how to let Excel know, though, where my dll's are. Are there any other suggestions to creating an exe installer? The\r\n reason I'd like to set it up as a .exe is so i can package all of the required dll's into the installer. I saw this discussion&nbsp;<a href=\"http://netoffice.codeplex.com/discussions/314466/\">http://netoffice.codeplex.com/discussions/314466/</a>, but it's\r\n over my head.</p>\r\n<p>Thanks for the help!</p>\r\n",
+    "PostedDate": "2012-08-18T23:23:04.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "901233",
+    "ThreadId": "392212",
+    "Html": "<p>Does this discussion apply to my situation&nbsp;<a href=\"http://netoffice.codeplex.com/discussions/285331/\">http://netoffice.codeplex.com/discussions/285331/</a>? I've never heard of shimming, but I'm new to COM assemblies and .NET Office Add-ins for that matter. Any help is greatly appreciated.</p>",
+    "PostedDate": "2012-08-18T23:29:18.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "901288",
+    "ThreadId": "392212",
+    "Html": "<p>the easiest way is to create an .msi package. i dont know its supported from #Develop but an .msi deployment example project is available in the download section. you have to call regasm with the /codebase option to set the specific path. as next step you to define the COM Addin registration section. i create sample .reg file for you in the download section: http://netoffice.codeplex.com/wikipage?title=Download%20Page<br /><br />Sebastian<br /><br /></p>",
+    "PostedDate": "2012-08-19T07:11:29.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

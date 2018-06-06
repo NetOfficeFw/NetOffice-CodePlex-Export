@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "691516",
+    "ThreadId": "277732",
+    "Html": "\r\n<p>Hi All</p>\r\n<p>I'm trying to create Excel File with VBA Code but I'm not able to save the code in the file !</p>\r\n<p>Even if I use the Example07 I could save the file but when I open it I couldn't find the code.</p>\r\n<p>I'm sure there is something wrong with my Office configuration but I tried almost every parameter change without success.</p>\r\n<p>Any suggestions ?</p>\r\n<p>Thank you in advance</p>\r\n",
+    "PostedDate": "2011-10-31T02:39:12.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "691667",
+    "ThreadId": "277732",
+    "Html": "<p>hey dbarile,</p>\r\n<p>which office version do you have?<br />you dont have an exception but the vba code is missing?<br />this is magical.. i try to reproduce the effect with some option changes in office.<br />i nee to know: windows version 32/64Bit Office version 32/64Bit and at&nbsp; last, do you have<br />any security solutions&nbsp;installed?<br /><br />Sebastian</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-31T08:10:53.22-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "692038",
+    "ThreadId": "277732",
+    "Html": "<p>Hi Sebastian</p>\r\n<p>I'm using Office Ultimate 2007 SP3 on a Windows 7 Ultimate N 64bit with SP1. I'm using Microsoft Security Essentials as security solution.</p>\r\n<p>I haven't any exception and If I leave excel as visible I could see that the code is really created in the excel file. After saving and reopening the code is missing !</p>\r\n<p>I'll try to use NetOffice on my own PC this evening to let you know the differences (on my notebook I have Windows Vista Ultimate SP2 32 bit and Microsoft Office 2007).</p>\r\n<p>Thank you</p>\r\n<p>Domenico</p>",
+    "PostedDate": "2011-11-01T04:02:38.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "692154",
+    "ThreadId": "277732",
+    "Html": "<p>Hi Sebastian. I have the same issue on my notebook. I tried .Net 4.0 and .Net 3.5 solution. I'm using&nbsp;VS2010 as in my office.&nbsp;Should I give you other information ?</p>\r\n<p>Thanks a lot !</p>\r\n<p>Domenico</p>",
+    "PostedDate": "2011-11-01T07:52:08.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "692259",
+    "ThreadId": "277732",
+    "Html": "<p>i do some detailed tests with 2007 und windows7. some security suites kill created vba code btw.<br />you save the file to .xlsx ?</p>",
+    "PostedDate": "2011-11-01T10:34:42.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "692554",
+    "ThreadId": "277732",
+    "Html": "<p>Yes, I save files as .xlsx. I tried few minutes ago to save .xls as <span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">NetOffice.ExcelApi.Enums.</span></span></span><span style=\"font-family: Consolas; color: #2b91af; font-size: x-small;\"><span style=\"font-family: Consolas; color: #2b91af; font-size: x-small;\"><span style=\"font-family: Consolas; color: #2b91af; font-size: x-small;\">XlFileFormat</span></span></span><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">.xlExcel8 and the code is correctly saved.</span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\">&nbsp;</span></p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-02T00:45:36.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "692623",
+    "ThreadId": "277732",
+    "Html": "<p>okay now i see. in excel 2007 and 2010&nbsp;you have to give this parameter, but only in this versions, the enum member is only supported here.</p>\r\n<p>// SupportByLibrary Excel 12, 14<br />xlExcel8 = 56<br /><br />if you want to support older version you have to check the version dynamicly and write an else statement with a save method without this parameter.<br />is that okay for you?</p>\r\n<p><span style=\"color: #008000; font-size: x-small;\"><span style=\"font-size: x-small;\">&nbsp;</span></span></p>",
+    "PostedDate": "2011-11-02T03:18:22.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "692637",
+    "ThreadId": "277732",
+    "Html": "<p>Sure it's ok for me. Thank you for help!</p>\r\n<p>Last question: is there an example with code to create a macro and assing it to a keyboard shortcut ?</p>\r\n<p>Domenico</p>",
+    "PostedDate": "2011-11-02T03:39:04.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "693898",
+    "ThreadId": "277732",
+    "Html": "<p>Sebastian, I need to ask you to investigate more on this problem. I need to create files with more then 256 columns and using this workaround I couldn't do it !</p>\r\n<p>Thank you</p>\r\n<p>Domenico</p>",
+    "PostedDate": "2011-11-04T07:29:10.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "693923",
+    "ThreadId": "277732",
+    "Html": "<p>hey domenico,</p>\r\n<p>you mean using the xlExcel8 flag kills you columns?<br />gimme this weekend to clarify the situation and read a little bit about the XlFileFormat enum and the specific members.</p>\r\n<p>kind regards*<br />sebastian</p>",
+    "PostedDate": "2011-11-04T08:15:23.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "693932",
+    "ThreadId": "277732",
+    "Html": "<p>Ciao Sebastian, when I open the file saved with xlExcel8 flag I have only 256 columns.</p>\r\n<p>Excel 2003 files has limit of 256 columns and 65000 rows <a href=\"http://www.add-ins.com/Excel%202003%20versus%202007.htm\">http://www.add-ins.com/Excel%202003%20versus%202007.htm</a></p>\r\n<p>Have a nice weekend ;-)</p>\r\n<p>Kindly regards,</p>\r\n<p>Domenico</p>",
+    "PostedDate": "2011-11-04T08:34:01.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "693935",
+    "ThreadId": "277732",
+    "Html": "<p>hey domenico,<br />yeah thats the reason for i want to see for a format&nbsp;flag to save the document in modern format -with vba projects-.<br />hope i find them but its possible, i'm sure.<br />see you* ;-)<br />sebastian</p>",
+    "PostedDate": "2011-11-04T08:41:02.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "695888",
+    "ThreadId": "277732",
+    "Html": "<p>i do a test and the xlWorkbookNormal flag works fine for me.<br />*regards and something other<br />Sebastian</p>",
+    "PostedDate": "2011-11-09T07:22:06.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

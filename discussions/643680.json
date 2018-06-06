@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1440481",
+    "ThreadId": "643680",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nmein Problem ist, dass ich in der einzigen Zeile der Methode<br />\n<pre><code>  void ThisAddin_OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)\n        {\n                AddInInst.GetType().InvokeMember(&quot;Object&quot;, BindingFlags.SetProperty, null, AddInInst, new object[] { new AddinObject() });\n            }</code></pre>\n\neine Exception kriege, die mir nicht besonders viel sagt:<br />\n<pre><code>ex = {&quot;Exception has been thrown by the target of an invocation.&quot;}\n\nInnerException = {&quot;Specified cast is not valid.&quot;}\n\nStackTrace:\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args)\nat ...ThisAddin.ThisAddin_OnConnection(Object Application, ext_ConnectMode ConnectMode, Object AddInInst, Array&amp; custom)</code></pre>\n\nWenn ich mit dem Mauszeiger über den Application Parameter der Methode gehe und den Eintrag\r<br />\n&quot;Dynamic View = Expanding the Dynamic View will get the dynamic members for the object&quot;\r<br />\naufklappe, sehe ich sehr viele Einträge, wo es steht:<br />\n<pre><code>{System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; System.Runtime.InteropServices.COMException: Application.ActivePresentation : Invalid request.  There is no active presentation.\n   --- End of inner exception stack trace ---\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   at System.Dynamic.IDispatchComObject.GetMembers(IEnumerable`1 names)}</code></pre>\n\nIch denke das sollte nicht sein, denn bei zwei anderen AddIns kriege ich diese Exception an der gleichen Zeile nicht und die jeweiligen Einträge(für das Application Objekt) sind mit Werten befüllt.\r<br />\nHast du eine Idee, woran es liegen kann?<br />\n",
+    "PostedDate": "2015-08-13T14:27:13.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1440507",
+    "ThreadId": "643680",
+    "Html": "hey men,\r<br />\n<br />\nIch habe grosse Probleme dir inhaltlich zu folgen\r<br />\nUm welche Office Anwendung geht es denn eigentlich? (Es deutet auf PowerPoint hin...)\r<br />\n<br />\nWenn ich dich richtig verstanden habe löst folgende Zeile einen Fehler aus.<br />\n<pre><code>            AddInInst.GetType().InvokeMember(&quot;Object&quot;, BindingFlags.SetProperty, null, AddInInst, new object[] { new AddinObject() });\n</code></pre>\n\nHabe ich das richtig verstanden? Ich kann an der Zeile soweit erstmal keinen Fehler erkennen, deine AddinObject Klasse die du (als Instanz) zuweist ist möglicherweise keine COM gültige Klasse(also nicht mit den nötigen Attributen ausgestattet oder vielleicht nicht public) Was der Application Parameter mit dem Problem zu tun hat erschliesst sich mir so erstmal garnicht. Application tut doch hier garnichts? Und die letzte (3.) Fehlermeldung ist welchem Problem zuzuordnen?\r<br />\n<br />\n*let me know\r<br />\nSebastian<br />\n",
+    "PostedDate": "2015-08-13T22:07:18.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1440514",
+    "ThreadId": "643680",
+    "Html": "Hi,\r<br />\n<br />\ndanke für die schnele Antwort. Ja, es handelt sich um PowerPoint und du hast alles richtig verstanden. Es lag daran, dass die AddinObject  Klasse nicht public war.<br />\nDanke nochmal!<br />\n",
+    "PostedDate": "2015-08-13T23:19:32.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

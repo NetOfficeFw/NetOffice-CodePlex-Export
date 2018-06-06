@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1330838",
+    "ThreadId": "574613",
+    "Html": "The Ribbon functions fire correctly.<br />\nbut when I create user interface for 2003, the CommandBarButton with clickevent hanlder fires in a wrong way.<br />\nI added two Button in my popup controls, and AddHandler for each button. The CommandBar Buttons showed correctly, but when I clicked the button, the Sub of each button called from start to end ( Sub 1, Sub 2, ...)<br />\nIs this a bug when used two UIs? Is there any example to display two UIs in different Offices?<br />\n<br />\nBest Regards,<br />\nPenn Ye.<br />\n",
+    "PostedDate": "2014-12-10T20:00:08.98-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1331284",
+    "ThreadId": "574613",
+    "Html": "The ribbon ui is completly seperated from the classic ui. no chance for side effects so far.\r<br />\nplease post a code snippet and/or try the NO classic UI examples. (btw which office product?)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-12T04:08:15.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1332876",
+    "ThreadId": "574613",
+    "Html": "A free addin to improve powerpoint fuctions. I used vsto before, and transfered all code to NO.<br />\n<br />\nCode for Ribbon:<br />\n<pre><code>    Public Overrides Function GetCustomUI(RibbonID As String) As String\n        App = NetOffice.PowerPointApi.Application.GetActiveInstance()\n        AppVersion = Val(App.Version)\n        If AppVersion &lt; 14 Then\n            Return GetResourceText(&quot;Ribbon07.xml&quot;)\n        Else\n            Return GetResourceText(&quot;Ribbon10.xml&quot;)\n        End If\n    End Function\n</code></pre>\n\nCode for Create Classic UI<br />\n<pre><code>        Dim cbBtn As CommandBarButton\n        cbBtn = cbMenuControls.Add(MsoControlType.msoControlButton, Nothing, Nothing, Nothing, True)\n        With cbBtn\n            .Style = MsoButtonStyle.msoButtonIconAndCaption\n            .Picture = CovertPictureToIPictureDisp.FromImage(My.Resources.ResourceManager.GetObject(Picture))\n            .Tag = Tag\n            .DescriptionText = DescriptionText\n            .BeginGroup = BeginGroup\n            AddHandler .ClickEvent, OnAction\n        End With</code></pre>\n\nCode for the ClickEvent handler:<br />\n<pre><code>    Private Sub ClassicButton_Click(Ctrl As CommandBarButton, ByRef CancelDefault As Boolean)\n        'someting\n    End Sub\n</code></pre>\n\nThe code works when only one button in the classic ui.However, it cannot fire correctly with more buttons.<br />\n<br />\nBest Regards,<br />\nPenn Ye.<br />\n",
+    "PostedDate": "2014-12-16T06:21:40.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

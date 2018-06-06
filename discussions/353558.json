@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "828467",
+    "ThreadId": "353558",
+    "Html": "\r\n<p>I have the same application running on :</p>\r\n<ol>\r\n<li>Win 7 </li><li>Office 2010 </li></ol>\r\n<p>And on a:</p>\r\n<ol>\r\n<li>Win Server 2k8 </li><li>Office 2003 (volume license) </li></ol>\r\n<p>The only difference is, on the server setup, i get the message that i have to call LateBindingApi.Core.Factory.Initialize :</p>\r\n<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LateBindingApi.Core.<span>Factory</span>.Initialize();\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LateBindingApi.Core.<span>Settings</span>.EnableMessageFilter&nbsp;=&nbsp;<span>false</span>;</pre>\r\n<p>But i'm already calling it in a seperate class... (and it works when running it on my dev machine)</p>\r\n<p>Any idea what could be the problem?</p>\r\n",
+    "PostedDate": "2012-04-25T09:01:33.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "828474",
+    "ThreadId": "353558",
+    "Html": "<p>hello,<br /><br />your application is an addin or a standalone application? sounds like the .NET security settings are stronger for a server system. (sandboxed?)<br />i need some days to create a 2k8 virtual machine. which .net version do you use?<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-25T09:12:27.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "828496",
+    "ThreadId": "353558",
+    "Html": "<p>its possible to use the NetOffice debug console and copy the content of the console to discussion board?<br />enable the debug console before you do the Initialize() call and NetOffice log some diagnostic informations here.<br /><br />example:<br /><br />http://netoffice.codeplex.com/wikipage?title=Misc_Examples_EN</p>",
+    "PostedDate": "2012-04-25T09:46:31.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "828772",
+    "ThreadId": "353558",
+    "Html": "<p>K. Will do this (console-part)<br /> And my application is a standalone application (actually, it's a Windows Service) and i'm using .Net 4.0.</p>\n<p>Thanks in advance :)</p>",
+    "PostedDate": "2012-04-25T23:32:33.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "832795",
+    "ThreadId": "353558",
+    "Html": "<p>i still waiting for you debug console content. but anyway, i do some changes in the core implementation in 1.5.1 Please give it a try.<br /><br />*Sebastian<br /><br />ps: the messagefilter is off by default and 1.5.1 dont need the initialize call<strong></strong><strong></strong></p>",
+    "PostedDate": "2012-05-06T18:54:15.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

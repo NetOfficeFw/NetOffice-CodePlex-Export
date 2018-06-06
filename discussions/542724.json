@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1235784",
+    "ThreadId": "542724",
+    "Html": "Hi\r<br />\n<br />\nI'm trying to create Office ribbon add-in with an installer.\r<br />\nI'm testing Visual Studio Express 2012 and SharpDevelop 5 Beta 3.\r<br />\n<br />\nI needed to set Properties-&gt;Unblock on NetOffice Toolbox 1.2.zip before unzipping it.\r<br />\nOtherwise, Windows thinks that it is unsafe because it was downloaded from the web.\r<br />\n<br />\nIn a new office ribbon project I needed to use ToolsVersion=&quot;4.0&quot; instead of 4 in MyAssembly.csproj\r<br />\n<br />\nI need to run both VS and SharpDevelop as admin.\r<br />\n<br />\nWhen trying to build the project in SharpDevelop I'm getting a warning:\r<br />\nCould not resolve this reference. Could not locate the assembly &quot;extensibility, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot;. Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors. (MSB3245)\r<br />\n<br />\nWhen trying to run the project in SharpDevelop 5 I'm getting:\r<br />\nProject is configured as dll and no execution command is specified. \r<br />\nYou can specify an execution command in the project options.\r<br />\n<br />\nHow can I fix the errors?\r<br />\n<br />\nAre there docs about this?\r<br />\nI couldn't find any info and had to figure it out.\r<br />\nIs there an example how to use SharpDevelop with wix (or something else) to create an Office add-in installer?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2014-04-19T14:23:01.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1245991",
+    "ThreadId": "542724",
+    "Html": "When trying to run the project in SharpDevelop 5 I'm getting: \r<br />\nProject is configured as dll and no execution command is specified. \r<br />\nYou can specify an execution command in the project options. <br />\n<blockquote>\n<blockquote>\n<blockquote>\nYou should config you self. It is not NetOffice question.<br />\n</blockquote>\n</blockquote>\n</blockquote>\n",
+    "PostedDate": "2014-05-15T22:05:46.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1246323",
+    "ThreadId": "542724",
+    "Html": "hey man\r<br />\n<br />\nit looks like for an addin project.\r<br />\n<br />\ngo the project options(menu: Project/Project Options and you a face a tabcontrol component\r<br />\nselect the 'Debug' tab now.\r<br />\nselect the start option 'start external program' and choose your office application (EXCEL.EXE or whatever)\r<br />\nclose the option page and hit F5 to debug.<br />\n\r<br />\n*hope this helps\r<br />\nSebastian<br />\n",
+    "PostedDate": "2014-05-16T13:08:36.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1302316",
+    "ThreadId": "542724",
+    "Html": "Hello,\r<br />\n<br />\nI have the can't find &quot;extensibility&quot; problem too, on both VS 2013 express and sharpdevelop 4.4\r<br />\nWhen I go to the list of references, it can find everything else except &quot;extensibility&quot;.\r<br />\n<br />\nWhere can I find this reference?\r<br />\n<br />\nThank you!<br />\n",
+    "PostedDate": "2014-09-08T00:26:45.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308222",
+    "ThreadId": "542724",
+    "Html": "hey niknah,\r<br />\n<br />\ni can't show you the right direction so far because i dont use SharpDevelop.\r<br />\nNot sure but SharpDevelop shows you a COM Rerference dialog arent' so`?\r<br />\n(In Visual Studio, this is a special tab)\r<br />\nOtherwise try a file search for &quot;extensibility.dll&quot; and don't be scared if its multiple exits.\r<br />\nuse the first entry you found so far.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-09-25T16:37:11.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

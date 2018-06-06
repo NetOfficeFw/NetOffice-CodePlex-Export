@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "999784",
+    "ThreadId": "432773",
+    "Html": "I am having trouble with netoffice workbook.slicercaches.add() for Excel 2013.\r<br />\n<br />\nAs background, this was called slicercaches.add() prior to Excel 2013, and then MS renamed it to slicercaches.add2() and added a fourth parameter called SlicerCacheType.  NetOffice wisely kept the old name (slicercaches.add) and just added the fourth parameter as an overload, which is what Microsoft should have done, IMO.  (To add to the problem, I think MS dropped the old slicercaches.add() in Excel 2013, so old code will now break when run in Excel 2013, another argument for switching to NetOffice.)\r<br />\n<br />\nThis <a href=\"http://social.msdn.microsoft.com/Forums/en-US/exceldev/thread/a76e86c6-b95e-4573-8a15-29db903b4bb1\" rel=\"nofollow\">forum post </a> explains it.\r<br />\n<br />\nAnyhow, In a nutshell, the slicercaches.add2() (Excel 2013) works in VBA but not in the PIA.  I can't get it to work at all, no matter how many optional parameters I pass it.  On the other hand, NetOffice works with the first two or three parameters.  I guess because it is using the old version of slicercaches.add.  However when adding the fourth parameter in NetOffice (slicercachetype), it throws an exception.  Something about wrong number of parameters, which is the same exception that the 2013 PIA throws.  The forum post above goes into details.  Also, I can get the 2010 PIA to work in Excel 2013, but I need that fourth parameter.\r<br />\n<br />\nDoes anyone have any thoughts or workarounds for this?  The MSDN forum post is a month old and is so far ignored by MS.  I was hoping that NetOffice, while solving some of the problem, would solve it for the fourth parameter too.  Like I said, it works in VBA.  One can record a macro and run it.  But when pasting the macro into .net, it fails, both with PIA and with NetOffice.\r<br />\n<br />\nCheers<br />\n",
+    "PostedDate": "2013-02-11T16:33:57.293-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

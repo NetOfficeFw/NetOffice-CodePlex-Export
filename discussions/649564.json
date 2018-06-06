@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1457870",
+    "ThreadId": "649564",
+    "Html": "Many thanks Sebastian for your software. I have already created 2 working addins which are very useful. I have a question about registering the dlls.\r<br />\n<br />\nOn one machine which has VS installed, I can check the &quot;Register for COM interop&quot;, and the Outlook addin loads with no problems. This machine is windows 10 64 bit, Outlook 2010 64 bit.\r<br />\n<br />\nOn another machine which has VS installed, I can check the &quot;Register for COM interop&quot;, and the Outlook addin loads with no problems. This machine is windows 10 64 bit, Outlook 2010 32 bit. However on this machine I get the following errors and warnings.<br />\n\r<br />\nI can see this is caused by calling regasm with /tlb. If I call regasm without /tlb the error does not appear. Either way the addin loads and works well. My questions is do we need the /tlb option?\r<br />\n<br />\n<strong><em>Error</em></strong>\r<br />\nThe assembly &quot;C:\\programming\\netoffice addin tests\\OutAddin2\\OutAddin2\\bin\\Debug\\OutAddin2.dll&quot; could not be converted to a type library. Type library exporter encountered an error while processing 'OutAddin2.Addin, OutAddin2'. Error: Referenced type is defined in managed component, which is imported from a type library that could not be loaded (type: 'NetOffice.OfficeApi.IRibbonExtensibility'; component: 'C:\\programming\\netoffice addin tests\\OutAddin2\\OutAddin2\\bin\\Debug\\OfficeApi.dll').\r<br />\n<br />\n<strong>Warning</strong>\r<br />\nType library exporter warning: Referenced type is defined in managed component, which is imported from a type library that could not be loaded because it was not registered (type: 'NetOffice.OutlookApi.Tools.COMAddin'; component: 'C:\\programming\\netoffice addin tests\\OutAddin2\\OutAddin2\\bin\\Debug\\OutlookApi.dll').<br />\n",
+    "PostedDate": "2016-01-04T03:22:16.9-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1457877",
+    "ThreadId": "649564",
+    "Html": "You dont need the /tlb option. This means creating a type library you can use for development to combine early/late binding as well.\r<br />\n<br />\nThe common compiler/regasm strategy is to register your addin and all dependencies there have COM types/interfaces included.\r<br />\nIn order prevent this for NetOffice assemblies each .dll has the PrimaryInteropAssemblyAttribute in AssemblyInfo.cs.\r<br />\n(a negative side effect is, VS set the reference option &quot;Embed Interop Types&quot; to true by default - i still figure out how i can disable this VS 'feature')\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-01-04T05:15:56.287-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1457880",
+    "ThreadId": "649564",
+    "Html": "Thank you for this information. Very helpful. I am removing the &quot;Embed Interop Types&quot; in the properties.\r<br />\nMichael<br />\n",
+    "PostedDate": "2016-01-04T05:49:40.517-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

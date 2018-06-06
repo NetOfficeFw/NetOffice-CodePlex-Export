@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1460313",
+    "ThreadId": "650388",
+    "Html": "How can I identify type of object from a variable declared as NetOffice.AccessApi.Form?\r<br />\nFor example for  Microsoft.Office.Interop.Access.From I can use TypeName. \r<br />\nIf TypeName(frm) = &quot;Form_ObjectName&quot; then Form, if TypeName(frm) = &quot;T_ObjectName&quot; then Table, if TypeName(frm) = &quot;ObjectName&quot; (or &quot;_ObjectName&quot;) then Query.\r<br />\nOnly by using UnderlyingObject?\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2016-01-23T01:58:15.387-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1460469",
+    "ThreadId": "650388",
+    "Html": "Hello Serge,\r<br />\n<br />\nEach instance from NetOffice has the property string UnderlyingTypeName{get;}\r<br />\nYou may didnt see that because its marked with the [EditorBrowsable(EditorBrowsableState.Never) attribute\r<br />\nto avoid confusing developers.\r<br />\n<br />\nMoreover you have:\r<br />\n<br />\nstring UnderlyingComponentName{get;}\r<br />\n<br />\nstring FriendlyTypeName{get;}\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-01-24T14:12:36.797-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1460500",
+    "ThreadId": "650388",
+    "Html": "Hello Sebastian, \r<br />\n<br />\nthank you for your quick reply. \r<br />\n<br />\nRegards,\r<br />\nSerge<br />\n",
+    "PostedDate": "2016-01-25T00:04:07.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

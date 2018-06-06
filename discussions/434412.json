@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1006319",
+    "ThreadId": "434412",
+    "Html": "Hi, I'm trying to get a better understanding of NetOffice and COM. One thing I have noticed is that in almost all the examples of using NetOffice I find, the [ComRegisterFunction] method creates some registry keys, but the [ComUnregisterFunction] method tries to remove different keys. To me this looks like a mistake, but I'm not sure.\r<br />\n<br />\nTake this example: <a href=\"http://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS\" rel=\"nofollow\">http://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS</a>\r<br />\n<br />\nThe register function creates 3 keys, the unregister function removes 1 of those 3 keys, and another key that was never explicitly created:\r<br />\n@&quot;CLSID{&quot; + type.GUID.ToString().ToUpper() + @&quot;}\\Programmable&quot;<br />\n",
+    "PostedDate": "2013-02-25T07:07:45.717-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008067",
+    "ThreadId": "434412",
+    "Html": "Hmm, no replies, maybe because I didn't make my questions clear :P\r<br />\nShould the the ComUnregsiterFunction remove the keys created in the ComRegisterFunction?\r<br />\nAlso, the &quot;Programmable&quot; key that the [ComUnregisterFunction] cleans up, is that a key that is created behind the scenes? Are there any more that need to be cleaned?<br />\n",
+    "PostedDate": "2013-02-28T01:36:39.2-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008341",
+    "ThreadId": "434412",
+    "Html": "I don't know much about this but you can examine what keys does <em>regasm</em> utility create without using ComRegisterFunction and what is left afer unregistering assembly.<br />\n",
+    "PostedDate": "2013-02-28T09:52:27.737-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1009055",
+    "ThreadId": "434412",
+    "Html": "the Programmable key is missing in the register method example. thanks for suggestion.<br />\nmoreover the the example creatse the codebase entry 2 times (copy+paste error)<br />\nregasm.exe create some reg keys for you and call the register method.<br />\nthe register method create some sub keys now for the new key.<br />\n<br />\nregasm delete the root key and its created subkeys automaticly (unregister)<br />\n<br />\nthe office addin key is the same in register/unregister (not?)<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-03-01T14:23:15.907-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

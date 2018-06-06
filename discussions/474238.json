@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1136585",
+    "ThreadId": "474238",
+    "Html": "Dear members, I'm new to Visual Studio . I've programming background in vb and vba only and I'm new to NetOffice.\r<br />\n<br />\nI've added a sample procedure to the NetOffice 1.6.0\\NET 4.0\\Examples\\Excel\\VB\\COMAddin Examples\r<br />\n<br />\nPublic Sub Test()<br />\n<pre><code>Dim excelApplication As New Excel.Application\nDim workBook As Excel.Workbook = excelApplication.ActiveWorkbook\nDim workSheet As Excel.Worksheet = workBook.ActiveSheet\nworkSheet.Cells(1, 1).Value = &quot;This is a sample text&quot;</code></pre>\n\nEnd Sub\r<br />\n<br />\nWhen this procedure has been called from Ribbon Control I'm getting the error 'Object reference not set to an instance of an object'. I'm unable to identify the error. Your help is highly appreciated.<br />\n",
+    "PostedDate": "2013-12-16T00:26:25.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1136744",
+    "ThreadId": "474238",
+    "Html": "For project <em>COMAddinRibbonExample</em> from <em>NetOffice 1.6.0\\NET 4.0\\Examples\\Excel\\VB\\COMAddin Examples</em> your code should look like this:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">Public</span> <span style=\"color:Blue;\">Sub</span> Test()\n  <span style=\"color:Blue;\">Dim</span> workBook <span style=\"color:Blue;\">As</span> Excel.Workbook = _excelApplication.ActiveWorkbook\n  <span style=\"color:Blue;\">Dim</span> workSheet <span style=\"color:Blue;\">As</span> Excel.Worksheet = workBook.ActiveSheet\n  workSheet.Cells(1, 1).Value = <span style=\"color:#A31515;\">&quot;This is a sample text&quot;</span>\n<span style=\"color:Blue;\">End</span> <span style=\"color:Blue;\">Sub</span>\r\n</pre></div>_<em>excelApplication</em> is already declared in <em>Addin</em> class and initialized in <em>OnConnection</em> sub. <em>Test</em> sub shoud be <em>Addin</em> class member.<br />\n",
+    "PostedDate": "2013-12-16T08:35:29.327-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1136759",
+    "ThreadId": "474238",
+    "Html": "Dear friend, my sincere thanks for this piece of advice. I was trying different things for the past 2 days and I'm unable to figure out what went wrong and nor did I noticed this <em>OnConnection</em> sub. Once again thank you very much.<br />\n",
+    "PostedDate": "2013-12-16T09:04:34.733-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

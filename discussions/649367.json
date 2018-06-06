@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1457319",
+    "ThreadId": "649367",
+    "Html": "Hi,<br />\n<br />\nJust asking as i couldn't find any threads about it in this board. <br />\n<br />\nDoes NetOffice officially support Office365 in the current version 1.7.3? Or will there be a new specific version?<br />\n<br />\nDaniel<br />\n",
+    "PostedDate": "2015-12-28T02:56:34.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1457378",
+    "ThreadId": "649367",
+    "Html": "NetOffice 1.7.3 supports Office 2016/365 but without intellisense support and so on.\r<br />\nCodeplex has an open issue currently for submit the code for NetOffice 1.8.0 so i can't create a new version at the moment.\r<br />\n<a href=\"https://codeplex.codeplex.com/workitem/32445\" rel=\"nofollow\">https://codeplex.codeplex.com/workitem/32445</a>\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-12-28T12:12:06.083-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

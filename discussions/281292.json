@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "705197",
+    "ThreadId": "281292",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>Issue:</p>\r\n<p>1) Open the word document.</p>\r\n<p>2) Set the custom property through code.</p>\r\n<p>3) Do not make any changes in the word document.</p>\r\n<p>4) Click on save button and close the document.</p>\r\n<p>Word document last write is not modified.</p>\r\n<p>Is it possible to modify the last write time of an open word document? If yes, then please share the code.</p>\r\n<p>or any other method to set the last write time property.</p>\r\n<p>Thanks in advance.</p>\r\n",
+    "PostedDate": "2011-11-30T02:33:55.21-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "705233",
+    "ThreadId": "281292",
+    "Html": "<p>you mean the standard last write property from any file in windows?<br />in this case use the FileInfo class from .NET. <br />a nice tutorial you find here: <a href=\"http://www.dotnetperls.com/fileinfo\">http://www.dotnetperls.com/fileinfo</a><br />if you want to change the last write document property from word you have<br />to perform a dumy action and undo the action immediately.<br /><br />*mata ne<br />Sebastian</p>",
+    "PostedDate": "2011-11-30T04:26:35.687-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "705662",
+    "ThreadId": "281292",
+    "Html": "<p>Hello Sebastian,</p>\r\n<p>Thanks for the reply. I tried using FileInfo class to change the property but I cannot change its last write time property when the word document is open (\"Access Denied\").</p>\r\n<p>I am opening a file through Netoffice library and I have a form, in which we can set few custom document properties. After checking few properties, when I go to custom properties window if word, it shows me the correct value of custom properties. That means there is no problem with the saving of custom properties. Now I save and close(\"without entering any text\") the document still the last modified time or last write is not changed.</p>\r\n<p>When I open a word document normally and follow the above steps. It changes the last modify time or last write time.</p>\r\n<p>Is there any way to achieve the same thing with Netoffice library?</p>\r\n<p>It's a very high priority issue for me..Thanks in advance.</p>",
+    "PostedDate": "2011-11-30T22:22:37.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "705740",
+    "ThreadId": "281292",
+    "Html": "<p>please show me a little bit code, specialy the save code for the document.&nbsp;</p>",
+    "PostedDate": "2011-12-01T02:16:16.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "705825",
+    "ThreadId": "281292",
+    "Html": "<p>Hello Sebastian,</p>\r\n<p>Code snippet of, opening a file through Netoffice library.</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre style=\"color: black;\"><span style=\"color: blue;\">Private</span> m_Word <span style=\"color: blue;\">As</span> NetOffice.WordApi.Application = <span style=\"color: blue;\">Nothing</span>\r\n\r\n <span style=\"color: blue;\">Dim</span> fi <span style=\"color: blue;\">As</span> <span style=\"color: blue;\">New</span> System.IO.FileInfo(TempTemplateFilePath)\r\n      <span style=\"color: blue;\">If</span> (fi.Length &gt; 0) <span style=\"color: blue;\">Then</span>\r\n        oRet = m_Word.Documents.Open(TempTemplateFilePath)\r\n</pre>\r\n<pre style=\"color: black;\">After opening a document, I have a form in which we can set custom document properties like postpone merge.</pre>\r\n<pre style=\"color: black;\">Code snippet when we check some custom document property.</pre>\r\n<pre><div style=\"color: black; background-color: white;\"><pre style=\"color: black;\"> <span style=\"color: blue;\">If</span> (ReadDocumentProperty(cnt.Name) <span style=\"color: blue;\">Is</span> <span style=\"color: blue;\">Nothing</span>) <span style=\"color: blue;\">Then</span>\r\n                m_Properties.Add(cnt.Name, <span style=\"color: blue;\">False</span>, propType, oValue, <span style=\"color: blue;\">Nothing</span>) <span style=\"color: green;\">' Berend .Net/982 'DWNET/1115-Sunny</span>\r\n              <span style=\"color: blue;\">Else</span>\r\n                m_Properties(cnt.Name).Value = oValue <span style=\"color: green;\">' Berend .Net/982</span>\r\n              <span style=\"color: blue;\">End</span> <span style=\"color: blue;\">If</span></pre>\r\n<pre>In the above code snippet \"m_Properties\" is object of DocumentProperties</pre>\r\n</div>\r\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<pre>&nbsp;<span>Private</span>&nbsp;m_Properties&nbsp;<span>As</span>&nbsp;<span>DocumentProperties</span>\r\n</pre>\r\n<p>&nbsp;</p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><div style=\"color: black; background-color: white;\"><pre>Custom document properties saved successfully, I have cross checked with Office 2007: Prepare--&gt;Properties--&gt; Document Properties--&gt; Advanced Properties--&gt; Custom tab</pre>\r\n</div>\r\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>Now, I save and close the document without doing any changes in the open document. When I open the same document then the changes I made for document properties are not saved. This is because, Date modified is not updated.</p>\r\n<p>Even after calling save() method still it is not updating the modified date. Is there way to modify the date, when we set document property for open document?</p>\r\n<p>I don't want to fix this issue by adding space and immediately removing it.</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color: black; background-color: white;\"></div>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-12-01T05:19:49.267-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "705837",
+    "ThreadId": "281292",
+    "Html": "<p>the problem is document.Save and document.SaveAs overwrite the BuiltInDocumentProperties.<br />you can see that in the debugger, after Saves the LastSaveTime property has the current date.<br />do you use&nbsp;the&nbsp;BuiltInDocumentProperties collection or CustomProperties collection ?</p>",
+    "PostedDate": "2011-12-01T06:11:21.193-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706227",
+    "ThreadId": "281292",
+    "Html": "<p>Hello Sebastian,</p>\r\n<p>I am using CustomProperties collection, following is the code snippet for the same:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre> m_oDocProperties.CustomProperties = <span style=\"color: blue;\">CType</span>(doc.CustomDocumentProperties, DocumentProperties)\r\n          Client.DocPropertiesForm.DocProperties = m_oDocProperties\r\n</pre>\r\n</div>\r\n</p>\r\n<p>Thanks</p>",
+    "PostedDate": "2011-12-01T21:02:41.407-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

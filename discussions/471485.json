@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1130208",
+    "ThreadId": "471485",
+    "Html": "Hi, \r<br />\n<br />\nI am getting this error when I setup the ASP.NET project with NetOffice on server. \r<br />\nSee the screenshot here: <img src=\"http://oi42.tinypic.com/34q9w7k.jpg\" alt=\"Image\" />\r<br />\n<br />\nI am using NetOffice tools to generate a password protected Excel file. \r<br />\n<br />\nPLEASE HELP! <br />\n",
+    "PostedDate": "2013-11-29T01:45:26.883-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1195135",
+    "ThreadId": "471485",
+    "Html": "Hi tempOrary.\r<br />\n<br />\nI am facing same problem.\r<br />\nHave you solved it?\r<br />\n<br />\nRegards.<br />\n",
+    "PostedDate": "2014-01-24T01:44:38.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1224142",
+    "ThreadId": "471485",
+    "Html": "I have the same problem. Works ok on my computer, but throws that error on the server (2008 r2).<br />\n",
+    "PostedDate": "2014-03-18T13:55:26.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1224148",
+    "ThreadId": "471485",
+    "Html": "this is a security issue(E_ACCESSDENIED).  a system/network service has no permissions by default to use the desktop engine(or may not logged in)\r<br />\nsolution1: give more permissions for your asp solution(not sure how its possible because i'm a proudly windows forms developer)\r<br />\nsolution2: create an appdomain at hand with more permissions.\r<br />\nsolution3: use the xml file format(since office2007) to create an office document without office(you find some great projects on codeplex to do this very easy)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-03-18T14:17:04.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1224296",
+    "ThreadId": "471485",
+    "Html": "\r\n<div>\r\n<p>I solve with:</p>\r\n<p></p>\r\n<p><a href=\"http://social.msdn.microsoft.com/Forums/en-US/65a355ce-49c1-47f1-8c12-d9cf5f23c53e/word-automation-under-aspnet-114322-vista-64bit?forum=netfx64bit\">http://social.msdn.microsoft.com/Forums/en-US/65a355ce-49c1-47f1-8c12-d9cf5f23c53e/word-automation-under-aspnet-114322-vista-64bit?forum=netfx64bit</a></p>\r\n<p></p>\r\n</div>\r\n",
+    "PostedDate": "2014-03-19T00:59:41.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

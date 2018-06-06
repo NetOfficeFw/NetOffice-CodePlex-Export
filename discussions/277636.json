@@ -1,0 +1,194 @@
+[
+  {
+    "Id": "691150",
+    "ThreadId": "277636",
+    "Html": "\r\n<pre><pre><br></pre>\r\n</pre>\r\n<p>Firstly let me thank you for building and publishing this library. &nbsp;I needed to automate PowerPoint in a version independent way and was part way through crafting my own wrapper for late binding to PowerPoint when I found this project.</p>\r\n<p>ok to this error. &nbsp;Consider the following trivial app</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>LateBindingApi.Core.Factory.Initialize();\r\nPowerPoint.Application application = <span style=\"color:blue\">new</span> PowerPoint.Application();\r\napplication.Dispose()\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>if powerpoint (2007) is already running, the app will time out on the new PowerPoint.Application statement eventually raising a CO_E_SERVER_EXEC_FAILURE exception.</p>\r\n<p>I tried a simple console app that uses the RunningObjectTable class from Examples/Misc as follows;</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">static</span> <span style=\"color:blue\">void</span> Main(<span style=\"color:blue\">string</span>[] args)\r\n{\r\n    LateBindingApi.Core.Factory.Initialize();\r\n    PowerPoint.Application application = <span style=\"color:blue\">null</span>;\r\n    <span style=\"color:blue\">object</span> testProxy = RunningObjectTable.GetRunningPowerPointInstanceFromROT();\r\n    <span style=\"color:blue\">if</span> (<span style=\"color:blue\">null</span> != testProxy)\r\n    {\r\n        application = <span style=\"color:blue\">new</span> PowerPoint.Application(<span style=\"color:blue\">null</span>, testProxy);\r\n\r\n    }\r\n    <span style=\"color:blue\">else</span>\r\n        application = <span style=\"color:blue\">new</span> PowerPoint.Application();\r\n    <span style=\"color:green\">//...//</span>\r\n    <span style=\"color:blue\">if</span> (<span style=\"color:blue\">null</span> == testProxy)\r\n        application.Quit();\r\n    application.Dispose();\r\n}\r\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>testProxy is always null, whether PowerPoint (2007) is loaded or not, and the next line of code that creates a new PowerPoint.Application raises the exception.</p>\r\n",
+    "PostedDate": "2011-10-29T09:55:34.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "691153",
+    "ThreadId": "277636",
+    "Html": "<p>hey khiron,<br /><br />I do 2 tests on 2 virtual machines with xp and 2007</p>\r\n<p>- open a powerpoint application<br />- runs powerpoint example01<br /><br />this works fine on 2 systems, but the new Application statement don't create a new app, it allocates the already running app.<br />i'm not sure this is a powerpoint 'feature' or i do a mistake but its the same behavoir with the interop assemblies.<br />the second thing what i do is to GetRunningPowerPointInstanceFromROT and it works also fine on the virtual machines.<br /><br />can i have some additional informations, windows version 32/64 Office 32/64 Student Edition or something like that, multiple versions of office installed and any what is helpful<br />to reproduce the error.<br /><br />*Sebastian<br /><br />( i see the misc examples contains faulty reference paths *damn* )</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-29T10:25:23.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "691230",
+    "ThreadId": "277636",
+    "Html": "<p>I think I found my problem, or at least I reckon I can get my problem to show on your system.</p>\n<p>Try running Visual Studio elevated (run as Administrator), with Powerpoint run normally. &nbsp;Running VS non-elevated immediately fixed my symptoms.</p>\n<p>I'm running Office 2007 Ultimate (only version installed), VS2010, on Windows 7 Ultimate (x64)</p>",
+    "PostedDate": "2011-10-29T19:50:12.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698564",
+    "ThreadId": "277636",
+    "Html": "<p>I've run into a very similar issue both&nbsp;with Office 2010 and Office 2000 on Windows 7 professional and home. It seems to be related to the elevated permissions as khiron suggests. When I run as administrator <span style=\"color: blue;\">new</span> PowerPoint.Application(); just freezes, both when PowerPoint is already running and when it is not. If I run normally then I don't experience these issues, but my app needs elevated permissions. Any suggestions?</p>",
+    "PostedDate": "2011-11-15T11:07:32.087-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698567",
+    "ThreadId": "277636",
+    "Html": "<p>i do a new&nbsp;test on a windows7 x64 VM&nbsp;immediately.<br />do you have 2000 and 2010 installed on one single&nbsp;machine?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-15T11:14:28.99-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698569",
+    "ThreadId": "277636",
+    "Html": "<p>No, they are on different machines.</p>",
+    "PostedDate": "2011-11-15T11:18:26.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698582",
+    "ThreadId": "277636",
+    "Html": "<p>test is in progress. i give&nbsp;you a response in 1 hour.</p>",
+    "PostedDate": "2011-11-15T11:52:40.523-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698623",
+    "ThreadId": "277636",
+    "Html": "<p>i start all power point examples in a vm as administrator and it works wonderfull for me.<br />what i want to do&nbsp;is create a special diagnostic version of LateBindingApi.Core.dll to see what exactly is the problem.<br />which .net version do you use?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-15T13:00:45.367-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698625",
+    "ThreadId": "277636",
+    "Html": "\r\n<div>Thanks for your help and quick investigation. We are using 2.0<br>\r\n</div>\r\n<div>On Tue, Nov 15, 2011 at 2:00 PM, SebastianDotNet <span dir=\"ltr\">&lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"border-left:#ccc 1px solid; margin:0px 0px 0px 0.8ex; padding-left:1ex\">\r\n<div>\r\n<p>From: SebastianDotNet</p>\r\n<div>\r\n<p>i start all power point examples in a vm as administrator and it works wonderfull for me.<br>\r\nwhat i want to do is create a special diagnostic version of LateBindingApi.Core.dll to see what exactly is the problem.<br>\r\nwhich .net version do you use?</p>\r\n<p></p>\r\n</div>\r\n<div>\r\n<div>\r\n<p>Read the <a href=\"http://netoffice.codeplex.com/discussions/277636#post698623\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email (<a href=\"mailto:netoffice@discussions.codeplex.com?subject=[netoffice:277636]\" target=\"_blank\">netoffice@discussions.codeplex.com</a>)</p>\r\n<p>To start a new discussion for this project, email <a href=\"mailto:netoffice@discussions.codeplex.com\" target=\"_blank\">\r\nnetoffice@discussions.codeplex.com</a></p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://netoffice.codeplex.com/discussions/277636/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on CodePlex.com.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com</p>\r\n</div>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n",
+    "PostedDate": "2011-11-15T13:03:17.177-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698731",
+    "ThreadId": "277636",
+    "Html": "<p>it's done. i have created a diagnostic version of the LateBinding core.<br />the dll is temporary available in the download section of NetOffice.<br />please download, replace and use the NetOffice Debug Console (available since NetOffice 1.3)<br />use the Debug Console as follows:<br /><br /></p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>DebugConsole.LogFile = <span style=\"color: #a31515;\">\"C:\\\\myFile.log\"</span>;\r\nDebugConsole.Mode = ConsoleMode.LogFile;\r\n</pre>\r\n</div>\r\n<p><br /><br />an example for using the debug console is online available: <a href=\"http://netoffice.codeplex.com/wikipage?title=Misc01\">http://netoffice.codeplex.com/wikipage?title=Misc01</a><br />copy the content of the file below your next post.<br />it's possible you create a normal interop assembly project to see the problem occurs here?<br />what NetOffice is do in the ctor is very simpel.<br /><br /></p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>_instanceType = System.Type.GetTypeFromProgID(progId);\r\n_underlyingObject = Activator.CreateInstance(_instanceType);\r\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>No dirty hacks, no tricky stuff, but one these method calls freeze your application.<br />i have the source code&nbsp;from .NET 2 installed on my pc and see tomorrow what does these methods.<br />maybe i can replace the problematic method. we find a solution for your problem, i'm sure!</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-15T17:55:31.957-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698883",
+    "ThreadId": "277636",
+    "Html": "<p>I don't think it's in your code Sebastien, I could be wrong but I suspect it's a flaw in the design of PowerPoint. &nbsp;The PowerPoint instance is designed to be a singleton, only one of them on a PC handling all requests, but it can only be run with the rights of the logged in user and doesn't handle requests from other users.</p>\r\n<p>I can replicate the problem with&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>        <span style=\"color: blue;\">static</span> <span style=\"color: blue;\">void</span> Main(<span style=\"color: blue;\">string</span>[] args)\r\n        {\r\n            <span style=\"color: blue;\">try</span>\r\n            {\r\n                Activator.CreateInstance(Type.GetTypeFromProgID(<span style=\"color: #a31515;\">\"Powerpoint.Application\"</span>));\r\n            }\r\n            <span style=\"color: blue;\">catch</span>(Exception ex)\r\n            {\r\n                Console.WriteLine(ex.Message);\r\n                Console.ReadKey();\r\n            }\r\n        }\r\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>If my app is running elevated and PowerPoint is already loaded non-elevated then the call to CreateInstance will time out raising the following exception</p>\r\n<p><span style=\"white-space: pre;\"> </span>Retrieving the COM class factory for component with CLSID {91493441-5A91-11CF-8700-00AA0060263B} failed due to the following error: 80080005.</p>",
+    "PostedDate": "2011-11-16T03:37:54.603-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699016",
+    "ThreadId": "277636",
+    "Html": "<p>hey khiron,<br /><br />nice to read you again. yes i think also, netoffice does no mistake here but anyway, lets find us a solution!<br />maybe i can create a alternate failback class, <br />1. take a look in the registry to see which file path has ppoint.exe,&nbsp;1. create powerpoint process at hand, fetch the ROT with the proxy and returns.<br />but i wait for the response from cvchristensen currently.<br /><br />*regards<br />Sebastian</p>",
+    "PostedDate": "2011-11-16T07:44:48.14-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699062",
+    "ThreadId": "277636",
+    "Html": "Thanks for all your quick work on this Sebastian. We'll load that new diagnostic Latebinding dll in today and see what happens.<br>\r\n<br>\r\n<div>On Wed, Nov 16, 2011 at 8:44 AM, SebastianDotNet <span dir=\"ltr\">&lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"border-left:#ccc 1px solid; margin:0px 0px 0px 0.8ex; padding-left:1ex\">\r\n<div>\r\n<p>From: SebastianDotNet</p>\r\n<div>\r\n<p>hey khiron,<br>\r\n<br>\r\nnice to read you again. yes i think also, netoffice does no mistake here but anyway, lets find us a solution!<br>\r\nmaybe i can create a alternate failback class, <br>\r\n1. take a look in the registry to see which file path has ppoint.exe, 1. create powerpoint process at hand, fetch the ROT with the proxy and returns.<br>\r\nbut i wait for the response from cvchristensen currently.<br>\r\n<br>\r\n*regards<br>\r\nSebastian</p>\r\n</div>\r\n<div>\r\n<div>\r\n<p>Read the <a href=\"http://netoffice.codeplex.com/discussions/277636#post699016\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email (<a href=\"mailto:netoffice@discussions.codeplex.com?subject=[netoffice:277636]\" target=\"_blank\">netoffice@discussions.codeplex.com</a>)</p>\r\n<p>To start a new discussion for this project, email <a href=\"mailto:netoffice@discussions.codeplex.com\" target=\"_blank\">\r\nnetoffice@discussions.codeplex.com</a></p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://netoffice.codeplex.com/discussions/277636/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on CodePlex.com.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com</p>\r\n</div>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n",
+    "PostedDate": "2011-11-16T09:13:47.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699253",
+    "ThreadId": "277636",
+    "Html": "<p>Sebastien, your approach would be much better than mine.&nbsp;</p>\r\n<p>What I ended up doing is during the call to create the COM class,&nbsp;if my process is running elevated, and PowerPoint is already loaded, I raise an exception immediately rather than making the user wait out the timeout period. &nbsp;The message I uses is \"Can not connect to an existing PowerPoint instance from an elevated state (eg: as&nbsp;Administrator). &nbsp; Close down PowerPoint and try again, or run from a non-elevated state\".</p>",
+    "PostedDate": "2011-11-16T15:21:07.1-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699323",
+    "ThreadId": "277636",
+    "Html": "<p>i create a small sample application&nbsp;to start powerpoint in a different way.<br />please check the download section!<br /><br />regards<br />*Sebastian</p>",
+    "PostedDate": "2011-11-16T20:38:40.247-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699434",
+    "ThreadId": "277636",
+    "Html": "<p>I had to make a few changes to your application to get it to work, on my PC (Win7x64) the path in the registry to PowerPoint is different&nbsp;</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">string</span> keyPath = <span style=\"color: blue;\">string</span>.Format(<span style=\"color: #a31515;\">\"Software\\\\Wow6432Node\\\\Microsoft\\\\Office\\\\{0}\\\\Common\\\\InstallRoot\"</span>, item);</pre>\r\n</div>\r\n</p>\r\n<p>Also in ROTHelper I had to change from Milliseconds to TotalMilliseconds to get the timeout to work as expected&nbsp;</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>        <span style=\"color: blue;\">public</span> <span style=\"color: blue;\">static</span> PowerPoint.Application GetRunningPowerPointInstancesFromROT(<span style=\"color: blue;\">int</span> delayMilliSeconds)\r\n        {\r\n            DateTime startTime = DateTime.Now;\r\n            PowerPoint.Application application = GetApplicationInstancesFromROT(<span style=\"color: blue;\">new</span> <span style=\"color: blue;\">string</span>[] { <span style=\"color: #a31515;\">\"PowerPoint\"</span>, <span style=\"color: #a31515;\">\"Microsoft PowerPoint\"</span> }, <span style=\"color: #a31515;\">\"Application\"</span>);\r\n            <span style=\"color: blue;\">while</span>((application == <span style=\"color: blue;\">null</span>) &amp;&amp; (DateTime.Now.Subtract(startTime).<span style=\"text-decoration: underline; color: #ff00ff;\"><strong>TotalMilliseconds</strong></span> &lt;= delayMilliSeconds))\r\n                application = GetApplicationInstancesFromROT(<span style=\"color: blue;\">new</span> <span style=\"color: blue;\">string</span>[] { <span style=\"color: #a31515;\">\"PowerPoint\"</span>, <span style=\"color: #a31515;\">\"Microsoft PowerPoint\"</span> }, <span style=\"color: #a31515;\">\"Application\"</span>);\r\n            <span style=\"color: blue;\">return</span> application;\r\n        }\r\n\r\n</pre>\r\n</div>\r\n</p>\r\n<p>The result for me was if I ran this app elevated ( running it inside VS which is running \"As Administrator\") and if PowerPoint was already loaded then&nbsp;GetRunningPowerPointInstancesFromROT returns null (it times out).</p>\r\n<p>The Problem seems to be that the Running Object Table is different depending on what user your are running as, Powerpoint is running on the ROT established by the non-elevated user, and this app is querying the ROT for Administrator waiting to see a running instance that never shows.</p>\r\n<p>Interestingly&nbsp;the call to&nbsp;StartVersion does push the window of the running instance of PowerPoint to the front of the z-order - but unfortunately there seems no way to get a hold of the process from the elevated version of the ROT.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-17T01:35:00.87-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699565",
+    "ThreadId": "277636",
+    "Html": "<p>i'm still a happy xp user but i&nbsp;test the&nbsp;next sample version in a window7 x64 VM.<br />uuups, sorry i create the sample, very quickly at night. i&nbsp;try to improve the&nbsp;sample today.</p>",
+    "PostedDate": "2011-11-17T06:23:11.04-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699848",
+    "ThreadId": "277636",
+    "Html": "<p>an updated example version is available.<br />its a little bit more COM low level stuff inside but it works on my x64 W7 with office x64.<br />*regards<br />Sebastian</p>",
+    "PostedDate": "2011-11-17T13:45:22.257-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699854",
+    "ThreadId": "277636",
+    "Html": "<p>Sebastian,</p>\n<p>We tried to use the diagnostic latebinding dll that we downloaded but had some sort of version mismatch issue (1.3 vs 1.0?). We have, however, found that our app on client machines doesn't need the elevated permissions it does on our domain so it has become a non-issue. Thank you for all your work on this. We appreciate your responsiveness.</p>",
+    "PostedDate": "2011-11-17T13:58:57.15-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699855",
+    "ThreadId": "277636",
+    "Html": "<p>version 1.3 is top of 1.0 i make sure existing code for previous NetOffice&nbsp;releases are compatible with newer versions.<br />Set specific version in 'references' to False. (right click on the reference)&nbsp;but nice to hear your problem is resolved!<br /><br />update: now i realize, the other netoffice assemblies needs LateBindingApi.Core.dl in same version. my bad!</p>",
+    "PostedDate": "2011-11-17T14:05:20.573-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699976",
+    "ThreadId": "277636",
+    "Html": "<p>I tried the updated project. &nbsp;</p>\n<p>PowerPoint.Application GetApplicationInstancesFromROT fails when called from an elevated application if PowerPoint has already been loaded from the desktop (loaded using my non-elevated credentials). &nbsp;</p>\n<p>It succeeds if run from a non-elevated state, and PowerPoint is already loaded from the desktop.</p>\n<p>It succeeds when run from an elevated or non-elevated state if PowerPoint is not already loaded.</p>\n<p>Interestingly, It succeeds if I previously load PowerPoint in an elevated state (by going to the install location and right clicking the PowerPoint.exe file and selecting to \"Run as Administrator\").</p>\n<p>When it fails the GetApplicationInstancesFromROT&nbsp;method is able to get the ROT and iterate through it fine, but a process serving the PowerPoint interface just does not appear on the ROT. &nbsp;It is as if an app invoked from one set of credentials does not appear  in the ROT for any request invoked from a different set, it seems the two ROTs are&nbsp;quarantined&nbsp;from each other.</p>\n<p>Hope this is&nbsp;useful&nbsp;for tracking this down. &nbsp;I should note that I have worked around this by just not allowing someone to try to start PowerPoint if it's already started, which solves my problem.</p>",
+    "PostedDate": "2011-11-17T21:25:57.753-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "700534",
+    "ThreadId": "277636",
+    "Html": "<p>i can't reproduce these scarry effect in any virtual machine. the only problem here is the 2 seconds delay is not enough( vm's are slow of course)<br />can you do me a pleasure and add a log output&nbsp;to&nbsp;the GetApplicationInstancesFromROT&nbsp;method. <br />please log&nbsp;the&nbsp;enumerated interface guid's when powerpoint is running and the method can't find them.</p>",
+    "PostedDate": "2011-11-19T01:32:04.517-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "700725",
+    "ThreadId": "277636",
+    "Html": "<p>I logged every GUID that&nbsp;GetApplicationInstancesFromROT found as follows</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>Guid typeGuid = GetDispatchID(dispatch);\r\n<span style=\"color: blue;\">if</span> (Guid.Empty != typeGuid)\r\n{\r\n    sw.Write(String.Format(<span style=\"color: #a31515;\">\"GUID:{0} \"</span>, typeGuid));\r\n    <span style=\"color: blue;\">if</span> ((typeGuid == _powerPointDispatchID32) || (typeGuid == _powerPointDispatchID64))\r\n        isPowerPoint = <span style=\"color: blue;\">true</span>;\r\n}</pre>\r\n<pre>The complete logs are too big to post as the time out enabled routine cycles through many times failing to find the PowerPoint GUIDs\r\n\r\n</pre>\r\n<pre>The result when VS is run as Admin (app is elevated) and Powerpoint is already loaded from the desktop (non elevated) is </pre>\r\n</div>\r\n</p>\r\n<pre>GUID:04a72314-32e9-48e2-9b87-a63603454f3e \r\nGUID:cda7305c-78b6-4d9d-90ad-93ebe71f9341 \r\nGUID:04a72314-32e9-48e2-9b87-a63603454f3e \r\nGUID:cda7305c-78b6-4d9d-90ad-93ebe71f9341 \r\n</pre>\r\n<pre>the above repeated over and over until the 2sec time out is reached</pre>\r\n<pre><hr /></pre>\r\n<pre>The result when VS is loaded elevated and PowerPoint is not already loaded (so the app can load it elevated) is </pre>\r\n<pre><pre>GUID:04a72314-32e9-48e2-9b87-a63603454f3e \r\nGUID:cda7305c-78b6-4d9d-90ad-93ebe71f9341 \r\nGUID:04a72314-32e9-48e2-9b87-a63603454f3e \r\nGUID:cda7305c-78b6-4d9d-90ad-93ebe71f9341 \r\nx 29 times and then&nbsp;the powerpoint interface shows up </pre>\r\n<pre>GUID:04a72314-32e9-48e2-9b87-a63603454f3e \r\nGUID:91493442-5a91-11cf-8700-00aa0060263b</pre>\r\n<hr />\r\n</pre>\r\n<pre>When I run VS non-elevated and Powerpoint is already loaded non-elevated the entire log file is </pre>\r\n<pre><pre> ---Start Logging 20/11/2011 2:26:51 PM\r\n --GetRunningPowerPointInstancesFromROT\r\nGUID:91493442-5a91-11cf-8700-00aa0060263b \r\n ---Stop Logging 20/11/2011 2:26:51 PM</pre>\r\nSo it's pretty much the first interface found in the non time out version of GetRunningPowerPointInstancesFromROT</pre>\r\n<pre><br /><pre><br /></pre>\r\n</pre>",
+    "PostedDate": "2011-11-19T19:29:01.977-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "943812",
+    "ThreadId": "277636",
+    "Html": "\r\n<p>Hi,<br>\r\n<br>\r\nDid any of you find a solution to this? How to attach to a running PowerPoint instance if your process in running elevated and the PowerPoint process is not?</p>\r\n<p>Regards,<br>\r\nErik&nbsp;</p>\r\n",
+    "PostedDate": "2012-11-19T01:33:00.43-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

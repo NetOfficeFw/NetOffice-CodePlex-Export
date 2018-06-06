@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1477893",
+    "ThreadId": "656062",
+    "Html": "Hi,\r<br />\n<br />\nI'm new at NetOffice and I may need some guidance in order to know all the possibilities given by NetOffice.\r<br />\n<br />\nI basically need to disable, programmatically through a C# application, the features of saving, printing, cut and copy of an project file (mpp). Saving and printing I'm able to disable using interop events, but for cut and copy I wasn't. This is why I'm searching here a way to do this, in fact, I don't know if this is possible through NetOffice api for Project. Using the regular Microsoft interop for Project, I'm pretty sure that this is not possible, unlike Excel interop, for example, which provide us some features to disable cut and copy programmatically.\r<br />\n<br />\nMay some one know if I can do this through NetOffice and, beyond that, kindly provide some guidance?\r<br />\n<br />\nThanks in advance!   <br />\n",
+    "PostedDate": "2016-07-01T11:28:48.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477904",
+    "ThreadId": "656062",
+    "Html": "sry, i have absolutly no idea what you talking about -.- (it is my medium english or my missing MS Project experience)\r<br />\n&quot; I'm able to disable using interop events&quot; - i do not understand that\r<br />\nwhat ist your mission in your code?\r<br />\n<br />\nYou want to prevent documents from copy/save/printing as a kind of content protection/drm right?\r<br />\n(It is possible to disable any general copy/paste and the special office clipboard within a message filter)\r<br />\n<br />\n<br />\nPlease explain me the problem in a more technical way.\r<br />\n<br />\n*Sebastian\r<br />\n<br />\n(Signature: i don want Google on Codplex for captchas)<br />\n",
+    "PostedDate": "2016-07-01T15:46:14.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477918",
+    "ThreadId": "656062",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nThanks for your answer.\r<br />\n<br />\nYes, I need to protect the contents of files from copy.\r<br />\n<br />\nI'm able to protect the file only avoiding the user to print and save. I did this using events Application.ProjectBeforePrint and Application.ProjectBeforeSave. For cut and copy, I didn't find any event, method or property I can use to disable these functionalities in MS Project.\r<br />\n<br />\nThanks in advance!<br />\n",
+    "PostedDate": "2016-07-01T22:41:03.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477975",
+    "ThreadId": "656062",
+    "Html": "Hey men,\r<br />\n<br />\nThe public automation API from MSProject is not ready to handle that. \r<br />\nYou have 2 options:\r<br />\n<br />\n1) Implementing a message filter trough the IMessageFilter interface\r<br />\n<br />\n2) Subclassing the MSProject main window\r<br />\n<br />\nBoth options use the same strategy: suspend the signal/message from the user interface to the application that an operation is requested.\r<br />\nThis need some kind of research to indendify the target messages you want to suspend. Spy++ is a nice tool to help you here. (I suggest you to use subclassing in an addin)\r<br />\n<br />\n*Sebastian\r<br />\n<br />\n(if didnt know your expericene level, if you need a short explaination what Subclassing is, please let me know)<br />\n",
+    "PostedDate": "2016-07-03T06:50:53.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1449828",
+    "ThreadId": "646687",
+    "Html": "Hi,<br />\n<br />\nI'm converting a VSTO project to NetOffice because your library looks very promising (and the COM management wasn't taking into account almost anywhere).<br />\n<br />\nThe default vsto add-in template contains this:<br />\n<pre><code>public sealed partial class MyAddIn : Microsoft.Office.Tools.AddInBase {\n    public Microsoft.Office.Interop.Excel.Application Application;\n\n    protected override void Initialize() {\n        this.Application = this.GetHostItem&lt;Microsoft.Office.Interop.Excel.Application&gt;(typeof(Microsoft.Office.Interop.Excel.Application), &quot;Application&quot;);\n    }\n}\n\n</code></pre>\n\nHow can I &quot;convert&quot; this Interop.Excel.Application to a NetOffice object? And is this possible with other Interop objects?<br />\n",
+    "PostedDate": "2015-10-27T05:17:12.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1451068",
+    "ThreadId": "646687",
+    "Html": "hey men, \r<br />\n<br />\nNetOffice is a wrapper arround the proxies. Its regardless from early- or latebind, it was the same instances/objects all the time.\r<br />\nBTW: your scenario is also currently my favourite. Combine VSTO and NetOffice is very powerful. <em>best of both worlds</em>\r<br />\n<br />\nIn NetOffice 1.7.3(?) you have to you use the ctor. Something like this.\r<br />\n<br />\nNetOffice.ExcelApi.Application excelHost = new NetOffice.ExcelApi.Application(null, Application);\r<br />\n<br />\nMore specific for you:\r<br />\n<br />\nprotected override void Initialize() \r<br />\n{<br />\n<pre><code>    this.Application = this.GetHostItem&lt;Microsoft.Office.Interop.Excel.Application&gt;(typeof(Microsoft.Office.Interop.Excel.Application), &quot;Application&quot;);\n    NetOffice.ExcelApi.Application excelHost = new NetOffice.ExcelApi.Application(null,  this.Application);</code></pre>\n\n}\r<br />\n<br />\nNow you have been created a true-managed versionless wrapper arround the interop proxy.\r<br />\nThe upcoming NO realease is more familiar to VSTO here. I'm sorry for the convenience. NetOffice is started as a very simple/stupid lightweight wrapper and currently growing up to a real VSTO opponent. (because VSTO is no longer made)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-11-05T12:21:20.573-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1451073",
+    "ThreadId": "646687",
+    "Html": "Seems good, will try. Thanks!<br />\n",
+    "PostedDate": "2015-11-05T13:18:08.293-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1061380",
+    "ThreadId": "448268",
+    "Html": "Hello,<br />\n<br />\ni have problems creating a mailitem loaded from mail template (eg. .oft or .msg extension) within an Outlook addin. The goal of this addin is that the user selects an predefined template and can then select a customer from a database to fill up some values.<br />\n<br />\nThis is the code i try to use:<br />\n<br />\n // let the user select the template<br />\n if (openFileDialog1.ShowDialog() == DialogResult.OK)<br />\n {<br />\n<pre><code>// create a new MailItem.\nOutlook.MailItem mailItem = Addin.Application.CreateItemFromTemplate(LastTemplateName) as Outlook.MailItem;\n\n/**\n * here comes the code to replace the placeholders with values from the database\n **/</code></pre>\n\n}<br />\n<br />\nWhen i debug this snipped i got &quot;Vorgang abgebrochen (Ausnahme von HRESULT: 0x80004004 (E_ABORT))&quot; errors.<br />\n<br />\nWhat me drive totaly crazy, this snipped worked three weeks ago without any problems. <br />\n<br />\nAny idea what happend here?<br />\n<br />\nBest,<br />\nMarcus<br />\n",
+    "PostedDate": "2013-06-26T05:26:11.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-01-10T06:02:57.083-08:00"
+  }
+]

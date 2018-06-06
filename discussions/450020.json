@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1068365",
+    "ThreadId": "450020",
+    "Html": "Hello,<br />\n<br />\nI'm having troubles registering the NewExplorer event in an Outlook AddIn. What I want to do is to add a new ribbon tab only on the ReadMail explorer in Outlook. Using the Microsoft API I am registering the event like this: <br />\n<pre><code>private void ThisAddIn_Startup(object sender, System.EventArgs e)\n {\n       // Register NewExplorer event\n        this.Application.Explorers.NewExplorer += new Outlook.ExplorersEvents_NewExplorerEventHandler(Explorers_NewExplorer);\n            \n }</code></pre>\n\nUnfortunately I couldn't find something similar in NetOffice.OutlookApi.Outlook.Application.Explorers, there is no NewExplorer event there (NetOffice 1.6). I tried the following without success, because <strong>explorers</strong> is always null:<br />\n<pre><code>void Addin_OnStartupComplete(ref Array custom)\n{\n    NetOffice.OutlookApi.Explorers explorers = NetOffice.OutlookApi.Explorers.GetActiveInstance();\n    explorers.NewExplorerEvent += new Outlook.Explorers_NewExplorerEventHandler(Explorers_NewExplorer);\n}</code></pre>\n\nAm I missing something?<br />\n<br />\nThanks in advance.<br />\n<br />\nRegards,<br />\nVasil<br />\n",
+    "PostedDate": "2013-07-15T05:57:29.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1068604",
+    "ThreadId": "450020",
+    "Html": "Explorers doesnt support the GetActiveInstance method.\r<br />\nGetActiveInstance enumerate all proxies from the RunningObjectTable(ROT) and Outlook doesnt use the ROT for the Explorers class. but you can use th classic way of course.\r<br />\n<br />\n[NetOffice 1.6]<br />\n<pre><code>public class Addin : COMAddin\n{\n    public Addin()\n    {\n        this.OnStartupComplete += new OnStartupCompleteEventHandler(Addin_OnStartupComplete);\n    }\n\n    void Addin_OnStartupComplete(ref Array custom)\n    {\n        Explorers explorers = Application.Explorers as Explorers;\n        explorers.NewExplorerEvent += new Explorers_NewExplorerEventHandler(Explorers_NewExplorerEvent);\n    }\n\n    void Explorers_NewExplorerEvent(_Explorer Explorer)\n    {\n        Explorer.Dispose();\n    }\n}</code></pre>\n\n",
+    "PostedDate": "2013-07-15T12:00:26.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1068965",
+    "ThreadId": "450020",
+    "Html": "Great, thanks for your help! It works exactly as I wanted. \r<br />\n<br />\nVielen Dank für die schnelle Antwort!<br />\n",
+    "PostedDate": "2013-07-16T04:57:33.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

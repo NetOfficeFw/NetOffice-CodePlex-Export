@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1448524",
+    "ThreadId": "646212",
+    "Html": "<em>EDIT</em><br />\nAfter about 3 hours of trying to solve this problem on my own I posted this question. Literally 5-10 minutes after I posted this question I figured out that I can use &quot;new Outlook._ContactsModule(NavigationModules.GetNavigationModule(OlNavigationModuleType.olModuleContacts))&quot; and it will convert to a _ContactsModule and give me the .NavigationGroups property that I needed.<br />\n<br />\n<em>ORIGINAL POST</em><br />\n<br />\nI'm trying to get a ContactsModule Object from outlook but I keep getting a cast error:<br />\n<br />\nNetOffice.OutlookApi.NavigationModules NavigationModules = OutlookApp.Session.GetDefaultFolder(OlDefaultFolders.olFolderContacts).GetExplorer().NavigationPane.Modules;<br />\nNetOffice.OutlookApi.ContactsModule ContactsModule = NavigationModules.GetNavigationModule(OlNavigationModuleType.olModuleContacts);<br />\n<br />\nI'm completely lost on what I'm doing wrong. Any ideas?<br />\n",
+    "PostedDate": "2015-10-14T13:02:36.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

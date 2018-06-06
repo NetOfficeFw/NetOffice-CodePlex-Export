@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1329278",
+    "ThreadId": "574189",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nHow are you? I upgraded to the 1.7.1 and it solved all my previous issues. Thanx very much.\r<br />\n<br />\nI have a new problem, which is with excel, not with the NET.OFFICE, but its related and i hoped you will be able to give me a clue.\r<br />\n<br />\nWhen my addon opens it tries to do the following code line, which fails:\r<br />\nObject ExcelProxy = System.Runtime.InteropServices.Marshal.GetActiveObject(&quot;Excel.Application&quot;);\r<br />\n<br />\nI made a lot of research and it turns out that office registers itself in the ROT only when it loses focus, and not on startup. So my addin cant find in there. I cant find a way to make it loose focus and register itself to the ROT, or a way to cause the addin window to steal the focus from excel.\r<br />\n<br />\nDid you ever encounter such an issue?\r<br />\n<br />\nThis is a known issue at Microsoft and theres a workaround that doesnt work for me at least:\r<br />\n<a href=\"http://support.microsoft.com/kb/316125/EN-US/\" rel=\"nofollow\">http://support.microsoft.com/kb/316125/EN-US/</a>\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2014-12-05T14:40:16.643-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1329349",
+    "ThreadId": "574189",
+    "Html": "Please try:\r<br />\n<br />\n// get all open excel instances in memory\r<br />\n// btw: GetActiveInstances doesnt use the ROT because some known issues\r<br />\nExcel.Application[] allInstances = Excel.Application.GetActiveInstances();\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-06T01:51:23.533-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1329361",
+    "ThreadId": "574189",
+    "Html": "Problem Solved.\r<br />\n<br />\nThank you very much!<br />\n",
+    "PostedDate": "2014-12-06T05:38:20.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

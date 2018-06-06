@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1238645",
+    "ThreadId": "543527",
+    "Html": "Is it possible to use something like GetObject(&quot;c:\\path\\sample.mdb&quot;) to set the, for example, an Access.Application object?  The &quot;ACC: Using Microsoft Access as an Automation Server&quot; article (<a href=\"http://support.microsoft.com/kb/147816\" rel=\"nofollow\">http://support.microsoft.com/kb/147816</a>) describes what I am trying to accomplish.<br />\n<br />\nOverall, this is a pretty amazing way to perform Office Automation.<br />\n<br />\nThanks,<br />\n<br />\nJohn<br />\n",
+    "PostedDate": "2014-04-28T00:15:59.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1239585",
+    "ThreadId": "543527",
+    "Html": "its possible, but you have no warranties to access a specific appliaction. (GetObject use the first instance in the ROT(Running Object Table)) The given examples show you this. Please explain whats your problem in detail. You want access an accesss app by (mdb)filename?<br />\n",
+    "PostedDate": "2014-04-29T17:08:52.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1258722",
+    "ThreadId": "543527",
+    "Html": "Hi. \r<br />\n<br />\nI'm also very much interested in this. \r<br />\n<br />\nI'm writing a companion product for Word. (but not a plugin). \r<br />\n<br />\nFrom the companion app, I need to find Word instance of a given filename. \r<br />\n<br />\nBut it doesn't seem to work. \r<br />\n<br />\nIf I have 3 word instances open, and I do this: <br />\n<pre><code>                foreach (Application word_application in Application.GetActiveInstances())\n                {\n                    foreach (Window window in word_application.Windows)\n                    {\n                        if (filename == window.Document.FullName)\n                        {\n                            //Do good stuff here\n                        }\n                    }\n                }\n\n</code></pre>\n\nit doesn't work. \r<br />\n<br />\nApplication.GetActiveInstances() returns 3 applications, \r<br />\n<br />\nbut window is always the same, first instance. \r<br />\n<br />\nHow can I get to the file I need?\r<br />\n<br />\nMany thanks. <br />\n",
+    "PostedDate": "2014-06-22T15:21:31.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

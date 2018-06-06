@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "990827",
+    "ThreadId": "430570",
+    "Html": "\r\n<p>Hi Sebastian,</p>\r\n<p>folgendes</p>\r\n<p>&#65279;&#65279;&#65279;&#65279;&#65279;&#65279;Dao.DBEngine dbe = new Dao.DbEngine()</p>\r\n<p>führt zu der Fehlermeldung</p>\r\n<p>&#65279;progId not found DAO.DbEngine</p>\r\n<p>Die inner-exception besagt</p>\r\n<p>NetOffice.COMObject.CreateFromProgId(String progId)</p>\r\n<p>Gibts hier keinen Standardkonstruktor oder eine Factorymethode ohne Parameter?</p>\r\n<p>Oder mache ich was falsch?</p>\r\n<p>Danke für die Hilfe.</p>\r\n<p>&nbsp;</p>\r\n<p>Gruß</p>\r\n<p>Gerhard</p>\r\n<div style=\"color:black; background-color:white\">&#65279;&#65279;&#65279;</div>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">&#65279;</div>\r\n",
+    "PostedDate": "2013-01-23T03:30:01.48-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "990869",
+    "ThreadId": "430570",
+    "Html": "\r\n<p>Hallo<br>\r\n<br>\r\nAuf die schnelle hab ich folgenden Topic gefunden:<br>\r\n<br>\r\nhttp://support.microsoft.com/kb/157471/de<br>\r\n<br>\r\nhttp://stackoverflow.com/questions/3892565/vb-net-dao-object-wont-create-dbengine<br>\r\n<br>\r\nEs scheint so zu sein das die neuere DAO Version auf eine versionsspezifische ProgID besteht(sehr untypisch).<br>\r\nDie Angabe der Version in der ProgID sollte Abhilfe schaffen.</p>\r\n<p><code></p>\r\n<pre>Dao.DBEngine dbe = new Dao.DbEngine(<code></code>&quot;DAO.DBEngine.35&quot;)<br><br>Gruss<br>Sebastian<br> </pre>\r\n</code>\r\n<p></p>\r\n<p><code></code></p>\r\n",
+    "PostedDate": "2013-01-23T04:15:54.003-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "990886",
+    "ThreadId": "430570",
+    "Html": "\r\n<p>Hallo,</p>\r\n<p>ok, das war die Lösung, allerdings musste ich DAO.DBEngine.36 verwenden.</p>\r\n<p>Jetzt verlangt Netoffice beim öffnen eines Recordsets, dass man NetOffice.Factory.Initialize() aufrufen soll. Das bringt leider auch nichst.</p>\r\n<p>Anbie mal die entsprechende Methode. Vielleicht bin ich auch nur zu blöd....</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre> <span style=\"color:blue\">public</span> <span style=\"color:blue\">static</span> DataTable GetDataTableFromAccessQuery(<span style=\"color:blue\">string</span> pathMdb, <span style=\"color:blue\">string</span> queryName)\r\n        {\r\n            DataTable dt = <span style=\"color:blue\">new</span> DataTable();\r\n            <span style=\"color:blue\">if</span> (File.Exists(pathMdb))\r\n            {\r\n                Dao.Recordset rs = <span style=\"color:blue\">null</span>;\r\n                Dao.Database db = <span style=\"color:blue\">null</span>;\r\n                Dao.DBEngine dbe = <span style=\"color:blue\">null</span>;\r\n\r\n                \r\n                <span style=\"color:blue\">try</span>\r\n                {\r\n                    NetOffice.Factory.Initialize();                 \r\n                    dbe = <span style=\"color:blue\">new</span> Dao.DBEngine(<span style=\"color:#a31515\">&quot;DAO.DBEngine.36&quot;</span>);                   \r\n                    db = dbe.OpenDatabase(pathMdb, Type.Missing, <span style=\"color:blue\">false</span>, <span style=\"color:#a31515\">&quot;&quot;</span>);                   \r\n                    rs = db.OpenRecordset(queryName, Dao.Enums.RecordsetTypeEnum.dbOpenSnapshot, 0, Dao.Enums.LockTypeEnum.dbOptimistic);\r\n                    <span style=\"color:blue\">if</span>(rs != <span style=\"color:blue\">null</span>)\r\n                        dt = RecordsetBridge.RecordsetBridge.ConvertRecordsetToDataTable(rs);\r\n                }\r\n                <span style=\"color:blue\">catch</span> (Exception ex)\r\n                {\r\n                    <span style=\"color:blue\">throw</span> <span style=\"color:blue\">new</span> ArgumentException(ex.ToString());\r\n                }\r\n                <span style=\"color:blue\">finally</span>\r\n                {\r\n                    <span style=\"color:blue\">if</span> (rs != <span style=\"color:blue\">null</span>)\r\n                    {\r\n                        rs.Close();\r\n                        rs.Dispose();\r\n                        <span style=\"color:green\">//System.Runtime.InteropServices.Marshal.ReleaseComObject(rs);</span>\r\n                    }\r\n                    <span style=\"color:blue\">if</span> (db != <span style=\"color:blue\">null</span>)\r\n                    {\r\n                        db.Close();\r\n                        db.Dispose();\r\n                        <span style=\"color:green\">//System.Runtime.InteropServices.Marshal.ReleaseComObject(db);                     </span>\r\n                    }                    \r\n                    <span style=\"color:blue\">if</span>(dbe != <span style=\"color:blue\">null</span>)\r\n                        dbe.Dispose();                        \r\n                    rs = <span style=\"color:blue\">null</span>;\r\n                    db = <span style=\"color:blue\">null</span>;\r\n                    dbe = <span style=\"color:blue\">null</span>;\r\n\r\n                }\r\n            }\r\n\r\n            <span style=\"color:blue\">return</span> dt;\r\n        }\r\n</pre>\r\n</div>\r\n",
+    "PostedDate": "2013-01-23T04:42:28.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "990900",
+    "ThreadId": "430570",
+    "Html": "\r\n<p>Hallo,</p>\r\n<p>ich glaube das liegt daran, dass ich die Assemblies mit einer eigenen Signatur kompiliert habe. Die Originalassemblies funktionieren.&#65279;</p>\r\n<p>Die KeyToken.txt müsste ich wohl zum signieren verwenden, oder? Sorry, aber bei uns ist das nicht so einfach. Leider darf ich nur von uns signierte Assemblies verwenden.</p>\r\n<p>Danke für die Hilfe.</p>\r\n<p>&nbsp;</p>\r\n<p>Gruß</p>\r\n<p>Gerhard</p>\r\n<p>&#65279;&#65279;&#65279;</p>\r\n<p>&#65279;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2013-01-23T05:07:55.523-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "990906",
+    "ThreadId": "430570",
+    "Html": "\r\n<p>Ja die Signatur ist wichtig, die NetOffice.dll sucht zur Laufzeit nach Assemblies mit diesen Signaturen. Wenn NetOffice einen nativen COM Proxy in die Hände kriegt z.B. die Rückgabe von dbe.OpenDatabase wird dieser Proxy untersucht und in den signierten\r\n NetOffice Assemblies nach dem korrespondieren Wrapper gefahndet, der Proxy in einer neuen Instanz dieser Klasse verpackt und zurückgegeben. Was du tun kannst ist die KeyTokens.txt zu modifizieren und die NetOffice.dll damit nochmals zu kompilieren.<br>\r\n<br>\r\nGruss<br>\r\nSebsatian</p>\r\n",
+    "PostedDate": "2013-01-23T05:14:54.023-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "991074",
+    "ThreadId": "430570",
+    "Html": "\r\n<p>&nbsp;</p>\r\n<p>Hallo Sebastian,</p>\r\n<p>sorry, aber ich habe keinen blassen Schimmer, wie ich die KeyToken.txt in meine Signierungsdatei bekomme, bzw. wie ich aus der KeyToken.txt eine Signierungsdatei erstelle. Vielleicht kannst Du mir ja einen Tipp geben. In der Zwischenzeit google ich ein wenig.</p>\r\n<p>Vielen Dank.</p>\r\n<p>Gerhard</p>\r\n",
+    "PostedDate": "2013-01-23T09:11:27.403-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "991089",
+    "ThreadId": "430570",
+    "Html": "\r\n<p>Hallo,</p>\r\n<p>&nbsp;</p>\r\n<p>ok, ich bin wohl überarbeitet. Die KeyToken.txt ist embedded, dh. ich müsste die PublicKeyTokens entsprechend anpassen. Diese müsste dann bei den Dateieigenschaften der DLL in den Deteils der digitalen Signatur unter Seriennummer stehen, richtig?</p>\r\n<p>&nbsp;</p>\r\n<p>Danke.</p>\r\n<p>&nbsp;</p>\r\n<p>Gruß</p>\r\n<p>Gerhard</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2013-01-23T09:33:11.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "991095",
+    "ThreadId": "430570",
+    "Html": "\r\n<p>&nbsp;</p>\r\n<p>Hallo nochmal,</p>\r\n<p>das mit der Seriennummer ist natürlich Schwachsinn. sn -T &lt;Dllname&gt;.dll.</p>\r\n<p>Ok, ich probiere das dann morgen aus. Am meisten lernt man, wenn man selbst drauf kommt.</p>\r\n<p>Schöne Woche noch.</p>\r\n<p>Herzlichst</p>\r\n<p>Gerhard</p>\r\n",
+    "PostedDate": "2013-01-23T09:47:56.563-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "991405",
+    "ThreadId": "430570",
+    "Html": "\r\n<p>Hallo Sebastian,</p>\r\n<p>ok, hat alles funktioniert.</p>\r\n<p>Gruß</p>\r\n<p>Gerhard</p>\r\n",
+    "PostedDate": "2013-01-24T01:06:09.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

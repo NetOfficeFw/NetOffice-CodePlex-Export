@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "732152",
+    "ThreadId": "287782",
+    "Html": "\r\n<p>Hi Guys,</p>\r\n<p>&nbsp;</p>\r\n<p>I am trying to create one outlook addin for Outlook 2007 and 2010, I tried looking for a getting started kind of tutorial for outlook. I can write it on www.codemerlin.com. Can somebody, guide me a bit.</p>\r\n<p>&nbsp;</p>\r\n<p>Regards</p>\r\n<p>Mohit Thakral</p>\r\n",
+    "PostedDate": "2012-01-28T21:23:19.917-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "732214",
+    "ThreadId": "287782",
+    "Html": "<p>hey mohitt</p>\r\n<p>2 outlook addin examples are avavaile in&nbsp;{NetVersion}\\Examples\\Outlook.<br />the second addin&nbsp;shows you how to customize the ribbon UI and is compatible with 2007 and 2010<br />if you have any problems(except coffee is running out), please ask again.</p>\r\n<p>*Sebastian</p>",
+    "PostedDate": "2012-01-29T03:40:05.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "732217",
+    "ThreadId": "287782",
+    "Html": "<p>Ya, Sorry If i bugged you. But, I looked at it. But there is no documentation pertaining that you have to regasm to put those add ins in Outlook and then you have to attach to outlook to debug the dlls.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Just for the user who is starting with these components from the first time from a vsto ad in&nbsp;environment.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Since, you are&nbsp;available :). I am trying to move my VSTO add in to this component, which stdole.dll, I should be using. Seems like it is office shared PIA.&nbsp;&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Regards</p>\r\n<p>Mohit Thakral</p>",
+    "PostedDate": "2012-01-29T03:56:49.6-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "732843",
+    "ThreadId": "287782",
+    "Html": "<p>stdole is an interop dll and&nbsp;contains some basic types for COM. its always the same.<br />these assembly is a fixed part from the .net framework, its not necessary to deploy these one.<br />regasm is needed for a manual installation/registation (a better way is an installer project do that for you)<br /><br />an example project to move a VSTO addin to NetOffice is a good idea i.e. a starting for VSTO users but<br />NetOffice ist not ready yet to fight against VSTO. currently NetOffice is the better way for Interop Assembly users, yes.</p>\r\n<p>i do a lot of things at the moment to make NetOffice as a VSTO substitute(visual UI designer, helper classes, VS integration)<br />but at the moment its in progress. <br /><br />What i explain all the time is, NetOffice is exactly the same like the Interop assemblys, you have to know whats necessary for a COMAddin.<br /><a href=\"http://netoffice.codeplex.com/wikipage?title=FAQ\">http://netoffice.codeplex.com/wikipage?title=FAQ</a><br /><br /></p>",
+    "PostedDate": "2012-01-30T13:14:36.377-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

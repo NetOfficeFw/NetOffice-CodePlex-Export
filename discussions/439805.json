@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1028506",
+    "ThreadId": "439805",
+    "Html": "Following code fails while retriving all installed AddIns from Excel....\r<br />\n<br />\nEnvironment : Windows XP, Excel 2007. Below code works perfectly fine on Win 7 &amp; Excel 2010 32 bit.\r<br />\n<br />\nThanks\r<br />\n<br />\n40:51,325 [1] DEBUG AB.XXX.AddIn.Download.AddInDownload - System.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details. ---&gt; System.Runtime.InteropServices.COMException (0x80020006): Unknown name. (Exception from HRESULT: 0x80020006 (DISP_E_UNKNOWNNAME))\r<br />\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\r<br />\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\r<br />\n   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\r<br />\n   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\r<br />\n __  at NetOffice.ExcelApi.<em>Application.get_AddIns2()</em>_\r<br />\n   at AB.XXX.AddIn.Download.AddInDownload.Install()\r<br />\n09:40:58,810 [1] DEBUG AB.RAP.AddIn.Download.AddInDownload - System.Runtime.InteropServices.COMException (0x80020006): Unknown name. (Exception from HRESULT: 0x80020006 (DISP_E_UNKNOWNNAME))\r<br />\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\r<br />\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\r<br />\n   at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)<br />\n",
+    "PostedDate": "2013-04-10T08:42:25.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031213",
+    "ThreadId": "439805",
+    "Html": "Hello,\r<br />\nThis might give you a hint.\r<br />\n<br />\n<a href=\"http://support.microsoft.com/kb/822335\" rel=\"nofollow\">http://support.microsoft.com/kb/822335</a><br />\n",
+    "PostedDate": "2013-04-16T08:27:58.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "930719",
+    "ThreadId": "400377",
+    "Html": "\r\n<p>How can I create a C# method that I can use as a formula in Excel?</p>\r\n<p>Eg. formula in A1 is &quot;=HelloWorld()&quot;, which returns &quot;Hello&quot; in A1 and &quot;World&quot; in A2.</p>\r\n<p>Thanks, Robert</p>\r\n",
+    "PostedDate": "2012-10-22T14:59:54.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "930864",
+    "ThreadId": "400377",
+    "Html": "<p>Hi Robert,</p>\r\n<p>To create user-defined functions for Excel with .NET, you can use the <a href=\"http://exceldna.codeplex.com\">Excel-DNA</a> library. This complements NetOffice well - Excel-DNA add-ins integrate with Excel via the C API, but you can use NetOffice as a version-independent interop assembly to implement macros that talk to the Excel object model in a single add-in.</p>\r\n<p>Actually having the formula that you enter into A1 as =HelloWorld() also affect A2 is probably a bad idea. You'd rather make an array formula that returns an array, and enter it with Ctrl+Shift+Enter. But there are some workarounds.</p>\r\n<p>in the simplest case you code will be something like this:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">public</span> <span style=\"color: blue;\">static</span> <span style=\"color: blue;\">class</span> MyFunctions\r\n{\r\n    [ExcelFunction(Category=<span style=\"color: #a31515;\">\"Greetings\"</span>, Description=<span style=\"color: #a31515;\">\"Greet an individual\"</span>)]\r\n    <span style=\"color: blue;\">public</span> <span style=\"color: blue;\">static</span> <span style=\"color: blue;\">string</span> SayHello(<span style=\"color: blue;\">string</span> name)\r\n    {\r\n        <span style=\"color: blue;\">return</span> <span style=\"color: #a31515;\">\"Hello \"</span> + name;\r\n    }\r\n\r\n    [ExcelFunction(Category=<span style=\"color: #a31515;\">\"Greetings\"</span>, Description=<span style=\"color: #a31515;\">\"Greet the world\"</span>)]\r\n    <span style=\"color: blue;\">public</span> <span style=\"color: blue;\">static</span> <span style=\"color: blue;\">object</span>[,] HelloWorld()\r\n    {\r\n        <span style=\"color: blue;\">return</span> <span style=\"color: blue;\">new</span> <span style=\"color: blue;\">object</span>[,] {{<span style=\"color: #a31515;\">\"Hello\"</span>}, {<span style=\"color: #a31515;\">\"World\"</span>}};\r\n    }\r\n}\r\n</pre>\r\n</div>\r\n</p>\r\n<p>-Govert</p>",
+    "PostedDate": "2012-10-23T00:46:22.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "931163",
+    "ThreadId": "400377",
+    "Html": "\r\n<p>Thanks. So I need to learn Excel-DNA too.<br>\r\nYet need to find time for that ;-)</p>\r\n<p>Robert</p>\r\n",
+    "PostedDate": "2012-10-23T08:42:28.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

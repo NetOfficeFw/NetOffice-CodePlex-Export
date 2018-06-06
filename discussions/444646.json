@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1047337",
+    "ThreadId": "444646",
+    "Html": "I´ve &quot;converted&quot; all my code from Interop to NetOffice, except these two lines:<br />\n<pre><code>doc.set_AttachedTemplate(globalTemplatePath);\ndoc.Application.Selection.ParagraphFormat.set_Style(&quot;Normal&quot;);</code></pre>\n\nThe error is: 'NetOffice.WordApi._Document.AttachedTemplate.set': cannot explicitly call operator or accessor (in both lines)\r<br />\n<br />\nI´ve tried with:<br />\n<pre><code>doc.AttachedTemplate = globalTemplatePath;\ndoc.Application.Selection.ParagraphFormat.Style = &quot;Normal&quot;;</code></pre>\n\nBut same error. Any idea how to set these properties?\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2013-05-22T12:31:46.017-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1055393",
+    "ThreadId": "444646",
+    "Html": "the declaration in NetOffice 1.5.1.2 is: public class _ParagraphFormat : COMObject { &nbsp;&nbsp; public object Style{get;set;} } you have access to the style property. did you use the latest release/source state? Sebastian ________________________________<br />\n",
+    "PostedDate": "2013-06-11T07:07:37.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1330596",
+    "ThreadId": "574520",
+    "Html": "I am adding a custom icon to my tool bar button using button.PasteFace(). However, when the icon appears in the VBE (Excel 2010) it is surrounded by a dark grey box. I am trying to figure out how to apply the icon in such a way that the 'natural' colour of the VBE shows through and the icon blends into the VBE.<br />\n<br />\nSo far I have:<br />\n<ol>\n<li>\nLooked at using button.Mask, but cannot see how to use it through NetOffice. My code is run as an add-in, so I'm 'in process' and feel I should be able to use this method.<br />\n</li>\n<li>\nUsing bitmap.MakeTransparent() on the icon before I copy it to the clipboard and paste it to the button using PasteFace(). This seems to have no effect.<br />\n</li>\n</ol>\nHas anyone been able to set transaparent custom icons on the classic UI? Any concrete code examples would be greatly appreciated.<br />\n",
+    "PostedDate": "2014-12-10T07:07:32.297-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1330839",
+    "ThreadId": "574520",
+    "Html": "Same Question as you. maybe the Button.Mask...<br />\n",
+    "PostedDate": "2014-12-10T20:04:59.607-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1331289",
+    "ThreadId": "574520",
+    "Html": "what i use in my addin projects here is stdole.IPictureDisp very similar to this one:\r<br />\n<a href=\"http://stackoverflow.com/questions/12443977/commandbarbutton-icon-getting-black-background\" rel=\"nofollow\">http://stackoverflow.com/questions/12443977/commandbarbutton-icon-getting-black-background</a>\r<br />\n<br />\nthe problem with IPictureDisp is its only available in so called 'in-proc servers' in other words addins.\r<br />\nbut it works!\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-12T04:16:11.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

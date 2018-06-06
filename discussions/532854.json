@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1210596",
+    "ThreadId": "532854",
+    "Html": "Hello!\r<br />\n<br />\nI have to interact from another program with Excel (get and put some data from and into it, this works already). The interaction gets started by a shortcut (a global hotkey) and then checks if the actual foreground window is a child of Excel.\r<br />\n<br />\nMy first idea was to get the actual foreground window handle and compare that to the one of the 'current' Excel-Application like this:<br />\n<pre><code>//using directive to make things shorter ;-)\nusing Excel = NetOffice.ExcelApi;\n\n//pinvoke\n[DllImport(&quot;user32.dll&quot;)]\nstatic extern IntPtr GetForegroundWindow();\n\n       public static bool ActiveWindowIsExcel()\n        {\n            IntPtr foregroundWindowHandle = GetForegroundWindow();\n\n            Excel.Application excelApplication = null;\n            bool result = false;\n            try\n            {\n                excelApplication = Excel.Application.GetActiveInstance();\n                if (excelApplication != null)\n                {\n                    int excelWindowHwnd = excelApplication.Hwnd;\n                    result = foregroundWindowHandle == (IntPtr) excelWindowHwnd;\n                }\n            }\n            catch (Exception x)\n            {\n                result = false;\n            }\n            finally\n            {\n                if (excelApplication != null) excelApplication.Dispose();\n            }\n            return result;\n        }\n</code></pre>\n\nAt most times my solution works but sometimes it does not! Usually in the very first start and the very first invocation.\r<br />\n<br />\nMy personal guess is that after GetActiveInstance() is getting only the first of some processes of the ROT (as far as I understand is) and thats not in every case the owner of my current Excel window. Is there a more reliable method to check wether a window is a child of Excel? <br />\n",
+    "PostedDate": "2014-02-19T08:08:26.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

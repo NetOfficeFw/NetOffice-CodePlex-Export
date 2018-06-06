@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1136962",
+    "ThreadId": "474327",
+    "Html": "Dear members, I've a sample function which I've inserted in to the NetOffice 1.6.0\\NET 4.0\\Examples\\Excel\\VB\\COMAddin Examples. But this function is inaccessible as a worksheet function. <br />\n<pre><code>Public Function AddThem(ByVal x, ByVal y)\n    AddThem = x + y\nEnd Function</code></pre>\n\n<ol>\n<li>How can I access the function in worksheets?</li>\n<li>\nIs it possible to show the functions in a category like &quot;<em>MyFunctions</em>&quot;<br />\n</li>\n</ol>\n",
+    "PostedDate": "2013-12-16T19:16:56.16-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1184387",
+    "ThreadId": "474327",
+    "Html": "For managed Excel add-ins that contain UDF worksheet functions, Excel-DNA (<a href=\"http://exceldna.codeplex.com\" rel=\"nofollow\">http://exceldna.codeplex.com</a>) is the best tool. You can still you the NetOffice libraries to give you version-independent access to the Excel COM object model. But Excel-DNA integrates with Excel through the C API, which gives the best performance and flexibility for UDFs - including customizing the Function Arguments dialog. \r<br />\n<br />\nWith Excel-DNA you could write your function as:<br />\n<pre><code>Imports ExcelDna.Integration\n\nPublic Module MyFunctions\n\n    &lt;ExcelFunction(Description:=&quot;My number adding function&quot;, Category:=&quot;My useful functions&quot;)&gt; _\n    Public Function AddThem(x As Double, y As Double) As Double\n        AddThem = x + y\n    End Function\n\nEnd Module</code></pre>\n\n-Govert<br />\n",
+    "PostedDate": "2014-01-20T05:45:46.217-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1201624",
+    "ThreadId": "474327",
+    "Html": "Dear govert,\r<br />\nThank you for your valuable information regarding ExcelDNA project. I'm currently exploring the same. In the mean time I came to know that you have developed this project. Really appreciate it.<br />\n",
+    "PostedDate": "2014-02-01T06:58:53.423-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

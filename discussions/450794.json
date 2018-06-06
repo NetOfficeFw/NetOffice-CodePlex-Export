@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1071243",
+    "ThreadId": "450794",
+    "Html": "Hi,\r<br />\n<br />\nich hab eine VS2010 Solution bekommen, die aus mehreren Projekten besteht, wobei zwei davon jeweils ein Word und ein Excel AddIn darstellen, die mit .NET Office realisiert worden sind. Die anderen Projekten dienen zur Unterstützung der zwei Office AddIns. Die Solution kann ich samt aller Projekte erfolgreich kompilieren.\r<br />\nJetzt muss ich ein Setup Projekt für die zwei AddIns erstellen und gehe nach der Anleitung: &quot;<strong>Exemplarisches Vorgehen für das erstellen eines vollständigen Setup Projekts</strong>&quot;. Da tritt kein Fehler auf, sogar im vorletzten Schritt 8: &quot;<strong><em>Das Setup Projekt stellt fest das die generierte Typenbibliothek(COM) im GAC nicht installierbar ist. Die Typenbibliothek wird von der Installation ausgeschlossen da sie zur Laufzeit nicht benötigt wird.</em></strong> &quot;\r<br />\n tritt kein Fehler auf. Trotzdem sehe ich nach der Setup Ausführung(die sehr schnell verläuft) kein AddIn, weder unter Word noch unter Excel. Auch unter Options, AddIns usw. Hat jemand eine Idee woran es liegen könnte?<br />\n",
+    "PostedDate": "2013-07-22T05:25:18.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1071603",
+    "ThreadId": "450794",
+    "Html": "Das die Typenbibliothek einbezogen wird ist ein Fehler vom MSI Projektassistenten. Einfach vom Setup ausschliessen.\r<br />\nWoran das Problem in diesem Fall liegt ist schwer zu sagen, oftmals fehlt eine Abhängigkeit(speziell VB bringt z.B. Dlls mit die nicht Teil des .NET Frameworks sind). Im Downloadbereich stehen 2 Beispielprojekte zur Verfügung, eins in C# und eins in VB. Teste und vergleiche das doch mal.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-07-22T22:29:48.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

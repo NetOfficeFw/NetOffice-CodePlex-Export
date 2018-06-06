@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "998535",
+    "ThreadId": "432487",
+    "Html": "Hello!\r<br />\n<br />\nI am trying to compile NetOffice dlls from sources included in 1.5.1.2, which I downloaded here.\r<br />\n<a href=\"http://netoffice.codeplex.com/releases/view/70943\" rel=\"nofollow\">http://netoffice.codeplex.com/releases/view/70943</a>\r<br />\nIt gives me\r<br />\nPlease call NetOffice.Factory.Initialize error:\r<br />\nNetOffice.NetOfficeException: Please call NetOffice.Factory.Initialize()\r<br />\n   at NetOffice.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy)\r<br />\n   at NetOffice.OfficeApi.ICTPFactory.CreateCTP(String cTPAxID, String cTPTitle, Object cTPParentWindow)\r<br />\nBut NET 4.0 dlls included in package are working fine.\r<br />\nDoes something missing in sources?<br />\n",
+    "PostedDate": "2013-02-08T05:57:26.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "998744",
+    "ThreadId": "432487",
+    "Html": "its possible to post your Addin.cs(or whatever) content for further research?<br />\ndid you use a self-compiled version from NetOffice?<br />\n<br />\nUPDATE: you have to sign the NetOffice assemblies with .the snk files. please checkout the latest source and the KeyFiles Directory.<br />\n<br />\nwhy you need own NetOffice assemblies?<br />\n<br />\nif you want sign your assemblies with an own key then you need to modify the KeyFiles.txt in NetOffice.csproj.<br />\n <br />\nSebastian<br />\n",
+    "PostedDate": "2013-02-08T13:43:22.927-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "999109",
+    "ThreadId": "432487",
+    "Html": "I can create sample add-in, but I think this is not necessary.\r<br />\nIt seems that source files, included in an archive from downloads page are not full or not actual. They don't contain KeyFiles folder, so I had to create snk files myself. \r<br />\nI'll check sources from sources page.\r<br />\nHere is the full story.\r<br />\nWe are developing an add-in that actively interacts with Word and Outlook, using shared-addin and COM-shim. \r<br />\nDue some strange Word error (it sometimes repeat keystrokes for some strange reason) we had to move some of our Word interaction code to separate thread. But this lead us to another problem. It seems that the separate thread trying to load interop assemblies based on information in registry. And registry often contains wrong information. For example, if user install and then remove Office 2013, it doesn't clear PIA registry reference:\r<br />\n<a href=\"http://stackoverflow.com/questions/13722345/calling-com-object-from-sta-thread-cause-type-e-libnotregistered-on-some-machine\" rel=\"nofollow\">http://stackoverflow.com/questions/13722345/calling-com-object-from-sta-thread-cause-type-e-libnotregistered-on-some-machine</a>\r<br />\nI tried to create my own interop assemblies with tlbimp, but without success. \r<br />\nThen I found your project and it helps. :)\r<br />\nBut then came memory leaks. We didn't use Marshal.ReleaseCOMobject, relying on destructors of RCW that dispose comobjects for us, and this worked fine. But with netoffice we have to explicitly call Dispose. This is a lot of work to find all COM-object usages (thousands of lines of code), add Dispose and debug it. Also, debug disposes child objects, that is sometimes very inconvient for us. For example, we use Range.Duplicate a lot. And if we dispose first copy of range it will dispose all duplicates. Right?\r<br />\nSo we decide to try to add destructor to COMObject class and call release from there.<br />\n",
+    "PostedDate": "2013-02-10T00:57:45.707-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "999411",
+    "ThreadId": "432487",
+    "Html": "<blockquote>\nAnd if we dispose first copy of range it will dispose all duplicates. Right? <br />\n</blockquote>\nnot sure what you means with first copy. if you dispose the parent range object then all duplicates (childs in this case)  was also diposed.\r<br />\nif you call dispose for a specific duplicate then all other duplicates was still alive. what i see is the netoffice idea of comproxy management with parent-child relations is may a problem here. \r<br />\n<br />\nmy suggestion:store a worksheet reference and use them as long you need. when its done call worksheet.Dispose() or worksheet.DisposeChildInstances() and all ranges/duplicates and so on are released too.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-02-10T22:20:46.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "999669",
+    "ThreadId": "432487",
+    "Html": "Thank you for quick answers!<br />\n<br />\nOur Word add-in processing text very intensively. For example, it scans text for changes by constantly moving through sentences in text and comparing them with cached text representation. We actively getting ranges from document, often getting them from another ranges with Next or Duplicate.<br />\nSomething like this<br />\nRange x = GetSomehowFromDocument(_doc);<br />\nRange r = x.Next(WdUnits.wdSentence);<br />\nRange r2 = r.Duplicate;<br />\nAnd in some places it even works with text by char (with Next(WdUnits.wdCharacter).<br />\n<br />\nSo, if we call x.Dispose in Above example, it will release r and r2. Am I right? And while user is working with document we can't dispose and memory keep flooding.<br />\n<br />\nI concluded that leaks can be caused by objects collected in lists and by unreleased COM-objects and did following:<br />\n<ol>\n<li>Removed COMObject.AddChildObject</li>\n<li>Removed Factory.AddObjectToList</li>\n<li>\nAdded destructor<br />\n<pre><code>~COMObject()\n{\n    ReleaseCOMProxy();\n}</code></pre>\n\nAnd it seems to work!  Word process is no longer growing in memory even with infinite document scan (from separate thread, by the way).<br />\nInitialize error faded when I added sources from NetOffice to my solution and referenced project that I needed (instead of referencing compiled dlls). I can't understand why.<br />\n</li>\n</ol>\nAm I missing something? What can be consequences of those changes? <br />\nI am understanding that I am losing Dispose this way, but I don't need it anymore - GC is doing all work for me. <br />\nFactory.AddObjectToList and _globalObjectList needed only for DisposeAllCOMProxies?<br />\n<br />\nI think, that if everything ok it would be the useful option for the next release - as some switch (like you did with threads).<br />\n",
+    "PostedDate": "2013-02-11T10:51:01.84-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "999866",
+    "ThreadId": "432487",
+    "Html": "<blockquote>\nSo, if we call x.Dispose in Above example, it will release r and r2. Am I right?<br />\nyes, absolutly.<br />\n<br />\nFactory.AddObjectToList and _globalObjectList needed only for DisposeAllCOMProxies?<br />\nyes and for the situation you create an object, set an event trigger (workbook_open or anyone else) and use Dispose(false) to destroy the proxy but keep the event listener alive, in this case com proxy parameters from the trigger are stored here if you dont dispose them at the end.  \n<br />\n</blockquote>\nyou need to sign the source projects with the provided .snk files in latest source. let me explain: the NetOffice.Core looks for loaded Assemblies with specific keytokens at runtime in the current application domain to fetch wrapper type informations, create a wrapper class instance for correpsonding proxies and so on. for identification its use an embedded textfile(KeyFiles.txt) change the file at your will or use the given .snk file in latest source<br />\n<br />\ni think its possible to create an option do deactivate the automatic management for the child proxies. (added to todo list)<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-02-12T00:15:14.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "999877",
+    "ThreadId": "432487",
+    "Html": "Thanks for the clarification!\r<br />\nI used my own snk-files for NetOffice assemblies, because I modify them. \r<br />\n<br />\nI'll check event parameters, but I think they should work ok with destructors. Anyway, we use events only for top-level objects like Document and Application, which we don't need to dispose often.<br />\n",
+    "PostedDate": "2013-02-12T00:34:21.833-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1005050",
+    "ThreadId": "432487",
+    "Html": "update: last source state includes bool NetOffice.Settings.EnableProxyManagement;\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-02-21T22:52:18.633-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1005078",
+    "ThreadId": "432487",
+    "Html": "Thanks! We will try it. \r<br />\nBy far, destructor works for Office 2007 and 2010, but we still have some memory leaks with Office 2003. Trying to figure out what the problem is.<br />\n",
+    "PostedDate": "2013-02-22T00:42:01.087-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

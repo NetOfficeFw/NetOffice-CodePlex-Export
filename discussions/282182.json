@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "708982",
+    "ThreadId": "282182",
+    "Html": "\r\n<p>When using NetOffice, Outlook plugins are no longer identified as &quot;first class citizens&quot; in Outlook. Every 10 minutes, I get this prompt when my plugin tries to access data from Outlook:</p>\r\n<p><a href=\"http://i40.tinypic.com/machut.png\">http://i40.tinypic.com/machut.png</a></p>\r\n<p>(It asks for permission to access data, and the maximum time interval to grant access for is 10 minutes).</p>\r\n<p>Do you happen to have a workaround for this?</p>\r\n",
+    "PostedDate": "2011-12-07T12:28:42.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "708989",
+    "ThreadId": "282182",
+    "Html": "<p>NetOffice gives you a workarround here with the DeveloperToolbox<br /><br /><a href=\"http://netoffice.codeplex.com/wikipage?title=OutlookSecurity_English\">http://netoffice.codeplex.com/wikipage?title=OutlookSecurity_English</a><br /><br />hope this helps*<br />Sebastian</p>",
+    "PostedDate": "2011-12-07T12:42:57.37-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "709712",
+    "ThreadId": "282182",
+    "Html": "<p>Thanks a lot :)</p>",
+    "PostedDate": "2011-12-08T23:29:12.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

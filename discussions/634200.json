@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1419365",
+    "ThreadId": "634200",
+    "Html": "Hi,\r<br />\n<br />\nI wanted to thank you for NetOffice, it is a truly fantastic piece of work.\r<br />\n<br />\nI'm encountering the following error but it's very sporadic and has only happened a couple of times:<br />\n<pre><code>Unable to cast COM object of type 'System.__ComObject' to interface type 'System.Runtime.InteropServices.ComTypes.IConnectionPoint'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{B196B286-BAB4-101A-B69C-00AA00341D07}' failed due to the following error: The application called an interface that was marshalled for a different thread. (Exception from HRESULT: 0x8001010E (RPC_E_WRONG_THREAD)).\n\nat NetOffice.SinkHelper.RemoveEventBinding(Boolean removeFromList)\nat NetOffice.SinkHelper.Dispose()\nat NetOffice.OutlookApi.Explorer.DisposeEventBridge()\nat NetOffice.ComObject.Dispose(Boolean disposeEventBinding)\nat NetOffice.ComObject.Dispose()</code></pre>\n\nMy code is:<br />\n<pre><code>private void AddinShutdown()\n        {\n                if (this.outlookMailItem != null)\n                {\n                    this.outlookMailItem.Dispose();\n                }\n\n                if (this.outlookExplorer != null)\n                {\n                    this.outlookExplorer.Dispose();\n                }\n\n                if (this.outlookExplorers != null)\n                {\n                    this.outlookExplorers.Dispose();\n                }\n\n                if (this.outlookInspector != null)\n                {\n                    this.outlookInspector.Dispose();\n                }\n\n                if (this.outlookInspectors != null)\n                {\n                    this.outlookInspectors.Dispose();\n                }\n\n                if (this.outlookApplication != null)\n                {\n                    this.outlookApplication.Dispose();\n                }\n\n                if (this.ctpFactory != null)\n                {\n                    this.ctpFactory.Dispose();\n                }\n</code></pre>\n\nHave you encountered this before and am I doing anything wrong in my code to make this happen?<br />\n",
+    "PostedDate": "2015-04-27T13:58:29.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1423048",
+    "ThreadId": "634200",
+    "Html": "i have no idea which line of code is the problem. I see its in Dispose but you call it multiple times(not sure why because its typical not necessary in NetOffice)\r<br />\nRPC_E_WRONG_THREAD indicates AddinShutdown is running in the wrong  thread. I need definitely more details.<br />\n",
+    "PostedDate": "2015-05-05T09:28:14.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1423056",
+    "ThreadId": "634200",
+    "Html": "Thanks Sebatian. I'm afraid I don't have any more details other than a screenshot of the exception that the user sent me when they encountered this error which gives no more info than what I've put above. I haven't succeeded in recreating it myself.\r<br />\n<br />\nI'm simply disposing of any open COM variables.  If this is done by NetOffice automatically, I'll remove all of them.<br />\n",
+    "PostedDate": "2015-05-05T09:57:09.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1424885",
+    "ThreadId": "634200",
+    "Html": "Do you have any initialization logic in background thread? Do you call office API in background thread? Or any other threads? Does any code calling COM objects run in finalizers?  Are there other add-in running on user machine?\r<br />\n<br />\nActually I may point articles about COM/RPC/STA/marshaling/threading which I used to learn root causes of such errors.<br />\n",
+    "PostedDate": "2015-05-12T01:17:00.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1424886",
+    "ThreadId": "634200",
+    "Html": "Your stack is not full. I mean why AddinShutdown is not in it but  starts with NetOffice.ComObject.Dispose()?<br />\n",
+    "PostedDate": "2015-05-12T01:18:54.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1424894",
+    "ThreadId": "634200",
+    "Html": "My stack trace is missing one line - at ProductName.Addin.AddinShutdown() - I hand typed the rest of it from a screenshot sent by the user...\r<br />\nIn answer to the questions:\r<br />\n<strong>Do you have any initialization logic in background thread?</strong> Yes, thanks for the pointer. I've discovered that I'm setting this.outlookMailItem in a BackgroundWorker:<br />\n<pre><code>this.outlookMailItem = (Outlook.MailItem)selectedItem;</code></pre>\n\n<strong>Do you call office API in background thread?  Or any other threads?</strong>  Yes, I use a BackgroundWorker for some code that extracts the data from the currently selected email as I found that having it run on the main thread was slowing down Outlook.\r<br />\n<strong>Does any code calling COM objects run in finalizers?</strong>  No\r<br />\n<strong>Are there other add-in running on user machine?</strong>   Yes, the user tells me that he uses the Dragon Naturally Speaking add in to record voice into emails.<br />\n",
+    "PostedDate": "2015-05-12T01:33:27.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

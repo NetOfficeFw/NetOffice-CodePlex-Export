@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1341804",
+    "ThreadId": "577692",
+    "Html": "Hi Guys\r<br />\n<br />\nI'm coming from NetOffice 1.6 and asked myself how to initialize the ComFactory? \r<br />\nI've got an Addin that is used for all Office Products (Outlook, Word, Excel, Powerpoint)\r<br />\n<br />\nIn 1.6 i could use the following to initialize the ComObject:\r<br />\n<br />\nFactory.Initialize();\r<br />\nCOMObject Appl = Factory.CreateObjectFromComProxy(null, application);\r<br />\nMessageBox.Show(Appl.UnderlyingComponentName); \r<br />\n<br />\nHow does this work in 1.7.2?<br />\n",
+    "PostedDate": "2015-01-14T07:04:05.497-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1341830",
+    "ThreadId": "577692",
+    "Html": "hello,\r<br />\n<br />\nFactory has been renamed to Core and use a singleton instance by default.\r<br />\n<br />\nNetOffice.Core.Default.CreateObjectFromComProxy(null, application); \r<br />\n<br />\nYou can create multiple core's now to get multiple COM proxy tree's\r<br />\nEach NetOffice Tools based addin has an own core. (this.Factory)\r<br />\n<br />\nThis breaking change want handle the problem that all unshimmed COM-Addins\r<br />\nwas loaded from office in the same appdomain. so you have 2 addin.dll's loaded(based on NetOffice)\r<br />\nboth addins share the static factory core and its stettings and this cause unwanted side effects.\r<br />\n<br />\n \r<br />\n*Sebastian <br />\n",
+    "PostedDate": "2015-01-14T08:13:21.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1342070",
+    "ThreadId": "577692",
+    "Html": "Ah cool, works like a charm, thanks!<br />\n",
+    "PostedDate": "2015-01-14T22:41:47.863-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

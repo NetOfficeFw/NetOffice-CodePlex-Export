@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1181201",
+    "ThreadId": "511505",
+    "Html": "Hi,\r<br />\nI devoloped a small Word add-in with Ribbon-bar. For developing the add-in I have admin rights. Everything works nice inkluding testing in Word. Now I tried to registrate the add-in at an user-account without admin rights (same computer). I used Inno Script for a setup (see <a href=\"http://netoffice.codeplex.com/discussions/435058\" rel=\"nofollow\">discussion:435058</a>) and started the setup with runas for admin-rights. Setup finished. After that I used a .reg for registation the add-in for the lokal user ([HKEY_CURRENT_USER\\Software....], see <a href=\"http://download-codeplex.sec.s-msft.com/Download?ProjectName=netoffice&amp;DownloadId=472623\" rel=\"nofollow\">link</a>). That was also accepted. So far so good.\r<br />\n<br />\nAt the start-up-screen of Word 2010 my add-in is also shown. When a new Word-document is open my add-in (Ribbon-bar) ist not included in Word.  Now &quot;LaodBehavior&quot; of the [HKey_current_user...] is 2 instead of 3 (value in the .reg). Concerning <a href=\"http://msdn.microsoft.com/de-de/library/bb386106.aspx#LoadBehavior\" rel=\"nofollow\">MS</a> this means an error is accured during add-in loading.\r<br />\n<br />\nAny idea what the error could be? or how could i get the error message?\r<br />\n<br />\nadditional information: I used 5 five Forms in the add-in. Win 7 64bit, VS Express 2012, Office 2010 (32 bit), NetOffice.DeveloperToolbox\r<br />\n<br />\nThanks for any help<br />\n",
+    "PostedDate": "2014-01-19T09:40:51.06-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1200082",
+    "ThreadId": "511505",
+    "Html": "I had a similar symptom (as im not sure we share the similar problem).\r<br />\n<br />\ni left a blank &quot;label&quot; field in my ribbon.xml file, and this is the reason it didnt show on the ribbon.\r<br />\nWhere it sais &quot;archive&quot; now, under group1, it was empty before.\r<br />\n<br />\nHope it helps.\r<br />\n<br />\n&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;\r<br />\n&lt;customUI xmlns=&quot;<a href=\"http://schemas.microsoft.com/office/2006/01/customui\" rel=\"nofollow\">http://schemas.microsoft.com/office/2006/01/customui</a>&quot; &gt;\r<br />\n  &lt;ribbon&gt;<br />\n<pre><code>&lt;tabs&gt;\n  &lt;tab id=&quot;archiveAddin&quot; label=&quot;archive&quot;&gt;\n    &lt;group id=&quot;group1&quot; label=&quot;archive&quot;&gt;\n      &lt;button id=&quot;customButton1&quot; label=&quot;Button1&quot; imageMso=&quot;HappyFace&quot; size=&quot;large&quot; onAction=&quot;OnAction&quot; /&gt;\n      &lt;button id=&quot;customButton2&quot; label=&quot;Button2&quot; imageMso=&quot;HappyFace&quot; size=&quot;large&quot; onAction=&quot;OnAction&quot; /&gt;\n    &lt;/group&gt;\n  &lt;/tab&gt;\n&lt;/tabs&gt;</code></pre>\n\n&lt;/ribbon&gt;\r<br />\n&lt;/customUI&gt;<br />\n",
+    "PostedDate": "2014-01-28T12:02:37.59-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1200499",
+    "ThreadId": "511505",
+    "Html": "To see the error during the addin load you need to set the environment variable VSTO_SUPPRESSDISPLAYALERTS = 0\r<br />\n<br />\nPlease follow the instructions in this link\r<br />\n <a href=\"http://www.scinaptic.com/support/0053.html\" rel=\"nofollow\">http://www.scinaptic.com/support/0053.html</a><br />\n",
+    "PostedDate": "2014-01-29T07:38:04.243-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1201764",
+    "ThreadId": "511505",
+    "Html": "Hi everybody,\r<br />\n<br />\nsorry for my late replay. I had a lot of work, so my free-time project (word add-in) got a minor priority.\r<br />\n<br />\nTo ehudklein and mkiruba: Thanks for your replay. They were a help.\r<br />\n<br />\nThe problem was much easier than I thoght. The Problem was in front of the computer. I forgot to include the RibbonUI.xml in the Inno Script (being embarrassed). So the environment variable VSTO_SUPPRESSDISPLAYALERTS and the hint with the RibbonUI.xml showed very quick the problem.\r<br />\n<br />\nInstead of environment variable VSTO_SUPPRESSDISPLAYALERTS I used <a href=\"http://archive.msdn.microsoft.com/AddInSpy/\" rel=\"nofollow\">AddInSpy</a>. For me it was a bit easier to work with.\r<br />\n<br />\nPerhaps my stupid mistake help other.\r<br />\n<br />\nThanks for help<br />\n",
+    "PostedDate": "2014-02-02T05:15:01.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

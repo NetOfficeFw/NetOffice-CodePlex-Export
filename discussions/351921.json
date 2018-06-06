@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "822425",
+    "ThreadId": "351921",
+    "Html": "<p>I have at the top of a module</p>\n<p>Imports ExcelDna.Integration&nbsp;&nbsp;&nbsp; ' for xlCall<br />Imports NetOffice.ExcelApi ' for Workbook etc<br />Imports NetOffice.ExcelApi.Enums&nbsp;&nbsp;&nbsp; ' for xlConstants<br />&nbsp;</p>\n<p>I want to be able to use code like ref.IsBroken here but get the message</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Error&nbsp;7&nbsp;Value of type 'NetOffice.VBIDEApi.Reference' cannot be converted to 'ExcelDna.Integration.Reference'.&nbsp;</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For Each ref In ActiveWorkbook.VBProject.References<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\n<p>*EDIT*</p>\n<p>Just realised I should use Dim ref As NetOffice.VBIDEApi.Reference</p>\n<p>Sorry - can I delete a post?</p>\n<p><span style=\"font-family: Consolas; color: #2b91af; font-size: x-small;\"><span style=\"font-family: Consolas; color: #2b91af; font-size: x-small;\">&nbsp;</span></span></p>",
+    "PostedDate": "2012-04-11T08:23:06.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1082564",
+    "ThreadId": "453919",
+    "Html": "Hi\r<br />\n<br />\nI get errors if I try to get the outlook instance from ROT.\r<br />\n<br />\nError 1: Property &quot;Visible&quot; cannot read. Member not found.\r<br />\nError 2: MK_E_UNAVAILABLE<br />\n<pre><code>object outlookProxy = System.Runtime.InteropServices.Marshal.GetActiveObject(&quot;Outlook.Application&quot;);\nOutlook.Application outlookApplication = new Outlook.Application(null, outlookProxy);</code></pre>\n\nI've read some other posts and articel and get the information that outlook need more time to register in the ROT. If I wait for example two or three minutes everything is working correctly. But this is not good to work with it.\r<br />\n<br />\nIs a other solution or workaround available to avoid this problem?<br />\n",
+    "PostedDate": "2013-08-20T02:00:30.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082572",
+    "ThreadId": "453919",
+    "Html": "strange* first time i heard from this problem. can you tell me more? \r<br />\nbtw: NetOffice spend a better option:\r<br />\nvar test = Outlook.Application.GetActiveInstance(); // use GetActiveInstances to find all instances in process memory\r<br />\n<br />\nthe problem occurs while accessing the visible property?\r<br />\n(please tell me your current NetOffice release)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-20T02:13:47.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082594",
+    "ThreadId": "453919",
+    "Html": "I use NetOffice 1.6.0\r<br />\n<br />\nIf I use  Outlook.Application.GetActiveInstance() no error occurs but I also have to wait some minutes before the plugin is working and I can access the chosen mail item. If I run outlook over visual studio in debugging mode it is working immediately<br />\n",
+    "PostedDate": "2013-08-20T02:54:21.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082602",
+    "ThreadId": "453919",
+    "Html": "as first hotfix.\r<br />\nplease try as first!!!!!! in your code:\r<br />\n<br />\nNetOffice.Settings,MessageFilter.Enabled = true;\r<br />\nNetOffice.Settings,MessageFilter.RetryMode = RetryMessageFilterMode.Delayed;\r<br />\n<br />\nnot sure, but can be helpfull. can you tell me more about your operating system( i want reproduce the scenario)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-20T03:19:52.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082621",
+    "ThreadId": "453919",
+    "Html": "This didn't solve the problem. This problem only occurs in outlook. All other office products are working well.\r<br />\n<br />\nOS: Windows 7 Enterprise SP 1 64 Bit\r<br />\nOffice:  MS Office Professional Plus 2010 32Bit (14.0.6129.5000)\r<br />\nDeveloped with VS 2012 and .net 4.5\r<br />\n<br />\nIf u need more information please tell me.<br />\n",
+    "PostedDate": "2013-08-20T04:16:31.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1083341",
+    "ThreadId": "453919",
+    "Html": "update: it looks like as security issue. but not sure today. still figure out...<br />\n",
+    "PostedDate": "2013-08-21T15:03:46.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1090026",
+    "ThreadId": "453919",
+    "Html": "Hi, do u get more informations? I 've tried a lot but the problem is still not solved!?<br />\n",
+    "PostedDate": "2013-09-08T23:31:50.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112089",
+    "ThreadId": "453919",
+    "Html": "web.de hat mir gerade ne fehlerseite präsentiert und danach war deine mail weg. kannst du die bitte nochmal schicken?<br />\n",
+    "PostedDate": "2013-10-25T06:41:38.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

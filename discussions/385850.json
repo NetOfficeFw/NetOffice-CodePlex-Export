@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "886949",
+    "ThreadId": "385850",
+    "Html": "\r\n<p>Hi Sebastian,</p>\r\n<p>first, thank you for this great library</p>\r\n<p>i would like to know if it's possible to create a macro directly in Excel with your library ? And is it possible to create a button for a specific sheet.</p>\r\n<p>What i want is after when i open the file, i want to have my sheet whith my data and a button on it. When i click the button, the macro is launched.</p>\r\n<p>i have not found some example. Is it possible to do this with the libray</p>\r\n<p>thanks again</p>\r\n<p>Fred</p>\r\n",
+    "PostedDate": "2012-07-22T14:25:27.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "887967",
+    "ThreadId": "385850",
+    "Html": "\r\n<p>hey fred,<br>\r\n<br>\r\nthe first one: NetOffice is a full/plain wrapper. if you can do it with VBA or the Interop Assemblies then you do it also with NetOffice in the same way.<br>\r\n<br>\r\ndid you know the dynamic VBA code example?<br>\r\n<br>\r\nCS: http://netoffice.codeplex.com/wikipage?title=Excel_Example07<br>\r\nVB: http://netoffice.codeplex.com/wikipage?title=Excel_Example07_VB<br>\r\n<br>\r\nwhich kind of button you want? a context menu button, ribbon or classic button or a button in the worksheet?<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2012-07-22T22:48:15.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "888275",
+    "ThreadId": "385850",
+    "Html": "<p>Hi,</p>\r\n<p>i saw the example 7 (cs) and tried it. The Excel file is generated but when i open the vba editor, there is no code (no module 'MyNewCodeModule' added).</p>\r\n<p>So the DoubleClick event doesn't work too!</p>\r\n<p>What i want is a simple button (no ribbon because Excel 2003 can be used). I don't know the difference between a 'classic button' or a 'button in the worksheet'</p>\r\n<p>I want to launch the vba code from the click event of this button</p>\r\n<p>&nbsp;</p>\r\n<p>i'm using the official release (v1.4.1)</p>\r\n<p>thanks</p>\r\n<p>Fred</p>",
+    "PostedDate": "2012-07-23T01:16:02.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "888278",
+    "ThreadId": "385850",
+    "Html": "<p>i have forgotten to say that i'm using office 2007 SP2</p>",
+    "PostedDate": "2012-07-23T01:17:11.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "888372",
+    "ThreadId": "385850",
+    "Html": "<p>hey fred,<br /><br />please try the 1.5.1 release, its much better. excel 2007 and higher have new security features. one of these features is you have to use the file extension .xlsm for files with attached vba code. one of the examples mistakes in the 1.4 release. rename your file to &lt;Name&gt;.xlsm and your code is available.<br /><br />a classic button is just what you say. its a button in the (classic) menu from excel. a button in the worksheet is a button in the cell range hosted from the worksheet and not from the whole applications. this is what you want right?<br /><br />Sebastian</p>",
+    "PostedDate": "2012-07-23T02:02:46.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

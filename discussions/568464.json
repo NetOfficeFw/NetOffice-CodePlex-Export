@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1308466",
+    "ThreadId": "568464",
+    "Html": "I want to create my own custom collection of Word objects, but I don't know how to do this without have these objects disposed when the parent COM collection is disposed.<br />\n<br />\nFor example, something like this:<br />\n<br />\n<br />\nGenericCollection&lt;NetOffice.WordApi.Bookmarks&gt; customCollection = new GenericCollection&lt;NetOffice.WordApi.Bookmarks&gt;();<br />\n<br />\nusing (NetOffice.WordApi.Bookmarks bookmarks = application.ActiveDocument.Bookmarks)<br />\n{<br />\n  // if bookmark meets some special criteria add to my own collection<br />\n  foreach (NetOffice.WordApi.Bookmark bookmark in bookmarks) customCollection.Add(bookmark);<br />\n}<br />\n<br />\n<br />\n<br />\nAt the end of the using statement, all child bookmarks in my custom collection are automatically disposed.<br />\n<br />\nHow can I only dispose of the parent &quot;bookmarks&quot; collection object, but keep the children alive in my custom collection until I am done using them? (eventually I will call &quot;customCollection.Dispose()&quot; to dispose of my custom collection and bookmarks)<br />\n<br />\nThank you for any advice!<br />\n",
+    "PostedDate": "2014-09-26T12:13:10.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308553",
+    "ThreadId": "568464",
+    "Html": "Not sure i'm understand this. Your bookmark is still alive in Office, just the local proxy is destroyed.\r<br />\nCreate a new proxy if you want. (application.ActiveDocument.Bookmarks[i]) (otherwise, may this is a scenario the NO proxy-wrapper class is just create local, aren't so?) \r<br />\n \r<br />\nIn NO 1.7 (available in the download section) you can disable the com proxy management (temporaily) if you want:\r<br />\n<br />\nbool NetOffice.Settings.Default.EnableProxyManagement{get; set;}\r<br />\n<br />\nBe careful with these option!\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-09-26T23:44:01.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308763",
+    "ThreadId": "568464",
+    "Html": "Thank you for the reply, Sebastian.<br />\n<br />\nLet me try to explain this more clearly. Let's assume I want to create a method that returns collection of all bookmarks that start with a specified prefix. Using NetOffice, this method could like something like this:<br />\n<br />\n<br />\nprivate List&lt;NetOffice.WordApi.Bookmark&gt; GetBookmarksWithPrefix(NetOffice.WordApi.Document doc, string prefix)<br />\n{<br />\n<pre><code>List&lt;NetOffice.WordApi.Bookmark&gt; bookmarkList = new List&lt;NetOffice.WordApi.Bookmark&gt;();\n\nusing (NetOffice.WordApi.Bookmarks bookmarks = doc.Bookmarks)\n    foreach (NetOffice.WordApi.Bookmark bookmark in bookmarks)\n        if (bookmark.Name.StartsWith(prefix)) bookmarkList.Add(bookmark);\n\nreturn bookmarkList;\n</code></pre>\n\n}<br />\n<br />\n<br />\nObviously, this won't work as expected, because when the &quot;using&quot; statement disposes &quot;bookmarks&quot;, then all child bookmark objects in the bookmarkList collection will de disposed too.<br />\n<br />\nSo how do I either not dispose of child objects (&quot;bookmark&quot;) when the parent is disposed (&quot;bookmarks&quot;), or how do I clone/copy a child object such that the clone/copy is not disposed when the original child object is disposed?<br />\n<blockquote>\nCreate a new proxy if you want. (application.ActiveDocument.Bookmarks[i]) <br />\n</blockquote>\nAlthough I understand this suggestion (create a new proxy) will work, for performance purposes this doesn't seem like the ideal solution. If I have a document with 10,000 bookmarks, I assume using this approach (re-fetching the bookmark just to create a new proxy) is not ideal. Rather, I would think either not disposing the original proxy or creating a clone/copy of the proxy would perform better.<br />\n<br />\nThank you for your ideas and your contributions to NetOffice.<br />\n",
+    "PostedDate": "2014-09-28T14:37:05.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1309221",
+    "ThreadId": "568464",
+    "Html": "You have another option:<br />\n<pre><code>using (NetOffice.WordApi.Bookmarks bookmarks = doc.Bookmarks)\n{\n     foreach (NetOffice.WordApi.Bookmark bookmark in bookmarks)\n     {\n          if (bookmark.Name.StartsWith(prefix))\n         {\n               bookmarkList.Add(bookmark);\n               \n               // remove bookmark proxy from its parent\n               bookmark.ParentObject.RemoveChildObject(bookmark);\n\n              // now you have to make sure dispose is called for the bookmark at hand\n              // otherwise you can re-add the bookmark (as child) to another proxy instance\n              // in this case doc for example:\n              doc.AddChildObject(bookmark);\n         }\n     }\n}</code></pre>\n\n*Sebastian<br />\n",
+    "PostedDate": "2014-09-30T05:03:52.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1309689",
+    "ThreadId": "568464",
+    "Html": "Perfect! Thank you, Sebastian. RemoveChildObject() is what I was looking for.\r<br />\n<br />\nIn case anyone is interested, we created extension methods to simplify this:<br />\n<pre><code>public static COMObject RemoveFromParent(this COMObject value)\n{\n    if (value.ParentObject.IsNotNull()) value.ParentObject.RemoveChildObject(value);\n    return value;\n}\n\npublic static T RemoveFromParent&lt;T&gt;(this T value) where T : COMObject\n{\n    if (value.ParentObject.IsNotNull()) value.ParentObject.RemoveChildObject(value);\n    return value;\n}\n</code></pre>\n\nExample usage:<br />\n<pre><code>List&lt;NetOffice.WordApi.Bookmark&gt; bookmarkList = new List&lt;NetOffice.WordApi.Bookmark&gt;();\n\nusing (NetOffice.WordApi.Bookmarks bookmarks = doc.Bookmarks)\n{\n    foreach (NetOffice.WordApi.Bookmark bookmark in bookmarks)\n    {\n        if (bookmark.Name.StartsWith(prefix))\n        {           \n           bookmarkList.Add(bookmark.RemoveFromParent&lt;NetOffice.WordApi.Bookmark&gt;());\n        }\n    }\n}\n\nreturn bookmarkList;</code></pre>\n\nObviously it is the responsibility of the caller to properly dispose of bookmarkList and its NetOffice.WordApi.Bookmark objects.\r<br />\n<br />\nWe've actually created a disposable GenericCOMObjectCollection class to help with this.<br />\n<pre><code>public abstract class GenericCOMObjectCollection&lt;TItem&gt; : Collection&lt;TItem&gt;, IDisposable where TItem : COMObject\n{\n\n    public virtual void Dispose()\n    {\n        foreach (TItem item in this) item.Dispose();\n    }\n\n}</code></pre>\n\nThen create a strongly typed class that can be used and properly disposed of:<br />\n<pre><code>public class BookmarkCollection : GenericCOMObjectCollection&lt;OfficeWord.Bookmark&gt; { }</code></pre>\n\n",
+    "PostedDate": "2014-10-01T12:10:34.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

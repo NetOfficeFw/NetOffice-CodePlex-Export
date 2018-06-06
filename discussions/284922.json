@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "720211",
+    "ThreadId": "284922",
+    "Html": "\r\n<p>I am using NetOffice to open and edit Excel Workbooks. To open workbooks faster, an Excel Application Object is cached and will be reused later.</p>\r\n<p>Instead of disposing the whole application, only the workbook and worksheets are closed/disposed. This works really well except for some Property Dialogs that won't close after disposing, e.g. the property Dialog that opens if you double click a diagramm\r\n inside an excel sheet.</p>\r\n<p>My Dispose Method looks like this:</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>m_Application.Worksheets.Dispose(<span style=\"color:blue\">true</span>);\r\nm_Application.Worksheets.DisposeChildInstances(<span style=\"color:blue\">true</span>);\r\nm_Application.Workbooks.Close();\r\nm_Application.Workbooks.DisposeChildInstances(<span style=\"color:blue\">true</span>);\r\nm_Application.Workbooks.Dispose(<span style=\"color:blue\">true</span>);\r\nm_Application.Windows.DisposeChildInstances(<span style=\"color:blue\">true</span>);\r\nm_Application.Windows.Dispose(<span style=\"color:blue\">true</span>);\r\nm_Application.DisposeChildInstances(<span style=\"color:blue\">true</span>);</pre>\r\n</div>\r\n<p></p>\r\n<p>I also tried to close and dispose Dialogs collections.&nbsp;</p>\r\n<p>Am I doing something wrong here?</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-01-04T02:19:31.107-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "720251",
+    "ThreadId": "284922",
+    "Html": "<p>&nbsp;</p>\n<p>Hello Apu,</p>\n<pre>1.) its not necessary to use Dispose(true); you can use Dispose(); the method calls Dispose(true) internaly.<br /><br />2.) i think you have misunderstood the concept of COM proxy management in NetOffice a little little bit.<br /><br /><pre>m_Application.Workbooks.Close();\nm_Application.Workbooks.DisposeChildInstances(<span style=\"color: blue;\">true</span>);\nm_Application.Workbooks.Dispose(<span style=\"color: blue;\">true</span>);</pre>\nwhats wrong here? the first call is okay. the second call is not necessary because the third call dispose also child instances.<br />but another mistake is occured here. with any call of m_Application.Workbooks you create a new COM proxy in other words what does <br />this code line? <br />\n<pre><pre><br />m_Application.Workbooks.Dispose(<span style=\"color: blue;\">true</span>);</pre>\n<br />Nothing! you create a workbooks proxy and dispose them immediately. proxy the management is bind to spezific proxies<br />if you have 2 workbooks collection proxies and create 3 workbooks with first collection proxy and dipose the second collection proxy,<br />nothing happens with the 3 workbooks. but if you use application.DisposeChildInstances() all proxies are dispose because application is ouer root object.<br /><br />you can shrink your 8 codelines to <br /><br /> m_Application.Workbooks.Close();<br /> m_Application.DisposeChildInstances();<br /><br />NetOffice allows you to observe the count open COM proxies in your application.<br /><br />\n<pre> <span style=\"color: blue;\">int</span> proxyCount = LateBindingApi.Core.Factory.ProxyCount;\n</pre>\n<br />a little bit documentation about COM proxy management in NetOffice.<br />http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management<br />*Sebastian</pre>\n</pre>",
+    "PostedDate": "2012-01-04T04:42:43.54-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "720288",
+    "ThreadId": "284922",
+    "Html": "<p>Thx very much for the quick answer. Gonna try it&nbsp;when I get back and will post results.</p>",
+    "PostedDate": "2012-01-04T06:20:23.503-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

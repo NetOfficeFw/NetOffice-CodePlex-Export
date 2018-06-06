@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1454633",
+    "ThreadId": "648377",
+    "Html": "The Item() method of the Names object type is supposed to take 3 optional params, but NetOffice requires all 3. For example, in Excel VBA, I can do this:\r<br />\n<br />\nApplication.ActiveWorkbook.Names(&quot;MyNamedRange&quot;)\r<br />\n<br />\nBut with NetOffice, I need to do this:\r<br />\n<br />\nApplication.ActiveWorkbook.Names(&quot;MyNamedRange&quot;, Nothing, Nothing)<br />\n",
+    "PostedDate": "2015-12-04T13:17:42.85-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

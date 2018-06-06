@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "663521",
+    "ThreadId": "270448",
+    "Html": "\r\n<p>VS2010, C#,&nbsp; ExcelDNA, NetOffice, in AutoOpen,&nbsp; the first thing is LateBindingApi.Core.Factory.Initialize();</p>\r\n<p>which works fine on some PC, but one customer report the exception</p>\r\n<p>The customer has Win XP,&#43; Excel 2007. thanks</p>\r\n<p>&nbsp;at System.Reflection.Assembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, Assembly locationHint, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, Boolean forIntrospection)<br>\r\n&nbsp;&nbsp; at System.Reflection.Assembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, Assembly locationHint, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, Boolean forIntrospection)<br>\r\n&nbsp;&nbsp; at System.Reflection.Assembly.InternalLoad(AssemblyName assemblyRef, Evidence assemblySecurity, StackCrawlMark&amp; stackMark, Boolean forIntrospection)<br>\r\n&nbsp;&nbsp; at System.Reflection.Assembly.Load(AssemblyName assemblyRef)<br>\r\n&nbsp;&nbsp; at LateBindingApi.Core.Factory.Initialize()</p>\r\n",
+    "PostedDate": "2011-08-25T15:09:14.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "663524",
+    "ThreadId": "270448",
+    "Html": "<p>unbelievable!</p>\n<p>what kind of exception is that?<br />its possible&nbsp;to give&nbsp;me a detailed&nbsp;info? <br />exception and all inner exceptions with message<br />which netoffice release do you use?</p>\n<p>*sebastian&nbsp;</p>",
+    "PostedDate": "2011-08-25T15:12:22.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "663534",
+    "ThreadId": "270448",
+    "Html": "<p>My AddIn has Ribbon, tab My Addin shows up, but Icons do not. All Ribbon buttons are greyed out.</p>\n<p>Then I check my log, it says the exception occurrs in Initialize() which is called in AutoOpen()</p>\n<p>This is all I get from log, there is no more info.</p>\n<p>2011-08-18 21:28:13,944 [1] ERROR My.Helper [(null)] -&nbsp;&nbsp;&nbsp; at System.Reflection.Assembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, Assembly locationHint, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, Boolean forIntrospection)<br />&nbsp;&nbsp; at System.Reflection.Assembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, Assembly locationHint, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, Boolean forIntrospection)<br />&nbsp;&nbsp; at System.Reflection.Assembly.InternalLoad(AssemblyName assemblyRef, Evidence assemblySecurity, StackCrawlMark&amp; stackMark, Boolean forIntrospection)<br />&nbsp;&nbsp; at System.Reflection.Assembly.Load(AssemblyName assemblyRef)<br />&nbsp;&nbsp; at LateBindingApi.Core.Factory.Initialize()<br />&nbsp;&nbsp; at MyAddIn.Initialize()</p>\n<p>&nbsp;</p>\n<p>I am using 1.0</p>\n<p>private void Initialize()<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Helper.LogError(\"connecting...\");<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LateBindingApi.Core.Factory.Initialize();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XLApp = new Excel.Application(null, ExcelDnaUtil.Application);</p>\n<p>...</p>\n<p>}</p>\n<p>catch(Exception ex)</p>\n<p>{</p>\n<p>Logger.LogException(ex);</p>\n<p>}</p>",
+    "PostedDate": "2011-08-25T15:30:48.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "663540",
+    "ThreadId": "270448",
+    "Html": "<p>i need a detailed exception info.<br />i have to see what excactly happens, specialy whats ne name of the assembly that is failed to load.<br />i create a temporaily LateBindingApi.Core.dll with a detailed log. its possible you can execute again your project on the critical machine again<br />with these dll ?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-08-25T15:41:59.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "663544",
+    "ThreadId": "270448",
+    "Html": "<p>This is from one customer. I have to ask customer via a support guy.&nbsp; They already left for today. Maybe you can give me the dlls and I can ask them later?</p>",
+    "PostedDate": "2011-08-25T15:53:41.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "663560",
+    "ThreadId": "270448",
+    "Html": "<p>this is possible.<br />please contact me via codeplex and give me your e-mail adress.</p>",
+    "PostedDate": "2011-08-25T16:31:05.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

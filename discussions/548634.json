@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1256265",
+    "ThreadId": "548634",
+    "Html": "NetOffice cached the class type, I thank it can also cache the constructor.\r<br />\n_wrapperTypeCache.Add(fullClassName, classType);<br />\n<pre><code>                COMObject newClass = Activator.CreateInstance(classType, new object[] { caller, comProxy, comProxyType }) as COMObject;\n                return newClass;\n</code></pre>\n\nprivate static Type[] Params = new Type[] { typeof(string), typeof(string), typeof(string), typeof(XmlDocument) };<br />\n<pre><code>    internal void Register(Type type,  ElementNameAttribute att) {\n        SpeedQName name = new SpeedQName(att.LocalName, att.NamespaceURI);\n        var ctor = type.GetConstructor(Params);\n        if (ctor != null) {\n            DynamicMethod method = new DynamicMethod(string.Empty, type, Params);\n            ILGenerator il = method.GetILGenerator();\n            il.Emit(OpCodes.Ldarg_0);\n            il.Emit(OpCodes.Ldarg_1);\n            il.Emit(OpCodes.Ldarg_2);\n            il.Emit(OpCodes.Ldarg_3);\n            il.Emit(OpCodes.Newobj, ctor);\n            il.Emit(OpCodes.Ret);\n            Func&lt;string, string, string, XbrlDocument, XbrlElement&gt; fun = method.CreateDelegate(typeof(Func&lt;string, string, string, XmlDocument, XmlElement&gt;)) as Func&lt;string, string, string, XmlDocument, XmlElement&gt;;\n            _qname2ImplType[name] = fun;\n        }\n\n    }</code></pre>\n\n",
+    "PostedDate": "2014-06-14T00:28:11.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1256268",
+    "ThreadId": "548634",
+    "Html": "I think It's most fast method to Create New Object. Activator.CreateInstance do more work at runtime.\r<br />\nIn the Factory _globalObjectList can be ignore If user don't want it by Setting, OR it should only save (cache) the root COMObject, the child COMObject is disposed by the parent object<br />\n",
+    "PostedDate": "2014-06-14T01:08:32.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1256270",
+    "ThreadId": "548634",
+    "Html": "Fasterflect - .NET Reflection Made Fast and Simple<br />\n<a href=\"https://fasterflect.codeplex.com\" rel=\"nofollow\">https://fasterflect.codeplex.com</a><br />\nFast Invoker<br />\n<a href=\"https://fastinvoker.codeplex.com\" rel=\"nofollow\">https://fastinvoker.codeplex.com</a><br />\n<br />\nWe can learn from Fasterflect to speed up the method call<br />\n<br />\nI FOUND THE SPEED AT SAME LEVEL :(<br />\n",
+    "PostedDate": "2014-06-14T01:32:04.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1258094",
+    "ThreadId": "548634",
+    "Html": "NO 1.7 use an option to disable the com proxy management by the way. (NetOffice.Settings)\r<br />\nAnyway, in fact you can't improve the method call performance in this way.(this works in .NET but not in COM. )\r<br />\nMay its possible to improve performance in CreateProcess, (just for the second call, but most of the time you do this only at once)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-06-19T20:03:55.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

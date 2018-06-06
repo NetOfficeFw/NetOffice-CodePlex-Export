@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1002534",
+    "ThreadId": "433465",
+    "Html": "Hi\r<br />\n<br />\nI have a custom task pane and want to link the button on the custom task pane to the open file dialog box, I then want the ability for the user to select image files. In the custom pane I want to list the file names using lables (creating a new label for each file name).\r<br />\n<br />\nI understand how to code the custom pane properties however I do not know how to use open file dialog boxes in VB (I did in VBA).\r<br />\n<br />\nNote I am using developer toolbox with visual studio express 2010 and 2012. Also this is the first time I am adding code in visual studio express.\r<br />\n<br />\nIf you require me to explain anything further, let me know. Any help on this matter would be much appreciated. Thanks<br />\n",
+    "PostedDate": "2013-02-17T15:27:14.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002840",
+    "ThreadId": "433465",
+    "Html": "<a href=\"http://msdn.microsoft.com/de-de/library/system.windows.forms.openfiledialog.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/de-de/library/system.windows.forms.openfiledialog.aspx</a>                            <br />\n<br />\n<br />\nSee the code example below.<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-02-18T07:33:09.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1003158",
+    "ThreadId": "433465",
+    "Html": "Sebastian thanks for that.\r<br />\n<br />\nI thought I might test out using the Me keyword and VBA ie Me._application.FileDialog etc etc to generate the open file dialog box. I am more familiar with VBA then Visual basic. Any comments?\r<br />\n<br />\nCan you programmingly add controls (ie a listbox) to a custom task pane (ie a usercontrol)?\r<br />\n<br />\nThanks again<br />\n",
+    "PostedDate": "2013-02-18T20:26:49.31-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1003184",
+    "ThreadId": "433465",
+    "Html": "you want the open file dialog from the office application?\r<br />\n<br />\nuse Controls collection to add a control at runtime.\r<br />\nsomething like this:\r<br />\n<br />\nDim myUserControl As UserControl1 = new UserControl1()\r<br />\nmyUserControl.Visible = True\r<br />\nmyUserControl.Location = new Point(0,0)\r<br />\nmyUserControl.Size = new Size(200,200)\r<br />\ntaskPaneControl.Controls.Add(myUserControl)<br />\n",
+    "PostedDate": "2013-02-18T21:37:50.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1003197",
+    "ThreadId": "433465",
+    "Html": "Yes the aim is to create a Word Add-in, so coming from a VBA background I was wanting to code as much as I could in VB using the Me keyword.\r<br />\n<br />\nClearly I have to do more research, can you clarify, the usercontrol is a list box, combo box etc not a custom task pane. I have to create a new form right to create a custom task pane. I was wanting to add a listbox to a custom task pane (similar to the form used as the navigation pane in word 2010).\r<br />\n<br />\nIf the above sounds confusing it is because my understanding is still at a basic level.\r<br />\n<br />\nThanks again for your help<br />\n",
+    "PostedDate": "2013-02-18T22:09:39.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

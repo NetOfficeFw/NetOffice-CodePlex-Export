@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1280732",
+    "ThreadId": "555284",
+    "Html": "Hi,\r<br />\n<br />\nis there an easy way to manage a custom task pane for multiple powerpoint documents? As I understand it correct I need a new instance for each document. When defining a task pane as described in the excamples I see the task pane only in the first document. \r<br />\nAs a first test I saved the CTPFactoryInst (don't dispose it) and call the ctpFactory.CreateCTP Method again.\r<br />\n<br />\nIt's not nice but it works. The problem appears if the user hides the task pane and want's to see it again. In this case I have find the right task pane to the right powerpoint document.\r<br />\n<br />\nIs there an solution in NetOffice to handle such or problem or does someone know any &quot;Best Practise&quot; to handle this?\r<br />\n<br />\n<br />\nThomas<br />\n",
+    "PostedDate": "2014-08-02T03:00:24.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1487734",
+    "ThreadId": "659330",
+    "Html": "I create an excel addin.<br />\n<pre><code>[ComVisible(true)]\n[COMAddin(&quot;Test&quot;, &quot;Test Excel插件&quot;, 3), RegistryLocation(RegistrySaveLocation.CurrentUser)]\n[GuidAttribute(&quot;9C1865C9-8E2F-43C4-8594-97599D4E8012&quot;), ProgId(&quot;Test.ExcelAddin&quot;)]\npublic class MyAddin : NetOffice.ExcelApi.Tools.COMAddin\n{\n    public MyAddin()\n    {\n    }\n\n    public override void CTPFactoryAvailable(object CTPFactoryInst)\n    {\n        try\n        {\n            TaskPaneFactory = new ICTPFactory(this.Application, CTPFactoryInst);\n            _CustomTaskPane target = this.TaskPaneFactory.CreateCTP(typeof(MyUserControl).FullName, &quot;Test&quot;);\n            Console.WriteLine(target);\n        }\n        catch (Exception e)\n        {\n            MessageBox.Show(e.Message);\n        }\n    }\n}\n\n</code></pre>\n\nAnd MyUserControl.cs is<br />\n<pre><code>[ComVisible(true)]\npublic partial class MyUserControl : UserControl\n{\n</code></pre>\n\nI use NetOffice 1.7.3.0\r<br />\n<br />\nBut when call CreateCTP an exception Unable to create activeX object.\r<br />\n<br />\n<br />\nHow to add Custom Task Pane ??<br />\n",
+    "PostedDate": "2016-11-10T22:30:09.277-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1488389",
+    "ThreadId": "659330",
+    "Html": "2 questions before,\r<br />\n<br />\nYour pane has a public constructor without arguments?\r<br />\nYour pane is located in a another assembly as your addin? (or just different namespace)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-11-19T13:05:10.71-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1488749",
+    "ThreadId": "659330",
+    "Html": "Here my code\r<br />\n<br />\nnamespace Test\r<br />\n{<br />\n<pre><code>[ComVisible(true)]\npublic partial class MyUserControl : UserControl\n{\n    public MyUserControl()\n    {\n        InitializeComponent();\n    }\n}</code></pre>\n\n}\r<br />\n<br />\n<br />\n<br />\n<br />\n<br />\nnamespace Test\r<br />\n{<br />\n<pre><code>[ComVisible(true)]\n[COMAddin(&quot;Test&quot;, &quot;Test Excel插件&quot;, 3), RegistryLocation(RegistrySaveLocation.CurrentUser)]\n[GuidAttribute(&quot;9C1865C9-8E2F-43C4-8594-97599D4E8012&quot;), ProgId(&quot;Test.ExcelAddin&quot;)]\npublic class MyAddin : NetOffice.ExcelApi.Tools.COMAddin\n{\n    public MyAddin()\n    {\n    }\n\n    public override void CTPFactoryAvailable(object CTPFactoryInst)\n    {\n        try\n        {\n            TaskPaneFactory = new ICTPFactory(this.Application, CTPFactoryInst);\n            _CustomTaskPane target = this.TaskPaneFactory.CreateCTP(typeof(MyUserControl).FullName, &quot;Test&quot;);\n            CustomTaskPane pane = (CustomTaskPane) target;\n            pane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight;\n            pane.Visible = true;\n            pane.Width = 285;\n            pane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight;\n        }\n        catch (Exception e)\n        {\n            MessageBox.Show(e.Message);\n        }\n    }\n}</code></pre>\n\n}\r<br />\n<br />\n<br />\nMy csproj add reference ExcelApi NetOffice OfficeApi VBIDEApi\r<br />\n<br />\n<br />\nAnd  an exception Unable to create activeX object<br />\n",
+    "PostedDate": "2016-11-24T09:14:14.56-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

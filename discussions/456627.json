@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1091554",
+    "ThreadId": "456627",
+    "Html": "Hi \r<br />\n<br />\nI want to modify an PowerPoint file in background.<br />\n<pre><code>PowerPoint.Application powerPointApplication = new PowerPoint.Application();\n powerPointApplication.DisplayAlerts = PpAlertLevel.ppAlertsNone;\n            \n            if (Utils.IsFileLocked(filePath)) {\n                Utils.MessageBoxError(&quot;File (&quot; + filePath + &quot;) is open by a other process or can't write on it.&quot;, &quot;POWERPOINT&quot;);\n                return;\n            }\n\nPowerPoint.Presentation presentation = powerPointApplication.Presentations.Open(filePath);</code></pre>\n\nBut the PowerPoint application open, shows the presentation and close automatically.\r<br />\n<br />\nIf I activate <br />\n<pre><code>powerPointApplication.Visible = MsoTriState.msoFalse;  </code></pre>\n\nI get follwoing error &quot;Application.Visible : Invalid request.  Hiding the application window is not allowed&quot;. \r<br />\n<br />\nHow is it possible to hide the window or don't popup the window!?<br />\n",
+    "PostedDate": "2013-09-11T23:53:28.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093485",
+    "ThreadId": "456627",
+    "Html": "which powerpoint version is it? what i known is ppoint cause crazy errors or do nothing(or bullshit) if its invisible(regardless from the api, NO,VSTO, interop..). but i see these error the first time. its better to let it visible. a dirty trick is to move the window in the invisible area or/and make it as small as possible.<br />\n",
+    "PostedDate": "2013-09-17T04:26:56.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1097938",
+    "ThreadId": "456627",
+    "Html": "I use PP 2010.\r<br />\n<br />\nIf I change the size of the window then the size is also small if the user opens it again.\r<br />\n<br />\nI think minimizing the window is the best workaround...<br />\n",
+    "PostedDate": "2013-09-23T01:56:07.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1240925",
+    "ThreadId": "456627",
+    "Html": "FYI, Sebastian you Rock!<br />\nNot sure what the differences are, but I had all kinds of issues with visibility etc ...<br />\nIn my case I had Office 2007 Enterprise installed, however, when I looked at installed programs there were some 2003 components showing up. I was getting the same error as you. I had to uninstall those earlier components and reboot. <br />\n<br />\nI found it by setting visibility to true, it opened the PowerPoint main UI with nothing opened because of the obvious error I kept getting. From that UI I then tried to open my file and it produced an error regarding the file was a newer version and couldn't open. That's what lead me to suspecting the earlier components on my system. <br />\n<br />\nThe below link as an FYI and code work fine for me, no visibility issues.<br />\nRegards<br />\n-Tom<br />\n<br />\n<br />\nPlease see : <strong><a href=\"http://www.pptfaq.com/FAQ00307_Hide_PowerPoint_while_I_automate_it.htm\" rel=\"nofollow\">This link</a></strong><br />\n<pre><code>Imports NetOffice\nImports PowerPoint = NetOffice.PowerPointApi\nImports NetOffice.PowerPointApi.Enums\nImports NetOffice.OfficeApi.Enums\n\n\nPublic Class Form1\n\n    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click\n        LateBindingApi.Core.Factory.Initialize()\n        Dim oPPTApp As PowerPoint.Application\n        Dim oPPTPres As PowerPoint.Presentation\n        Dim sFileName As String\n\n        oPPTApp = New PowerPoint.Application\n        sFileName = &quot;E:\\temp\\New folder\\Report-Template2.pptx&quot;\n        oPPTPres = oPPTApp.Presentations.Open(fileName:=sFileName, [readOnly]:=MsoTriState.msoFalse, untitled:=MsoTriState.msoFalse, withWindow:=MsoTriState.msoFalse)\n        Try\n            With oPPTPres\n                For Each slide As PowerPoint.Slide In .Slides\n                    For SlideIndex = slide.Shapes.Count To 1 Step -1\n\n                        With slide.Shapes(SlideIndex)\n                            Dim FolderWithImages = &quot;Z:\\temp\\New folder\\Images1\\&quot;\n                            If .Type = MsoShapeType.msoLinkedPicture Then\n                                If .Name = Dir(FolderWithImages &amp; .Name) Then 'ensures file exists before updating!\n\n                                    .LinkFormat.SourceFullName = FolderWithImages + .Name\n                                    Debug.Print(.LinkFormat.SourceFullName)\n                                    .LinkFormat.Update()\n\n                                Else\n\n                                End If\n                            End If\n\n                        End With\n                    Next\n\n                Next\n                .Save()\n            End With\n\n        Catch ex As Exception\n        Finally\n            oPPTApp.Quit()\n            oPPTApp.Dispose()\n        End Try\n        Application.Exit()\n    End Sub\nEnd Class</code></pre>\n\n",
+    "PostedDate": "2014-05-02T19:21:33.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

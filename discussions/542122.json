@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1233620",
+    "ThreadId": "542122",
+    "Html": "Dear Sebastian,\r<br />\n<br />\nUsing code that I took from one of your replies to access MAPIFolders and using the references:\r<br />\n<br />\nusing System;\r<br />\nusing Office = OfficeApi;\r<br />\nusing Outlook = OutlookApi;\r<br />\n<br />\n<br />\nOutlook__NameSpace outlookNs = this.myApp.Application.Session;\r<br />\n<br />\nOutlookApi.MAPIFolder root = this.myApp.Session.DefaultStore.GetRootFolder() as Outlook.MAPIFolder;\r<br />\n on compiling produces the errors:\r<br />\n&quot;The type or namespace name 'Outlook__NameSpace' could not be found (are you missing a using directive or an assembly reference?) (CS0246) - C:\\Users\\David Hyde\\Documents\\SharpDevelop Projects\\Practice Administrator\\Practice Administrator\\Outlookfolder.cs:33,4&quot;\r<br />\n&quot;The type or namespace name 'MAPIFolder' does not exist in the namespace 'OutlookApi' (are you missing an assembly reference?) (CS0234) - C:\\Users\\David Hyde\\Documents\\SharpDevelop Projects\\Practice Administrator\\Practice Administrator\\Outlookfolder.cs:34,15&quot;; and\r<br />\n&quot;The name 'EnumerateFolders' does not exist in the current context (CS0103) - C:\\Users\\David Hyde\\Documents\\SharpDevelop Projects\\Practice Administrator\\Practice Administrator\\Outlookfolder.cs:36,4&quot;.\r<br />\nWhat assemblies do I need to access these objects, please?\r<br />\n<br />\nRegards,\r<br />\n<br />\nDavid Hyde<br />\n",
+    "PostedDate": "2014-04-13T05:30:27.107-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1233947",
+    "ThreadId": "542122",
+    "Html": "you need the following references to deal with ms-outlook:<br />\n<br />\nOutlookApi.dll<br />\nOfficeApi.dll<br />\nNetOffice.dll<br />\n<br />\nyou find a deployment table here to deal with all ms-office applications: here <a href=\"https://netoffice.codeplex.com/documentation\" rel=\"nofollow\">https://netoffice.codeplex.com/documentation</a> (scroll down)<br />\n<br />\n*hope it's helpful<br />\nSebastian<br />\n",
+    "PostedDate": "2014-04-14T09:33:16.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234248",
+    "ThreadId": "542122",
+    "Html": "Dear Sebastian,\r<br />\n<br />\nThank you for that.\r<br />\n<br />\nNow my .dll references read\r<br />\n<br />\nusing NetOffice; (is greyed out as not referred to.)\r<br />\nusing Office = OfficeApi;\r<br />\nusing Outlook = OutlookApi;\r<br />\n<br />\nand trying to declare a variable:\r<br />\n<br />\nOutlook.MAPIFolder ; or,\r<br />\nOutlook.Session\r<br />\n<br />\nproduces a pop-up window which shows &quot;utils()&quot; only.\r<br />\n<br />\nI am following the coding that people are using in other threads.\r<br />\n<br />\nMy system is Windows 7 64bit.\r<br />\n<br />\nRegards,\r<br />\n<br />\nDavid Hyde<br />\n",
+    "PostedDate": "2014-04-15T03:49:07.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234304",
+    "ThreadId": "542122",
+    "Html": "Dear Sebastian,\r<br />\n<br />\nProblem solved!\r<br />\n<br />\nCut and Paste fom one of your examples gave me use Netoffice.OutlookApi which results in list of Outllook properties/method being shown.\r<br />\n<br />\nRegards,\r<br />\n<br />\nDavid Hyde<br />\n",
+    "PostedDate": "2014-04-15T07:00:51.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

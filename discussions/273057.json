@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "673621",
+    "ThreadId": "273057",
+    "Html": "<p>If I check my project by FXCop, I get the following error:</p>\n<pre>CA0060 : The indirectly-referenced assembly 'stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' could not be found. <br />This assembly is not required for analysis, however, analysis results could be incomplete. <br />This assembly was referenced by: [...bin-Path of my project ...]\\OutlookApi.dll.</pre>\n<p>My project works anyway. But do you see a possibility to prevent this FXCop message?</p>",
+    "PostedDate": "2011-09-19T04:55:14.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "673624",
+    "ThreadId": "273057",
+    "Html": "<p>hmmm, the interop version of stdole is a GAC Assembly from .the NET Framework. the assembly includes the basic com types.<br /> its alwas the same and thats the reason for NetOffice has no wrapper for this assembly.<br /> maybe its helpfull to copy the .dll from Gac Folder to the local directory.<br /> current NetOffice release is not FxCop approved but this is very good idea, the next release delivers the stdole interop dll too, i will see.<br /> interesstent post: http://nandagopalan.blogspot.com/2007/03/could-not-load-file-or-assembly-stdole.html<br /> <br /> *Sebastian</p>",
+    "PostedDate": "2011-09-19T05:06:18.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "673904",
+    "ThreadId": "273057",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>SebastianDotNet wrote:</strong><br />\r\n<p>maybe its helpfull to copy the .dll from Gac Folder to the local directory.</p>\r\n</blockquote>\r\n<p>I tried this way. Unfortunately it does'nt work.</p>\r\n<p>But its no problem. <span id=\"result_box\" class=\"short_text\" lang=\"en\"><span class=\"hps\">It</span> <span class=\"hps\">does not bother me.</span></span></p>",
+    "PostedDate": "2011-09-19T14:32:25.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "673923",
+    "ThreadId": "273057",
+    "Html": "<p>i do&nbsp;a test in the next days.<br />the next NetOffice release has FxCop approved source&nbsp;code and examples.<br />if i find the reason for this (not realy a) problem i tell you the matter.<br />*sebastian</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-09-19T15:42:06.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

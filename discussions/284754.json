@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "719504",
+    "ThreadId": "284754",
+    "Html": "\r\n<p>Hi!,</p>\r\n<p>I wanted to connect the ItemSendEvent in my test application.</p>\r\n<p>_outlookApplication.ItemSendEvent &#43;= _outlookApplication_ItemSendEvent;</p>\r\n<p>Every time this line is executed I get an AccessViolationException.</p>\r\n<p>The EventBridgeInitialized member has the value false. I think that's the problem.</p>\r\n<p>What do I have to do to solve this Probem?</p>\r\n<p>I use:</p>\r\n<p>System: windows7 64bit</p>\r\n<p>.Net: 4.0, Visual Studio 2010 with c#</p>\r\n<p>Office 2010 64-bit</p>\r\n<p>NetOffice Release 1.3.2</p>\r\n<p>Thank you.</p>\r\n<p>SGabor</p>\r\n",
+    "PostedDate": "2012-01-02T12:36:22.4-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "719588",
+    "ThreadId": "284754",
+    "Html": "<p>sounds not good. my x86 test works fine, give me 2 hours to create a x64 test.</p>\n<p>&nbsp;*Sebastian</p>",
+    "PostedDate": "2012-01-02T16:10:05.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "719600",
+    "ThreadId": "284754",
+    "Html": "<p>my x64 test works also fine. do you have a more detailed code snippet for me?<br /><br /> here is my code:<br /><br />private void&nbsp;Test()<br />{<br />&nbsp;&nbsp; LateBindingApi.Core.Factory.Initialize();<br /><br />&nbsp;&nbsp; Outlook.Application application = new Outlook.Application();<br />&nbsp;&nbsp; application.ItemSendEvent += new&nbsp; Outlook.Application_ItemSendEventHandler(application_ItemSendEvent);<br />&nbsp;&nbsp; application.Quit();<br />&nbsp; &nbsp;applicatition.Dispose();<br />}<br /><br />private void application_ItemSendEvent(COMObject Item, ref bool Cancel)<br />{<br /><br />}</p>\r\n<p>*Sebastian</p>",
+    "PostedDate": "2012-01-02T16:57:31.203-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "719868",
+    "ThreadId": "284754",
+    "Html": "<p>do you have a COM Addin?</p>",
+    "PostedDate": "2012-01-03T08:08:33.277-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "719871",
+    "ThreadId": "284754",
+    "Html": "<p>Dear Sebastian,</p>\r\n<p><span id=\"result_box\" lang=\"en\"><span class=\"hps\">Thanks for the quick</span> <span class=\"hps\">response</span><span>,</span> <span class=\"hps\">I</span><span>'m</span> <span class=\"hps\">currently</span> <span class=\"hps\">not at home</span><span>,</span> i <span class=\"hps\">will</span> <span class=\"hps\">try</span> <span class=\"hps\">tonight</span> <span class=\"hps\">your</span> <span class=\"hps\">snippet</span></span></p>\r\n<p><br />SGabor</p>",
+    "PostedDate": "2012-01-03T08:16:56.767-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "719908",
+    "ThreadId": "284754",
+    "Html": "<p>Hi,</p>\r\n<p>Yes i have a COM Addin,</p>\r\n<p><span id=\"result_box\" lang=\"en\"><span class=\"hps\">I'</span><span>ve tried</span> <span class=\"hps\">your</span> <span class=\"hps\">snippet</span><span>,</span> <span class=\"hps\">unfortunately</span> <span class=\"hps\">still occurs</span> <span class=\"hps\">AccessViolationException,</span></span></p>\r\n<p><span lang=\"en\"><span class=\"hps\">Here is my snippet:</span></span></p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void IDTExtensibility2.OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Initialize NetOffice<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LateBindingApi.Core.Factory.Initialize();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Initializing<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _outlookApplication = new Outlook.Application(null, Application);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _outlookNameSpace = _outlookApplication.GetNamespace(\"MAPI\");<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Subscribe the events<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _outlookApplication.ItemSendEvent += new Outlook.Application_ItemSendEventHandler(Application_ItemSendEvent);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch (Exception ex)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private void Application_ItemSendEvent(COMObject Item, ref bool Cancel)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Item == null)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Item is Outlook.MailItem)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch (Exception ex)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you</p>\r\n<p>SGabor</p>",
+    "PostedDate": "2012-01-03T09:29:37.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "719945",
+    "ThreadId": "284754",
+    "Html": "<p>i do a test with a x64 compiled addin, win7 x64/office 2010 x64 an it works fine for me.<br />the exception was thrown at runtime or in the debugger with the option \"hold on any exception\" ?<br />its possible you send me your e-mail address in a private message and i send you the solution thats works for me?<br /><br />*Sebastian</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-01-03T10:33:01.19-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "719952",
+    "ThreadId": "284754",
+    "Html": "<p>Hi,</p>\r\n<p>you have a post on <span class=\"ContactUserTextBox\">SebastianDotNet</span></p>\r\n<p><br />Thanks</p>",
+    "PostedDate": "2012-01-03T10:57:10.623-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "724522",
+    "ThreadId": "284754",
+    "Html": "<p>Hi Sebastian,</p>\n<p>I have the same problem. The following code caused an <em>AccessViolationException</em> on \"inboxItems.ItemAddEvent += <span style=\"color: blue;\">new</span> NetOffice.OutlookApi.Items_ItemAddEventHandler(InboxItems_Add);\":</p>\n<p>\n<div style=\"color: black; background-color: white;\">\n<pre><span style=\"color: blue;\">void</span> IDTExtensibility2.OnConnection(\n\t<span style=\"color: blue;\">object</span> Application, \n\text_ConnectMode ConnectMode, \n\t<span style=\"color: blue;\">object</span> AddInInst, \n\t<span style=\"color: blue;\">ref</span> Array custom\n)\n{\n\t<span style=\"color: blue;\">try</span>\n\t{\n\t\t<span style=\"color: green;\">// Initialize NetOffice</span>\n\t\tLateBindingApi.Core.Factory.Initialize();\n\n\t\t<span style=\"color: green;\">//Initializing</span>\n\t\tapplication = <span style=\"color: blue;\">new</span> Outlook.Application(<span style=\"color: blue;\">null</span>, Application);\n\t\tOutlook.MAPIFolder inbox = \n\t\t\tapplication.GetNamespace(<span style=\"color: #a31515;\">\"MAPI\"</span>).GetDefaultFolder(OlDefaultFolders.olFolderInbox);\n\t\t\n\t\t<span style=\"color: green;\">// Subscribe the events</span>\n\t\tinboxItems = (Outlook.Items)inbox.Items;\n\t\tinboxItems.ItemAddEvent += \n\t\t\t<span style=\"color: blue;\">new</span> NetOffice.OutlookApi.Items_ItemAddEventHandler(InboxItems_Add);\n\t}\n\t<span style=\"color: blue;\">catch</span>\n\t{\n\t}\n}\n\n<span style=\"color: blue;\">private</span> <span style=\"color: blue;\">void</span> InboxItems_Add(\n\tCOMObject Item\n)\n{\n\t[...]\n}\n</pre>\n</div>\n</p>\n<p>Do you have an idea of this problem?</p>",
+    "PostedDate": "2012-01-12T15:29:58.96-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "724533",
+    "ThreadId": "284754",
+    "Html": "<p>NetOffice Release 1.4 is available in&nbsp;2 hours. i change the CreateEventBridge() implementation and add bool Settings.EnableDebugOutput.<br />i hope the problem is resolved and i in case of any trouble we can see what happens with the debug output.<br />i found one mistake in GetConnectionPoint :(<span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\"><font size=\"2\">\r\n<p>&nbsp;</p>\r\n</font><span style=\"color: #0000ff; font-size: x-small;\">string</span><span style=\"font-size: x-small;\"> id = id =FindConnectionPoint(connectionPointContainer, </span><span style=\"color: #0000ff; font-size: x-small;\">ref</span><span style=\"font-size: x-small;\"> point, sinkIds);<br /><br />fixed in NetOffice 1.4 !<br /><br />*i'm sorry for that.</span></span></span></span></p>",
+    "PostedDate": "2012-01-12T16:01:49.733-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "724597",
+    "ThreadId": "284754",
+    "Html": "<p>NetOffice 1.4 [beta] is now available in the download section.(upload in progress currently)<br />please give me a response the issue&nbsp;is resolved or not. <br />when aready was okay i can publish this release as stable.<br /><br />*sebastian</p>",
+    "PostedDate": "2012-01-12T19:10:40.197-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "767821",
+    "ThreadId": "284754",
+    "Html": "<p>Hello,</p>\r\n<p>I have to apologize my late feedback. But I needed a quite long time to find out why each NetOffice-Addin did not work. Now it seems that everything works well.</p>\r\n<p>The problem was that mscoree.dll was set as a \"DisabledItem\":</p>\r\n<p><img title=\"hosted by 666kb.com\" src=\"http://666kb.com/i/c1a8z186umcu42k0z.jpg\" alt=\"\" width=\"891\" height=\"529\" /></p>\r\n<p>After I deleted each key under <em>HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\14.0\\Outlook\\Resiliency\\DisabledItems</em> everything works well.</p>\r\n<p>In conclusion: <strong>Your beta version seems good!</strong> I have no error left.</p>\r\n<p>Thanks again for your great development!!!</p>",
+    "PostedDate": "2012-02-15T08:58:06.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "767929",
+    "ThreadId": "284754",
+    "Html": "<p>hello there,</p>\r\n<p>the discussion about Shimming is interesstent for you maybe: http://netoffice.codeplex.com/discussions/285331<br />the problem is office can's see an .net assembly, the host application see only the mscoree.dll when a .NET addin cause a critical error,<br />then the mscoree.dll was disabled and all .Net addin assemblies are disabled. for these reason you can create a COM Shim, means an unmanaged C++ proxy addin.<br />the proxy addin are loaded from the office app. at these time the proxy addin loads your addin. i hope i can create an optional available SHIM behaviour in the future for COM Addins based on NetOffice.</p>",
+    "PostedDate": "2012-02-15T10:05:13.943-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

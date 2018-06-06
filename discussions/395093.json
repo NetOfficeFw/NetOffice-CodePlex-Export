@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "910843",
+    "ThreadId": "395093",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I want select 2 sheets.</p>\r\n<p>And how can i display excel instance ?</p>\r\n<p>&nbsp;My code</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>Excel.Application excelApplication = <span style=\"color:blue\">new</span> Excel.Application();\r\nexcelApplication.DisplayAlerts = <span style=\"color:blue\">false</span>;\r\nExcel.Workbook workBook = excelApplication.Workbooks.Open(<span style=\"color:#a31515\">@&quot;D:\\PROJETS.NET\\BOVICAP-GCP\\ApplicationPoubelle\\Templates\\Lait2013.xlsx&quot;</span>);\r\n\r\nExcel.Worksheet workSheet1 = (Excel.Worksheet)workBook.Worksheets[<span style=\"color:#a31515\">&quot;mysheet-1&quot;</span>];\r\nExcel.Worksheet workSheet2 = (Excel.Worksheet)workBook.Worksheets[<span style=\"color:#a31515\">&quot;mysheet-2&quot;</span>];\r\n\r\nList&lt;Excel.Worksheet&gt; sheetList = <span style=\"color:blue\">new</span> List&lt;Excel.Worksheet&gt;();\r\nsheetList.Add(workSheet1);\r\nsheetList.Add(workSheet2);\r\n\r\nworkBook.Worksheets.SelectMany(f =&gt; sheetList);\r\n</pre>\r\n</div>\r\n<p>Best regards</p>\r\n",
+    "PostedDate": "2012-09-11T05:04:15.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "910959",
+    "ThreadId": "395093",
+    "Html": "\r\n<p><strong>Question</strong>: <em>And how can i display excel instance </em>?</p>\r\n<p><strong>Solution</strong>:&nbsp;</p>\r\n<div style=\"background-color:white; color:black\">\r\n<pre>excelApplication.Visible = <span style=\"color:blue\">true</span>;\r\n</pre>\r\n</div>\r\n",
+    "PostedDate": "2012-09-11T07:36:37.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911518",
+    "ThreadId": "395093",
+    "Html": "<p>you can loop over the worksheets enumerator and select any worksheet step by step or you can use the Select method from the Sheets collection with a string array parameter. SelectMany is linq specific stuff and not helpfull here.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-09-12T06:16:56.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

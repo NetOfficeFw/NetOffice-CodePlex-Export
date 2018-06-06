@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "836409",
+    "ThreadId": "355793",
+    "Html": "<p>Hi,</p>\n<p>While drawing chart we found the Y axis data interval is 0.5 even if data is only numeric means interval.See this sample</p>\n<p>Y axis data is</p>\n<p>1,2,3</p>\n<p>where Y axis data series is</p>\n<p>0,0.5,1,1.5,</p>\n<p>&nbsp;</p>\n<p>The&nbsp; axis data is having an interval of 0.5 which is not good as all data is integer.</p>\n<p>How can I set the data series interval on Y axis.</p>\n<p>Please help.Thanks in advance</p>",
+    "PostedDate": "2012-05-14T23:05:51.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

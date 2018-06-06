@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "684841",
+    "ThreadId": "276055",
+    "Html": "\r\n<p>Hi</p>\r\n<p>when i try to execute your sample i get this error : <span style=\"color:#800080\">\r\n<strong>progId not found. PowerPoint.Application.</strong></span></p>\r\n<p><span style=\"color:#800080\"><strong>i don't have MS office installed.</strong></span></p>\r\n",
+    "PostedDate": "2011-10-16T07:07:37.4-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "684842",
+    "ThreadId": "276055",
+    "Html": "<p>hey hello,</p>\r\n<p>NetOffice is an access wrapper means a substitute for the ms interop assemblies.<br />you need an installed office in any version or you got exactly this error.</p>\r\n<p>*cheers<br />Sebastian</p>",
+    "PostedDate": "2011-10-16T07:11:18.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

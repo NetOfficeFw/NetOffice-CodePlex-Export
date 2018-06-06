@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1032475",
+    "ThreadId": "440778",
+    "Html": "Hi all,\r<br />\n<br />\nwe are forced still to support Word2000. Now our project stops on starting with Word2000. All other Words 2003-2010 are running well.\r<br />\nOn examination i found out, that the stop is while registering a word event (new document).\r<br />\nNo problem i thought, there was an example from netoffice, this i will try. But the example also stops on registering in Word 2000. After that i must kill the example (written in C# .net 2.0) and Word2000.\r<br />\n<br />\nIf i throw the testprogram into your toolbox, the compatibility parts reports all is fine for all word versions from 2000 to  2010.\r<br />\n<br />\nIs there a problem with Word2000 ?\r<br />\n<br />\nMy partial Test-code: (the same as your example filled with logs. The last visible log is the &quot;Log4&quot;):<br />\n<pre><code>        // start word and turn off msg boxes\n        UpdateTextbox(&quot;Log1&quot;);\n        Word.Application wordApplication = new Word.Application();\n        UpdateTextbox(&quot;Log2&quot;);\n        wordApplication.DisplayAlerts = NetOffice.WordApi.Enums.WdAlertLevel.wdAlertsNone;\n        UpdateTextbox(&quot;Log3&quot;);\n\n        /*\n        we register some events. note: the event trigger was called from word, \n        means an other Thread\n        */\n        UpdateTextbox(&quot;Log4&quot;);\n        wordApplication.NewDocumentEvent +=\n        new NetOffice.WordApi.Application_NewDocumentEventHandler(</code></pre>\n\nword_NewDocumentEvent);<br />\n<pre><code>        UpdateTextbox(&quot;Log5&quot;);\n        wordApplication.DocumentBeforeCloseEvent +=\n        new NetOffice.WordApi.Application_DocumentBeforeCloseEventHandler(</code></pre>\n\nword_DocumentBeforeCloseEvent);\r<br />\n....<br />\n",
+    "PostedDate": "2013-04-18T07:24:19.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1032923",
+    "ThreadId": "440778",
+    "Html": "which netoffice version you use? (latest source state?)\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-04-19T03:29:49.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1035996",
+    "ThreadId": "440778",
+    "Html": "Sorry about the late answer, i was not at office this week.\r<br />\n<br />\nYes, i use the latest version 1.5.1.2.<br />\n",
+    "PostedDate": "2013-04-26T02:37:41.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

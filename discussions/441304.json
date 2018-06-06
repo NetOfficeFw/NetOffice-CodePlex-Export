@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1034602",
+    "ThreadId": "441304",
+    "Html": "On Windows 8 with office 2013,\r<br />\nvar  outlookApplication = Outlook.Application.GetActiveInstance();\r<br />\nthrows the following exception:\r<br />\n<br />\nThe object's type must be __ComObject or derived from __ComObject.\r<br />\nParameter name: o System.ArgumentException System.ArgumentException: The object's type must be __ComObject or derived from __ComObject.\r<br />\nParameter name: o\r<br />\n   at System.Runtime.InteropServices.Marshal.ReleaseComObject(Object o)\r<br />\n   at NetOffice.RunningObjectTable.GetActiveProxyFromROT(String componentName, String className, Boolean throwOnError)\r<br />\n   at NetOffice.OutlookApi.Application.GetActiveInstance()\r<br />\n<br />\nSimilar exception if thrown for other applications - Word, PowerPoint\r<br />\n<br />\nThe object's type must be __ComObject or derived from __ComObject.\r<br />\nParameter name: o System.ArgumentException System.ArgumentException: The object's type must be __ComObject or derived from __ComObject.\r<br />\nParameter name: o\r<br />\n   at System.Runtime.InteropServices.Marshal.ReleaseComObject(Object o)\r<br />\n   at NetOffice.RunningObjectTable.GetActiveProxiesFromROT(String componentName, String className)\r<br />\n   at NetOffice.WordApi.Application.GetActiveInstances()\r<br />\n<br />\n<br />\nOn Windows 7 with office 2013 the same application seems to work fine. UAC is disabled completely on Windows 7, and only partially on Windows 8. <br />\n",
+    "PostedDate": "2013-04-23T08:10:54.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1035195",
+    "ThreadId": "441304",
+    "Html": "I tried to debug the problem. For some reason, during iteration over ROT , one of the components is not a COMObject , but is System.MarshalByRefObject.<br />\n<pre><code>   if (componentNameEqual &amp;&amp; classNameEqual)\n   {\n                    Marshal.ReleaseComObject(bindInfo);\n                    return comInstance;\n   }\n   else\n   {\n                    componentNameEqual = ((_ballmersPlace + componentName).Equals(component, StringComparison.InvariantCultureIgnoreCase));\n                    if (componentNameEqual &amp;&amp; classNameEqual)\n                    {\n                        Marshal.ReleaseComObject(bindInfo);\n                        return comInstance;\n                    }\n                    else\n                        Marshal.ReleaseComObject(comInstance); // &lt;=== Exception thrown here\n    }</code></pre>\n\n",
+    "PostedDate": "2013-04-24T09:07:16.357-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040864",
+    "ThreadId": "441304",
+    "Html": "Today I had the same problem with Access 2010 application.\r<br />\n<br />\nChecking the instance type before calling Marshal.ReleaseComObject would solve this issue.<br />\n<pre><code>if (comInstance.GetType().IsCOMObject)\n    Marshal.ReleaseComObject(comInstance);</code></pre>\n\nI created a new Issue for this problem, hoping it will be solved in the next release.\r<br />\n<br />\n<a href=\"https://netoffice.codeplex.com/workitem/19683\" rel=\"nofollow\">https://netoffice.codeplex.com/workitem/19683</a><br />\n",
+    "PostedDate": "2013-05-08T06:47:09.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041542",
+    "ThreadId": "441304",
+    "Html": "this is strange, no idea why the ROT instance doesnt support __ComObject.\r<br />\ni want change the implementation. thanks !!!\r<br />\nSebastian<br />\n",
+    "PostedDate": "2013-05-09T13:35:01.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1123475",
+    "ThreadId": "441304",
+    "Html": "Hello i have the same issue....\r<br />\n<br />\nthe problems ocurs on Windows 8 with UAC activated... office 2013,  if UAC is desactivated, no error ocurr...\r<br />\ni'm using current stable version NetOffice 1.6.0 \r<br />\n<br />\n  Outlook.Application outlookApplication = new Outlook.Application();\r<br />\n<br />\nEx:\r<br />\n<br />\nSystem.Runtime.InteropServices.COMException (0x80080005): Retrieving the COM class factory for component with CLSID {0006F03A-0000-0000-C000-000000000046} failed due to the following error: 80080005 Server execution failed (Exception from HRESULT: 0x80080005 (CO_E_SERVER_EXEC_FAILURE)).\r<br />\n   at System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(RuntimeType objectType)\r<br />\n   at System.Runtime.Remoting.Activation.ActivationServices.CreateInstance(RuntimeType serverType)\r<br />\n   at System.Runtime.Remoting.Activation.ActivationServices.IsCurrentContextOK(RuntimeType serverType, Object[] props, Boolean bNewObj)\r<br />\n   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean&amp; canBeCached, RuntimeMethodHandleInternal&amp; ctor, Boolean&amp; bNeedSecurityCheck)\r<br />\n   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark&amp; stackMark)\r<br />\n   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark&amp; stackMark)\r<br />\n   at System.Activator.CreateInstance(Type type, Boolean nonPublic)\r<br />\n   at System.Activator.CreateInstance(Type type)\r<br />\n   at NetOffice.COMObject.CreateFromProgId(String progId)\r<br />\n   at NetOffice.COMObject..ctor(String progId)\r<br />\n   at NetOffice.OutlookApi.Application..ctor()\r<br />\n   at InvocePersonal.Actualizar.backgroundWorker1_DoWork(Object sender, DoWorkEventArgs e) in ... :line 59<br />\n",
+    "PostedDate": "2013-11-14T06:09:50.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

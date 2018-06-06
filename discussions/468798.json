@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1123899",
+    "ThreadId": "468798",
+    "Html": "Some times when i try to get entity (eg Selection.ShapeRange), i have exception target of invocation. How can i check for entity is available for get?<br />\n",
+    "PostedDate": "2013-11-15T06:06:17.23-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1127739",
+    "ThreadId": "468798",
+    "Html": "please explaine what means &quot;sometimes&quot;.  at the moment, its impossible for me to pin point the problem.  it  looks like you have no selection sometimes. in this case the com server(office) returns an error(HResult) and the .net runtime system throws the corresonding exception. <br />\n",
+    "PostedDate": "2013-11-21T16:00:19.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1214393",
+    "ThreadId": "468798",
+    "Html": "Hi!\r<br />\n<br />\nSame exception at mail send:<br />\n<h2>Exception</h2>\nMessage: Exception has been thrown by the target of an invocation.\r<br />\n<br />\n<br />\nDate: 25.02.2014 09:09:44\r<br />\nType: COMException\r<br />\nSource: NetOffice\r<br />\nAdditional: * COM Error Code: -2147467259<br />\n<ul>\n<li>\nCOM Message: Exception has been thrown by the target of an invocation.<br />\n</li>\n</ul>\nCustom Information: \r<br />\nStack Trace:    at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\r<br />\n   at NetOffice.OutlookApi._MailItem.get_To()\r<br />\n   at MyCompany.MyNameSpace.DocManager.MailItem_Send(Boolean&amp; Cancel)\r<br />\n<br />\n.Net Framework Version 4.0<br />\n<h2>Microsoft Word</h2>\nBuild Full: 14.0.7113\r<br />\nDescription: Microsoft Word 2010<br />\n<h2>Referenced Assemblies</h2>\nExcelApi: 1.6.0.0\r<br />\nNetOffice: 1.6.0.0\r<br />\nOutlookApi: 1.6.0.0\r<br />\nTWordApi: 1.6.0.0\r<br />\n<br />\nThanks for help!<br />\n",
+    "PostedDate": "2014-02-25T03:31:53.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

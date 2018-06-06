@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1023732",
+    "ThreadId": "438656",
+    "Html": "Hi, I use ClickOnce to deploy applications NetOffice? In Visual Studio, there is no section Publich, i trying to do manually through MageUI.exe, but without success.\r<br />\n<br />\nIf you do not support this functionality now, you'll be there to support in the future? <br />\n",
+    "PostedDate": "2013-04-01T05:17:12.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1023737",
+    "ThreadId": "438656",
+    "Html": "no, sorry. clickonce is bullshit (i find)\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-04-01T05:31:16.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1023743",
+    "ThreadId": "438656",
+    "Html": "Why do you think ClickOnce is bullshit? Indeed, automated deployment and upgrade valuable thing.<br />\n<br />\nI loved NetOffice, but now the question arose deployment addin and would like to support this functionality as an automatic update with the ability to undo. And it turns out I now have to give up Netoffice. Maybe you tell alternative ClickOnce, which also have the ability to automatically update?<br />\n",
+    "PostedDate": "2013-04-01T05:41:40.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1023745",
+    "ThreadId": "438656",
+    "Html": "Why do you think ClickOnce is bullshit? Indeed, automated deployment and upgrade valuable thing.<br />\n<br />\nI loved NetOffice, but now the question arose deployment addin and would like to support this functionality as an automatic update with the ability to undo. And it turns out I now have to give up Netoffice. Maybe you tell alternative ClickOnce, which also have the ability to automatically update?<br />\n",
+    "PostedDate": "2013-04-01T05:47:16.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024121",
+    "ThreadId": "438656",
+    "Html": "Why you want to use ClickOnce ( was trying to use it too, but gave it up )?\r<br />\n<br />\nIf you can use the &quot;Setup.exe&quot; while generating your code ( VSTO )?\r<br />\n<br />\nSimply add an install/uninstall functionality ( button ) to delete previous Add-In, while updating with the new one, create a form, where you can do that functionality.<br />\n",
+    "PostedDate": "2013-04-02T01:44:19.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1130164",
+    "ThreadId": "471473",
+    "Html": "Hi, <br />\n<br />\nI am using NetOffice for the first time. <br />\n<br />\nI am making an ASP.NET web site where on click of a button, I want to <strong>generate</strong> an Excel file in a <strong>password protected</strong> state and send it to the client to download it. <br />\n<br />\nBut I want to know whether, <strong>will I require MS Excel installed on the server?</strong> <br />\nOR Is there a way where I can make this work on a server where MS Excel is <strong>NOT</strong> installed?<br />\n<br />\nAlso what are other pre-requisites?<br />\n",
+    "PostedDate": "2013-11-28T22:48:06.267-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1130240",
+    "ThreadId": "471473",
+    "Html": "Yes, you will need to have Excel installed. NetOffice is just a COM wrapper for Office. Without Office it won't work.<br />\n",
+    "PostedDate": "2013-11-29T03:52:22.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1133550",
+    "ThreadId": "471473",
+    "Html": "<a href=\"https://closedxml.codeplex.com/\" rel=\"nofollow\">ClosedXML</a> allows you to create Excel 2007/2010 files without the Excel application. The typical example is creating Excel reports on a web server.<br />\n",
+    "PostedDate": "2013-12-10T04:39:25.33-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1134560",
+    "ThreadId": "471473",
+    "Html": "i agreed this. you may need to take a look to the ClosedXML project <a href=\"https://closedxml.codeplex.com\" rel=\"nofollow\">https://closedxml.codeplex.com</a>\r<br />\nNO is a helper to create desktop addins. the ClosedXML project allows yout to create excel very very easy without excel because this means to manipulate some xml files(xlsx). a side effect: you need XL 2007 or higher.<br />\n",
+    "PostedDate": "2013-12-11T13:15:29.593-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

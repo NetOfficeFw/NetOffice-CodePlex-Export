@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "985855",
+    "ThreadId": "429377",
+    "Html": "\r\n<p>Hallo Sebastian,</p>\r\n<p>ich habe im using-Block folgende Angabe gemacht:</p>\r\n<p><span style=\"color:blue\"></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">using</span> Dao = NetOffice.DAOApi;  \n\n<span style=\"color:blue\">using</span> NetOffice.DAOApi.Enums;  \n\n<span style=\"color:blue\">using</span> NetOffice.DAOApi.Constants;\n</pre>\r\n</div>\r\n<span style=\"color:#000000\">Leider werden die Enums nicht aufgel&ouml;st.</span><br>\r\n<span style=\"color:#000000\">Dh. ich komme nicht direkt an die Enums heran.</span><br>\r\n<span style=\"color:#000000\">Das funktioniert nicht</span>:</span><br>\r\n<pre style=\"font-family:Consolas; font-size:13; color:black; background:white\"><div style=\"color:black; background-color:white\"><pre><div style=\"color:black; background-color:white\"><pre>Dao.Enums.DataTypeEnum.dbBigInt\n</pre>\n</div>\n</pre>\n</div>\n<br><br>So gehts:<br><br></pre>\r\n<p></p>\r\n<pre>Dao.Enums.<span style=\"color:#2b91af\">DataTypeEnum</span>.dbBigInt<br><br>Das ist jetzt f&uuml;r mich nicht weiter tragisch, ich denke mir nur, dass<br>es nicht reicht einfach die Referenzen auszutauschen. Vielleicht bin ich ja auch nur zu bl&ouml;d.<br>:-)<br><br>Gru&szlig;<br><br>Gerhard<br><br>PS. Bl&ouml;der Editor..<br>\n</pre>\r\n<p>&nbsp;</p>\r\n<pre style=\"font-family:Consolas; font-size:13; color:black; background:white\"><br><br><br><br>\n</pre>\r\n<p><br>\r\n<br>\r\n<br>\r\n</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2013-01-12T04:15:15.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "985863",
+    "ThreadId": "429377",
+    "Html": "\r\n<p>Wenn du ein using auf die Enums ohne Alias( = ) verwendest:</p>\r\n<pre><span style=\"color:blue\">using</span> NetOffice.DAOApi.Enums;  <br><br>kannst du sie direkt so verwenden:<br><br>var v = <span style=\"color:#2b91af\">DataTypeEnum</span>.dbBigInt;<br><br><br>Sebastian<br></pre>\r\n",
+    "PostedDate": "2013-01-12T05:24:01.413-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

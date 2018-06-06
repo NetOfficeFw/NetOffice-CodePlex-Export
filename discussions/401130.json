@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "933841",
+    "ThreadId": "401130",
+    "Html": "\r\n<p>I am getting the following error when trying to close Excel from a C# application.&nbsp; I am using the following lines of code to close Excel.</p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"></p>\r\n<p>workbook.DisposeChildInstances();</p>\r\n<p>app.Quit();</p>\r\n<p>app.Dispose();</p>\r\n</span></span>\r\n<p></p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">Below is the error message I am getting.&nbsp; An unhandled exception is occuring when the c# application closes out Excel.</span></span></p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">&#65279;&nbsp;System.Runtime.InteropServices.InvalidComObjectException:\r\n Attempt has been made to use a COM object that does not have a backing class factory.</span></span></span></span></p>\r\n",
+    "PostedDate": "2012-10-29T08:05:25.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "933870",
+    "ThreadId": "401130",
+    "Html": "\r\n<p>hello,<br>\r\n<br>\r\nfirst time i see a problem like this. do you have a full source listing for me?<br>\r\nits not cleary for me in which line cause the exception. app.Dispose(); ???<br>\r\n<br>\r\nthe message indicates for me the proxy is already death yet. you can check with app.IsDisposed or workbook.IsDisposed for the information if the com proxy is already disposed. the bool IsDisposed property is hidden from intellisense.<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2012-10-29T08:59:58.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "933906",
+    "ThreadId": "401130",
+    "Html": "<p>Here is the entire problem message I am getting.</p>\r\n<p>System.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details. ---&gt; System.Runtime.InteropServices.InvalidComObjectException: Attempt has been made to use a COM object that does not have a backing class factory.<br />&nbsp;&nbsp; at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)<br />&nbsp;&nbsp; at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)<br />&nbsp;&nbsp; at NetOffice.ExcelApi._Worksheet.get_Range(Object cell1, Object cell2)<br />&nbsp;&nbsp; at WindowsFormsApplication1.CreateExcelDoc.excelTimer_Tick(Object sender, EventArgs e) in C:\\Users\\CPhillips\\Documents\\Visual Studio 2010\\Projects\\ObedianceTrialSoftware - Copy\\WindowsFormsApplication1\\trialReportForm.cs:line 3631<br />&nbsp;&nbsp; at System.EventHandler.Invoke(Object sender, EventArgs e)<br />&nbsp;&nbsp; at System.Windows.Forms.Timer.OnTick(EventArgs e)<br />&nbsp;&nbsp; at System.Windows.Forms.Timer.TimerNativeWindow.WndProc(Message&amp; m)<br />&nbsp;&nbsp; at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)</p>",
+    "PostedDate": "2012-10-29T10:43:33.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934888",
+    "ThreadId": "401130",
+    "Html": "<p>i see you use a timer and i need more informations in this case. what i think is the application is destroyed and the timer try access the dead application.<br />you can send me a simplified example to my mail adress again.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-31T10:37:40.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

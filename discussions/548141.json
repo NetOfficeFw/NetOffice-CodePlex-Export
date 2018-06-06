@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1254713",
+    "ThreadId": "548141",
+    "Html": "Hi,\r<br />\nI'm using NetOffice (1.6.0) for converting docx files to text:<br />\n<pre><code>var document = wordApplication.Documents.Open(fileName);\n//\ndocument.SaveAs(newFileName, NetOffice.WordApi.Enums.WdSaveFormat.wdFormatUnicodeText);</code></pre>\n\nHowever, with non-ascii characters (lower german quotes, french chars) it's never the same like saving as *.txt from word itself.\r<br />\nUmlauts usually work, but the resulting file always appears to be ANSI, regardless of the chosen WdSaveFormat.\r<br />\n<br />\nAnything I might have missed?\r<br />\nThanks<br />\n",
+    "PostedDate": "2014-06-10T03:01:43.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

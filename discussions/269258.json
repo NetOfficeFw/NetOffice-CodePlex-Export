@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "658844",
+    "ThreadId": "269258",
+    "Html": "\r\n<p>Hi All,</p>\r\n<p>Where would I get&nbsp;MailMergePropagateLabel this function?</p>\r\n",
+    "PostedDate": "2011-08-16T07:21:21.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658872",
+    "ThreadId": "269258",
+    "Html": "<p>It's very urgent. Thanks in advance</p>",
+    "PostedDate": "2011-08-16T08:06:00.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "662543",
+    "ThreadId": "269258",
+    "Html": "<p>I there anyone who can answer my question?</p>",
+    "PostedDate": "2011-08-24T01:39:47.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "662545",
+    "ThreadId": "269258",
+    "Html": "<p>Thanks in advance...I really need to fix this issue asap.</p>",
+    "PostedDate": "2011-08-24T01:40:10.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "662548",
+    "ThreadId": "269258",
+    "Html": "<p>i never heard from MailMergePropagateLabel. what is it?<br />can you tell me a little bit more?<br />microsoft has a forum for office developers by the way.</p>",
+    "PostedDate": "2011-08-24T01:41:13.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "662558",
+    "ThreadId": "269258",
+    "Html": "<p>This function is used to update all the labels..which are present in your template.</p>\r\n<p>It was used to be there in :</p>\r\n<p>ActiveDocument.MailMerge.MainDocumentType = _<br />wdMailingLabels<br />WordBasic.MailMergePropagateLabel</p>\r\n<p>I want an example for the same.</p>",
+    "PostedDate": "2011-08-24T02:02:24.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

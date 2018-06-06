@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1446206",
+    "ThreadId": "645548",
+    "Html": "Hi,\r<br />\nCan NetOffice be used to access Exchange from a Windows Service on the Exchange Server itself?<br />\n\r<br />\nWe've been asked to convert the background processing that our Outlook Add-in does to a service that can always be running on the exchange server.  I'm hoping to re-use a lot of the code from the Add-in that uses NetOffice.\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2015-09-28T10:39:59.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1446229",
+    "ThreadId": "645548",
+    "Html": "You want to call the Exchange Server directly? The best way to do this the EWS API(an XML based remote API from MS-Exchange).\r<br />\nBut  you cant' re-use any code any code in this scenario. MS Exchange API code is not compatible with MS-Outlook code in general.\r<br />\n(May i can help you here to convert your code because i'm an EWS API expert)\r<br />\n<br />\nAnother way is to use outlook(or the Mapi API-deprecated by Microsoft) local(not recommended)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-09-28T13:49:45.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

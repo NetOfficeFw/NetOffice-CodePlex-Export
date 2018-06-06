@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1262351",
+    "ThreadId": "550476",
+    "Html": "Hello, \r<br />\n<br />\nI am currently discovering the netoffice project and I am quite impressed by what you did at the moment.\r<br />\n<br />\nI have just a little issue about the Application.GetActiveInstances().\r<br />\n<br />\nHere is the snippet I use (At this time I have one instance that actually is visible on my desktop and on &quot;fake&quot; instance I use for tests):<br />\n<pre><code>         Application xl = new Application();\n        List&lt;Application&gt; apps = Application.GetActiveInstances().ToList();\n\n        apps.RemoveAll(app =&gt; app.Visible == false);\n\n        return apps;\n</code></pre>\n\nActually apps contains 2 instances after Application.GetActiveInstances() but my filter on the visible property is not working whereas I have only one visble on my desktop.\r<br />\n<br />\nEven stranger, the instance created in the code has the same caption as the other instance which is quite disturbing.\r<br />\n<br />\nIs that a real issue or am I doing something wrong ?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2014-07-03T05:35:55.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1274167",
+    "ThreadId": "550476",
+    "Html": "its true.<br />\n<br />\nthis is because a mistake by microsoft.  the COM running object table(ROT) returns always the first instance pointer in memory for any entry, sad but true.  i suggest you to study latest source (\\Tests\\Concept Tests\\ObjectFromWindow) to pin point all running applications once and for all !!! the test was made for ms-excel, let me know if you need help to use this concept in a different application. (of course, the NO 1.8 release is aware for the problem and want handle this better, by the way i'm sick of it to handle microsoft code issues....)<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-07-18T21:36:57.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

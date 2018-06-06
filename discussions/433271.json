@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1001770",
+    "ThreadId": "433271",
+    "Html": "Hi\r<br />\n<br />\nI have a requirement to drag and excel cell from a worksheet to a task pane.\r<br />\n<br />\nThis task pane contains a WPF control. The WPF control is hosted using ElementHost on a Winforms UserControl.\r<br />\n<br />\nHowever, I have not been able to get the Drag Drop event handlers to fire.\r<br />\n<br />\nI have enabled Drop by setting AllowDrop to True on all the controls. I have also set the background to transparent.\r<br />\n<br />\nHas anyone tried this and got it working? Is there something in NetOffice that is preventing drag and drop, or some property I have to set.\r<br />\n<br />\nThanks\r<br />\nChris<br />\n",
+    "PostedDate": "2013-02-15T04:38:29.277-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "848861",
+    "ThreadId": "359567",
+    "Html": "\r\n<p>hello,</p>\r\n<p>I am trying to read contents in a table where some cells are vertically merged. When i iterate to the particular row, i get a com exception stating cells are vertically merged so basically cannot proceed. Right now to avoid this i am physically splitting\r\n the merged cells.</p>\r\n<p>Is there a better way? Can i detect tables/rows&nbsp; with merged cells upfront and then split the cells pro-grammatically?</p>\r\n<p>Thanks in advance</p>\r\n<p>regards</p>\r\n<p>Sameer</p>\r\n",
+    "PostedDate": "2012-06-14T02:40:45.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

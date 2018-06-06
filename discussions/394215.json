@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "907812",
+    "ThreadId": "394215",
+    "Html": "\r\n<p>I have another question, i&acute;m using the CustomTaskPane, and i'm creating the taskPane content thru the&nbsp;ctpFactory.CreateCTP(, is there some way to use UserControls from another assembly thru this method or other way? I have a Class with all my\r\n UserControl that i will use thru the Addin, and i&acute;m reference this Assembly in the principal Assembly of my outlook AddIn.</p>\r\n<p>BR,</p>\r\n<p>&nbsp;</p>\r\n<p>Ricardo</p>\r\n",
+    "PostedDate": "2012-09-03T07:44:13.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "907813",
+    "ThreadId": "394215",
+    "Html": "<p>&nbsp;</p>\r\n<p><span>Just for help, when i try to create i gotta this error message \"Unable to create the Specified ActiveX Control \"</span></p>",
+    "PostedDate": "2012-09-03T07:45:15.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "913546",
+    "ThreadId": "394215",
+    "Html": "<p>Do you gotta something? I really need help with this issue!</p>",
+    "PostedDate": "2012-09-17T06:20:49.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

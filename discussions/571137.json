@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1318530",
+    "ThreadId": "571137",
+    "Html": "How do you create a copy (or clone) of a NetOffice object so when you dispose the source object, the copied/cloned object is not disposed?<br />\n<br />\nFor example:<br />\n<pre><code>\npublic void Method1(NetOffice.WordApi.Document document)\n{\n    NetOffice.WordApi.Document cloneDocument = document; /* How do you create copy here? */\n    document.Dispose();\n    Method2(cloneDocument);\n}\n\npublic void Method2(NetOffice.WordApi.Document document)\n{\n    /* Code here to work with cloned document object even though source object was disposed */\n}\n</code></pre>\n\nThank you!<br />\n",
+    "PostedDate": "2014-11-03T00:39:22.54-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1318545",
+    "ThreadId": "571137",
+    "Html": "you can't clone the real instance. the real instance is not allive in your application.<br />\nyou have to deal with the local proxies. (the real instance is alive in COM-Server(Word) memory.)<br />\n<br />\nNO doesnt support the ICloneable interface currenlty. (if you need this, please create an issue ticket)<br />\nthe easiest way is to create 2 proxies for the same instance in memory is as follows:<br />\n<br />\njust like:<br />\n<br />\nvar doc1 = app.Documents[1]:<br />\nvar doc2 = app.Documents[1]:<br />\n<br />\ndoc1.Dispose();<br />\n// doc2 proxie is still alive for the document instance and the document instance(in Word memory) is still allive until the valid proxy count is &gt; 0.<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-11-03T01:48:45.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

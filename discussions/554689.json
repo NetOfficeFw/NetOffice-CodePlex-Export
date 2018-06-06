@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1279451",
+    "ThreadId": "554689",
+    "Html": "Is it possible to use the ExcelApi to read data from an Excel spreadsheet, I'm trying to replace the use of OleDb due to limitations with remote host Excel drivers, below is an example of code that works locally but not remotely, hence the need to modify:\r<br />\n<br />\nOleDbConnection conn;\r<br />\n<br />\nconn = new OleDbConnection(&quot;provider=Microsoft.Jet.OLEDB.4.0;data source=&quot; + filename + &quot;;Extended Properties=\\&quot;Excel 8.0;HDR=NO;IMEX=1;\\&quot;&quot;);\r<br />\n<br />\nvar tblSchema = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, &quot;TABLE&quot; });\r<br />\n          <br />\nstring sheetName = tblSchema.Rows[0][&quot;TABLE_NAME&quot;].ToString();\r<br />\nstring getFileName = Path.GetFileName(filename);\r<br />\nstring tableName = getFileName.Substring(0, getFileName.Length - 4);\r<br />\n<br />\nvar cmdEdl = new OleDbCommand(&quot;SELECT * FROM [&quot; + sheetName + selectRange + &quot;]&quot;, conn);\r<br />\n              <br />\nOleDbDataReader drEdl = cmdEdl.ExecuteReader();\r<br />\n<br />\nAny help would be much appreciated :-)<br />\n",
+    "PostedDate": "2014-07-31T00:46:42.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

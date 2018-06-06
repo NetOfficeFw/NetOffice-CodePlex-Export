@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1461711",
+    "ThreadId": "650831",
+    "Html": "Here's my bit of code that has the problem.<br />\n<blockquote>\nDim ObjPane As Outlook.NavigationPane = Application.ActiveExplorer.NavigationPane<br />\nDim objCalendarModule As Outlook.CalendarModule = ObjPane.Modules.GetNavigationModule(OlNavigationModuleType.olModuleCalendar)<br />\n</blockquote>\nThis comes up as a compile-time error on the second line:  &quot;Value of type 'NetOffice.OutlookApi.NavigationModule' cannot be converted to 'NetOffice.OutlookApi.CalendarModule'&quot;.\r<br />\n<br />\nBased on Microsoft's own code sample on this page, it should be possible to make this assignment, and indeed it was until I encountered the issue in the conversion to NetOffice just now.\r<br />\nLink: <a href=\"https://msdn.microsoft.com/EN-US/library/office/ff863591.aspx\" rel=\"nofollow\">https://msdn.microsoft.com/EN-US/library/office/ff863591.aspx</a>\r<br />\n<br />\nWhat could be going wrong?\r<br />\nThanks very much,\r<br />\nSandra<br />\n",
+    "PostedDate": "2016-02-02T08:44:48.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1462225",
+    "ThreadId": "650831",
+    "Html": "hey men,\r<br />\n<br />\nI've been tried you scenario with the Interop Assemblies(Outlook 2015) from Microsoft with the same result.\r<br />\nNavigationModule and CalendarModule doesnt have any relationship. \r<br />\n(but its looks like NavigationModule is the common base class for CalendarModule and others)\r<br />\n<br />\nThis means:\r<br />\na) the documentation is wrong\r<br />\nb) heavy undocumented changes in office 2015 and above\r<br />\n<br />\nI doesnt have access to my virtual test machines right now(working for a project in another country)\r<br />\nAt monday i want try to figure out this way from the documentation is possible in older Office versions -\r<br />\nbut i dont think so. \r<br />\n<br />\n(if its helpful for your you to use \r<br />\n<br />\nOutlook.MAPIFolder calendar = Application.Session.GetDefaultFolder (Outlook.OlDefaultFolders.olFolderCalendar);\r<br />\n<br />\ninstead?)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-02-05T17:34:00.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1462581",
+    "ThreadId": "650831",
+    "Html": "Hi!\r<br />\n<br />\nThanks for your reply.  The documentation wasn't always wrong - it is how my current Office 2010 addin does it without issue.\r<br />\n<br />\nI've already gone down another road - going to bite the bullet and get Add-in Express.  All my code just works with the trial version, and I've spent too much time on this already.  :(\r<br />\n<br />\nUnfortunately, I can't use the OutlookMAPIFolder option.  I think that just gets the user's calendar.  I actually need the CalendarModule so that I can get a reference to the Other Calendars group...<br />\n<pre><code>Dim objGroup As Outlook.NavigationGroup\nobjGroup = objCalendarModule.NavigationGroups.GetDefaultNavigationGroup(Outlook.OlGroupType.olOtherFoldersGroup)</code></pre>\n\n... and eventually check if the user's department SharePoint calendar is under objGroup.NavigationFolders.  If not, I add it.\r<br />\n<br />\nI also found a bug in NetOffice and submitted the fix in GitHub.  It's when you want to register your addin under HKLM.\r<br />\n<br />\nAnd I also hit another showstopper with the NetOffice conversion. ( I don't mean to sideline the topic, but I wanted to let you know in case you want to take a look and make enhancements.)  This one was with trying to handle the ModuleSwitch event<br />\n<pre><code>Private ObjPane As Outlook.NavigationPane  ' needs to be defined outside of the startup event handler because it is referenced the definition of the ModuleSwitch event handler\nObjPane = Application.ActiveExplorer.NavigationPane\nAddHandler ObjPane.ModuleSwitchEvent, New Outlook.NavigationPane_ModuleSwitchEventHandler(AddressOf NavigationPane_ModuleSwitch)</code></pre>\n\nBut in the handler, I am given Nothing for theModule.  I need to check if it's the Calendar module that was opened, but can't.<br />\n<pre><code>    Private Sub NavigationPane_ModuleSwitch(ByVal theModule As Outlook.NavigationModule)</code></pre>\n\nThanks for your awesome work, and it was a pleasure working with it, but at least in my case, it didn't seem complete in the areas that I needed.<br />\n",
+    "PostedDate": "2016-02-09T11:09:31.79-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

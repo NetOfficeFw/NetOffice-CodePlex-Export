@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1028262",
+    "ThreadId": "439743",
+    "Html": "I was looking at the api, but i was wondering how to find empty rows (rows with empty cells) to eliminate these kind of rows<br />\n<br />\nWell, i can use maybe<br />\n NetOffice.ExcelApi.Range Find<br />\n<br />\nbut i can't find any worth examples. Maybe this is the wrong way to do it?!<br />\n",
+    "PostedDate": "2013-04-10T00:49:38.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1028281",
+    "ThreadId": "439743",
+    "Html": "The second thing is that the fields and methods are not described well IMHO, so the learning curve is really steep.<br />\nIt would be better to set some references to the msdn library where the documentation problem could be disarmed a little bit ;)<br />\n",
+    "PostedDate": "2013-04-10T01:38:02.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1028456",
+    "ThreadId": "439743",
+    "Html": "whitewoolve,\r<br />\n<br />\nGoogle &quot;VBA delete empty rows&quot; you'll find a ton of information on the topic. E.g., Range(&quot;A1:A100&quot;).SpecialCells(xl...).Delete (I don't remember what the actual constant was).<br />\n",
+    "PostedDate": "2013-04-10T07:36:48.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030592",
+    "ThreadId": "439743",
+    "Html": "Thx John,\r<br />\n<br />\nbut i solved it  with XlDeleteShiftDirection constant<br />\n<pre><code>                    range.EntireRow.Delete(Excel.Enums.XlDeleteShiftDirection.xlShiftUp);</code></pre>\n\nThe only interesting column is the first column in every row, so i iterated through the rows and deleted the concerning rows<br />\n",
+    "PostedDate": "2013-04-15T06:13:41.003-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030653",
+    "ThreadId": "439743",
+    "Html": "Yes, that is another way to do it. Just takes a really long time if you have a nontrivial amount of information.<br />\n",
+    "PostedDate": "2013-04-15T07:53:19.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031062",
+    "ThreadId": "439743",
+    "Html": "Everything is relative :)) It counts on the number of rows :) But i havn't done a benchmark for 30 rows<br />\n",
+    "PostedDate": "2013-04-16T04:19:51.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031211",
+    "ThreadId": "439743",
+    "Html": "Maybe something with UsedRange might help you out.<br />\n<pre><code>                 workbook = xlsApp.Workbooks.Open(&lt;file&gt;, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\n                                                Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\n                                                Type.Missing, Type.Missing);\n                Excel.Worksheet workSheet;\n                foreach (Excel.Worksheet sheet in workbook.Sheets)\n                {\n                    workbook.Activate();\n                    sheet.Activate();\n                    foreach (Excel.Shape shape in sheet.Shapes)\n                    {\n                              sheet.UsedRange.Copy(Missing.Value);  //copies every in the range that is currently being used.\n                    }\n                 }</code></pre>\n\n",
+    "PostedDate": "2013-04-16T08:25:17.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

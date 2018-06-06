@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "847890",
+    "ThreadId": "359288",
+    "Html": "\r\n<div>\r\n<p>Hello,</p>\r\n<p>I am iterating through paragraphs in a word document Net office API. So far i did not have a problem detecting different headings by using the style object. However now i have a situation that contents inside a table have the same style as those outside\r\n it. I need to figure out a way to understand when the paragraph in question is actually a table.</p>\r\n<p>I have similar need to figure out when paragraph is actually an embedded image.</p>\r\n<p>When i physically select a table or image in the word document i can see that tools section above format changes. When an image is selected it is &quot;Picture tools&quot; when a table is selected it is 'Table tools&quot; and when a normal paragraph is selected the tools\r\n section does not show.</p>\r\n<p>How can i detect this behavior using word interop/Net office API?</p>\r\n<p>Thanks Sameer</p>\r\n</div>\r\n",
+    "PostedDate": "2012-06-12T04:48:42.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

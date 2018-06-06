@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1008096",
+    "ThreadId": "434827",
+    "Html": "Hallo Sebastian\r<br />\n<br />\nWir haben ein bestehendes PowerPoint ComObjekt welches uns durch die Edraw-ActiveX-Komponente erstellt wird.\r<br />\n<br />\nKönnen wir dieses Objekt an Deine Library übergeben? new PowerPoint.Application() erlaubt das ja grundsätzlich nicht, ob wohl es einen solchen Costructor gibt, welcher aber nicht zugänglich ist.<br />\n",
+    "PostedDate": "2013-02-28T03:02:11.277-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008106",
+    "ThreadId": "434827",
+    "Html": "Hallo Yasawa,\r<br />\n<br />\nEin Konstruktor für diesen Fall ist natürlich verfügbar.\r<br />\n<br />\nC#\r<br />\n new PowerPoint.Application(null, proxy);\r<br />\n<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-02-28T03:24:21.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008128",
+    "ThreadId": "434827",
+    "Html": "Ah, super, danke!<br />\n",
+    "PostedDate": "2013-02-28T04:16:20.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

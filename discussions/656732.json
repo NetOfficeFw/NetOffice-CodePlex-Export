@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1479953",
+    "ThreadId": "656732",
+    "Html": "is Office Api supported in mono c# <br />\n",
+    "PostedDate": "2016-07-27T08:25:27.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1480158",
+    "ThreadId": "656732",
+    "Html": "You can compile your solution at development time with NetOffice without worries even with Mono. But at runtime you need an MS-Office version to success.\r<br />\nBUT Mono is a - Linux &lt;3 - framework and MS-Office is not available here. (i'm not sure i understand your question)\r<br />\nIf you want only create and edit office documents - you can do this with some other great projects available here on - Codeplex &lt;3 - and there works fine in Mono.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-07-31T12:39:18.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

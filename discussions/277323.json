@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "689843",
+    "ThreadId": "277323",
+    "Html": "\r\n<p>Please<br>\r\nDoes anyone have an example of how open and read a excel file with NetOffice?</p>\r\n",
+    "PostedDate": "2011-10-26T13:01:49.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "689945",
+    "ThreadId": "277323",
+    "Html": "<p>hello</p>\n<div style=\"background-color: white; color: black;\">\n<pre><span style=\"color: green;\">// this example in C# open a workbook and write the cell content from cell [5,2] from the first worksheet to console</span>\r\n\r\nExcel.Workbook  book  = _excelApplication.Workbooks.Open(<span style=\"color: #a31515;\">\"C:\\\\myExcelFile.xlsx\"</span>);\r\nExcel.Worksheet sheet = book.Worksheets[1] <span style=\"color: blue;\">as</span> Excel.Worksheet; <span style=\"color: green;\">// index base in all office products is 1 and not 0</span>\r\nExcel.Range     range = sheet.Cells[5, 2];\r\nConsole.WriteLine(range.Value);\r\n</pre>\n</div>\n<p>you find various excel examples C#/VB in&nbsp; the examples folder and online.<br /><a href=\"http://netoffice.codeplex.com/wikipage?title=Excel_ExampleOverview\">http://netoffice.codeplex.com/wikipage?title=Excel_ExampleOverview</a><br /><br />*with best regards<br />Sebastian</p>",
+    "PostedDate": "2011-10-26T15:45:45.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "806657",
+    "ThreadId": "277323",
+    "Html": "<blockquote style=\"padding-bottom: 0px; font-style: italic; margin: 0.25em 1em 0px; padding-left: 0.25em; padding-right: 0.25em; padding-top: 0px; border: #ccc 0.1em solid;\"><strong>SebastianDotNet wrote:</strong><br />\r\n<p>hello</p>\r\n<div style=\"background-color: white; color: black;\">\r\n<pre><span style=\"color: green;\">// this example in C# open a workbook and write the cell content from cell [5,2] from the first worksheet to console</span>\r\n\r\nExcel.Workbook  book  = _excelApplication.Workbooks.Open(<span style=\"color: #a31515;\">\"C:\\\\myExcelFile.xlsx\"</span>);\r\nExcel.Worksheet sheet = book.Worksheets[1] <span style=\"color: blue;\">as</span> Excel.Worksheet; <span style=\"color: green;\">// index base in all office products is 1 and not 0</span>\r\nExcel.Range     range = sheet.Cells[5, 2];\r\nConsole.WriteLine(range.Value);\r\n</pre>\r\n</div>\r\n<p>you find various excel examples C#/VB in&nbsp; the examples folder and online.<br /><a href=\"http://netoffice.codeplex.com/wikipage?title=Excel_ExampleOverview\">http://netoffice.codeplex.com/wikipage?title=Excel_ExampleOverview</a><br /><br />*with best regards<br />Sebastian</p>\r\n</blockquote>\r\n<p><br />Thank sebastian for such a great helper.... i would like to ask how do i read file excel with a multiple range rows and column, i know the column , example i want to read column like : <span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">range = sheet.get_Range(</span><span style=\"color: #a31515; font-size: x-small;\"><span style=\"color: #a31515; font-size: x-small;\">\"$A6:$J6\"</span></span><span style=\"font-size: x-small;\">);&nbsp; but i don't know how to read a dynamic row. </span></span></p>\r\n<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">My question, how do i read&nbsp;dynamic row if theirs multiple value/multiple row which is don't know how many rows will have data inside the rows. </span></span></p>\r\n<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">I mean the row could be 5 row, but could be 10 row, dynamic value from excel, but how do i loop to get those values. Thank before for you contribution of this great netoffice</span></span></p>\r\n<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">&nbsp;</span></span></p>\r\n<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">&nbsp;</span></span></p>",
+    "PostedDate": "2012-03-06T22:06:41.39-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "806764",
+    "ThreadId": "277323",
+    "Html": "<p>something like that?<br /><br /></p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre> Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];\r\n\r\n <span style=\"color: green;\">// fetch used range, means top-left to right-bottom corner from content</span>\r\n <span style=\"color: blue;\">foreach</span> (Excel.Range cell <span style=\"color: blue;\">in</span> workSheet.UsedRange)\r\n {\r\n   <span style=\"color: blue;\">int</span> rowIndex = cell.Row;\r\n   <span style=\"color: blue;\">int</span> columnIndex = cell.Column;\r\n\r\n   Console.WriteLine(<span style=\"color: #a31515;\">\"This cell is in row {0} and column {1}\"</span>, rowIndex, columnIndex);\r\n }\r\n\r\n <span style=\"color: green;\">// get a specific row ( the third in this example )</span>\r\n Excel.Range row = workSheet.Rows[3, Type.Missing] <span style=\"color: blue;\">as</span> Excel.Range;\r\n\r\n <span style=\"color: green;\">// get all cells from the row</span>\r\n Excel.Range rowCells = row.Cells;\r\n\r\n <span style=\"color: green;\">// get a specific cell via x,y coordinates</span>\r\n Excel.Range specificCell = workSheet.Cells[3, 5] <span style=\"color: blue;\">as</span> Excel.Range;  <span style=\"color: green;\">// 3,5 is $E3 </span>\r\n\r\n Console.WriteLine(<span style=\"color: #a31515;\">\"This adress of specificCell is {0}\"</span>, specificCell.Address(0, 0));\r\n\r\n</pre>\r\n</div>",
+    "PostedDate": "2012-03-07T03:31:54.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

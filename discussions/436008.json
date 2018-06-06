@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1012781",
+    "ThreadId": "436008",
+    "Html": "Hi all,\r<br />\n<br />\nI am trying to port from VBA to .NET one of my old applications to transliterate the content of an Excel sheet to and from cyrillic codepage. For that I need to access the individual characters in each cell, as cells or parts of cells that are formatted in italic must stay invariant in the process.\r<br />\n<br />\nI am stuck with this (simplified) version of my code:<br />\n<pre><code>Excel.Range theRange = exlSheet.UsedRange;            \nExcel.Range theCell;\nint rowsCt = theRange.Rows.Count;\nint colsCt = theRange.Columns.Count;\nfor (int iRow = 1; iRow &lt;= rowsCt; iRow++)\n      {\n           for (int iCol = 1; iCol &lt;= colCt; iKol++)\n            {\n                 // this the current cell\n                  theCell = theRange.Cells[iRow, iCol];\n                </code></pre>\n\nAfter this row I thought I intended to use the Characters object to loop through the individual characters in the cell, but this:<br />\n<pre><code>for (int iChar = 1; i &lt;= theCell.Characters.Count; i++)\n{\n      if (theCell.Characters[iChar, 1].Font.FontStyle = &quot;Italic&quot;) \n      {\n           ...</code></pre>\n\ndoesn't work, although it works in VBA code. \r<br />\nVisual Studio displays a red squiggly line with a tooltip text &quot;Cannot apply indexing with [] to an expression of type 'NetOffice.ExcelApi.Characters'&quot;.\r<br />\n<br />\nI understand what the problem is, but I see no other way to work character by character in the cell.\r<br />\nI need that because I know no other way to find parts of cell content that are formatted in italic except to loop through the cell characters and note the beginnings and ends of the italic parts, and then transliterate only the parts that are not in italic.\r<br />\n<br />\nI use NetOffice 1.0 with .NET Framework 3.5.\r<br />\n<br />\nThank you in advance for any help.<br />\n",
+    "PostedDate": "2013-03-09T09:55:13.8-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1012929",
+    "ThreadId": "436008",
+    "Html": "You should loop through cell characters like this:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">for</span> (<span style=\"color:Blue;\">int</span> iChar = 1; iChar &lt;= theCell.Characters.Count; iChar++)\n{\n  <span style=\"color:Blue;\">if</span> (theCell.Characters(iChar, 1).Font.FontStyle == <span style=\"color:#A31515;\">&quot;Italic&quot;</span>) \n  {\n    ...\n  }\r\n</pre></div>And here is one more tip to check for italicized characters: FontStyle depends on language version so you'd better use Font.Italic property.<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">for</span> (<span style=\"color:Blue;\">int</span> iChar = 1; iChar &lt;= theCell.Characters.Count; iChar++)\n{\n  <span style=\"color:Green;\">//if (theCell.Characters(iChar, 1).Font.FontStyle == &quot;Italic&quot;) doesn&#39;t work on Russian Excel</span>\n  <span style=\"color:Green;\">//if (theCell.Characters(iChar, 1).Font.FontStyle == &quot;курсив&quot;) works on Russian Excel</span>\n  <span style=\"color:Blue;\">if</span> (theCell.Characters(iChar, 1).Font.Italic) <span style=\"color:Green;\">//doesn&#39;t depend on Excel language version</span>\n  {\n    ...\n  }\r\n</pre></div>I've checked this code with current NetOffice version (1.5.1.2). I don't know whether it works with NetOffice 1.0 and what is the reason for using old version.<br />\n",
+    "PostedDate": "2013-03-10T04:32:17.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1012945",
+    "ThreadId": "436008",
+    "Html": "Thank you for your reply.\r<br />\n<br />\nUnfortunately, it doesn't work, for the syntax you propose Visual Studio says &quot;Non-invocable member 'ExcelApi.Range.Characters' cannot be used like a method&quot;, which makes sense, Characters is not a method of a Range type object,, and the syntax with rounded brackets can't work.\r<br />\n<br />\nI also downloaded and tried with NetOffice 1.5, but I get the same behavior and message.<br />\n",
+    "PostedDate": "2013-03-10T06:27:41.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1012947",
+    "ThreadId": "436008",
+    "Html": "Finally solved it. <br />\nThe problem was the fact that the Characters property of the Range object is not directly usable in .NET in the same form as it is in VBA. As there is no Character object, it is necessary to use the get_Characters method of the Range object to extract a range that is one character long, and then work with that character. So, this code works:<br />\n<pre><code>for (int iChar = 1; i &lt;= theCell.Characters.Count; i++)\n{\n      Excel.Collection oneChar = theCell.get_Characters(iChar, 1): \n      if ((bool)oneChar.Font.Italic) \n      {\n         ...</code></pre>\n\n",
+    "PostedDate": "2013-03-10T07:05:12.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1013003",
+    "ThreadId": "436008",
+    "Html": "you can use theCell.Characters(iChar, 1) as well in C# and NetOffice 1.5. (btw: you have to use the get_ version in VB.NET)\r<br />\n<br />\nSebastian <br />\n",
+    "PostedDate": "2013-03-10T13:32:11.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

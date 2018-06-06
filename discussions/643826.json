@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1440882",
+    "ThreadId": "643826",
+    "Html": "Hallo zusammen,<br />\n<br />\nich nutze seit geraumer Zeit NetOffice für diverse Office Automation Projekte und bin wirklich begeistert. Im Moment setze ich eine neue Idee um und bin bei verschiedenen Enums auf das Problem gestoßen, dass ich Werte nicht korrekt zuweisen kann.<br />\n<br />\nKonkreter Fall: NetOffice.OfficeApi.Enums.MsoThemeColorIndex. Hier gibt es den Wert &quot;msoThemeColorMixed&quot;, der sowohl von Office als auch von NetOffice zur Verfügung gestellt wird und oft ein Defaultwert ist. Als int repräsentiert ist dieser Wert eine -2. Und genau hier scheint das Problem zu liegen: Ich darf anscheinend keinen negativen Wert zuweisen. Das muss aber zwingend sein, da diverse Enums einen negativen Wert als Default vorsehen.<br />\n<br />\nGibt es hierfür ggf. einen Workaround?<br />\n<br />\nVielen Dank und beste Grüße!<br />\n<br />\n<strong>Edit</strong>: Testbeispiel<br />\n<pre><code>[TestMethod]\n        public void testEnumError()\n        {\n            Powerpoint.Application app = new Powerpoint.Application();\n            Powerpoint.Presentation pres = app.Presentations.Add(NetOffice.OfficeApi.Enums.MsoTriState.msoCTrue);\n            Powerpoint.Slide currentSlide = pres.Slides.Add(1, Powerpoint.Enums.PpSlideLayout.ppLayoutTitleOnly);\n\n            Powerpoint.Shape shape = currentSlide.Shapes.AddShape(NetOffice.OfficeApi.Enums.MsoAutoShapeType.msoShapeRectangle, 100, 100, 100, 100);\n            shape.TextFrame2.TextRange.Text = &quot;hello&quot;;\n\n            shape.TextFrame2.TextRange.Font.UnderlineColor.ObjectThemeColor = NetOffice.OfficeApi.Enums.MsoThemeColorIndex.msoThemeColorAccent1; //Wert=5; funktioniert\n            shape.TextFrame2.TextRange.Font.UnderlineColor.ObjectThemeColor = NetOffice.OfficeApi.Enums.MsoThemeColorIndex.msoNotThemeColor; //Wert=0; Fehler\n            shape.TextFrame2.TextRange.Font.UnderlineColor.ObjectThemeColor = NetOffice.OfficeApi.Enums.MsoThemeColorIndex.msoThemeColorMixed; //Wert=-1; Fehler\n        }</code></pre>\n\n<strong>Edit 2</strong>: Ich bekomme inzwischen auch an anderen Stellen exceptions:<br />\n<pre><code>Powerpoint.Application app = new Powerpoint.Application();\nPowerpoint.Presentation pres = app.Presentations.Add(NetOffice.OfficeApi.Enums.MsoTriState.msoCTrue);\nPowerpoint.Slide currentSlide = pres.Slides.Add(1, Powerpoint.Enums.PpSlideLayout.ppLayoutTitleOnly);\n\nPowerpoint.Shape shape = currentSlide.Shapes.AddShape(NetOffice.OfficeApi.Enums.MsoAutoShapeType.msoShapeRectangle, 100, 100, 100, 100);\n           \nshape.Line.BeginArrowheadLength = NetOffice.OfficeApi.Enums.MsoArrowheadLength.msoArrowheadLengthMedium; //shape.Line.BeginArrowheadLength hat bereits den Wert &quot;msoArrowheadLengthMedium&quot;. Weise ich diesen aber nochmal explizit zu bekomme ich eine exception            </code></pre>\n\n",
+    "PostedDate": "2015-08-17T12:25:55.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1441156",
+    "ThreadId": "643826",
+    "Html": "Hallo,\r<br />\n<br />\nIch kann Fehler bestätigen, allerdings ist es kein Fehler von NetOffice.\r<br />\nDas Problem tritt auch auf mit den Interop Assemblies und sogar in VBA innerhalb eines Dokuments auf.\r<br />\nIch habe ein paar Topics gefunden die das gleiche Problem beschreiben, jedoch ohne brauchbare Antwort.\r<br />\nEntweder ist das ein Fehler oder einfach nicht vernünftig dokumentiert welche Bedingungen es braucht damit diese Werte setzbar sind.\r<br />\n<br />\nDen 2. Fehler schaue ich mir heute noch an. \r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-08-20T06:13:44.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1441248",
+    "ThreadId": "643826",
+    "Html": "Hi Sebastian,\r<br />\n<br />\ndanke für die schnelle Antwort! habe es auch nochmal angeschaut: Weder Interop noch VBA lassen die Operation zu. Dann muss ich mal schauen, wie man das sinnvoll zwischenspeichern und dennoch zuweisen kann.\r<br />\n<br />\nBzgl. meinem 2ten Edit habe ich auch noch in VBA geschaut (Ausgangslage: PPT mit einem Slide mit einem normalen Shape):<br />\n<pre><code>Sub test()\n\n    Dim shape As PowerPoint.shape\n    \n    Set shape = Application.ActivePresentation.Slides(1).Shapes(1)\n    \n    shape.Line.BeginArrowheadLength = msoArrowheadLengthMedium\n\nEnd Sub</code></pre>\n\nObwohl &quot;BeginArrowheadLength&quot; schon den Wert &quot;msoArrowheadLengthMedium&quot; wirft der obere Ausschnitt eine exception... also wirklich sauber ist das dann leider nicht und da kann NetOffice auch nicht lösen was MS verpasst hat ;-)\r<br />\n<br />\nAn der Stelle aber nochmal vielen Dank für dein wirklich super Projekt und auch dein persönliches Engagement, Nutzerfragen so schnell zu beantworten!\r<br />\n<br />\nBeste Grüße und schon einmal ein schönes Wochenende!<br />\n",
+    "PostedDate": "2015-08-21T03:49:16.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

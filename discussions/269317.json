@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "659095",
+    "ThreadId": "269317",
+    "Html": "\r\n<p>How can i dynamically change Active workbook or ThisWorkbook in Excel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>Can i get workbook i need&nbsp; from Workbooks by key&nbsp;</p>\r\n",
+    "PostedDate": "2011-08-16T14:37:41.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "659113",
+    "ThreadId": "269317",
+    "Html": "<p>o sorry i've found the answer .. i missed string key using&nbsp; to get item in Workbooks, i thought&nbsp; that only&nbsp; int32 can be used as key&nbsp; and&nbsp; then it is not conveniet of course. &nbsp;&nbsp;&nbsp;&nbsp; i've <span id=\"result_box\" class=\"short_text\" lang=\"en\"><span class=\"hps\">solve the problem</span></span>&nbsp;&nbsp; don't worry about it</p>",
+    "PostedDate": "2011-08-16T15:21:44.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

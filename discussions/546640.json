@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1249799",
+    "ThreadId": "546640",
+    "Html": "I'm trying to port an Excel VSTO Addin over to NetOffice.  So far I've got the Addin launching, but any time I try to make a call on a NetOffice object I get the following:<br />\n<pre><code>----- Source: NetOffice -----\nInner Exception 1: System.MissingMethodException: Method 'System.__ComObject.Add' not found.\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)\nSystem.Runtime.InteropServices.COMException: See inner exception(s) for details.\n   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)\n   at NetOffice.ExcelApi.Workbooks.Add()\n   at Hcg.Stinger.Connect.InitializeAutomationAddIn() in D:\\Code\\Prevision\\Source\\Hcg\\Stinger\\Connect.cs:line 541\n   at Hcg.Stinger.Connect.OnStartupComplete(Array&amp; custom, MainTaskPane taskPane) in D:\\Code\\Prevision\\Source\\Hcg\\Stinger\\Connect.cs:line 258\n----------\n</code></pre>\n\nThe code is pretty straightforward:<br />\n<pre><code>Excel.Workbook  book = _excelApp.Workbooks.Add();</code></pre>\n\nI also got the similar error when I called saying the Cursor did not exist, even though it show up in the intellisense:<br />\n<pre><code>Excel.Enums.XlMousePointer cursorOriginal = Excel.Enums.XlMousePointer.xlDefault;\n_excelApp.Cursor = Excel.Enums.XlMousePointer.xlWait;</code></pre>\n\nIdeas?<br />\n\r<br />\nThanks,\r<br />\n<br />\nErick<br />\n",
+    "PostedDate": "2014-05-26T15:59:14.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

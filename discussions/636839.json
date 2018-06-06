@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1423219",
+    "ThreadId": "636839",
+    "Html": "Hi,\r<br />\n<br />\nI am creating presentation file using net office. On My machine office 2010 and 2013 both are present. In Office 2013 new slide size widescreen is added. I want to create slide with aspect ration 4:3 which is possible in office 2010 only.  I have used below code to create presentation which clearly mention that create presentation in 2010.\r<br />\n<br />\n new PowerPoint.Application(&quot;PowerPoint.Application.14&quot;)\r<br />\n<br />\nBut still when I run my program it create slide of wide screen size. If I run application on machine 2010 it creates proper slide with aspect ration 4:3.\r<br />\n<br />\nPlease help me if any one has worked on this issue\r<br />\n<br />\nThanks,\r<br />\nIndresh<br />\n",
+    "PostedDate": "2015-05-06T01:17:41.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

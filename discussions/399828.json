@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "928485",
+    "ThreadId": "399828",
+    "Html": "\r\n<p>I'm attempting to create a button in an already existing commandbar menu but am having a heck of a time. I've been able to create one using late binding since I can't use NetOffice since it doesn't expose CommandBarControl.Add method. But I haven't been\r\n able to capture the event when I do it this way. Any help would be appreciated!</p>\r\n<p>My late bound code:</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">Dim</span>�oControl�<span style=\"color:blue\">As</span>�<span style=\"color:blue\">Object</span>�=�xlApp.CommandBars.FindControl(Type.Missing,�CiFilter_WorksheetMenuBarControlID)\r\n\r\n<span style=\"color:blue\">Dim</span>�oNewControl�=�oControl.Controls.Add(Type:=MsoControlType.msoControlButton,�Temporary:=<span style=\"color:blue\">True</span>)\r\n\r\n\r\n</pre>\r\n</div>\r\n<p>This is what I've used as my template:</p>\r\n<p><a href=\"http://www.cpearson.com/excel/CreatingCOMAddIn.aspx\">http://www.cpearson.com/excel/CreatingCOMAddIn.aspx</a></p>\r\n",
+    "PostedDate": "2012-10-17T18:32:28.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "930867",
+    "ThreadId": "399828",
+    "Html": "<p>NetOffice doesnt expose the CommandBarControl.Add method ? <br />you got an exception or whats the problem and did you try the excel example09.vb ?<br /><br /></p>",
+    "PostedDate": "2012-10-23T00:48:29.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "931132",
+    "ThreadId": "399828",
+    "Html": "<p>That did it. I guess I was looking in the wrong place to figure out how to do it!</p>",
+    "PostedDate": "2012-10-23T08:05:07.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "931291",
+    "ThreadId": "399828",
+    "Html": "<p>OK, it didn't quite do it. What I'm trying to do is add a control under an existing control location (Filter) so this works in VBA:</p>\r\n<p>&nbsp; &nbsp;\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">Dim</span> oControl <span style=\"color: blue;\">As</span> CommandBarControl\r\n<span style=\"color: blue;\">Set</span> oControl = Application.CommandBars.FindControl(ID:=30031)\r\n<span style=\"color: blue;\">Dim</span> oNewControl <span style=\"color: blue;\">As</span> CommandBarControl\r\n<span style=\"color: blue;\">Set</span> oNewControl = oControl.Controls.Add(Type:=MsoControlType.msoControlButton, Temporary:=<span style=\"color: blue;\">True</span>)\r\n<span style=\"color: blue;\">With</span> oNewControl\r\n  .Caption = <span style=\"color: #a31515;\">\"&amp;New Filter\"</span>\r\n<span style=\"color: blue;\">End</span> <span style=\"color: blue;\">With</span>\r\n</pre>\r\n</div>\r\n</p>\r\n<p>But in NetOffice I cannot add a control from another control like I did above. I'll keep trying different things. :\\</p>",
+    "PostedDate": "2012-10-23T12:43:53.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932262",
+    "ThreadId": "399828",
+    "Html": "<p>i try to use your code in VBA/Excel2007 but the CommandBarControl has also no Controls Collection here. what is your excel version? Oo<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-25T02:32:12.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932384",
+    "ThreadId": "399828",
+    "Html": "<p>I'm using Excel 2003 on Windows XP.</p>\r\n<p>Thanks for taking a look at this!</p>",
+    "PostedDate": "2012-10-25T06:21:52.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932415",
+    "ThreadId": "399828",
+    "Html": "<p>this is magic. the office object library doesnt have the Controls property for CommandBarControl. the VBA intellisense doesnt show the Controls property but it works at runtime! its not clearly for why this code works and i need some days to clearify the situation. as hotfix i suggest you to create an extension to use the Controls property.<br />\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">Imports</span> NetOffice\r\n<span style=\"color: blue;\">Imports</span> NetOffice.OfficeApi\r\n\r\n<span style=\"color: blue;\">Public</span> <span style=\"color: blue;\">Module</span> CommandBarControlExtensions\r\n\r\n    &lt;System.Runtime.CompilerServices.Extension()&gt;\r\n    <span style=\"color: blue;\">Public</span> <span style=\"color: blue;\">Function</span> Controls(<span style=\"color: blue;\">ByVal</span> ctrl <span style=\"color: blue;\">As</span> CommandBarControl) <span style=\"color: blue;\">As</span> CommandBarControls\r\n\r\n        <span style=\"color: blue;\">Dim</span> ctrls <span style=\"color: blue;\">As</span> <span style=\"color: blue;\">Object</span> = NetOffice.Invoker.PropertyGet(ctrl, <span style=\"color: #a31515;\">\"Controls\"</span>)\r\n        <span style=\"color: blue;\">Return</span> NetOffice.Factory.CreateObjectFromComProxy(ctrl, ctrls)\r\n\r\n    <span style=\"color: blue;\">End</span> <span style=\"color: blue;\">Function</span>\r\n\r\n<span style=\"color: blue;\">End</span> <span style=\"color: blue;\">Module</span>\r\n</pre>\r\n</div>\r\n</p>",
+    "PostedDate": "2012-10-25T07:03:49.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932685",
+    "ThreadId": "399828",
+    "Html": "<p>I tried your code:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>    &lt;Extension()&gt;\r\n    <span style=\"color: blue;\">Public</span> <span style=\"color: blue;\">Function</span> Controls(<span style=\"color: blue;\">ByRef</span> ctrl <span style=\"color: blue;\">As</span> CommandBarControl) <span style=\"color: blue;\">As</span> CommandBarControls\r\n\r\n        <span style=\"color: blue;\">Dim</span> ctrls <span style=\"color: blue;\">As</span> <span style=\"color: blue;\">Object</span> = NetOffice.Invoker.PropertyGet(ctrl, <span style=\"color: #a31515;\">\"Controls\"</span>)\r\n        <span style=\"color: blue;\">Return</span> NetOffice.Factory.CreateObjectFromComProxy(ctrl, ctrls)\r\n\r\n    <span style=\"color: blue;\">End</span> <span style=\"color: blue;\">Function</span>\r\n</pre>\r\n</div>\r\n</p>\r\n<p>But it didn't like the first line (Invoker).</p>\r\n<p>I was thinking that it isn't absolutely necessary that I put the control in the \"Filter\" menu. I could just place it under it. So, if you have higher priority items don't worry about it, it is just a \"nice to have\" but not necessary.</p>\r\n<p>Thanks for your help!</p>",
+    "PostedDate": "2012-10-25T15:22:10.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932826",
+    "ThreadId": "399828",
+    "Html": "<p>no idea why it doesnt works for you. i create an example project. <br />please checkout: http://netoffice.codeplex.com/wikipage?title=Download%20Page<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-26T00:53:20.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934342",
+    "ThreadId": "399828",
+    "Html": "<p>That worked. Not sure why it wasn't working before. Thanks. Still not certain how to add the control in the correct place using this code. I'll keep working on it though.</p>",
+    "PostedDate": "2012-10-30T11:32:25.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934372",
+    "ThreadId": "399828",
+    "Html": "<p>OK, it stops working when I use the .Add property with the Controls via the Extension.</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>oControl = _application.CommandBars _\r\n   .FindControl(Type.Missing, 901)\r\n<span style=\"color: blue;\">Dim</span> oNewerControl = oControl.Controls _\r\n   .Add(MsoControlType.msoControlButton, Type.Missing, Type.Missing, oControl.Index, <span style=\"color: blue;\">True</span>)</pre>\r\n<pre><br /></pre>\r\n<pre>The second line above.</pre>\r\n</div>\r\n</p>",
+    "PostedDate": "2012-10-30T12:31:56.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934887",
+    "ThreadId": "399828",
+    "Html": "<p>stop working means what? the best informations for me comes from the NetOffice debug console. but you can also copy the exception message and also the messages from all inner exceptions.<br />btw: add is not property ;)<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-31T10:35:39.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

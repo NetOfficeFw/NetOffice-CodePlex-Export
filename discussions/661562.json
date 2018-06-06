@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1493212",
+    "ThreadId": "661562",
+    "Html": "Hi,\r<br />\nI am new in NetOffice. I created an Excel AddIn using Developer Toolbox. It would be fine to step into the AddIn and debug it as I am used in the Visual Studio.\r<br />\nCould you tell me if it is possible?\r<br />\nThanks<br />\n",
+    "PostedDate": "2017-02-24T05:21:12.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1493841",
+    "ThreadId": "661562",
+    "Html": "Yes. We can.\r<br />\n<br />\nWe need to attach the Excel process in Visual Studio to debug the plugin.<br />\n<ul>\n<li>Close the excel application.</li>\n<li>Build the Addin project</li>\n<li>open the excel application. Hope you will see the newly created addin components (like ribbon buttons or task pane, etc.)</li>\n<li>Now In Visual studio attach the excel process. (Debug &gt; Attach to process and select excel.exe and click attach)</li>\n<li>Set the break point in your code</li>\n<li>execute the addin functionality from excel.</li>\n</ul>\n",
+    "PostedDate": "2017-03-09T20:54:59.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

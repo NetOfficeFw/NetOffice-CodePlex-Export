@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1219635",
+    "ThreadId": "538074",
+    "Html": "First of all many thanks for such amazing project!!!\r<br />\n<br />\nI'm new to NetOffice and also ExcelDNA, anyway I've createad a small DNA addin that performs a long operation, hence I need to run it in a parallel thread. If I perform such an operation then Excel process does not exit when user tries to close it.\r<br />\n<br />\nin my code I'm using this<br />\n<pre><code>using (new ExcelSynchronizationContextInstaller())\n            {\n                _isRunning = true;\n                UpdateViews();\n                var ctx = SynchronizationContext.Current;\n                Task.Factory.StartNew(() =&gt;\n                    {\n                        try\n                        {\n                            action();\n                        }\n                        catch (Exception e)\n                        {...}\n                        finally\n                        {\n                            ctx.Post(_ =&gt;\n                            {\n                                _isRunning = false;\n                                UpdateViews();                           \n                            }, null);\n                        }\n                    });\n            }</code></pre>\n\nExcelSynchronizationContextInstaller comes from <a href=\"https://github.com/Excel-DNA/Add-In-Manager/blob/master/ExcelDna-0.30/Distribution/Samples/Async/AsyncFunctions/SyncContext.cs\" rel=\"nofollow\">here</a>\r<br />\n<br />\nMy cleanup routine is following (executed within ExcelRibbon.OnBeginShutdown override)<br />\n<pre><code>if (_excel == null) return;\nvar x = Factory.ProxyCount;\n_excel.DisposeChildInstances();\nx = Factory.ProxyCount; //==1\n_excel.Quit();\nx = Factory.ProxyCount;//==1\n_excel.Dispose();\nx = Factory.ProxyCount; //==0\n_excel = null;            \nFactory.DisposeAllCOMProxies();\nx = Factory.ProxyCount;//==0</code></pre>\n\nWhen I don't use the ExcelSynchronizationContextInstaller e.g. when the action() is executed on the &quot;primary&quot; thread, then Excel exits as expected. \r<br />\n<br />\nIs there any recommended/preffered way how to perform long operation in another thread?\r<br />\n<br />\nAlso does the Application.DisposeChildInstances() dispose all referenced workbooks?\r<br />\n<br />\nMany thanks in advance<br />\n",
+    "PostedDate": "2014-03-05T13:14:36.183-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1221474",
+    "ThreadId": "538074",
+    "Html": "From an Excel-DNA add-in, I suggest you never call back to Excel from another thread or Task. When you need to update Excel, just call the Excel-DNA helper <code>ExcelAsyncUtil.QueueAsMacro</code> with a delegate that does the Excel-related work. This delegate will then run on the main Excel thread, and you won't need any COM cleanup code anywhere.\r<br />\n<br />\n-Govert<br />\n",
+    "PostedDate": "2014-03-11T08:17:50.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

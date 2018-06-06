@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1290124",
+    "ThreadId": "561191",
+    "Html": "Hi all\r<br />\n<br />\nI have a PC with Windows Vista Pro,  Visual Studio 2008,  with both Office 2007 and 2003 installed.\r<br />\nI have defined excel 2007 to open by default  xls, xlsx and xlsm files.\r<br />\n<br />\n<br />\nIm testing net office to open excel.xlsm files and execute its macros.\r<br />\n<br />\nI have a excel.xlsm 2007 file with a simple macro which display just a message.\r<br />\n<br />\n<br />\nWhen execute my app, it opens the xlsm file and display message without problem. \r<br />\n<br />\nThe problem is that file was open in excel 2003.\r<br />\n<br />\n<br />\nHow can i force to open it in excel 2007?\r<br />\n<br />\n<br />\nThanks in advance.<br />\n",
+    "PostedDate": "2014-08-14T10:29:30.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

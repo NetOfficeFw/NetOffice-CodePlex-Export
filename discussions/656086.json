@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1477984",
+    "ThreadId": "656086",
+    "Html": "Hi Sebastian,<br />\n<br />\nI have suggestion regarding the future of NetOffice. I think you have a great product for that but that you need to to simplify and start from scratch on what is supported.<br />\n<br />\nMy suggestion is to simplify NetOffice to its core in able to provide a supported product. Skip the toolbox. Skip all legacy. Skip all wizards that add complexity for you. Move to a new website so you can mark this website as legacy on the front page.<br />\n<br />\nI can supply you with sample WIX code for Visual Studio 2015 per-machine and per-user deployments. This code has been deployed to tens of thousands of people in enterprise environments. Even skip considering auto-generating the WIX code. Users would then have to update the GUID's manually but that is not a problem. Or write a Visiual Studio Extension that generates the WIX code with unique GUIDs. Support no other deployments method than WIX. Dare to keep it simple. You will have samples that compiles with Visual Studio 2015 Community (Free) and WIX (Free).<br />\n<br />\n<strong>All users want is a supported and robust product with easy to use samples that they can modify. Users need to see a more modern website that shows that this product is alive and supported by the community.</strong> <br />\n<br />\nAlso consider making a COM skim that compiles with Visual Studio 2015 so that end-users do not suffer of disabled add-ins due to the occasional long loading time of managed add-ins (because long .NET cold startup time). <br />\n<br />\nIn total you will have a robust product that is extremely useful and much easier to maintain. <br />\n<br />\nWhat do you think?<br />\n",
+    "PostedDate": "2016-07-03T15:11:58.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1478063",
+    "ThreadId": "656086",
+    "Html": "Hey men, \r<br />\n<br />\nFirst of it all:\r<br />\nNice to see your ideas :) Please keep in your mind: NetOffice is a 1-men project. Its all me, for development, documentation, support. and i do this in my free time without any commercial reasons. obviously this have some drawbacks in time.\r<br />\n \r<br />\nCurrently i have problems submit any code because Codeplex has no working SVN bridge at moment. i have a lot of new code but i cannot commit them at moment.\r<br />\nThe idea for an independent webstite is good but i'm not a webmaster btw. I need someone to do this for me.\r<br />\n<br />\nSkip the toolbox? I was never realy happy with the toolbox but its easier as writing plugins/extensions for Visual Studio because Microsoft still hiding the documentation to programming Visual Studio. Only Microsoft (Gold?= Partners can buy these knowledge for a price a i dont know.\r<br />\nMoreover legacy is a basic idea of NetOffice aren't so ? dont care for the version means to support legacy as well - without issues. thats why i start NetOffice.\r<br />\n<br />\nWix is very good point! VSTO creates a setup/install project and NetOffice need to the same. But i see no other way as do that with the toolbox - do you see a better idea? ( i have one solution here in alpha state - but the problem is to refresh the project each time when the addin solution is-recompiled - i need an own vs project provider to do this - this is part of the visual studio internals)\r<br />\n<br />\nat last: a NetOffice COM SHIM is currently available in a beta version. it works different to VSTO or addin-express. VSTO and addin-express need to install a runtime on the target deployment system. It means ONE! Shim install and run all the .net plugins which is created for. I didnt like the idea for xcopy deployement and create a different one. a C++ .dll which can parametrized from a .net plugin trough the registry(what VSTO does) or a config file. my problem with this solution is it is to complicated for beginners... \r<br />\n<br />\nat the end:\r<br />\nJust writing Visual Studio extensions is not so easy as you think here. The setup project in the solution must do right the things in the corresponding build(each new build) from the target project. this is what a simple extension can not handle. you need an own code provider to do that. (Visual Studio is only a host application - that open xml files- the project guid in that file (for example csproj) loads the corresponding project provider- this project/code provider does all the low-level things NetOffice need - thats why i skip and create the toolbox)\r<br />\n<br />\nin german we say &quot;machste nix dran&quot;\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-07-05T01:09:16.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1478121",
+    "ThreadId": "656086",
+    "Html": "Fully understand that it is a 1-man project with no commercial intentions. That is why I am so impressed with it!\r<br />\n<br />\nThe problem with Codeplex seems to be serious then. I am not well known in the field, but there should be other sites where it is possible to publish open source code and host open source projects on.\r<br />\n<br />\nYes, skip the toolbox. I am saying that because I thought it would simplify for you because you could have less code to maintain. Ok, I did not know it was expensive to make extensions in Visual Studio. Then skip extensions. The whole point was to try to simplify the code base to the core which really matters for users of NetOffice. I think that having ready made samples that includes WIX installers is one such thing. And also a COM Shim that compiles with Visual Studio 2015. <br />\n",
+    "PostedDate": "2016-07-05T15:29:18.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1478142",
+    "ThreadId": "656086",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nlet me know when I can help you! I would like to Support you and the net office project.\r<br />\n<br />\nI am a C# developer, with round about 15 years experince in developing. I working on different Office Add-ins since 4 years.\r<br />\nYou can &quot;share&quot; the code via  github, or visualstudio online (availabale with your MS account).\r<br />\n<br />\nGreetings from Munich, Nico<br />\n",
+    "PostedDate": "2016-07-05T19:12:38.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1478225",
+    "ThreadId": "656086",
+    "Html": "Hey Nico,\r<br />\n<br />\nI want give you a private message for my contact details.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2016-07-06T10:51:09.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1482626",
+    "ThreadId": "656086",
+    "Html": "Hey Sebastian and Nico,\r<br />\n<br />\nI would also like to help. I am a happy user of NetOffice and would like to contribute as well. If it would be possible to switch to Github for the code, that would be great.\r<br />\n<br />\nRegards, Sam<br />\n",
+    "PostedDate": "2016-09-01T08:23:35.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1482844",
+    "ThreadId": "656086",
+    "Html": "Hey Sam,\r<br />\n<br />\nThanks for your reply. \r<br />\nThe netoffice repository has been changed from SVN to git for now. There are ccurrently 2 NetOffice clones in github and i try to clearify the situation right now.\r<br />\nPlease give me a private message here on codeplex with a contact detail(msn messnger, mail, whatever)\r<br />\n<br />\nhappy weekend!\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-09-03T11:24:41.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486175",
+    "ThreadId": "656086",
+    "Html": "FYI, Jozef Izso was kind enough to submit a pull-request to the Github repository with the latest code submitted by Sebastian, which you can get by cloning the repository: <a href=\"https://github.com/netoffice/NetOffice\" rel=\"nofollow\">https://github.com/netoffice/NetOffice</a>\r<br />\n<br />\nCheers,\r<br />\nCaio Proiete<br />\n",
+    "PostedDate": "2016-10-15T08:14:15.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

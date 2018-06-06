@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "654006",
+    "ThreadId": "268092",
+    "Html": "\r\n<p>helow ... &nbsp;&nbsp; i use vs 2010 win7x64. When i've&nbsp; tried to see&nbsp; the ColorDialog example i had COMException .&nbsp;&nbsp;&nbsp;</p>\r\n",
+    "PostedDate": "2011-08-07T04:42:49.33-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "654012",
+    "ThreadId": "268092",
+    "Html": "<p>hey xidius,</p>\r\n<p>do you have some lines of code for me?<br /><br />sebastian</p>",
+    "PostedDate": "2011-08-07T05:04:48.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "654546",
+    "ThreadId": "268092",
+    "Html": "<p>ok Sebastian&nbsp;&nbsp;&nbsp; i simple run your&nbsp; Example6 - Dialogs.&nbsp; I use { Office 2007 prof edition, vs 2010, win7x64).....&nbsp; and&nbsp; on&nbsp; the&nbsp; switch option with ColorDialog i have COM exception</p>\r\n<p>next this switch lines :</p>\r\n<p>&nbsp;switch (radioSelectButton.Text)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case \"xlDialogAddinManager\":<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; returnValue = excelApplication.Dialogs[XlBuiltInDialog.xlDialogAddinManager].Show();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case \"xlDialogFont\":<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; returnValue = excelApplication.Dialogs[XlBuiltInDialog.xlDialogFont].Show();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case \"xlDialogEditColor\": <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; returnValue = excelApplication.Dialogs[XlBuiltInDialog.xlDialogEditColor].Show(); //// -----------it is throwing here<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;</p>",
+    "PostedDate": "2011-08-08T07:40:28.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "654573",
+    "ThreadId": "268092",
+    "Html": "<p>hello xidius,</p>\r\n<p>yes now i see the ColorEditDialog needs one parameter. <br />found on: <a href=\"http://msdn.microsoft.com/en-us/library/aa221648(v=office.11).aspx\">http://msdn.microsoft.com/en-us/library/aa221648(v=office.11).aspx</a><br /><br />the following code looks not nice but works,<br /><span style=\"font-size: x-small;\"><span style=\"color: #2b91af; font-size: x-small;\"><br />Dialog</span><span style=\"font-size: x-small;\"> dialog = excelApplication.Dialogs[</span><span style=\"color: #2b91af; font-size: x-small;\">XlBuiltInDialog</span><span style=\"font-size: x-small;\">.xlDialogEditColor];</span></span><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\"> <br />returnValue = dialog.Show(1,</span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value, </span><span style=\"color: #2b91af; font-size: x-small;\">Missing</span><span style=\"font-size: x-small;\">.Value);<br /><br />i do something to checkout optional parameter support&nbsp;without lost the SupportByLibrary information in a future release of NetOffice .<br />currently it is what is is :-/<br /></span></span></p>",
+    "PostedDate": "2011-08-08T08:07:32.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658894",
+    "ThreadId": "268092",
+    "Html": "<p>if you will find another variant please post here ok Sebastian&nbsp;&nbsp; thanks</p>",
+    "PostedDate": "2011-08-16T08:53:34.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658934",
+    "ThreadId": "268092",
+    "Html": "<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">hey xid,<br /></span></span></p>\r\n<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">Dialog dialog = excelApplication.Dialogs[XlBuiltInDialog.xlDialogEditColor]; <br />object returnVakue = LateBindingApi.Core.Invoker.MethodReturn(dialog, \"Show\", new object[]{1});<br /></span></span>\r\n<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">is this a better way for you?</span></span></p>\r\n<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">&nbsp;</span></span></p>\r\n</p>",
+    "PostedDate": "2011-08-16T10:09:28.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

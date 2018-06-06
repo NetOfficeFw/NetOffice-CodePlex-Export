@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "624686",
+    "ThreadId": "260614",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where is NetOffice API reference&nbsp;?</p>\r\n",
+    "PostedDate": "2011-06-08T05:44:37.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "624781",
+    "ThreadId": "260614",
+    "Html": "<p>Hello,<br />please take a look<br /><br /><a href=\"http://netoffice.codeplex.com/documentation\" target=\"_self\">Documentation<br /><br /></a><a href=\"http://netoffice.codeplex.com/wikipage?title=FAQ\" target=\"_self\">FAQ</a><br /><br /><a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English\" target=\"_self\">Technical Documentation (Reference)</a></p>\r\n<p><a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Faq_English\" target=\"_self\">Technical FAQ</a></p>\r\n<p>&nbsp;</p>\r\n<p>regards<br />Sebastian</p>",
+    "PostedDate": "2011-06-08T08:20:26.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625092",
+    "ThreadId": "260614",
+    "Html": "<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; first, thank you for your reply,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I have read these documents but i want to know every class or interface's methods ,properties reference</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;such as <a title=\".NET Framework Class Library\" href=\"http://msdn.microsoft.com/en-us/library/gg145045.aspx\">.NET Framework Class Library</a>&nbsp;at MSDN.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Could you help me ?</p>\r\n<p>Thank you.</p>",
+    "PostedDate": "2011-06-08T19:32:04.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625197",
+    "ThreadId": "260614",
+    "Html": "<p>ah okay, one problem is codeplex offers very litmited possibilities for technical documentation i find.<br />what i can do is to use an UML tool do create a visual overview.<br />what not i can do is reproduce the microsoft office technical documentaton, i'm not sure its allowed. <br />give me some days to ask microsoft office community manager its a legal way to publish content of compiled help files.<br />but nice idea dude, maybe its possible.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-06-09T01:09:44.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "629284",
+    "ThreadId": "260614",
+    "Html": "<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Could you tell me how to get Outlook <span style=\"color: #0000ff;\">Folder,Folders,Account,Accounts,Rules </span>object?</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I get some bugs when i want to get a Folder object&nbsp; and Folders&nbsp;object, but i&nbsp;can not get any&nbsp;Interface/Class reference.</p>\r\n<p>Code summary :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LateBindingApi.Core.Factory.Initialize();</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outlook.Application outlookApp = new Outlook.Application();</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outlook._NameSpace outlookNS = outlookApp.GetNamespace(\"MAPI\");</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style=\"color: #ff0000;\">Outlook.Folder outlookFolder = new Outlook.Folder(\"MAPI\");</span></p>\r\n<p><span style=\"color: #ff0000;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outlook.Folders outlookFolders = new Outlook.Folders(\"MAPI\");</span></p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp; <span style=\"color: #ff0000;\">bug : \"progId not found. MAPI</span>\"</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // <span style=\"color: #ff0000;\">why do we get the _NameSpace object with the progId \"MAPI\" but can't get&nbsp; Folder and Folders object whit \"MAPI\"?</span></p>\r\n<p><span style=\"color: #ff0000;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // which is the progID? How can i set it?</span></p>\r\n<p><span style=\"color: #ff0000;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style=\"color: #0000ff;\">// if get objects such as following</span></span></p>\r\n<p><span style=\"color: #ff0000;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style=\"color: #0000ff;\">Outlook.Folder outlookFolder = outlookNS.DefaultStore.GetRootFolder() as Outlook.Folder;</span></span></p>\r\n<p><span style=\"color: #ff0000;\"><span style=\"color: #0000ff;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outlook._Folders outlookFolders = outlookNS.Folders;</span></span></p>\r\n<p><span style=\"color: #ff0000;\"><span style=\"color: #0000ff;\">&nbsp;&nbsp;&nbsp;&nbsp; // get the outlookFolder.Count value&nbsp;&nbsp;exactly</span></span></p>\r\n<p><span style=\"color: #ff0000;\"><span style=\"color: #0000ff;\">&nbsp;&nbsp;&nbsp; // but get a bug \" Object reference not set to an instance of an object.\" with outlookFolder.Name</span></span></p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MessageBox.Show(\"Folders count is: \" + outlookFolders.Count);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; outlookFolders.Count;i++ )<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MessageBox.Show(\"Name is: \"+outlookFolder.Name);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-06-17T08:19:06.22-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "629305",
+    "ThreadId": "260614",
+    "Html": "<p>what is a prodid: <a href=\"http://en.wikipedia.org/wiki/ProgID\">http://en.wikipedia.org/wiki/ProgID</a><br /><br />you can't use&nbsp;the&nbsp;CoClass Outlook.Folder in this way. not in interop, not in vsto and not in netoffice.<br />an outlook namespace and a progid are two different things.<br /><br />a progid is stored in registry the constructor overload(there you use here)&nbsp;in netoffice helps you to handle different versions.<br />for example <br />new Outlook.Application(\"Outlook.Application.9\") // this progid creates outlook 2000 application object if present.<br />new Outlook.Application(\"Outlook.Application.10\") // this progid creates outlook 2002 application object if present.<br /><br />in 99% of all scenarios its not necessary to use this constructor overload. <br /><br />the second:</p>\r\n<p>outlookFolder is null <br /><br />please check this code line:<br /><span style=\"color: #0000ff;\">Outlook.Folder outlookFolder = outlookNS.DefaultStore.GetRootFolder() as Outlook.Folder;<br /><br /><span style=\"color: #000000;\">i think GetRootFolder() returns null or an object that cannot be converted to Outlook.Folder.<br />In this case the 'as' operator returns null.</span><br /><br /></span></p>\r\n<p>&nbsp;</p>\r\n<p><br /><br /><br /></p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-06-17T09:04:17.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "633359",
+    "ThreadId": "260614",
+    "Html": "<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thank you for your help.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I have checked following code that <span style=\"color: #0000ff;\">Outlook.Folder outlookFolder = outlookNS.DefaultStore.GetRootFolder() as Outlook.Folder&nbsp;</span></p>\r\n<p><span style=\"color: #0000ff;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; but i can not&nbsp;fix it.<br /><span style=\"color: #0000ff;\"><br /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Could you tell me how to get a Folder Object that i want to enum folders' name.</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you!</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>",
+    "PostedDate": "2011-06-26T22:55:38.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

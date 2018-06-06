@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1491383",
+    "ThreadId": "660818",
+    "Html": "Hi,<br />\n<br />\nI am trying to develop a simple outlook project to get some basic knowledge on how NetOffice is used.  I am using vb.net in the Visual Studio Community IDE.  I have Office 365 installed. I have created references to the NetOffice.dll, OutlookAPI.dll, OfficeAPI and VBIDEApi.dll.  I have not referenced the Outlook 16 object library (Office 365). My code, which was copied from one of the examples is:<br />\n<br />\nImports NetOffice.OutlookApi<br />\nImports NetOffice.OutlookApi.Enums<br />\n<br />\nPublic Class Form1<br />\n<pre><code>Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click\n    ' send mail in outlook\n    ' taken from Example03.vb\n    ' start outlook\n    Dim outlookApplication = New Outlook.Application()\n\n    ' Create a new MailItem.\n    Dim mailItem As Outlook.MailItem = outlookApplication.CreateItem(OlItemType.olMailItem)\n\n    ' prepare item and send\n    mailItem.Recipients.Add(&quot;xx@xx.com&quot;)\n    mailItem.Subject = &quot;hello eric&quot;\n    mailItem.Body = &quot;Season Greetings from NetOffice. Kind Regards - Sebastian&quot;\n    mailItem.Send()\n\n    ' close outlook and dispose\n    outlookApplication.Quit()\n    outlookApplication.Dispose()\n\n\nEnd Sub</code></pre>\n\nEnd Class<br />\n <br />\n<br />\nThe issue that I have is that is that types Outlook.Application() and Outlook.MailItem are not defined.  I can fix that by adding a reference to  the Outlook 16 object library and Importing Microsoft.Office.Interop but my understanding was that this is not supposed to be required. Is that correct?  It appears that I have missed something.  If anyone can point me in the right direction it would be appreciated.<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2017-01-19T14:06:06.11-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491434",
+    "ThreadId": "660818",
+    "Html": "Hi, \r<br />\n<br />\nEventually I solved my issue by setting the Embed Interop Types property for the NetOffice references to false. \r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2017-01-20T18:26:27.793-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491545",
+    "ThreadId": "660818",
+    "Html": "You need set any NetOffice reference option &quot;Embed Interop Types&quot; to false.\r<br />\n<br />\nVisual Studio do a mistake here and set this option true by default because NetOffice assemblies mask himself as an PIA Interop Assembly.\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2017-01-23T22:53:33.787-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "934363",
+    "ThreadId": "401289",
+    "Html": "\r\n<p>I opened your WordExamples solution&nbsp;in the 4.5 folder in my C:\\Users\\nstein\\Downloads\\NetOffice 1.5.1.2 [RC]\\NET 4.5\\Examples\\Word\\C#\\Examples folder.&nbsp; It compiled and ran fine.&nbsp; I was able to modify the code to try out finding hyperlinks\r\n in a&nbsp; document.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Word.Document&nbsp; doc = wordApplication.Documents.Open(@&quot;C:\\\\Users\\\\nstein\\\\Documents\\\\Verdezyne\\\\WebSite\\\\IP Page.docx&quot;);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int count = doc.Content.Hyperlinks.Count;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Word.Hyperlinks hls = doc.Content.Hyperlinks;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach (Word.Hyperlink h in hls)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.Diagnostics.Debug.WriteLine(h.Address);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n<p>It worked fine.&nbsp; I am trying to create a class library in&nbsp;another project to do the same functionality.&nbsp; When I look at the references in your sample project, you reference the ExamplesBase.dll as well as&nbsp;the other dlls.&nbsp; I added\r\n these 4 dlls to my project and it compiled fine.&nbsp; Do I need to include ExamplesBase.dll in my project?&nbsp; Is there source for it?</p>\r\n<p>Thanks,</p>\r\n<p>Nick Stein</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-10-30T12:15:12.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934650",
+    "ThreadId": "401289",
+    "Html": "<p>The ExampleBase source is not a part of the 1.5.1.2 release but its available in the source folder.<br />download latest source state:<br /><br />http://netoffice.codeplex.com/SourceControl/BrowseLatest<br /><br />and checkout: examples\\examplesbase<br />you can also browse the source code online.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-31T03:10:41.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934890",
+    "ThreadId": "401289",
+    "Html": "<p>ooops, i see now your second question. you dont the ExamplesBase.dll of course. the ExamplesBase.dll provides some simple dialogs to make it easier for me support and mainentence all the examples for all the different office applications in c# and vb. the old examples in older NetOffice releases contains one solution and any examples was an own project. its easier to use for all with the ExamplesBase.dll :-)<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-31T10:42:44.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1080904",
+    "ThreadId": "401289",
+    "Html": "Hello!<br />\n<br />\nIt seems to me the source of examplesbase has been removed?<br />\n<br />\nAs a beginner in netoffice AND c# I would like to see how it works. <br />\n<br />\nTanks for your support!<br />\n<br />\nRiffer<br />\n",
+    "PostedDate": "2013-08-15T05:00:43.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1081036",
+    "ThreadId": "401289",
+    "Html": "the is source available in the lastest source state. go to the rab source code and click download. \r<br />\n<br />\n<a href=\"https://netoffice.codeplex.com/SourceControl/latest\" rel=\"nofollow\">https://netoffice.codeplex.com/SourceControl/latest</a>\r<br />\n<br />\n<a href=\"https://netoffice.codeplex.com/SourceControl/latest#Examples/ExampleBase/ExampleBase/\" rel=\"nofollow\">https://netoffice.codeplex.com/SourceControl/latest#Examples/ExampleBase/ExampleBase/</a><br />\n",
+    "PostedDate": "2013-08-15T10:03:30.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1081240",
+    "ThreadId": "401289",
+    "Html": "Thank you very much.\r<br />\n<br />\nI was confused because from the panel on the left I could not see the sources of examplebase.\r<br />\n<br />\nBut in the download they are available.\r<br />\n<br />\nRiffer<br />\n",
+    "PostedDate": "2013-08-16T00:03:49.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

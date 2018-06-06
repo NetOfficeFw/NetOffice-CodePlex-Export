@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1082976",
+    "ThreadId": "454033",
+    "Html": "Ich verwende die Zeilen<br />\n<pre><code>// bereits bestehende Instanzen berücksichtigen, also auf GetActiveInstance() abklopfen.\n                excelApplication = (Excel.Application.GetActiveInstance() == null ? new Excel.Application() : Excel.Application.GetActiveInstance());\n                //excelApplication.DisplayAlerts = false;\n                excelApplication.WorkbookBeforeCloseEvent += new Excel.Application_WorkbookBeforeCloseEventHandler(excelApplication_WorkbookBeforeClose);\n                excelApplication.WorkbookOpenEvent += new Excel.Application_WorkbookOpenEventHandler(excelApplication_WorkbookOpen);\n</code></pre>\n\num das Öffnen und Schließen eines Excel Workbooks mit zu bekommen. Das funktioniert auch soweit gut, aber es gibt z.B. den Sonderfall, daß das Dokument noch gespeichert werden muss und der Benutzer auf Abbrechen klickt. Das WorkbookBeforeCloseEvent triggert ja schon vorher und so kann es passieren, daß ich nicht mitbekomme, daß das Dokument offen bleibt, denn dummerweise wird im Fall eines Abbruchs durch den Benutzer auch kein WorkbookOpenEvent generiert.\r<br />\n<br />\nMein Workaround wäre jetzt noch zusätzlich WorkbookAfterSaveEvent ebenfalls zu belauschen und in Kombination mit BeforeClose und einer Variablen zu prüfen ob das Dokument nun wirklich geschlossen wurde. \r<br />\n<br />\nAlternativ über einen Timer ständig zu prüfen, ob ein spezifisches Workbook geöffnet ist, finde ich eher unschön. Gibt es irgendwelche besseren und zuverlässigen Alternativen?<br />\n",
+    "PostedDate": "2013-08-21T00:02:03.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1083342",
+    "ThreadId": "454033",
+    "Html": "Ich habw den Part mit WorkbookOpen nicht verstanden. Lass und das mal wie Profis in Regeln zusammenfassen.\r<br />\n<br />\nDu möchtest beim schliessen eine Workbooks eine Aktion durchführen.\r<br />\nBedienung1: Das Workbkook muss beim schliessen expliziert gespeichert werden das aussenstehende Änderungen beinhaltet.\r<br />\nBedienung2: Der Benutzer kann das den Vorgang abbrechen, tut das aber nicht.\r<br />\n'\r<br />\nIst mein Verständniss soweit richtig?\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-21T15:09:09.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1083527",
+    "ThreadId": "454033",
+    "Html": "Primärer Anwendungsgedanke ist das Erfassen von Vorgängen, aber auch die Manipulaton in einem bestimmten Workbook.\r<br />\n<br />\nZustand:\r<br />\nDas WB ist geöffnet, meine Anwendung hat einen Workbook-Verweis gesetzt. <br />\n<ol>\n<li>Ich bekomme das Event WorkbookBeforeClose, ich lösche also den Verweis auf das WB.</li>\n<li>Das Workbook hat ausstehende Änderungen, die beim Schließen auf Nachfrage durch Excel gespeichert werden sollen.</li>\n<li>Der Benutzer bricht statt zu speichern den Schließvorgang ab.</li>\n<li>\nIch stehe ohne Workbook-Variable da und meine Anwendung signalisiert falscherweise, daß das WB geschlossen wurde.<br />\n</li>\n</ol>\nHmm... so wie das jetzt erkläre, kann ich das durch eine Änderung meiner Logik klären. Nämlich indem ich immer so vorgehe vor einem Workbook-Vorgang zu prüfen, ob es vielleicht geöffnet ist. Statt eine permanente Variable mitzuschleppen. Die benötigten Events kann ich mir auch von der Excel.Application holen, muss dann eben prüfen, ob der betroffene Sheet zu dem Workbook gehört, welches mein Ziel ist.<br />\n",
+    "PostedDate": "2013-08-22T02:24:22.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

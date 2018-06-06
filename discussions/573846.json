@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1328158",
+    "ThreadId": "573846",
+    "Html": "Please can you help me? In VBA what I want would be:\r<br />\n<br />\nActiveSheet.Shapes.AddChart2(240, xlXYScatterSmooth).Select\r<br />\nActiveChart.SeriesCollection.NewSeries\r<br />\nActiveChart.FullSeriesCollection(1).Name = &quot;=&quot;&quot;Series1&quot;&quot;&quot;\r<br />\nActiveChart.FullSeriesCollection(1).XValues = &quot;={1,2,3,4,5}&quot;\r<br />\nActiveChart.FullSeriesCollection(1).Values = &quot;={1,3,5,7,9}&quot;<br />\n",
+    "PostedDate": "2014-12-02T11:31:45.067-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1328411",
+    "ThreadId": "573846",
+    "Html": "Solution appears to be to call SeriesCollection.Add with a dummy range parameter.\r<br />\n<br />\nDim sc As SeriesCollection = chartObj.Chart.SeriesCollection\r<br />\nDim series As Series = sc.Add(sht.Range(&quot;A2:A4&quot;))\r<br />\nseries.Name = &quot;=&quot;&quot;Series1&quot;&quot;&quot;\r<br />\nseries.XValues = &quot;={1,2,3,4,5}&quot; \r<br />\nseries.Values = &quot;={1,3,5,7,9}&quot;<br />\n",
+    "PostedDate": "2014-12-03T06:55:15.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

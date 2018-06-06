@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1142584",
+    "ThreadId": "478119",
+    "Html": "Hi,\r<br />\n<br />\nI'm writing a small utility with NetOffice that works with PowerPoint presentations. My question is, is there any way I can check if the presentation opened with <br />\n<pre><code>PowerPoint.Application.Presentations.Open()</code></pre>\n\nis a valid presentation? I mean, other than just try-catching.\r<br />\nAFAIK the VSTO version of this function returns null if the presentation is not valid (invalid file, corrupt presentation) but NetOffice throws an exception when <br />\n<pre><code>Presentation.SlideShowSettings.Run()</code></pre>\n\nis used.\r<br />\nThanks for your help.\r<br />\n<br />\nLéster<br />\n",
+    "PostedDate": "2013-12-27T09:10:37-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

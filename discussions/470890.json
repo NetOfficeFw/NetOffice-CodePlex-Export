@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1128097",
+    "ThreadId": "470890",
+    "Html": "Since a couple of years I am working on an Excel COM-Addin / Software (see <a href=\"http://www.bueckercostconsulting.com/en/software\" rel=\"nofollow\">http://www.bueckercostconsulting.com/en/software</a> for details), which is running with VSTO under Office 2007 and 2010. My aim is now to upgrade my software to Office 2013 by staying compatible with Office 2007 &amp; 2010.\r<br />\nI am using Visual Studio 2010, which is not supporting Office 2013. Visual Studio 2012/13 is supporting Office 2010/2013, BUT not Office 2007. This means, that I need to proceed with VS2010 to support Office 2007 and to use in parallel VS2013 for Office 2010/2013!!!\r<br />\n<br />\nI just discovered NetOffice as possible VSTO replacement, which sounds to be perfect for my needs. Nevertheless, there are some doubts regarding migration. Is there anyone, who can share experiences in migrating/converting an Excel COM-Addin from VSTO to NetOffice:<br />\n<ul>\n<li>changes to be necessary (using, imports, specific code changes, etc)?</li>\n<li>\nDeployment/Setups with  InnoSetup?<br />\n</li>\n</ul>\nAlso, do I need a Visual Studio 2012/13 environment to target office 2013 by using NetOffice?\r<br />\n<br />\nMany, many thanks in advance for your help!!!<br />\n",
+    "PostedDate": "2013-11-22T15:57:21.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128122",
+    "ThreadId": "470890",
+    "Html": "hey man,\r<br />\n<br />\nAs first: VSTO is a proprietary framwork top of the native office programming interface. NetOffice supports the native Office programming interface(100%) and, its called by VSTO, the application level addins. (VSTO provides also Document-Level Addins but its not supported in NetOffice). Since NO 1.6, NetOffice provides the Tools namespace to imitate VSTO as nearly as possible(this means no infrastructure code and easy going). Of course you have to change your referencess and your import statements and also the current NO release doesnt have a visual designer to customize the office ui. Anyway, NetOffice is usable with any IDE you want(also SharpDevelop) from the .NET versions 2.0 ~ 4.5. \r<br />\n<br />\nAbout deployment: All what you have to do is to make sure is to register the assembly in the deployment system(COM and Office). You find 2 .msi deployment examples in the download section)  No other dependencies requiered.\r<br />\n<br />\nMoreover: If you need further info, you can contact me in sykpe(public.sebastian) and may i can help you better(also in german) to clearify the siuation.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-11-22T22:28:09.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128585",
+    "ThreadId": "470890",
+    "Html": "Hello Sebastian,\r<br />\nmany thanks for your answer. Due to the work I have done up to now, quite honestly I want to avoid risks. The opportunity to use NetOffice and solve all compatibility issues in one turn is like getting my favorite kind of chocolate for the rest of my life for free ;o)\r<br />\nSummarizing you answer:\r<br />\n<br />\nPros: <br />\n<ul>\n<li>no upgrade to Visual Studio 2012/13 necessary to create Office 2013 COM-Addin</li>\n<li>support of all Office versions possible</li>\n<li>\nsimplified registration<br />\n</li>\n</ul>\nCons:<br />\n<ul>\n<li>Document-Level not supported</li>\n<li>\nusage of Ribbon-Designer not supported<br />\n</li>\n</ul>\nNot having the Ribbon-Designer anymore is a pity. What are the necessary steps to transfer the VSTO-Ribbon Menu to NetOffice? Do I have to rebuild it completely?\r<br />\n<br />\nRegarding Document-Level code I have to review my code, if there is any included!\r<br />\n<br />\nMany many thanks for your support!\r<br />\nRainer<br />\n",
+    "PostedDate": "2013-11-25T01:22:08.46-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128609",
+    "ThreadId": "470890",
+    "Html": "hello again,\r<br />\n<br />\nlast but least: Another con is no automaticly com shimming. if you want shimming then you have to create a com shim at hand in nettoffice(see download section for example). NetOffice supports the basic/native COM programming interface from the office applications. VSTO is an own framework top of this interface.\r<br />\n<br />\nNetOffice supports the native ribbon interface, this means you have to implement the Office.IRibbonExtensibility interface in your addin and returns a xml schema for the ribbon ui in the [string Office.IRibbonExtensibility.GetCustomUI(string ribbonUI)] method. vsto allows you to save your current ribbon design to this xml schema. you can use this schema in netoffice. click triggers for buttons and so on are specified in the xml schema. make sure this public trigger methods exists in your addin and the office application can call these triggers(sounds magical but its true). Check the COMAddin examples folder to see how it works in detail. Moreover:  The netoffice tools namespace is a new additional concept to be more familiar with vsto. you have to inherit from a special base class to earn additional services(vsto does the same under the hood). i create the NO 1.7 release soon and suggest you to checkout the NO 1.7 preview in the download section. See the &quot;NetOffice COMAddin Examples&quot; folder(availabe in the examples for your target office application) This is much easier(what i find, you can compare this with the IExtensibility(native interface) examples) and its planned to spend a ribbon designer for the tools namespace in NO 1.8(for this reason i'm developer in the Office Ribbon project on codeplex) (btw: the tools are also available in NO 1.6 but its just a non-communicated beta version)\r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2013-11-25T02:43:35.97-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128706",
+    "ThreadId": "470890",
+    "Html": "Hello Sebastian,\r<br />\n<br />\nmany thanks for your detailed explanations. \r<br />\n<br />\nEspecially with the planned Ribbon-Designer integrated, NetOffice would be almost perfect. When do you think version 1.8 will be ready?\r<br />\n<br />\nIn the meanwhile I will &quot;inhale&quot; all your documentations to get prepared for the transition phase.\r<br />\n<br />\nMany thanks and bye for now!\r<br />\nRainer<br />\n",
+    "PostedDate": "2013-11-25T06:55:02.04-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

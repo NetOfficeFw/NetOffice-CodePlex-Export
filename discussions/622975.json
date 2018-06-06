@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1406041",
+    "ThreadId": "622975",
+    "Html": "Hi all,<br />\nI'm trying to convert a VBA Add-In using Visual Studio 2010. The following command throws an exception when used in either way:<br />\n<pre><code>XLApp.ActiveWorkbook.ActiveSheet.ExportAsFixedFormat(_\nExcel.Enums.XlFixedFormatType.xlTypePDF, _\nspath, Excel.Enums.XlFixedFormatQuality.xlQualityStandard,_\nTrue, False, Type.Missing, Type.Missing, True, Type.Missing)</code></pre>\n\nas well as<br />\n<pre><code>XLApp.ActiveWorkbook.ActiveSheet.ExportAsFixedFormat(_\nType:=Excel.Enums.XlFixedFormatType.xlTypePDF, _\nFilename:=spath, _\nQuality:=Excel.Enums.XlFixedFormatQuality.xlQualityStandard, _\nIncludeDocProperties:=True, IgnorePrintAreas:=False, _\nFrom:=Type.Missing, To:=Type.Missing, OpenAfterPublish:=True, _\nFixedFormatExtClassPtr:=Type.Missing)</code></pre>\n\nThe error message (German language) says:<br />\n&quot;Fehler beim Methodenaufruf. Public Sub ExportAsFixedFormat(type As NetOffice.ExcelApi.Enums.XlFixedFormatType, filename As System.Object, quality As System.Object, includeDocProperties As System.Object, ignorePrintAreas As System.Object, from As System.Object, to As System.Object, openAfterPublish As System.Object, fixedFormatExtClassPtr As System.Object) kann nicht mit diesen Argumenten aufgerufen werden: <br />\n<pre><code>Das Argument wurde für den Parameter from nicht angegeben.\nDas Argument wurde für den Parameter to nicht angegeben.\nDas Argument wurde für den Parameter fixedFormatExtClassPtr nicht angegeben.</code></pre>\n\n&quot;<br />\nThe variable 'spath' is a valid string object which specifies the path and filename of the pdf to create. <br />\nDid I misunderstand anything or did I probably stumble into a bug in NetOffice?<br />\n<br />\nRegards<br />\nMick<br />\n",
+    "PostedDate": "2015-04-12T11:56:45.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1406772",
+    "ThreadId": "622975",
+    "Html": "Hey Mick,\r<br />\n(its you? long time ago i talk with a german guy with same name)\r<br />\n<br />\nI find a topic for the problem:\r<br />\n<a href=\"http://stackoverflow.com/questions/10272415/excel-exportasfixedformat-pdf\" rel=\"nofollow\">http://stackoverflow.com/questions/10272415/excel-exportasfixedformat-pdf</a>\r<br />\n<br />\nIt seems to be this a printer issue. Make sure the spooler service is running and the  Microsoft XPS Document Writer is installed.\r<br />\nIf its not, you find some download links in the stackoverflow topic.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-04-12T15:21:30.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1409528",
+    "ThreadId": "622975",
+    "Html": "Hi Sebastian,<br />\n<br />\nyes I guess I'm that same thankful Mick :-) but I stay with the topic and in English here, so others won't get confused.<br />\n<br />\nAfter having a close look at the ressources / links you provided, I doubt that it's the solution in my case (and most others). These solutions consider Office 2007, which can be extended with an Add-In to export as PDF file (obviously it's become part of Excel after this 2007 version).<br />\n<br />\nUsing Excel 2010, which has the ability of pdf-export (and mail) already built-in, I never had any problems with the VBA macro(s) doing exactly the same thing. I also didn't change anything in the setup of my development machine. So it would be quite unlikely that it's a printer issue. EDIT: This afternoon I switched back to the VBA add-in to check, and it still works perfectly without any downloads or changes in the setup.<br />\n<br />\nCan you please have another close look at the code? It seems that &quot;Type.Missing&quot; isn't enough for the parameters to work properly.<br />\n<br />\nRegards<br />\nMick<br />\n",
+    "PostedDate": "2015-04-13T06:47:23.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

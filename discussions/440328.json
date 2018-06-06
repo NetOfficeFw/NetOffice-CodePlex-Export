@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1030608",
+    "ThreadId": "440328",
+    "Html": "Hello,\r<br />\n<br />\nI'd like to know what are the limitations of the clipboard.\r<br />\n<br />\nBecause, I've been developping a software for my company that takes a template in Word/Excel and PowerPoint to make auto generated reports by replacing the picture every day and pasting the new graph and the picture which are in the template.\r<br />\n<br />\nBut, I'm afraid, because it seems to exist some limitations<br />\n<pre><code>CopyBitmapToClipboard\n\nActiveWindow.View.PasteSpecial()</code></pre>\n\nWhen I copy a table/image into my clipboard and paste it in Word/Excel/PowerPoint it is fine, but if I have now 10 parallel reports which are generated at the same time and use the mechanism of copy paste, it will happen that it will copy it in the Word/Excel/PowerPoint that is currently being used by another report.\r<br />\n<br />\nTaking in consideration, I have 1 document, and the copy to clipboard of a table that is huge into powerpoint, would take the best case 1 second( which doesn't ), this would mean that in 1 day, I can generate a maximum of\r<br />\n<br />\n1 copy paste procedure = 1 second\r<br />\n<br />\n1minute = 60 second means 60 copy paste\r<br />\n<br />\n1hour = 60min x 60 copy paste\r<br />\n<br />\n1day = 24hours x 3600 copy paste\r<br />\n<br />\nMeans I have a total of 86400 copy paste/reports. Which is impossible. A document will never take minimum of 1 second to be complete( for reports which are about 20 pages, powerpoint with 30 slides, excel worksheet with 6sheets ). How to avoid that the content copied into clipboard will be pasted in the wrong document, since both documents use the paste fonction.\r<br />\n<br />\nSo, I'd like to know, if it is possible to give a reference into my clipboard, to tell him, to copy only the content inside his word/excel/powerpoint and not to copy what I just copied doing CTRL+C and to do CTRL+V in the wrong document?<br />\n",
+    "PostedDate": "2013-04-15T06:38:33.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

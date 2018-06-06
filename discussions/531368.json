@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1206937",
+    "ThreadId": "531368",
+    "Html": "Hello Sebastian,\r<br />\n<br />\nunfortunately I cannot find the NetOffice references/equivalents for:<br />\n<ul>\n<li>Microsoft.Office.Tools</li>\n<li>Microsoft.Office.Tools.Excel</li>\n<li>\nMicrosoft.Office.Tools.Excel.Controls<br />\n</li>\n</ul>\nCan you give me a hint!?\r<br />\n<br />\nMany thanks in advance!\r<br />\n<br />\nBest regards,\r<br />\nRainer<br />\n",
+    "PostedDate": "2014-02-11T11:15:09.947-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1208355",
+    "ThreadId": "531368",
+    "Html": "Hello,\r<br />\n<br />\nanyone there who has an idea, where to find the <strong>Microsoft.Office.Tools</strong> - equivalents in NetOffice? <em>Or does NetOffice NOT support these types of libraries?</em>\r<br />\n<br />\nI am trying to transform an Excel-COM-Addin from VSTO/PIA to NetOffice, but this it at the moment a big obstacle. There are controls like diagrams, buttons etc. which I insert via code automatically to the Excel-sheets.\r<br />\n<br />\nMany many thanks in advance for your help!\r<br />\nRainer<br />\n",
+    "PostedDate": "2014-02-14T05:44:12.943-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1208589",
+    "ThreadId": "531368",
+    "Html": "it's true, NetOffice doesnt have an equivalent for the tools namespace because this is a VSTO.NET special top-of feature(its not spend from office himself). NO is a jsut a plain 1:1 wrapper for the COM automation interface. anyway, the tools namespace does no magic, just a wrapper to do the all the things a bit easier. please explain, whats your problem and may we can help.\r<br />\n<br />\nSebastian\r<br />\n \r<br />\n(btw: we work for more VSTO support today, but its quiet challenging for all the different office products)<br />\n",
+    "PostedDate": "2014-02-14T15:04:56.713-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1210959",
+    "ThreadId": "531368",
+    "Html": "Hello Sebastian,\r<br />\n<br />\nmany thanks for your explanations. You have my full respect regarding the fine piece of work you have done!\r<br />\n<br />\nThe MS.Office.Tools namespace offers additional features, which are not available in the interop namespace (as far as I know). Especially the possibilities to place controls like buttons and charts onto an excel worksheet are very nice features. Below is one simple example:<br />\n<pre><code> '========================================================\n    ' FORMAT TEXT-TO-VALUE (LEAVE TEXTBOX)\n    '  - Zahlenformat für Preis anpassen\n    '========================================================\n    Private Sub FormatTextToValue_Leave()\n\n        'Worksheet als &quot;Tools.Excel&quot; anstatt &quot;Interop.Excel&quot; damit später &quot;Controls&quot; dynamisch erstellt werden können !!!\n        Dim xlWorksheet As Microsoft.Office.Tools.Excel.Worksheet = Nothing\n        Dim txtPriceChange As Microsoft.Office.Tools.Excel.Controls.TextBox\n\n        '' Arbeitsblatt als &quot;Tools.Excel.Worksheet&quot; zuweisen, damit .Controls.AddNamedRange verwendet werden kann.\n'' Umwandeln von Interop.Excel.Worksheet zu Tools.Excel.Worksheet (um dadurch auf höhere Funktionalität zuzugreifen \n        xlWorksheet = Microsoft.Office.Tools.Excel.Worksheet.GetVstoObject(xlOverview)  \n        txtPriceChange = xlWorksheet.Controls.Item(&quot;txtChangePrice&quot;)\n\n        txtPriceChange.Text = FormatValue(txtPriceChange.Text, &quot;###,###,##0.00&quot;)\n        If txtPriceChange.Text = &quot;&quot; Then\n            txtPriceChange.Text = FormatValue(xlGeneral.Range(xclsECV_InputCalc._GeFPri).Value, &quot;###,###,##0.00&quot;)\n        End If\n\n    End Sub</code></pre>\n\nIf you have any other idea how to place and use controls with NetOffice to an Excel worksheet, I would be very very happy!\r<br />\n<br />\nMany thanks!!!\r<br />\nRainer\r<br />\n<br />\nP.S.: I am really looking forward for your RibbonDesigner (NetOffice 1.8) :-)<br />\n",
+    "PostedDate": "2014-02-19T23:27:16.57-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1211566",
+    "ThreadId": "531368",
+    "Html": "I have added command buttons with click event handlers using C# code similar to the following. I asssume that other control types can be added in a similar way. You must add references to Microsoft.Vbe.Interop.Forms and Microsoft.VisualBasic to your project.\r<br />\n<br />\n<br />\nusing Microsoft.VisualBasic.CompilerServices;\r<br />\nusing MSForms = Microsoft.Vbe.Interop.Forms;\r<br />\nusing Excel = NetOffice.ExcelApi;\r<br />\n<br />\n....\r<br />\n<br />\n// sheet is an Excel.Worksheet instance\r<br />\n<br />\nExcel.Shape cmdButton = (Excel.Shape)sheet.Shapes.AddOLEObject(&quot;Forms.CommandButton.1&quot;, Type.Missing, false, false, Type.Missing, Type.Missing, Type.Missing, 200, 100, 100, 100);\r<br />\ncmdButton.Name = &quot;btnClick&quot;;\r<br />\ndynamic dynCmdBtn = NewLateBinding.LateGet(sheet.UnderlyingObject, null, &quot;btnClick&quot;, new object[0], null, null, null);\r<br />\ndynCmdBtn.Caption = &quot;My Button&quot;;\r<br />\ndynCmdBtn.Click += new MSForms.CommandButtonEvents_ClickEventHandler(CmdBtn_Click);\r<br />\n<br />\n<br />\n....\r<br />\n<br />\n<br />\nvoid CmdBtn_Click()\r<br />\n {<br />\n<pre><code>        MessageBox.Show(&quot;CmdBtn_Click&quot;);</code></pre>\n\n}<br />\n",
+    "PostedDate": "2014-02-20T22:51:46.943-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1258113",
+    "ThreadId": "531368",
+    "Html": "Hi,\r<br />\n<br />\nIs it possible to expand a bit more on this answer? Is it possible to learn more about what the tools namespace wrapper does?\r<br />\n<br />\nI am trying to understand that if NetOffice doesn't support Tools namespace functionality directly, then how do I go about learning more details and do controls-related stuff without going through this wrapper.\r<br />\n<br />\nAny relevant documentation / examples please?\r<br />\n<br />\nRegards.<br />\n",
+    "PostedDate": "2014-06-19T21:30:15.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1258114",
+    "ThreadId": "531368",
+    "Html": "Hi rixeblitz,\r<br />\n<br />\nWanted to check if you could eventually get the controls-stuff working through NetOffice somehow, and if yes / possible, share some details please.\r<br />\n<br />\nWas the approach suggested by geirg earlier in this thread of any use in this context?\r<br />\n<br />\nRegards.<br />\n",
+    "PostedDate": "2014-06-19T21:32:22.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1259282",
+    "ThreadId": "531368",
+    "Html": "Hi dd1985,\r<br />\n<br />\nactually I have not realized the proposal due to the fact that I have too many Microsoft.Office.Tools - Controls in use - so many that a workaround for me as a non-software-engineer would be too complex. I would love to use Net Office, but I am depending on the MS.Office.Tools, which I have understood, are not directly covered by NetOffice. Nevertheless I am following the evolution of Net Office and hope that in the future also Office.Tools are included. Most Office-developers probably do not need MS.Office.Tools can be delighted to use such a perfect software as NetOffice to avoid the vendor-lock-in.\r<br />\n<br />\nSorry, for not giving you software details neither being able to report any experiences with the above code snippets.\r<br />\n<br />\nBest regards,\r<br />\nRixeblitz<br />\n",
+    "PostedDate": "2014-06-24T08:35:21.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

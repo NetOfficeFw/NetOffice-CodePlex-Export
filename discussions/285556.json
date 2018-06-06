@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "722891",
+    "ThreadId": "285556",
+    "Html": "<p>Some members, like ExcelApi.Application.Dummy22, are hidden in the COM type library.&nbsp;It might make sense to adorn these with the EditorBrowsableAttribute (with either Never or Advanced) (<a href=\"http://msdn.microsoft.com/en-us/library/system.componentmodel.editorbrowsableattribute.aspx\">http://msdn.microsoft.com/en-us/library/system.componentmodel.editorbrowsableattribute.aspx</a>)  to allow the user to hide them from Intellisense.</p>\n<p>At this level of hiding/showing types without changing what would actually compile, it might make sense to think about all the _... types, like _Workbook. Do we ever need these _XXX types?&nbsp;</p>\n<p>Another example: Workbook.AcceptLabelsInFormulas.&nbsp;In Excel 14 VBA this member is not displayed, and in the COM type library it is hidden. Maybe you can check whether it is hidden in all versions of the type library.</p>\n<p>Some properties, like Workbook.CodeName, are readonly from VBA. They seem to have a corresponding _CodeName property which is read/write, but I think should also be marked EditorBrowsable(Never).</p>\n<p>Another example is all the _Default properties. They should all be backed by a read property, like Value or Item, so they can also be hidden.</p>\n<p>Basically all the _XXX interfaces and methods might be marked this way - they never appear in VBA. And to go one step further, you could apply this to the Object methods: GetHashCode, ToString etc.</p>\n<p>&nbsp;</p>\n<p>The danger of implementing this is that you might get more support requests if some members are 'hidden' by the Intellisense. But I'd prefer at least some way to have the Intellisense list match more closely the VBA intellisense.</p>",
+    "PostedDate": "2012-01-09T22:44:43.067-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "723155",
+    "ThreadId": "285556",
+    "Html": "<p>its true what you say, the next source code preview has hidden members.<br />you want overwritten object methods(GetHashCode, ToString) with the hidden attribute?<br />hmm i want to be everbodys darling of course(interop and vba) and i'm not sure this a nice way for interop developers.</p>",
+    "PostedDate": "2012-01-10T07:23:45.643-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "723246",
+    "ThreadId": "285556",
+    "Html": "<p>What do you think would be the inconvenience to interop developers if the standard object methods (and perhaps those on COMObject) are marked as \"Advanced\"?</p>\n<p>Anyway, I think the default configuration for the Visual Studio is to not hide Advanced member - but maybe that's something to check.</p>\n<p>So it sounds right to me:</p>\n<p>Methods like _Default and _CodeName should perhaps be marked [EditorBrowsable(Never)] and object methods like GetHashCode() and GetType() should perhaps be [EditorBrowsable(Advanced)].</p>\n<p>Certainly this is not a serious issue for me - I just noticed it and was thinking how one could clean up the development experience a bit.</p>",
+    "PostedDate": "2012-01-10T10:18:20.847-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "723287",
+    "ThreadId": "285556",
+    "Html": "<div>\n<p>If you do want to mark the Object members as Advanced, you'd only need to override and mark as [EditorBrowsable(Advanced)] them on COMObject itself. So this should not bloat the assemblies.</p>\n<p>And some more info here:&nbsp;<a href=\"http://exdream.com/Blog/post/2010/01/15/How-to-keep-the-Intellisense-info-box-short-and-tidy.aspx\">http://exdream.com/Blog/post/2010/01/15/How-to-keep-the-Intellisense-info-box-short-and-tidy.aspx</a>.</p>\n</div>",
+    "PostedDate": "2012-01-10T11:27:34.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "723425",
+    "ThreadId": "285556",
+    "Html": "<p>hey govert!<br />a new release preview is available.</p>\r\n<p>changes:</p>\r\n<p>- COMObject contains overwritten methods, GetHashCode, ToString, Equals<br />- Hidden members<br />- IEnumerable&lt;COMObject&gt; =&gt; IEnumerable&lt;object&gt;</p>\r\n<p>*Sebastian</p>",
+    "PostedDate": "2012-01-10T17:08:23.187-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "723598",
+    "ThreadId": "285556",
+    "Html": "<p>Hi Sebastian,</p>\r\n<p>It's looking better and better!</p>\r\n<p>I suggest you also add an [EditorBrowsable(Advanced)] for an override of Object.GetType() in COMObject.</p>\r\n<p>I suggest all members that start with an underscore &nbsp;\"_XXX\" should be [EditorBrowsable(Advanced)]. I don't think they can be used from VBA, though some are marked as hidden in the TypeLib, others not. Also, Worksheet._CheckSpelling is marked hidden in the TypeLib, but not marked in the NetOffice. But maybe all the \"_XXX\" members should be Advanced.</p>\r\n<p>I suggest all the get_XXX and set_XXX methods should be [EditorBrowsable(Never)] or even better, they should not be generated at all. Surely these all correspond to .NET properties, with compiler-defined get_XXX methods from the C# property definitions?</p>\r\n<p>-Govert</p>",
+    "PostedDate": "2012-01-11T03:53:25.89-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

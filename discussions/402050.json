@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "937129",
+    "ThreadId": "402050",
+    "Html": "\r\n<p>How to use App.config in NetOffice ?</p>\r\n<p>But i am try to read key value pair bases but can,t read values via .net</p>\r\n<p>&nbsp;string s1 = System.Configuration.ConfigurationManager.AppSettings[&quot;DateFormat&quot;].ToString();&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MessageBox.Show(s1.ToString());</p>\r\n<p>But&nbsp;didn't show the value in message box anybody let it me know or give me sample application&nbsp;</p>\r\n",
+    "PostedDate": "2012-11-06T01:20:59.327-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

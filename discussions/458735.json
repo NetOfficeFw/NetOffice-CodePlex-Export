@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1097785",
+    "ThreadId": "458735",
+    "Html": "Hi guys/gals, converting a an Outlook 2010 addin to NetOffice but can't for the life of me find the Outlook.ExplorerEvents_10_SelectionChangeEventHandler equivalent.\r<br />\n<br />\nAnyone?\r<br />\n<br />\nthanks<br />\n",
+    "PostedDate": "2013-09-22T11:15:03.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1097882",
+    "ThreadId": "458735",
+    "Html": "I suppose you mention Outlook.ExplorerEvents_10_SelectionChangeEventHandler from the <a href=\"http://msdn.microsoft.com/ru-ru/library/ms268994.aspx?cs-save-lang=1&amp;cs-lang=csharp#code-snippet-1\" rel=\"nofollow\">MSDN sample</a>:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n  <span style=\"color:Blue;\">private</span> <span style=\"color:Blue;\">void</span> ThisAddIn_Startup\n            (<span style=\"color:Blue;\">object</span> sender, System.EventArgs e)\n        {\n            currentExplorer = <span style=\"color:Blue;\">this</span>.Application.ActiveExplorer();\n            currentExplorer.SelectionChange += <span style=\"color:Blue;\">new</span> Outlook\n                .ExplorerEvents_10_SelectionChangeEventHandler\n                (CurrentExplorer_Event);\n        }\r\n</pre></div>It seems to be a VSTO delegate for <em>Explorer.SelectionChange</em> event. NetOffice aquivalents are<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">public</span> <span style=\"color:Blue;\">event</span> NetOffice.OutlookApi.Explorer_SelectionChangeEventHandler SelectionChangeEvent\r\n</pre></div>and<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">public</span> <span style=\"color:Blue;\">delegate</span> <span style=\"color:Blue;\">void</span> Explorer_SelectionChangeEventHandler()\r\n</pre></div>",
+    "PostedDate": "2013-09-22T23:19:27.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1097974",
+    "ThreadId": "458735",
+    "Html": "I can't seem to make that work, have you got an actual code example like the msdn one?<br />\n<br />\nusing Office = NetOffice.OfficeApi; <br />\nusing NetOffice.Tools;<br />\nusing NetOffice.OutlookApi.Tools;<br />\nusing Outlook = NetOffice.OutlookApi;<br />\nusing OutlookEnums = NetOffice.OutlookApi.Enums;<br />\n<br />\n<br />\n<br />\nOutlook.Application _oL = new Outlook.Application();<br />\nOutlook.Explorer _oL_Explorer = _oL.ActiveExplorer(); // error cannot implicitly convert type NetOffice.OutlookApi._Explorer to NetOffice.OutlookApi.Explorer<br />\n_oL_Explorer.SelectionChangeEvent += new Outlook.Explorer_SelectionChangeEventHandler(Selection_Change_Event); <br />\n<br />\n<br />\nI can explicitly convert like this <br />\nOutlook.Explorer _oL_Explorer = ((Outlook.Explorer)_oL.ActiveExplorer());<br />\n<br />\nIs that right?<br />\n<br />\nthanks<br />\n",
+    "PostedDate": "2013-09-23T04:36:10.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100682",
+    "ThreadId": "458735",
+    "Html": "this is okay. Outlook.Explorer is the CoClass and Outlook._Explorer the implemented dispatch interface.\r<br />\nyou need Outlook.Explorer in this case because only CoClasses can fire events. (COM rule)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-09-29T14:52:51.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

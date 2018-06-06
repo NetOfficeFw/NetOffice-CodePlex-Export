@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1491787",
+    "ThreadId": "660990",
+    "Html": "I am a new user to NetOffice.  I am really impressed with what you have done with wrapping COM objects and version independence.\r<br />\n<br />\nI think I must be adding my event handlers wrong because I am receiving all events twice in my handlers.  I have tried two techniques but am getting the same result.\r<br />\n<br />\nFirst technique (AddHandler):<br />\n<pre><code>Public Class Addin\n   Inherits Excel.Tools.COMAddin\n\n    Public Sub New()\n        Dim onStartupCompleteHandler As OnStartupCompleteEventHandler = AddressOf Me.Addin_OnStartupComplete\n        AddHandler Me.OnStartupComplete, onStartupCompleteHandler\n    End Sub\n\n    Private Sub Addin_OnStartupComplete(ByRef custom As System.Array) Handles Me.OnStartupComplete\n        Dim application_WorkbookActivateEventHandler As Excel.Application_WorkbookActivateEventHandler = AddressOf Me.Addin_Application_WorkbookActivateEventHandler\n        AddHandler Application.WorkbookActivateEvent, application_WorkbookActivateEventHandler\n         Debug.WriteLine($&quot;Addin started in Excel Version {Application.Version}&quot;)\n    End Sub\n\n    Private Sub Addin_Application_WorkbookActivateEventHandler(Wb As Excel.Workbook)\n        Debug.WriteLine($&quot;Workbook {Wb.Name} activated.&quot;)\n    End Sub\nEnd Class</code></pre>\n\nSecond technique (WithEvents):<br />\n<pre><code>Public Class Addin\n   Inherits Excel.Tools.COMAddin\n\n    Dim _Events As ApplicationEvents\n    Public Sub New()\n        Dim onStartupCompleteHandler As OnStartupCompleteEventHandler = AddressOf Me.Addin_OnStartupComplete\n        AddHandler Me.OnStartupComplete, onStartupCompleteHandler\n    End Sub\n\n    Private Sub Addin_OnStartupComplete(ByRef custom As System.Array) Handles Me.OnStartupComplete\n       _Events = New ApplicationEvents(Application)\n        Debug.WriteLine($&quot;Addin started in Excel Version {Application.Version}&quot;)\n    End Sub\nEnd Class\n\nPublic Class ApplicationEvents\n\n    Private WithEvents _Application As Excel.Application\n\n    Public Sub New(application As Excel.Application)\n        If application Is Nothing Then Throw New ArgumentNullException(NameOf(application))\n        _Application = application\n    End Sub\n\n    Private Sub Addin_Application_WorkbookActivateEventHandler(Wb As Excel.Workbook) Handles _Application.WorkbookActivateEvent\n        Debug.WriteLine($&quot;Workbook {Wb.Name} activated.&quot;)\n    End Sub\nEnd Class</code></pre>\n\nThis StackOverflow answer <a href=\"http://stackoverflow.com/a/30895082/3175562\" rel=\"nofollow\">http://stackoverflow.com/a/30895082/3175562</a> got me thinking that I might be adding my handler when it is already linked, thus my handler would be getting called twice, but that doesn't really make sense.  Even the onStartupCompleteHandler is getting called twice.\r<br />\n<br />\nThanks for any insight you guys can provide.<br />\n",
+    "PostedDate": "2017-01-27T09:23:42.43-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491817",
+    "ThreadId": "660990",
+    "Html": "This is strange. I never face a problem like this all the years,\r<br />\nLet me say, there is no indicator in the QA tests and examples that NetOffice raise an event 2 times.\r<br />\n(Try the NetOffice excel vb event example to see the event comes twice)\r<br />\n<br />\n(I see one possible error here related to multiple loaded addins: Excel identify addins by the first 8 character of the assembly name. If you have more addins loaded with the same 8 chars at the beginning - you may face issues here)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2017-01-28T04:07:05.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491943",
+    "ThreadId": "660990",
+    "Html": "The samples in the &quot;\\NetOffice 1.7.3\\NET 4.0\\Examples\\Excel\\VB\\NetOffice COMAddin Examples&quot; directory work correctly.  I believe I was misled by the project created by the &quot;New Project Wizard&quot; contained in the &quot;Developers Toolbox&quot; application that you provide.  Among the classes created by that wizard, the constructor of the Addin object adds the event handlers for the events OnStartupComplete and OnDisconnection.<br />\n<pre><code>Public Class Addin\n   Inherits Excel.Tools.COMAddin\n\n    Public Sub New()\n\n        Dim onStartupCompleteHandler As OnStartupCompleteEventHandler = AddressOf Me.Addin_OnStartupComplete\n        AddHandler Me.OnStartupComplete, onStartupCompleteHandler\n\n        Dim onDisconnection As OnDisconnectionEventHandler = AddressOf Me.Addin_OnDisconnection\n        AddHandler Me.OnDisconnection, onDisconnection\n\n    End Sub</code></pre>\n\nBased on reading the other samples, it looks like the the constructor of the add-in should be empty.  The NetOffice COMAddin class already implements IDTExtensibility2 and apparently the Addin_OnStartupComplete is already wired up to handle the event when you inherit from the COMAddin class.  When the constructor was adding a handler, it was really adding a second one.  That is why the OnStartupComplete handler was running twice.  That routine running twice was then adding handlers for other events twice, doubling up their handler count (which can be seen in the private fields of the NetOffice Application object).<br />\n<br />\nWhen I remove these lines from the constructor, the doubling up disappears.  I post this fix to clarify to others that may be mystified why this happens.  I do think it would be good if you could update the wizard to not add those extra handlers.  Thanks.<br />\n",
+    "PostedDate": "2017-01-30T12:00:21.413-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1492061",
+    "ThreadId": "660990",
+    "Html": "Hmm...\r<br />\n<br />\nI can create the event routing in the .vb designer file(in code generation by toolbox). This miss a bit of transparence what if find.\r<br />\nOn the other hand, this helps to avoid run into this trap.\r<br />\n(in summary, your suggestion is the better one in 65/35% advantage/disadvantage. on my todo list now)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2017-02-01T09:12:41.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1497881",
+    "ThreadId": "660990",
+    "Html": "Hi there,\r<br />\n<br />\nI'm facing the same issue with a PowerPoint add-in.\r<br />\nThis is what I have in constructor and Addin_OnStartupComplete event is firing twice when I open two pptx files IF the second file is opened by double clicking on it in Windows explorer (it doesn't happen if the second file is opened through File -&gt; Open menu in PowerPoint):<br />\n<pre><code>        public Addin()\n        {\n            this.OnStartupComplete += new OnStartupCompleteEventHandler(Addin_OnStartupComplete);\n            this.OnDisconnection += new OnDisconnectionEventHandler(Addin_OnDisconnection);\n        }</code></pre>\n\nRemoving the event handlers for the events OnStartupComplete and OnDisconnection from the constructor didn't worked for me (as it did for Michael in Excel), in my case the Addin_OnStartupComplete event is not fired at all.\r<br />\nI fixed this by implementing a condition to process the Addin_OnStartupComplete event only the first time. Not the best solution, but it's working.\r<br />\n<br />\nAdrian<br />\n",
+    "PostedDate": "2017-08-31T00:54:58.33-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

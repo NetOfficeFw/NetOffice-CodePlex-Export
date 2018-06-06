@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1489306",
+    "ThreadId": "659942",
+    "Html": "Hi all, This is really more to do with Sharpdevelop, I've posted my question there but most posts doesn't seem to get much response there so I thought I'd try here. \r<br />\nI'm trying to inspect variables while debugging, in Visual Studio all works fine. In SD all works fine except when debugging within a NetOffice event handler. In the below code if I break within myOlItems_ItemAdd sub, I can't inspect any vars and everything freezes in outlook and the app. I'm sure this has something to do with threads but if anyone can confirm this and why and if there is a workaround I'd appreciate it.<br />\n<pre><code>Imports Outlook = NetOffice.OutlookApi\n\nImports NetOffice.OutlookApi.Enums\n\nPublic Partial Class MainForm\n\nPublic Sub New()\n\n   Me.InitializeComponent()\n\nEnd Sub\n\nSub Button1Click(sender As Object, e As EventArgs)\n\n  Dim outlookApplication As New Outlook.Application()\n\n  Dim objNS As Outlook._NameSpace = outlookApplication.GetNamespace(&quot;MAPI&quot;)\n\n  Dim inboxFolder As Outlook.MAPIFolder = objNS.GetDefaultFolder(OlDefaultFolders.olFolderInbox)\n\n  Dim olInboxItems As Outlook.Items = CType(inboxFolder.Items, Outlook.Items)\n\n  Dim ItemAdded As Outlook.Items_ItemAddEventHandler = AddressOf Me.myOlItems_ItemAdd\n\n      AddHandler olInboxItems.ItemAddEvent, ItemAdded\n\nEnd Sub\n\nPrivate Sub myOlItems_ItemAdd(ByVal Item As Object)\n\nDebugger.break\n\nMessageBox.Show(&quot;Made it here&quot;)\n\nEnd Sub\n\nEnd Class</code></pre>\n\n",
+    "PostedDate": "2016-12-05T13:34:46.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1489981",
+    "ThreadId": "659942",
+    "Html": "okay..\r<br />\n<br />\ni can pin point the problem here, it is the fucking Visual Studio or SharpDevelop.\r<br />\nBut i can clearify the problem with Daniel.\r<br />\n<br />\nYou have to copy the .pdb files in the same directory also. This is what the debugger need to help you.\r<br />\nDo you have the debuger symbols already?\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-12-16T14:27:58.283-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

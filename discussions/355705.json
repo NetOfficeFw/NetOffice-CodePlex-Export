@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "836097",
+    "ThreadId": "355705",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>&nbsp;</p>\r\n<p>How should I catch all unhandled excepions in Excel Add-in that us based on NetOffice? the AppDomain.UnhandledExcepion event is never fired.</p>\r\n<p>&nbsp;</p>\r\n<p>Please, help</p>\r\n<p>Alex</p>\r\n",
+    "PostedDate": "2012-05-14T07:53:08.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "836896",
+    "ThreadId": "355705",
+    "Html": "<p>hey alex,<br /><br />i do some test and its true, the UnhandledException Event was never called in addin solutions.<br />i need few days to clearify the situation and checkout what can i do to fix this issue.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-05-15T14:19:06.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "837932",
+    "ThreadId": "355705",
+    "Html": "<p>okay, the problem is by design. the CLR AppDomain Exception Handling doesnt works with unmanaged threads. i create a new VS Wizard at the moment with COM Shimming support. Shimming make it possible to handle this problem. I need ~1 month for this feature(not easy). If you need a solution right now then use the COM Shim Wizard from Microsoft. an example is available in the download section. if you have questions about the Shim wizard an NetOffice then please contact me again :-)<br /><br />Sebastian</p>",
+    "PostedDate": "2012-05-17T17:43:54.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

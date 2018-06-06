@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1214883",
+    "ThreadId": "535551",
+    "Html": "I also want to modify a watermark in the master slide. I prefer C#. Is this possible/<br />\n",
+    "PostedDate": "2014-02-25T14:18:35.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1218742",
+    "ThreadId": "535551",
+    "Html": "yes, it's possible. take a look to the sample files<br />\n<pre><code>PowerPoint.Application powerPointApplication = new PowerPoint.Application();\n\npowerPointApplication.Visible = MsoTriState.msoTrue;  \n// PowerPoint 2000 doesnt support DisplayAlerts,\n// we check at runtime its available and set\nif (powerPointApplication.EntityIsAvailable(&quot;DisplayAlerts&quot;)) {\n        powerPointApplication.DisplayAlerts = PpAlertLevel.ppAlertsNone;\n }\nPowerPoint.Presentation presentation = powerPointApplication.Presentations.Open(filePath);\n.....</code></pre>\n\n",
+    "PostedDate": "2014-03-03T22:36:55.18-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

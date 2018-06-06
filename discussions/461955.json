@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1106648",
+    "ThreadId": "461955",
+    "Html": "I am trying to implement the ImageLIstView (found at the link <a href=\"http://www.nuget.org/packages/ImageListView/\" rel=\"nofollow\">http://www.nuget.org/packages/ImageListView/</a>) in vb.net and through its documentation it states that it can be customized by overriding its default settings. The customized setting that I want to achieved are as follows:\r<br />\n<br />\nuse the XP Render to display the image on the left hand side\r<br />\nhave custom lines (muliple rows of different fields) of text on the right hand side.\r<br />\nI know I have to use something similar to the following statement to change the render. I am using tile mode.\r<br />\n<br />\nImageListView1.SetRenderer(<br />\n<pre><code>New Manina.Windows.Forms.ImageListViewRenderers.TilesRenderer(180))</code></pre>\n\n",
+    "PostedDate": "2013-10-12T00:17:57.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1106821",
+    "ThreadId": "461955",
+    "Html": "as first: dont use nuget. nuget is evil !!!\r<br />\n<br />\nyou dont say what do you want. all what you do is told me some of your problems:\r<br />\nwhat i have to know always is:\r<br />\n1.) the current situation. ( i want..)\r<br />\n2.) the problem (i cant reach...)\r<br />\n3.) the way( i have tried this but...)\r<br />\n<br />\nbtw: this is not a netoffice problem of course but i want help you\r<br />\nsend me sample to public.sebastian[at]web.de with detailed problem description if you want.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-10-13T00:43:07.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108554",
+    "ThreadId": "461955",
+    "Html": "Sebastian\r<br />\n<br />\nI sent you an email on Tuesday. Let me know in the reply email if you want me to explain anything further.\r<br />\n<br />\nThanks again<br />\n",
+    "PostedDate": "2013-10-16T17:17:39.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

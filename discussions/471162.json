@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1129074",
+    "ThreadId": "471162",
+    "Html": "Hi beautiful people  - great effort with the library, Sebastian!!<br />\n<br />\nI have a simple question - how do i omit the optional parameters that are not declared as optional in the API methods?<br />\n<br />\nI want to use the WordApi.ContentControl.SetPlaceholderText() method that is defined as follows (<a href=\"http://msdn.microsoft.com/en-us/library/office/bb256831(v=office.12).aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-us/library/office/bb256831(v=office.12).aspx</a>)<br />\n<br />\nexpression.SetPlaceholderText(BuildingBlock, Range, Text)<br />\nOnly one of the parameters is used when specifying placeholder text. If more than one parameter is used, Microsoft Office Word uses the text specified in the first parameter. If all parameters are omitted, the placeholder text is blank.<br />\n<br />\nNaturally I want to pass the Text (String) parameter from within my VB.NET code. How do I do that?<br />\n<br />\nSetPlaceholderText has 4 Overloads in the WordApi:<br />\nSetPlaceholderText()<br />\nSetPlaceholderText(BuildingBlock)<br />\nSetPlaceholderText(BuildingBlock, Range)<br />\nSetPlaceholderText(BuildingBlock, Range, Text)<br />\n<br />\nwith the last one being the only one giving me access to the Text parameter.<br />\n<br />\nI cannot omit the other parameters as they are not declared optional.<br />\nI have tried any combination of Type.Missing and Missing.Value (leads to InvalidCastException within Word) as well as creating and passing empty stub objects or simply &quot;Nothing&quot; for BuildingBlock and Range (leads to very confusing COMExceptions &quot;DISP_E_TYPEMISMATCH&quot; within Word).<br />\n<br />\nHow do I use this? I have tried to research this, but no success.<br />\n<br />\nThanks a bunch!<br />\n<br />\nChristoph<br />\n",
+    "PostedDate": "2013-11-26T00:53:00.527-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1129181",
+    "ThreadId": "471162",
+    "Html": "SetPlaceHolderText contains a bug in the default arguments. you have to set the 3 arguments at hand.\r<br />\nhere you can find an old msdn discussion post from me with more details for the bug.\r<br />\n<br />\n<a href=\"http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol?forum=worddev\" rel=\"nofollow\">http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol?forum=worddev</a> \r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-11-26T06:23:43.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1243297",
+    "ThreadId": "471162",
+    "Html": "Sorry for reviving this old topic, but I came around to try this again and i am Stuck at the same place.<br />\nI don't fully understand the discussion you linked but in a nutshell - does this mean there is no way to set the placeholder text from .Net?<br />\n<br />\n&quot;NetOffice unterstützt derzeit keine optionalen/benannten Parameter da es in C# geschrieben ist und auch mit früheren .NET Versionen kompatibel sein will wo C# diese Fähigkeit noch nicht hatte. Ausserdem würde das Konzept der Attribute und Quellcodekommentare mit Hinweisen zur Versionsunterstützung dann nicht mehr funktionieren. Deswegen stellt NO für Methoden/Properties mit optionalen Parametern die entsprechende Anzahl an Überladungen bereit. <br />\n<br />\nSebastian&quot; (sorry, only found the german quote ;))<br />\n<br />\nI don't understand this... SetPlaceholderText() has 4 overloads:<br />\n<pre><code>\n        public void SetPlaceholderText();\n\n        public void SetPlaceholderText(BuildingBlock buildingBlock);\n\n        public void SetPlaceholderText(BuildingBlock buildingBlock, Range range);\n\n        public void SetPlaceholderText(BuildingBlock buildingBlock, Range range, string text);</code></pre>\n\nHow can I use this if i wanted to pass only the &quot;text&quot; argument... I am very confused again to the point where I will lose interest in finishing my application :)<br />\n",
+    "PostedDate": "2014-05-08T14:35:44.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1243308",
+    "ThreadId": "471162",
+    "Html": "It looks like you a german native speaker:\r<br />\nI want answer in german. if it doesnt, please let me know.\r<br />\n<br />\nJa hey kein Problem, ich bin mir noch nicht sicher was deine Frage ist aber ich antworte zuerst mal auf das typische Problem zu dieser Methode.\r<br />\n<br />\nDa hast du die eine Methode in Word gefunden die Microsoft leider gründlich versaut hat.\r<br />\nIch habe mich wegen der Methode schon mal vor einem Jahr im Microsoft Support gestritten:\r<br />\nDas ist der Link dazu(Ich bin Alfred Tetzlaf):\r<br />\n<a href=\"http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol\" rel=\"nofollow\">http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol</a>\r<br />\n<br />\nDie Zusammenfassung: Du musst die ersten beiden Parameter immer angeben, obwohl sie eigentlich optional sind. Die von Microsoft definierten Default Values für diese Parameter sind nämlich schlichtweg Bullshit und führen zu einem Fehler. Danach hats in meinen Tests immer funktioniert.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-05-08T15:07:15.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1243398",
+    "ThreadId": "471162",
+    "Html": "\r\n<div dir=\"ltr\">Hi und danke für die Antwort :)\r\n<div><br>\r\n</div>\r\n<div>ich hab' halt einfach keine Ahnung was ich für die ersten beiden Parameter angeben soll, geschweige denn was sie bringen, auch nach studieren der msdn (BuildingBlock - ist das nicht ein Textbaustein?)</div>\r\n<div>Wenn ich zwei stub-Objekte mit new erzeuge, erhalte ich immer noch einen Fehler in Word - ich hab schon soviel Trial & Error hinter mir das ich fast den Verstand verliere.</div>\r\n<div><br>\r\n</div>\r\n<div>Kurz: hast Du ein Beispiel im Kopf, das einfach angibt, wie ich die Methode aufrufen soll? Ich mach ja nur diese beiden Zeilen:</div>\r\n<div><br>\r\n</div>\r\n<div>\r\n<div>NetOffice.WordApi.ContentControl cc = currentDocument.ContentControls.Add(NetOffice.WordApi.Enums.WdContentControlType.wdContentControlText, MyApplication.Selection.Range);</div>\r\n<div>cc.Title = currentValue;<br>\r\n</div>\r\n</div>\r\n<div><br>\r\n</div>\r\n<div>Und würde nun gern den bekloppten Platzhalter-Text ersetzen.</div>\r\n<div><br>\r\n</div>\r\n<div>Vielen Dank! :)</div>\r\n<div><br>\r\n</div>\r\n<div><br>\r\n</div>\r\n</div>\r\n<div><br>\r\n<br>\r\n<div>Am 9. Mai 2014 00:07 schrieb SebastianDotNet <span dir=\"ltr\">&lt;[email removed]&gt;</span>:<br>\r\n<blockquote style=\"margin:0 0 0 .8ex; border-left:1px #ccc solid; padding-left:1ex\">\r\n<div>\r\n<p>From: SebastianDotNet</p>\r\n<div>It looks like you a german native speaker: <br>\r\nI want answer in german. if it doesnt, please let me know. <br>\r\n<br>\r\nJa hey kein Problem, ich bin mir noch nicht sicher was deine Frage ist aber ich antworte zuerst mal auf das typische Problem zu dieser Methode.\r\n<br>\r\n<br>\r\nDa hast du die eine Methode in Word gefunden die Microsoft leider gründlich versaut hat.\r\n<br>\r\nIch habe mich wegen der Methode schon mal vor einem Jahr im Microsoft Support gestritten:\r\n<br>\r\nDas ist der Link dazu(Ich bin Alfred Tetzlaf): <br>\r\n<a href=\"http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol\" rel=\"nofollow\" target=\"_blank\">http://social.msdn.microsoft.com/Forums/office/en-US/0c03837b-aca1-4cb6-81b7-f4fac8f36a04/possible-bug-in-wordcontentcontrol</a>\r\n<br>\r\n<br>\r\nDie Zusammenfassung: Du musst die ersten beiden Parameter immer angeben, obwohl sie eigentlich optional sind. Die von Microsoft definierten Default Values für diese Parameter sind nämlich schlichtweg Bullshit und führen zu einem Fehler. Danach hats in meinen\r\n Tests immer funktioniert. <br>\r\n<br>\r\n*Sebastian<br>\r\n</div>\r\n<div>\r\n<p>Read the <a href=\"http://netoffice.codeplex.com/discussions/471162#post1243308\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email ([email removed])</p>\r\n<p>To start a new discussion for this project, email [email removed]</p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"http://netoffice.codeplex.com/discussions/471162/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on CodePlex.com.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com</p>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n<br clear=\"all\">\r\n<div><br>\r\n</div>\r\n-- <br>\r\n<div dir=\"ltr\">\r\n<p>Mit freundlichen Grüßen</p>\r\n<p>Christoph Grün -Entwicklung und Design</p>\r\n<p>--</p>\r\n<p>Firma: Dresen und Grün GbR<br>\r\nGeschäftsführende Gesellschafter:<br>\r\nMarkus Dresen, Christoph Grün</p>\r\n<p>Anschrift: Weilandstr. 1A, 66359 Bous<br>\r\nTelefon: 06898 / 39 04 998<br>\r\nSteuernummer:090/152/00070</p>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2014-05-09T01:27:55.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1330178",
+    "ThreadId": "471162",
+    "Html": "Hello, has this issue been resolved? Or is it not possible to use &quot;SetPlaceholderText(BuildingBlock buildingBlock, Range range, string text)&quot; and only pass a &quot;text&quot; argument from NetOffice code due the bug?\r<br />\n<br />\nUsing the standard Microsoft.Office.Interop.Word API I can do this:\r<br />\n<br />\ncontentControl.SetPlaceholderText(null, null, &quot;Placeholder text&quot;);\r<br />\n<br />\nI am now wanting to do the same thing from NetOffice. Please advise. Thank you!<br />\n",
+    "PostedDate": "2014-12-09T08:23:56.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1330227",
+    "ThreadId": "471162",
+    "Html": "Please keep in your mind: This is a MS-Office bug and not a NetOffice bug.  Currently you have set [all] valid arguments at hand.\r<br />\nThe good news(but not for today): NO 1.8 want spend an empty COM reference argument to handle this. (the problem here is the (MS) defined default arguments in late-binding are not valid)\r<br />\n<br />\n<br />\n*Sebastian <br />\n",
+    "PostedDate": "2014-12-09T09:53:44.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1330238",
+    "ThreadId": "471162",
+    "Html": "Hi Sebastian, yes, I am aware that this is a MS Office bug, not NetOffice.\r<br />\n<br />\nI wasn't sure if a workaround was implemented in NetOffice yet or not.\r<br />\n<br />\nThank you for the update and I look forward to NO 1.8.<br />\n",
+    "PostedDate": "2014-12-09T10:05:40.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

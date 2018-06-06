@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1092943",
+    "ThreadId": "456989",
+    "Html": "Hi,\r<br />\nI am facing problems with my code which is using the &quot;OutlookAPI.dll&quot;,&quot;OfficeAPI.dll&quot; and &quot;NetOffice.dll&quot; for working with my application using Outlook. THE REASON I AM USING NETOFFICE IS FOR BACKWARD COMPATIBILITY WITH DIFFERENT VERSIONS OF OUTLOOK.\r<br />\n<br />\n I am currently using the below code\r<br />\n __Outlook.Application <em>Outlook = Outlook.Application <em>Outlook = null;</em></em>\r<br />\nwhich doesnt compile after referencing the above dll's.\r<br />\n<br />\nMy app was earlier using the &quot;Microsoft.Office.Interop.Outlook.dll&quot;.\r<br />\nKindly help as I need to get this fixed as this earliest\r<br />\n<br />\nRegards\r<br />\nGurudatt<br />\n",
+    "PostedDate": "2013-09-15T16:14:25.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092944",
+    "ThreadId": "456989",
+    "Html": "hey man i need the specific error message to help you.  :)\r<br />\n(in case of 'cant embedd...' set the NetOffice reference properties 'embedd interop types to false)<br />\n",
+    "PostedDate": "2013-09-15T16:24:13.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092948",
+    "ThreadId": "456989",
+    "Html": "Hi sabastian, thanks for the reply\r<br />\nI am currently refereing the 3 DLL's - &quot;OutlookAPI.dll&quot;,&quot;OfficeAPI.dll&quot; and &quot;NetOffice.dll&quot; and using the below code\r<br />\n<br />\nusing OfficeApi.Utils;\r<br />\n...\r<br />\n...\r<br />\n...\r<br />\nOutlook.Application _Outlook = null;\r<br />\nOutlook.MailItem mi = null;\r<br />\n_Outlook = new Outlook.Application();\r<br />\nOutlook.Explorer oExplorer = _Outlook.ActiveExplorer();\r<br />\nOutlook.Selection oSelection = oExplorer.Selection;\r<br />\n...\r<br />\n...\r<br />\nmi = (Outlook.MailItem)item;\r<br />\n<br />\nI am getting an error - &quot;The type or namespace name 'OfficeApi' could not be found (are you missing a using directive or an assembly reference?)&quot;\r<br />\n<br />\nKindly Help as I need to complete the application within the next 2 hours for release. Sorry for all the trouble\r<br />\n<br />\nRegards\r<br />\nGurudatt<br />\n",
+    "PostedDate": "2013-09-15T17:04:17.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092957",
+    "ThreadId": "456989",
+    "Html": "Hi,\r<br />\nI have also used the below code\r<br />\n<br />\nusing Outlook = NetOffice.OutlookApi;\r<br />\nusing Office = NetOffice.OfficeApi;\r<br />\n<br />\nand referenced the 3 DLL's - &quot;OutlookAPI.dll&quot;,&quot;OfficeAPI.dll&quot; and &quot;NetOffice.dll&quot;, but i am getting the error &quot;The type or namespace name 'NetOffice' could not be found (are you missing a using directive or an assembly reference?)&quot;\r<br />\n<br />\nRegards\r<br />\nGurudatt<br />\n",
+    "PostedDate": "2013-09-15T18:26:39.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092958",
+    "ThreadId": "456989",
+    "Html": "Hi Sabastian,\r<br />\nForgot to mention that i have downloaded the entire source code and checked the examples. even they have the &quot;Missing Reference&quot; error. Kindly help\r<br />\n<br />\nThanks and Regards\r<br />\nGurudatt<br />\n",
+    "PostedDate": "2013-09-15T18:35:30.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093476",
+    "ThreadId": "456989",
+    "Html": "did you try the examples in the 1.6 release? can you tell me your .net framework version?<br />\n",
+    "PostedDate": "2013-09-17T04:10:49.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093762",
+    "ThreadId": "456989",
+    "Html": "The DLL's are from the 1.6 release of CodePlex NetOffice. The framework that I am using is DotNet 4.5. I have referenced the 3 DLL's - &quot;OutlookAPI.dll&quot;,&quot;OfficeAPI.dll&quot; and &quot;NetOffice.dll&quot; of v1.6. Below is my code\r<br />\n<br />\nusing Outlook = NetOffice.OutlookApi; \r<br />\nusing Office = NetOffice.OfficeApi; \r<br />\n<br />\n... \r<br />\n... \r<br />\n... \r<br />\nOutlook.Application _Outlook = null; \r<br />\nOutlook.MailItem mi = null; \r<br />\n<br />\n_Outlook = new Outlook.Application(); \r<br />\nOutlook.Explorer oExplorer = _Outlook.ActiveExplorer(); \r<br />\nOutlook.Selection oSelection = oExplorer.Selection; \r<br />\n... \r<br />\n... \r<br />\nmi = (Outlook.MailItem)item; \r<br />\n<br />\nI am getting an error - &quot;The type or namespace name 'OfficeApi' could not be found (are you missing a using directive or an assembly reference?)&quot; \r<br />\nI have also checked the examples provided in the v1.6 download. Even they have the &quot;Missing Reference&quot; error. Kindly help \r<br />\n<br />\nThanks and Regards \r<br />\nGurudatt<br />\n",
+    "PostedDate": "2013-09-17T15:25:16.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1228818",
+    "ThreadId": "456989",
+    "Html": "Has anyone found a solution, I just downloaded the samples and I get the same error. I've removed the references and added them back in but did not work. Any suggestions. \r<br />\n<br />\nCheers<br />\n",
+    "PostedDate": "2014-03-31T16:02:23.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1229097",
+    "ThreadId": "456989",
+    "Html": "when its possible, please send me a minimalistic sample project(including NO assemblies) to public.sebastian[at]web.de\r<br />\ni want clearify the problem.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-04-01T10:26:47.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

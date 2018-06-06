@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "690205",
+    "ThreadId": "277400",
+    "Html": "\r\n<p>Hi</p>\r\n<p>&nbsp;</p>\r\n<p>I was wondering if the NetOffice has dll dependencies to any Office components, Excel particularly. On a server where we are running the code Office is not installed and following error snippet is thrown:</p>\r\n<p>&nbsp;</p>\r\n<p>progId not found. Excel.Application ---&gt; System.ArgumentException: progId not found. Excel.Application</p>\r\n<p>&nbsp;&nbsp; at LateBindingApi.Core.COMObject.CreateFromProgId(String progId)</p>\r\n<p>&nbsp;&nbsp; at LateBindingApi.Core.COMObject..ctor(String progId)</p>\r\n<p>&nbsp;&nbsp; at NetOffice.ExcelApi.Application..ctor()</p>\r\n<p>&nbsp;</p>\r\n<p>Thx</p>\r\n<p>AH</p>\r\n",
+    "PostedDate": "2011-10-27T04:58:45.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "690211",
+    "ThreadId": "277400",
+    "Html": "<p>hello,</p>\r\n<p>NetOffice is a access wrapper similiar to the interop assemblies but with helpful improvements in development and deployment.<br />you need an installed office in any version. if you want to use&nbsp;excel without an installed office you have to use excel2007 or higher with the open xml format.<br />a nice project to deal with open xml is ClosedXML <a href=\"http://closedxml.codeplex.com/\">http://closedxml.codeplex.com/</a><br /><br />*with best regards<br />Sebastian</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-27T05:20:13.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "690259",
+    "ThreadId": "277400",
+    "Html": "<p>Is it enough to install primary interop assemblies redistributable? Here is a link to what I mean http://www.microsoft.com/download/en/details.aspx?id=3508</p>",
+    "PostedDate": "2011-10-27T06:19:15.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "690265",
+    "ThreadId": "277400",
+    "Html": "<p>no, thats not enough.</p>\r\n<p>the interop assemblies is what you get when you create a new Excel Interop project without NetOffice.<br />the tool tlbimp.exe creates wrapper assemblies if you add a reference in your project to a COM type library (excel type lib in this case).<br /><br />the primary interop assemblies is the same as interop assemblies but with some modifications and&nbsp;additional enumerators for some types<br />to make it a little bit more easier for developers, thats all.&nbsp;it's basicly the same i find with the&nbsp;same problems, not version independent and so on.&nbsp;<br />if you want to use the PIA's you have to install this redistributable package behind your link on your development&nbsp;system and&nbsp;the target client machines.</p>\r\n<p>what do you want is a backend redistributable for excel but the only&nbsp;application there supports them is access with the MDAC.<br /><br />*sorry<br />Sebastian<br /><br /></p>",
+    "PostedDate": "2011-10-27T06:31:01.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "690278",
+    "ThreadId": "277400",
+    "Html": "<p>Thanks a lot Sebastian, you have been a huge help for us:)</p>\r\n<p>&nbsp;</p>\r\n<p>Kind regards</p>\r\n<p>AH</p>",
+    "PostedDate": "2011-10-27T06:57:00.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

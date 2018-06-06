@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1318654",
+    "ThreadId": "571171",
+    "Html": "Hi,\r<br />\n<br />\nI successfully created an TaskPane with an control UI to insert text into a Word document. The TaskPane is activated from a Ribbon Button in Office 2007-2013.\r<br />\n<br />\nNow I'm trying to show an control UI on Office 2003 activated from an CommandBar button. I managed to create the button and invoke the click event, but, I don't know how to show the control UI like in TaskPane.\r<br />\n<br />\nThis can be done?\r<br />\nThanks!<br />\n",
+    "PostedDate": "2014-11-03T08:52:08.797-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1319677",
+    "ThreadId": "571171",
+    "Html": "I solve my problem by creating and displaying a form as UI. It is unable to be attached to the Word interface as the panels, but it works.<br />\n<br />\nHere is the code:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">string</span> guid = Guid.NewGuid().ToString();\n\n<span style=\"color:Blue;\">string</span> wordApplicationCaption = _wordApplication.Caption;\n\n<span style=\"color:Blue;\">int</span> wordHwnd = 0;\n<span style=\"color:Blue;\">try</span>\n{\n    _wordApplication.Caption = guid;\n    wordHwnd = FindWindow(<span style=\"color:#A31515;\">&quot;OpusApp&quot;</span>, _wordApplication.ActiveDocument.Name + <span style=\"color:#A31515;\">&quot; - &quot;</span> + guid);\n}\n<span style=\"color:Blue;\">finally</span>\n{\n    _wordApplication.Caption = wordApplicationCaption;\n}\n\nNativeWindow wordWindow = <span style=\"color:Blue;\">new</span> NativeWindow();\nwordWindow.AssignHandle(<span style=\"color:Blue;\">new</span> IntPtr(wordHwnd));\n\n_olderOfficePanelForm = <span style=\"color:Blue;\">new</span> OlderOfficePaneForm();\n_olderOfficePanelForm.Text = _panelTitle;\n_olderOfficePanelForm.Show(wordWindow);\r\n</pre></div>",
+    "PostedDate": "2014-11-06T07:35:36.527-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-11-06T07:37:37.32-08:00"
+  }
+]

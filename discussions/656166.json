@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1478266",
+    "ThreadId": "656166",
+    "Html": "Hi,\r<br />\nI'm using your fantastic DLLs. I'm using NetOffice 1.7.3. \r<br />\nI'm able to open an Excel file and save it, but when I try to do it with a Visio file I get an \r<br />\nerror.\r<br />\n<br />\nMy code is: \r<br />\n<br />\nNetOffice.VisioApi.IVApplication app = new NetOffice.VisioApi.IVApplication();\r<br />\nVisio.IVDocument doc = app.Documents.Add(&quot;&quot;);\r<br />\n<br />\nwhen the second line of code is reached I receive this error:\r<br />\n<br />\nData: {System.Collections.ListDictionaryInternal}<br />\n<pre><code>HResult: -2147467261\nHelpLink: null\nInnerException: null\nMessage: &quot;Object reference not set to an instance of an object.&quot;\nSource: &quot;NetOffice&quot;\nStackTrace: &quot;   in NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray) in c:\\\\Source\\\\NetOffice\\\\Invoker.cs:riga 763&quot;\nTargetSite: {System.Object PropertyGet(NetOffice.COMObject, System.String, System.Object[])}\n</code></pre>\n\nI cames on every operation I do on Application object, also trying to open an existing file.\r<br />\nI'm stucked on this problem by days...can you help me please?\r<br />\nThank you in advance!<br />\n",
+    "PostedDate": "2016-07-07T02:01:51.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1478615",
+    "ThreadId": "656166",
+    "Html": "This is something else.\r<br />\nI see no possible reason at this point.(exception for the &quot;&quot; argument which is a dumy for this example i think)\r<br />\nWhen its possible for you, i want make a short session in skype or ts if you want to pin point the problem.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-07-11T08:02:56.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

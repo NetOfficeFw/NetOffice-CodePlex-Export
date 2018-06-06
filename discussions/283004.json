@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "712366",
+    "ThreadId": "283004",
+    "Html": "\r\n<p>The error is probably not related to NetOffice, Just in case people here see this error and have experience to handle it. thanks</p>\r\n<p>All My Excel Addin (XLL AddIn, call it MyAddIn) is built with C#, ExcelDNA, NetOffice, VS2010, Client has another addin let's call it B, I guess it is written in VBA. client says B works fine without MyAddIn. Once MyAddIn is installed, B fails. with error\r\n &quot;Error code: 406 Error message: Non-modal forms cannot be displayed in this host application from an ActiveX DLL, ActiveX Control, or Property Page. I did see\r\n<a rel=\"nofollow\" href=\"http://support.microsoft.com/kb/247791\">http://support.microsoft.com/kb/247791</a>, but I do not want to just tell client that B addin need changing. I want to do something to avoid from my side. Pls help thanks</p>\r\n<p>Here is the steps reported to see the issue: 1) When B addin is installed, it does not make any registry entry for the Microsoft Excel. 2) When MyAddin is installed, it makes a registry entry for maicrosoft excel. 3) Registry entries here basically tells\r\n that the addin should be Open when the excel is launched so B addin is not launched. So excel Works fine, MyAddIn works fine. 4) Now when B addin is launched, it gives the following error 406 5) We can ignore the error and keep working with the B addin and\r\n disable MyAddIn is the workaround. 6) When the B addin is launched, we see that the MyAddIn is loaded first before the B addin and then the 406 error 7) When we un install MyAddIn this error is not encountered and everything works fine 8) To remove this error\r\n we tried changing the registry order to make the B addin always open before the MyAddin. This works but then this a global change for Microsoft excel which means B addin will always open even when we launch only excel. This is not the desired as B addin then\r\n cant let users to work with the static data as B Addin keep on refreshing real time. That is the reason the B addin dont make an entry in the registry settings. So registry changes is not an option. We can&rsquo;t always open B addin whenever excel is open.</p>\r\n",
+    "PostedDate": "2011-12-14T13:43:52.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714888",
+    "ThreadId": "283004",
+    "Html": "<p>can i have a little code snippet?<br />i want see exactly the codeline when its crashed.</p>",
+    "PostedDate": "2011-12-20T08:16:11.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "721122",
+    "ThreadId": "283004",
+    "Html": "<p>Sorry. I do not have the B addin. and I can't reproduce the issue, so I do not know where it crashes.&nbsp; Clients reported the issue and I try to see possible reasons.</p>",
+    "PostedDate": "2012-01-05T15:34:30.05-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

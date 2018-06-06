@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1157039",
+    "ThreadId": "489226",
+    "Html": "Hallo,\r<br />\n<br />\nbei mir werden die Addins einfach nicht registriert. Wenn ich z.B. die Outlook COMAddin Examples öffne und F5 drücke, dann Outlook öffne, wird das Addin nicht angezeigt.\r<br />\n<br />\nUnter den COM Addins in den Entwicklereinstellungen wird es auch nicht angezeigt.\r<br />\n<br />\nMeine Umgebung:\r<br />\n Windows 7 Prof. 64Bit\r<br />\n Visual Studio 2010 Prof.\r<br />\n Outlook 2010\r<br />\n<br />\nWas kann ich noch tun?\r<br />\n<br />\nDominik<br />\n",
+    "PostedDate": "2014-01-12T02:31:42.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1157439",
+    "ThreadId": "489226",
+    "Html": "OK, das Problem hat sich gelöst....\r<br />\n<br />\nMan muss Visual Studio als Admin ausführen, dann klappts.\r<br />\n<br />\nJetzt stellt sich aber die Frage, wie kann ich dann ein Addin installieren ohne Admin-Rechte, wenn auf HKEY_CLASSES_ROOT zugegriffen werden muss?<br />\n",
+    "PostedDate": "2014-01-12T05:14:41.737-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1161303",
+    "ThreadId": "489226",
+    "Html": "Hallo,\r<br />\n<br />\nEin Office Addin braucht für die Installation immer erhöhte Rechte, es spielt dabei keine Rolle ob du VSTO, NetOffice, Interop, oder Visual Basic6 verwendest. Das Addin muss sich, wie jede COM Komponente, auf der Maschine global registrieren (HKEY_CLASSES) um als COM Komponente, von jedem der es möchte, genutzt zu werden. Der COM Standard sieht leider keine Differenzierung zwischen User und System allgemein vor.\r<br />\n<br />\nHinweis1: Die Office Anwendung benötigt bei NetOffice keine erhöhten Rechte um das Addin auch aus dem Office Machine Key(HKEY_LOCAL_MACHINE/Software/Microsoft/Office/ zu laden. (Für VSTO gelten hier nämlich Einschränkungen) \r<br />\n<br />\nHinweis 2: Mit einem Rechtsklick auf devenv.exe (Visual Studio) kannst du unter Eigenschaften festlegen das Visual Studio immer mit erhöhten Rechten starten soll. Andernfalls bekommst du wahrscheinlich eine Fehlermeldung nach dem Kompilieren &quot;Zugriff verweigert&quot;. Dies passiert weil Visual Studio das Addin gleich für dich registrieren möchte, das ist nichts als eine Installation, und die funktioniert eben leider nie ohne erhöhte Rechte.  *sad but true<br />\n",
+    "PostedDate": "2014-01-13T06:57:23.78-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1161458",
+    "ThreadId": "489226",
+    "Html": "<strong>SebastianDotNet wrote:</strong><br />\n<blockquote>\nHallo,<br />\n<br />\nEin Office Addin braucht für die Installation immer erhöhte Rechte, es spielt dabei keine Rolle ob du VSTO, NetOffice, Interop, oder Visual Basic6 verwendest. Das Addin muss sich, wie jede COM Komponente, auf der Maschine global registrieren (HKEY_CLASSES) um als COM Komponente, von jedem der es möchte, genutzt zu werden. Der COM Standard sieht leider keine Differenzierung zwischen User und System allgemein vor.<br />\n<br />\nHinweis1: Die Office Anwendung benötigt bei NetOffice keine erhöhten Rechte um das Addin auch aus dem Office Machine Key(HKEY_LOCAL_MACHINE/Software/Microsoft/Office/ zu laden. (Für VSTO gelten hier nämlich Einschränkungen) <br />\n<br />\nHinweis 2: Mit einem Rechtsklick auf devenv.exe (Visual Studio) kannst du unter Eigenschaften festlegen das Visual Studio immer mit erhöhten Rechten starten soll. Andernfalls bekommst du wahrscheinlich eine Fehlermeldung nach dem Kompilieren &quot;Zugriff verweigert&quot;. Dies passiert weil Visual Studio das Addin gleich für dich registrieren möchte, das ist nichts als eine Installation, und die funktioniert eben leider nie ohne erhöhte Rechte.  *sad but true<br />\n</blockquote>\nDas ist nicht ganz richtig ;-)<br />\n<br />\nHabe eine Methode gefunden, wie man COM Komponenten ohne Admin-Rechte registrieren kann.<br />\n<br />\nBei Interesse schreibe ich gerne eine kleine Applikation bzw. werde hier posten, wie das funktioniert.<br />\n",
+    "PostedDate": "2014-01-13T07:51:08.567-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1161546",
+    "ThreadId": "489226",
+    "Html": "Ich glaube zwar nicht an Zauberei, ab das Kunststück würde ich ja nur zu gerne sehen.\r<br />\nIch bleibe dabei und sage eine COM Komponente braucht erhöhte Rechte um sie zu registriren, und early-bind verfügbar zu machen.\r<br />\n(Es gibt ein paar late-binding tricks, aber registrieren ohne erhöhte Rechte, das geht nicht.) \r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-01-13T08:22:42.873-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1161645",
+    "ThreadId": "489226",
+    "Html": "Tja....\r<br />\n<br />\nJeder User hat seinen eigenen &quot;HKEY_CLASSES_ROOT&quot;, und zwar unter:  HKEY_CURRENT_USER\\Software\\Classes\r<br />\n<br />\nLeider gibt es kein fertiges Programm, um die COM Komponente hier zu registrieren, deshalb musste ich alles per Hand eintragen. Aber es wäre möglich, dafür ein Programm zu schreiben.<br />\n",
+    "PostedDate": "2014-01-13T08:54:32.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1162504",
+    "ThreadId": "489226",
+    "Html": "Excel-DNA schafft es, ohne Admin-Rechte Excel COM-Addins zum laufen zu bringen. Dabei werden nur temporär in der User-Registry Einträge gemacht und dann wieder gelöscht. Ob das auch für andere Office Anwendungen funktioniert, weiß ich nicht.<br />\n",
+    "PostedDate": "2014-01-13T13:54:38.067-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

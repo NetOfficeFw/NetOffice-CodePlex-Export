@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1028284",
+    "ThreadId": "439749",
+    "Html": "According to the msdn library there should be a Rows property in the Worksheet class.<br />\nOn my client there MS Office 2007 is installed. So i have looked again in the msdn library<br />\n<br />\n<a href=\"http://msdn.microsoft.com/de-de/library/microsoft.office.interop.excel.worksheetclass_members%28v=office.11%29.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/de-de/library/microsoft.office.interop.excel.worksheetclass_members%28v=office.11%29.aspx</a><br />\n<br />\n<a href=\"http://msdn.microsoft.com/de-de/library/microsoft.office.interop.excel.worksheetclass_members%28v=office.14%29.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/de-de/library/microsoft.office.interop.excel.worksheetclass_members%28v=office.14%29.aspx</a><br />\n<br />\n<a href=\"http://msdn.microsoft.com/en-us/library/bb215251%28v=office.12%29.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-us/library/bb215251%28v=office.12%29.aspx</a><br />\n",
+    "PostedDate": "2013-04-10T01:46:06.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1028286",
+    "ThreadId": "439749",
+    "Html": "I have found that intellisense was misleading me to another direction :)<br />\n<br />\nIf u want to count the rows of yourWorksheet u can use this<br />\n<pre><code>yourWorksheet.UsedRange.Rows.Count</code></pre>\n\n",
+    "PostedDate": "2013-04-10T01:52:47.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

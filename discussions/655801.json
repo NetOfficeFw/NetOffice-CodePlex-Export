@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1477017",
+    "ThreadId": "655801",
+    "Html": "Hi,\r<br />\nI have integrated the netoffice api in my asp.net web application to convert docx to pdf.\r<br />\nRunning the application from visual studio,the application runs perfectly.\r<br />\nHowever, when I deploy my asp.net web application under IIS, document is always null<br />\n<pre><code> object returnValue = comObject.InstanceType.InvokeMember(name, BindingFlags.InvokeMethod | BindingFlags.GetProperty, null, comObject.UnderlyingObject, paramsArray, Settings.Default.ThreadCulture);</code></pre>\n\nreturn value is always null\r<br />\nI have office 2016 installed on my machine and my application is running under framework 3.5 64 bit.\r<br />\nThx,<br />\n",
+    "PostedDate": "2016-06-22T09:16:31.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477022",
+    "ThreadId": "655801",
+    "Html": "The below fixed the issue\r<br />\n<br />\nIn the command line put DCOMCNFG\r<br />\nComponent Services -&gt; Computers -&gt; My Computer -&gt; DCOM Config\r<br />\nFind &quot;Microsoft Word 97 - 2003 Document&quot; (If it is missing check if your Word is also 64 bit (if your Windows is))\r<br />\nRight click -&gt; Properties\r<br />\nGo To Tab Security and Edit the &quot;Customize&quot; radio buttons so that IIS_IUSRS could have rights for launch and access\r<br />\nGo to Tab Identity and choose &quot;The interactive user&quot;\r<br />\nApply changes and try again\r<br />\nIf all this fails, go also to tab &quot;General&quot; and in &quot;Authentication Level&quot; drop down choose &quot;None&quot;.<br />\n",
+    "PostedDate": "2016-06-22T10:14:02.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

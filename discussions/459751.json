@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1101086",
+    "ThreadId": "459751",
+    "Html": "Hi\r<br />\n<br />\nI am trying to invalidate the ribbon UI when a task pane closes and change the checkbox to false/unticked. I created the following event however the InvalidateControl is throwing a nullreferenceexception.\r<br />\n<br />\nPrivate Sub myCustomTaskPane_VisibleChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles myCustomTaskPane.VisibleChanged<br />\n<pre><code>r.ribbon.InvalidateControl(&quot;Checkbox1&quot; = False)</code></pre>\n\nEnd Sub\r<br />\n<br />\nI have created an instance of the Ribbon1 called r. I have also created in the Ribbon1.vb the callbacks getPressed and onAction\r<br />\n<br />\nAny thoughts on how to get around the nullreferenceexcdeption\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-09-30T15:14:21.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102898",
+    "ThreadId": "459751",
+    "Html": "it looks like r or r.ribbon is null(nothing in vb)\r<br />\ni cant see what is r and where it comes from.\r<br />\ni need more code to see or a sample project.\r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2013-10-02T12:27:50.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1082607",
+    "ThreadId": "453932",
+    "Html": "Hallo,\r<br />\nwenn ich mein OutlookAddIn Projekt im Studio neu erstelle, wird das Plugin ordentlich registriert und ich kann es im Outlook verwenden. Wenn ich allerdings das AddIn per regasm registriere oder per MSI installiere, dann sehe ich unter COM-Add-Ins im Outlook, das mein AddIn wegen einem Fehler nicht gestartet werden konnte. Aber was für ein Fehler vorliegt, zeigt er mir nicht an.\r<br />\n<br />\nper regasm habe ich folgendes ausgeführt: \r<br />\nc:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC&gt;regasm C:\\OUTLOOK_AddIn\\bin\\Debug\\OutlookAddIn.dll\r<br />\n<br />\nUnd das Setupprojekt habe ich laut Schritt-für-Schritt Anleitung erstellt.\r<br />\n<br />\nHabt ihr irgendeinen Hinweis oder ne Idee?\r<br />\n<br />\nDanke und viele Grüße, Daniel<br />\n",
+    "PostedDate": "2013-08-20T03:38:30.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082610",
+    "ThreadId": "453932",
+    "Html": "Meistens liegt es an einer fehlenden Abhängikeit. Also andere DLL's die fehlen.\r<br />\nWenn ich dich richtig verstehe wird das Addin korrekt installiert, aber nach dem starten wird das Ladeverhalten von 3 auf 2 zurückgsetzt. \r<br />\nIst das richtig?\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-20T03:47:35.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082614",
+    "ThreadId": "453932",
+    "Html": "Hi,\r<br />\nja, &quot;2&quot; wird  gesetzt bei der Registrierung mit regasm oder per MSI, per Studio bleibt die &quot;3&quot;\r<br />\n<br />\nUnter Verweise habe ich aber nur 4 Standard-Verweise: NetOffice, OfficeApi, OutlookApi und System.Windows.Forms\r<br />\n<br />\nMuss ich bei regasm für die DLL's irgendwas mit angeben?<br />\n",
+    "PostedDate": "2013-08-20T03:53:43.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082628",
+    "ThreadId": "453932",
+    "Html": "ja und nein.. wenn du die beispiele als vorlage genutzt hast eigentlicht nicht. ansonsten sollte man per regasm noch den /codebase parameter übergeben um der .net runtime mitzuteilen wo das assembly liegt.. nebenbei netoffice bietet 2 deploymentbeispiele in c# und vb im downloadbereich. du kannst mir auch deine solution zusenden(ohne den logik code) dann überprüfe ich das und kann dir direkt sagen woran es liegt: public.sebastian[at]web.de<br />\n",
+    "PostedDate": "2013-08-20T04:27:53.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082635",
+    "ThreadId": "453932",
+    "Html": "Projekt ist unterwegs...<br />\n",
+    "PostedDate": "2013-08-20T04:41:02.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092113",
+    "ThreadId": "453932",
+    "Html": "Hi,\r<br />\nWhen it is for Office 2013 remember that the MSADDNDR.dll is not supplied bij Microsoft. Missing this dll prevents istalling COM addins for Office 2013. Search Google for the dll and visit the Microsoft website.\r<br />\n<a href=\"http://support.microsoft.com/kb/2792179\" rel=\"nofollow\">http://support.microsoft.com/kb/2792179</a>\r<br />\n<br />\nSuccess\r<br />\nRGR<br />\n",
+    "PostedDate": "2013-09-13T00:08:12.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

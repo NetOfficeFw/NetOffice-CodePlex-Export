@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1402036",
+    "ThreadId": "619217",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nI remember when I started with NetOffice and I had huge issues actually creating an MSI file that registered the COM DLL correctly. First I was using Installshield and then I switched to WIX. Now I would never go back to InstallShield even though it took quite some time before I had a working WIX installer ready.\r<br />\n<br />\nWould a WIX installer example be useful for you to have?\r<br />\n<br />\nIf so, I can prepare a ready Visual Studio project with a simple Outlook add-in that shows a popup when the user sends an email.<br />\n",
+    "PostedDate": "2015-04-10T12:12:48.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1403709",
+    "ThreadId": "619217",
+    "Html": "Hi dingosharken,\r<br />\n<br />\nI would certainly like one. I am going thru the pain of creating an msi using installshield limited edition.\r<br />\n<br />\nCould you mail me the project?\r<br />\n<br />\nThanks\r<br />\nDave<br />\n",
+    "PostedDate": "2015-04-11T10:19:44.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1403888",
+    "ThreadId": "619217",
+    "Html": "What a good idea! Its useful, of course.\r<br />\n<br />\nI also want create a new folder in the example sections which is called &quot;Deployment&quot; incl. WIX, MSI and so on.\r<br />\nYou can send me a sample solution to public.sebastian[at]web.de or/and i give you developer access permissions to NetOffice ( I prefer this, you are a registered NetOffice developer in this case and can keep an eye to the deployment sample)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-04-11T12:45:10.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1404377",
+    "ThreadId": "619217",
+    "Html": "I have emailed you the full example now (I prefer this alternative). It has the following properties:<br />\n<ul>\n<li>Works with Visual Studio 2012+</li>\n<li>Works with .NET 4.0+</li>\n<li>Includes switch for Outlook 32-bit or Outlook 64-bit</li>\n<li>\nIncludes both Per-Machine installer and Per-User installer<br />\n</li>\n</ul>\nPlease confirm that you can build it on your machine.\r<br />\n<br />\nThe example can be considered as a small thanks for the great work you have done on NetOffice and that you have decided to make it free to use.<br />\n",
+    "PostedDate": "2015-04-11T14:58:04.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1406804",
+    "ThreadId": "619217",
+    "Html": "I got your example today - thx. Currently i figure out how i can replace some hardcoded values(like assembly version) in the wix xml definition with placeholders.\r<br />\nIf its possible i want improve the Developer Toolbox project wizard to create a wix deployment project for addins(similar to VSTO).\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-04-12T15:31:56.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1420591",
+    "ThreadId": "619217",
+    "Html": "As I am currently attempting (unsuccessfully) to create an installshield installer for a COM add-in, I would love to have the proposed Developer Toolbox feature! Do you have any idea when that might be ready? Thanks for all you do!<br />\n",
+    "PostedDate": "2015-04-28T10:16:41.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1421331",
+    "ThreadId": "619217",
+    "Html": "Hello dingosharken!\r<br />\n<br />\nI finally finished my Addin for word. But I encounters a tough problem: deployment. I try to use Visual Studio Installer to package everything, but it's likely COM dll isn't registered correctly, since after installation, Word application doesn't load my Addin. So can you give an example to deploy an Addin?\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2015-04-29T05:11:53.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1422735",
+    "ThreadId": "619217",
+    "Html": "I'm having the same problem as taotaomy with my Word addin. An example WIX installer would be very helpful.<br />\n",
+    "PostedDate": "2015-05-04T07:19:13.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1422739",
+    "ThreadId": "619217",
+    "Html": "I already use the Visual Studio Installer to deploy my project successfully in some cases.  Sometimes, I don't what change can cause the register nonfunctional. In other words, I don't really understand how to register my project. \r<br />\n<br />\nHere is another reason for WIX:  VS 2010 is the last version which supports Visual Studio Installer.  So WIX would be a good choice for developers.<br />\n",
+    "PostedDate": "2015-05-04T07:31:13.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

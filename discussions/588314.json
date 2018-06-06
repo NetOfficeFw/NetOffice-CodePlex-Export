@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1367234",
+    "ThreadId": "588314",
+    "Html": "Hi,\r<br />\n<br />\nI'm using the dlls in a script Task and they are not recognized. It says it can't be embedded, so I suppose I have to Register them. Do you know if I Show Register them with Regsvr32 or Regasm? I suppose that if I also Register it in the Gacutil it will be easier to find it. As you can see I'm a newbie registering dlls :).<br />\n",
+    "PostedDate": "2015-03-19T08:53:22.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1367498",
+    "ThreadId": "588314",
+    "Html": "hey men,\r<br />\n<br />\nGo to the project references and set the option &quot;Embed Interop Types&quot; for each NetOffice assembly to 'false'\r<br />\nYou have to register .net addins with Regasm. (regsvr32 can't handle .Net assemblies) Gacutil is not required.\r<br />\nMake sure your assembly is com visible in project options!\r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2015-03-20T05:15:13.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

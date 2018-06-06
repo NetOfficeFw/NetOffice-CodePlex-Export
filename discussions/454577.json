@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1085076",
+    "ThreadId": "454577",
+    "Html": "Hi all!<br />\nI just started to play with NetOffice and generally it looks excellent!<br />\nHowever I have bumped into a problem on my first project.<br />\nI have created a ribbon button in Outlook and want to manipulate the Mailitem object when the button is pressed. The event is working well and I get the IRibbonControl object in my function.<br />\nHowever, I am unable to cast the control.Context property.<br />\n<pre><code> public void btnSaveSend_Click(NetOffice.OfficeApi.IRibbonControl control)\n  {\n        var item = control.Context as NetOffice.OutlookApi.Inspector;\n        var mailItem = item.CurrentItem as NetOffice.OutlookApi.MailItem;\n        if (mailItem != null) MessageBox.Show(mailItem.Subject);\n  }\n</code></pre>\n\nThe above method only returns item = null. If I try this: <br />\n<pre><code> var item = (NetOffice.OutlookApi.Inspector)control.Context;</code></pre>\n\nI get an error message: <br />\n_Unable to cast COM object of type 'System._ComObject' to class type 'NetOffice.OutlookApi.Inspector'. Instances of types that represent COM components cannot be cast to types that do not represent COM components; however they can be cast to interfaces as long as the underlying COM component supports QueryInterface calls for the IID of the interface.<br />\n_<br />\n<strong>When debugging the add-in I can see that there is actually a MailItem object inside control.Context.CurrentItem,</strong> so this is all down to casting.<br />\n<br />\nI have seen several code examples where this is supposed to work, but for me it doesn't.<br />\n<br />\n<br />\nAny help guiding me in the right direction is greatly appreciated!<br />\n<br />\nEzpl<br />\n",
+    "PostedDate": "2013-08-26T13:09:23.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1085092",
+    "ThreadId": "454577",
+    "Html": "IRibbonControl is an earlybind interface in NetOffice. (necessary because the office application want this)\r<br />\nuse:\r<br />\nOutlook.Inspector item = new Outlook.Inspector(null, control.Context);\r<br />\n// stuff\r<br />\nitem.Dispose();\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-26T13:59:23.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093414",
+    "ThreadId": "454577",
+    "Html": "Hi Sebastian\r<br />\nI just noticed your reply as I was expecting an e-mail notification.\r<br />\n<br />\nYour suggestion worked like a charm! Thank you!\r<br />\n<br />\nEzpl<br />\n",
+    "PostedDate": "2013-09-17T00:59:33.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1123314",
+    "ThreadId": "454577",
+    "Html": "Had similar knowledge issue.  Thanks!\r<br />\n<br />\nWorking on a word addin and needed to get the current document  that is refreshing the editbox.  When a control is invalidated and there are several documents open each window will get refreshed.  Had the windows fighting over who ran last.  The control.Context contains the window and subsequent document objects.\r<br />\n<br />\nSpent a bunch of time examining the com object reference that I could never really get to.  Could see the context in the debugger window dynamic view could render the object so I knew the object was obtainable just not reachable.  Ended up coming back to read the documentation and trolling the issues:)\r<br />\n<br />\n public string GetText_ebSomeEditboxControl(NetOffice.OfficeApi.IRibbonControl control)\r<br />\n {<br />\n<pre><code>        NetOffice.WordApi.Window window = new NetOffice.WordApi.Window(null, control.Context);\n\n        var caption= window.Caption;\n\n        window.Dispose();\n\n        return caption;</code></pre>\n\n}<br />\n",
+    "PostedDate": "2013-11-13T22:37:14.933-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

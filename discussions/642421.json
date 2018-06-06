@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1437577",
+    "ThreadId": "642421",
+    "Html": "Hi,\r<br />\nWe have an application which used .NET 3.5 and not we are going to update it to 4.5.1. NetOffice version we have is 1.5.1.2. I just downloaded new version from here and cannot build the application.\r<br />\nBelow is error message:\r<br />\nError\t17\tInterop type 'NetOffice.ExcelApi.Application' cannot be embedded. Use the applicable interface instead.\t\r<br />\n<br />\nThis is the line where error points to<br />\n<pre><code>using ExcelApplication = NetOffice.ExcelApi.Application;</code></pre>\n\nand few lines where we use it:<br />\n<pre><code>version = Application.ProductVersion;</code></pre>\n\n<pre><code>public static ExcelApplication CreateExcelApplication()\n        {\n            var application = new ExcelApplication();\n\n            application.Visible = false;\n            application.ScreenUpdating = false; // performance speed-up\n            application.DisplayAlerts = false;\n\n            return application;\n        }</code></pre>\n\n",
+    "PostedDate": "2015-08-06T09:12:40.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1437604",
+    "ThreadId": "642421",
+    "Html": "its a reference problem.\r<br />\ngo to rerefence options set the Option &quot;Embed Interop Types&quot; to false.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-08-06T11:43:10.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1437688",
+    "ThreadId": "642421",
+    "Html": "Hi Sebastian,\r<br />\nThanks for reply.\r<br />\nIt is already set to False\r<br />\n<img src=\"http://s24.postimg.org/b6gzcqgpx/image.png\" alt=\"Image\" /><br />\n",
+    "PostedDate": "2015-08-07T03:19:16.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1437691",
+    "ThreadId": "642421",
+    "Html": "you have to set this setting for each individual NetOffice (assembly) reference.\r<br />\nin your case: ExcelApi.dll cause problems here. \r<br />\n<br />\nin other words: use this settings for all NetOffice (assemblies) references you know.\r<br />\n<br />\nNetOffice contains multiple assemblies.\r<br />\nSet all reference settings here to &quot;Embed Interop Types:false&quot; and everything is okay.\r<br />\n(i'm sry visual studio is very stupid here)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-08-07T03:31:19.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1437692",
+    "ThreadId": "642421",
+    "Html": "Yeah, got these all set, there are 2 more assemblies included.\r<br />\nNow everything compiles. \r<br />\nThank you very much.<br />\n",
+    "PostedDate": "2015-08-07T03:33:37.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1485630",
+    "ThreadId": "658589",
+    "Html": "Thanks Sebastian for your great software.\r<br />\n<br />\nThere are some nuances that complicate the transition to NetOffice, because after the transition it is necessary for some time to fiind out why the code does not work so as it worked before.\r<br />\n<br />\nFor example, by using ExcelApi it is necessary to adapt (do anew)  Range.Resize[row, column] on Range.Resize(row, column). The same regards Offset.\r<br />\nInstead  .Names.Item(rangeName) it should be .Names[rangeName, null, null].\r<br />\nWork with optional arguments differs.\r<br />\n \r<br />\nIn issue Worksheet.Range is not an indexer (C#) (<a href=\"http://netoffice.codeplex.com/workitem/22314\" rel=\"nofollow\">http://netoffice.codeplex.com/workitem/22314</a>) you write that\r<br />\n \r<br />\n&quot;So Excel.Worksheet need a -real-simple Range property in NetOffice.\r<br />\n(The indexer comes from the Excel.Range class in your scenario)\r<br />\nThis is easy to fix in a minute :)&quot;\r<br />\n \r<br />\nIn this connection, I have a question, do you plan to release new versions of NetOffice  and where  can it be retrieved? \r<br />\n<br />\nBest regars,\r<br />\nSerge<br />\n",
+    "PostedDate": "2016-10-09T02:51:05.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1485649",
+    "ThreadId": "658589",
+    "Html": "I know...holy shit i know.\r<br />\n<br />\nNetOffice is written in C# and this comes with a drawback. I've been tried VB a lot of times with much more problems.\r<br />\n<br />\nIn fact: It is impossible to reproduce the Primary Interop Assemblies as 1:1. (Standard Interop Assemblies are no match for NetOffice of course)\r<br />\n<br />\nAll .Net languages doesnt allows what the COM standard doing here.\r<br />\nThe primary interop assemblies bypass any compiler rules and can do the magic\r<br />\n<br />\nYes, imitate the PIA's better in Excel as first is part of the todo list and fixed in the current source state.\r<br />\n<br />\n[OffTopic]\r<br />\nI have a new release right now for 1 year but Codeplex drop the support to my lovely Subversion(SVN), and i have no experience with Git at all, and i have no time to learn all about git to continue the contribution. \r<br />\n[/OffTopic]\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-10-09T10:32:14.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1485681",
+    "ThreadId": "658589",
+    "Html": "Thanks Sebastian,\r<br />\n<br />\n can you somehow make the sources of the latest version available without source control?\r<br />\n<br />\nBest regars, \r<br />\nSerge<br />\n",
+    "PostedDate": "2016-10-10T01:46:22.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1485763",
+    "ThreadId": "658589",
+    "Html": "There is one package in the download section now: [Source] Current Source State\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-10-10T21:47:18.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486139",
+    "ThreadId": "658589",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nhave you tried to use Subversion with <a href=\"https://github.com/netoffice/NetOffice\" rel=\"nofollow\">netoffice/NetOffice repostory</a> on GitHub?\r<br />\nGitHub repositories can be access with SVN clients.\r<br />\n<br />\n <a href=\"https://help.github.com/articles/support-for-subversion-clients/\" rel=\"nofollow\">https://help.github.com/articles/support-for-subversion-clients/</a><br />\n",
+    "PostedDate": "2016-10-14T15:34:33.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486174",
+    "ThreadId": "658589",
+    "Html": "FYI, Jozef Izso was kind enough to submit a pull-request to the Github repository with the latest code submitted by Sebastian, which you can get by cloning the repository: <a href=\"https://github.com/netoffice/NetOffice\" rel=\"nofollow\">https://github.com/netoffice/NetOffice</a>\r<br />\n<br />\nCheers,\r<br />\nCaio Proiete<br />\n",
+    "PostedDate": "2016-10-15T08:13:34.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486198",
+    "ThreadId": "658589",
+    "Html": "I've update the <a href=\"https://github.com/NetOfficeFw/NetOffice\" rel=\"nofollow\">https://github.com/NetOfficeFw/NetOffice</a> repository with automated build on AppVeyor and deployment of NuGet packages to MyGet.\r<br />\n<br />\nThis is the current release process:<br />\n<ol>\n<li>Update code at <a href=\"https://github.com/NetOfficeFw/NetOffice\" rel=\"nofollow\">https://github.com/NetOfficeFw/NetOffice</a></li>\n<li>Automated build on AppVeyor will compiled both Debug and Release configurations</li>\n<li>NuGet packages are created for NetOffice libraries</li>\n<li>\nPackages are published to <a href=\"https://www.myget.org/gallery/netofficefw-dev\" rel=\"nofollow\">https://www.myget.org/gallery/netofficefw-dev</a> feed<br />\n</li>\n</ol>\nDeveloper experience for developing NetOffice based projects:<br />\n<ol>\n<li>Use pre-release feed to get latest NetOffice packages: <a href=\"https://www.myget.org/F/netofficefw-dev/\" rel=\"nofollow\">https://www.myget.org/F/netofficefw-dev/</a></li>\n<li>Write code</li>\n<li>Configure Visual Studio to use Symbols Server at <a href=\"https://www.myget.org/F/netofficefw-dev/symbols/\" rel=\"nofollow\">https://www.myget.org/F/netofficefw-dev/symbols/</a></li>\n<li>Debug your project and step into NetOffice source code</li>\n</ol>\n",
+    "PostedDate": "2016-10-16T09:37:32.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

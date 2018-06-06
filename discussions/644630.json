@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "1443324",
+    "ThreadId": "644630",
+    "Html": "Rumors say that Office 2016 will be launched on Sept 22 this year. \r<br />\n<br />\nWill NetOffice support it?<br />\n",
+    "PostedDate": "2015-09-05T22:04:17.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1444322",
+    "ThreadId": "644630",
+    "Html": "hey men,\r<br />\n<br />\nOf course, NetOffice want support Office 2016 but i want to wait for the official release to create new source and update toolbox.\r<br />\nlast time(2013) i've been used the latest preview to create new source and this caused some issues. (few features missing)\r<br />\n<br />\nAnyway, the MS Office COM Api is &quot;no longer made&quot;. MSFT did not any changes(he say). In other words: Office 2016 is excactly the same as Office 2013 (from COM-based developer perspective) You can use Office 2016 right now in NetOffice without worries. The only drop act is the intellisense and toolbox support is not up-to-date.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-09-14T07:45:15.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1444346",
+    "ThreadId": "644630",
+    "Html": "Thanks for the update!<br />\n",
+    "PostedDate": "2015-09-14T09:57:59.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1448335",
+    "ThreadId": "644630",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nAny new update here?  I believe Office 2016 is officially released, right?\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2015-10-13T10:39:42.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1450730",
+    "ThreadId": "644630",
+    "Html": "I'm using this to create an add-in for excel, and would like 2016 supported. \r<br />\n<br />\nAny timeline on when this will be the case?<br />\n",
+    "PostedDate": "2015-11-03T06:15:18.46-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1450777",
+    "ThreadId": "644630",
+    "Html": "I'm using the current version of NetOffice in my add-in, <a href=\"http://www.formuladesk.com\" rel=\"nofollow\">FormulaDesk</a>, and it works fine in Excel 2016. I think that the only thing missing in the current version of NetOffice is support for NEW features in 2016 that are not in previous versions of Excel ie: if you only need access to features that are already in Excel 2013, then you'll be fine using the current version of NetOffice.<br />\n",
+    "PostedDate": "2015-11-03T17:12:42.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1451067",
+    "ThreadId": "644630",
+    "Html": "hey guys,\r<br />\n<br />\nI'm sorry for the delay. I didnt use Office 2016 at home(and i dont have a legal licence here right now) For this reason i use the workstations in the company i work for to create NetOffice. I dont know why but my company need a bit to update Office and Windows to its current state. Today we got Win10(x64) and Office 2016 for all employees in my company. <em>yeah</em> :) I'm ready now and want update NetOffice very very soon(ASAP). \r<br />\n <br />\nMoreover i still work for a guideline to see whats different in Office 2016. Yes its true - the COM API is the same but MS do some changes in behavior.\r<br />\nIf anyone read this and find some differents(in behaviour) in Office2016, please answer or contact me.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-11-05T12:06:52.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1467718",
+    "ThreadId": "644630",
+    "Html": "Hi Sebastian!\r<br />\nThank you for a fantastic library.  I was just curious if you had an update on full 2016 support?  I'm starting to get support tickets suggesting that our Outlook Add-in is no longer loading for some Office 2016 users.<br />\n\r<br />\nHave you or anyone else heard of this?\r<br />\n<br />\nDo you think it's possible that we do need NetOffice to built with the official 2016 libraries?\r<br />\n<br />\nThanks in advance!<br />\n",
+    "PostedDate": "2016-03-22T17:13:28.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1473830",
+    "ThreadId": "644630",
+    "Html": "What have been the specific defects/issues that other folks have observed so far on Office 2016?  x86 vs x64?  Windows 7? 10?\r<br />\n<br />\nNet Office has allowed us to support the same Addin across 2007-2013, so I am definitely willing to test, stress the bits and help out in this effort. =)<br />\n",
+    "PostedDate": "2016-05-18T07:43:28.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1479805",
+    "ThreadId": "644630",
+    "Html": "Any update on 2016?\r<br />\nMy code which I insert an image into a Word docx file works fine in Word 2013 but not in 2016.<br />\n<pre><code>            Word.Range rangeInitial = wordDoc.Application.Selection.Range;\n            Object ol = false;\n            Object os = true;\n            Object or = rangeInitial;\n\n            Word.InlineShapes inlineShapes = rangeInitial.InlineShapes;\n            Word.InlineShape inlineShape = inlineShapes.AddPicture(sStampFile, ol, os, or);\n</code></pre>\n\nThere is no response nor error when the code is executed.\r<br />\nAnybody has any suggestion?\r<br />\nThanks.<br />\n",
+    "PostedDate": "2016-07-26T01:38:25.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1479888",
+    "ThreadId": "644630",
+    "Html": "I can not reproduce the problem in Office 2016.\r<br />\nPlease help me out to imitate your environment. \r<br />\n<br />\nWindows Version (32 or 64 Bit)\r<br />\nOffice is 32 or 64 Bit\r<br />\nWhat kind of image is that(png gif etc)\r<br />\n<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2016-07-26T19:45:12.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1479889",
+    "ThreadId": "644630",
+    "Html": "Sorry，I've fixed this. It is my coding fault in the image generation.\r<br />\n<br />\nThanks for replying.<br />\n",
+    "PostedDate": "2016-07-26T19:48:01.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1480219",
+    "ThreadId": "644630",
+    "Html": "@dingosharken\r<br />\n<br />\nCan we talk in MSN Messenger (or skype) some minutes?\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2016-08-01T17:44:14.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1480710",
+    "ThreadId": "644630",
+    "Html": "Sorry, I switched to using Add-in Express for now.<br />\n",
+    "PostedDate": "2016-08-09T15:24:38.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1480715",
+    "ThreadId": "644630",
+    "Html": "Addin Express is a very good choice and Andrei Smolin is a very talented programmer/company leader.\r<br />\n<br />\nI'm sad to lost you in NetOffice and wish you good luck.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-08-09T15:37:01.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

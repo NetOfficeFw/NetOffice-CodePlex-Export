@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "822066",
+    "ThreadId": "351821",
+    "Html": "\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"></p>\r\n<p>Sebastian</p>\r\n<p>I'm using NetOffice with ExcelDna and VB.Net to convert a VBA addin to VB.Net<br>\r\nOne common problem is the error message above.</p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">&nbsp;</span></span>I have to rewrite chained properties like this:</p>\r\n</span></span>\r\n<p></p>\r\n<p></p>\r\n<p>wbLeft.Sheets(nLeft).ChartObjects.Count</p>\r\n<p></p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"></p>\r\n<p>rgToTest.Worksheet.Parent.Sheets.Count</p>\r\n</span></span>\r\n<p>as separate calls using a variant Object type.</p>\r\n<p></p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">&nbsp;</span></span></span></span>Is&nbsp;\r\n there an easier way than all this rewrite? There are hundreds of them.</p>\r\n<p>Thanks,</p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"></span></span></span>Patrick</p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"></span></span></span></p>\r\n<p></p>\r\n</span></span>\r\n<p></p>\r\n<p></p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n",
+    "PostedDate": "2012-04-10T10:43:57.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822082",
+    "ThreadId": "351821",
+    "Html": "<p>Hey Patrick,<br /><br />thats what i'm walking in our e-mail discussion.<br />the current NetOffice release converts unkown COM Proxies to the type COMObject.<br />this is a good way for the typesafe design but not easy to handle for VB/VBA developers.<br />govert shows me this problem as first. what you can do at the moment is: store the property&nbsp;in a local variable as Object<br />and use Visual Basic latebinding now. i do the&nbsp;change to Object for anyoynm&nbsp;proxies&nbsp;as fast as possible. a new release is planned for the next weekend.<br /><br />*Sebastian</p>",
+    "PostedDate": "2012-04-10T11:22:24.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822284",
+    "ThreadId": "351821",
+    "Html": "<p>Thanks, Sebastian,<br />It's great if you can change things at your end to avoid a lot of workarounds in the code.<br />I'd like to avoid late binding because it loses intellisense and pushes errors to runtime, but for generic objects like .Sheets(n) and .Parent it's unavoidable.<br /><br />I have other questions, probably basic, but I imagine that if I post them here at the discussion it may help others find the answers through google.<br /><br />P</p>",
+    "PostedDate": "2012-04-11T01:54:36.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822286",
+    "ThreadId": "351821",
+    "Html": "<p>avoid latebinding is not impossible but you need some casts at runtime. (more code)<br />its okay for the simples things to use latebinding in VB i&nbsp;find.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-11T02:04:46.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822292",
+    "ThreadId": "351821",
+    "Html": "<p>\"﻿you need some casts at runtime\"</p>\r\n<p>Yes, I discovered the use of eg</p>\r\n<p>﻿﻿﻿﻿dim cdp as NetOffice.OfficeApi.documentproperties</p>\r\n<p>cdp = CType( wb.CustomDocumentProperties, Netoffice.Officeapi.documentproperties)</p>\r\n<p>I'll post separate questions if that's OK to keep threads together.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-04-11T02:16:30.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "945616",
+    "ThreadId": "404217",
+    "Html": "\r\n<p>Hello.</p>\r\n<p>For a start - <span style=\"text-decoration:underline\">extremely useful project</span> !</p>\r\n<p>I'd like to see examples on how to add RibbonUI controls other than 'button' which<br>\r\nis easily implemented after studying the examples.</p>\r\n<p>Could You please post a quick tip or point to a link where I can find the way to add a combobox (or dropdown) and a checkbox ?</p>\r\n<p>What needs to be defined in RibbonUI.xml and which events need to be addressed ?<br>\r\n( SelectedIndexChanged,&nbsp; ... ) How to add items, etc.</p>\r\n<p>Full example would be fine or a link to it.</p>\r\n<p>---------------------------------------------------------------------------------------------------</p>\r\n<p>Currently I'm still writing code but I started to think about deployment. How can it be<br>\r\ndone using InnoSetup ?</p>\r\n<p>If I go about and try doing it 'by hand', what do I have to do then ?<br>\r\nWhere to copy the builded dll-s and is it enough to modify & use the<br>\r\nprovided 'OfficeAddinSampleRegFile.reg' ?</p>\r\n<p>Thanks again and thank You for your time.</p>\r\n<p>Tone</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-11-22T05:32:16.733-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "946838",
+    "ThreadId": "404217",
+    "Html": "\r\n<p>OK - got examples I need here: http://msdn.microsoft.com/en-us/library/aa338202%28v=office.12%29.aspx</p>\r\n<p>If anybody's stuck like I was.</p>\r\n",
+    "PostedDate": "2012-11-25T22:32:49.287-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

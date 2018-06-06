@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "709765",
+    "ThreadId": "282368",
+    "Html": "\r\n<p>I'd like to work with the Instant Search in Outlook.&nbsp; What I'm trying to achieve is to add additional search results to Instant Search's results which come from a different service (e.g. a webservice).</p>\r\n<p>Is it possible to work with Instant Search using NetOffice?</p>\r\n",
+    "PostedDate": "2011-12-09T01:33:04.98-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "709844",
+    "ThreadId": "282368",
+    "Html": "<p>hello sprocketonline,</p>\n<p>Of course you can use instant search with NetOffice.&nbsp; the API&nbsp;includes all features of outlook.<br />This article is an excerpt from the book \"Programming Applications for Microsoft Office Outlook 2007\"<br /><br /><a href=\"http://msdn.microsoft.com/en-us/library/cc513841(v=office.12).aspx\">http://msdn.microsoft.com/en-us/library/cc513841(v=office.12).aspx</a><br /><br />a very good tutorial i find, the example code is 100% compatible with NetOffice all the time.</p>\n<p>Good Luck !!!<br />*Sebastian</p>",
+    "PostedDate": "2011-12-09T05:35:39.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

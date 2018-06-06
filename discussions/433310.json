@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1001974",
+    "ThreadId": "433310",
+    "Html": "Hi,\r<br />\n<br />\nI've got a problem with Click handler on my CommandBarButton created in classic UI. Event is simply not raised. I tried every possible combination which came to my mind to make it work but I ran out of ideas without any success.\r<br />\n<br />\nButton is successfully created (or found at CommandBar). \r<br />\n<br />\nI use this method to create my button: <br />\n<pre><code>    Private WithEvents addTaskButton As CommandBarButton\n\n    Public Sub AddTask_ClassicClicked(control As CommandBarButton, ByRef cancelDefault As Boolean) Handles addTaskButton.ClickEvent\n        ' not called:\n        control.Caption = &quot;Clicked&quot;\n        System.Windows.Forms.MessageBox.Show(&quot;Classic clicked!&quot;)\n\n        ' release COM object\n        control.Dispose()\n    End Sub\n\n    Private Sub CreateUserInterface()\n        ' COM proxy object\n        Using commandBars As CommandBars = Me.Application.ActiveExplorer.CommandBars\n\n            ' Create a toolbar button on the standard toolbar\n            Try\n                ' See if it already exists\n                Dim missing = System.Reflection.Missing.Value\n                Me.addTaskButton = DirectCast(commandBars(&quot;Standard&quot;).FindControl(MsoControlType.msoControlButton, missing, ADD_TASK_BUTTON_TAG), CommandBarButton)\n\n            Catch ex As System.Exception\n                Trace.TraceWarning(ex.ToString())\n            End Try\n\n            If Me.addTaskButton Is Nothing Then\n                ' Create it\n                Dim missing = System.Reflection.Missing.Value\n                Me.addTaskButton = DirectCast(commandBars(&quot;Standard&quot;).Controls.Add(MsoControlType.msoControlButton, missing, missing, missing, True), CommandBarButton)\n\n                ' Configure it\n                Me.addTaskButton.Caption = &quot;Add Task&quot;\n                Me.addTaskButton.DescriptionText = &quot;Coverts currently selected mail messages into tasks.&quot;\n                Me.addTaskButton.TooltipText = &quot;Coverts currently selected mail messages into tasks.&quot;\n                Me.addTaskButton.Picture = PictureDispConverter.Convert(My.Resources.Tasks_16)\n                Me.addTaskButton.Mask = PictureDispConverter.Convert(My.Resources.Tasks_16_mask)\n\n                Me.addTaskButton.Style = MsoButtonStyle.msoButtonIconAndCaption\n            End If\n\n            Try\n                ' add click handler\n                Dim clickHandler As NetOffice.OfficeApi.CommandBarButton_ClickEventHandler = AddressOf Me.AddTask_ClassicClicked\n                AddHandler Me.addTaskButton.ClickEvent, clickHandler\n            Catch ex As System.Exception\n                Trace.Fail(ex.ToString())\n            End Try\n\n            Me.addTaskButton.Tag = ADD_TASK_BUTTON_TAG\n            Me.addTaskButton.OnAction = &quot;!&lt;&quot; &amp; Constants.PROG_ID &amp; &quot;.Connect&gt;&quot;\n\n            Me.addTaskButton.Enabled = True\n            Me.addTaskButton.Visible = True\n        End Using\n    End Sub</code></pre>\n\nTesting on Office 2007 Professional (Outlook), 32bit version; Windows XP 32bit.\r<br />\n<br />\nDo you have any ideas to make it work?\r<br />\n<br />\n<br />\nThanks,\r<br />\nMichal<br />\n",
+    "PostedDate": "2013-02-15T11:53:23.9-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002209",
+    "ThreadId": "433310",
+    "Html": "did you keep the Button alive? (use the OnDispose event for debugging)\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-02-16T08:46:16.69-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002811",
+    "ThreadId": "433310",
+    "Html": "Thanks for suggestion! \r<br />\n<br />\nProblem was caused by Using block after which button was disposed. After removal event is fired correctly!<br />\n",
+    "PostedDate": "2013-02-18T06:25:46.207-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

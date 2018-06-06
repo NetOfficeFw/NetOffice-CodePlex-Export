@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1033728",
+    "ThreadId": "441096",
+    "Html": "Hi\r<br />\n<br />\nI was reviewing the code in the COMAddinExampleTaskPane and was wondering what the following code did in the Addin.vb (and why was it added).<br />\n<pre><code>Private Shared ReadOnly _addinOfficeRegistryKey As String = &quot;Software\\\\Microsoft\\\\Office\\\\Word\\\\AddIns\\\\&quot;\nPrivate Shared ReadOnly _prodId As String = &quot;WordAddinVB4.TaskPaneAddin&quot;\nPrivate Shared ReadOnly _addinFriendlyName As String = &quot;NetOffice Sample Addin in VB&quot;\nPrivate Shared ReadOnly _addinDescription As String = &quot;NetOffice Sample Addin with custom Task Pane&quot;\n\nShared _sampleControl As SampleControl\nShared _wordApplication As Word.Application</code></pre>\n\n",
+    "PostedDate": "2013-04-21T20:52:00.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034367",
+    "ThreadId": "441096",
+    "Html": "Hello,\r<br />\n<br />\nTry to do Start-&gt;regedit.exe \r<br />\n<br />\nA window will appear, now go to HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\Word\\AddIns\\\r<br />\n<br />\nIf your Add-In was registred correctly, you'll see it there with the parameters<br />\n<pre><code>Private Shared ReadOnly _prodId As String = &quot;WordAddinVB4.TaskPaneAddin&quot;\nPrivate Shared ReadOnly _addinFriendlyName As String = &quot;NetOffice Sample Addin in VB&quot;\nPrivate Shared ReadOnly _addinDescription As String = &quot;NetOffice Sample Addin with custom Task Pane&quot;</code></pre>\n\nHope this will clarify your mind.<br />\n",
+    "PostedDate": "2013-04-23T01:03:57.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034434",
+    "ThreadId": "441096",
+    "Html": "Thanks Mike that makes perfect sense. Although why is it required? I could still build office addins without the lines. What is the advantage in placing in these lines of code<br />\n",
+    "PostedDate": "2013-04-23T03:23:58.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034436",
+    "ThreadId": "441096",
+    "Html": "For information purpose.<br />\n",
+    "PostedDate": "2013-04-23T03:27:13.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034460",
+    "ThreadId": "441096",
+    "Html": "Awesome thanks for the clarification<br />\n",
+    "PostedDate": "2013-04-23T04:14:39.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

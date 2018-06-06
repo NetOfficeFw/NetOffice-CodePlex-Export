@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1463424",
+    "ThreadId": "651385",
+    "Html": "<hr />\nUPDATE 2016-11-09:<br />\n<br />\nNo suggestions? Really? How about a tutorial on using Workbooks.Open or similar? Is there really no mechanism in NetOffice for importing a delimited text file and processing it similar to a VBA macro?<br />\n<hr />\nWe use a lot of VBA macros on a server which manipulate various text files we receive every night. Mostly they create spreadsheets and add data to Access databases.<br />\n<br />\nWe'd like to move away from having MS Office installed on the server, of course, but can't do that unless we can find a substitute which can manipulate the text file data we receive.<br />\n<br />\nI've used ClosedXML and SpreadsheetLight libraries, but they produce an XLSX file, and many of our existing tools (like other macros and databases) look for the XLS files, so NetOffice seemed like a great choice.<br />\n<br />\nI can't find any documentation on opening a text file (the files have no file extension, just the file name like DLYBCKLG vs. DLYBCKLG.TXT) into Excel and manipulating it, or importing the data into a spreadsheet. Is this functionality possible with NetOffice?<br />\n<br />\nWe'd love to use this product because it handles both versions of Excel files, and the coding is similar to VBA (brilliant!), but we need to be able to open those nightly files and save them in XLS format.<br />\n<br />\nIs this possible? If so is there an example somewhere I can look at or download? I couldn't find anything on the web.<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2016-02-16T12:34:05.66-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

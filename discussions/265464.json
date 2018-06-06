@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "643467",
+    "ThreadId": "265464",
+    "Html": "\r\n<p>Hey Sebastian,</p>\r\n<p>Amazing project you have here. I ran into one issue with where System.Windows.Forms.SendKeys.SendWait does not function properly after running LateBindingApi.Core.Factory.Initialize(); in an Excel Add-In. Essentially, I'm trying to simulate keyboard actions\r\n within Excel but initializing the factory somehow disrupts the SendWait function and Excel does not interpret the keyboard actions correctly. Would you have any idea what could be causing that? It happens whether or not I use the Excel Api (in NetOffice) to\r\n get the Application or another framework like Excel DNA. Here's some example code (using ExcelDna):</p>\r\n<p>&nbsp;</p>\r\n<p>using System;<br>\r\nusing System.Text;<br>\r\nusing ExcelDna.Integration;<br>\r\nusing SWF = System.Windows.Forms;<br>\r\n<br>\r\nusing Microsoft.Office.Interop.Excel;<br>\r\n<br>\r\n//using Excel = NetOffice.ExcelApi;<br>\r\n//using Office = NetOffice.OfficeApi;<br>\r\n<br>\r\nnamespace SkeletonAddIn<br>\r\n{<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp; public class SkeletonAddIn : IExcelAddIn<br>\r\n&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private static Application XL;<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public SkeletonAddIn()<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XL = (Application)ExcelDna.Integration.ExcelDnaUtil.Application;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LateBindingApi.Core.Factory.Initialize(); // Commenting this makes the SendWait below function properly<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void AutoOpen()<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XL.OnKey(&quot;^k&quot;, &quot;Macro_Test&quot;);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void AutoClose()<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ExcelFunction()]<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void Macro_Test()<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.Threading.Thread.Sleep(350);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SWF.SendKeys.SendWait(&quot;{DOWN}&quot;); // Doesn't work for any key combination when the factory is initialized<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp; }<br>\r\n<br>\r\n}</p>\r\n<p>&nbsp;</p>\r\n<p>Now, if I use:</p>\r\n<p>LateBindingApi.Core.Factory.Initialize();<br>\r\nXL = new Excel.Application(null, ExcelDnaUtil.Application);</p>\r\n<p>to get the Application object, the same issue is present.</p>\r\n<p>Thanks!</p>\r\n",
+    "PostedDate": "2011-07-17T10:14:22.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "643683",
+    "ThreadId": "265464",
+    "Html": "<p>hello,</p>\r\n<p>what a strange problem!<br />the Initialize function enables also a message filter.<br />please try follows after Initialize() call:<br /><br />\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>LateBindingApi.Core.Settings.EnableMessageFilter = <span style=\"color: blue;\">false</span>;\r\n</pre>\r\n</div>\r\n<br />and tell me it's helpfull or not.<br /><br />regards<br />sebastian</p>",
+    "PostedDate": "2011-07-18T06:04:13.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "650395",
+    "ThreadId": "265464",
+    "Html": "<p>Sebastian,</p>\r\n<p>That did indeed work. Thank You!! What is the purpose of the message filter within the late binding library?</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2011-08-01T00:28:44.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "650437",
+    "ThreadId": "265464",
+    "Html": "<p>if you have long time operations(~90 secs or&nbsp;higher)&nbsp;in your addin or whatver, excel displays a message box \"application is waiting for an OLE Task\" or similar text.<br />the scary thing is the messagebox makes impossible to complete your task(rejected exception while try to access excel object model), after click on 'ok' you can finish your operation(s).<br />DisplayAlerts to false is not helpful here. a&nbsp;messagefilter suspress the dialog&nbsp;box but also sendkey messages as side effect. (i dont know that while devtime, my bad)<br />the most customers may doesnt need a messagefilter. it was true by default&nbsp;to see&nbsp;it works without problems and thats true :) and now is false by default.</p>\r\n<p>*regards<br />sebastian<br />&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-08-01T01:54:28.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "650918",
+    "ThreadId": "265464",
+    "Html": "<p>Great, thanks for the reply. I downloaded v1.1 and noticed that the message filter is still enabled by default:</p>\r\n<p><strong>LateBindingApi.Core/Factory.cs:</strong></p>\r\n<p>&nbsp;</p>\r\n<pre>public static void Initialize()\r\n{\r\n//.....\r\nif (!Settings.EnableMessageFilter)\r\n  Settings.EnableMessageFilter = true;\r\n\r\n//.....\r\n}</pre>",
+    "PostedDate": "2011-08-01T20:52:30.173-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "651047",
+    "ThreadId": "265464",
+    "Html": "<p>holy shit ... you right!</p>\r\n<p>shame on me :/ i do a fix today in current release und update them today.</p>",
+    "PostedDate": "2011-08-02T02:44:06.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "651496",
+    "ThreadId": "265464",
+    "Html": "<p>Haha, no worries! I'm sure that can wait until a future release ;)</p>",
+    "PostedDate": "2011-08-02T21:05:00.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

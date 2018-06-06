@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1320393",
+    "ThreadId": "571629",
+    "Html": "Hi,\r<br />\n<br />\nI'm trying to create VBIDE addin with NetOffice v1.7.1.\r<br />\nIt's fairly easy, however im' still having troubels with registering dll's in a propper way.\r<br />\n<br />\nHow can I easyly add entries to register, to make my add-in trusted to access VBProject?\r<br />\nSeting last attribute to 1 in class annotation COMAddin doesn't work.<br />\n<pre><code>[COMAddin(&quot;MyCustomAddIn&quot;, &quot;VBIDE AddIn&quot;, 3,1)]\n[Guid(&quot;F5159997-BB65-4230-8215-7997372E5933&quot;)]\n[ProgId(&quot;MyCustomAddIn.AddIn&quot;), Tweak(true)]\n[RegistryLocation(RegistrySaveLocation)]\n[ComVisible(true)]\npublic class AddIn : COMAddin\n{\n\n}</code></pre>\n\n",
+    "PostedDate": "2014-11-09T11:23:45.757-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

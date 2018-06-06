@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "1363556",
+    "ThreadId": "586370",
+    "Html": "Hi,<br />\n<br />\nwhy can't I create an MS Project AddIn with Ribbon with the Toolbox?<br />\n<br />\nEven without the Toolbox iam not able to do that. Is this a known issue or are you able to do?<br />\n<br />\n<br />\n<br />\nGreetings<br />\n<br />\nJörg<br />\n",
+    "PostedDate": "2015-03-15T14:01:34.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1363562",
+    "ThreadId": "586370",
+    "Html": "Also ich könnte schwören, das war eben noch in deutsch...bin wohl schon wieder zu lange wach.\r<br />\n<br />\nThe MS Project limitation is an issue and should be applied to Visio.\r<br />\nI create a fix today and its available in the download section (the second one: [Tool] Developer Toolbox 1.4)\r<br />\n<br />\nI know the examples miss some MS Project stuff right now because i'm not an MS Project expert but i want more as an &quot;hello world&quot; addin example.\r<br />\n(Its impossible to be an expert in ALL office applications) Anyway, NetOffice and MS Project works fine together :)\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-15T14:51:00.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1363565",
+    "ThreadId": "586370",
+    "Html": "War auf deutsch :-) Wollte es dann international halten :-D\r<br />\n<br />\nIch danke recht herzlich für die Antwort und die Problemlösung. <br />\n",
+    "PostedDate": "2015-03-15T15:04:14.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364120",
+    "ThreadId": "586370",
+    "Html": "Ich habe in der Debuggingoption MS Project als externes Programm ausgewählt und starte dann das Debugging des generierten, unveränderten MS Project AddIns. Leider wird das AddIn nicht geladen. \r<br />\nIch habe MS Project in der Version 2010 wohingegen der Rest des Office Pakets in der neuesten Version installiert ist.\r<br />\n<br />\nLeichte Verzweiflung macht sich breit da alle anderen AddIns für Excel oder Word bei mir bisher immer funktionierten.<br />\n",
+    "PostedDate": "2015-03-16T06:39:14.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364137",
+    "ThreadId": "586370",
+    "Html": "Das Problem ist bei Project, dass es bei mir in der Registry falsch registriert wird. Und zwar im Ordner &quot;MSProject&quot;. Registriert werden müsste es allerdings in &quot;MS Project&quot;.<br />\n",
+    "PostedDate": "2015-03-16T07:08:16.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364145",
+    "ThreadId": "586370",
+    "Html": "Ach du schaizze...Gib mir 1-2 Stunden um das zu fixen.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-16T07:28:57.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364212",
+    "ThreadId": "586370",
+    "Html": "NetOffice 1.7.3 is ab sofort verfügbar und enthält eine gefixte Version von MSProject=&gt;COMAddin.\r<br />\nLass mich wissen ob jetzt alles glatt läuft! \r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-16T09:45:54.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364228",
+    "ThreadId": "586370",
+    "Html": "System.StackOverflowException wurde nicht behandelt.<br />\nMessage: Ein Ausnahmefehler des Typs &quot;System.StackOverflowException&quot; ist in mscorlib.dll aufgetreten.<br />\n<br />\nDie Fehlermeldung in VS 2013 bekomme ich während des Starts von Project.<br />\n<br />\nEdit: Auch bei Excel passiert mir das jetzt.<br />\n",
+    "PostedDate": "2015-03-16T10:14:21.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364349",
+    "ThreadId": "586370",
+    "Html": "Kannst du das irgendwie genauer eingrenzen? (Stacktrace, Scope, etc)<br />\nAlle Tests unter .Net 4 laufen bei mir problemlos.<br />\n<br />\nEdit: Ist das ein Addin in mehreren Office Produkten(Office.COMAddin) oder jeweils ein Addin für sich?<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2015-03-16T10:49:45.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364484",
+    "ThreadId": "586370",
+    "Html": "Der Fehler lag wohl bei mir. Kann das nach einem Neustart nicht reproduzieren mehr. Entschuldige. Allerdings läuft es weiterhin nicht. Das AddIn wird korrekt registriert und erkannt, aber ich bekomme direkt beim Start folgende Fehlermeldung.<br />\n<br />\n&quot;An error occured in GetCustomUI&quot;<br />\n<br />\nWeiß nicht wie ich dich da bezüglich der Fehlersuche unterstützen kann.<br />\n<br />\nEin AddIn in einem Produkt (Nur in MSProject). Und da versuche ich gerade einfach nur ein frisch erstelltes Projekt (mit Wizard aus Toolbox) zu starten.<br />\n",
+    "PostedDate": "2015-03-16T11:16:25.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364706",
+    "ThreadId": "586370",
+    "Html": "Wie sieht denn dein CustomUI attribute aus?\r<br />\nTypischerweise so:\r<br />\n<br />\nCustomUI(&quot;MyAssembly1.RibbonUI.xml&quot;)\r<br />\n<br />\nWenn du den Namen/RootNamespace deines Assemblies geändert hast also von &quot;MyAssembly1&quot; zu &quot;TestAssembly&quot;\r<br />\nmusst du auch den Wert in CustomUI zu &quot;TestAssembly.RibbonUI.xml&quot; ändern.\r<br />\n<br />\n(In NO 1.7.3 gehts nun auch einfacher via CustomUI(&quot;RibbonUI.xml&quot;, true). Der 2. Parameter sorgt dafür das der\r<br />\nRootNamespace automatisch zur Laufzeit ermittelt wird)\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-16T11:42:28.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364730",
+    "ThreadId": "586370",
+    "Html": "Das weiß ich. Ich habe standardmäßig einfach alles so gelassen wie es ist (und auch mehrfach anders probiert).\r<br />\nHabe jetzt über CustomUI(&quot;MeinAssembly.RibbonUI.xml&quot;)  hinaus auch CustomUI(&quot;RibbonUI.xml&quot;, true) ausprobiert. Mit dem selben Ergebnis. &quot;An error occured in GetCustomUI&quot;\r<br />\n<br />\nBei einem so erstellten Excel AddIn funktioniert auch alles. Ich bin ratlos. :-(<br />\n",
+    "PostedDate": "2015-03-16T11:53:27.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364737",
+    "ThreadId": "586370",
+    "Html": "Ja ich weiss auch wieso glaube ich...\r<br />\nEs rächt sich gerade das ich keine Lizenz für MS-Project habe und daher nicht ausreichend testen kann.\r<br />\nDu springst da gerade unfreiwillig ein, entschuldige bitte.\r<br />\n<br />\nIn der OnError methode bekommst du eine Exception übergeben, das ist eine NullReferenceException richtig?\r<br />\nIch werde das gleich nochmal anpassen, als hot fix würde ich dir empfehlen die virtuelle GetCusomUI methode zu überschreiben\r<br />\nund den Inhalt der RibbonUI.xml selbst zurück zu geben. Ich werde aber noch heute Abend ein Update verfügbar machen.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-16T12:08:33.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1364739",
+    "ThreadId": "586370",
+    "Html": "Kein Thema. Ich bin froh das du dir da die Zeit nimmst. \r<br />\n<br />\nGenau eine NullReferenceException.\r<br />\n<br />\nIch teste nachher gerne den hot fix und geben Rückmeldung.\r<br />\n<br />\nVielen Dank.<br />\n",
+    "PostedDate": "2015-03-16T12:21:24.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1365944",
+    "ThreadId": "586370",
+    "Html": "Das Update ist jetzt verfügbar. (Der Upload hat sich leider recht lange hingezogen)\r<br />\nNun sollte es aber klappen :)\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2015-03-16T16:12:22.33-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366021",
+    "ThreadId": "586370",
+    "Html": "Ein Traum. Läuft. Vielen Dank.<br />\n",
+    "PostedDate": "2015-03-17T01:12:51.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1315364",
+    "ThreadId": "570352",
+    "Html": "I couldn't find any examples on attachments and the MailItem.Attachments.Add method's signatures are a bit confusing.  I was able to add attachments if I passed in a file path, but I would like the ability to add either a Stream or Byte[].\r<br />\n<br />\nRegardless, good job on this project...very helpful!<br />\n",
+    "PostedDate": "2014-10-21T08:33:12.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

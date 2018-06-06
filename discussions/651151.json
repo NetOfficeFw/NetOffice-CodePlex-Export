@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1462810",
+    "ThreadId": "651151",
+    "Html": "Hi...<br />\n<br />\nhow is it possible to set the number of copies in the print dialog.<br />\n<br />\nI used the following code to start the printdialog and set the different trays without changing the default system printer. But i didn't find a possibility to set the number of copies.<br />\n<pre><code>            var dialog = this.instance.Dialogs[WdWordDialog.wdDialogFilePrintSetup];\n\n            var argValues = new object[] { printer };\n            dialog.UnderlyingObject.GetType().InvokeMember(&quot;Printer&quot;, BindingFlags.SetProperty, null, dialog.UnderlyingObject, argValues);\n\n            argValues = new object[] { 1 };\n            dialog.UnderlyingObject.GetType().InvokeMember(&quot;DoNotSetAsSysDefault&quot;, BindingFlags.SetProperty, null, dialog.UnderlyingObject, argValues);\n\n            dialog.Execute();\n\n            try\n            {\n                argValues = new object[] { tray1 };\n                this.currentDocument.PageSetup.UnderlyingObject.GetType().InvokeMember(&quot;FirstPageTray&quot;, BindingFlags.SetProperty, null, this.currentDocument.PageSetup.UnderlyingObject, argValues);\n            }\n            catch (Exception ex)\n            {\n                Logger.Error(&quot;TvDocumentSetPrinterData: Schacht1 konnte nicht gesetzt werden: &quot; + ex);\n            }\n\n            try\n            {\n                argValues = new object[] { tray2 };\n                this.currentDocument.PageSetup.UnderlyingObject.GetType().InvokeMember(&quot;OtherPagesTray&quot;, BindingFlags.SetProperty, null, this.currentDocument.PageSetup.UnderlyingObject, argValues);\n            }\n            catch (Exception ex)\n            {\n                Logger.Error(&quot;TvDocumentSetPrinterData: Schacht2 konnte nicht gesetzt werden: &quot; + ex);\n            }\n</code></pre>\n\nIs there a way to set the number of copies?<br />\n<br />\nThanks<br />\n<br />\nOliver<br />\n",
+    "PostedDate": "2016-02-11T00:39:56.313-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

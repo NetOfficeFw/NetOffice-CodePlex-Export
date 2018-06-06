@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1353343",
+    "ThreadId": "581171",
+    "Html": "Dear together\r<br />\n<br />\nI've successfully developed a Outlook Addin with NetOffice (nearby a great piece of software..). Now the Ribbon is always visible also inside new messages etc.\r<br />\n<br />\nIs there a way to display the Ribbon only on the Main Window and not inside elements like calendar entries or memos?\r<br />\n<br />\nI've played arround with the getVisible possibility inside the RibbonUI.xml and was able to hide the ribbon but could not figured out how to determine if the current &quot;Window/Form&quot; (whatever) is the Main Window or a new Message etc..\r<br />\n<br />\nDoes anyone have a input for me, where to serach or probably has a solution for my kind of question?\r<br />\n<br />\nThanks for your inputs.\r<br />\n<br />\nregards\r<br />\nyves<br />\n",
+    "PostedDate": "2015-02-17T02:57:46.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1353381",
+    "ThreadId": "581171",
+    "Html": "In NetOffice Tools you have to override the GetCustomUI method and check given argument.\r<br />\nFor example:<br />\n<pre><code>    public override string GetCustomUI(string RibbonID)\n    {\n         if(String.IsNullOrEmptyWhiteSpace(RibbonID))\n         {\n              // empty means main window as far i known...\n             return GetMyXMLSchema();\n         }\n         else if(RibbonID == &quot;Microsoft.Outlook.Mail.Compose&quot;)\n         {\n              // create new mail window\n             return GetMyXMLSchema();\n         }\n    }\n</code></pre>\n\ncheck all possible ribbon id's here:\r<br />\n<a href=\"https://msdn.microsoft.com/de-de/library/office/ff868522.aspx\" rel=\"nofollow\">https://msdn.microsoft.com/de-de/library/office/ff868522.aspx</a>\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2015-02-17T05:27:18.19-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1353686",
+    "ThreadId": "581171",
+    "Html": "Hi Sebastian\r<br />\n<br />\nYou brought me to the right path!\r<br />\n<br />\nAt the end I solved it a bit different:<br />\n<pre><code>Public Function getVisible(ByVal control As Office.IRibbonControl) As Boolean\n        Try\n            Dim objOutlook As Outlook._Application\n            Dim myInspector As Outlook.Inspector\n            objOutlook = New Outlook.Application()\n            myInspector = objOutlook.ActiveInspector\n\n            'Show only if TypeName is nothing (Outlook Main Window)\n            If TypeName(myInspector) = &quot;Nothing&quot; Then\n                Return True\n            Else\n                Return False\n            End If\n\n        Catch ex As Exception\n            MsgBox(ex.Message, vbCritical)\n            Return False\n        End Try\n    End Function</code></pre>\n\n",
+    "PostedDate": "2015-02-18T04:24:03.973-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

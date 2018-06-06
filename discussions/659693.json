@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1488760",
+    "ThreadId": "659693",
+    "Html": "Hi I created an outlook plugin solution via the tools project wizard.<br />\nThe project was created and it looks to have all of the correct refs and can build.<br />\nHowever I am not sure how to wire it up so that it runs outlook when trying to debug it. I just get the error you cannot run it as it is a class library dll.<br />\nI am using VS2015, and I chose outlook automation.<br />\n<br />\nAlso all of the tutorials are in german! :(<br />\nI need to develop task panes for outlook child windows (email message, task window etc), and with no documentation on this I may need to go back to VSTO.<br />\n",
+    "PostedDate": "2016-11-24T14:32:53.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1490876",
+    "ThreadId": "659693",
+    "Html": "Project properties -&gt; Debug -&gt; Start external program\r<br />\n<br />\n(Also make sure Register for COM interop is checkeD)<br />\n",
+    "PostedDate": "2017-01-09T17:15:53.637-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

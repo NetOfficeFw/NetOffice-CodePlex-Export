@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1019448",
+    "ThreadId": "437617",
+    "Html": "Hi, i beg your pardon, I don't know much English. I developed Excel add-in and test it for compatibility in NetOffice Developer Toolbox. I do not understand how to interpret the results.<br />\n<br />\n<a href=\"http://imageshost.ru/photo/1573887/id2936657.html\" rel=\"nofollow\">Here's a link to the results</a><br />\n<br />\nPlease help interpret results.<br />\n",
+    "PostedDate": "2013-03-22T04:15:13.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1019458",
+    "ThreadId": "437617",
+    "Html": "this means you use some features with office core support 2007 and higher.\r<br />\ntypical is a ribbon or custom taskpane, these types are defined in the common office api.\r<br />\nin other words your addin works fine in excel 2007 and higher.\r<br />\njust click on the report button for dedicated results.\r<br />\n<br />\nSebasian<br />\n",
+    "PostedDate": "2013-03-22T04:36:58.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1019475",
+    "ThreadId": "437617",
+    "Html": "Thanks for the answer.<br />\n",
+    "PostedDate": "2013-03-22T05:25:38.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

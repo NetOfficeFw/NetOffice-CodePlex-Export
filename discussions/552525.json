@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1275417",
+    "ThreadId": "552525",
+    "Html": "I want to use typed Forms inside an Access Addin. This allows access to controls with Intellisense and compile-time checks:<br />\n<pre><code>NetOffice.AccessApi.Form frm1 = Main.App.Forms(&quot;Customers&quot;);\n\nCustomersForm frm2 = new CustomersForm(frm1.UnderlyingObject);\nstring dummy2 = frm2.CustomerID.Value.ToString;\n\nCustomersForm frm3 = new CustomersForm(frm1);\nstring dummy3 = frm3.CustomerID.Value.ToString;</code></pre>\n\nI get it work passing &quot;Application.Forms&quot; collection in constructor:<br />\n<pre><code>using NetOffice.AccessApi;\n\npublic class CustomersForm : NetOffice.AccessApi.Form\n{\n\n    public CustomersForm(NetOffice.AccessApi.Form frm)\n    {\n        base.New(Main.App.Forms, frm.UnderlyingObject);\n    }\n\n    public CustomersForm(object comProxy)\n    {\n        base.New(Main.App.Forms, comProxy);\n    }\n\n    public TextBox CustomerID {\n        get { return (NetOffice.AccessApi.TextBox)this.Controls(&quot;CustomerID&quot;); }\n    }\n\n    public TextBox CustomerName {\n        get { return (NetOffice.AccessApi.TextBox)this.Controls(&quot;CustomerName&quot;); }\n    }\n\n    public ComboBox CustomerCity {\n        get { return (NetOffice.AccessApi.ComboBox)this.Controls(&quot;CustomerCity&quot;); }\n    }\n    \n}</code></pre>\n\n, where &quot;Main.App&quot; is &quot;Addin.Application&quot; property.<br />\n<br />\nI don't like to explicitly pass &quot;Application.Forms&quot; collection in constructor. But i didn't find how to use &quot;ParentObject&quot; argument of standard NetOffice.AccessApi.Form constructor.<br />\n<br />\nAs said, it's working. But i'm wondering if there are a better way to do this. <br />\n<br />\nAny ideas?<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2014-07-23T03:01:13.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

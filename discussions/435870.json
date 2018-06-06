@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1012251",
+    "ThreadId": "435870",
+    "Html": "Hello,\r<br />\nMy company managed to implement an Add-in that imports objects from a file by drag and drop into Word and to generate automatic report.\r<br />\nAll has been done for Word and I'm stuck in some code patt to change the implementation to PowerPoint.\r<br />\n<br />\nI don't find any example which does this, nor for PowerPoint, nor for Excel.\r<br />\n<br />\nI put the WordApi in comments in &quot;//&quot; that must be replaced with Powerpoint application, but it requires an object. But my code doesn't work properly, since I don't find a way how to give an object as reference to a NetOffice.PowerPointApi.Application\r<br />\n<br />\npublic void OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)<br />\n<pre><code>    {\n        //_application = new NetOffice.WordApi.Application(null, Application); before\n        _application = new NetOffice.PowerPointApi.Application();\n        // If the addin not connected during startup, we call OnStartupComplete at hand\n        if (ConnectMode != ext_ConnectMode.ext_cm_Startup)\n            OnStartupComplete(ref custom);\n    }\n\n</code></pre>\n\nBecause later, when I try to execute:\r<br />\n<br />\nctpFactory = new NetOffice.OfficeApi.ICTPFactory(_application, CTPFactoryInst);\r<br />\n<br />\nIt doesn't work since I didn't give any object to _application.\r<br />\n<br />\nAny suggestion how this could be fixed? \r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2013-03-08T01:59:43.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1012269",
+    "ThreadId": "435870",
+    "Html": "I suppose you'd better get PowerPoint application reference with common NetOffice way (like you did in a Word addin).<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">public</span> <span style=\"color:Blue;\">void</span> OnConnection(<span style=\"color:Blue;\">object</span> Application, ext_ConnectMode ConnectMode, <span style=\"color:Blue;\">object</span> AddInInst, <span style=\"color:Blue;\">ref</span> Array custom)\n {\n        <span style=\"color:Green;\">//_application = new NetOffice.WordApi.Application(null, Application); before</span>\n        _application = <span style=\"color:Blue;\">new</span> NetOffice.PowerPointApi.Application(<span style=\"color:Blue;\">null</span>, Application);\n }\r\n</pre></div>",
+    "PostedDate": "2013-03-08T02:34:11.813-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1013796",
+    "ThreadId": "435870",
+    "Html": "Hi,\r<br />\n<br />\nI could manage the difference, but now I'm stuck with something else.<br />\n<pre><code>        foreach (NetOffice.WordApi.InlineShape s in docWord.InlineShapes)\n            {\n                #region Set Shapes\n                if (s.Type==NetOffice.WordApi.Enums.WdInlineShapeType.wdInlineShapePicture &amp;&amp;  s.AlternativeText.Contains(&quot;|&quot;))\n                {\n                  &lt;some code&gt;\n                }\n             }\n</code></pre>\n\nHow can I use NetOffice.WordApi.Enums.WdInlineShapeType.wdInlineShapePicture for PowerPoint?\r<br />\n<br />\nI thought about <br />\n<pre><code>             foreach (NetOffice.PowerPointApi.Slide slide in presentation.Slides)\n            {\n                    foreach (NetOffice.PowerPointApi.Shape shape in slide.Shapes)\n                    {\n                        #region Set Shapes\n                        if (shape.Type == NetOffice.PowerPointApi.Enums.WdInlineShapeType.wdInlineShapePicture &amp;&amp; shape.AlternativeText.Contains(&quot;|&quot;))\n                        {\n                           &lt;some code&gt;\n                        }\n                     }\n             }\n</code></pre>\n\nBut NetOffice.PowerPointApi.Enums.WdInlineShapeType.wdInlineShapePicture doesn't exists and doesn't work in such a way.\r<br />\n<br />\nSomeone any idea? \r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2013-03-12T03:40:35.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1018159",
+    "ThreadId": "435870",
+    "Html": "<strong>artnib wrote:</strong><br />\n<blockquote>\nI suppose you'd better get PowerPoint application reference with common NetOffice way (like you did in a Word addin).<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">public</span> <span style=\"color:Blue;\">void</span> OnConnection(<span style=\"color:Blue;\">object</span> Application, ext_ConnectMode ConnectMode, <span style=\"color:Blue;\">object</span> AddInInst, <span style=\"color:Blue;\">ref</span> Array custom)\n {\n        <span style=\"color:Green;\">//_application = new NetOffice.WordApi.Application(null, Application); before</span>\n        _application = <span style=\"color:Blue;\">new</span> NetOffice.PowerPointApi.Application(<span style=\"color:Blue;\">null</span>, Application);\n }\r\n</pre></div></blockquote>\nHi,<br />\nthe if-loop was replaced by <br />\n<pre><code>if (shape.Type.ToString().Equals(&quot;msoAutoShape&quot;) &amp;&amp; shape.AlternativeText.Contains(&quot;|&quot;))\n{\n          &lt;some code&gt;\n}\n</code></pre>\n\nI could manage the initial post too. While simply doing the same like for WordApi, I was missing the PowerPointApi and I wrote some wrong code somewhere else, that's why it didn't work properly.<br />\n<pre><code>public void OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)\n{\n            _application = new NetOffice.PowerPointApi.Application(null, Application);\n            if (ConnectMode != ext_ConnectMode.ext_cm_Startup)\n                OnStartupComplete(ref custom);\n}</code></pre>\n\nBut still the issue with ctpFactory remains.<br />\n<pre><code>public void CTPFactoryAvailable(object CTPFactoryInst)\n        {\n            try\n            {\n                ctpFactory = new NetOffice.OfficeApi.ICTPFactory(_application, CTPFactoryInst);</code></pre>\n\nIt says that it is impossible to convert NetOffice.PowerPointApi.Application in LateBindingApi.Core.COMObject and it says that that NetOffice.OfficeApi.ICTPFactory has invalid arguments.<br />\n<br />\nI declared at beginning: <br />\n<pre><code>        ICTPFactory ctpFactory;\n\n        public Addin()\n        {\n            LateBindingApi.Core.Factory.Initialize();\n        }</code></pre>\n\nThose are all informations I have so far.<br />\n<br />\nThis error implies that, when I drag and drop my object from Add-In in PowerPoint, I get following error:<br />\n<blockquote>\n<blockquote>\n<blockquote>\nSource:LateBindingApi.Core<br />\nTargetSite:System.Object PropertyGet(LateBindingApi.Core.COMObject, System.String, System.Object[])<br />\nMessage:See inner exception for details.<br />\nMessage:Unknown name. (Exception from HRESULT: 0x80020006 (DISP_E_UNKNOWNNAME))<br />\nStackTrace:   at LateBindingApi.Core.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)<br />\nat NetOffice.WordApi._Application.get_ActiveDocument()<br />\nat ProgramOffice.PPTAddIn.ProgramViewItemDragSource.EndDrag(Object dragObject, DragDropEffects effect) in E:\\app\\ProgramOfficePPT\\Source\\ProgramOffice.PPTAddIn\\ProgramViewItemDragSource.cs:line 108<br />\n</blockquote>\n</blockquote>\n</blockquote>\nThe strange part is, that nowhere in my code I have NetOffice.WordApi._Application.get_ActiveDocument()<br />\n<br />\nAnd the line 108 code is:<br />\n<pre><code>    public override void EndDrag(object dragObject, System.Windows.Forms.DragDropEffects effect)\n    {\n        ProgramViewItem item=(dragObject as ProgramViewItem);\n        Debugger.Write(&quot;EndDrag &quot; + item.ItemName);\n        base.EndDrag(dragObject, effect);\n    }\n</code></pre>\n\nAnd ProgramViewItem is a DataObject<br />\n",
+    "PostedDate": "2013-03-20T03:45:20.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1019641",
+    "ThreadId": "435870",
+    "Html": "THANK YOU SEBASTIAN!!!!!!!!!!!<br />\n<br />\nI just finished my project today with your help!!!!<br />\n<br />\nI had just to change a bit of code and it finally works to auto update all I need ^^<br />\n<br />\nNow, let's implement it in Excel too ( Proven it works in PowerPoint / checked ).<br />\n",
+    "PostedDate": "2013-03-22T09:24:33.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1020027",
+    "ThreadId": "435870",
+    "Html": "cool!  gimme a copy whent its done (thesis) :)\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-03-23T08:47:42.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1020510",
+    "ThreadId": "435870",
+    "Html": "Maybe a reduced copy ;)\r<br />\n<br />\nMike<br />\n",
+    "PostedDate": "2013-03-25T01:17:48.68-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

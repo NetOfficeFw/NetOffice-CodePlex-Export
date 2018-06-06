@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "984147",
+    "ThreadId": "428910",
+    "Html": "\r\n<p>I'm trying NetOffice and looks really useful. Fact is, I want to use it with SharpDevelop.</p>\r\n<p>Is there any way to create a POwerPoint addin the same way I used to do it in Visual Studio, I mean, with a template?</p>\r\n<p>Thanks for your help.</p>\r\n",
+    "PostedDate": "2013-01-08T10:12:48.063-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "985604",
+    "ThreadId": "428910",
+    "Html": "\r\n<p>sorry for the delay, codeplex has issues at the moment. i dont get notifications for new discussions.<br>\r\nyou can use the NetOffice Developer Toolbox( n the Download Section)<br>\r\nthe toolbox includes an independent project wizard, another good way is to customize the examples.<br>\r\nplease note: NetOffice doesnt include visual ui designers in the current release. the next NetOffice does that better and allows rich design time support&nbsp; to customize the Office UI.<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2013-01-11T11:35:41.48-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "986776",
+    "ThreadId": "428910",
+    "Html": "\r\n<p>Thanks for the response. Actually I realized that the Developer Toolbox provides a project wizard when you use Visual Basic 2010 Express, so I ditched #develop. And everything seems OK except for 2 issues I'll create threads for. Thanks for your help and\r\n for this excellent library.</p>\r\n",
+    "PostedDate": "2013-01-14T16:37:50.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

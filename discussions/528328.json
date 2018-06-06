@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1200563",
+    "ThreadId": "528328",
+    "Html": "Hi, I'm developing an outlook addin which needs to respond to a new contact event, but it's not working.\r<br />\nI've tried:<br />\n<pre><code>void Addin_OnStartupComplete(ref Array custom)\n{\n    Outlook._NameSpace outlookNs = _outlookApplication.Session;\n    Outlook.MAPIFolder contactFolder = outlookNs.GetDefaultFolder(OlDefaultFolders.olFolderContacts);\n    contactFolder.Items.Add += new NetOffice.OutlookApi.Items_ItemAddEventHandler(OnAddContact);\n}\n\nvoid OnAddContact(Outlook.ContactItem item)\n{\n    MessageBox.Show(item.FullName);\n}\n</code></pre>\n\nbut it fails to compile on the line where the event handler is added:\r<br />\nNo overload for 'OnAddContact' matches delegate 'NetOffice.OutlookApi.Items_ItemAddEventHandler' (CS0123)\r<br />\n<br />\nI'm not even sure this is the right event, but it would be nice to get it compiled at least.\r<br />\nA handler for a new contact event can't be hard can it?\r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2014-01-29T09:34:03.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1200740",
+    "ThreadId": "528328",
+    "Html": "<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">void</span> IDTExtensibility2.OnStartupComplete(<span style=\"color:Blue;\">ref</span> Array custom)\n{\n  Outlook._NameSpace outlookNs = _outlookApplication.Session;\n  Outlook.MAPIFolder contactFolder = outlookNs.GetDefaultFolder(Outlook.Enums.OlDefaultFolders.olFolderContacts);\n  <span style=\"color:Blue;\">var</span> contacts = (Outlook.Items)contactFolder.Items;\n\n  <span style=\"color:Green;\">//Add is a method</span>\n  <span style=\"color:Green;\">//contactFolder.Items.Add += new NetOffice.OutlookApi.Items_ItemAddEventHandler(OnAddContact);</span>\n\n  <span style=\"color:Green;\">//ItemAddEvent is an event</span>\n  contacts.ItemAddEvent += <span style=\"color:Blue;\">new</span> Outlook.Items_ItemAddEventHandler(OnAddContact);\n}\n\n<span style=\"color:Blue;\">void</span> OnAddContact(NetOffice.COMObject item)\n{\n  <span style=\"color:Blue;\">var</span> contact = (Outlook.ContactItem)item;\n  MessageBox.Show(contact.FullName);\n}\r\n</pre></div><h4>Notes</h4>\n<ul>\n<li>I suppose you initialize _<em>outlookApplication</em> variable in <em>IDTExtensibility2.OnConnection</em> method.</li>\n<li>This code tracks new contacts only in default contacts folder. It is possible to have multiple (including nested) contact folders.</li>\n</ul>\n",
+    "PostedDate": "2014-01-29T19:02:02.873-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-01-30T01:34:33.497-08:00"
+  },
+  {
+    "Id": "1200826",
+    "ThreadId": "528328",
+    "Html": "Thanks artnib, all working now.\r<br />\n<br />\nI did realise that Add was a method and that it was wrong, but its always better to post some code and I just couldn't work out how to access the event. You gave me the crucial cast:<br />\n<pre><code>var contacts = (Outlook.Items)contactFolder.Items;</code></pre>\n\nNo amount of Googling pointed me to that.\r<br />\n<br />\nThanks also for the reminder about the default contacts folder, I guess I'll have to work out how to enumerate the other folders and add similar events which seems messy, unless you happen to know of an easier way to capture events for all new contacts.<br />\n",
+    "PostedDate": "2014-01-30T01:34:14.31-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

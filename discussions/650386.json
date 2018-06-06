@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1460311",
+    "ThreadId": "650386",
+    "Html": "Thanks Sebastian for your software.\r<br />\nBut I have some problems with Access Add-In:<br />\n<ol>\n<li>NetOffice.AccessApi.TextBox (and any other controls) can't be cast to NetOffice.AccessApi.Control. Why?</li>\n<li>\nIf I use ctl.Parent.Name then:\r<br />\n'ctl.parent.name' threw an exception of type 'System.Runtime.InteropServices.COMException'.\r<br />\nBut ctl.UnderlyingObject.Parent.Name return value.<br />\n</li>\n</ol>\nRegards,\r<br />\nSerge<br />\n",
+    "PostedDate": "2016-01-23T00:39:37.457-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1460467",
+    "ThreadId": "650386",
+    "Html": "Hello Serge,\r<br />\n<br />\nI've been looked at the definition in COM library and the interop assemblies.\r<br />\nTextbox doesnt inherites from Control.\r<br />\nIt is:\r<br />\nTextBox :  _Textbox : IAccessible\r<br />\n<br />\n(tested in Office 2015)\r<br />\n<br />\nCan you say which property throw the COMException ? (.Parent or .Parent.Name)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-01-24T14:07:47.417-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1460495",
+    "ThreadId": "650386",
+    "Html": "Hello Sebastian,<br />\n<blockquote>\nTextBox : _Textbox : IAccessible <br />\n</blockquote>\nOk, I agree with you. There is some strange, which I can't understand.\r<br />\nOld code (simplistic):<br />\n<pre><code>Sub Test(section as Access.Section)\n    Dim lst As New List(Of Access.Control) \n    Dim ctls = section.Controls\n    For i = 0 To ctls.Count - 1\n        Dim ctl = ctls(i)\n        lst.Add(ctl)\n    Next \nEnd Sub</code></pre>\n\nThis code works for \r<br />\nImports Access = Microsoft.Office.Interop.Access\r<br />\nbut doesn't work for \r<br />\nImports Access = NetOffice.AccessApi (unable to cast in line lst.Add(ctl))\r<br />\nThis is a very minor problem and allows me to get rid of the old roughness )<br />\n<blockquote>\nCan you say which property throw the COMException ? (.Parent or .Parent.Name) <br />\n</blockquote>\n.Parent\r<br />\n'ctl.Parent' threw an exception of type 'System.Runtime.InteropServices.COMException'<br />\n<pre><code>Data: {System.Collections.ListDictionaryInternal}\nErrorCode: -2146793279\nHResult: -2146793279\nHelpLink: Nothing\nInnerException: Nothing\nMessage: &quot;Исключение из HRESULT: 0x800A88C1&quot;\nSource: &quot;Microsoft.VisualBasic&quot;\nStackTrace: &quot;   в Microsoft.VisualBasic.CompilerServices.Symbols.Container.InvokeMethod(Method TargetProcedure, Object[] Arguments, Boolean[] CopyBack, BindingFlags Flags)&quot; &amp; vbCrLf &amp; &quot;   в Microsoft.VisualBasic.CompilerServices.NewLateBinding.CallMethod(Container BaseReference, String MethodName, Object[] Arguments, String[] ArgumentNames, Type[] TypeArguments, Boolean[] CopyBack, BindingFlags InvocationFlags, Boolean ReportErrors, ResolutionFailure&amp; Failure)&quot; &amp; vbCrLf &amp; &quot;   в Microsoft.VisualBasic.CompilerServices.NewLateBinding.ObjectLateCall(Object Instance, Type Type, String MemberName, Object[] Arguments, String[] ArgumentNames, Type[] TypeArguments, Boolean[] CopyBack, Boolean IgnoreReturn)&quot; &amp; vbCrLf &amp; &quot;   в Microsoft.VisualBasic.CompilerServices.NewLateBinding.LateCall(Object Instance, Type Type, String MemberName, Object[] Arguments, String[] ArgumentNames, Type[] TypeArguments, Boolean[] CopyBack, Boolean IgnoreReturn)&quot;\nTargetSite: {Void GetContainingTypeLib(System.Runtime.InteropServices.ComTypes.ITypeLib ByRef, Int32 ByRef)}\n</code></pre>\n\nIn my test this exception occurs for ComboBox and TabControl. \r<br />\nFor other controls (ListBox, TextBox ...) this exception does not occurs.\r<br />\n<br />\nRegards, \r<br />\nSerge<br />\n",
+    "PostedDate": "2016-01-24T23:44:54.153-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1460522",
+    "ThreadId": "650386",
+    "Html": "<blockquote>\nIn my test this exception occurs for ComboBox and TabControl. <br />\n</blockquote>\nI'm sorry, I am wrong. This exception occurs for all controls. \r<br />\n<br />\nRegards, \r<br />\nSerge<br />\n",
+    "PostedDate": "2016-01-25T02:54:24.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1461009",
+    "ThreadId": "650386",
+    "Html": "<blockquote>\nThis exception occurs for all controls. <br />\n</blockquote>\nIf  control Parent is Form\r<br />\n<br />\nRegards, \r<br />\nSerge<br />\n",
+    "PostedDate": "2016-01-28T02:16:48.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

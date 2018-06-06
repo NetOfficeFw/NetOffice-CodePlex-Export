@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1127030",
+    "ThreadId": "470574",
+    "Html": "Hi out there,\r<br />\n<br />\nI've just begun to port an Outlook-Addin Project to NetLOffice. It seems as if only one single event creates problems:<br />\n<pre><code>private Outlook.MAPIFolder olFold;\nprivate Outlook.MAPIFolderEvents_12_Event Calendarevents;\n// [...]\n\nolFold = OlNs.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar);\nCalendarevents = (Outlook.MAPIFolderEvents_12_Event)olFold;\n\nCalendarEvents.BeforeItemMove += new Outlook.MAPIFolderEvents_12_BeforeItemMoveEventHandler(Calendarevents_BeforeItemMove);\n</code></pre>\n\nThe idea is obviously to create an eventhandler for the beforeitemmove-Event of the Calendar of the user.\r<br />\n<br />\nI do not find a way to port this last line to a usage with netoffice\r<br />\n<br />\nCan someone help me out of that?<br />\n",
+    "PostedDate": "2013-11-20T05:00:07.813-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1127041",
+    "ThreadId": "470574",
+    "Html": "In NO, any event ends with &quot;Event&quot; because some office classes use methods and events with the same name. In the Interop assemblies, you have to convert the instance to the event interface to trigger the event and you got a compiler warning if you call the method with same name.  This is because NO use &quot;Event&quot; to avoid this disadvantages.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-11-20T05:34:07.383-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1127055",
+    "ThreadId": "470574",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nok, ty, I was looking at the MapiFolder-Object, instead of the Folder-Object.\r<br />\n<br />\nIf someone is interested:<br />\n<pre><code>private Outlook.Folder olFold;\n\nolFold.BeforeItemMoveEvent += olFold_BeforeItemMoveEvent;\n\n</code></pre>\n\nRegards\r<br />\n<br />\nAndreas<br />\n",
+    "PostedDate": "2013-11-20T06:01:54.583-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128595",
+    "ThreadId": "470574",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nNetoffice throws an Error at runtime when I try to convert Mapifolder to Folder<br />\n<pre><code>olMapiFold = (Outlook.MAPIFolder)OlNs.GetDefaultFolder(Outlook.Enums.OlDefaultFolders.olFolderCalendar);\nolFold = (Outlook.Folder)olMapiFold; //generates Error </code></pre>\n\n&quot; Cannot cast 'this.olMapiFold' (which has an actual type of 'NetOffice.OutlookApi.MAPIFolder') to 'NetOffice.OutlookApi.Folder&quot;\r<br />\n&quot;\r<br />\n<br />\nAFAIR this is possible in Outlook.<br />\n",
+    "PostedDate": "2013-11-25T01:45:21.663-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128618",
+    "ThreadId": "470574",
+    "Html": "hello andreas,\r<br />\n<br />\nMAPIFolder doesnt inherites from Folder in NetOffice. This is may a heayy issue. (not sure why because NO is alway aware for the class/interface hierarchy)\r<br />\ni have to do more research for the problem but i'm currently on my workplace. i want clearify the situation at home asap.\r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2013-11-25T03:08:52.523-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128625",
+    "ThreadId": "470574",
+    "Html": "Update: The OLE/COMObject Viewer tolds me MAPIFolder doesnt inherites from Folder(and otherwise) and i'm wondering you mean this must works fine. At the moment for me: this can't be work. i want imitate the scenario in Interop/VSTO at home.<br />\n<br />\n*sebastian <br />\n",
+    "PostedDate": "2013-11-25T03:16:07.967-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1129054",
+    "ThreadId": "470574",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nsorry, I guess I did not make me clear (and the last sentence of my last post is rubbish):\r<br />\nIn Microsoft.Office.Interop.Outlook the Mapifolder-Object has the event BeforeItemMove (See code below).<br />\n<pre><code>public partial class ThisAddIn\n    {\n        private Outlook.NameSpace OlNs;\n        private Outlook.MAPIFolder olFold;\n        private Outlook.MAPIFolderEvents_12_Event CalendarEvents;\n        private Outlook.Items CalendarItems;\n\n        private void ThisAddIn_Startup(object sender, System.EventArgs e)\n        {\n            OlNs = Globals.ThisAddIn.Application.GetNamespace(&quot;MAPI&quot;);\n            \n            if (OlNs != null)\n            {\n                olFold = OlNs.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar);\n\n                if (olFold != null)\n                {\n                    CalendarEvents = (Outlook.MAPIFolderEvents_12_Event)olFold;\n                    CalendarItems = olFold.Items;\n\n                    if (CalendarItems != null)\n                    {\n                        CalendarEvents.BeforeItemMove += CalendarEvents_BeforeItemMove;\n                    }\n                }\n            }\n        }\n\n        void CalendarEvents_BeforeItemMove(object Item, Outlook.MAPIFolder MoveTo, ref bool Cancel)\n        {\n            throw new NotImplementedException();\n        }</code></pre>\n\nChecking the events in Netoffice after your first reply, I saw that in Netoffice the <strong>Folder</strong>-Object has the event BeforeItemMove (In Microsoft.Office.Interop.Outlook the <strong>Mapifolder</strong>-Object has that event), while the MapiFolder-Object has not.\r<br />\n<br />\nThe GetDefaultFolder-Method (as well as the GetFolderFromID-Method) of the Namespace-Object in Netoffice returns a MapiFolder-Object. \r<br />\n<br />\nNow: If it is not possible to cast a Mapifolder-Object into a Folder-Object, how can I trigger these events at Addin_Startup?\r<br />\n<br />\nRegards,\r<br />\n<br />\nAndreas<br />\n",
+    "PostedDate": "2013-11-25T23:48:11.233-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1129360",
+    "ThreadId": "470574",
+    "Html": "hey andreas,<br />\n<br />\ni do some tests and folder inherites from mapi folder. this means the up-cast mapi folder to folder has to work but its failed. the result proxy in NO was identified as MapiFolder instance(interface id:00063006-0000-0000-c000-000000000046) and not as Folder instance. NO creates the corresponding mapifolder wrapper for this reason. this is the first time i see this kind of problem. normaly is NO indentifier the correct proxy type, creates the wrapper and downcast the wrapper result value automaticly. i have to do further research to see how i can unmask the proxy instance.<br />\n<br />\nas hotfix i suggest you to use a replace technique like this:<br />\n<br />\n/*<br />\nexample: replace an NO wrapper instance and keep com proxy management alive<br />\n*/<br />\n<br />\n// get mapi folder<br />\nOutlook.MAPIFolder mapiFolder = outlookNS.GetDefaultFolder(OlDefaultFolders.olFolderInbox);<br />\n<br />\n// replace mapiFolder with a replace .ctor<br />\nOutlook.Folder folder = new Outlook.Folder(mapiFolder); <br />\n<br />\n// mapiFolder is not valid any longer<br />\nmapiFolder = null;<br />\n<br />\n// folder is now a child from ex-mapiFolder parent and contains also all childs from mapiFolder in NO proxy management(no childs in this example)<br />\n<br />\n*sebastian <br />\n<br />\n(btw: is use outlook 2007 for tests, the minimum version to use Folder. whats your current version?)<br />\nUpdate: i find a solution for the problem and change the implementation in upcoming 1.7 release.<br />\n",
+    "PostedDate": "2013-11-26T15:18:08.78-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1129900",
+    "ThreadId": "470574",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nthank you for your efforts, the code works.\r<br />\n<br />\nHere we use both Office 2007 and 2010 (and next year additionally Office 2013 I guess). Which was one of the reasons why I jumped on the Netoffice-Train. xD\r<br />\nI'm developing with Office 2010, but I publish Outlook-Addins from an environment with Outlook 2007 installed (which usually works fine for both versions)\r<br />\n<br />\n<br />\nRegards,\r<br />\n<br />\nAndreas<br />\n",
+    "PostedDate": "2013-11-28T00:59:21.943-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

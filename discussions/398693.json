@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "924075",
+    "ThreadId": "398693",
+    "Html": "\r\n<p>Hi Sebastian,</p>\r\n<p>I am&nbsp;primarily&nbsp;using NetOffice to give access to Excel's VBA to my .NET model. I was looking at this example that was given as a solution:</p>\r\n<p><span><span><span>public</span></span><span>&nbsp;<span><span>double</span></span>&nbsp;CalculateArea(<span><span>object</span></span>&nbsp;range)<br>\r\n</span></span><span><span><span>{<br>\r\n</span></span><span><span>&nbsp; Excel.</span></span><span><span><span>Range</span></span>&nbsp;r =&nbsp;<span><span>new&nbsp;</span></span>Excel.<span><span>Range(<span><span>null</span></span>, range)</span></span>;<br>\r\n<span><span>&nbsp;&nbsp;</span></span><span><span>int result =&nbsp;</span></span><span><span>Convert</span></span>.ToDouble(r.Width)&nbsp;*&nbsp;<span><span>Convert</span></span>.ToDouble(r.Height);<br>\r\n&nbsp;&nbsp; r.Dispose();<br>\r\n&nbsp;&nbsp;&nbsp;<span><span>return result;</span></span><br>\r\n<span><span>}</span></span></span></span></p>\r\n<p>The disadvantage of the previous function, compared to this:</p>\r\n<p>public&nbsp;double&nbsp;CalculateArea(IRange range)<br>\r\n{<br>\r\n&nbsp;&nbsp;&nbsp;return Convert.ToDouble(range.Width)&nbsp;*&nbsp;Convert.ToDouble(range.Height);<br>\r\n}</p>\r\n<p>Is that the auto complete in the VBA editor will show the parameter &quot;object&quot; rather than &quot;IRange&quot; which is not ideal, is there a workaround and am I missing anything? I don't mind disposing the object or not, but my concern is the method signature.</p>\r\n",
+    "PostedDate": "2012-10-09T08:35:07.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925595",
+    "ThreadId": "398693",
+    "Html": "<p>\"to give access to Excel's VBA to my .NET model.\"<br /><br />i dont understand you. you call NetOffice from Visual Basic for Applications???<br />can you explaine your situation with more details ?</p>",
+    "PostedDate": "2012-10-11T19:11:41.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925689",
+    "ThreadId": "398693",
+    "Html": "<p>I have a .NET project that is exposed as COM and references NetOffice assemblies and I have the following code:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>[ComVisible(<span style=\"color: blue;\">true</span>)]\r\n[InterfaceType(ComInterfaceType.InterfaceIsDual)]\r\n[Guid(<span style=\"color: #a31515;\">\"01A33313-9364-51CC-B1F4-C6F1310A4B30\"</span>)]\r\n<span style=\"color: blue;\">public</span> <span style=\"color: blue;\">interface</span> ITest {\r\n        <span style=\"color: blue;\">int</span> GetCount(<span style=\"color: blue;\">object</span> range);\r\n}\r\n\r\n[ComVisible(<span style=\"color: blue;\">true</span>)]\r\n[ClassInterface(ClassInterfaceType.None)]\r\n[Guid(<span style=\"color: #a31515;\">\"A3F07ED4-AE73-5102-B35D-112DF2624C47\"</span>)]\r\n[ProgId(<span style=\"color: #a31515;\">\"NAME.Test\"</span>)]    \r\n<span style=\"color: blue;\">public</span> <span style=\"color: blue;\">class</span> Test : ITest {       \r\n    <span style=\"color: blue;\">public</span> <span style=\"color: blue;\">int</span> GetCount(<span style=\"color: blue;\">object</span> range) {\r\n            <span style=\"color: blue;\">int</span> count;            \r\n            <span style=\"color: blue;\">using</span>(<span style=\"color: blue;\">var</span> r = <span style=\"color: blue;\">new</span> Range(<span style=\"color: blue;\">null</span>, range)) { \r\n                count = r.Count();            \r\n            }\r\n            <span style=\"color: blue;\">return</span> count;\r\n    }    \r\n}\r\n</pre>\r\n</div>\r\n</p>\r\n<p>In VBA, I referenced the above assembly and I am using it as follows:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">Dim</span> t <span style=\"color: blue;\">As</span> <span style=\"color: blue;\">New</span> Test()\r\nMsgBox t.GetCount()</pre>\r\n</div>\r\n</p>\r\n<p>Because the GetCount parameter is 'object' type, the auto complete (intellisense) in VBA is showing the parameter as variant type, which is not ideal.<br /><br />I tried declaring it as Range (from the NetOffice) like:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">int</span> GetCount(<span style=\"color: #0000ff;\">Range </span>range)\r\n</pre>\r\n</div>\r\n</p>\r\n<p>But that doesn't work as the intellisense still shows the parameter as variant, however, when using the 'Range' from the MS Office Interop, VBA's intellisense DOES display the parameter as a Range, which is the behaviour I am looking for.</p>\r\n<p>Any ideas how to make the NetOffice's Range appear in the intellisense as a Range, not as variant?</p>",
+    "PostedDate": "2012-10-12T01:39:55.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925708",
+    "ThreadId": "398693",
+    "Html": "<p>now i'm understand the problem! i need some days to find a solution. what you can do as hotfix is to combine the interop assemblies with netoffice.<br />include the interop assemblies as embedded reference( the interop assemblies are version independent in this way but no event support).<br /><br />then use:</p>\r\n<pre><span style=\"color: blue;\">public</span> <span style=\"color: blue;\">int</span> GetCount(MSInterop.Excel.Range range) <br /><span><span><span>{<br />   Excel.</span></span><span><span><span>Range</span></span>&nbsp;r =&nbsp;<span><span>new&nbsp;</span></span>Excel.<span><span>Range(<span><span>null</span></span>, range)</span></span>;<br /> <span><span>&nbsp;&nbsp;</span></span><span><span>int result =&nbsp;</span></span><span><span>Convert</span></span>.ToDouble(r.Width)&nbsp;*&nbsp;<span><span>Convert</span></span>.ToDouble(r.Height);<br /> &nbsp; r.Dispose();<br /> &nbsp; <span><span>return result;</span></span></span></span><br /><span><span><span>}<br /><br />looks not fine but works gladly. i hope i find a better way at the weekend.<br />for this little example you dont neet the NetOffice wrapper of course.<br />you may dont need NetOffice with the embedded interop assemblies at all for your situation.<br />but if you do more complex stuff then netoffice can be helpfull with the integrated com proxy lifetime management service.<br /><br />Sebastian<br /></span></span></span></pre>",
+    "PostedDate": "2012-10-12T02:22:06.777-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925876",
+    "ThreadId": "398693",
+    "Html": "<p>Sebastian,</p>\r\n<p>Thank you for the reply and for the hotfix suggestion.</p>\r\n<p>This was an over simplistic example, but I will be using events and later on automation.&nbsp;</p>\r\n<p>By the way, I am using the latest preview version.</p>\r\n<p>Regards,<br />Adam&nbsp;</p>",
+    "PostedDate": "2012-10-12T09:18:43.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

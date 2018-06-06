@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "933141",
+    "ThreadId": "400949",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>is it possible to copy a Sheet from a Workbook to another?</p>\r\n<p>I used the microsoft.office.interop before and there i could use the command Workbook1.Sheets[integer].Copy(After: Workbook2.Sheets[integer])</p>\r\n<p>I have to programm it for all versions of Excel. So i have found the netoffice-API.</p>\r\n<p>Maybe one of you could help me.</p>\r\n",
+    "PostedDate": "2012-10-26T13:21:19.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "933288",
+    "ThreadId": "400949",
+    "Html": "<p>hello!</p>\r\n<p>yes, of course. its basicly the same in NetOffice. <br /><br />Visual Basic Example:<br /><br />workBook.Worksheets(1).Copy(Nothing, workBook.Worksheets(2))<br /><br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-27T07:09:11.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "933505",
+    "ThreadId": "400949",
+    "Html": "<p>Ahh okay, thanks.</p>\r\n<p>My mistake: In microsoft.office i have to use square bracket to choose the index of sheet. Now it's round bracket.</p>\r\n<p>Thank you Sebastian.</p>\r\n<p>&nbsp;</p>\r\n<p>Psycho_D</p>",
+    "PostedDate": "2012-10-28T07:21:26.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "933527",
+    "ThreadId": "400949",
+    "Html": "<p>Hmm, i try to use the code above (Workbook.Worksheets(1).Copy(...)). But visual studio says i can not use Workbook.Worksheets like a method. When i write the command with square bracket (Workbook.Worksheets[1].Copy(...)) it says Copy is not a method from Worksheets.</p>\r\n<p>Maybe i make any mistake?&nbsp;</p>\r\n<p>And my programming language is c#.</p>\r\n<p>If it is helpfull to post my code, i will do it.</p>",
+    "PostedDate": "2012-10-28T09:23:03.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "933528",
+    "ThreadId": "400949",
+    "Html": "<p>yes, your first post looks like vb. thats the reason for the vb example.<br />the problem is: Workbook.Worksheets[1] <br />the definition in the COM Type Library for the return value is Excel.Sheet and you have to convert the type at runtime to Excel.Worksheet.<br /><br />Excel.Worksheet sheet1 = Workbook.Worksheets[1] as Excel.Worksheet;<br />Excel.Worksheet sheet2 = Workbook.Worksheets[2] as Excel.Worksheet;<br /><br />this is not necessary in visual basic because vb is not strong type safe. you can use any type similar to the dynamic type in C#<br /><br />Sebastian<br /><br /></p>",
+    "PostedDate": "2012-10-28T09:30:26.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

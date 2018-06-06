@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1200888",
+    "ThreadId": "528407",
+    "Html": "Hi\r<br />\n<br />\nI have created a 2007 word addin targetting 4.0. How do I create an event that triggers if the user changes the text in a specified location in the document (ie triggers if a single character changes). Then set that text to a string valuable. I was thinking I should use the Selection Class to target the location however I was hoping that there is a specific class/method that targets the user input text event.\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2014-01-30T04:02:48.427-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1200898",
+    "ThreadId": "528407",
+    "Html": "Unfortunately there is no straightforward way to do this.\r<br />\n<br />\n<a href=\"http://msdn.microsoft.com/en-us/library/office/ff192791.aspx\" rel=\"nofollow\"><strong>WindowSelectionChange</strong></a> event will be triggered when anything is changed in Word by mouse click or keyboard.\r<br />\nYou can hook in to low level keyboard events like this <a href=\"http://blogs.msdn.com/b/toub/archive/2006/05/03/589423.aspx\" rel=\"nofollow\">http://blogs.msdn.com/b/toub/archive/2006/05/03/589423.aspx</a> if you are keen only on keyboard press events.<br />\n",
+    "PostedDate": "2014-01-30T04:21:12.177-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1309608",
+    "ThreadId": "568795",
+    "Html": "Hello,<br />\n<br />\nHow can I embedd NetOffice in a WPF project. I would like use a canvas or a user control for view word document.<br />\n<br />\nThank you.<br />\nGabriele<br />\n",
+    "PostedDate": "2014-10-01T09:05:28.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1309868",
+    "ThreadId": "568795",
+    "Html": "hello, \r<br />\n<br />\nthis answer is related to your mail(codeplex direct message):\r<br />\n<br />\n&quot;The code is right but I want that the Word window open in my window.&quot;\r<br />\n<br />\nThis means you doesnt see a new word application or the new word application is not shown in your window? (as a child, in other words: its still on the desktop)\r<br />\n<br />\nFor the second scenario: You have to know, embedd an office application is unsupported in .NET  but you can resolve this with few Win32 API code. Moreover you find a lot of example topics/projects on stackoverflow for a workarround. \r<br />\nfor example:\r<br />\n<a href=\"http://stackoverflow.com/questions/6197358/embedding-word-2010-editor-in-a-wpf-application\" rel=\"nofollow\">http://stackoverflow.com/questions/6197358/embedding-word-2010-editor-in-a-wpf-application</a>\r<br />\nor\r<br />\n<a href=\"http://www.codeproject.com/Tips/487566/OLE-container-surrogate-for-NET\" rel=\"nofollow\">http://www.codeproject.com/Tips/487566/OLE-container-surrogate-for-NET</a> (may you know the OLE container from the good old times...)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-10-02T03:23:15.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

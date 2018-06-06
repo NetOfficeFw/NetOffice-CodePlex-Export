@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1012085",
+    "ThreadId": "435827",
+    "Html": "I need to be able to search through .pst and .ost files that are stored on a server directory and not part of my default profile. I've used the following code:<br />\n<pre><code>            Outlook.NameSpace outlookNS = (Outlook.NameSpace)outlookApp.GetNamespace(&quot;MAPI&quot;);\n            outlookNS.AddStore(@&quot;C:\\Temp\\SearchMe\\test.pst&quot;);\n            Outlook.MAPIFolder rootFolder = outlookNS.Stores[&quot;test.pst&quot;].GetRootFolder();\n            foreach (COMObject item in rootFolder.Items)\n            {\n                Outlook.MailItem mailItem = item as Outlook.MailItem;\n                if (mailItem != null)\n                {\n                    System.Diagnostics.Debug.Print(mailItem.Body);\n                }\n            }\n</code></pre>\n\nThere are 3 problems that I'm trying to address:<br />\n<ol>\n<li>This uses the default profile on my computer. I'd prefer not to do this. Is there a way to create a temporary profile?</li>\n<li>The line &quot;Outlook.MAPIFolder rootFolder = outlookNS.Stores[&quot;test.pst&quot;].GetRootFolder();&quot; throws an exception. I can get around this by referring to the store by its ordinal number but that is a little messy. How do I properly refer to the store I've just added?</li>\n<li>\nThere is no apparent Namespace.RemoveStore() method in the NetOffice API. How do I remove a store once I'm done with it?<br />\n</li>\n</ol>\nThanks in advance for any help.<br />\n",
+    "PostedDate": "2013-03-07T15:44:07.737-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1012242",
+    "ThreadId": "435827",
+    "Html": "<strong>RussSuter wrote:</strong><br />\n<blockquote>\nThe line &quot;Outlook.MAPIFolder rootFolder = outlookNS.Stores[&quot;test.pst&quot;].GetRootFolder();&quot; throws an exception. I can get around this by referring to the store by its ordinal number but that is a little messy. How do I properly refer to the store I've just added?<br />\n</blockquote>\nAn exception is thrown because of incorrect value (&quot;test.pst&quot;) for Stores indexer. You should pass store DisplayName but it may be unknown at runtime. So I propose you to get store by it's path.<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n Outlook.Store GetStoreByPath(<span style=\"color:Blue;\">string</span> path)\n  {\n      <span style=\"color:Blue;\">foreach</span> (Outlook.Store store <span style=\"color:Blue;\">in</span> ns.Stores)\n      {\n        <span style=\"color:Blue;\">if</span> (store.FilePath.Equals(path, StringComparison.InvariantCulture))\n          <span style=\"color:Blue;\">return</span> store;\n      }\n      <span style=\"color:Blue;\">return</span> <span style=\"color:Blue;\">null</span>;\n }\n\n<span style=\"color:Blue;\">void</span> AddStore()\n{\n    <span style=\"color:Blue;\">const</span> <span style=\"color:Blue;\">string</span> pstPath = (<span style=\"color:#A31515;\">@&quot;C:\\Temp\\SearchMe\\test.pst&quot;</span>);\n    ns.AddStore(pstPath);\n    <span style=\"color:Blue;\">var</span> storeRoot = GetStoreByPath(pstPath).GetRootFolder();\n}\r\n</pre></div>",
+    "PostedDate": "2013-03-08T01:28:02.71-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1013536",
+    "ThreadId": "435827",
+    "Html": "Thanks. That takes care of the second issue. Anyone have any input on the other two?<br />\n",
+    "PostedDate": "2013-03-11T14:14:51.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308278",
+    "ThreadId": "435827",
+    "Html": "Hi guys!\r<br />\n<br />\nI am also looking for <em>RemoveStore() method</em>. Did you find something?\r<br />\n<br />\nWith regards, Viljem<br />\n",
+    "PostedDate": "2014-09-26T00:51:35.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "817058",
+    "ThreadId": "350450",
+    "Html": "<p>Hello Sebastian,</p>\n<p>&nbsp;</p>\n<p>I've just found your project and I think it can help me.</p>\n<p>1) I've to create a new document based on a template</p>\n<p>2) Replace some text (Example: Replace ~~CustomerID~~ by 93). This text could be replaced several times in the document if it occurs several times.</p>\n<p>3) Add a break page at the end of this new document.</p>\n<p>4) Go to the new page</p>\n<p>5) Add a table (I've found how to do it in your example section).</p>\n<p>6) Add a return line after a text.</p>\n<p>7) Save the new file (found).</p>\n<p>&nbsp;</p>\n<p>Can you help me ? If all those questions are somewhere can you help me where to find them ? :-)</p>\n<p>&nbsp;</p>\n<p>Thank you &amp; I think you will save my job ! :)</p>\n<p>&nbsp;</p>\n<p>John</p>",
+    "PostedDate": "2012-03-29T03:18:59.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "817116",
+    "ThreadId": "350450",
+    "Html": "<p>Hi Sebastian,</p>\n<p>&nbsp;</p>\n<p>I've already found:</p>\n<p>1) wordApplication.Documents.Add(\"c:\\myTemplate.dot\")</p>\n<p>2)Replace some text: Not found: Can you help me ?</p>\n<p>3) wordApplication.Selection.InsertBreak()</p>\n<p>4) wordApplication.Selection.EndKey(WdUnits.wdStory, WdMovementType.wdMove)</p>\n<p>6) I use a Convert.ToChar(13)</p>\n<p>&nbsp;</p>\n<p>You did a very cool job :) Keep on the way !&nbsp; :-)</p>\n<p>&nbsp;</p>\n<p>John</p>",
+    "PostedDate": "2012-03-29T05:44:57.12-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "817217",
+    "ThreadId": "350450",
+    "Html": "<p>hello john,<br />first: thank you very much.</p>\r\n<p>for the find and replace:<br /><br /></p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>Word.Document newDocument = wordApplication.Documents.Add(); \r\nWord.Find find = newDocument.Range().Find; \r\nfind.Text =<span style=\"color: #a31515;\">\"SearchText\"</span>;\r\nfind.Replacement.Text = <span style=\"color: #a31515;\">\"ReplaceText\"</span>; \r\nfind.Execute();\r\n\r\n</pre>\r\n</div>\r\n<p>by the way, use google search with your problem and&nbsp;the keyword \"VBA\". the VBA community has the&nbsp;best&nbsp;knowledge and experience about programming office.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-03-29T07:58:39.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "817356",
+    "ThreadId": "350450",
+    "Html": "<p>Hi Sebastian,</p>\r\n<p>&nbsp;</p>\r\n<p>When I try to save the document:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">Dim</span> wordApplication <span style=\"color: blue;\">As</span> <span style=\"color: blue;\">New</span> Word.Application\r\n<span style=\"color: blue;\">Dim</span> newDocument <span style=\"color: blue;\">As</span> Word.Document = wordApplication.Documents.Add(<span style=\"color: #a31515;\">\"C:\\Users\\John\\Documents\\netofficeTest.dot\"</span>)\r\n<span style=\"color: blue;\">Dim</span> find <span style=\"color: blue;\">As</span> Word.Find = newDocument.Range().Find\r\nfind.Text = <span style=\"color: #a31515;\">\"~~CustomerID~~\"</span>\r\nfind.Replacement.Text = <span style=\"color: #a31515;\">\"93\"</span>\r\nfind.Execute()\r\nnewDocument.SaveAs(<span style=\"color: #a31515;\">\"C:\\Users\\John\\Documents\\test.doc\"</span>)\r\n</pre>\r\n</div>\r\n</p>\r\n<p>I still have ~~CustomerID~~instead of 93...</p>\r\n<p>Any idea ?</p>\r\n<p>&nbsp;</p>\r\n<p>John</p>\r\n<p>Ps: Thanks for your support</p>",
+    "PostedDate": "2012-03-29T12:41:20.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "817401",
+    "ThreadId": "350450",
+    "Html": "<p>now i see, you need the replace parameter.&nbsp; i didnt find a way to set this parameter to the find object. all other params can bet set to the find object and call Execute without parameters<br /> <br /> Word.Find find = newDocument.Content.Find;<br />find.Text = \"~~CustomerID~~\";<br />find.Replacement.Text = \"007\";&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> find.Execute(Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, WdReplace.wdReplaceAll);</p>",
+    "PostedDate": "2012-03-29T14:20:54.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "817663",
+    "ThreadId": "350450",
+    "Html": "<p>Hi Sebastian,</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you very much !!! :)</p>\r\n<p>&nbsp;</p>\r\n<p>See you soon (I think ;) )</p>\r\n<p>&nbsp;</p>\r\n<p>Regards,</p>\r\n<p>&nbsp;</p>\r\n<p>John</p>",
+    "PostedDate": "2012-03-30T04:14:15.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

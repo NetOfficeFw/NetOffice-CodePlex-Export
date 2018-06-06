@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1128570",
+    "ThreadId": "471021",
+    "Html": "Is there any functionality in the Excel libraries to bind C# classes (of any kind) to a Excel Workbook/Sheet/Cell?\r<br />\n<br />\nIf so, what sort of binding is possible? E.g. Bind once?...One way binding?....Two way binding?\r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2013-11-25T00:45:47.77-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128612",
+    "ThreadId": "471021",
+    "Html": "its the same as any other. you can bind any class instance for one way binding, also in NetOffice. Two way binding is not supported because the office applications doenst support this. (in a heavy databinding scenario its possible to create you own custom type descriptor or binding list(ITypedList) to imitate two way binding but this means expert knowledge in System.ComponentModel, otherwise you can use one way binding anytime but no two way support )\r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2013-11-25T02:54:57.177-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128656",
+    "ThreadId": "471021",
+    "Html": "I don't suppose you can link me to an example of either.\r<br />\n<br />\nMy google-fu is failing me, all I seem to come up with is binding to a database.\r<br />\n<br />\nThanks for the info either way.<br />\n",
+    "PostedDate": "2013-11-25T05:02:51.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

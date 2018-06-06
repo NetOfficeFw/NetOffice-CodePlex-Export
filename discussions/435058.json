@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1008945",
+    "ThreadId": "435058",
+    "Html": "Hi, I was wondering how one goes about installing an add-in created with NetOffice? My add-in adds a Ribbon UI element, and needs to be loaded each time Office starts up.\r<br />\n<br />\nWhat about installing the same add-in for multiple installed versions of Office?\r<br />\n<br />\nIm trying to avoid any Visual Studio Installer magic, and would like to know what is actually required for this process, so I could do it e.g. from an InnoSetup installer.\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-03-01T09:14:39.08-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008980",
+    "ThreadId": "435058",
+    "Html": "If you created addin with NetOffice Project Wizard you have to do a little work:<br />\n<ol>\n<li>Copy your addin with NetOffice assemblies</li>\n<li>\nRegister addin assembly with regasm utility<br />\n</li>\n</ol>\nHere is an example of Inno Setup script for installing Outlook addin for .NET 4.0<br />\n<pre><code>[Setup]\nAppName=Outlook Addin\nAppVersion=1.0\nDefaultDirName={pf}\\OutlookAddin\n[Files]\nSource: OutlookAddin.dll; DestDir: {app}\nSource: NetOffice.dll; DestDir: {app}\nSource: OfficeApi.dll; DestDir: {app}\nSource: OutlookApi.dll; DestDir: {app}\n[Run]\nFilename: &quot;{dotnet40}\\regasm.exe&quot;; Parameters: &quot;&quot;&quot;{app}\\OutlookAddin.dll&quot;&quot;&quot;\n[UninstallRun]\nFilename: &quot;{dotnet40}\\regasm.exe&quot;; Parameters: &quot;&quot;&quot;{app}\\OutlookAddin.dll&quot;&quot;&quot;</code></pre>\n\n",
+    "PostedDate": "2013-03-01T10:55:24.573-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

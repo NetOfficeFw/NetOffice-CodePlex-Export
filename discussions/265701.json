@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "644223",
+    "ThreadId": "265701",
+    "Html": "\r\n<p>&nbsp;</p>\r\n<p>Hi</p>\r\n<p>Can anyone explain what on earth this error message means:</p>\r\n<p><span style=\"white-space:pre\"></span><strong>'Factory are not initialized with generated LateBindingApi assemblies.'</strong></p>\r\n<p>It happens every time I try to load an XLS/XLSX file into a workbook object:</p>\r\n<p><span style=\"white-space:pre\"></span></p>\r\n<pre>\tProgram.obExcelA = new NetOffice.ExcelApi.Application();\r\n\r\n\tProgram.obExcelA.Workbooks.Open(szFile);</pre>\r\n<p>Thanks</p>\r\n<p>&nbsp;</p>\r\n<p>Nick Harmer</p>\r\n",
+    "PostedDate": "2011-07-19T03:08:59.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "644250",
+    "ThreadId": "265701",
+    "Html": "<p>You have to initialize the api with one call.</p>\r\n<p>// Initialize Api COMObject Support<br />LateBindingApi.Core.Factory.Initialize();</p>\r\n<p>&nbsp;</p>\r\n<p>regards<br />sebastian</p>",
+    "PostedDate": "2011-07-19T03:56:10.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

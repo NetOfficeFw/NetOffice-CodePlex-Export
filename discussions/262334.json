@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "631103",
+    "ThreadId": "262334",
+    "Html": "\r\n<p>Hi!</p>\r\n<p>I wanted to connect the NewMailExEvent in your COMAddinClassicExample by inserting the line</p>\r\n<p>_outlookApplication.NewMailExEvent &#43;= new Outlook.Application_NewMailExEventHandler(_outlookApplication_NewMailExEvent);</p>\r\n<p>Every time this line is executed I get an AccessViolationException.</p>\r\n<p>The EventBridgeInitialized member has the value false. I think that's the problem.</p>\r\n<p>What do I have to do to solve this Probem? Can you give me an example for connecting to the NewMailExEvent?</p>\r\n<p>Thank you.</p>\r\n<p>Bombi</p>\r\n",
+    "PostedDate": "2011-06-22T06:49:55.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631106",
+    "ThreadId": "262334",
+    "Html": "<p>hey,<br />can you tell me more informations, .net version, outlook version 32/64Bit, and operating system?<br />i do a test immediately. maybe you are a outlook security victim or i do&nbsp;a mistake.<br />(note: the eventbridge was intialized on demand while first use)</p>",
+    "PostedDate": "2011-06-22T06:52:36.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631114",
+    "ThreadId": "262334",
+    "Html": "<p>Hi Sebastian,</p>\r\n<p>System: windows7 64bit</p>\r\n<p>.Net: 4.0, Visual Studio 2010 with c#</p>\r\n<p>Office 2010</p>\r\n<p>I use the NetOffice Release 0.9\\Net4.0\\Examples\\Outlook\\C#\\COMAddinClassicExample.<span style=\"font-family: Consolas; font-size: x-small;\"></span></p>",
+    "PostedDate": "2011-06-22T07:09:37.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631120",
+    "ThreadId": "262334",
+    "Html": "<p>Office 2010 is 32 or 64Bit ?</p>",
+    "PostedDate": "2011-06-22T07:13:00.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631121",
+    "ThreadId": "262334",
+    "Html": "<p>i use office 2010 32bit</p>",
+    "PostedDate": "2011-06-22T07:14:01.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631367",
+    "ThreadId": "262334",
+    "Html": "<p>the problem is located. the exception occurs only in a COMAddin and not in a normal program(.exe)<br />i do some tests now to resolve the problem, needs max. 1 or&nbsp;days (or nights) i believe.<br /><br />sorry for inconvenience :-(</p>",
+    "PostedDate": "2011-06-22T12:39:32.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631866",
+    "ThreadId": "262334",
+    "Html": "<p>hallo again,</p>\n<p>&nbsp;i do some changes in event bridge and it works now(sorry again)<br />&nbsp;please download latest source and check Release Tags/NetOffice Release 0.9.rar<br />&nbsp;AND please tell me it works for you or not! (my test with a COMAddin in outlook 2002 and NewMailEvent works fine)<br />sebastian</p>\n<p>&nbsp;UPDATE: a new release is available with fixed event bridge.</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-06-23T07:46:21.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

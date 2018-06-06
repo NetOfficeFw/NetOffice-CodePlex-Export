@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1015556",
+    "ThreadId": "436693",
+    "Html": "I am using NetOffice to generate Excel file. But once I close Excep._application objects Excel still stays open and I see in Process Tab. It does not get garbage collected.\r<br />\n<br />\nEnvironment : 64bit Windows Server 2008 R2, .Net 3.5 Framework\r<br />\n<br />\nCode Below:\r<br />\n<br />\nusing Excel = NetOffice.ExcelApi;<br />\n<pre><code>        Excel.Application oXL = null;\n        Excel._Workbook oWB = null;\n        Excel._Worksheet oSheet = null;\n        Excel.Range oRng = null;\n\n        try\n        {\n            //Start Excel and get Application object.\n            oXL = new Excel.Application();\n            oXL.Visible = bShow;\n            oXL.AlertBeforeOverwriting = bShow;\n            oXL.Interactive = bShow;\n            oXL.DisplayAlerts = bShow;\n\n            //Get a new workbook.\n            oWB = (Excel._Workbook)(oXL.Workbooks.Add(Missing.Value));\n\n            oSheet = (Excel._Worksheet)oWB.Sheets[1];\n            oSheet.Name = &quot;Shee1&quot;;\n            FormatSheet(oSheet, &quot;Suggested Trades&quot;);\n\n            oSheet = (Excel._Worksheet)oWB.Sheets[2];\n            oSheet.Name = &quot;Sheet2&quot;;\n\n            oSheet = (Excel._Worksheet)oWB.Sheets[3];\n            oSheet.Name = &quot;Shee3&quot;;\n</code></pre>\n\n//Some Processing\r<br />\n<br />\n//Saving file<br />\n<pre><code>                oWB.SaveCopyAs(fileName);\n                oWB.Close();\n                oXL.Quit();\n</code></pre>\n\n}<br />\n<pre><code>        catch (Exception e)\n        {\n            return false;\n        }\n        finally\n        {\n            //Release Objects\n            releaseObject(oRng);\n            releaseObject(oSheet);\n            releaseObject(oWB);\n            releaseObject(oXL);\n        }\n\n\n    private void releaseObject(object obj)\n    {\n        try\n        {\n            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);\n            obj = null;\n        }\n        catch (Exception ex)\n        {\n            obj = null;\n        }\n        finally\n        {\n            GC.Collect();\n        }\n    }\n\n</code></pre>\n\nHelp Appreciated<br />\n",
+    "PostedDate": "2013-03-14T14:05:55.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1015780",
+    "ThreadId": "436693",
+    "Html": "<ol>\n<li>remove the finaly block</li>\n<li>remove the releaseObject method</li>\n<li>\ncall oXL.Dispose(); after Quit()<br />\n</li>\n</ol>\nSebastian<br />\n",
+    "PostedDate": "2013-03-15T02:18:40.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1015945",
+    "ThreadId": "436693",
+    "Html": "Thanks; that worked...<br />\n",
+    "PostedDate": "2013-03-15T07:58:48.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1018345",
+    "ThreadId": "436693",
+    "Html": "Hello,<br />\n<br />\nIn case you have issues with COM files, always close every process created by them to avoid memory lack.<br />\n<pre><code>        private void ManagePPTProcesses()\n        {\n            Process[] processes = System.Diagnostics.Process.GetProcessesByName(&quot;EXCEL&quot;);\n            foreach (Process p in processes)\n                p.Kill();\n        }</code></pre>\n\nIn that case, if you loop through multiple Excel files in order to import all data, you close them all with the code above.<br />\n",
+    "PostedDate": "2013-03-20T09:19:49.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1026143",
+    "ThreadId": "436693",
+    "Html": "<strong>mike27015 wrote:</strong><br />\n<blockquote>\nHello,<br />\n<br />\nIn case you have issues with COM files, always close every process created by them to avoid memory lack.<br />\n<pre><code>        private void ManagePPTProcesses()\n        {\n            Process[] processes = System.Diagnostics.Process.GetProcessesByName(&quot;EXCEL&quot;);\n            foreach (Process p in processes)\n                p.Kill();\n        }</code></pre>\n\nIn that case, if you loop through multiple Excel files in order to import all data, you close them all with the code above.<br />\n</blockquote>\nBeware of that: Maybe u r closing unintentionally other excel apps.<br />\n",
+    "PostedDate": "2013-04-05T08:04:51.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

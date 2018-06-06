@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "934696",
+    "ThreadId": "401407",
+    "Html": "\r\n<p>I am getting the following unhandled exception when I try to create an excel document using my c# application.&nbsp; This process works fine when I am running the c# application from visual studio 10, but when I try to run the application outside of visual\r\n studio using the .exe file this error is appearing.</p>\r\n<p>&nbsp;</p>\r\n<p>System.IO.FileNotFoundException: Could not load file or assembly 'ExcelApi, Version=1.5.1.2, Culture=neutral, PublicKeyToken=9084b9221296229e' or one of its dependencies. The system cannot find the file specified.<br>\r\nFile name: 'ExcelApi, Version=1.5.1.2, Culture=neutral, PublicKeyToken=9084b9221296229e'</p>\r\n",
+    "PostedDate": "2012-10-31T05:21:42.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934713",
+    "ThreadId": "401407",
+    "Html": "<p>the NetOffice assemblies are stored in the same folder? for excel you need NetOffice, ExceApi, OfficeApi, VBEIDEApi<br />nice to know: Win7? your application has elevated permissions? your application is stored in which folder?<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-31T05:50:50.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934717",
+    "ThreadId": "401407",
+    "Html": "<p>I have added references for NetOffice, ExcelApi, OfficeApi, and VBEIDEApi.&nbsp; It is not working on Windows 7 or Windows XP.&nbsp; I am creating a C# application that will be distributed to users.&nbsp; The application and the NetOffice Interop work fine to create the Excel file when the application is run from Visual Studio 2010, but it will not work when the application is not run from Visual Studio 2010 but from the applicaiton's .exe file.&nbsp; The users whom will be receiving this c# application will not have Visual Studio therefore it needs to work externally and by itself.</p>",
+    "PostedDate": "2012-10-31T05:59:26.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934722",
+    "ThreadId": "401407",
+    "Html": "<p>is it possible to send your solution to my mail adress? microschuft@hotmail.com (create a copy and remove critical code of you want)<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-31T06:06:52.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1026133",
+    "ThreadId": "401407",
+    "Html": "It has sth to do with the property 'embed interop type' of the references, so it shopuld be documented, if not done.\r<br />\nFirst time i am also struggled with it as far as a colleague of mine told me that there are not properly documented entries to be modified<br />\n",
+    "PostedDate": "2013-04-05T07:52:22.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

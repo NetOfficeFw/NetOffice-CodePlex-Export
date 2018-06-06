@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "904715",
+    "ThreadId": "393242",
+    "Html": "\r\n<p>Now i gotta everything working fine.</p>\r\n<p>I have a new question, there is an example how to add a menu item in Outlook?</p>\r\n<p>When you have an email and click over this e-mail with right button, you have a menu, how to add an item to this menu?</p>\r\n<p>&nbsp;</p>\r\n<p>Br,</p>\r\n<p>&nbsp;</p>\r\n<p>Ricardo</p>\r\n",
+    "PostedDate": "2012-08-27T11:37:27.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "904913",
+    "ThreadId": "393242",
+    "Html": "<p>NetOffice contains no example for custom context menus at the moment (but a good idea!)<br />the following links can be helpfull for you:<br /><br />the old way:<br />http://www.outlookcode.com/codedetail.aspx?id=1777<br /><br />the modern way:<br />http://msdn.microsoft.com/en-us/library/office/ee692172.aspx#OfficeOLExtendingUI_ContextMenuforaMailItem<br /><br />this works also with NetOffice. i want to create an example at the weekend(its a realy good idea)<br /><br />Sebastian</p>",
+    "PostedDate": "2012-08-27T22:08:46.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "905306",
+    "ThreadId": "393242",
+    "Html": "<p>Sebastian, first i want to thank you for all your help.</p>\r\n<p>I have another question, i&acute;m using the CustomTaskPane, and i'm creating the taskPane content thru the&nbsp;ctpFactory.CreateCTP(, is there some way to use UserControls from another assembly thru this method or other way? I have a Class with all my UserControl that i will use thru the Addin, and i&acute;m reference this Assembly in the principal Assembly of my outlook AddIn.</p>\r\n<p>BR,</p>\r\n<p>&nbsp;</p>\r\n<p>Ricardo</p>",
+    "PostedDate": "2012-08-28T13:10:21.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "905312",
+    "ThreadId": "393242",
+    "Html": "<p>Just for help, when i try to create i gotta this error message \"Unable to create the Specified ActiveX Control \"</p>",
+    "PostedDate": "2012-08-28T13:27:26.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "940278",
+    "ThreadId": "393242",
+    "Html": "<p>Hi, Sebastian.</p>\r\n<p>You wrote that you \"<span>want to create an example at the weekend\".</span></p>\r\n<p><span>Do you have any solution, examples :) ??</span></p>",
+    "PostedDate": "2012-11-12T06:04:25.523-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

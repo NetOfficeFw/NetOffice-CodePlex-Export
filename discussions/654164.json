@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1471761",
+    "ThreadId": "654164",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nI have an issue with exporting a PowerPoint presentation as a pdf file. Could you please help me out? Here is the respective test method:<br />\n<pre><code>[TestMethod]\n        public void SavePowerPointAsPdf()\n        {\n            NetOffice.PowerPointApi.Application app = new NetOffice.PowerPointApi.Application();\n            app.Presentations.Add();\n\n            app.ActivePresentation.Slides.Add(1, NetOffice.PowerPointApi.Enums.PpSlideLayout.ppLayoutBlank);\n\n            app.Visible = NetOffice.OfficeApi.Enums.MsoTriState.msoTrue;\n            app.Activate();\n\n            app.ActivePresentation.ExportAsFixedFormat(@&quot;C:\\test.pdf&quot;, NetOffice.PowerPointApi.Enums.PpFixedFormatType.ppFixedFormatTypePDF);\n\n        }</code></pre>\n\nException occurs in the &quot;ExportAsFixedFormat&quot; line.\r<br />\nlevel 1: InnerException\t{&quot;Ein Aufrufziel hat einen Ausnahmefehler verursacht.&quot;}\tSystem.Exception {System.Reflection.TargetInvocationException}\r<br />\nlevel 2: -\t\tInnerException\t{&quot;Typenkonflikt. (Ausnahme von HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))&quot;}\tSystem.Exception {System.Runtime.InteropServices.COMException}\r<br />\n<br />\nI'm using Netoffice 1.7.3, Windows 10 and Office 2013.\r<br />\n<br />\nMany thanks and have a nice weekend!\r<br />\n<br />\ncoheedld<br />\n",
+    "PostedDate": "2016-04-29T06:23:12.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1471773",
+    "ThreadId": "654164",
+    "Html": "Just checked: In Excel it works as expected. But PowerPoint seems to have a problem.<br />\n<pre><code>[TestMethod]\n        public void SaveExcelAsPdf()\n        {\n            NetOffice.ExcelApi.Application app = new NetOffice.ExcelApi.Application();\n\n            app.Workbooks.Add();\n\n            app.ActiveWorkbook.Worksheets.Add();\n\n            ((NetOffice.ExcelApi.Worksheet)app.ActiveSheet).Cells[1, 1].Value = &quot;hello!!!&quot;;\n\n            ((NetOffice.ExcelApi.Worksheet)app.ActiveSheet).ExportAsFixedFormat(NetOffice.ExcelApi.Enums.XlFixedFormatType.xlTypePDF, @&quot;C:\\Mappe1.pdf&quot;);\n        }</code></pre>\n\n",
+    "PostedDate": "2016-04-29T06:56:02.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472088",
+    "ThreadId": "654164",
+    "Html": "Hast du den Excel Test und den PowerPoint Test denn auf der gleichen Maschine laufen lassen? (Nur um einen ganz dummen Fall auszuschliessen, Office installiert für PDF Support einen virtiuellen Printer unter Windows, dazu muss auch der Spooler Service für die PostScript Konvertierung laufen usw....)\r<br />\nIch bin gerade erst wieder zu Hause angekommen und hatte noch nicht die Zeit das Problem nachzustellen.\r<br />\n(Ich meine mich zu erinnern das PowerPoint hier ein bekanntes LateBinding issue hat weil weil über IDispatch ein optionaler Parameter mit einem inkompatiblen default value gesetzt wird) Ich schau mir das morgen mal an. (Unter Umständen musst ein paar optionale Parameter füttern um ein weiteres Office Issue zu umgehen)\r<br />\nIch klär das schnellstmöglich.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-05-01T12:54:42.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472092",
+    "ThreadId": "654164",
+    "Html": "Hallo Sebastian,\r<br />\n<br />\njup, habe beide Testfälle auf der gleichen Maschine am laufen.\r<br />\n<br />\nBeste Grüße!\r<br />\n<br />\ncoheedld<br />\n",
+    "PostedDate": "2016-05-01T13:32:26.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472515",
+    "ThreadId": "654164",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nthanks for your support. It looks like the default value for the parameter &quot;PrintRange&quot; is not correct. If i explicitely define the PrintRange it works as expected:<br />\n<pre><code>app.ActivePresentation.ExportAsFixedFormat(@&quot;C:\\test.pdf&quot;, NetOffice.PowerPointApi.Enums.PpFixedFormatType.ppFixedFormatTypePDF, 1, 0, 1, 1, 0, app.ActivePresentation.PrintOptions.Ranges.Add(1, app.ActivePresentation.Slides.Count));</code></pre>\n\nregards,\r<br />\n<br />\ncoheedld<br />\n",
+    "PostedDate": "2016-05-05T01:38:34.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2016-05-05T01:38:40.36-07:00"
+  }
+]

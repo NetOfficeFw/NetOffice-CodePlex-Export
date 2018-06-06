@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1039785",
+    "ThreadId": "442652",
+    "Html": "Hi,\r<br />\n<br />\nI hope someone can help me fix this. I run into a null reference exception every time I try to add a new worksheet. The exception is thrown at this specific line of code:\r<br />\n<br />\nworkSheet = (NetOffice.ExcelApi.Worksheet)workBook.Sheets.Add();\r<br />\n<br />\nThis is for an Excel AddIn (VSTO) by the way. Below is the whole code block of the error: <br />\n<pre><code>        if (workBook == null)\n        {\n            if (ThisAddIn._excelApplication.ActiveWorkbook == null)\n                workBook = ThisAddIn._excelApplication.Workbooks.Add(Missing.Value);\n            else\n                workBook = ThisAddIn._excelApplication.ActiveWorkbook;\n        }            \n\n        try\n        {\n            workSheet = (NetOffice.ExcelApi.Worksheet)workBook.Sheets.Add();\n            ReportThread = new System.Threading.Thread(new System.Threading.ThreadStart(GetReports));\n            ReportThread.Start();\n        }\n        catch (Exception ex)\n        {\n            try\n            {\n                loading.Close();\n            }\n            catch { }\n\n            if (Aborted)\n            {\n                MessageBox.Show(&quot;Aborted on user request.&quot;, &quot;&quot;, MessageBoxButtons.OK, MessageBoxIcon.Information);\n                Aborted = false;\n                return;\n            }\n\n\n            string Options = &quot;&quot;;\n            Options += &quot;\\n Profile: &quot; + cmbProfile.Text;\n            Options += &quot;\\n Report Type: &quot; + cmbReportType.Text;\n            Options += &quot;\\n Time Segment: &quot; + cmbTimeSegment.Text;\n            Options += &quot;\\n Date Range: &quot; + cmbDateRange.Text;\n            MessageBox.Show(&quot;No Data Returned with following combination of options. &quot; + Options + \n                Environment.NewLine + Environment.NewLine + ex.ToString(), \n                &quot;&quot;, MessageBoxButtons.OK, MessageBoxIcon.Information);\n        }\n</code></pre>\n\nThe details of the exception are as follows:\r<br />\n<br />\nSystem.NullReferenceException: Object reference not set to an instance of an object.\r<br />\n   at NetOffice.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy)\r<br />\n   at NetOffice.ExcelApi.Sheets.Add(Object before, Object after, Object count, Object type)\r<br />\n   ...\r<br />\n<br />\nAny help would be very much appreciate.\r<br />\n<br />\nThanks and best regards,\r<br />\n<br />\n<br />\nMark Ibanez<br />\n",
+    "PostedDate": "2013-05-06T02:25:46.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041543",
+    "ThreadId": "442652",
+    "Html": "this sounds strange. i'm wondering why this very simple scenario doesnt works.\r<br />\nits possible to send me your (simplified) project so i can debug the problem?\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-05-09T13:37:22.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108242",
+    "ThreadId": "442652",
+    "Html": "Hi\r<br />\n<br />\nMaybe this could be helpful: We ran into the same error when the template used was made with a version lower the one used during the automation.\r<br />\nThe inner exception was (sorry german os when testing)<br />\n<blockquote>\nSystem.Reflection.TargetInvocationException: Ein Aufrufziel hat einen Ausnahmefehler verursacht. ---&gt; System.Runtime.InteropServices.COMException: Die Blätter können von Excel nicht in die Zielarbeitsmappe eingefügt werden, da sie eine geringere Anzahl von Zeilen und Spalten enthält als die Quellarbeitsmappe. Zum Verschieben oder Kopieren der Daten in die Zielarbeitsmappe können Sie die Daten auswählen und dann mithilfe der Befehle 'Kopieren' und 'Einfügen' in die Blätter einer anderen Arbeitsmappe einfügen.<br />\n</blockquote>\nIt seems the problem is within the difference of max columns allowed in different excel versions. In our case we were using a template made with office 2010 and on the client was office 2007 installed.\r<br />\nTry creating a new template with the same office version that you will be using when your code automates excel.\r<br />\n<br />\nReto<br />\n",
+    "PostedDate": "2013-10-16T05:08:11.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

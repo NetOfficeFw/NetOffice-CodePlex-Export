@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1418317",
+    "ThreadId": "633373",
+    "Html": "I'm working with a web site that was built with ASP/VB__.NET Framework version 2.0__.   My IDE is Visual Studio 2010.   I used NuGet to install <strong>NetOffice Excel</strong> to my IDE so that I could use it to create and save Excel <strong>workbooks</strong> on the site.   Everything worked perfectly in the IDE but it failed when I tried to deploy it to the <strong>IIS7</strong> web server.   It is showing the error message\r<br />\n&quot;<strong>System.ArgumentException: progId not found. Excel.Application</strong>&quot;.  <br />\nCan anyone explain to me exactly what are the detailed steps that need to happen to deploy successfully.   Since I'm new to this product I'm not confident that I understand all that I need to know about how it really works. so don't worry about your explanation being too simple or too detailed.   Your help is greatly appreciated.<br />\n",
+    "PostedDate": "2015-04-25T17:19:50.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1423122",
+    "ThreadId": "633373",
+    "Html": "You must install Excel on the web server.<br />\n",
+    "PostedDate": "2015-05-05T14:21:52.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

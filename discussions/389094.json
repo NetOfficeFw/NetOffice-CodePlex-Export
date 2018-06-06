@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "891529",
+    "ThreadId": "389094",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I'm trying to attach and detach Worksheet.ChangeEvent according to button click actions. The &quot;&#43;=&quot; works fine, but the &quot;-=&quot; does not work.&nbsp;</p>\r\n<p>Below are the three test methods.&nbsp;After the OnDetachEvent() is invoked, the&nbsp;ValueChangeHandler still works.</p>\r\n<p>&nbsp;</p>\r\n<p>Excel.Application&nbsp;app = new Excel.Application(null, ExcelDnaUtil.Application);</p>\r\n<p>public void OnAttachEvent() {</p>\r\n<p><span style=\"white-space:pre\">&nbsp;</span>Debug.WriteLine(&quot;into attach&quot;);</p>\r\n<p>app.ActiveSheet.ChangeEvent &#43;=&nbsp;ValueChangeHandler;</p>\r\n<p>}</p>\r\n<p>public void OnDetachEvent() {</p>\r\n<p>Debug.WriteLine(&quot;into detach&quot;);</p>\r\n<p>app.ActiveSheet.ChangeEvent -=&nbsp;ValueChangeHandler;</p>\r\n<p>}</p>\r\n<p>public void ValueChangeHandler(Excel.Range Target) {</p>\r\n<p>Debug.WriteLine(&quot;in change handler&quot;);</p>\r\n<p>}</p>\r\n<p><span style=\"white-space:pre\"></span>Is the &quot;-=&quot; operator the right approach to remove the event handler?</p>\r\n",
+    "PostedDate": "2012-07-26T01:46:06.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "891543",
+    "ThreadId": "389094",
+    "Html": "<p>do you use NetOffice 1.4 or 1.5 ?</p>",
+    "PostedDate": "2012-07-26T02:02:04.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "891546",
+    "ThreadId": "389094",
+    "Html": "<p>I use 1.5.0.0</p>",
+    "PostedDate": "2012-07-26T02:10:07.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "891558",
+    "ThreadId": "389094",
+    "Html": "<p>ActiveSheet is object/COMObject in NetOffice. this code can't be true.<br />app.ActiveSheet.ChangeEvent +=&nbsp;ValueChangeHandler;<br /><br />but anyway. store the worksheet reference in a variable. for example:<br /><br />&nbsp;workSheet.ChangeEvent += new Excel.Worksheet_ChangeEventHandler(workSheet_ChangeEvent);<br />&nbsp;workSheet.ChangeEvent -= new Excel.Worksheet_ChangeEventHandler(workSheet_ChangeEvent);<br /><br />this works fine becaues if you call app.ActiveSheet 2 times you have 2 different proxies(for the same object in COM Server(Excel) memory of course).</p>\r\n<p>Sebastian</p>",
+    "PostedDate": "2012-07-26T02:25:10.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "891565",
+    "ThreadId": "389094",
+    "Html": "<p>Thank you. It works.</p>\r\n<p>According to your answer, I get the different proxy for the active sheet in OnAttachEvent() and OnDetachEvent()</p>\r\n<p>Sorry that I simplify \"(<span>app.ActiveSheet as Worksheet).ChangeEvent +=&nbsp;ValueChangeHandler</span>\" as&nbsp;\"app.ActiveSheet.ChangeEvent +=&nbsp;ValueChangeHandler\" when editing the post.</p>",
+    "PostedDate": "2012-07-26T02:42:06.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

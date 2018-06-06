@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1073798",
+    "ThreadId": "451579",
+    "Html": "Tutorial10 (Baisc und C#) haben den Fehler:\r<br />\n&quot;EnableMessageFilter&quot; ist kein Member von &quot;NetOffice.Setting&quot;.\r<br />\n<br />\nWas ist hier passiert?\r<br />\n<br />\nGruß,\r<br />\nHaro<br />\n",
+    "PostedDate": "2013-07-27T02:34:58.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1073820",
+    "ThreadId": "451579",
+    "Html": "Ach herjee, da habe ich vergessen den Tutorial Code anzupassen.\r<br />\nAm Anfang bot NetOffice nur einen sehr einfachen MessageFilter den man eben an oder ausschalten konnte.\r<br />\nInzwischen jedoch haben die Settings ein eigenes MessageFilter Objekt:\r<br />\n<br />\n<a href=\"http://netoffice.codeplex.com/wikipage?title=Settings.MessageFilter_DE\" rel=\"nofollow\">http://netoffice.codeplex.com/wikipage?title=Settings.MessageFilter_DE</a>\r<br />\n<br />\nDanke für den Hinweis, ich passe das noch heute Abend an.\r<br />\nSebastian<br />\n",
+    "PostedDate": "2013-07-27T05:42:47.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1073838",
+    "ThreadId": "451579",
+    "Html": "\r\n<div>Hallo Sebastian,<br>\r\n<br>\r\nich hoffe ich darf Dich dutzen.<br>\r\n<br>\r\nDein Werkzeug habe ich mir heute das erste mal angesehen und probiere alle Tutorials und die für mich wichtigen Beispiele aus.<br>\r\nIch wäre stolz wenn ich so toll programmieren könnte wie Du, also Hut ab. Danke für Deine Leistung und dafür, dass dieses Werk zur freien Verfügung steht.<br>\r\n<br>\r\nIn C# ist man ja von vornherein nicht in der Lage so einen Ranz zu schreiben wie in Visual Basic, das liegt sicher am VB6 Namespace und auch daran, dass &quot;Option Strikt&quot; nicht automatisch &quot;On&quot; ist.<br>\r\nDeshalb ist auch in Deinen Beispielen und Tutorials einiges drinnen, was in manchen Foren als &quot;böser Code&quot; bezeichnet wird.<br>\r\n<br>\r\nIch selbst bemühe mich seither meinen Code ohne den VB6 kompatiblen Kram zu schreiben und habe daher immer &quot;Option Strict&quot; auf &quot;On&quot; D.h. auch spätes Binden ist in meinem Code untersagt.<br>\r\nDen Namespace &quot;Microsoft.VisualBasic&quot; habe ich entfernt (Haken raus) um den alten VB6 Ranz loszuwerden.<br>\r\n<br>\r\nDer Code ist relativ schnell überarbeitet, die Typwandlungen müssen halt Typsicher formuliert werden, ich habe die Tutorials und die Excel Beispiele überarbeitet und das sind die meisten notwendigen Änderungen an Deinem Code:<br>\r\n<br>\r\nalt: Dim workSheet As Excel.Worksheet = workBook.Worksheets(1)<br>\r\nneu: Dim workSheet As Excel.Worksheet = CType(workBook.Worksheets(1), Excel.Worksheet)<br>\r\n<br>\r\nalt: IIf(_hostApplication.LCID = 1033, &quot;Background Colors and Borders for Cells&quot;, &quot;Hintergrundfarben und Rahmen in Zellen&quot;)<br>\r\nneu: If(_hostApplication.LCID = 1033, &quot;Background Colors and Borders for Cells&quot;, &quot;Hintergrundfarben und Rahmen in Zellen&quot;)<br>\r\n<br>\r\nalt: Dim decimalValue As Decimal = 7251231.313367<br>\r\nneu: Dim decimalValue As Decimal = CType(7251231.313367, Decimal)<br>\r\n<br>\r\nalt: Dim dataRange As Excel.Range = PutSampleData(workSheet)<br>\r\nneu: Dim dataRange As Excel.Range = CType(PutSampleData(workSheet), Excel.Range)<br>\r\n<br>\r\nalt: Dim chartObjects As Excel.ChartObjects = workSheet.ChartObjects()<br>\r\nneu: Dim chartObjects As Excel.ChartObjects = CType(workSheet.ChartObjects(), Excel.ChartObjects)<br>\r\n<br>\r\nalt: commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)<br>\r\nneu: commandBarBtn = CType(commandBarPopup.Controls.Add(MsoControlType.msoControlButton), Office.CommandBarButton)<br>\r\n<br>\r\nalt: commandBarPopup = commandBar.Controls.Add(MsoControlType.msoControlPopup, System.Type.Missing, System.Type.Missing, System.Type.Missing, True)<br>\r\nneu: commandBarPopup = CType(commandBar.Controls.Add(MsoControlType.msoControlPopup, System.Type.Missing, System.Type.Missing, System.Type.Missing, True), Office.CommandBarPopup)<br>\r\n<br>\r\nalt: If (TypeName(itemControl) = &quot;RadioButton&quot;) Then<br>\r\nneu: If itemControl.GetType Is GetType(RadioButton) Then<br>\r\n<br>\r\nalt: Dim radioSelectButton As RadioButton = itemControl<br>\r\nneu: Dim radioSelectButton As RadioButton = CType(itemControl, RadioButton)<br>\r\n<br>\r\nalt: If (Not IsNothing(workbookFile) And Not isFailed) Then<br>\r\nneu: If workbookFile IsNot Nothing AndAlso Not isFailed Then<br>\r\n<br>\r\nalt: vbNewLine<br>\r\nneu: Environment.NewLine<br>\r\n<br>\r\nDanke nochmals für Deine klasse Arbeit und ein schönes Wochenende,<br>\r\nHans-Robert<br>\r\n<br>\r\nAm 27.07.2013 14:42, schrieb SebastianDotNet:<br>\r\n</div>\r\n<blockquote type=\"cite\">\r\n<p>From: SebastianDotNet</p>\r\n<div id=\"ThreadNotificationPostBody\">Ach herjee, da habe ich vergessen den Tutorial Code anzupassen.\r\n<br>\r\nAm Anfang bot NetOffice nur einen sehr einfachen MessageFilter den man eben an oder ausschalten konnte.\r\n<br>\r\nInzwischen jedoch haben die Settings ein eigenes MessageFilter Objekt: <br>\r\n<br>\r\n<a href=\"http://netoffice.codeplex.com/wikipage?title=Settings.MessageFilter_DE\" rel=\"nofollow\">http://netoffice.codeplex.com/wikipage?title=Settings.MessageFilter_DE</a>\r\n<br>\r\n<br>\r\nDanke für den Hinweis, ich passe das noch heute Abend an. <br>\r\nSebastian<br>\r\n</div>\r\n</blockquote>\r\n<br>\r\n",
+    "PostedDate": "2013-07-27T08:11:15.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1073993",
+    "ThreadId": "451579",
+    "Html": "Hallo,\r<br />\nKlar können wir uns dutzen. Ich bin nicht so ein VB.NET Freak daher ist da vielleicht noch nicht alles optimal. Wenn du willst kannst NetOffice Team Member werden und das direkt anpassen. Bei meinen Tests hatte ich mal festgestellt einige elementare Features für VB doch in Microsoft.VisualBasic beheimatet sind. Ich weiss nicht mehr was aber ich glaube eine Prüfung auf null bzw. IsNothing hat ohne diesen Namespace nicht funktioniert. Daher habe ich in der NetOffice.dll eine statische Utils Klasse bereitgestellt die unter anderem public static bool IsNothing(object value)\r<br />\nanbietet sowie ein Helferchen für Enumeratoren die VB.Net so bis heute nicht beherrscht.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-07-27T20:21:12.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1074011",
+    "ThreadId": "451579",
+    "Html": "Hallo Sebastian,\r<br />\n<br />\nes gibt weniges aus dem alten VB6 Namensraum, dass MS sogar selbst noch verwendet. Dazu sollte man sich immer mal die automatisch erzeugten &quot;deineForm.Designer.vb&quot; anschauen.\r<br />\nAlle Beispiele hier sind von Dir und Original, ich habe da nichts verändert:\r<br />\n<br />\nSieh Dir z.B. mal aus den Excel-Beispielen die Example06.Designer.vb an:<br />\n<pre><code>'UserControl überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.\n&lt;System.Diagnostics.DebuggerNonUserCode()&gt; _\nProtected Overrides Sub Dispose(ByVal disposing As Boolean)\n    Try\n        If disposing AndAlso components IsNot Nothing Then\n            components.Dispose()\n        End If\n    Finally\n        MyBase.Dispose(disposing)\n    End Try\nEnd Sub\n</code></pre>\n\nMicrosoft schreibt schon selbst die korrekte Verwendung von &quot;ist nicht nichts&quot; rein.\r<br />\n<br />\n&quot;IsNothing&quot; ist VB6 Code, den es so auch nicht mehr gibt, deswegen wird ja auch aus\r<br />\n(alt): If (Not IsNothing(workbookFile) ...\r<br />\n(neu): If workbookFile IsNot Nothing ...\r<br />\n<br />\nWas die von Dir beschriebene Funktion IsNothing soll weiß ich nicht, wozu benötigt man das?\r<br />\nIf NetOffice.Utils.IsNothing(excelApplication) Then ...\r<br />\n<br />\nDa schreibe ich doch lieber:\r<br />\nIf excelApplication Is Nothing Then ...\r<br />\n<br />\nVielleicht habe ich die Funktion aber auch nur völlig falsch verstanden!?\r<br />\n<br />\nGruß,\r<br />\nRobert (Haro)<br />\n",
+    "PostedDate": "2013-07-27T23:43:43.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1074015",
+    "ThreadId": "451579",
+    "Html": "Das is wohl so ziemlich das gleiche, wie gesagt ich kenn nur das alte VB6 noch aus der Erinnerung aber hab mit VB.NET bisher nur selten zu tun gehabt. Wenn ich dich richtig verstanden habe hat Microsoft in die Microsoft.Visual DLL alle Kompatibilitäts Features zum alten VB reingepackt damit Umsteiger es etwas leichter haben, man die Sprache aber nicht von vorne herein aufbläht. Wusste ich noch nicht :)\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-07-28T00:01:28.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1074018",
+    "ThreadId": "451579",
+    "Html": "Korrekt :)\r<br />\n<br />\nEs gibt aber nicht für alle Funktionen in Visual Baisc Dot.NET eine vergleichbare Funktion, manche muss man sich einfach selbst schreiben, so wie z.B. für die VB6 Funktion &quot;IsNumeric&quot;.\r<br />\nFür ein paar Funktionen gibt es nicht mal vernünftigen Ersatz und Microsoft behilft sich damit selbst Funktionen aus der VB6-Trickkiste einzubauen.\r<br />\n<br />\nSiehe Dein Excel-Beispiel 8 (Example08.Designer.vb):<br />\n<pre><code>    Me.textBoxDescription.Text = &quot;This example contains code to catch events in excel.&quot; &amp; Global.Microsoft.VisualBasic.ChrW(13) &amp; Global.Microsoft.VisualBasic.ChrW(10) &amp; &quot;example 9 shows you how to &quot; &amp; _\n        &quot;catch click events from excel gui.&quot; &amp; Global.Microsoft.VisualBasic.ChrW(13) &amp; Global.Microsoft.VisualBasic.ChrW(10)\n</code></pre>\n\nDa hätten sie lieber ein paar Funktionen aus C# nach Visual Basic Dot.NET übernehmen sollen, hier die selbe Zeile aus der\r<br />\nExample08.Designer.cs:<br />\n<pre><code>        this.textBoxDescription.Text = &quot;This example contains code to catch events in excel.\\r\\nexample 9 shows you how to &quot; +\n            &quot;catch click events from excel gui.\\r\\n&quot;;\n</code></pre>\n\nRobert<br />\n",
+    "PostedDate": "2013-07-28T00:31:56.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1019718",
+    "ThreadId": "437677",
+    "Html": "I was wondering what is the best way to use custom image with transparency on a button.<br />\n<br />\nI don't want to use one of predefined faces in Office package. I need to use my custom one.<br />\n<br />\nCurrently I'm using PictureDispConverter approach. However this solution has dependency on stdole.dll because of setting the button.Picture and button.Mask properties. I believe I can't remove the dependency while using this approach.<br />\n<br />\nI tried using button.PasteFace() approach in which case I can remove dependency on stdole.dll. However I did not find way of how to preserve transparency in the image. The image was always placed on gray non-transparent background as can be seen here: <a href=\"http://screencast.com/t/Rv63lPC7YTrn\" rel=\"nofollow\">http://screencast.com/t/Rv63lPC7YTrn</a> . I tried using PNG, Bitmap and Icon objects, always with the very same result.<br />\n<br />\nIs there a way how to set image with transparency (alpha channel) which does not depend on stdole.dll?<br />\n<br />\n(NOTE: My problem is related to classic UI of the Office suite.)<br />\n",
+    "PostedDate": "2013-03-22T11:08:11.777-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1224710",
+    "ThreadId": "437677",
+    "Html": "use CommandButton.Mask Property\r<br />\nand set a black and white picture to indicate where to transparent<br />\n",
+    "PostedDate": "2014-03-20T02:48:03.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

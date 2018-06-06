@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1046567",
+    "ThreadId": "444440",
+    "Html": "I am trying to create a dockable custom task pane in Excel. I have looked at the example but do not fully understand how to use it as it's not a complete example.<br />\n<br />\nIt seems as though I need to create a ICTPFactory which then creates a CTP based on a fully qualified class name (of the user control that I want to display inside the CTP).<br />\n<br />\nMy misunderstanding is with the factory - the example states<br />\n<pre><code>Office.ICTPFactory ctpFactory = new NetOffice.OfficeApi.ICTPFactory(_excelApplication, CTPFactoryInst);</code></pre>\n\nwhat is the second parameter? How do I call CTPFactoryAvailable() - ie what object to I pass to it?<br />\n<br />\nAlso why does the example include lots of extra functions for registration and connection handling when the others do not? Is this purely coincidently and showing off more advanced API features or is it more of a legacy example from a previous version of the API?<br />\n<br />\nAny tips guys, thanks?<br />\n",
+    "PostedDate": "2013-05-21T08:13:20.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1046578",
+    "ThreadId": "444440",
+    "Html": "Is it not possible to do something like this, which seems a lot simpler:\r<br />\n<br />\n<a href=\"http://msdn.microsoft.com/en-US/library/aa942846(v=vs.80).aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-US/library/aa942846(v=vs.80).aspx</a><br />\n",
+    "PostedDate": "2013-05-21T08:29:49.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

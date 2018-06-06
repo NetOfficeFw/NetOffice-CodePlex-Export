@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1292982",
+    "ThreadId": "562002",
+    "Html": "Is it possible to develop an add-in that can work with multiple office products? For example single add-in for Outlook , Excel , Word and PowerPoint. <br />\n",
+    "PostedDate": "2014-08-24T23:42:54.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1293709",
+    "ThreadId": "562002",
+    "Html": "Of course its possible.\r<br />\n<br />\nYou can find an example in the download package: &quot;\\Examples\\Misc\\C#\\COMAddin Examples&quot; called &quot;Super Addin&quot;.\r<br />\nThis sample Addin works in Excel, Word, PowerPoint, Outlook, Access and MSProject. \r<br />\n<br />\nThe solution contains 2 projects:\r<br />\n<br />\n1) The known Shared-Addin way\r<br />\n2) Using the NO Tools layer\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-08-26T14:49:57.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2015-03-16T11:02:03.443-07:00"
+  },
+  {
+    "Id": "1364496",
+    "ThreadId": "562002",
+    "Html": "I checked &quot;Super Addin&quot;. It is wonderful to see a common add-in for all office apps.\r<br />\nI still could not understand about second sample Using the NO Tools layer. \r<br />\nI did not understand the purpose or usefulness of this.\r<br />\nI also did not see any UI for that. Could you please tell me about it?Thanks.<br />\n",
+    "PostedDate": "2015-03-16T11:17:48.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366114",
+    "ThreadId": "562002",
+    "Html": "hey men,\r<br />\n<br />\nhmm.. its hard to explain because i dont know your experience level....\r<br />\n<br />\nthe &quot;normal&quot; way to create an addin is to implement the IExtensibility2 interface.\r<br />\nmake it com visible and register for com interop, create register/unregister methods and hope it works well.\r<br />\nin fact: you have to write a lot of infrastructure code to create and empty addin. moreover you have to know\r<br />\na lot of small things about office developement... all the details.\r<br />\n<br />\nthe NO Tools for addins is a top-of wrapper, basicly the base class COMAddin. all common infrastructure tasks for addins is implemented here\r<br />\nand waiting for your command. the whole idea: inherite from COMAddin and just setup some attributes. thats all. (VSTO does basicly the same under the hood)\r<br />\n(of course, annotations are sweet poison, easy to use at design-time, but no control at runtime. NO Tools spend also all possible control at runtime. in this case, you have to override some virtual methods)\r<br />\n<br />\nthe super addin example is very minimalistic. please checkout one of the extended addin examples(may excel\\examples\\COM addin examples)\r<br />\nto learn more about how you create your ribbon ui or taskpane and anyone else. \r<br />\n<br />\na real object-based ui layer like vsto(incl. a visual designer) is planned in NetOffice 1.8 for some selected office applications(excel/outlook) and completly for all in NetOffice 2.0. This is what i currently work for.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-17T07:23:41.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

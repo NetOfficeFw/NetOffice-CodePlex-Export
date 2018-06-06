@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1100305",
+    "ThreadId": "459528",
+    "Html": "<h1>NuGet Packages for NetOffice</h1>\n<a href=\"https://github.com/CaioProiete/NetOffice-NuGet\" rel=\"nofollow\">https://github.com/CaioProiete/NetOffice-NuGet</a><br />\n<h2>Introduction</h2>\nI've recently created a set of NuGet packages in order to make it easier for people to get started with NetOffice, and also facilitate deployment / distribution of NetOffice as a dependency for shops building professional applications using this great library.\r<br />\n<br />\n<em>These NuGet packages contain exactly the same assemblies that are available for download here at CodePlex, and are not modified in any way.</em>\r<br />\n<br />\nI created specific packages for each MS Office application, so that developers can use only the pieces that they care about (i.e. If you are developing an application to work with Excel, you only need the <a href=\"https://www.nuget.org/packages/NetOffice.Excel/\" rel=\"nofollow\">NetOffice.Excel</a> NuGet package).\r<br />\n<br />\nEach of these specific packages include assemblies compatible with all versions of the .NET Framework (well, all versions that NetOffice supports) and are probably the recommended ones for people who are getting started.<br />\n<ul>\n<li>NetOffice.Excel</li>\n<li>NetOffice.Word</li>\n<li>NetOffice.Outlook</li>\n<li>NetOffice.PowerPoint</li>\n<li>NetOffice.Access</li>\n<li>NetOffice.MSProject</li>\n<li>\nNetOffice.Visio<br />\n</li>\n</ul>\nI also created more granular NuGet packages that target a specific version of the .NET Framework, for developers that prefer to depend on more specific packages.<br />\n<ul>\n<li>NetOffice.Excel.Net20, .Net30, .Net35, .Net40, .Net45</li>\n<li>NetOffice.Word.Net20, .Net30, .Net35, .Net40, .Net45</li>\n<li>NetOffice.Outlook.Net20, .Net30, .Net35, .Net40, .Net45</li>\n<li>NetOffice.PowerPoint.Net20, .Net30, .Net35, .Net40, .Net45</li>\n<li>NetOffice.Access.Net20, .Net30, .Net35, .Net40, .Net45</li>\n<li>NetOffice.MSProject.Net20, .Net30, .Net35, .Net40, .Net45</li>\n<li>\nNetOffice.Visio.Net20, .Net30, .Net35, .Net40, .Net45<br />\n</li>\n</ul>\n<h2>Download</h2>\nMore details and the source code of the NuGet packages are available on GitHub:\r<br />\n<a href=\"https://github.com/CaioProiete/NetOffice-NuGet\" rel=\"nofollow\">https://github.com/CaioProiete/NetOffice-NuGet</a>\r<br />\n<br />\nAll NuGet packages can be found on the official NuGet.org feed under the tag &quot;<a href=\"http://www.nuget.org/packages?q=Tags%3A%22netoffice%22\" rel=\"nofollow\">netoffice</a>&quot;\r<br />\n<a href=\"http://www.nuget.org/packages?q=Tags%3A%22netoffice%22\" rel=\"nofollow\">http://www.nuget.org/packages?q=Tags%3A%22netoffice%22</a><br />\n",
+    "PostedDate": "2013-09-27T15:52:13.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100686",
+    "ThreadId": "459528",
+    "Html": "I dont want support Nuget because i dont support any &quot;An MS/Google/Adobe/Apple/... product have permissions to establish an internet connection&quot; scenario.\r<br />\nThese guys are evil (what i mean) Of course, feel free to do whatever you want. NetOffice use the MIT-License(no hurdles) but i give no warranties for actuality and anyone else.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-09-29T15:21:54.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100708",
+    "ThreadId": "459528",
+    "Html": "<strong>SebastianDotNet wrote:</strong><br />\n<blockquote>\nI dont want support Nuget because i dont support any &quot;An MS/Google/Adobe/Apple/... product have permissions to establish an internet connection&quot; scenario.<br />\nThese guys are evil (what i mean) Of course, feel free to do whatever you want. NetOffice use the MIT-License(no hurdles) but i give no warranties for actuality and anyone else.<br />\n<br />\nSebastian<br />\n</blockquote>\nHey Sebastian, glad to (finally) have a reply from you.<br />\n<br />\nIt seems to me that you are misinformed... NuGet packages and &quot;products having permission to establish internet connection&quot; are <strong>not related</strong>.<br />\n<br />\n<strong>1</strong>-) Anyone can have their own <strong>private</strong> NuGet feed (you just have to put the packages in a folder in the file system), and there's no need for internet access and that's actually what lots of .NET shops do, so that their employees can use only the NuGet packages that have been &quot;approved&quot; by some IT Lead.<br />\n<br />\n<img src=\"http://content.screencast.com/users/caioproiete/folders/Snagit/media/8131a7c1-4d7f-490f-9869-dc772d5a9afc/09.29.2013-19.54.png\" alt=\"Image\" /><br />\n<br />\n<strong>2</strong>-) You don't need Visual Studio to download NuGet packages... You can use simple HTTP tools to download them, if you wish. For example, to download the NetOffice.Excel package:<br />\n<pre><code>wget -O NetOffice.Excel http://packages.nuget.org/api/v1/package/NetOffice.Excel/1.6.0.0\nunzip NetOffice.Excel 'lib/*'\n</code></pre>\n\n<strong>3</strong>-) No one is obligated to use the main <a href=\"http://nuget.org\" rel=\"nofollow\">NuGet.org</a> feed. Anyone can download the package definition from my GitHub repository (<a href=\"https://github.com/CaioProiete/NetOffice-NuGet\" rel=\"nofollow\">https://github.com/CaioProiete/NetOffice-NuGet</a>) and build the packages themselves.<br />\n<br />\n<strong>4</strong>-) If that makes you (and possibly other people) happy, I could host the generated NuGet packages on the same GitHub repository, just so people can download from there rather than downloading from the NuGet.org feed (if that is the problem). I could also host the packages on a <a href=\"http://www.myget.org\" rel=\"nofollow\">MyGet</a> feed as well (again, if NuGet.org is a concern for anyone). Actually you could host the NuGet packages here in CodePlex if you want - happy to help if you need.<br />\n<br />\nDoes that clarify things a little for you?<br />\n<br />\nNuGet is a package manager that helps manage dependencies of a .NET application... Any professional developer should be using it.<br />\n<br />\nNot wanting your Visual Studio to connect to the Internet is your choice, but that has nothing to do with embracing NuGet as your package manager.<br />\n<br />\nCheers,<br />\nCaio Proiete<br />\n",
+    "PostedDate": "2013-09-29T15:54:59.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100710",
+    "ThreadId": "459528",
+    "Html": "gimme a day please to check this out.\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-09-29T16:02:54.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100712",
+    "ThreadId": "459528",
+    "Html": "Let me know if you have any questions. NuGet is a very popular way for people get OSS libraries into their projects, and I'm 99% sure I'm not evil.<br />\n",
+    "PostedDate": "2013-09-29T16:46:32.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1101094",
+    "ThreadId": "459528",
+    "Html": "hello caio, hansel,\r<br />\n<br />\nas i start with netoffice some people ask me for nuget package(some years ago). i try nuget and see its just a stupid addin and try to establish an internet connection directly(visual stuidio impersination). i'm affraid! i ask in the nuget board for solutions and a guy told me to use the nuget console and delete my issue <em>have a nice day</em>. i study the nuget code for a while and it looks safe, yes. what i say since 1998 a serious addin doesnt try to establish an internet connection directly. perform any kind of ipc communication to deal with an external process(.exe) to give the local firewall a chance. its okay for me to give nuget the permissions to establish a https connection to a specific remote point but not more! (see my google translation addin for office in the download section. it's demonstrate what i mean)<br />\n\r<br />\ncaio: i have no problems to manage my depencies on my own. sometimes i find the older version is better or i will waiting for while to see the new version is stable. is the dependency problem the biggest for a developer? i think no. its just a small problem and costs nothing to handle this at hand. you win control man!!\r<br />\n<br />\nhansel: i want add a specific firewall rule to see what can nuget do for me. which protocoll use nuget currently for communication? the nuget gallery has a generic uri/ip and port?\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-09-30T15:44:30.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1101096",
+    "ThreadId": "459528",
+    "Html": "\r\n<div name=\"divtagdefaultwrapper\" id=\"divtagdefaultwrapper\" style=\"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:#000000; margin:0\">\r\nSure, NuGet just uses HTTP(s) to a REST endpoint. It's just like NPM or GEMs, except for .NET. There is a central gallery\r\n<a href=\"http://nuget.codeplex.com/wikipage?title=NuGet%201.6%20Gallery%20Service%20Endpoints\" target=\"_blank\" title=\"http://nuget.codeplex.com/wikipage?title=NuGet%201.6%20Gallery%20Service%20Endpoints\r\nCtrl&#43;Click to follow link\">\r\nhttp://nuget.codeplex.com/wikipage?title=NuGet%201.6%20Gallery%20Service%20Endpoints</a> but lots of other community galleries like MyGet.org.\r\n<div><br>\r\n</div>\r\n<div>It's the biggest thing to happen in .NET in years. <a href=\"http://www.nuget.org/stats\" target=\"_blank\">\r\nhttp://www.nuget.org/stats</a></div>\r\n<div><br>\r\n</div>\r\n<div>\r\n<div><br>\r\n<div style=\"color:rgb(40,40,40)\">\r\n<hr tabindex=\"-1\" style=\"display:inline-block; width:98%\">\r\n<div id=\"divRplyFwdMsg\" dir=\"ltr\"><font face=\"Calibri, sans-serif\" color=\"#000000\" style=\"font-size:11pt\"><b></b></font></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2013-09-30T15:51:38.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1101123",
+    "ThreadId": "459528",
+    "Html": "hahahahaha, the microsoft trick. its possible, but in the very advanced options(nuget console). 99% of the people doesnt realize them.<br />\nokay: when steve ballmer is dead for 20 years then i will see what is the situation and may its okay to do this.<br />\nfor now: i dont want support any ms/internet coop scenario.<br />\n<br />\n<br />\nbtw: cloud doesnt exist. its just software-one-demand. (no worries for ms marketing) <br />\n<br />\nEOD <br />\n<br />\n*Sebastian<br />\n(WF Desktop Application Developer &amp; JavaScript Hateboy)<br />\n",
+    "PostedDate": "2013-09-30T16:57:17.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

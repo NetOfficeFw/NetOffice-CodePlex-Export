@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "1324604",
+    "ThreadId": "572719",
+    "Html": "Hello,\r<br />\n<br />\nwhen will the NuGet packages updated? They are currently still in the state of 1.6.0\r<br />\n<br />\nThank you for your hard work.<br />\n",
+    "PostedDate": "2014-11-21T00:46:34.343-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1324623",
+    "ThreadId": "572719",
+    "Html": "*sry\r<br />\n<br />\ni do not own the NO nuget/github packages. what i can i do is try to contact these guys.\r<br />\n<em>in progress</em>\r<br />\n<br />\n:/ WM_CALLBACK<br />\n",
+    "PostedDate": "2014-11-21T01:51:04.87-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1324920",
+    "ThreadId": "572719",
+    "Html": "Wow, this is great news. I didn't see Sebastian released v1.7.0 of NetOffice.\r<br />\n<br />\nI'll try to update the NuGet packages on Saturday night.\r<br />\n<br />\nPS: @Sebastian, I'm happy to give you commit rights to the GitHub repo if you want to.<br />\n",
+    "PostedDate": "2014-11-21T14:30:46.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1324986",
+    "ThreadId": "572719",
+    "Html": "Great news,\r<br />\n<br />\nthanks to all guys for your hard work.\r<br />\nI use netoffice since more than two years. Such a great wrapper, without netoffice I would despair.<br />\n",
+    "PostedDate": "2014-11-22T00:37:20.62-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1325340",
+    "ThreadId": "572719",
+    "Html": "I'm interested in the answer on this one as well. It looks like the publish date on nuget is over a year ago. Who do we ask to get that updated? <br />\n",
+    "PostedDate": "2014-11-23T14:45:37.38-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1325896",
+    "ThreadId": "572719",
+    "Html": "Guys, I've just updated the NuGet packages to v1.7.2 on the nuget,org feed. Let me know if you find any issues.<br />\n",
+    "PostedDate": "2014-11-25T05:41:56.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1327126",
+    "ThreadId": "572719",
+    "Html": "@CaioProiete\r<br />\n<br />\nhave a look to the deployment table\r<br />\n<br />\n<a href=\"http://netoffice.codeplex.com/documentation\" rel=\"nofollow\">http://netoffice.codeplex.com/documentation</a> (scroll down)\r<br />\n<br />\nto show the correct dependencies.\r<br />\n<br />\n( MSProject is missing in the deployment table. its:\r<br />\n<br />\n MSProject <br />\n<ul>\n<li>NetOffice</li>\n<li>OfficeApi</li>\n<li>VBIDEApi</li>\n<li>\nMSHTMLApi\r<br />\n)<br />\n</li>\n</ul>\n*Sebastian<br />\n",
+    "PostedDate": "2014-11-28T15:05:38.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1327129",
+    "ThreadId": "572719",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nJust so I understand: You are saying I should include VBIDEApi in the MSProject NuGet packages?\r<br />\n<br />\nI already include all the others described in the deployment table:\r<br />\n<img src=\"http://content.screencast.com/users/caioproiete/folders/Snagit/media/0b9924fc-2586-4e03-a878-2205765a7d85/11.28.2014-18.56.png\" alt=\"Image\" />\r<br />\n<br />\nCheers,\r<br />\nCaio Proiete<br />\n",
+    "PostedDate": "2014-11-28T15:58:16.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1327155",
+    "ThreadId": "572719",
+    "Html": "ooops, now i see MSProject is part of the deployment table and its wrong!\r<br />\nMSProject use the VBIDEApi too. my bad, i want fix the documentation.\r<br />\nplease add VBIDEApi to the MSProject dependencies.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-11-28T22:10:09.523-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1327251",
+    "ThreadId": "572719",
+    "Html": "@Sebastian: I've just checked and we are good...\r<br />\n<br />\nVBIDEApi is already included in all packages (as they depend on NetOffice.Core, which includes NetOffice.dll, OfficeApi.dll, and VBIDEApi.dll\r<br />\n<br />\nCheers,\r<br />\nCaio Proiete<br />\n",
+    "PostedDate": "2014-11-29T09:55:52.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

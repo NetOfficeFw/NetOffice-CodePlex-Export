@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1472974",
+    "ThreadId": "654503",
+    "Html": "Hi,\r<br />\n<br />\nI'm attempting to utilise this wonderful NetOffice wrapper in a Microsoft Dynamics CRM plugin. Now I know this may be beyond the realms of possibility, however direct Excel COM integration has previously been achieved so I was hoping that this would work. It would be great to be able to use NetOffice to both achieve Excel version independence and also automatic COM proxy management.\r<br />\n<br />\nWhen I run NetOffice code I'm currently receiving the following exception:\r<br />\n<br />\nException of type: NetOfficeException\r<br />\nMessage: Factory is not initialized with NetOffice assemblies.\r<br />\nStackTrace:    at NetOffice.Core.GetFactoryInfo(Object comProxy)\r<br />\n   at NetOffice.Core.CreateObjectFromComProxy(COMObject caller, Object comProxy)\r<br />\n   at NetOffice.ExcelApi.Sheets.get_Item(Object index)\r<br />\n   at Sam7.Hyundai.EntityPlugins.Implementation.OfficeExcel.SaveTo(String outputFilePath)\r<br />\n<br />\nA bit of background regarding Microsoft Dynamics CRM plugins: Each is a C#.Net assembly run in a server environment, on the machine that runs the CRM system and require everything to be in a single DLL. To achieve this I've bundled all the following - ExcelApi.dll, OfficeApi.dll, VBIDEApi.dll, NetOffice.dll - into the resultant DLL using &quot;ILMerge&quot;. This may indeed be the cause of the above exception, however I'm not sure what NetOffice assemblies the &quot;Factory&quot; is talking about. It may be that there's another dependency that is required for successful operation. Alternatively, I may just not be able to do what I'm attempting.\r<br />\n<br />\nI would really appreciate any help or advice on fault finding the above issue please.\r<br />\n<br />\nMany thanks, Andy.<br />\n",
+    "PostedDate": "2016-05-10T03:40:33.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

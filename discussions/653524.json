@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1469919",
+    "ThreadId": "653524",
+    "Html": "I'm using VB.net with NetOffice 4.5 dlls<br />\nVisual studio gives the error message <br />\n<pre><code>Reference to class &quot;Application&quot; is not allowed when its assembly is linked using No-PIA mode&quot;</code></pre>\n\nThe error is also flagged for Workbook&quot; and &quot;Worksheet&quot; references<br />\n<br />\nThe ddl's are in my bin/debug folder and I have added references to the project, and the Imports are OK <br />\nImports NetOffice.Tools<br />\nImports NetOffice.ExcelApi.Tools<br />\nImports excel = NetOffice.ExcelApi<br />\n<br />\nAlso<br />\n<pre><code>excelApp = New excel.Application</code></pre>\n\nI get &quot;Interop type 'Application' cannot be embedded. Use the applicable interface instead.&quot;<br />\n<br />\nHow do I get round this?<br />\n<br />\nIs there a sample project in VB.net?<br />\n",
+    "PostedDate": "2016-04-13T02:24:05.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1469927",
+    "ThreadId": "653524",
+    "Html": "hey men,\r<br />\n<br />\nthis is a well known problem because Visual Studio is a bit more &quot;intelligent&quot; here as we need.\r<br />\n<br />\nplease go to the project options and to the reference settings.\r<br />\nselect each NetOffice assembly and please disable the reference option &quot;Embedd Interop Types&quot;  (FALSE)\r<br />\nand now, NetOffice is no longer in PIA mode(means:=works fine)\r<br />\n<br />\n(this is a short explaination because the most people dont care for what happen behind the scences. please let me know if you need any further description)\r<br />\n<br />\nXL_REGARDS\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-04-13T02:42:29.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1469943",
+    "ThreadId": "653524",
+    "Html": "Many thanks for a quick response and a great bit of code.<br />\n",
+    "PostedDate": "2016-04-13T05:18:44.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

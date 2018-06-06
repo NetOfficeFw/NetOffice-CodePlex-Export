@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "986009",
+    "ThreadId": "429418",
+    "Html": "\r\n<p>I have a VSTO Excel 2013 addin prioject using PIA. &nbsp;There appears to be a bug in the PIA for Excel 2013. &nbsp;The same method works fine in VBA, and I tested it in NetOffice and it works there too. &nbsp;It is just a PIA problem. &nbsp;I don't want\r\n to re-work my whole VSTO project and convert it all to NetOffice. &nbsp;I would like to incorporate NetOffice for this one Excel method.</p>\r\n<p>Is there a way to cast an existing PIA Excel object to a NetOffice object? &nbsp;If I try myself to set the Excel NetOffice object equal to the existing PIA object, here is what I get:</p>\r\n<p><em>Unable to cast COM object of type 'Microsoft.Office.Interop.Excel.ApplicationClass' to class type 'NetOffice.ExcelApi.Application'. Instances of types that represent COM components cannot be cast to types that do not represent COM components; however\r\n they can be cast to interfaces as long as the underlying COM component supports QueryInterface calls for the IID of the interface.</em></p>\r\n<p>This would be a big help for me if it could be done. &nbsp;No telling when or if MS will fix the bug and it is central to my app.</p>\r\n<p>Thanks so much,</p>\r\n<p>Craig</p>\r\n",
+    "PostedDate": "2013-01-12T16:57:22.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "986020",
+    "ThreadId": "429418",
+    "Html": "\r\n<p>yes of course, NetOffice is a wrapper and wraps the com proxies for you. the pia excel object is just a com proxy with some intellisense magic to give you the feel its&nbsp; more than that. wrap the proxy as follows:<br>\r\n<br>\r\nExcel.Application app = new Excel.Application(null, piaProxy);<br>\r\n<br>\r\n// your code<br>\r\n<br>\r\napp.Quit();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // terminate excel<br>\r\napp.Dispose(); // free the application in memory<br>\r\n<br>\r\nSebastian<br>\r\n<br>\r\nbtw: you can compare NetOffic objects with the &quot;==&quot; or (!=) operator to see its the same(workbook or worksheet for example)</p>\r\n",
+    "PostedDate": "2013-01-12T18:25:10.573-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "986033",
+    "ThreadId": "429418",
+    "Html": "\r\n<p>That totally solved my problem and turned Microsoft lemons into lemonade! &nbsp;Now it doesn't matter if they don't fix the bug.</p>\r\n<p>I guess the only thing to confirm is that it appears I shouldn't call dispose until my VSTO addin shuts down. &nbsp;Here's the exception if I dispose of NetOffice object and later try to access my VSTO Globals.Thisaddin.Application:</p>\r\n<p>{&quot;COM object that has been separated from its underlying RCW cannot be used.&quot;}</p>\r\n<p>Does it consume much memory or cause other problems to have this Netoffice application object instantiated in addition to the globals.thisaddin.application? &nbsp;Do you see another way around it?</p>\r\n<p>Or, is there any problem with setting NetOffice object to nothing instead of dispose? &nbsp;Will it get cleaned up when VSTO shuts down? &nbsp;That is, is the NetOffice creating a new COM or using the existing one from PIA which will get released when VSTO\r\n shuts down? &nbsp;Am sorry about the question but this is all confusing to me.</p>\r\n<p>Craig</p>\r\n",
+    "PostedDate": "2013-01-12T20:25:58.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "986115",
+    "ThreadId": "429418",
+    "Html": "\r\n<p>you can hold the instance in memory if course.<br>\r\nan example:<br>\r\n<br>\r\nExcel.Application app = new Excel.Application(null, piaProxy);<br>\r\nforeach(var item in app.Workbooks)<br>\r\n{<br>\r\n&nbsp; ; // nothing<br>\r\n}<br>\r\n<br>\r\nyou have com proxy tree in NetOffice now:<br>\r\n<br>\r\n&nbsp;- app<br>\r\n&nbsp;&nbsp; - workbooks<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - enumerator<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - book1<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - book2<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - book3<br>\r\n<br>\r\nyou can hold the app instance but make sure to flush alle the child proxies.<br>\r\ndo that with <br>\r\n<br>\r\napp.DisposeChildInstance();<br>\r\n<br>\r\nin ouer example, the call dipose the 5 child proxies and keep the application intance alive. you can still use the excel pia proxy in VSTO now.<br>\r\nthe count of com proxies(managed from NetOffice) in your application is obseravble.<br>\r\n<br>\r\nint NetOffice.Factory.ProxyCount; // just a static property<br>\r\nNetOffice.Factory.ProxyCountChanged // change event<br>\r\n<br>\r\nhave a look at the Tutorials in the release package for further info and example code snippets.<br>\r\n<br>\r\nSebastian<br>\r\n<br>\r\n</p>\r\n",
+    "PostedDate": "2013-01-13T07:06:01.297-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "986126",
+    "ThreadId": "429418",
+    "Html": "\r\n<p>This is genius. &nbsp;What a wonderful product. &nbsp;Thank you so much.</p>\r\n<p>Craig</p>\r\n",
+    "PostedDate": "2013-01-13T08:10:01.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

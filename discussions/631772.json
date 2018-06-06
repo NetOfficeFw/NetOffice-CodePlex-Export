@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1415951",
+    "ThreadId": "631772",
+    "Html": "I developed a word addin with MS VSTO. And recently, I try to switch these code into netoffice, and now I encounter some problem.<br />\n<br />\nThe first problem:<br />\nWhen I want to load a Word build-in dialog, there are two ways :<br />\n<pre><code>Application.CommandBars.FindControl(id:=775).Execute()\nDialogs(wdDialog.wdDialogInsertCrossReference).Show()\n</code></pre>\n\nBoth of them can load InsertCrossReference Dialog correctly, but there is a difference between them. The first one can load the Dialog as a non-modal form, and the second couldn't, even you write like this:<br />\n<br />\nDialogs(wdDialog.wdDialogInsertCrossReference).Show(0)<br />\n<br />\nUsually, a user defined form could be load as a non-modal form with &quot;show(0)&quot;, but in this problem, it doesn't work.<br />\n<br />\nSo, here is the problem when I transfer the VSTO code into netoffice.<br />\nI try the second method, and it works correctly as a modal form. But, I couldn't find a similar way <br />\nlike the first method with netoffice. <br />\n<br />\nThe second problem:<br />\nWhen I load a user defined form (as a non modal form), I don't know how to link the form class with the current document operation. In the VSTO, I would define Application and Selection in form class as:<br />\n<pre><code>Dim Application As Word.Application = Globals.ThisAddIn.Application\nDim Selection As Word.Selection = Globals.ThisAddIn.Application.Selection\n</code></pre>\n\nSince, there isn't &quot;ThisAddin&quot; in netoffice to present the word application, I define things like this:<br />\n<pre><code>Dim Application As NetOffice.WordApi.Application = Addin.Application\nDim Selection As NetOffice.WordApi.Selection = Addin.Application.Selection\n</code></pre>\n\nWhen I debug this, there is no error, but it doesn't work. <br />\n<br />\nI hope someone could help me to solve these problems.<br />\nThanks again!<br />\n",
+    "PostedDate": "2015-04-20T07:25:33.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1416796",
+    "ThreadId": "631772",
+    "Html": "please let me know its a NetOffice Tools Addin? in other words your addin class inherites from COMAddin ???\r<br />\n(if its a tool addin you can create your own singleton very easy with 5 code lines to imitate ThisAddin)\r<br />\n<br />\nNetOffice spend a feature for VB developers to copy and paste VBA code as easy as possible.\r<br />\n<br />\nits one line more in your import statements(Word example): \r<br />\nImports NetOffice.WordApi.GlobalHelperModules.GlobalModule\r<br />\n<br />\nNow you can use:\r<br />\n<br />\nDim x As Object = Application.Selection\r<br />\n<br />\n&quot;but in this problem, it doesn't work.&quot;\r<br />\n<br />\n&quot;it doesnt work &quot;is not a good error description all the time ;) what happen in detail ?\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-04-22T06:31:29.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1416804",
+    "ThreadId": "631772",
+    "Html": "Thanks,budy! \r<br />\n \r<br />\nI change my code like this:<br />\n<pre><code>Imports NetOffice.WordApi\nDim Application As NetOffice.WordApi.Application = GlobalHelperModules.GlobalModule.AddIns.Application\nDim Selection As NetOffice.WordApi.Selection = GlobalHelperModules.GlobalModule.AddIns.Application.Selection\n</code></pre>\n\nAnd everything works！\r<br />\n<br />\nDo you have any idea about the dialog things? I really want the dialog as a non-modal form. \r<br />\nIs there a corresponding way of this method in word, as <br />\n<pre><code>Application.CommandBars.FindControl(id:=775).Execute()</code></pre>\n\nto use building-in dialog. \r<br />\n<br />\nThanks again!<br />\n",
+    "PostedDate": "2015-04-22T06:52:12.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1416812",
+    "ThreadId": "631772",
+    "Html": "i'm currently on my workplace but i want create a test at home.\r<br />\n<br />\nwhat i see now ist the named argument problem.\r<br />\n<br />\nNO doesnt support named arguments at the moment because some programming languages in .NET can't handle optional arguments(C# needs a couple of generations to learn this).\r<br />\n<br />\nyour call &quot;id:=775&quot; is a named argument call. (it means use the optional argument id and ignore all other optionals but NO doesnt have optional arguments at all. NO gives you all possible method overlads instead)\r<br />\n<br />\nplease try:\r<br />\n \r<br />\nApplication.CommandBars.FindControl(Nothing, 75).Execute() ' call in correct argument order\r<br />\n<br />\nMSDN: <a href=\"https://msdn.microsoft.com/de-de/library/office/ff862556.aspx\" rel=\"nofollow\">https://msdn.microsoft.com/de-de/library/office/ff862556.aspx</a>\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-04-22T07:10:27.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1416817",
+    "ThreadId": "631772",
+    "Html": "I already try the way you told me, just like this:<br />\n<pre><code> Application.CommandBars.FindControl(Nothing, 775).Execute()\n</code></pre>\n\nAnd it works!!!\r<br />\n<br />\nThank you very much! \r<br />\n<br />\nThe next thing is to add the complicity with Word 2003 and deploy it.\r<br />\nCan you read my another post about the commandbar for 2003\r<br />\n<a href=\"https://netoffice.codeplex.com/discussions/631964\" rel=\"nofollow\">https://netoffice.codeplex.com/discussions/631964</a>\r<br />\n<br />\nIt's very kind of you!<br />\n",
+    "PostedDate": "2015-04-22T07:30:29.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

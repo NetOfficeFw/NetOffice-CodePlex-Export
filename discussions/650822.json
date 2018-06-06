@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1461683",
+    "ThreadId": "650822",
+    "Html": "Hi,\r<br />\n<br />\nI successfully created a Taskpane for my Addin (no problem here, Taskpane shows up and displays it's assigned UserControl).\r<br />\nMy problem is that whenever I try to access the Excel.Application (or the COMApplication) Excel stopps responding and crashes with no Errormessage or Exception.\r<br />\n<br />\nI've already tried and simplified my Addin to contain only a one-button Taskpane which initially worked. But after a few, seemingly unrelated, changes (stupid me did not create a backup/check-in) it stopped working and shows aforementioned behaviour.\r<br />\n<br />\nMy best guess is i messed up the ProgId and COMAddin fields...\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2016-02-02T05:00:55.46-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1462108",
+    "ThreadId": "650822",
+    "Html": "Nevermind, doing this:<br />\n<pre><code>private void Connect_OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)\n{\n    COMApplication = Factory.CreateObjectFromComProxy(null, Application);\n    ExcelApplication = (NetOffice.ExcelApi.Application)COMApplication;\n}</code></pre>\n\nis a pretty bad idea to retive the Excel.Application. Using following code solved my Problem :)<br />\n<pre><code>private void Connect_OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)\n{\n    ExcelApplication = new NetOffice.ExcelApi.Application(null, Application);\n}</code></pre>\n\n",
+    "PostedDate": "2016-02-05T01:59:25.59-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

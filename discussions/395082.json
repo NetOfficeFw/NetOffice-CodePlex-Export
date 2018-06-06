@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "910817",
+    "ThreadId": "395082",
+    "Html": "\r\n<p>I'm able to read the word content string without any word formatting.</p>\r\n<p>can anyone help in this regards</p>\r\n",
+    "PostedDate": "2012-09-11T03:52:33.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911564",
+    "ThreadId": "395082",
+    "Html": "<p>in the question title you say with formatting, now you say without. huh? and what is ckeditir ???<br />if you want something like this?<br /><br />string documentContent = String.Empty;<br />foreach (var item in wordApplication.Documents[1].Characters)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp; documentContent += item.Text;<br /><br />Sebastian</p>",
+    "PostedDate": "2012-09-12T07:17:45.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

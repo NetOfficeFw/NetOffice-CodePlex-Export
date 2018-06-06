@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "889415",
+    "ThreadId": "387884",
+    "Html": "\r\n<p>Hi Sebastian,</p>\r\n<p>Thank you for your contribution to CodePlex. Netoffice is an excellent library. I am relatively new to C#, and I was wondering if you knew the answer to this question.</p>\r\n<p>I like the syntax of LINQ and wanted to query the properties of an Access QueryDef as follows:</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>List&lt;dao.Property&gt; resultProps =\n                (<span style=\"color:blue\">from</span> dao.Property prop <span style=\"color:blue\">in</span> myQueryDef.Properties.ToArray&lt;dao.Property&gt;()\n                    <span style=\"color:blue\">where</span> prop.Name == PROPERTY_NAME1 || prop.Name == PROPERTY_NAME2\n                        <span style=\"color:blue\">select</span> prop).ToList&lt;dao.Property&gt;();\n\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>Will doing this cause a memory leak because I'm not calling prop.Dispose() for each iteration? I could use a foreach statement, but I like the LINQ syntax and was hoping to use it. &nbsp;I suspect it is a bad idea because I think that a dao.Property array\r\n is created with ToArray(), and even though only 2 items get returned in the list, there are no references to the rest of the array, and Dispose() cannot get called.</p>\r\n",
+    "PostedDate": "2012-07-23T20:17:38.257-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "889426",
+    "ThreadId": "387884",
+    "Html": "\r\n<p>I used a pretty simple workaround:</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>List&lt;dao.Property&gt; props = myQueryDef.Properties.ToList&lt;dao.Property&gt;();\n\nList&lt;dao.Property&gt; resultProps =\n\t(<span style=\"color:blue\">from</span> prop <span style=\"color:blue\">in</span> props\n\t <span style=\"color:blue\">where</span> prop.Name == PROPERTY_NAME1 || prop.Name == PROPERTY_NAME2\n\t <span style=\"color:blue\">select</span> prop).ToList();\n\n<span style=\"color:green\">//... do something ...</span>\n\nprops.ForEach(i =&gt; {i.Dispose(); });\nresultProps.ForEach(i =&gt; { i.Dispose(); });\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>I assume I have to call Dispose() for all items in both lists-- is that right, or do I not need to re-call it for the 2 items that get returned from the LINQ?</p>\r\n",
+    "PostedDate": "2012-07-23T20:59:12.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "889472",
+    "ThreadId": "387884",
+    "Html": "<p>hello,<br /><br />the easiest way is to use is:</p>\r\n<pre>myQueryDef.DisposeChildInstances();</pre>\r\n<p>these method dispose all created childs from myQueryDef. in this case Properties and all child proxies from Properties.<br />DisposeChildInstances() is implemented for all classes in NetOffice. <br /><br />currently i try to create a more intelligent Linq support in NetOffice.<br /><br />please take a look: http://download.codeplex.com/Download?ProjectName=netoffice&amp;DownloadId=350995<br /><br />the idea is an immediately dispose fot not matched items while execute ling statements. you can implement your own extension in this way as 'hot fix'<br /><br />Sebastian</p>\r\n<p><br /><br /><br /></p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-07-23T23:17:58.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "889664",
+    "ThreadId": "387884",
+    "Html": "<p>That is great! I did not notice there was a DisposeChildInstances() method. I'll try that later and check out the download later when I am able. Thanks for your help and, again, great work!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-07-24T06:03:15.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

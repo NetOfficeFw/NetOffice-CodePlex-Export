@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1289793",
+    "ThreadId": "561097",
+    "Html": "I'm a VB.NET amateur programmer, and I'm developing a new application to help my coworkers and myself in my job. It involves  things like opening and saving documents, searching and replacing within its contents, and reading, creating and sending e-mails automatically<br />\n<br />\nI'm already able to deal with Word.Application and Outlook.Application in late-bound fashion, and even was able to listen to some of Word's events, using things I learned in <a href=\"http://www.codeproject.com/Articles/10262/Receiving-Events-from-late-bound-COM-servers\" rel=\"nofollow\">this site</a>.<br />\nBut a similar event listener didn't work for Outlook, and, to speak frankly, building my own wrapper for late-bound Office Applications lays far beyond my rookie abilities.<br />\n<br />\nTherefore, I would like very much to use NetOffice in my project (namely for Word), however when I reference the dlls, all I have is some namespaces, including one named WordApi, but I can't find a Word class which I can instantiate and run my code against its members.<br />\n<br />\nI don't know if I'm doing something wrong. I tried to reference the DLLs directly in VS2010Express (which is the one I normally use), and tried it also using NuGet with VS2013Express, with the same results.<br />\n<br />\nWhat would it take, in very simple terms, to embed NetOffice assemblies inside a VB Windows Forms project, and use the code I already have for things like opening and saving documents, searching and replacing within its contents, and reading, creating and sending e-mails automatically?<br />\n<br />\nThank you already for any help anyone can offer me.<br />\n",
+    "PostedDate": "2014-08-13T13:39:48.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1290212",
+    "ThreadId": "561097",
+    "Html": "In other (and simpler) words, how do I get to have the Word.Application, Excel.Application and Outlook.Application classes available in my project? \r<br />\nWhich steps should I take from, let's say, if I had an empty Windows Form Aplication with one form and three buttons, and wanted each one of them to start a new instance of each of those three applications?\r<br />\nIf someone can help me with that, I whink I can walk my further way alone. Thank you very much!<br />\n",
+    "PostedDate": "2014-08-14T16:19:14.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

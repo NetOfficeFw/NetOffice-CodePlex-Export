@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1252791",
+    "ThreadId": "547514",
+    "Html": "Hello\r<br />\n<br />\nI have the following scenario. <br />\n<ul>\n<li>Word is not running</li>\n<li>I create a netoffice word Application object from an independent .NET application</li>\n<li>open a document and make some manipulation from the .NET application</li>\n<li>the manipulation from the .NET application is completed</li>\n<li>the document must remain open and the user uses the document for what ever he wants to do</li>\n<li>\ndoes I have to call  Application.Dispose() on the Netoffice Wrapper in the independent .NET Application in this case or not? <br />\n</li>\n</ul>\nthanks<br />\n",
+    "PostedDate": "2014-06-04T03:27:46.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1256269",
+    "ThreadId": "547514",
+    "Html": "I think should Add a method to the NetOffice.Factory.Remove(COMObject), remove it from the COMObject List who is created and not disposed.<br />\n",
+    "PostedDate": "2014-06-14T01:14:43.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1274169",
+    "ThreadId": "547514",
+    "Html": "hey ho,\r<br />\n<br />\nits your choice. keep the instance alive or dispose them. (the instance is still alive anyway what you do) if you dispose the instance then you have no chance any longer for any programatic access but keep in your mind, word doesnt dies if you release(dispose) the word instance. you have to call close (or quit, not sure) to shutdown the process. \r<br />\n<br />\ni'm not sure you want, it sounds like for me keep the instance open and leave the user alone, or you still want track what happen?\r<br />\n<br />\nhmm.. not sure but hope this helps\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-07-18T22:12:42.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1274187",
+    "ThreadId": "547514",
+    "Html": "I have notice the code may call Close() to shutdown the process.\r<br />\n public virtual void Dispose(bool disposeEventBinding){\r<br />\n  ...\r<br />\n  // call quit automaticly if wanted<br />\n<pre><code>        if (_callQuitInDispose)\n            CallQuit(_underlyingObject);\n\n        // release proxy\n        ReleaseCOMProxy();\n\n        // clear supportList reference\n        _listSupportedEntities = null;\n\n        _isDisposed = true;\n        _isCurrentlyDisposing = false;\n    }\n</code></pre>\n\n/// &lt;summary&gt;<br />\n<pre><code>    /// calls Quit for a proxy\n    /// &lt;/summary&gt;\n    /// &lt;param name=&quot;proxy&quot;&gt;&lt;/param&gt;\n    private static void COMObject.CallQuit(object proxy)\n    {\n        try\n        {\n            if (Settings.EnableAutomaticQuit)\n                Invoker.Method(proxy, &quot;Quit&quot;);\n        }\n        catch (Exception exception)\n        {\n            DebugConsole.WriteException(exception);\n        }\n    }\n</code></pre>\n\nSettings.cs\r<br />\n/// &lt;summary&gt;<br />\n<pre><code>    /// Get or set the Quit method for an application object was automaticly called while Dispose. false by default\n    /// &lt;/summary&gt;\n    public static bool EnableAutomaticQuit\n    {\n        get\n        {\n            return _enableAutomaticQuit;\n        }\n        set\n        {\n            _enableAutomaticQuit = value;\n        }\n    }</code></pre>\n\n",
+    "PostedDate": "2014-07-19T00:32:32.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

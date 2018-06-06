@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1326345",
+    "ThreadId": "573201",
+    "Html": "Hi, I created a VS2013 C# forms application. At first i used early binding to Outlook which worked fine on my machine. I created a clickonce installation and tried to install this on a machine running an older version of office. Ofcourse i got the error message that my version was not in the GAC of that machine. Hence, i needed NetOffice and so migrated my solution to use NetOffice and removed all references to the Microsoft interop office and outlook. All code and references are clean of any microsoft interop reference.\r<br />\nAfter rebuilding and deploying, i still receive the version conflict message while trying to install. Does NetOffice requires some kind of reconfigure?\r<br />\n<br />\nThanks in advance!<br />\n",
+    "PostedDate": "2014-11-26T03:18:53.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1326383",
+    "ThreadId": "573201",
+    "Html": "hey men,\r<br />\n<br />\nthe problem is i have no experience with clickonce (because visual studio freeze on all my systems while compiling with clickonce. [i guess vs are not ready to handle missing network permissions) \r<br />\n<br />\nWhat i believe for the moment is as follows: The NO assemblies use the PrimaryInteropAssembly attribute to fool the compiler because otherwise the compiler try to register the NO assemblies for COM in addin projects. (the compiler want do this for all COMVisible dependencies if used)  It looks like ClickOnce thinks now  an Primary Interop Assembly for Office is in use.\r<br />\n<br />\nSugessions for now:\r<br />\n1: Make sure in the reference settings for each NO assembly to set 'Embed Interop Types' to false(now the compiler suspend any registration but no idea about cklickonce)\r<br />\n2: Please send me a sample solution to public.sebastian[at]web.de (remove private code but keep the NO assemblies) May i can find a solution to make NO finaly ClickOnce Ready.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-11-26T05:36:16.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

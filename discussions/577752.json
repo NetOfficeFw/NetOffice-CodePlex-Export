@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1342124",
+    "ThreadId": "577752",
+    "Html": "I'm launching a PowerPoint presentation from a C# application. This presentation has a special slide, which allows the user to enter values via an OLE TextBox. <br />\nNow, I'd like to register an event-handler, for e.g. when the TextBox loses the input focus, or the user presses an &quot;OK&quot;-button.<br />\nHowever, I can't figure out how to register an event-handler with an OLE-Control. Is this Even possible? Is there another way to be notified when the user has entered some values?<br />\n",
+    "PostedDate": "2015-01-15T01:57:17.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1342990",
+    "ThreadId": "577752",
+    "Html": "hey man,\r<br />\n<br />\nplease explain OLE Textbox. Means an element from VBA or its an external Active-X control?\r<br />\n(first case is easy but a dialog want shown for the user to agree your access to VBA. The PowerPoint security settings can level this but its not recommended.\r<br />\nsecond case is more challenging. you need the .net interop wrapper for the control to handle this normaly with += new EventHandler, otherwise you need some special code to do this on demand with COM Connection Containers. May i can help your here if its the scenario )<br />\n\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-01-17T21:30:33.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343013",
+    "ThreadId": "577752",
+    "Html": "Hey Sebastian,\r<br />\n<br />\nI added the TextBox via the developer-tools tab. As far as I know these controls a Active-X controls.\r<br />\nWhere can I find the .net interop wrapper classes?\r<br />\n<br />\nGebhard<br />\n",
+    "PostedDate": "2015-01-18T03:23:32.947-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343198",
+    "ThreadId": "577752",
+    "Html": "okay then,\r<br />\n<br />\nThis is a normal textbox(no OLE action so far).\r<br />\nShame on me: I currently figure out how i can reprocuce the scenario, because i can't find the developer tools in PP 2010 with the ugly ribbon ui.\r<br />\nIf its possible, please send me an example .pptx to public[at]sebastian.web.de with your magic textbox inside(or explain how i can create a textbox for a document in PP 2010)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-01-19T03:55:22.74-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343199",
+    "ThreadId": "577752",
+    "Html": "okay then,\r<br />\n<br />\nThis is a normal textbox(no OLE action so far).\r<br />\nShame on me: I currently figure out how i can reprocuce the scenario, because i can't find the developer tools in PP 2010 with the ugly ribbon ui.\r<br />\nIf its possible, please send me an example .pptx to public[at]sebastian.web.de with your magic textbox inside(or explain how i can create a textbox for a document in PP 2010)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-01-19T03:56:44.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343236",
+    "ThreadId": "577752",
+    "Html": "here is a <a href=\"https://support.office.com/en-gb/article/Show-the-Developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45\" rel=\"nofollow\">link</a> , that describes how you can activate the developer-tools.\r<br />\n<br />\nI tried to mail my demo-presentation to you, but I got a DNS-error...<br />\n",
+    "PostedDate": "2015-01-19T06:08:12.28-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343833",
+    "ThreadId": "577752",
+    "Html": "DNS-error..\r<br />\noops! \r<br />\n<br />\n[wrong]public[at]sebastian.web.de[/wrong]\r<br />\n<br />\n[correct]public.sebastian[at}web.de[/correct]\r<br />\n<br />\nHere is my current research result so far:\r<br />\n<br />\nThe best way to catch the focus events here is to use the current vba code module directly.\r<br />\nYou can also use the textbox events in C# with as follows: \r<br />\n<br />\n1.) add a reference to the COM Component Microsoft Forms 2.0\r<br />\n2.) disable the reference option &quot;embed interop types&quot;\r<br />\n<br />\nNow use the following sample code:\r<br />\n<br />\nPowerPoint.Shape sh = slide.Shapes[1]; // we know its a textbox in this sample\r<br />\nobject proxy = Invoker.Default.PropertyGet(sh.OLEFormat, &quot;Object&quot;);\r<br />\nMicrosoft.Vbe.Interop.Forms.TextBox textBox = proxy as Microsoft.Vbe.Interop.Forms.TextBox;\r<br />\n<br />\nso now you can use the available events for the textBox instance. please keep in your mind:\r<br />\nthe textbox instance and all reference there comes from(such event trigger arguments) is not managed from NetOffice.\r<br />\nso you have to free them at hand with Marshal.ReleaseComObject after using.\r<br />\n<br />\nBut i dont why, its impossible to use the following MS Forms 2.0 IControl events.\r<br />\n \r<br />\nvoid Enter(); // Got Focus\r<br />\nvoid Exit([in] ReturnBoolean* Cancel); // Lost Focus\r<br />\nvoid BeforeUpdate([in] ReturnBoolean* Cancel);\r<br />\nvoid AfterUpdate();\r<br />\n<br />\nI still figure out how its possible to use them.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-01-21T08:04:25.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1345015",
+    "ThreadId": "577752",
+    "Html": "It works, thanks a lot!\r<br />\n<br />\nI just used your example and hacked a small and dirty demo app.\r<br />\nSince I couldn't find a LostFocus event, I used the Change event and it worked fine.\r<br />\n<br />\nThanks for your great help!\r<br />\n<br />\n<br />\nGebhard<br />\n",
+    "PostedDate": "2015-01-21T23:51:58.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

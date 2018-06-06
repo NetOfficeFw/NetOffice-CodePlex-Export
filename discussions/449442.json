@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1066107",
+    "ThreadId": "449442",
+    "Html": "NetOffice.WordApi.Application app = ...;\r<br />\nPicture ipd = app.CommandBars.GetImageMso(imgMso, 16, 16) as Picture;\r<br />\nreturn IPictureDispConverter.ConvertPixelByPixel(ipd);\r<br />\n//FAIL\r<br />\n<br />\n<br />\nusing WordApp = Microsoft.Office.Interop.Word.Application;\r<br />\n<br />\npublic static Bitmap GetBitmap(this Application app, string imgMso)<br />\n<pre><code>    {\n        WordApp wordApp = app.UnderlyingObject as WordApp;\n        Picture ipd = wordApp.CommandBars.GetImageMso(imgMso, 16, 16) as Picture;\n        return IPictureDispConverter.ConvertPixelByPixel(ipd);\n    }</code></pre>\n\n//OK<br />\n",
+    "PostedDate": "2013-07-09T06:25:19.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1067324",
+    "ThreadId": "449442",
+    "Html": "<pre><code> Bitmap bitmap = null;\n        object picProxy = Invoker.SingleMethodReturn(app.CommandBars, &quot;GetImageMso&quot;, new object[] { imgMso, 16, 16 });\n        if (picProxy != null) {\n            bitmap = IPictureDispConverter.ConvertPixelByPixel(picProxy as Picture);\n            Marshal.ReleaseComObject(picProxy);\n        }\n        return bitmap;</code></pre>\n\n",
+    "PostedDate": "2013-07-11T18:49:38.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

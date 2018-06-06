@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1076832",
+    "ThreadId": "452452",
+    "Html": "I crate an addin for word. I target this projet Any CPU. When I crate my setup project, i must target projet X86 or X64. I target it X86 to make sur that install work on 32 or 64 bits.\r<br />\n<br />\nWhen i install my addin on 64 bits OS, class register in HKEY_CLASSES_ROOT\\WOW6432NODE\\CLSID. How I can do to register in HKEY_CLASSES_ROOT\\CLSID\r<br />\n<br />\nIt seem this because setup project is targetted X86. I want to have only one setup project to install on 32 and on 64 bits\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-08-05T08:53:35.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1076845",
+    "ThreadId": "452452",
+    "Html": "You can use wix to do both instalation types. Given msi file , wix have tools to auto generate corresponding wix script. Once you have it , add x64 registry keys.<br />\n",
+    "PostedDate": "2013-08-05T09:26:38.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

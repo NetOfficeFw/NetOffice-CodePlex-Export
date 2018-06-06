@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1073889",
+    "ThreadId": "451604",
+    "Html": "Hello Sebastian and reader,\r<br />\n<br />\nI have a little problem adding a new sheet. With Microsoft.Office.Interop I added a new sheet in this way:\r<br />\noXL = New Excel.Application\r<br />\n...\r<br />\noXL.Sheets.Add(After:=oXL.Sheets(oXL.Sheets.Count))\r<br />\n<br />\nAfter migration to NetOffice Intellicense told me:\r<br />\n&quot;After&quot; ist kein Parameter von &quot;Public Function Add(before As Object) As Object&quot;.\r<br />\n<br />\noXL.Sheets.Add() works fine but a new table created this way has the wrong position. The new sheet is the new first sheet of the workbook, but I need the new sheet at last position.\r<br />\n<br />\nHow can I solve the issue?\r<br />\n<br />\nThanks,\r<br />\nHaro<br />\n",
+    "PostedDate": "2013-07-27T12:15:44.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1073951",
+    "ThreadId": "451604",
+    "Html": "Okay, i figured out a solution:\r<br />\n<br />\noXL.Sheets.Add(before:=Nothing, after:=oXL.Sheets(oXL.Sheets.Count))\r<br />\nor\r<br />\noXL.Sheets.Add(before:=Nothing, after:=oXL.Sheets(oXL.Sheets.Count), count:=2) '2 blank sheets\r<br />\n<br />\nworks very well.\r<br />\n<br />\ngreetz,\r<br />\nHaro<br />\n",
+    "PostedDate": "2013-07-27T13:01:17.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1073992",
+    "ThreadId": "451604",
+    "Html": "NetOffice unterstützt derzeit keine optionalen/benannten Parameter da es in C# geschrieben ist und auch mit früheren .NET Versionen kompatibel sein will wo C# diese Fähigkeit noch nicht hatte. Ausserdem würde das Konzept der Attribute und Quellcodekommentare mit Hinweisen zur Versionsunterstützung dann nicht mehr funktionieren. Deswegen stellt NO für Methoden/Properties mit optionalen Parametern die entsprechende Anzahl an Überladungen bereit.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-07-27T20:14:04.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "955967",
+    "ThreadId": "406737",
+    "Html": "\r\n<p>Hi Sebastian</p>\r\n<p>I'm trying to open (... and print) Powerpoint Presentations using the following code:</p>\r\n<p>// Applikation initialisieren<br>\r\nPowerpoint.Application powerPoint = new Powerpoint.Application();</p>\r\n<p>// Präsentationsobjekt erstellen<br>\r\nPresentation presentation = null;<br>\r\n<br>\r\n// Präsentation instanzieren &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>\r\nPresentations presentations = powerPoint.Presentations;&nbsp;</p>\r\n<p>&nbsp;// Präsentation öffnen &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>\r\npresentation = presentations.Open(filePath,MsoTriState.msoTrue, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MsoTriState.msoTrue,MsoTriState.msoFalse);</p>\r\n<p>&nbsp;</p>\r\n<p>The .Open Function already returns the following error:<br>\r\n-------------------------------------------------------------------------------</p>\r\n<p>System.Runtime.InteropServices.COMException(0x80004005): See inner exception(s) for details. ---&gt; System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; System.Runtime.InteropServices.COMException:\r\n Unspecified error (Exception from HSRESULT: 0x80004005 (E_FAIL))<br>\r\n--- End of inner exception stack trace ---<br>\r\n<br>\r\nat System.Runtime.Type.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)...</p>\r\n<p>-------------------------------------------------------------------------------</p>\r\n<p><br>\r\nWhats wrong? I'm using Netoffice 1.5.1.2,<br>\r\n<br>\r\nRegards,<br>\r\nDaniel&nbsp;</p>\r\n",
+    "PostedDate": "2012-12-14T00:48:04.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "956004",
+    "ThreadId": "406737",
+    "Html": "\r\n<p>Ich habs mit Office2007 getestet<br>\r\n<br>\r\nPowerPoint.Application powerApplication = new PowerPoint.Application();<br>\r\nPowerPoint.Presentation presentation = powerApplication.Presentations.Open(<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;C:\\\\TEST.pptx&quot;, MsoTriState.msoTrue,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MsoTriState.msoTrue,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MsoTriState.msoFalse);<br>\r\n<br>\r\nAlles wunderbar. Evtl. ein Berechtigungsproblem oder die Datei ist schon offen. Oft führt auch eine alte verwaiste Office Instanz die nicht richtig freigegeben wurde dann zu solchen Fehlern. Welche PowerPoint Version verwendest du und welchen Dateityp hat die\r\n Datei?<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2012-12-14T02:22:08.663-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "956023",
+    "ThreadId": "406737",
+    "Html": "\r\n<p>&nbsp;</p>\r\n<p>Hi Sebastian</p>\r\n<p>Sorry, mein Fehler.<br>\r\nHatte vor meiner Code Simplifizierung eine Version drin welche die Powerpoints mit Schreibberechtigungen geöffnet hat.&nbsp;</p>\r\n<p>Da ich anscheinend noch nen anderen Bug im Code hatte wurden die Instanz jeweils nicht richtig geschlossen, dies hat dazu geführt das Office meine Powerpoints auf 0 Byte gesetzt hat. Wenn du mit deiner Version versuchst Powerpoints die 0 Bytes gross sind\r\n zu öffnen stösst du auf das oben beschriebene Problem, ist mir etwas spät aufgefallen.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Gruss,<br>\r\nDaniel&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-12-14T03:18:09.13-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1137438",
+    "ThreadId": "474472",
+    "Html": "Hi all,\r<br />\n<br />\nI am programming a Word Addin in C# using Netoffice. I want to get selected text or (if nothing is selected) all text. \r<br />\n<br />\nI found that snippet:<br />\n<hr />\n<pre><code>   string selectText = string.Empty;\n   Word.Selection wordSelection = this.Application.Selection;\n    if (wordSelection != null &amp;&amp; wordSelection.Range != null)\n    {\n        selectText = wordSelection.Text;\n    }\n</code></pre>\n\nBut now I need an else which selects the whole text in the word document.\r<br />\n<br />\nDoes anybody knows how to do that?<br />\n",
+    "PostedDate": "2013-12-18T02:49:01.69-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1218740",
+    "ThreadId": "474472",
+    "Html": "u can select the whole text of the document<br />\n<pre><code>Word.Range rng = this.Content;\nrng.Select();</code></pre>\n\n",
+    "PostedDate": "2014-03-03T22:34:29.803-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

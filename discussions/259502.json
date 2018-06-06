@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "620202",
+    "ThreadId": "259502",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>first - thank you for this really great tool! It works really amazing and help me a lot.</p>\r\n<p>But now my questions ;-)</p>\r\n<ol>\r\n<li>You have changed the signitures for the functions/subs to have optional values. This seems not work with VB 2010. Your Vb examples in the 4.0 folders are not working too. Is this correct?\r\n</li><li>Is Excel already complete? I am missing the Application.ActiveWindow.ToggleRibbon Method?\r\n</li></ol>\r\n<p>I am trying to create 'ViewerControls' for the Office formats in my app. Until now this works really great with your NetOffice!!!</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks for your work, and keep on going!!</p>\r\n<p>&nbsp;</p>\r\n<p>Michael</p>\r\n",
+    "PostedDate": "2011-05-30T02:13:06.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620302",
+    "ThreadId": "259502",
+    "Html": "<p>Hello Michael,</p>\r\n<p>1. Yes i see now VB.NET in 4.0 has problems(damn it). many thanks for request. will be fixed today! 2 registered problems. optional params conflict and corrupt project files.<br /><br />2. I'm suprised. Application.ActiveWindow is from type&nbsp;Window. Window&nbsp;has no method ToggleRibbon. i take a look in the Excel 14.0 Type Library with OLE/COM Viewer from Microsoft and i can't find&nbsp; them.<br />&nbsp;&nbsp;&nbsp;can you tell me more about? your excel version and development environment&nbsp;(interop, pia, customwrapper or&nbsp;vsto,...)&nbsp;</p>\r\n<p>Sebastian</p>",
+    "PostedDate": "2011-05-30T06:51:37.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620303",
+    "ThreadId": "259502",
+    "Html": "<p>Hi Sebastian,</p>\r\n<p>shame on me, I thought MS will do it equal in each application. But Excel lacks this function :-((</p>\r\n<p>Why on Earth must it be different in Word and Excel. So in Excel I have to use:</p>\r\n<p>Application.ExecuteExcel4Macro \"Show.ToolBar(\"\"Ribbon\"\", False)\" or Application.ExecuteExcel4Macro \"Show.ToolBar(\"\"Ribbon\"\", True)\" to hide and show the Ribbon.</p>\r\n<p>&nbsp;</p>\r\n<p>Sorry for the wrong alert!!</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks for fixing the bugs with .Net 40 and VB!</p>\r\n<p>&nbsp;</p>\r\n<p>Michael</p>",
+    "PostedDate": "2011-05-30T07:03:32.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620383",
+    "ThreadId": "259502",
+    "Html": "<p>Okay now i see the problem with optional parameters in VB.Net. The language has a very bad optional support. c# does it much better.</p>\n<div style=\"background-color: white; color: black;\">\n<pre>SupportByLibrary(<span style=\"color: #a31515;\">\"Excel\"</span>, 9,10,11,12)]\r\n<span style=\"color: blue;\">object</span> BorderAround(<span style=\"color: blue;\">object</span> lineStyle, NetOffice.ExcelApi.Enums.XlBorderWeight weight, NetOffice.ExcelApi.Enums.XlColorIndex colorIndex, <span style=\"color: blue;\">object</span> color=<span style=\"color: blue;\">null</span>)\r\n\r\nSupportByLibrary(<span style=\"color: #a31515;\">\"Excel\"</span>, 14)] \r\n<span style=\"color: blue;\">object</span> BorderAround(<span style=\"color: blue;\">object</span> lineStyle, NetOffice.ExcelApi.Enums.XlBorderWeight weight, NetOffice.ExcelApi.Enums.XlColorIndex colorIndex, <span style=\"color: blue;\">object</span> color=<span style=\"color: blue;\">null</span>, <span style=\"color: blue;\">object</span> themeColor=<span style=\"color: blue;\">null</span>)\r\n\r\n\r\n</pre>\n</div>\n<p>The same function 2 times but in the second prototype with one more optional parameter. Visual Basic can't handle this. no problem for c# of course.<br />visual basic hide the function in IDE and tolds you function is not unique. i see no other way as remove the optional parameter support in netoffice :(<br /><br /></p>",
+    "PostedDate": "2011-05-30T11:07:20.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620414",
+    "ThreadId": "259502",
+    "Html": "<p>I think this seems to be the reason. Maybe you can leave the 4.0 path and create just one path as copy from 3.5 targetting 4.0?</p>\r\n<p>Maybe in the Next version vb is able to use functions with optional parameters that are the same ;-)</p>",
+    "PostedDate": "2011-05-30T12:40:17.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620426",
+    "ThreadId": "259502",
+    "Html": "<p>i have removed the optional attribute in .NET4 Api source now and commit is currently in progress(more than 4200 files).<br />tonight i do release 0.8 with fixed .net 4 source and vb.net examples and some minor improvements.<br />looks good at the moment!</p>",
+    "PostedDate": "2011-05-30T12:59:45.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

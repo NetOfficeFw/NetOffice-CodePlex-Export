@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1328135",
+    "ThreadId": "573837",
+    "Html": "I downloaded the 1.7.2 code and opened the Google Translation solution. Set Sample.ExcelAddin as the startup and set Excel 2013 (Office15) exe to start when the project loaded. \r<br />\n<br />\nWhen it loads it eventually hits a Stackoverflow exception when trying to resolve the assembly. \r<br />\n<br />\nHere's a screenshot <a href=\"http://imgur.com/owJHyXa\" rel=\"nofollow\">http://imgur.com/owJHyXa</a>\r<br />\n<br />\nI'm not really sure what else to do here. It looks like this sample won't work in Excel 2013. <br />\n",
+    "PostedDate": "2014-12-02T10:10:44.337-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1328144",
+    "ThreadId": "573837",
+    "Html": "holy shit ...\r<br />\n<br />\nwhich .net framework ?<br />\n",
+    "PostedDate": "2014-12-02T10:41:25.887-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1328145",
+    "ThreadId": "573837",
+    "Html": ".NET 4.5.1, VS 2012<br />\n",
+    "PostedDate": "2014-12-02T10:43:18.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1328151",
+    "ThreadId": "573837",
+    "Html": "I cant reproduce the problem at the moment. \r<br />\nWhat i see in your screenshot is the problem occours in ClassicUI example addin.dll\r<br />\nI create a scenario with 3 loaded example addins(IExtensibility) and Google Translation\r<br />\nand no problems so far. \r<br />\n<br />\nplease add a ctor to COMAddinClassicExampleCS45 and put the following code line on it:\r<br />\n<br />\n// log NO sys operations to console \r<br />\nNetOffice.Core.Default.Console.Mode = DebugConsoleMode.Console;\r<br />\n<br />\nor:\r<br />\n<br />\n// log NO sys operations to logfile\r<br />\nNetOffice.Core.Default.Console.FileName = &quot;C:\\LogDirectory\\NO.log&quot;;\r<br />\nNetOffice.Core.Default.Console.Mode = DebugConsoleMode.File;\r<br />\n<br />\nand send me the log content.\r<br />\nThis could be help to identifier the assembly resolve arguments and find the problem.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2014-12-02T11:12:57.797-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1328240",
+    "ThreadId": "573837",
+    "Html": "It looks like this was happening because I had two addins loading that were NetOffice based. Removing one of them made the exception go away. <br />\n",
+    "PostedDate": "2014-12-02T17:10:11.34-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1328252",
+    "ThreadId": "573837",
+    "Html": "i agree but why its not occurs on my test systems? (i have much more NO based addins running)\r<br />\ni create a filter in assembly resolve event now to avoid resolve same assembly more than once.\r<br />\nif this error comes again you can do me a pleasure with log content to pin point the problem!\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-02T18:31:09.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1328253",
+    "ThreadId": "573837",
+    "Html": "OK will do. <br />\n",
+    "PostedDate": "2014-12-02T18:33:19.773-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1345338",
+    "ThreadId": "573837",
+    "Html": "Hi Sebastian,<br />\n<br />\nWe've seen this with an out-of-process application that accesses Excel through COM. The log (enabled with your code above) was of the form:<br />\n<br />\nNetOffice Core.Initialize() NO Version:1.7.2.0 DeepLevel:True<br />\nRecieve IFactoryInfo:ExcelApi, Version=1.7.2.0, Culture=neutral, PublicKeyToken=9084b9221296229e:ExcelApi, Version=1.7.2.0, Culture=neutral, PublicKeyToken=9084b9221296229e<br />\nTry to resolve assembly OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e<br />\nTry to resolve assembly OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e<br />\nTry to resolve assembly OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e<br />\n[repeats]<br />\n<br />\nClearly here we had two assemblies referencing different versions (1.7.2.0 and 1.6.0.0). The stack trace looked something like this:<br />\n<br />\n<img src=\"http://schematiq.htilabs.com/images/NetOfficeStackOverflowException2.jpg\" alt=\"Stack Trace\" /><br />\n<br />\nEasily fixed by updating the older reference, thought you (and possibly others) might be interested to see it.<br />\n",
+    "PostedDate": "2015-01-23T05:50:08.627-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1494107",
+    "ThreadId": "661950",
+    "Html": "I have code that gets and uses the NavigationGroup from the CalendarModule. It looks like this:<br />\n<pre><code>Dim oNavModule = MyOfficeApp.ActiveExplorer().NavigationPane.Modules.GetNavigationModule(OlNavigationModuleType.olModuleCalendar)\n\nDim oNavGroup = oNavModule.NavigationGroups(_name)</code></pre>\n\nThis code works fine and the NavigationModule returned from GetNavigationModule() is successfully casted into the CalendarModule variable when using the Microsoft.Office.Interop.Outlook for Outlook 2010, 2013, and 2016. After switching to use NetOffice.OutlookApi, I am getting a compile time error saying NavigationModule cannot be casted into a CalendarModule. \r<br />\nAfter playing with it for a while, I was unable to find any way of getting the NavigationGroup from the CalendarModule.\r<br />\n<br />\n<em>Can you think of anything that I may be able to try?</em><br />\n<blockquote>\nI have been switching over to NetOffice for a few weeks now and this is the first issue I have been unable to solve myself. I really like and appreciate the NetOffice apis and all the work gone into them.<br />\n</blockquote>\nThank you.<br />\n",
+    "PostedDate": "2017-03-15T10:38:18.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

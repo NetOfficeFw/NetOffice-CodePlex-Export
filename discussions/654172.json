@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1471781",
+    "ThreadId": "654172",
+    "Html": "Hi Sebastian,<br />\n<br />\nas mentioned in the issue section some time ago there seems to be an issue with the &quot;names.add&quot; method in the international context.<br />\n<br />\nIn VBA I can simply write<br />\n<pre><code>Sub example()\n    ActiveWorkbook.Names.Add Name:=&quot;name1&quot;, RefersTo:=&quot;=Offset($A$1,0,0,10,1)&quot;\nEnd Sub</code></pre>\n\nIn my german Office installation the formula is automatically converted into the german formule, i.e. adding a name &quot;name1&quot; with formula &quot;=BEREICH.VERSCHIEBEN(Tabelle2!$A$1;0;0;10;1)&quot;<br />\n<br />\nThis does not work with NetOffice:<br />\n<pre><code>[TestMethod]\n        public void AddNameEnglish()\n        {\n            NetOffice.ExcelApi.Application app = new NetOffice.ExcelApi.Application();\n            app.Visible = true;\n            app.Workbooks.Add();\n            app.ActiveWorkbook.Activate();\n            app.ActiveWorkbook.Worksheets.Add();\n\n            ((Excel.Worksheet)app.ActiveSheet).Names.Add(&quot;name&quot;, &quot;=Offset($A$1,0,0,10,1)&quot;);\n\n            app.Dispose();            \n        }</code></pre>\n\nThis throws an exception:<br />\nlevel 1: InnerException\t{&quot;Ein Aufrufziel hat einen Ausnahmefehler verursacht.&quot;}\tSystem.Exception {System.Reflection.TargetInvocationException}<br />\nlevel 2: &quot;Die eingegebene Formel enthält einen Fehler. Versuchen Sie eines der folgenden Verfahren, um die Formel zu korrigieren:<br />\n• Überprüfen Sie, ob alle Klammern und erforderlichen Argumente vorhanden sind.<br />\n• Klicken Sie auf der Registerkarte 'Formeln' auf 'Funktion einfügen' (in der Gruppe 'Funktionsbibliothek'), um Hilfe beim Verwenden einer Funktion zu erhalten.<br />\n• Sofern Sie Bezug auf eine andere Arbeitsmappe oder ein anderes Blatt nehmen, vergewissern Sie sich, dass die Angaben richtig sind.<br />\n• Sofern Sie keine Formel eingeben, vermeiden Sie Minuszeichen (-) oder Gleichheitszeichen (=). Falls diese Zeichen erforderlich sind, fügen Sie vorher ein einzelnes Anführungszeichen (') ein.<br />\n• Um weitere Information zu erhalten, klicken Sie auf 'Hilfe'.&quot;<br />\n<br />\nSo it looks like NetOffice has a problem in translating the formula properly. I tried the same with the german formula and this works fine:<br />\n<pre><code>[TestMethod]\n        public void AddNameGerman()\n        {\n            NetOffice.ExcelApi.Application app = new NetOffice.ExcelApi.Application();\n            app.Visible = true;\n            app.Workbooks.Add();\n            app.ActiveWorkbook.Activate();\n            app.ActiveWorkbook.Worksheets.Add();\n\n            ((Excel.Worksheet)app.ActiveSheet).Names.Add(&quot;name&quot;, &quot;=BEREICH.VERSCHIEBEN($A$1; 0; 0; 10; 1)&quot;);\n\n            app.Dispose();\n        }</code></pre>\n\nHowever, I want to use the &quot;auto translation&quot; of the formula as it is available in VBA. The documentation under <a href=\"https://msdn.microsoft.com/en-us/library/office/ff835300.aspx\" rel=\"nofollow\">https://msdn.microsoft.com/en-us/library/office/ff835300.aspx</a> says, that the &quot;RefersTo&quot; parameter should be provided in english (&quot;Describes what the name refers to, in English, using A1-style notation, if the RefersToLocal, RefersToR1C1, and RefersToR1C1Local parameters are not specified.&quot;).<br />\n<br />\nSo I would highly appreciate if you could look into this. Iam using NetOffice 1.7.3., Win 10 and Excel 2013.<br />\n<br />\nMany thanks and have a nice weekend!<br />\n<br />\ncoheedld<br />\n",
+    "PostedDate": "2016-04-29T07:38:14.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472091",
+    "ThreadId": "654172",
+    "Html": "Das ist ja merkwürdig. Das heisst BEREICH.VERSCHIEBEN funktioniert und Offset nicht - richtig?  Office übergibt bei jedem Aufruf immer die ThreadCulture des Aufrufers und die ist per default 1031-En-US(änderbar unter Settings.ThreadCulture) was auch in meinen eigenen Projekten bisher immer bestens funktioniert hat.  Ich muss mal nachfragen bist du in einem IIS Szenario oder sonst irgendwie speziell? (Für mich hat das bisher immer bestens funktioniert bis auf Addins/Exe's die Code aus extra erstellten Treads aufrufen, dann versagt die Länderkennung bisweilen)\r<br />\n<br />\n(NetOffice translated da garnichts, das macht Office von Hause aus. Office glaubt an dem Punkt es ist in deutsch, warum das so ist würde ich auch gerne wissen weils eben auch eine wichtige infrastrukturelle Frage für NetOffice ist.)\r<br />\n<br />\n*Sebastian\r<br />\n(Skype:public.sebastian)<br />\n",
+    "PostedDate": "2016-05-01T13:20:58.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472094",
+    "ThreadId": "654172",
+    "Html": "Korrekt, wenn ich die Formel mit &quot;BEREICH-VERSCHIEBEN&quot; eingebe wird der Name korrekt erzeugt. Mit &quot;OFFSET&quot; und der englischen Syntax (&quot;,&quot; anstatt &quot;;&quot;) funktioniert das nicht. In VBA gebe ich die Formel immer in Englisch an und Office übersetzt diese dann selbstständig in die entsprechende Sprache der Installation.<br />\n<br />\nWenn ich in der Methode, die den Namen setzt, die Location abrufe, bekomme ich 1031 geliefert<br />\n<pre><code>xlsApp.LanguageSettings.LanguageID(NetOffice.OfficeApi.Enums.MsoAppLanguageID.msoLanguageIDUI)</code></pre>\n\nIn einem &quot;speziellen Szenario&quot; bin ich meines Erachtens nicht.<br />\n<br />\nKannst du dir das mal anschauen?<br />\n<br />\nVielen Dank und beste Grüße!<br />\n<br />\ncoheedld<br />\n",
+    "PostedDate": "2016-05-01T13:46:03.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472100",
+    "ThreadId": "654172",
+    "Html": "Huch, kleines Typo Edit, nicht Office übergibt bei jedem Aufruf die ThreadCulture sondern natürlich NetOffice übergibt die diese an Office. (genauer gesagt übergibt Netoffice die Kontrolle an COM Interop und das simuliert dann gegenüber Office die gewünschte Lokale.\r<br />\n<br />\nDas liesse sich an deinem Beispiel wiefolgt ändern.\r<br />\n<br />\nNetOffice.ExcelApi.Application app = new NetOffice.ExcelApi.Application();\r<br />\napp.Settings.ThreadCulture = new System.Globalization.CultureInfo(1031);\r<br />\n<br />\n)\r<br />\n<br />\nIch muss dich das jetzt nochmal fragen bevor ich anfange das aufwendig nachzustellen. Hast du eine ganz normale Desktop Anwendung laufen in der du das testweise auziehst? Kein Remote-Desktop, kein IIS, kein Quirks? Läuft dein Code in einem Office Addin oder normal als .exe? Das ist wichtig weil sich COM Interop jeweils anders verhält wenn der Origin Thread ein Single Thread oder vielleicht ein COM STA Thread ist(was bei Addins der Fall ist), im letzteren Fall funktionieren bestimmte Features von .Net nicht. Lange Rede kurzer Sinn, je genauer du dein Szenario beschreiben kannst umso besser. Ich such mich sonst tot nach Sachen von denen du wahrscheinlich noch nie was gehört hast. Das hilft dir nicht und das hilft mir nicht. (Du hast das Problem gut beschrieben und dir da (vergleichbar) viel Mühe gemacht, schön :) ich bin voll dabei aber jetzt brauch ich Fakten und das nicht im Support-Sprech- einige Fragen mögen dir nicht einleuchten aber beachte und beantworte diese bitte trotzdem - ich denk mir schon was dabei)\r<br />\n<br />\n<br />\nWM_REGARDS \r<br />\n(OffTopic:Wie ist eigentlich die Grosswetterlage gerade so in Deutschand?)<br />\n",
+    "PostedDate": "2016-05-01T14:29:31.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472142",
+    "ThreadId": "654172",
+    "Html": "Hallo Seabstian,\r<br />\n<br />\nhabe die Testmethode nochmal angpasst und die ThreadCulture explizit gesetzt, es wird aber die gleiche exception geschmissen. Ich habe auch im Programm während der Laufzeit mal die ThreadCulture abgezogen, diese ist korrekterweise &quot;en-US&quot;.<br />\n<pre><code>[TestMethod]\n        public void AddNameEnglish()\n        {\n            NetOffice.ExcelApi.Application app = new NetOffice.ExcelApi.Application();\n            app.Settings.ThreadCulture = new System.Globalization.CultureInfo(1031);\n            app.Visible = true;\n            app.Workbooks.Add();\n            app.ActiveWorkbook.Activate();\n\n            ((Excel.Worksheet)app.ActiveSheet).Names.Add(&quot;name&quot;, &quot;=Offset(Tabelle1!$A$1,0,0,10,1)&quot;);\n\n            app.Dispose();            \n        }</code></pre>\n\nZur Anwendung: Es handelt sich eigentlich nur um eine Klassenbibliothek, die in Office als Addin registriert wird und ausschließlich aus der Office Anwendung heraus über das Ribbon angesteuert wird. Ich kompiliere einfach den Code, der registriert dann das Addin und dann öffne ich die entsprechende Office App und nutze die Funktionalität. Kein remote zeugs, kein Kompatibilitätsmodus o.Ä. Ist die Info hilfreich?\r<br />\n<br />\n(OffTopic: Großwetterlage nach ein paar kalten und teilweise verschneiten Tagen eigentlich ok: Am Wochenende gabs Sonnenschein und es war schon ein bisschen warm. Nächstes WE soll es ähnlich werden).<br />\n",
+    "PostedDate": "2016-05-02T01:15:51.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472148",
+    "ThreadId": "654172",
+    "Html": "Update: Mit den Interop Assemblies funktioniert das auch nicht wie in VBA (scheint also kein NetOffice Problem zu sein). Folgender Code wirft die gleiche exception (ungültige Formel):<br />\n<pre><code>[TestMethod]\n        public void AddNameEnglish3()\n        {\n            Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();\n            app.Visible = true;\n            app.Workbooks.Add();\n            app.ActiveWorkbook.Activate();\n            app.ActiveWorkbook.Names.Add(&quot;tester&quot;, &quot;=Offset('Tabelle1'!$A$1,0,0,1,1)&quot;);\n        }</code></pre>\n\ninteressant ist, dass der folgende code einen Namen anlegt (&quot;;&quot; anstatt &quot;,&quot; in der Formel):<br />\n<pre><code>[TestMethod]\n        public void AddNameEnglish4()\n        {\n            Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();\n            app.Visible = true;\n            app.Workbooks.Add();\n            app.ActiveWorkbook.Activate();\n            app.ActiveWorkbook.Names.Add(&quot;tester&quot;, &quot;=Offset('Tabelle1'!$A$1;0;0;1;1)&quot;);\n        }</code></pre>\n\nDie angelegte Formel wird allerdings 1:1 übernommen, also als &quot;=Offset(Tabelle1!$A$1;0;0;1;1)&quot; hinterlegt. Aber meine deutsche Office Version kennt natürlich kein &quot;Offset&quot; und daher ist das unbrauchbar.<br />\n",
+    "PostedDate": "2016-05-02T02:44:54.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472708",
+    "ThreadId": "654172",
+    "Html": "Wenn du AddNameEnglish3() als Netoffice Variante testen lässt, wird dann auch &quot;,&quot; in &quot;;&quot; umgewandelt oder scheitert der Aufruf?<br />\n",
+    "PostedDate": "2016-05-07T05:24:18.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472712",
+    "ThreadId": "654172",
+    "Html": "Der Aufruf scheitert:<br />\n<pre><code>[TestMethod]\n        public void AddNameEnglish3NetOffice()\n        {\n            NetOffice.ExcelApi.Application app = new NetOffice.ExcelApi.Application();\n            app.Visible = true;\n            app.Workbooks.Add();\n            app.ActiveWorkbook.Activate();\n            app.ActiveWorkbook.Names.Add(&quot;tester&quot;, &quot;=Offset('Tabelle1'!$A$1,0,0,1,1)&quot;);\n        }</code></pre>\n\nException Message: &quot;Die eingegebene Formel enthält einen Fehler. Versuchen Sie eines der folgenden Verfahren, um die Formel zu korrigieren:\r<br />\n<br />\n• Überprüfen Sie, ob alle Klammern und erforderlichen Argumente vorhanden sind.\r<br />\n• Klicken Sie auf der Registerkarte 'Formeln' auf 'Funktion einfügen' (in der Gruppe 'Funktionsbibliothek'), um Hilfe beim Verwenden einer Funktion zu erhalten.\r<br />\n• Sofern Sie Bezug auf eine andere Arbeitsmappe oder ein anderes Blatt nehmen, vergewissern Sie sich, dass die Angaben richtig sind.\r<br />\n• Sofern Sie keine Formel eingeben, vermeiden Sie Minuszeichen (-) oder Gleichheitszeichen (=). Falls diese Zeichen erforderlich sind, fügen Sie vorher ein einzelnes Anführungszeichen (') ein.\r<br />\n• Um weitere Information zu erhalten, klicken Sie auf 'Hilfe'.&quot;<br />\n",
+    "PostedDate": "2016-05-07T06:19:41.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472764",
+    "ThreadId": "654172",
+    "Html": "Noch folgende interessante Beobachtung:<br />\n<pre><code>[TestMethod]\n        public void AddNameEnglish3NetOffice()\n        {\n            NetOffice.ExcelApi.Application app = new NetOffice.ExcelApi.Application();\n            app.Visible = true;\n            app.Workbooks.Add();\n            app.ActiveWorkbook.Activate();\n            ((Excel.Worksheet)app.ActiveWorkbook.ActiveSheet).Cells[1, 1].Value = &quot;=TODAY()&quot;;\n            //app.ActiveWorkbook.Names.Add(name: &quot;tester&quot;, refersTo: &quot;=Offset('Tabelle1'!$A$1,0,0,1,1)&quot;);\n            app.ActiveWorkbook.Names.Add(name: &quot;tester&quot;, refersTo: &quot;=TODAY()&quot;);\n        }</code></pre>\n\nHier wird in Zelle A1 des aktuellen Sheets korrekterweise die Formel übersetzt und es wird &quot;=HEUTE()&quot; eingetragen. Im NameManager erhalte ich jedoch einen Namen &quot;tester&quot;, der auf &quot;=TODAY()&quot; verweist. Hier wird die Formel nicht übersetzt und daher funktioniert sie auch nicht.<br />\n",
+    "PostedDate": "2016-05-08T00:26:24.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

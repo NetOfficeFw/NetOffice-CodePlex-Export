@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "991823",
+    "ThreadId": "430801",
+    "Html": "\r\n<p>Hello everyone,</p>\r\n<p>I'm trying to compile an Automation add in for PowerPoint and the compiler spits out the following error:</p>\r\n<p></p>\r\n<pre>Referenced type is defined in managed component, which is imported from a type library that could not be loaded because it was not registered (type: 'NetOffice.OfficeApi.IRibbonExtensibility'; component: 'D:\\lbelloq\\documents\\visual studio 2010\\Projects\\SlideControlAddin\\SlideControlAddin\\bin\\Release\\OfficeApi.dll')</pre>\r\n<p></p>\r\n<p>This is using VB 2010 Express with the last version of NetOffice.</p>\r\n<p>How can I fix it?</p>\r\n<p>Thanks in advance,</p>\r\n<p>Léster</p>\r\n",
+    "PostedDate": "2013-01-24T16:06:38.37-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "991989",
+    "ThreadId": "430801",
+    "Html": "\r\n<p>IRibbonExtensibility is defined in Microsoft Office Object Library (mso.dll). Do you have Office 2007/2010/2013 installed on the machine where compilation fails?</p>\r\n",
+    "PostedDate": "2013-01-25T03:05:38.143-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "992012",
+    "ThreadId": "430801",
+    "Html": "\r\n<p>I had Office 2007 and 2013 in my dev machine, and uninstalled Office 2013 a couple of weeks ago. Should I try repairing Office 2007? Maybe uninstalling Office 2013 screwed up mso.dll registering.</p>\r\n",
+    "PostedDate": "2013-01-25T03:58:22.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "992025",
+    "ThreadId": "430801",
+    "Html": "\r\n<p>Does Office 2007 work well after Office 2013 uninstalling?</p>\r\n<p>Do&nbsp;you see IRibbonExtensibility in VBA Object Browser?</p>\r\n",
+    "PostedDate": "2013-01-25T04:21:27.093-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "992288",
+    "ThreadId": "430801",
+    "Html": "\r\n<p>I see it, its only member is GetCustomUI().</p>\r\n",
+    "PostedDate": "2013-01-25T17:09:49.447-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

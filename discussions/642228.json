@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1436859",
+    "ThreadId": "642228",
+    "Html": "Hi, \r<br />\n<br />\nI am trying to use the AppointmentItem's Write event to give the user an option to cancel the change to a meeting in the calendar.  ItemLoadCallback is called fine whenever the appointment is opened in Outlook which is what I want. I then register the Write event, but it never triggers. I have looked in OutlookSpy and the AppointmentItem does receive the event, but I just cannot figure out why event in the code below is not reached. Does anyone have any clue why?<br />\n<pre><code>_outlookApplication.ItemLoadEvent += new Outlook.Application_ItemLoadEventHandler(AddinLogic.ItemLoadCallback);\n\nstatic Outlook.AppointmentItem _appointment = null; \n\n        public static void ItemLoadCallback(NetOffice.COMObject obj)\n        {\n            using (Outlook.AppointmentItem tmp = obj as Outlook.AppointmentItem)\n            {\n                if (tmp == null)\n                    return;\n\n                _appointment = tmp;\n                _appointment.WriteEvent += new Outlook.AppointmentItem_WriteEventHandler(AddinLogic.AppointmentWriteEventHandler);\n            }\n        }\n\n        private static void AppointmentWriteEventHandler(ref bool Cancel)\n        {\n// execution never gets here\n            int i = 9;\n        }</code></pre>\n\n",
+    "PostedDate": "2015-08-01T11:02:58.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1436888",
+    "ThreadId": "642228",
+    "Html": "hello hello,\r<br />\n<br />\nyou dispose the appointment item within a using statement.\r<br />\nthe using statement is calling Dispose at the and end and this destroy all event connections for the instance-proxy.\r<br />\n(_appointment = tmp is not helpfull because its still the same instance.\r<br />\nif you dispose tmp then _appointment is also useless.)\r<br />\n<br />\nI suggest you to remove the using statement.\r<br />\noptional: you can call tmp.Dispose(false) instead (may in a try/catch/finaly block)\r<br />\nthe first argument(false) in Dispose means release the proxy but dont destroy the event connections.\r<br />\n(Outlook 2000 has known problems in this scenario)\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-08-01T23:00:34.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1436891",
+    "ThreadId": "642228",
+    "Html": "Thanks! That did it. Stupid me.<br />\n<br />\nDo you happen to know if there is any smart way of receiving the AppointmentItem that triggered the event from inside the AppointmentWriteEventHandler?<br />\n<br />\nI see no clean option of doing it.<br />\n<br />\nI have tried: <br />\n<pre><code>Outlook.AppointmentItem appointment = Outlook.MeetingItem.GetActiveInstance().GetAssociatedAppointment(false);</code></pre>\n\n",
+    "PostedDate": "2015-08-01T23:59:54.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1436899",
+    "ThreadId": "642228",
+    "Html": "hello again,\r<br />\n<br />\nwhat happen? its null or wrong (exception?)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-08-02T01:42:58.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1436905",
+    "ThreadId": "642228",
+    "Html": "Outlook.MeetingItem.GetActiveInstance() returns null<br />\n",
+    "PostedDate": "2015-08-02T02:11:49.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1436918",
+    "ThreadId": "642228",
+    "Html": "I am being referred to the links below but sure there must be a simpler way of solving this...<br />\n<ul>\n<li><a href=\"https://msdn.microsoft.com/en-us/library/ff973716.aspx\" rel=\"nofollow\">Developing an Inspector Wrapper for Outlook 2010</a></li>\n<li><a href=\"https://msdn.microsoft.com/en-us/library/office/ff184620.aspx\" rel=\"nofollow\">How to: Implement a Wrapper for Inspectors and Track Item-Level Events in Each Inspector</a></li>\n<li>\n<a href=\"https://code.msdn.microsoft.com/office/Outlook-2010-Developing-an-c4470591\" rel=\"nofollow\">Outlook 2010: Developing an Inspector Wrapper</a> <br />\n</li>\n</ul>\nDo you have any clue how to best do this in NetOffice? Do I need to do something similar to the below (<a href=\"http://netoffice3.rssing.com/chan-15397442/all_p11.html\" rel=\"nofollow\">http://netoffice3.rssing.com/chan-15397442/all_p11.html</a>)?<br />\n<pre><code>void IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom) {\n   _outlookApplication = new Application(null, application);\n   _outlookInspectors = _outlookApplication.Inspectors as Inspectors;\n   \n   if (_outlookInspectors != null) {\n     _outlookInspectors.NewInspectorEvent += OutlookInspectorsNewInspectorEvent;\n   }\n}\nWenn dann ein Fenster geöffnet wird, schaue ich nach, ob es ein Mailitem ist. Wenn ja, dann füge einen Button zur standardBar hinzu\nvoid OutlookInspectorsNewInspectorEvent(_Inspector inspector) {\n  try {\n    var citem = inspector.CurrentItem;\n    if (citem is MailItem) {\n      _standardBar = inspector.CommandBars[&quot;Standard&quot;];\n\n      _mBttn = (CommandBarButton)_standardBar.Controls.Add(MsoControlType.msoControlButton, 1, null, 3, true);\n      _mBttn.Style = MsoButtonStyle.msoButtonIconAndCaption;\n      _mBttn.FaceId = 225;  // Schloss (Icon)\n\n      _mBttn.Caption = &quot;Test&quot;;\n      _mBttn.Tag = &quot;MBUTTON&quot;;\n      _mBttn.ClickEvent += MCmdBarBttnClickEvent;\n    }\n  }\n}\nUnd zum Schluß noch der Button Event:\nvoid MCmdBarBttnClickEvent(CommandBarButton ctrl, ref bool cancelDefault) {\n  ...\n  ctrl.Dispose();\n}</code></pre>\n\n",
+    "PostedDate": "2015-08-02T08:16:25.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1436954",
+    "ThreadId": "642228",
+    "Html": "Turns out the GetActiveInstance calls actually failed due to an COMException &quot;Target instance is not running&quot;. I passed in &quot;true&quot; to them.<br />\n<pre><code>private static void AppointmentWriteEventHandler(ref bool Cancel)\n        {\n            Outlook.MeetingItem m = Outlook.MeetingItem.GetActiveInstance(true);\n            Outlook.AppointmentItem a = Outlook.AppointmentItem.GetActiveInstance(true);\n            \n            System.Windows.Forms.MessageBox.Show(&quot;Write event meeting&quot;);\n        }</code></pre>\n\n",
+    "PostedDate": "2015-08-02T21:25:12.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

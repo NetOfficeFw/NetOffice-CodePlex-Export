@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1426469",
+    "ThreadId": "638348",
+    "Html": "Hi everybody,<br />\n<br />\nI'm having the following VSTO Code working:<br />\n<pre><code>if (control.Context is Outlook.Explorer)\n{\n    return getMailItem(control.Context as Outlook.Explorer);\n}</code></pre>\n\nAs control.Context only contain the COM Object this is of course not working with netOffice.<br />\n<br />\nSo the question is do we have ways to test for the COM Type or do we have to brute force Cast to find out? Might be overkill but I like to test object type before Casting them especially in outlook where events like selection change could return several type of objects.<br />\n<br />\nThanks in advance for the feedback<br />\nRegards<br />\nHerve<br />\nDo we have some <br />\n",
+    "PostedDate": "2015-05-19T16:14:50.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

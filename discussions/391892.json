@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "899968",
+    "ThreadId": "391892",
+    "Html": "\r\n<p>Are there any example files for showing a custom image in the ribbon? I've been trying to use this site as a guide:&nbsp;<a href=\"http://msdn.microsoft.com/en-us/library/aa338202%28v=office.12%29.aspx#OfficeCustomizingRibbonUIforDevelopers_Images\">http://msdn.microsoft.com/en-us/library/aa338202%28v=office.12%29.aspx#OfficeCustomizingRibbonUIforDevelopers_Images</a>.\r\n However, I haven't had any success yet. I'm not sure it differs for NetOffice, but it would be helpful to have a NetOffice specific example.</p>\r\n<p>Specifically, I wasn't able to refer to&nbsp;GetIPictureDispFromPicture event after Importing AxHost. I also found the page to be very confusing.</p>\r\n",
+    "PostedDate": "2012-08-16T08:46:35.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "900922",
+    "ThreadId": "391892",
+    "Html": "<p>hello,<br /><br />you have to create the IconConverter and add references to OLE Automation(COM) and System.Drawing<br />as next step you to modify the .xml file and add the GetImage method to your addin. i create a sample project for you<br />please checkout:<br /><br />http://netoffice.codeplex.com/wikipage?title=Download%20Page</p>",
+    "PostedDate": "2012-08-17T16:44:29.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

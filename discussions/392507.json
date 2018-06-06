@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "902059",
+    "ThreadId": "392507",
+    "Html": "\r\n<p>I would like to know, how i must proceed to debug an Addin.</p>\r\n<p>I&acute;m using the addIn examples of 1.5 version.</p>\r\n<p>I did build the solution, used the regasm &quot;regasm COMAddinTaskPaneExampleCS4.dll&quot;.</p>\r\n<p>I did set the solution to open a external program &quot;outlook.exe&quot;.</p>\r\n<p>I&acute;m using Visual Studio 2010, framework 4.</p>\r\n<p>I didn&acute;t even capable of running the addin at Outlook program.</p>\r\n<p>Thanks,</p>\r\n<p>&nbsp;</p>\r\n<p>Ricardo&nbsp;</p>\r\n",
+    "PostedDate": "2012-08-21T11:05:59.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "902087",
+    "ThreadId": "392507",
+    "Html": "<p>hello ricardo,<br /><br />you dont regasm on your development system. set the option \"register for COM Interop\" in the project settings and visual studio register the assembly while compiling. the option is set in the NetOffice Addin examples. <br /><br />go the project properties(right click on your project in the solution explorer) and to the tab 'Debugging' and to the section 'start action' now set the option 'start external program' and set the path to OUTLOOK.EXE. start the debugger now and your breakpoints works fine.<br /><br />Sebastian<br /><br />BTW: not important but did you use C# or VB ?<br /><br /></p>",
+    "PostedDate": "2012-08-21T12:32:40.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "902088",
+    "ThreadId": "392507",
+    "Html": "<p>I did try what you are proposing, and the addin didn&acute;t even appeared on suplemments list, active or inative.</p>\r\n<p>Im using C#, outlook 2010.</p>",
+    "PostedDate": "2012-08-21T12:36:54.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "902089",
+    "ThreadId": "392507",
+    "Html": "<p>Windows 7 64 bits, Office 2010</p>",
+    "PostedDate": "2012-08-21T12:39:02.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "902098",
+    "ThreadId": "392507",
+    "Html": "<p>ah okay, this means your addin was never loaded right?<br /><br />if you have an Office 64 Bit then please read this part from the NetOffice documentation<br /><br /><span style=\"font-size: small;\"><span style=\"font-family: Verdana;\">If your assembly is a COMAddin that&nbsp;  is being loaded by a 32Bit Office application, you can still compile it  as AnyCPU. If you develop a COMAddin that is being used by a 64Bit  Office application, you have to compile your assembly as x64. If you  wart to  support 32Bit and 64Bit Office applications, you may need to provide a  second x64-compiled COMAddin. This behaviour is the same in all  scenarios(interop,vsto or netoffice). A 64Bit application can only load  64Bit Dll's.If you use a 64Bit Office for testing  on your development system and you want to register your COMAddin while  compiling (Register for COM Interop), you need to keep in mind that  some older versions of Visual Studio call the 32Bit registration in that  case. In this case, you get the following error:</span></span><br /><span style=\"font-size: small;\"><span style=\"font-family: Verdana;\"><span style=\"font-size: x-small;\"><strong><br />\"File &lt;path to assembly&gt; is not a valid assembly\". </strong><br /> </span>You can read a workarround by Microsoft here: <br /> </span></span><a href=\"http://support.microsoft.com/kb/956933\"><span style=\"font-family: Verdana; font-size: small;\">http://support.microsoft.com/kb/956933</span></a></p>\r\n<p><br />this discussion may also helpful for you: http://netoffice.codeplex.com/discussions/346527<br /><br />Sebastian</p>",
+    "PostedDate": "2012-08-21T13:05:12.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "902125",
+    "ThreadId": "392507",
+    "Html": "<p>This is really annoying, i have tried the solution above, and the addin still not be loaded.</p>",
+    "PostedDate": "2012-08-21T13:58:03.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "902180",
+    "ThreadId": "392507",
+    "Html": "<p>i did cleaner the solution, and build again, and ai got this issue now \"regasm.exe is not a valid win32 application\". ( i have configured a post build using the regams from framework64/v4.0.3...)</p>\r\n<p>Do you have some clue about it?</p>",
+    "PostedDate": "2012-08-21T15:05:02.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "902183",
+    "ThreadId": "392507",
+    "Html": "<p>forget about the is not a valid win32, for some reason the exe corrupted in the process of tring register.</p>",
+    "PostedDate": "2012-08-21T15:12:38.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "902191",
+    "ThreadId": "392507",
+    "Html": "<p>did you have any canges made in the NetOffice sample project?<br />in other words, no netoffice sample addin was loaded from outlook.<br />i still need answer for the office 32 or 64 bit question. i can't reproduce your scenario in a virtual machine without.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-08-21T15:23:14.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "903733",
+    "ThreadId": "392507",
+    "Html": "<p>I have reinstall all over my machines, now im getting the error \"is not a valid assembly\". But im setting the build for x64 target. Any ideas?</p>",
+    "PostedDate": "2012-08-24T12:02:12.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "903738",
+    "ThreadId": "392507",
+    "Html": "<p>I put the post build regasm on Framework64/v4..., the output windows says it registered, but nothing loads on Outllok.</p>",
+    "PostedDate": "2012-08-24T12:19:12.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "904035",
+    "ThreadId": "392507",
+    "Html": "<p>hello ricardo<br /><br />once again :P i still need answer for the office 32 or 64 bit question. i can't reproduce your scenario in a virtual machine without these information.<br />is your outlook application 32 bit or 64 bit ? if you have an 32 bit outlook in a 64 windows(possible) then forget all the 64 bit issues and do all things in the same way as 32bit.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-08-25T11:51:36.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "904684",
+    "ThreadId": "392507",
+    "Html": "<p>Sebastian,</p>\r\n<p>&nbsp;</p>\r\n<p>I'am using Outlook 64Bits, under Windows 7 64Bits.</p>\r\n<p>I tried to use the new Visual Studio 2012, but the addin seems no to be loaded anyway.</p>\r\n<p>&nbsp;</p>\r\n<p>Att,</p>\r\n<p>&nbsp;</p>\r\n<p>Ricardo</p>",
+    "PostedDate": "2012-08-27T10:17:48.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "904704",
+    "ThreadId": "392507",
+    "Html": "<p>Using Microsoft Visual Studio 2012 i gotta the samples working! Really thanks for all support!</p>",
+    "PostedDate": "2012-08-27T11:11:40.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "904912",
+    "ThreadId": "392507",
+    "Html": "<p>okay, now please gimme a day to reproduce the scenario in a virtual machine. <br /><br />Sebastian</p>",
+    "PostedDate": "2012-08-27T22:03:40.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1003850",
+    "ThreadId": "433770",
+    "Html": "Hi\r<br />\nYour component looks very nice but I am not exactly sure if it can help me.\r<br />\n<br />\nI have a task to generate PowerPoint slides and dynamically add different charts with certain values. And those charts must be formatted programmatically (like setting the font size, chart size, values, and so on). I guess this part can be achieved with your component, right? \r<br />\n<br />\nThe next part is, that I should be able to show these slides directly within my WinForms application, although an export as PowerPoint file should be possible too.\r<br />\n<br />\nDo you know how I could get this task done? Is it somehow possible to embed the PowerPoint within Windowsforms, maybe within a WebBrowser control, or can a PowerPoint viewer be integrated in the application? The users of the application will always have PowerPoint installed on their computers. What would be the best way? Does your component even have a solution for this?\r<br />\n<br />\nThank you for your suggestions!<br />\n",
+    "PostedDate": "2013-02-20T00:34:16.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1003969",
+    "ThreadId": "433770",
+    "Html": "the powerpoint viewer is not accesable via code.\r<br />\n<br />\nthis is an example for excel and the interop assemblies but easy to modify i find.\r<br />\n<a href=\"http://www.codeproject.com/Articles/15760/How-to-Integrate-Excel-in-a-Windows-Form-Applicati\" rel=\"nofollow\">http://www.codeproject.com/Articles/15760/How-to-Integrate-Excel-in-a-Windows-Form-Applicati</a>\r<br />\n<br />\nanother way is to do that is some Win32 API functions (FindWindow and SetParent) to change the parent window from desktop to your application or container control inside your application. easier but an unsupported scenario, this means it works but sometimes with some scary side effects.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-02-20T05:12:00.45-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1003993",
+    "ThreadId": "433770",
+    "Html": "Hi Sebastian\r<br />\n<br />\nThank you very much for your fast answer!\r<br />\n<br />\nI have already seen the codeproject article. this solution is based on the WebBrowser control. If I understood it right this is not possible with versions after 2007, since there the documents are opend in the real word or powerpoint application instead the WebBrowser control. So I guess I have to try the 'FindWindow' thing. Or maybe just use the expensive EDraw-activex control (<a href=\"http://www.edrawsoft.com/download-office-component.php\" rel=\"nofollow\">http://www.edrawsoft.com/download-office-component.php</a>) which seems to work perfectly but is expensiv. I just can not belive that there are no other such free activex components or 'easy' soloutions to build something similar...\r<br />\nAnyway, thanks again for your help!<br />\n",
+    "PostedDate": "2013-02-20T05:45:57.48-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

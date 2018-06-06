@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1097606",
+    "ThreadId": "458714",
+    "Html": "I have a couple of Outlook 2010 addins I want to convert to Netoffice. The reviews look great, however nowhere does it seem to tell you how to use it? e.g. I want to create an Outlook addin using NetOffice, how do I start? Windows forms project? Addin? then what Libraries to I use? <br />\n<br />\nThe examples are OK but that doesn't tell me how I create my own project. The documentation seems to be like an overview rather than product specific.<br />\n<br />\nDoes anyone have a quickstart tutorial?<br />\n<br />\nthanks<br />\nRim <br />\n",
+    "PostedDate": "2013-09-22T09:08:36.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1097888",
+    "ThreadId": "458714",
+    "Html": "The simplest way is to use <a href=\"https://netoffice.codeplex.com/wikipage?title=ProjectWizard_EN\" rel=\"nofollow\">Project wizard</a> from NetOffice Developer Toolbox. If you prefer to create own project from scratch do the following:<br />\n<ol>\n<li>Create a class library (as Outlook addin should be a DLL)</li>\n<li>Add reference to <em>extensibility.dll</em> (for implementing <em>IDTExtensibility2</em> interface)</li>\n<li>Add references to NetOffice assemblies: OutlookApi.dll, OfficeApi.dll, NetOffice.dll</li>\n<li>Implement <em>IDTExtensibility2</em> interface</li>\n<li>Write your addin logic</li>\n</ol>\n",
+    "PostedDate": "2013-09-22T23:32:15.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1098041",
+    "ThreadId": "458714",
+    "Html": "Brilliant thanks<br />\n<br />\nNo 4 - you mean &quot;public class Addin : COMAddin&quot; ?<br />\n",
+    "PostedDate": "2013-09-23T07:38:58.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1098355",
+    "ThreadId": "458714",
+    "Html": "<em>COMAddin</em> seems to be a VSTO wrapper. As Visual Studio itself (without Tools for Office) and NetOffice know nothing about it no. 4 should be like this:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">using</span> Extensibility;\n\n<span style=\"color:Blue;\">public</span> <span style=\"color:Blue;\">class</span> Addin :IDTExtensibility2\n{\n  <span style=\"color:Blue;\">void</span> IDTExtensibility2.OnStartupComplete(<span style=\"color:Blue;\">ref</span> Array custom)\n  {\n  }\n\n  <span style=\"color:Blue;\">void</span> IDTExtensibility2.OnConnection(<span style=\"color:Blue;\">object</span> Application, ext_ConnectMode ConnectMode, <span style=\"color:Blue;\">object</span> AddInInst, <span style=\"color:Blue;\">ref</span> Array custom)\n  {\n     _application = <span style=\"color:Blue;\">new</span> Outlook.Application(<span style=\"color:Blue;\">null</span>, Application);\n  }\n\n  <span style=\"color:Blue;\">void</span> IDTExtensibility2.OnDisconnection(ext_DisconnectMode RemoveMode, <span style=\"color:Blue;\">ref</span> Array custom)\n  {\n    <span style=\"color:Blue;\">if</span>(<span style=\"color:Blue;\">null</span> != _application)\n    {\n      _application.Dispose();\n      _application = <span style=\"color:Blue;\">null</span>;\n    }\n  }\n\n  <span style=\"color:Blue;\">void</span> IDTExtensibility2.OnAddInsUpdate(<span style=\"color:Blue;\">ref</span> Array custom)\n  {\n  }\n\n  <span style=\"color:Blue;\">void</span> IDTExtensibility2.OnBeginShutdown(<span style=\"color:Blue;\">ref</span> Array custom)\n  {\n  }\n}\r\n</pre></div>",
+    "PostedDate": "2013-09-23T22:41:24.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100159",
+    "ThreadId": "458714",
+    "Html": "Oh? The Netoffice project tool doesn't create that in the project it creates public class Addin : COMAddin\r<br />\n  <br />\nConfused now????<br />\n",
+    "PostedDate": "2013-09-27T08:26:32.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100680",
+    "ThreadId": "458714",
+    "Html": "hello,\r<br />\n<br />\nthe COMAddin base class (and the tools namepsace) is new in NO 1.6. its no a VSTO wrapper but i want keep it very similar.\r<br />\nthe normal way is to implement the IDTExtensibility2 interface and spend 2 static register/unregister methods. \r<br />\nThis is just the plain way for alle the years since Visual Basic 4 to extend MS-Office.\r<br />\nThe COMAddin base class can help to reduce infrastructure code in your project. just inherite from COMAddin and add some attributes.\r<br />\nCurrently, the toolbox doesnt generate COMAddin projects (but its done and available in NO 1.6.1)\r<br />\nAny COMAddin Examples folder (coresponding to the office product) has 2 addin examples. &quot;NetOffice Tools - Simple&quot; and &quot;NetOffice Tools - Extended&quot; with code comments that show you how to use the COMAddin class.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-09-29T14:47:18.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

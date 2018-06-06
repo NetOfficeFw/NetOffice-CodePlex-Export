@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1025266",
+    "ThreadId": "439057",
+    "Html": "Hello,<br />\n<br />\nI'm facing an issue with autosize and change font of my table.<br />\n<br />\nI try to autosize my table in PowerPoint, but none of the following codes work.<br />\n<pre><code>pptshape.TextFrame2.AutoSize=NetOffice.OfficeApi.Enums.MsoAutoSize.msoAutoSizeTextToFitShape;\npptshape.TextFrame2.TextRange.Font.Size = 12;\npptshape.TextFrame2.AutoSize=NetOffice.PowerPointApi.Enums.PpAutoSize.ppAutoSizeNone;</code></pre>\n\nThe error I get is: NetOffice.PowerPointApi.TextFrame.set_AutoSize(PpAutoSize value)<br />\n<br />\nwhile trying <br />\n<pre><code>pptshape.TextFrame2.TextRange.Font.Size = 12;</code></pre>\n\nThe other 2 codes don't work either.<br />\n<br />\nI was trying to do something like in this forum, but with NetOffice.<br />\n<br />\n<a href=\"http://social.msdn.microsoft.com/forums/en-US/isvvba/thread/9abf1896-b341-4666-822d-70d8640ebf23/\" rel=\"nofollow\">MSDN</a><br />\n<br />\nIs it possible to set the position of an object in PowerPoint in a certain place?<br />\n<br />\nAnd the last question is, how can I split a table that has too many rows for 1 slide into different slides ?<br />\n",
+    "PostedDate": "2013-04-04T01:29:13.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1025382",
+    "ThreadId": "439057",
+    "Html": "Found a way to change the font size, but still missing the AutoSize part and placing the shape in correct position.<br />\n<pre><code>foreach (PowerPoint.Slide slide in presentation.Slides)\n{\n        slide.Select();\n        foreach (PowerPoint.Shape pptshape in slide.Shapes)\n        {\n               Console.WriteLine(&quot;Shape type : &quot; + pptshape.Type.ToString());\n               if (pptshape.Type.ToString().Equals(&quot;msoTable&quot;))\n               {\n                     for (int i = 1; i &lt;= pptshape.Table.Rows.Count; i++)\n                     {\n                           for (int j = 1; j &lt;= pptshape.Table.Columns.Count; j++)\n                           {\n                                    pptshape.Table.Cell(i, j).Shape.TextFrame.TextRange.Font.Size = 12;\n                            }\n                      }\n               }\n         }\n}</code></pre>\n\n",
+    "PostedDate": "2013-04-04T06:52:58.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1027056",
+    "ThreadId": "439057",
+    "Html": "Sebastian any idea maybe?\r<br />\n<br />\nHow to AutoSize content from front with table size?\r<br />\n<br />\nThanks.\r<br />\n<br />\nmike<br />\n",
+    "PostedDate": "2013-04-08T01:34:49.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

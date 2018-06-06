@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "984401",
+    "ThreadId": "428987",
+    "Html": "\r\n<p>First of all thanks a lot for the NetOffice package and your support. I'm currently studying ribbon add-ins in Excel to see if it's a viable route for a project, but I'm having a problem with the execution of some of the add-in's functions from VBA.</p>\r\n<p>I used your &quot;Custom Ribbon Icons Example[Visual Basic]&quot; project (http://netoffice.codeplex.com/wiki/PageInfo?title=Download%20Page) as basis for the addin and followed the instructions found here:&nbsp;http://msdn.microsoft.com/en-gb/library/vstudio/bb608614.aspx</p>\r\n<p>However when trying to override&nbsp;RequestComAddInAutomationService in my <span>\r\nPublic</span>&nbsp;<span>Class</span>&nbsp;Addin&nbsp;I get as error: &quot;function 'RequestComAddInAutomationService' cannot be declared 'Overrides' because it does not override a function in a base class&quot;</p>\r\n<p>Should I do anything special for VBA &lt;-&gt; AddIn communication using NetOffice?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks</p>\r\n",
+    "PostedDate": "2013-01-09T02:37:21.19-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "985599",
+    "ThreadId": "428987",
+    "Html": "\r\n<p>sorry for the delay. i got no notifications at the moment for new discussions. nothing at all. NOT! :(<br>\r\n<br>\r\nRequestComAddinAutomationService is a special VSTO service. VSTO is specific handmade framework from MS to use Office in .NET<br>\r\nNetOffice isn't an opponent to VSTO at the moment. NetOffice is just a substitute for the Interop Assemblies. but anyway, you can use it also in NetOffice(or Interop Assemblies)<br>\r\n<br>\r\n1) define the IAddInUtilities/AddInUtilities, define also a guid attribute for the AddInUtilities class<br>\r\n2) fill the Object property in the OnConnection procedure<br>\r\nexample:<br>\r\nvoid ThisAddin_OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom){<br>\r\n{<br>\r\n&nbsp;&nbsp;&nbsp; AddInInst.GetType().InvokeMember(&quot;Object&quot;, BindingFlags.SetProperty, null, AddInInst, new object[] {<span style=\"color:blue\">new</span> AddInUtilities});<br>\r\n}<br>\r\n<br>\r\nnow you can use the addIn.Object in the same way from VBA. <br>\r\nplease feel free to contact me again. (codeplex is in trouble at the moment, please contact me at public.sebastian@web.de)<br>\r\n<br>\r\nSebastian</p>\r\n<p><br>\r\n<br>\r\n</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2013-01-11T11:28:02.85-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "986948",
+    "ThreadId": "428987",
+    "Html": "\r\n<p>Thanks Sebastian, it worked like a charm. In case someone needs the VB version:</p>\r\n<p><span>Public</span>&nbsp;<span>Sub</span>&nbsp;OnConnection(<span>ByVal</span>&nbsp;Application&nbsp;<span>As</span>&nbsp;<span>Object</span>,&nbsp;<span>ByVal</span>&nbsp;ConnectMode&nbsp;<span>As</span>&nbsp;ext_ConnectMode,&nbsp;<span>ByVal</span>&nbsp;AddInInst&nbsp;<span>As</span>&nbsp;<span>Object</span>,&nbsp;<span>ByRef</span>&nbsp;<span>custom</span>&nbsp;<span>As</span>&nbsp;System.Array)&nbsp;<span>Implements</span>&nbsp;IDTExtensibility2.OnConnection<br>\r\n<br>\r\n&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'<span style=\"white-space:pre\"> </span>Initialisation here ...</p>\r\n<p><br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AddInInst.<span>GetType</span>().InvokeMember(&quot;Object&quot;, BindingFlags.SetProperty,&nbsp;<span>Nothing</span>, AddInInst,&nbsp;<span>New</span>&nbsp;<span>Object</span>&nbsp;() {&nbsp;<span>new</span>&nbsp;AddInUtilities })</p>\r\n<p><br>\r\n<span>End</span>&nbsp;<span>Sub</span></p>\r\n",
+    "PostedDate": "2013-01-15T02:39:24.157-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

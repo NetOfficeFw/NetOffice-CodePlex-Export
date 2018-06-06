@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1497054",
+    "ThreadId": "663243",
+    "Html": "I got a slew of Microsoft Office 2007 updates today (June 14, 2007) and they broke all my NetOffice COM add-ins for Excel, including the samples provided with NetOffice.  They refuse to load at startup or to load from the COM Add-ins selection screen.\r<br />\n<br />\nOddly, a third party COM add-in from IBM is still working.  Has anyone else had this happen or has found out which specific update caused this problem?<br />\n",
+    "PostedDate": "2017-06-14T06:59:49.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1497370",
+    "ThreadId": "663243",
+    "Html": "Hi Michael,\r<br />\nNetOffice is compatible with MS Office 2007.\r<br />\n<br />\nPlease, provide logs from Microsoft Office Configuration Analyzer Tool to help us troubleshoot your issue\r<br />\n<a href=\"https://www.microsoft.com/en-us/download/details.aspx?id=36852\" rel=\"nofollow\">https://www.microsoft.com/en-us/download/details.aspx?id=36852</a><br />\n",
+    "PostedDate": "2017-07-11T03:33:36.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

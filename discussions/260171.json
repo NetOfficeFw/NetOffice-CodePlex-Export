@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "622838",
+    "ThreadId": "260171",
+    "Html": "\r\n<p>Can the following statement simplified?</p>\r\n<p>newDocument.SaveAs(documentFile, Missing.Value, Missing.Value, Missing.Value,&nbsp; Missing.Value, Missing.Value,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value);</p>\r\n<p>Like this:</p>\r\n<p>newDocument.SaveAs(documentFile);</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-06-03T16:53:14.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "622914",
+    "ThreadId": "260171",
+    "Html": "<p>hello,</p>\r\n<p>in first release netoffice supports optionals in .net 4 but Visual Basic can't handle this.<br />see also this discussion <a href=\"http://netoffice.codeplex.com/discussions/259502\">http://netoffice.codeplex.com/discussions/259502</a></p>\r\n<p>what i can do is to create some overloads for the typical open and save methods in in office.<br />comes with release 0.9 this weekend&nbsp;or release&nbsp;1.0&nbsp;(release date: 15.06.2011) <br /><br />Sebastian</p>",
+    "PostedDate": "2011-06-04T03:25:19.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1425125",
+    "ThreadId": "260171",
+    "Html": "Hi,\r<br />\n<br />\nIs optional named arguments considered to be not supported?\r<br />\n<br />\nI do not see how overloads support my needs.\r<br />\n<br />\nE.g. WordApi    MailMerge.OpenDataSource 15 arguments, I need to set first 2 and 10,11 . What are defaults for all values between arguments important for me?\r<br />\n<br />\nWhy I have to type same many times?\r<br />\n<br />\nC#/VB.NET/F# all have optional named arguments. <br />\n",
+    "PostedDate": "2015-05-13T01:48:33.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1427650",
+    "ThreadId": "260171",
+    "Html": "hello,\r<br />\n<br />\nim understand how important it is to support optional arguments.\r<br />\nfor this reason NetOffice 1.6 want give so called &quot;extension assemblies&quot; too.\r<br />\nits a set of linq extension methods with optional argument support.\r<br />\nits the best solution to keep supporting older framework versions and spend optionals in .net 3.5 and higher what i think.\r<br />\n<br />\nthe extension assemblies[beta] are in currently in use by some high-priority support contractors. no problems so far, i hope i can publish them\r<br />\nvery soon.\r<br />\n<br />\n*Sebastian <br />\n",
+    "PostedDate": "2015-05-26T07:44:29.12-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

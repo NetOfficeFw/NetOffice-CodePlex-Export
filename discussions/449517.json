@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1066379",
+    "ThreadId": "449517",
+    "Html": "Hi \r<br />\n<br />\nI have noticed others posting issues with using custom task panes. Can the following simply not be done in NetOffice and I need to get Visual Studio Professional.\r<br />\n<br />\nI am trying to link the control of a checkbox in the ribbon to toggle the custom task pane visibility status. I believe I am almost there however missing a step or 2. \r<br />\n<br />\nAssistance would be greatly appreciated thanks\r<br />\nPrivate taskPane As Office._CustomTaskPane\r<br />\nPrivate ctpFactory As Office.ICTPFactory\r<br />\n<br />\nPrivate Const taskPane_PROGID As String = &quot;Advance Tools with Custom Task Pane&quot;\r<br />\n<br />\nShared _application As Word.Application\r<br />\n<br />\nShared myuserControl As UserControl1\r<br />\n<br />\nPublic Sub CTPFactoryAvailable(ByVal CTPFactoryInst As Object) Implements NetOffice.OfficeApi.ICustomTaskPaneConsumer.CTPFactoryAvailable<br />\n<pre><code>ctpFactory = CTPFactoryInst\n</code></pre>\n\nEnd Sub\r<br />\n<br />\nPublic Sub CheckBox1_Pressed(ByVal control As Office.IRibbonControl, ByVal CheckBox1State As Boolean)<br />\n<pre><code>If CheckBox1State Then\n\n    taskPane = ctpFactory.CreateCTP(GetType(Addin).Assembly.GetName().Name + &quot;.UserControl1&quot;, &quot;Picture Table Editor&quot;, Type.Missing)\n    taskPane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionFloating\n    taskPane.Width = 300\n    taskPane.Height = 420\n    taskPane.Visible = True\n    taskPane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionLeft\n    taskPane.Width = 300\n    myuserControl = taskPane.ContentControl\n\nElse\n\n    taskPane.Visible = False\n\nEnd If\n</code></pre>\n\nEnd Sub<br />\n",
+    "PostedDate": "2013-07-09T20:49:42.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077857",
+    "ThreadId": "449517",
+    "Html": "I was just having the same issue, and thanks to a post of SebastionDotNet somewhere here (of which for some reason I can't find the link any more) I solved the problem. You can do the following:<br />\n<ul>\n<li>add a public property to your myuserControl: Public TaskPane As Office._CustomTaskPane </li>\n<li>\nin your   Public Sub CTPFactoryAvailable add a line myuserControl.TaskPane = taskPane and remove the ctpFactory.Dispose()<br />\n</li>\n</ul>\nThen you should be able change the visibility with myuserControl.TaskPane.visible = true/false<br />\n",
+    "PostedDate": "2013-08-07T10:31:54.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1079130",
+    "ThreadId": "449517",
+    "Html": "as first: i didnt know a way to detect the visibility of a taskpane is changed (and update checkbox or tooglebutton, i use a timer in the taskpane, not nice but helps).<br />\n<br />\nwhat you can do is as follows:<br />\n1) create a button int the ribbon ui<br />\n <br />\npublic void OnAction(IRibbonControl control)<br />\n{<br />\n<pre><code>// reverse visibility\nif(control.ID == &quot;myTaskPane&quot;)\n   taskPane.Visible = !taskPane.Visible;</code></pre>\n\n}<br />\n<br />\nif you want more (similar to my timer solution)<br />\nmake sure you define the onload Method in the xml definition<br />\n<br />\n&lt;customUI xmlns=&quot;<a href=\"http://schemas.microsoft.com/office/2006/01/customui\" rel=\"nofollow\">http://schemas.microsoft.com/office/2006/01/customui</a>&quot; onLoad=&quot;OnLoadRibbonUI&quot;&gt;<br />\n<br />\n   internal IRibbonUI RibbonUI { get; private set; }<br />\n<br />\n   public void OnLoadRibbonUI(IRibbonUI ribbonUI)<br />\n   {<br />\n<pre><code>  RibbonUI = ribbonUI;</code></pre>\n\n}<br />\n<br />\nmoreover:<br />\n<br />\n &lt;toggleButton id =&quot;toogleButton&quot; label=&quot;myLabel&quot; size =&quot;large&quot; imageMso=&quot;HappyFace&quot; onAction =&quot;OnCheckActionToogleButton&quot; getPressed =&quot;GetPressedToogleButton&quot;/&gt;<br />\n<br />\n   public void OnCheckActionToogleButton(IRibbonControl control, bool check)<br />\n   {<br />\n<pre><code>     taskPane.Visible = check;</code></pre>\n\n}<br />\n<br />\n   public bool GetPressedToogleButton(IRibbonControl control)<br />\n   {<br />\n<pre><code>    return taskPane.Visible;</code></pre>\n\n}<br />\n<br />\nmoreover: if you the visibility of the pane is changed now you can use:<br />\nvoid Foo()<br />\n{ <br />\n   //raise GetPressedToogleButton to update the toogle button<br />\n   RibbonUI.InvalidateControl(&quot;toogleButton&quot;);<br />\n}<br />\n<br />\nSebastian<br />\n<br />\nEDIT: IN VB you have to use different method signatures.<br />\nthis pages helps a lot to see the differents in C# and VB.NET<br />\n<a href=\"http://www.th-lange.com/ribbonx/ruckrufe-callbacks-in-ribbonx/\" rel=\"nofollow\">http://www.th-lange.com/ribbonx/ruckrufe-callbacks-in-ribbonx/</a><br />\n",
+    "PostedDate": "2013-08-10T15:59:10.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

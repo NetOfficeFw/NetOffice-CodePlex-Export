@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "722914",
+    "ThreadId": "285564",
+    "Html": "\r\n<p>Hi Sebastian,</p>\r\n<p>For the preview version of NetOffice 1.4 you changed some instances of IEnumerable to IEnumerable&lt;T&gt;. In at least one case this is problematic when using NetOffice from VB.NET:</p>\r\n<p>(ExcepApi) Application.Sheets returns an object of type Sheets. Sheets is an enumerable, but does not contain Worksheet objects only, it can contain Charts too. So in the COM TypeLib the Sheets.Item just returns an IDispatch*.</p>\r\n<p>Now, in NetOffice 1.3.2, the Sheets implemented IEnumerable, and the following code worked fine:</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>    <span style=\"color:blue\">Function</span> SheetExists(SheetName <span style=\"color:blue\">As</span> <span style=\"color:blue\">String</span>) <span style=\"color:blue\">As</span> <span style=\"color:blue\">Boolean</span>\r\n        SheetExists = <span style=\"color:blue\">False</span>\r\n        <span style=\"color:blue\">For</span> <span style=\"color:blue\">Each</span> Sheet <span style=\"color:blue\">In</span> Application.Sheets\r\n            <span style=\"color:blue\">If</span> Sheet.Name = SheetName <span style=\"color:blue\">Then</span> <span style=\"color:green\">' &lt;&lt;&lt; IMPORTANT LINE</span>\r\n                SheetExists = <span style=\"color:blue\">True</span>\r\n                <span style=\"color:blue\">Exit</span> <span style=\"color:blue\">For</span>\r\n            <span style=\"color:blue\">End</span> <span style=\"color:blue\">If</span>\r\n        <span style=\"color:blue\">Next</span> Sheet\r\n    <span style=\"color:blue\">End</span> <span style=\"color:blue\">Function</span>\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>This works because &quot;Sheet&quot; is implicitly typed &quot;As Object&quot; and so Sheet.Name is resolved late-bound, normally with no problem. This matches the behaviour in VBA.</p>\r\n<p>However, in the NetOffice 1.4 preview the Sheets type implements IEnumerable&lt;LateBindingApi.Core.COMObject&gt;. Thise means the compiler tries to resolve the &quot;Name&quot; property at compile time, which fails.</p>\r\n<p>I suggest IEnumerable&lt;T&gt; that would be of type COMObject should rather be left as IEnumerable, to return Object types allowing late-binding and to improve VBA compatibility.&nbsp;</p>\r\n<p>-Govert</p>\r\n",
+    "PostedDate": "2012-01-10T00:11:38.49-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "723157",
+    "ThreadId": "285564",
+    "Html": "<p>okay, i change all IEnumerable&lt;COMObject&gt;implementations to IEnumerable&lt;object&gt;.</p>",
+    "PostedDate": "2012-01-10T07:25:55.65-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

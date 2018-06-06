@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1234064",
+    "ThreadId": "542241",
+    "Html": "Hello, <br />\nworkbook.names or sheet.names will give a list of names. How to get the Range that represents a named range?<br />\nOnce I get the range, I can get its value.   thanks <br />\n",
+    "PostedDate": "2014-04-14T14:10:17.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1235220",
+    "ThreadId": "542241",
+    "Html": "Oh, I got it. \r<br />\n<br />\nname.RefersToRange will give me the range a named cell refers \r<br />\n<br />\nThanks <br />\n",
+    "PostedDate": "2014-04-17T14:20:44.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-04-17T14:20:49.457-07:00"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "996055",
+    "ThreadId": "431875",
+    "Html": "Hello!<br />\n<br />\nI need to subscribe to NewInspector event of Outlook.Inspector, but OutlookApi.Application.Inspectors returns _Inspectors (without events). But in original interop assemblies it returns Inspectors with events. Also, GetActiveInspector returns _Inspector instead of Inspector.<br />\nIs it a bug or I am missing something?<br />\n<br />\nAnd the same with CustomTaskPane. I need to use VisibleStateChangeEvent and DockPositionStateChangeEvent, but <br />\nctpFactory.CreateCTP gives me _CustomTaskPane.<br />\n",
+    "PostedDate": "2013-02-04T04:50:16.91-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "996094",
+    "ThreadId": "431875",
+    "Html": "I found answer myself. \r<br />\n_CustomTaskPane ctp;\r<br />\n...\r<br />\nCustomTaskPane taskPane = new CustomTaskPane(ctp, ctp.UnderlyingObject)\r<br />\nIt seems to work. But I think it will be good to describe this in FAQ section.<br />\n",
+    "PostedDate": "2013-02-04T06:02:07.457-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1080030",
+    "ThreadId": "431875",
+    "Html": "I'm also having this issue, did you find a solution to the New Inspector Event? I was trying to do something like <a href=\"http://msdn.microsoft.com/en-us/library/vstudio/cc668191%28v=vs.90%29.aspx?cs-save-lang=1&amp;cs-lang=vb#code-snippet-1\" rel=\"nofollow\">this </a>, but no luck because &quot;Handles inspectors.NewInspector&quot; doesn't find the NewInspector-Event. <br />\n<br />\n//Edit<br />\n<br />\nOK, it's working now, although I have no idea why this didn't work previously. I just have the following (all in Addin.vb:<br />\n<pre><code>Shared _outlookApplication As Outlook.Application\n\nPrivate WithEvents inspectors As Outlook.Inspectors\n\nPublic Sub OnStartupComplete(ByRef custom As System.Array) Implements IDTExtensibility2.OnStartupComplete\n    SetupGui\n    inspectors = _outlookApplication.Inspectors\nEnd Sub\n\n  Private Sub inspectors_NewInspector(ByVal Inspector As Outlook.Inspector) Handles inspectors.NewInspectorEvent\n    Dim mailItem As Outlook.MailItem = CType(Inspector.CurrentItem, Outlook.MailItem)\n        \n  End Sub</code></pre>\n\nI'm sure I had that before, and the compiler complained that it couldn't find the NewInspectorEvent. I'm glad it works now, although I wish I knew why it didn't before. <br />\n",
+    "PostedDate": "2013-08-13T04:22:36.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1080103",
+    "ThreadId": "431875",
+    "Html": "I am just experiencing exactly the same thing with the Explorers.SelectionChangeEvent. What I have done is :\r<br />\n<br />\nCreate the variable in Addin.vb<br />\n<pre><code> Private WithEvents explorers As Outlook.Explorers</code></pre>\n\nset the value<br />\n<pre><code>  Public Sub OnStartupComplete(ByRef custom As System.Array) Implements IDTExtensibility2.OnStartupComplete\n    explorers = _outlookApplication.Explorers\n  End Sub</code></pre>\n\nadd the handler<br />\n<pre><code>  Private Sub explorers_SelectionChange(ByVal Explorer As Outlook.Explorer) Handles explorers.SelectionChangeEvent\n    'do something\n  End Sub</code></pre>\n\nhowever, the compiler claims not to be able to find explorers.SelectionChangeEvent. \r<br />\n<br />\nAny ideas? <br />\n",
+    "PostedDate": "2013-08-13T07:06:07.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1080122",
+    "ThreadId": "431875",
+    "Html": "Yes, this is the same problem. But Explorers don't have SelectionChange event. You need Explorer class.\r<br />\nFor objects with events NetOffice have two clasess, one - with events and another - without events. For Explorer there are 2 classes:\r<br />\n_Explorer - without events\r<br />\nExplorer - with events.\r<br />\nMost of the time, NetOffice properties and methods return objects without events to save resources when you don't need events. But you can easily transform them into the objects with events.\r<br />\n<br />\nThis should be something like this (I din't code on vb.net for a few years, so there can be some syntax errors)<br />\n<pre><code>\nprivate WithEvents _explorer as Outlook.Explorer\n\n  Public Sub OnStartupComplete(ByRef custom As System.Array) Implements IDTExtensibility2.OnStartupComplete\n    dim e as Outlook._Explorer ' without events\n    set e = _outlookApplication.ActiveExplorer\n    set _explorer = new Explorer(explorer) ' now - with events\n  End Sub\n\n Private Sub _explorer_SelectionChange(ByVal Explorer As Outlook.Explorer) Handles _explorer.SelectionChangeEvent\n    'do something\n  End Sub\n</code></pre>\n\n",
+    "PostedDate": "2013-08-13T07:50:34.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1080134",
+    "ThreadId": "431875",
+    "Html": "now it becomes all quite a bit clearer, thanks a lot! <br />\n",
+    "PostedDate": "2013-08-13T08:36:07.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "944796",
+    "ThreadId": "404008",
+    "Html": "\r\n<p>My Excel AddIn (XLL) is written using C#, ExcelDNA, NetOffice. Now users have another addin say ThirdPartyAddIn (xla), Which he says works fine without my addin. This is what the user does. He highlights a cell and hits button from a ribbon(belongs to the\r\n OtherAddIn) which results in a pop-up window function, where he can input a bunch of parameters. When MyaddIn is installed, he click the button and nothing comes up.</p>\r\n<p>I downloaded the trial version of the ThirdPartyAddIn.</p>\r\n<p>Starting from version 1.0 of my addin, I test version by version to see which version starts conflict with the ThirdPartyAddIn.</p>\r\n<p>and then I find one thing</p>\r\n<p>Before I use NetOffice to replace Office PIA,&nbsp; there is no conflict.</p>\r\n<p>Once I use NetOffice, then conflict occurrs.</p>\r\n<p>So I just wonder how to fix the issue.&nbsp; I use NetOffice 1.2,</p>\r\n<p>I can email the thirdparty addin link just do not want to put it public here.</p>\r\n<p>thanks</p>\r\n",
+    "PostedDate": "2012-11-20T12:50:13.073-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

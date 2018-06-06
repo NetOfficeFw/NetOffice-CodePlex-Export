@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "931441",
+    "ThreadId": "400555",
+    "Html": "\r\n<p>Hi <a href=\"http://www.codeplex.com/site/users/view/SebastianDotNet\">SebastianDotNet</a>.</p>\r\n<p>First of, I think you did a great job with Netoffice!</p>\r\n<p>Here's my problem:</p>\r\n<p>I want to develop a com addin to work with Outlook 2000 - Outlook 2010.</p>\r\n<p>Using your example - namely &quot;COMAddinClassicExample&quot; - I compiled, and registered the sample with &quot;regasm&quot;.</p>\r\n<p>Outlook starts fine, and the sample works displaying a message box on click.</p>\r\n<p>But, when I close Outlook it just stays in memory.</p>\r\n<p>To find out what's going on, I added message boxes to the events &quot;OnDisconnection&quot; and &quot;OnBeginShutdown&quot; in file &quot;ExampleClassicAddin.cs&quot;.</p>\r\n<p>Code snippets:</p>\r\n<p>...</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre> <span style=\"color:blue\">void</span> IDTExtensibility2.OnDisconnection(ext_DisconnectMode RemoveMode, <span style=\"color:blue\">ref</span> Array custom)\r\n        {\r\n            MessageBox.Show(<span style=\"color:#a31515\">&quot;OnDisconnection&quot;</span>, <span style=\"color:#a31515\">&quot;Testing&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Information);\r\n            <span style=\"color:blue\">try</span>\r\n</pre>\r\n</div>\r\n&nbsp;...\r\n<p></p>\r\n<p>and</p>\r\n<p>...</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">void</span> IDTExtensibility2.OnBeginShutdown(<span style=\"color:blue\">ref</span> Array custom)\r\n        {\r\n            MessageBox.Show(<span style=\"color:#a31515\">&quot;OnBeginShutdown&quot;</span>, <span style=\"color:#a31515\">&quot;Testing&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Information);\r\n</pre>\r\n</div>\r\n...\r\n<p></p>\r\n<p>The rest of your sample code was left untouched.</p>\r\n<p>I then recompiled, unregistered the first try, and registered the second one.</p>\r\n<p>Neither message box is displayed, and Outlook just stays in memory...</p>\r\n<p>I then took the com addin, and registered it on a machine having Outlook 2003 installed.</p>\r\n<p>There the two message boxes do get displayed upon closing Outlook, and it gracefully disappears from memory.</p>\r\n<p>&nbsp;</p>\r\n<p>Any ideas would be highly appreciated!</p>\r\n<p>Thanks in advance!</p>\r\n<p>With best regards</p>\r\n<p>OliverChrisTrapp</p>\r\n",
+    "PostedDate": "2012-10-23T21:33:52.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932267",
+    "ThreadId": "400555",
+    "Html": "<p>did you use any events or its basicly the 1:1 example code?<br /><br />for troubleshooting: <br />- remove or disable any other addins<br />- go to the application properties/debugging and use the option \"start external program\". insert the outlook.exe path.<br />now go the toolbar menu debugging/exceptions and hit the \"checkbox Common Language Runtime Exceptions\". now start debugging.<br />the debugger breaks if an exception is thrown.<br />- i can do a test but i need the information for your operating system and 32/64bit.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-25T02:43:00.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932763",
+    "ThreadId": "400555",
+    "Html": "<p>Hi Sebastian,</p>\r\n<p>thanks for your quick response.</p>\r\n<p>Yes, I'm using exactly the sample code except the two message boxes mentioned before.</p>\r\n<p>I checked checkbox \"Common Language Runtime Exceptions\" as advised, and started the project with the option \"start external program\".</p>\r\n<p>Outlook starts, and I can click the \"C# _ToolbarButton\" receiving the corresponding message box.</p>\r\n<p>When I close Outlook, no exception is thrown, Outlook is still visible as a process in \"Task Manager\", and the Visual Studio is still in Debugging mode.</p>\r\n<p>I added variable \"_outlookApplication\" as a watch, and this is then simply grayed out.</p>\r\n<p>Output from Debug is:</p>\r\n<p>'OUTLOOK.EXE' (Managed): Loaded  'C:\\WINDOWS\\assembly\\GAC_32\\mscorlib\\2.0.0.0__b77a5c561934e089\\mscorlib.dll',  Skipped loading symbols. Module is optimized and the debugger option  'Just My Code' is enabled.<br /> 'OUTLOOK.EXE' (Managed): Loaded 'C:\\Downloads\\NetOffice Release  1.4.1\\NetOffice Release  1.4.1\\Net2.0\\Examples\\Outlook\\C#\\COMAddinClassicExample\\bin\\Debug\\OutlookClassicAddinCSharp.dll',  Symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded 'C:\\Downloads\\NetOffice Release  1.4.1\\NetOffice Release  1.4.1\\Net2.0\\Examples\\Outlook\\C#\\COMAddinClassicExample\\bin\\Debug\\LateBindingApi.Core.dll',  No symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded 'C:\\Downloads\\NetOffice Release  1.4.1\\NetOffice Release  1.4.1\\Net2.0\\Examples\\Outlook\\C#\\COMAddinClassicExample\\bin\\Debug\\OutlookApi.dll',  No symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded 'C:\\Downloads\\NetOffice Release  1.4.1\\NetOffice Release  1.4.1\\Net2.0\\Examples\\Outlook\\C#\\COMAddinClassicExample\\bin\\Debug\\OfficeApi.dll',  No symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded  'C:\\WINDOWS\\assembly\\GAC_MSIL\\System.Windows.Forms\\2.0.0.0__b77a5c561934e089\\System.Windows.Forms.dll',  No symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded 'C:\\Downloads\\NetOffice Release  1.4.1\\NetOffice Release  1.4.1\\Net2.0\\Examples\\Outlook\\C#\\COMAddinRibbonExample\\bin\\Debug\\OutlookRibbonAddinCSharp.dll',  Symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded 'C:\\Downloads\\NetOffice Release  1.4.1\\NetOffice Release  1.4.1\\Net2.0\\Examples\\Outlook\\C#\\COMAddinRibbonExample\\bin\\Debug\\OfficeApi.dll',  No symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded 'C:\\WINDOWS\\assembly\\GAC_MSIL\\System\\2.0.0.0__b77a5c561934e089\\System.dll', No symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded  'C:\\WINDOWS\\assembly\\GAC_MSIL\\System.Configuration\\2.0.0.0__b03f5f7f11d50a3a\\System.Configuration.dll',  No symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded  'C:\\WINDOWS\\assembly\\GAC_MSIL\\System.Xml\\2.0.0.0__b77a5c561934e089\\System.Xml.dll',  No symbols loaded.<br /> 'OUTLOOK.EXE' (Managed): Loaded  'C:\\WINDOWS\\assembly\\GAC_MSIL\\System.Drawing\\2.0.0.0__b03f5f7f11d50a3a\\System.Drawing.dll',  No symbols loaded.</p>\r\n<p>When I then end debugging, Outlook disappears from memory.</p>\r\n<p>OS is Windows XP Service Pack 3 32 bit</p>\r\n<p>VS is</p>\r\n<p>Microsoft Visual Studio 2005 Version 8.0.50727.42&nbsp; (RTM.050727-4200)</p>\r\n<p>with</p>\r\n<p>Microsoft .NET Framework Version 2.0.50727 SP2<br /><br />Installed Edition: Professional</p>\r\n<p>&nbsp;</p>\r\n<p>Any ideas?!?</p>\r\n<p>&nbsp;</p>\r\n<p>Cheers</p>\r\n<p>Oli ;-)</p>",
+    "PostedDate": "2012-10-25T20:48:58.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932831",
+    "ThreadId": "400555",
+    "Html": "<p>i see you use an older version of NetOffice. can you do me a pleasure and update to 1.5.1.2 please? its difficult for me to reproduce your scenario in a virtual machine with an old NetOffic version.<br /><br />do you remove/disable other addins? the NetOffice developer toolbox contains a component called \"Addin Guard\" you see all addins here and you can temporaily disable them in the developer toolbox registry editor.<br /><br />btw: a 30-60 seconds shutdown delay is typical for outlook because the application performs some backup operations for .pst files and some other.<br />i do a test now in a virtual machine. need 1 hour.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-26T01:00:46.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932859",
+    "ThreadId": "400555",
+    "Html": "<p>update: i can reproduce the problem with outlook 200. the OnDisconnection/OnBeginShutdown events was not fired. if i remove the SetupGui() method then already was okay. i do some tests now with outlook 2002/2003 to see its a generic problem. need also 1 hour.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-26T01:55:37.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932861",
+    "ThreadId": "400555",
+    "Html": "<p>update: the problem occurs only in Outlook 2000. i try to find a workarround now.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-26T02:01:00.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932866",
+    "ThreadId": "400555",
+    "Html": "<p>i find a solution that works for me. change the SetupGui() method as follows:<br /><br />private void SetupGui()<br />{<br />&nbsp;<br />&nbsp; Outlook._Explorer activeExplorer = _outlookApplication.ActiveExplorer();<br />&nbsp; /* create commandbar */<br />&nbsp; Outlook._Explorer activeExplorer = _outlookApplication.ActiveExplorer();<br />&nbsp;  Office.CommandBar commandBar =  activeExplorer.CommandBars.Add(_toolbarName, MsoBarPosition.msoBarTop,  System.Type.Missing, true);<br /><br />&nbsp; /// ....<br />&nbsp; <br />&nbsp;&nbsp; /* create menu */<br />&nbsp; commandBar = activeExplorer.CommandBars[\"Menu Bar\"];<br /><br />&nbsp;&nbsp; /// ...<br /><br />&nbsp;&nbsp; activeExplorer.Dispose();<br />} <br /><br /><br />you see we save the Active Explorer proxy in a local variable and dispose them at the end.<br />this is an outlook2000 issue and not a NetOffice issue i think. <br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-26T02:11:04.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932936",
+    "ThreadId": "400555",
+    "Html": "<p>Good man!!!</p>\r\n<p>and it works for me :-)</p>\r\n<p><span style=\"color: #008000;\"><strong>Thanks a lot!</strong></span></p>\r\n<p>Cheers Oli ;-)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-10-26T04:51:11.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932952",
+    "ThreadId": "400555",
+    "Html": "<p>ooops no, it works not good because activeExplorer.Dispose(); release all childs(buttons and so on) and the events was not fired now.<br />but its easy to handle! please use activeExplorer.Dispose(false); // false means dont destroy the event listeners<br /><br />Sebastian</p>",
+    "PostedDate": "2012-10-26T05:30:36.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "933215",
+    "ThreadId": "400555",
+    "Html": "<p>You're correct there. Thanks a bunch!</p>\r\n<p>Cheers Oli ;-)</p>",
+    "PostedDate": "2012-10-26T21:19:22.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

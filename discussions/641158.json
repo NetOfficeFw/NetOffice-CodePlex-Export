@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "1433771",
+    "ThreadId": "641158",
+    "Html": "Hey,\r<br />\n<br />\nich nutze die aktuelle Version von NetOffice und finde die echt Klasse!\r<br />\nAllerdings komme ich bei mir auf einen Fehler, wenn ich diesen Code nutzen möchte\r<br />\n<br />\nobj_XLWks.PageSetup.FitToPagesWide = 1\r<br />\nobj_XLWks.PageSetup.FitToPagesTall = 0\r<br />\n<br />\nDaraufhin bekam ich folgendes\r<br />\nex.Exception.Message =&gt; ​See inner exception(s) for details.\r<br />\nex.InnerException.Message =&gt; Ein Aufrufziel hat einen Ausnahmefehler verursacht.\r<br />\nStackTrace =&gt;bei System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\r<br />\n   bei System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\r<br />\n   bei System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)\r<br />\n   bei NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Invoker.cs:Zeile 876\r<br />\n<br />\nIch weiß damit jetzt nichts anzufangen, ist der Befehl falsch oder ist das ein Bug in NetOffice\r<br />\n<br />\nIch bin Dankbar für jede Rückmeldung.\r<br />\n<br />\nLG\r<br />\nAxel<br />\n",
+    "PostedDate": "2015-07-09T10:09:08.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1433775",
+    "ThreadId": "641158",
+    "Html": "Für den Zugriff auf PageSetup muss ein Drucker eingerichtet sein und der Spooler Service laufen(was er per voreinstellung auch tut).\r<br />\nDas ist in Office leider so. Hat mit NetOffice an sich nix zu tun. Schau mal in die inner exception(s) ob da noch was genaueres drin steht.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-07-09T10:28:43.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1433781",
+    "ThreadId": "641158",
+    "Html": "Ohne den Teil funktioniert der Code bestens, nur bei diesem springt er raus.<br />\n<pre><code>See inner exception(s) for details.   \n\nbei NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Invoker.cs:Zeile 881.\n   bei NetOffice.ExcelApi.PageSetup.set_FitToPagesTall(Object value) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\Excel\\DispatchInterfaces\\PageSetup.cs:Zeile 481.\n   bei SpediGonzales.mod_Drucken.sub_Druck_AVListe(String pustr_TourPrefix, String pustr_TourNr) in C:\\Users\\Axel\\Documents\\Visual Studio 2013\\Projects\\SpediGonzales\\SpediGonzales\\mod_Drucken.vb:Zeile 820.\nEin Aufrufziel hat einen Ausnahmefehler verursacht.\n\nStackTrace&gt;&gt;   bei System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   bei System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   bei System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)\n   bei NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Invoker.cs:Zeile 876.\n\nHResult&gt;&gt;-2146232828\n\nSource&gt;&gt;mscorlib\n\nData&gt;&gt;System.Collections.ListDictionaryInternal</code></pre>\n\nHabe ich etwas vergessen zu posten?<br />\n",
+    "PostedDate": "2015-07-09T10:41:31.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1433785",
+    "ThreadId": "641158",
+    "Html": "Stackoverflow sagt dazu:\r<br />\n<br />\n&quot; if you need to set PageSetup.FitToPagesWide and you do not want to set PageSetup.FitToPagesTall you will need to set this value to false instead of an integer.&quot;\r<br />\n<br />\n<a href=\"http://stackoverflow.com/questions/2509583/excel-2007-pagesetup-fittopageswide-issue\" rel=\"nofollow\">http://stackoverflow.com/questions/2509583/excel-2007-pagesetup-fittopageswide-issue</a>\r<br />\n<br />\n0 scheint in dem Fall nicht akzeptiert zu sein sondern false.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-07-09T11:12:44.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1433921",
+    "ThreadId": "641158",
+    "Html": "Hey Sebastian,\r<br />\nbesten Dank für den Tipp, aber das hatte ich schon in einem VB-Forum.\r<br />\n<br />\nIch habe den Code wie folgt geändert. Erste/Dritte Zeile habe ich auskommentiert.<br />\n<pre><code>        'obj_XLWks.PageSetup.Zoom = False\n        obj_XLWks.PageSetup.FitToPagesWide = True\n        'obj_XLWks.PageSetup.FitToPagesTall = 0\n</code></pre>\n\n<pre><code>See inner exception(s) for details.   bei NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Invoker.cs:Zeile 881.\n   bei NetOffice.ExcelApi.PageSetup.set_FitToPagesWide(Object value) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\Excel\\DispatchInterfaces\\PageSetup.cs:Zeile 510.\n   bei SpediGonzales.mod_Drucken.sub_Druck_AVListe(String pustr_TourPrefix, String pustr_TourNr) in C:\\Users\\Axel\\Documents\\Visual Studio 2013\\Projects\\SpediGonzales\\SpediGonzales\\mod_Drucken.vb:Zeile 819.\nEin Aufrufziel hat einen Ausnahmefehler verursacht.\nStackTrace&gt;&gt;   bei System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   bei System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   bei System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)\n   bei NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value) in c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice\\Invoker.cs:Zeile 876.HResult&gt;&gt;-2146232828\nSource&gt;&gt;mscorlib\nData&gt;&gt;System.Collections.ListDictionaryInternal</code></pre>\n\n",
+    "PostedDate": "2015-07-10T09:42:28.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1433937",
+    "ThreadId": "641158",
+    "Html": "Ich habe jetzt noch etwas drüber nachgedacht:\r<br />\nFitToPage kann unter keinen erdenklichen Umständen Boolean-Werte annehmen, denn ich kann in dieser Einstellung innerhalb Excel sagen, skaliere mir den Tabelleninhalt auf maximal n-Seiten breit. Da passt kein Wahr/Falsch.\r<br />\n<br />\nJedoch auch umgedreht hat Wahr/Falsch immer die Bedeutung 1/0, d.h. die Werte die ich dort eingegeben habe, sollten Boolean-Werte angenommen haben.\r<br />\n<br />\nAlso stimmt doch eher was an der Bibliothek nicht, als an dem Programm oder übersehe ich da etwas???<br />\n",
+    "PostedDate": "2015-07-10T12:07:51.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1433949",
+    "ThreadId": "641158",
+    "Html": "Ich kann dir nicht wirklich folgen aber folgender Code funktioniert bei mir, so wie auch in dem verlinkten Topic auf Stackoverflow beschrieben:\r<br />\n<br />\nworkSheet.PageSetup.FitToPagesWide = 1;\r<br />\nworkSheet.PageSetup.FitToPagesTall = false;\r<br />\n<br />\n(Du hast allerdings irgendwie was anderes gemacht. Das Problem liegt/lag ja bei FitToPagesTall und nicht bei FitToPagesWide dem du irrtümlich einen boolean Wert zuweist.)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-07-10T13:00:57.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2015-07-11T01:53:23.353-07:00"
+  },
+  {
+    "Id": "1433981",
+    "ThreadId": "641158",
+    "Html": "Warum steht in den Fehlermeldungen teilweise ein Pfad der eindeutig auf Alex seine Verzeichnisstruktur hinweist und andererseits aber auch Pfade, die auf Deine (Sebastian) persönliche Verzeichnisstruktur hinweisen?\r<br />\nMich irritiert das sehr, mag aber nichts zu bedeuten haben....<br />\n",
+    "PostedDate": "2015-07-11T00:40:40.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1433985",
+    "ThreadId": "641158",
+    "Html": "Moin Moin,\r<br />\n<br />\ndas meine Verzeichnisstruktur auftaucht mag daran liegen, dass ich vorübergehend so viel wie möglich an Fehlermeldung einblende. Darum u.a. die Source des Fehlers =&gt; Zeile 819\r<br />\n<br />\n-&gt; Sebastian\r<br />\nDanke, der Code läuft ohne Fehler durch. Ich habe den Post so interpretiert, dass beide auf True/False gestellt werden müssten. Allerdings im Ergebnis macht er nicht das was er soll. Das lag aber daran, dass hier auch der Zoom deaktiviert werden muss.\r<br />\n<br />\nMein Code lautet wie folgt:<br />\n<pre><code>            obj_XLWks.PageSetup.Zoom = False\n            obj_XLWks.PageSetup.FitToPagesWide = 1\n            obj_XLWks.PageSetup.FitToPagesTall = False</code></pre>\n\n",
+    "PostedDate": "2015-07-11T01:48:03.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2015-07-11T01:53:19.83-07:00"
+  },
+  {
+    "Id": "1433989",
+    "ThreadId": "641158",
+    "Html": "Hallo,\r<br />\n<br />\nDiese Pfade (&quot;c:\\Users\\Sebastian\\Desktop\\Kopie von Source\\NetOffice&quot;) stammen aus den mitgelieferten .pdb Dateien.\r<br />\n<br />\nFür die die es nicht wissen:\r<br />\n.PDB sind Symbol Dateien für den Debugger, damit wird es möglich auch direkt in den Original NetOffice Code zu springen(sofern vorhanden), Haltepunkte zu setzen, überwachen, etc. Beim ersten mal fragt die IDE 1x nach wo der Code liegt und merkt sich diese Pfadangabe. (Bezieht man die PDB's über einen Symbolserver kann der Code auch von da ohne Nachfrage nachgeladen werden)\r<br />\n<br />\nGefällt mir auch nicht unbedingt das in der .pdb die Originalpfade einkodiert sind. Es gibt allerdings, zumindest in VS ein paar Einstellungsmöglichkeiten was in der PDB stehen soll. Ich hab mich damit aber noch nicht beschäftigt und alles in der Default Einstellung belassen.\r<br />\nBei Gelegenheit gehe ich das Thema aber nochmal an.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-07-11T03:19:37.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

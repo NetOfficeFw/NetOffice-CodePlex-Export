@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1075085",
+    "ThreadId": "451960",
+    "Html": "Sorry in advance. I'm just starting with NetOffice.<br />\n<br />\nI'm writing a Word COM Addin. Given that a custom task pane is associated with a document frame window (word.document in Word), I need to manage many task pane instances. See <a href=\"http://msdn.microsoft.com/en-us/library/vstudio/aa942864.aspx#Managing\" rel=\"nofollow\">Managing Custom Task Panes in Multiple Application Windows</a><br />\n<blockquote>\nWord, InfoPath, and PowerPoint display each document in a different document frame window. When you create a custom task pane for these applications, the custom task pane is associated only with a specific document. If the user opens a different document, the custom task pane is hidden until the earlier document is visible again.<br />\n</blockquote>\nA task panel for a given Word.Document will show custom content for this document. When I click on a ribbon command, I need to know if I’ve already created a task panel for this document or not, and know if it's visible.<br />\n<br />\nComparing standard VSTO with NetOffice, I realize that VSTO defines &quot;CustomTaskPanes&quot; as Friend (internal in C#). <br />\n<br />\nBut NetOffice has two collections: TaskPanes and TaskPaneInstances. Both are &quot;Protected&quot;. <br />\n<br />\nWhy protected? Why not &quot;Friend&quot;?<br />\n<br />\nWhy two collections?<br />\n<br />\nWhich i must use for my purpose?<br />\n<br />\nWhy the &quot;Add&quot; method does not return the &quot;TaskPaneInfo&quot; created?. With a Function that return the newly created taskpaneinfo, it would be easier to reference the new object.<br />\n<br />\nInstead of:<br />\n<pre><code>    TaskPanes.Add(GetType(PedirFechaTaskPaneControl), &quot;Task Pane&quot;)\n    TaskPanes(0).DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight\n    TaskPanes(0).DockPositionRestrict = MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoHorizontal\n    TaskPanes(0).Width = 250\n    TaskPanes(0).Visible = False\n    TaskPanes(0).Arguments = New Object() {Me}\n</code></pre>\n\n, we could write:<br />\n<pre><code>    Dim myTaskPaneInfo = TaskPanes.Add(GetType(PedirFechaTaskPaneControl), &quot;Task Pane&quot;)\n    myTaskPaneInfo.DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight\n    myTaskPaneInfo.DockPositionRestrict = MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoHorizontal\n    myTaskPaneInfo.Width = 250\n    myTaskPaneInfo.Visible = False\n    myTaskPaneInfo.Arguments = New Object() {Me}\n</code></pre>\n\nAs you can see, I'm not sure how to manage multiple task pane instances. Is there a known way to do it?<br />\n",
+    "PostedDate": "2013-07-31T05:33:21.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1075464",
+    "ThreadId": "451960",
+    "Html": "hmmm not sure, i'm not an expert in Word. i have to clearify the situation. when its the same in an interop or VSTO solution, yes this is a Word &quot;feature&quot; i do some some tests and give you response asap.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-01T01:41:01.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1075466",
+    "ThreadId": "451960",
+    "Html": "*damn it okay now i see your edit. no, its okay, need to delete this, may helpful for other users.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-01T01:42:36.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1075495",
+    "ThreadId": "451960",
+    "Html": "Thank you for your reply and thank you for this software.\r<br />\n<br />\nI've edited again to show a more concrete question. I suggest to adapt word examples to this behaviour. If you want, I can do it.\r<br />\n<br />\nBut, i don't understand why two collections and why protected. Unless we write all code in Addin class, we'll need a way to query task pane collections to locate the correct if exists.\r<br />\n<br />\nThank you again!<br />\n",
+    "PostedDate": "2013-08-01T03:14:42.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1075547",
+    "ThreadId": "451960",
+    "Html": "I can't get it work using existing protected properties like &quot;TaskPanes&quot; and &quot;TaskPaneInstances&quot;.<br />\n<br />\nI've funcional code using my own list of custom task panes. It works. But I'm not convinced. If the framework has something to store and manage existing task panes, common sense suggest to use it.<br />\n<br />\nNOTE: It's not complete. I don't manage Word events to destroy objects when documents are closed, etc, etc, ...<br />\n<pre><code>Public Class Addin\n    Inherits COMAddin\n\n    '...\n#Region &quot;Custom properties and functions to expose protected members&quot;\n    Friend ReadOnly Property WordApplication() As Word.Application\n        Get\n            Return MyBase.Application\n        End Get\n    End Property\n\n    Friend ReadOnly Property TaskPaneFactoryObject() As NetOffice.OfficeApi.ICTPFactory\n        Get\n            Return MyBase.TaskPaneFactory\n        End Get\n    End Property\n#End Region\n\n    Public Property MyCustomTaskPaneList As New List(Of NetOffice.OfficeApi._CustomTaskPane) \n    '...\nEnd Class</code></pre>\n\nIn a separate class, I pass an AddIn instance in constructor and store it like &quot;_addin&quot;<br />\n<pre><code>    Public Sub ShowTaskPane() '\n        'If no active document nothing to do\n        Dim activeDoc As NetOffice.WordApi.Document = _addin.WordApplication.ActiveDocument\n        If activeDoc Is Nothing Then\n            Return\n        End If\n\n        'Traditional way. Using Linq would be:\n        '   foundTaskPane = _addin.MyCustomTaskPaneList.FirstOrDefault(Function(f) f.Window IsNot Nothing AndAlso CType(f.Window, NetOffice.WordApi.Window).Hwnd = activeDoc.ActiveWindow.Hwnd)\n        Dim foundTaskPane As NetOffice.OfficeApi._CustomTaskPane = Nothing\n        For Each tp In _addin.MyCustomTaskPaneList\n            Dim w As NetOffice.WordApi.Window = tp.Window\n            If w IsNot Nothing AndAlso w.Hwnd = activeDoc.ActiveWindow.Hwnd Then\n                foundTaskPane = tp\n                Exit For\n            End If\n        Next\n        If foundTaskPane Is Nothing Then\n            'Current Word document hasn't associated task pane\n            Dim newTaskPane As NetOffice.OfficeApi._CustomTaskPane = _addin.TaskPaneFactoryObject.CreateCTP(GetType(PedirFechaTaskPaneControl).FullName,\n                                                                                                   activeDoc.Name,\n                                                                                                   activeDoc.ActiveWindow)\n            newTaskPane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight\n            newTaskPane.DockPositionRestrict = MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoHorizontal\n            newTaskPane.Width = 250\n            newTaskPane.Visible = True\n            _addin.MyCustomTaskPaneList.Add(newTaskPane)\n        Else\n            'Do something ...\n            foundTaskPane.Visible = Not foundTaskPane.Visible\n        End If\n    End Sub\n</code></pre>\n\nAgain, thank you for this wonderful software.<br />\n",
+    "PostedDate": "2013-08-01T06:05:05.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1076087",
+    "ThreadId": "451960",
+    "Html": "i have no idea what vsto doesn and its not important for me.the TaskPanes property stores the definition and the TaskPaneInstances property the created instances from.\r<br />\n<br />\nyou find a word sample addin(regarding the tools namesapce) with a custom task pane in the download section. i hope this helps you.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-08-02T09:33:00.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

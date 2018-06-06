@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1015913",
+    "ThreadId": "436772",
+    "Html": "As per documentation (<a href=\"http://netoffice.codeplex.com/documentation\" rel=\"nofollow\">http://netoffice.codeplex.com/documentation</a>)\r<br />\nI see ExcelApi.dll has following dependencies...<br />\n<ul>\n<li>OfficeApi.dll</li>\n<li>VBIDEApi.dll</li>\n<li>\nNetOffice.dll<br />\n</li>\n</ul>\nI am planning to use NetOffice Release 1.0 Framework 3.5.\r<br />\n<br />\n<br />\nBut In following location I do not find NetOffice.dll ? Am I missing anything or documentation is old ? I want to make sure that I include all the dependent .dll.<br />\n\r<br />\nC:\\Users\\XXXX\\Downloads\\NetOffice Release 1.0\\NetOffice Release 1.0\\Net3.5\\Assemblies\\Any CPU\r<br />\n<br />\nThanks\r<br />\nOcean<br />\n",
+    "PostedDate": "2013-03-15T06:55:27.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1026135",
+    "ThreadId": "436772",
+    "Html": "NetOffice.dll has formerly another name AFAIK so u can maybe look more precisely for it ;)<br />\n",
+    "PostedDate": "2013-04-05T07:57:34.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1026175",
+    "ThreadId": "436772",
+    "Html": "Hello,\r<br />\n<br />\nWhy are you planning to use NetOffice Release 1.0 if we are in the 1.5.1.2 ?\r<br />\n<br />\nDownload the newest version of NetOffice.\r<br />\n<br />\nIn older version, NetOffice.dll used to be LateBindingApi.dll\r<br />\n<br />\n<a href=\"https://github.com/Excel-DNA/Add-In-Manager/blob/master/NetOffice%201.5.1.2%20%5BRC%5D/ChangeLog.txt\" rel=\"nofollow\">https://github.com/Excel-DNA/Add-In-Manager/blob/master/NetOffice%201.5.1.2%20%5BRC%5D/ChangeLog.txt</a>\r<br />\n<br />\nTo find latest version, try following link.\r<br />\n<br />\n<a href=\"https://netoffice.codeplex.com/downloads/get/454192\" rel=\"nofollow\">https://netoffice.codeplex.com/downloads/get/454192</a><br />\n",
+    "PostedDate": "2013-04-05T08:46:52.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

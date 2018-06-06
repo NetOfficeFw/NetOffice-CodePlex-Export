@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "822288",
+    "ThreadId": "351880",
+    "Html": "\r\n<p>What is the resolution of this, to set the colour of some characters in a cell?</p>\r\n<p>&nbsp;&nbsp;With wsDoc.Cells(lRow, lCol)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'Error&nbsp;16&nbsp;Class 'NetOffice.ExcelApi.Characters' cannot be indexed because it has no default property.<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .Characters(Start:=1, Length:=lPos).Font.ColorIndex = 38</p>\r\n",
+    "PostedDate": "2012-04-11T02:08:45.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822298",
+    "ThreadId": "351880",
+    "Html": "<p>Excel.Characters doesnt have a default property (COM Type library)<br />which environment you use before? VSTO? Primary or normal Interop Assembly? VBA?<br /><br />Sebastian<br /><br />PS: maybe more things i have to do for next release that comes this weekend.</p>",
+    "PostedDate": "2012-04-11T02:36:28.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822311",
+    "ThreadId": "351880",
+    "Html": "<p>VBA.</p>\r\n<p>I can't paste in the code for some reason, I clicked Allow access to clipboard but it's not going in.</p>\r\n<p>Here's a sample recorded macro</p>\r\n<p>﻿﻿﻿with Activecell.Characters(Start:=1,Length:=34).Font</p>\r\n<p>&nbsp;﻿&nbsp;&nbsp; .color = - 16776961</p>\r\n<p>...etc</p>\r\n<p>End with</p>\r\n<p>﻿﻿</p>",
+    "PostedDate": "2012-04-11T03:22:10.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822345",
+    "ThreadId": "351880",
+    "Html": "<p>ah now i see, the type characters has no default&nbsp;property. the characters property himself is parametrized and now he&nbsp;have true NetOffice issue here.<br />you can use ActiveCell.get_Characters(1,34) here but the get_ overload is hidden from Intellisense. the overload without get_ is missing. this is a big mistake an need to be fixed immediately.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-11T05:34:07.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

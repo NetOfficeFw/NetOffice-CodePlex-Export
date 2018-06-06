@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1416315",
+    "ThreadId": "631964",
+    "Html": "Hello everyone, it's me again!\r<br />\n<br />\nI use the NEToffice to create a project for Word Addin. And in the RibbonUI, it can load my settings. But when I try to create a commandbar for the compatible of word 2003, there are some problem.\r<br />\nFirst let me introduce what I have made change for the RibbonUI project.\r<br />\n<br />\nIn the Addin class, I define mCommandBar as my command bar<br />\n<pre><code>Private mCommandBar As Office.CommandBar</code></pre>\n\nThen in the &quot;CreateUserInterface&quot; function, I add these sentences:<br />\n<pre><code>Private Sub CreateUserInterface()\n    If Val(Application.Version) &lt; 12 Then\n        Try\n            mCommandBar = Application.CommandBars.Add(&quot;EquationToolsNET&quot;, MsoBarPosition.msoBarTop, True, False)\n            If mCommandBar IsNot Nothing Then\n                Dim commandBtn1 As Office.CommandBarButton = mCommandBar.Controls.Add(MsoControlType.msoControlButton)\n                With commandBtn1\n                    .Caption = &quot;NewEquation&quot;\n                    .FaceId = 26\n                    .OnAction = &quot;NewEquation_Click&quot;\n                    .Visible = True\n                End With\n\n                Dim commandBtn2 As Office.CommandBarButton = mCommandBar.Controls.Add(MsoControlType.msoControlButton)\n                With commandBtn2\n                    .Caption = &quot;Crossreference&quot;\n                    .FaceId = 37\n                    .OnAction = &quot;CrossREF_Click&quot;\n                    .Visible = True\n                End With\n\n                Dim commandBtn3 As Office.CommandBarButton = mCommandBar.Controls.Add(MsoControlType.msoControlButton)\n                With commandBtn3\n                    .Caption = &quot;ToolBox&quot;\n                    .FaceId = 176\n                    .OnAction = &quot;ToolBox_Click&quot;\n                    .Visible = True\n                End With\n                mCommandBar.Visible = True\n            End If\n        Catch extips As Exception\n            'MsgBox(extips)\n        End Try\n    End If\nEnd Sub\n</code></pre>\n\nSo, when the Addin is loaded int the word, the &quot;Addin_OnStartupComplete&quot; will run '&quot;CreateUserInterface&quot; and load my commandbar.\r<br />\n<br />\nWhen I debug the project, word 2003 could add my commandbar, but add two commandbar!\r<br />\nIs there some ways to check the commandbar is already added?\r<br />\nWhat is so weird is even the Word 2003 run the first time, two commandbars will be added at the same time. \r<br />\n<br />\nAnd here is another problem since the commandbar is loaded. When I click the button,  the Word will send a  notification windows which says it can't find the Macro or the Marco is disabled. So I change the Marco security setting as low security. But it still doesn't work.\r<br />\n<br />\nWhat make it more strange is, when I debug the project with Word 2013, it can work correctly. So I just don't know why.\r<br />\n<br />\nAny help will be appreciated! Thanks!<br />\n",
+    "PostedDate": "2015-04-21T06:49:09.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1416843",
+    "ThreadId": "631964",
+    "Html": "I see no reason in your code why the commandbar is created 2x times.\r<br />\n<br />\nmy suggestions for now:\r<br />\n<br />\n1.) may you have a dead ui element(commandbar, may you call Add before without the temporary:false argument). try load the office application without your addin and see a dead commandbar &quot;EquationToolsNET&quot; still exists. (you can remove this easily in the office application or the NO Developer Toolbox)\r<br />\n<br />\n2.) make sure your addin is loaded only 1 times, check the registry Office/Word/Addins. May a previous addin version want load here\r<br />\n<br />\n3.) Use the CommandBars.Find method before Add to make sure no duplicate item is created\r<br />\n<br />\n4.) teamviewer session to help you directly :)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-04-22T08:13:29.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1416867",
+    "ThreadId": "631964",
+    "Html": "Thank you very much!!!\r<br />\n<br />\nBut it's too late today, I'm in China, and it's 23:48 now, the dorm building will be closed. Can I contact you with my Email <a href=\"mailto:(taotaomy@hotmail.com)\r\nSend\" rel=\"nofollow\">(taotaomy@hotmail.com)\r\nSend</a> me a email, and I can transfer my codes to you.\r<br />\n<br />\nSincere thankfulness for you<br />\n",
+    "PostedDate": "2015-04-22T08:52:31.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

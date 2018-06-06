@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1327519",
+    "ThreadId": "573617",
+    "Html": "Need different CustomUI from different xml file, but Net Office defines the CustomUI attribute in CustomAtttibute.\r<br />\nHow to load the xml file in the New event?\r<br />\n<br />\nBest Regards.<br />\n",
+    "PostedDate": "2014-11-30T19:27:55.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1327801",
+    "ThreadId": "573617",
+    "Html": "Overwrite the GetCustomUI method {(public virtual string GetCustomUI(string RibbonID)}\r<br />\nto load a schema at hand.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-01T12:05:51.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1327933",
+    "ThreadId": "573617",
+    "Html": "Thanks so much. Net Office is really a great job~<br />\n",
+    "PostedDate": "2014-12-01T23:47:52.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

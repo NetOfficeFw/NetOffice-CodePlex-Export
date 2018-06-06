@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1337031",
+    "ThreadId": "576228",
+    "Html": "<pre><code>using System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;\nusing System.Threading.Tasks;\nusing Microsoft.CSharp;\nusing System.Runtime.InteropServices;\nusing System.IO;\nusing NetOffice.OfficeApi.Enums;\nusing Excel = NetOffice.ExcelApi;\n\nnamespace ConvertSheetsToPDFs\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            string filePath1 = @&quot;\\\\Server\\Folder\\SomeFile.xls&quot;;\n            string saveSheet = &quot;&quot;;\n            DateTime date = DateTime.Today;\n            string format = &quot;MM-dd-yy&quot;;\n            string stringDate = date.ToString(format);\n            Excel.Worksheet worksheet;\n            Excel.Application excel = new Excel.Application();\n            excel.DisplayAlerts = false;\n            excel.AskToUpdateLinks = false;\n            excel.Visible = false;\n            excel.ScreenUpdating = false;\n            Excel.Workbook workbook = excel.Workbooks.Open(filePath1);\n            for (int j = 0; j &lt; excel.Worksheets.Count; j++)\n            {\n                worksheet = excel.Worksheets.ElementAt(j) as Excel.Worksheet;\n                if (worksheet.Name == &quot;SomeWorkSheet&quot;)\n                {\n                    Excel.Workbook workbook2 = new Excel.Workbook(worksheet);\n                    saveSheet = @&quot;\\\\Server\\Folder\\ARCHIVES\\&quot; + worksheet.Name + &quot; &quot; + stringDate + &quot;.pdf&quot;;\n                    object sheet = String.Format(saveSheet);\n                    workbook2.ExportAsFixedFormat(Excel.Enums.XlFixedFormatType.xlTypePDF, sheet, Excel.Enums.XlFixedFormatQuality.xlQualityStandard, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);\n                }\n            }\n            \n            string end = Console.ReadLine();\n            excel.ActiveWorkbook.Close();\n            excel.Quit();\n            excel.Dispose();\n        }\n    }\n}</code></pre>\n\n",
+    "PostedDate": "2014-12-24T09:01:28.313-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337096",
+    "ThreadId": "576228",
+    "Html": "the easiest/fastest way(in performance) is to use copy&amp;paste.\r<br />\n<br />\nsomething like this:\r<br />\nworksheet .Range[&quot;A1:G3&quot;].Copy();\r<br />\nword .Selection.Range.PasteSpecial();\r<br />\n<br />\nyou can set various format arguments in the PasteSpecial method:\r<br />\nsee documentation: <a href=\"http://msdn.microsoft.com/de-de/library/microsoft.office.interop.word.wdpastedatatype%28v=office.11%29.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/de-de/library/microsoft.office.interop.word.wdpastedatatype%28v=office.11%29.aspx</a>\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-25T00:02:13.497-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337276",
+    "ThreadId": "576228",
+    "Html": "N/A<br />\n",
+    "PostedDate": "2014-12-26T06:17:57.767-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337322",
+    "ThreadId": "576228",
+    "Html": "N/A<br />\n",
+    "PostedDate": "2014-12-26T11:27:29.977-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337639",
+    "ThreadId": "576228",
+    "Html": "So based on my redone code, I keep getting a error on my worksheet.ExportAsFixedFormat. The error I get is An unhandled exception of type 'System.Runtime.InteropServices.COMException' occurred in NetOffice.dll. What causes that exception?<br />\n<br />\nI believe that is my only issue at this point. I think based on the code I should get a .pdf of each worksheet that I have in my workbook.<br />\n",
+    "PostedDate": "2014-12-29T07:13:45.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337833",
+    "ThreadId": "576228",
+    "Html": "please check the inner exception for error details. (NO wrap all office exceptions in COMException)\r<br />\nbtw: you have to use the Word.Document.ExportAsFixedFormat method to save a word document as pdf.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-30T02:38:45.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337876",
+    "ThreadId": "576228",
+    "Html": "Would I still need to use a .doc to export my worksheet to a .pdf? I thought with worksheet.ExportAsFixedFormat(Excel.Enums.XlFixedFormatType.xlTypePDF, Sheet, Excel.Enums.XlFixedFormatQuality.xlQualityStandard, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing); I could take each worksheet I want and directly make it into a .pdf. I tried using the .doc because I didn't see a option to turn a worksheet into a .pdf, so I thought I could instead turn it into a .doc. I finally found what seems to be the way to export a worksheet to a converted .pdf.  So I am trying to make it work now. <br />\n<br />\nThis is the code I had made with Aspose but I am trying to get off it because the software is way to expensive<br />\n<pre><code>using System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;\nusing System.Threading.Tasks;\nusing Microsoft.CSharp;\nusing System.Runtime.InteropServices;\nusing Aspose.Pdf;\nusing Aspose.Cells;\n\nnamespace ConvertNewSheetsToPDFs\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            //Get the Excel file path\n            string filePath = @&quot;\\\\Server\\Folder\\NEW SHEETS.xls&quot;;\n            DateTime date = new DateTime();\n            date = DateTime.Today;\n            string format = &quot;M-d-yy&quot;;\n            string stringDate = date.ToString(format);\n            //File from its location\n            Workbook workbook = new Workbook(filePath);\n            //Make all sheets invisible except first worksheet because you have to keep 1 worksheet visible\n            for (int i = 1; i &lt; workbook.Worksheets.Count; i++)\n            {\n                workbook.Worksheets[i].IsVisible = false;\n            }\n            //Take Pdfs of each sheet\n            for (int j = 1; j &lt; workbook.Worksheets.Count; j++)\n            {\n                //Make all sheets invisible except first worksheet\n                workbook.Worksheets[0].IsVisible = true;\n                if(j != 1)\n                { \n                    workbook.Worksheets[j - 1].IsVisible = false;\n                }\n                Worksheet ws = workbook.Worksheets[j];\n                if (ws.Name.Equals(&quot;Some Worksheet&quot;)\n                {\n                    Console.Out.WriteLine(ws.Name);\n                    workbook.Worksheets[j].IsVisible = true;\n                    workbook.Worksheets[0].IsVisible = false;\n                    workbook.Save(@&quot;\\\\Server\\\\Folder\\\\&quot; + ws.Name + &quot; &quot; + stringDate + &quot;.pdf&quot;, Aspose.Cells.SaveFormat.Pdf);\n                }\n            }\n        }\n    }\n}</code></pre>\n\nThis code with Apose gives me what I really want. Gives 5 different .pdf with only the data from one worksheet in each.<br />\n",
+    "PostedDate": "2014-12-30T06:26:19.407-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1341460",
+    "ThreadId": "576228",
+    "Html": "Based on what I just updated. Would you say it is what I am wanting. I still get that exception during the export and it doesn't explain why it is giving that exception. This should create a new workbook each time and put in only the desired worksheet into it a print that into a .pdf. <br />\n",
+    "PostedDate": "2015-01-13T06:46:54.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

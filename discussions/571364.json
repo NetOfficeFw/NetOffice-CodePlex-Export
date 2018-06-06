@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1319337",
+    "ThreadId": "571364",
+    "Html": "Hello,\r<br />\n<br />\nIs it possible to create a button Excel which execute a code from .NET ? Currently, I know how to create a ribbon thanks to examples but there are no example which done my need..\r<br />\n<br />\nI know that create a button is possible with :<br />\n<pre><code>Excel.Shape refresh = workSheetGroupingTest.Shapes.AddFormControl(XlFormControl.xlButtonControl, 3, 3, 100, 18);</code></pre>\n\nbut how can i write a code which will be execute when the button will be clicked ?\r<br />\n<br />\nThanks for your job,\r<br />\n<br />\nThomas<br />\n",
+    "PostedDate": "2014-11-05T05:19:27.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1319707",
+    "ThreadId": "571364",
+    "Html": "The code I posted <a href=\"https://netoffice.codeplex.com/discussions/531368\" rel=\"nofollow\">here</a> works for me. Note: The code uses ActiveX and not form buttons.<br />\n",
+    "PostedDate": "2014-11-06T08:46:57.363-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1322108",
+    "ThreadId": "571364",
+    "Html": "That works fine ! Thank you<br />\n",
+    "PostedDate": "2014-11-14T02:28:19.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

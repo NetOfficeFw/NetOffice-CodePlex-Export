@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1128019",
+    "ThreadId": "470869",
+    "Html": "Hello,<br />\n<br />\nI am seeking any (Outlook) API where I can develop logic to evaluate a highlighted/selected word in the body of an email message, and if the selected word matches a specific pattern, provide a context menu that allows a user to take action on the selected word.<br />\n<br />\nA more practical description of what I am asking for would be based on the following scenario...<br />\n<br />\nAt the company I work at we have a helpdesk system.  This system will send email notifications to employees with the trouble ticket number in the body of the  email.  The recipient can navigate to the ticket using a web browser and viewing the details.  The email does not contain any hyperlinks, just the text of the ticket number (along with description).  The URL in the helpdesk system is a simple URL with the ticket number as part of the query string.<br />\n<br />\nSeeking to create an outlook feature where a user would highlight the ticket number, and upon evaluation, if the highlighted word has the specific pattern found (i.e. AAA-AAA-AAAA-NNNN, where A = alphanumeric, and N = numeric) this feature would provide a context menu that opens a web browser with a URL directed at the helpdesk system constructed at runtime to include a query string having the highlighted ticket number, thus dropping the user off at the ticket itself.<br />\n<br />\nAny ideas?<br />\n",
+    "PostedDate": "2013-11-22T10:44:33.62-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128121",
+    "ThreadId": "470869",
+    "Html": "I think its impossible because outlook doesn support this and its regardless from any arround API(VSTO, Interop, NetOffice, Addin.Express or anyone else).\r<br />\nThe best way is your comany sends HTML mails and highlight the ticket number directly. Another way is to observe the inbox with a custom addin and modify or replace new mail content. \r<br />\n<br />\nnot sure but may its possible to track the context menu open event for independent actions. (no highlighting of course but may helpfull) gimme this weekend to check this out.<br />\n",
+    "PostedDate": "2013-11-22T22:01:02.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1128734",
+    "ThreadId": "470869",
+    "Html": "\r\n<div name=\"divtagdefaultwrapper\" id=\"divtagdefaultwrapper\" style=\"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:#000000; margin:0\">\r\n<p>Hi SebastianDotNet,</p>\r\n<p></p>\r\n<p>Thanks for the advice. I know I was grasping at straws on this one. Just thought I would give a shout-out to see if anyone has approached a similar type of concern.</p>\r\n<p></p>\r\n<p></p>\r\n<p>Best Regards,<br>\r\n<br>\r\nBarry Anderson</p>\r\n<p></p>\r\n<div>\r\n<div name=\"divtagdefaultwrapper\" style=\"margin:0px; font-family:Calibri,Arial,Helvetica,sans-serif\">\r\n<div>\r\n<div style=\"margin:0px 50.4pt 0px 0px\"><font size=\"3\" face=\"Times New Roman,serif\"><span style=\"font-size:12pt\"><font color=\"#e0861a\" size=\"2\" face=\"Segoe UI Semibold,sans-serif\"><span style=\"font-variant:small-caps; font-size:10pt\">\r\n<div></div>\r\n<div style=\"padding-right:50.4pt\"><font color=\"#e0861a\" size=\"2\" face=\"Segoe UI Semibold\"><span style=\"font-size:10pt\"><span style=\"font-variant:small-caps\">Barry Anderson</span></span></font></div>\r\n<div><font color=\"#346483\" size=\"1\" face=\"Segoe UI\"><span style=\"font-size:8pt\">(503) 559-9229 : mobile</span></font></div>\r\n<div><font color=\"#e0861a\"></font></div>\r\n<div><img src=\"https://outlook.office365.com/owa/service.svc/s/GetFileAttachment?id=AAMkADk4MTQyMmI1LTE5OTYtNDBlNi04NDFlLWRhN2Y0NjFlNGY1NQBGAAAAAACGOPYoW3c0S4R0jwhB4rcJBwC1cxH6JMbgS4K46aOgsgOlAAANCYJLAAC1cxH6JMbgS4K46aOgsgOlAAAj4IjxAAABEgAQANltSBAAOBFJqCMDObCmslA%3D&X-OWA-CANARY=qwyBUX25WEGyGUwtWd5B-36EL703qtAIHNfw32elYNK4nGxCDlzk2-p7VubW9GVfqRLWzSgSaZU.\" style=\"display:inline\">\r\n</div>\r\n<div><font color=\"#e0861a\"></font><a href=\"http://marquam.com\">http://marquam.com</a></div>\r\n<div><font color=\"#e0861a\" size=\"1\" face=\"Arial\"><span style=\"font-size:8pt\"><span style=\"font-variant:small-caps\"><b>portland | denver | Salt Lake City</b></span></span></font></div>\r\n</span></font></span></font></div>\r\n</div>\r\n</div>\r\n</div>\r\n<p></p>\r\n<div style=\"color:#282828\">\r\n<hr tabindex=\"-1\" style=\"width:98%; display:inline-block\">\r\n<div dir=\"ltr\" id=\"divRplyFwdMsg\"><font color=\"#000000\" face=\"Calibri, sans-serif\" style=\"font-size:11pt\"><b></b></font></div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2013-11-25T08:11:18.383-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

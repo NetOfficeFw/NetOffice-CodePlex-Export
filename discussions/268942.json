@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "657551",
+    "ThreadId": "268942",
+    "Html": "<p>I've got 64 bit office 2010&nbsp;on win7.&nbsp; Running example 1, .NET 3.5, VB works fine if Outlook is not running, but if Outlook is running it gives:&nbsp;</p>\n<p>Retrieving the COM class factory for component with CLSID {0006F03A-0000-0000-C000-000000000046} failed due to the following error: 80080005.</p>\n<p>Exection occurs on this line:&nbsp;&nbsp; Dim outlookApplication = New Outlook.Application()</p>\n<p><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><font face=\"Consolas\" size=\"2\" color=\"#0000ff\">\n<p>&nbsp;</p>\n</font></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>\n<p>Also, if the example program is running and I try to run Outlook it says:</p>\n<p>Another version of Outlook is currently running. Close it and try again.</p>\n</p>",
+    "PostedDate": "2011-08-12T23:15:59.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "657829",
+    "ThreadId": "268942",
+    "Html": "<p>Hello crandelj,</p>\r\n<p>yes, this is typical for outlook, you have the same problems also with interop or someone else.<br />please take look in the netoffice folder: Examples\\Misc\\VB\\GetRunningOutlookInstance<br />you see here an example to create a new outlook instance or get running instance if exists.</p>",
+    "PostedDate": "2011-08-13T13:00:09.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

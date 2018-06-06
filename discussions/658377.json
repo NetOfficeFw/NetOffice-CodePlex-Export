@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1484990",
+    "ThreadId": "658377",
+    "Html": "Hi!\r<br />\n<br />\nI'm currently developing a word add in, which by now runs perfectly in my local environment! Since I need to deploy this for multiple users, my created assemblies and all needed NO assemblies are placed on a fileserver, parallel to another application that contains some files, that I need (configuration files for servers and more). It's also necessary to know, that an excel instance is created after calling specific methods from inside word.\r<br />\n<br />\nThe problem is, the add in should be registered on a terminal server which is not the file server mentioned above! Currently it runs perfectly until the point excel starts. Actually excel runs fine and opens the file that I want to, but when the following code is going to be processed the software crashes with the message: &quot;Worksheet not found in loaded assemblies.&quot;<br />\n<pre><code>foreach (NetOffice.ExcelApi._Worksheet sheet in excelWorkbook.Worksheets)</code></pre>\n\nAgain if the add in is registered localy, everything runs fine! The funny part is... it already worked with remote registration and after the last weekend, something changed. Maybe Windows Updates did things? The question is now if there's any setting/configuration/permission, that could trigger that issue or - which would be worse - specific code elements haven't been registered correctly.\r<br />\n<br />\nThe only useful information that I could find so far is related to this topic: <a href=\"http://netoffice3.rssing.com/chan-15397442/all_p32.html#item631\" rel=\"nofollow\">http://netoffice3.rssing.com/chan-15397442/all_p32.html#item631</a><br />\n<blockquote>\n&quot;Worksheet not found in loaded NetOffice Assemblies&quot;<br />\nSounds like a reference problem. NO cant' find the loaded ExcelApi.dll in the current AppDomain. I need to know your NetOffice version and operating system version to reproduce the problem. (op-system in test and failed prod system) BTW: make sure the solution is not loaded from a network ressource(forbidden in .NET default policies)<br />\n</blockquote>\nAny suggestions to determine issues? : (<br />\n",
+    "PostedDate": "2016-09-29T23:12:39.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1484991",
+    "ThreadId": "658377",
+    "Html": "Oh! And some more information about the environment:<br />\n<br />\nThe terminal server is running Windows Server 2012 R2 Standard Edition. NetOffice is version 1.7.3. The add in is registered with:<br />\n<pre><code>cd \\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\nregasm \\\\RemoteFileServer\\FileShare\\MyAddIn.dll /tlb:MyAddIn.tlb /codebase</code></pre>\n\n",
+    "PostedDate": "2016-09-29T23:18:56.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1485347",
+    "ThreadId": "658377",
+    "Html": "<strong>UPDATE:</strong>\r<br />\n<br />\nIn my project I changed the <strong><em>&quot;embed interop types&quot;</em></strong> setting in the properties of the VBIDE reference from true to <strong><em>false</em></strong>. Since I'm not really shure how they work exactly and I don't mind having some more Mb in my assemblies, I skipped that 'optimization'. So far everything works fine! The error <em>&quot;Worksheet not found [...]&quot;</em> is gone and all my methods are working with registration by network!\r<br />\n<br />\nBut.. I'm a bit confused. This &quot;emed interop types&quot; thing should check your code and will embed the functionality of the used assembly functions into your own assembly... if I understand it correctly. So I asume there is an issue with the routine that checks <em>&quot;NetOffice.ExcelApi.Worksheet&quot;</em> and determines that my assembly isn't using it?\r<br />\n<br />\nMaybe if someone can be a bit more specific what this property does and how it could effect the network registration? Because I'm a bit uncertain if this really is the solution, even though it works right now!\r<br />\n<br />\nThanks! : )<br />\n",
+    "PostedDate": "2016-10-05T05:56:12.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486261",
+    "ThreadId": "658377",
+    "Html": "Hi,\r<br />\n<br />\nhad nearly the same experience:\r<br />\nA method that defines a variable of type NetOffice.ExcelApi._WorkSheet fails on one computer (Win2012 x64 with Office 2016 x64):<br />\n<pre><code>        private bool hasSheet(string sheetName)\n        {\n            bool hasSheet = false;\n            foreach (NetOffice.ExcelApi._Worksheet sheet in excelWorkbook.Worksheets)\n            {\n                if (sheet.Name.Equals(sheetName, StringComparison.InvariantCultureIgnoreCase))\n                {\n                    hasSheet = true;\n                    break;\n                }\n            }\n            return hasSheet;\n        }</code></pre>\n\nAfter searching google a long time (and found nothing) I changed my code in order to prevent using a reference to this type...<br />\n<pre><code>        private bool hasSheet(string sheetName)\n        {\n            bool hasSheet = false;\n            try\n            {\n                var sheet = excelWorkbook.Sheets[sheetName];\n                hasSheet = true;\n            }\n            catch (Exception ex)\n            {\n                Logger4net.Log(&quot;Sheet '{0}' does not exist in workbook&quot;, Logger4net.LoggerMsgType.ERROR, ex);\n            }\n            return hasSheet;\n        }</code></pre>\n\nHTH,\r<br />\nKarsten<br />\n",
+    "PostedDate": "2016-10-17T06:41:16.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486303",
+    "ThreadId": "658377",
+    "Html": "<em>irgs</em>\r<br />\n<br />\ni do no understand the problem. &quot;embed interop types&quot;  is a setting that gives you compile time errors. we talk about runtime errors right?\r<br />\n@karsten_prv: I do not understand your problem. If you german(it looks so for the name) please explain me the problem in german.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2016-10-17T13:09:14.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

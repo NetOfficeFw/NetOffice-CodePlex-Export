@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1484941",
+    "ThreadId": "658353",
+    "Html": "Hello Guys,\r<br />\n<br />\nis it possible to Create more than one instance of the CTP?\r<br />\nI have a COM AddIn wich shows a Ribbon Bar and one CTP.\r<br />\n<br />\nIf i open Word my CTP is loaded an Visible but if i create a new Document another Word Windows pops up but the CTP is not shown. The Ribbon is still there.\r<br />\n<br />\nI have an toggle CTP visibility button in my Ribbon Bar. If i clicked on this Ribbon button in the second Word Session, the CTP in Word Session 1 is hiding.\r<br />\n<br />\nBut i need for every Session one independently CPT. is this possible?\r<br />\n<br />\ngreetings mok<br />\n",
+    "PostedDate": "2016-09-29T04:57:07.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

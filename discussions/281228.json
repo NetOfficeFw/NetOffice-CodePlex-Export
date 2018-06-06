@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "704948",
+    "ThreadId": "281228",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I&nbsp;'d like&nbsp;to add Excel native undo feature into my addin.&nbsp; Is it possible and how? thanks</p>\r\n<p>My addin use C#, VS2010, ExcelDNA, NetOffice</p>\r\n",
+    "PostedDate": "2011-11-29T12:30:31.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704955",
+    "ThreadId": "281228",
+    "Html": "<p>Hello,</p>\r\n<p>long time no see, nice to read you again. <br />the simplest way to use:<br /><br />excelApplication.Undo();<br /><br />*kind regards<br />Sebastian</p>",
+    "PostedDate": "2011-11-29T12:42:16.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704966",
+    "ThreadId": "281228",
+    "Html": "<p>(Yes,&nbsp; have been silent for a while :)</p>\n<p>oh, I did not make it clear.</p>\n<p>I have an Excel UDF,&nbsp;in fact it is not a UDF, more like a process. It has no&nbsp;return value. The process kicks off a web service call based on input parameters ﻿﻿asychronously</p>\n<p>When getting response back from web service, it will plot result in Excel cells, data could be many rows * columns. After this process, undo button in Excel becomes disabled.&nbsp; not sure why. So users can't undo previous steps.</p>\n<p>I do not want to code undo myself and just want to use Excel built-in undo if possible</p>",
+    "PostedDate": "2011-11-29T13:05:03.76-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704970",
+    "ThreadId": "281228",
+    "Html": "<p>excel can't undo your own steps of course.<br />you have implement the undo pattern at hand, not easy i find!<br />i nice tutorial you find here <a href=\"http://www.jkp-ads.com/Articles/UndoWithVBA00.asp\">http://www.jkp-ads.com/Articles/UndoWithVBA00.asp</a><br />these tutorial shows you how create an own undo handler in excel.<br />the basic idea is: store, the current state and restore with excelApplication.OnUndo();<br /><br />give me a little bit code and i will see its possible to find a way you can use undo from excel.<br />display the data is the key, you need a way with undo support. range.Value = \"...\" doesnt support undo, maybe another way&nbsp;exists here.</p>\n<p>Sebastian</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-29T13:16:14.303-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "705314",
+    "ThreadId": "281228",
+    "Html": "<p>thanks for the info. Will take a look</p>",
+    "PostedDate": "2011-11-30T07:57:51.293-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

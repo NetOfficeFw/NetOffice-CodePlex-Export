@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1122905",
+    "ThreadId": "468459",
+    "Html": "Possible bug in 1.6/1.7 NetOffice.OutlookApi.Tools.ComAddIn:<br />\n<pre><code>                // register addin in Word\n                Registry.CurrentUser.CreateSubKey(_addinOfficeRegistryKey +  progId.Value);\n                RegistryKey regKeyWord = null;\n                \n                if(location.Value == RegistrySaveLocation.LocalMachine)\n                    regKeyWord = Registry.LocalMachine.OpenSubKey(_addinOfficeRegistryKey + progId.Value, true);\n                else\n                    regKeyWord = Registry.CurrentUser.OpenSubKey(_addinOfficeRegistryKey + progId.Value, true);\n\n                regKeyWord.SetValue(&quot;LoadBehavior&quot;, addin.LoadBehavior);\n                regKeyWord.SetValue(&quot;FriendlyName&quot;, addin.Name);\n                regKeyWord.SetValue(&quot;Description&quot;, addin.Description);\n                if(-1 != addin.CommandLineSafe)\n                    regKeyWord.SetValue(&quot;CommandLineSafe&quot;, addin.CommandLineSafe);</code></pre>\n\nRegistrySaveLocation.LocalMachine never calls a CreateSubKey, so regKeyWord is null.\r<br />\n<br />\nShould perhaps look like this:<br />\n<pre><code>// register addin in Outlook\n        string registryKey = _addinOfficeRegistryKey + progId.Value;\n        RegistryKey regKeyWord = null;\n\n        if (location.Value == RegistrySaveLocation.LocalMachine)\n        {\n          regKeyWord = Registry.LocalMachine.OpenSubKey(registryKey, true);\n          if (regKeyWord == null)\n            regKeyWord = Registry.LocalMachine.CreateSubKey(registryKey);\n        }\n        else\n        {\n          regKeyWord = Registry.CurrentUser.OpenSubKey(registryKey, true);\n          if (regKeyWord == null)\n            regKeyWord = Registry.CurrentUser.CreateSubKey(registryKey);\n        }\n\n        if (regKeyWord == null)\n          throw new System.Exception(string.Format(&quot;Unable to Open or Create registry key.&quot;, registryKey));\n\n        regKeyWord.SetValue(&quot;LoadBehavior&quot;, addin.LoadBehavior);\n        regKeyWord.SetValue(&quot;FriendlyName&quot;, addin.Name);\n        regKeyWord.SetValue(&quot;Description&quot;, addin.Description);\n        if (-1 != addin.CommandLineSafe)\n          regKeyWord.SetValue(&quot;CommandLineSafe&quot;, addin.CommandLineSafe);</code></pre>\n\n",
+    "PostedDate": "2013-11-13T05:49:12.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1122947",
+    "ThreadId": "468459",
+    "Html": "thanks for your bug repsonse.  i want clearify the situation asap. its important for me to know how you get the source code. in other words: is this NO 1.6.0 or NO 1.6.1(no official release) or NO 1.7 preview? (NO 1.6.0 contains a well-kown bug (same as you say) but its fixed in NO 1.7 preview. available in the download section) Sorry for this. In NO 1.6, the tools are just a nice idea and not published to anyone else. This is different in the upcoming NO 1.7 release. The tools namespace is now a full qualified member in the NO main strategy. this means: full test service(to avoid quality issues) and dedicated examples.  i hope to release NO 1.7 this mounth and i'm  realy sorry for any convenience. \r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-11-13T07:50:23.14-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1123048",
+    "ThreadId": "468459",
+    "Html": "Sebastian\r<br />\n<br />\nThese are 1.6.0 and 1.7 preview from downloads page. I've recompiled the code in NetOffice 1.7.0 (Preview)\\Source to get to the bottom of a registration error for LocalMachine installation. (I was reading <a href=\"https://netoffice.codeplex.com/discussions/459474\" rel=\"nofollow\">https://netoffice.codeplex.com/discussions/459474</a>)\r<br />\n<br />\nAlso, as a side, but related note, is it necessary to populate the Wow6432Node registry elements if this node exists on the client PC as well ? e.g. HKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Office\\Outlook\\Addins\\My.Addin\r<br />\n<br />\n<br />\nChris <br />\n",
+    "PostedDate": "2013-11-13T09:53:10.143-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1124158",
+    "ThreadId": "468459",
+    "Html": "hm okay,\r<br />\n<br />\nthis is may a OpSystem problem. did you use a 64 Bit  operating system? (looks like NO does something wrong on 64Bit windows)\r<br />\n<br />\nSebastian <br />\n",
+    "PostedDate": "2013-11-15T11:02:30.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

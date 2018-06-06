@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1007809",
+    "ThreadId": "434741",
+    "Html": "Hi\r<br />\n<br />\nI am wondering how you can automatically get the details of a selected mail item, I would like to retrieve some mail details when a user selects a mail entry, is this possible?\r<br />\n<br />\nMany thanks,\r<br />\nGary<br />\n",
+    "PostedDate": "2013-02-27T12:04:54.333-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008063",
+    "ThreadId": "434741",
+    "Html": "yes its possible.<br />\n",
+    "PostedDate": "2013-02-28T01:29:22.76-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008177",
+    "ThreadId": "434741",
+    "Html": "Excellent, Any help would be greatly appreciated.\r<br />\n<br />\nAlso\r<br />\n<br />\nAs vs2012 doesn't have a deployment tool how do go about registering your addin?\r<br />\n<br />\nMany thanks for any insightful help!\r<br />\n<br />\nKind regards,\r<br />\nGary<br />\n",
+    "PostedDate": "2013-02-28T05:53:44.157-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008327",
+    "ThreadId": "434741",
+    "Html": "<strong>PhantomMan wrote:</strong><br />\n<blockquote>\nAs vs2012 doesn't have a deployment tool how do go about registering your addin?<br />\n</blockquote>\nPersonally I wrote <a href=\"http://www.jrsoftware.org/\" rel=\"nofollow\">Inno Setup</a> script for installing and registering my addin on other computers.<br />\n",
+    "PostedDate": "2013-02-28T09:34:15.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008333",
+    "ThreadId": "434741",
+    "Html": "<strong>PhantomMan wrote:</strong><br />\n<blockquote>\nI am wondering how you can automatically get the details of a selected mail item, I would like to retrieve some mail details when a user selects a mail entry...<br />\n</blockquote>\nYou can use <a href=\"http://msdn.microsoft.com/en-us/library/office/ff861267.aspx\" rel=\"nofollow\">Explorer.Selection Property</a>, <a href=\"http://msdn.microsoft.com/en-us/library/office/ff869813(v=office.15).aspx\" rel=\"nofollow\">Explorer.SelectionChange Event</a> to get selected item and <a href=\"http://msdn.microsoft.com/en-us/library/office/jj900956.aspx\" rel=\"nofollow\">MailItem properties</a> for retrieving mail details.<br />\n",
+    "PostedDate": "2013-02-28T09:43:42.99-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1009878",
+    "ThreadId": "434741",
+    "Html": "Hi Artnib\r<br />\n<br />\nMany thanks for your help, very much appreciated.\r<br />\n<br />\nkind regards,\r<br />\nGary<br />\n",
+    "PostedDate": "2013-03-04T04:26:51.34-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

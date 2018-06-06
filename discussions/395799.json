@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "913544",
+    "ThreadId": "395799",
+    "Html": "\r\n<p>Hi&nbsp;<span>Sebastian,</span></p>\r\n<p><span><span style=\"white-space:pre\"></span>I have a listobject in Excel,created via NetOffice (Forms.ListBox.1), I can see the Got/Lost Focus events, but not chan</span>ge/keydown etc. Does NetOffice support these events?</p>\r\n<p><span>Dave</span></p>\r\n",
+    "PostedDate": "2012-09-17T06:19:04.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "913970",
+    "ThreadId": "395799",
+    "Html": "<p>hey dave,<br /><br />NetOffice doesnt miss any event/property/method.<br />did you have a code snippet for me? *as much you can*<br /><br />Sebastian</p>",
+    "PostedDate": "2012-09-18T01:09:20.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "913992",
+    "ThreadId": "395799",
+    "Html": "<p>Hey,</p>\r\n<p>When I examine the MS Forms.ListBox.1 control in Excel VBE (2007) I see a number of events I wish to capture, but don't see them on ListBox class in NetOffice.</p>\r\n<p>&nbsp;</p>\r\n<p>NetOffice.ExcelApi.OLEObjects objects = (NetOffice.ExcelApi.OLEObjects)WorkSheet.OLEObjects();</p>\r\n<p>Excel.OLEObject listObject = null;</p>\r\n<p>listObject = objects.Add(\"Forms.ListBox.1\");</p>\r\n<p>Excel.ListBox list = (Excel.ListBox)listObject.Object;</p>\r\n<p>&nbsp;</p>\r\n<p>I can only see the got and lost focus events on the Excel.ListBox Control, I want to hook the keyboard press/up events.</p>\r\n<p>Dave</p>",
+    "PostedDate": "2012-09-18T02:43:36.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "914199",
+    "ThreadId": "395799",
+    "Html": "<p>as far i known today this is impossible becauce its impossible in the interop assemblies. VSTO contains a special service here:<br /><br />http://msdn.microsoft.com/de-de/library/microsoft.office.tools.excel.controls.listbox.aspx<br /><br />but you need the vsto runtime and its not true version independent of course :(<br /><br />Sebastian</p>",
+    "PostedDate": "2012-09-18T09:19:30.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

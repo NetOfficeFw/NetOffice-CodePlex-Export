@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1020723",
+    "ThreadId": "437917",
+    "Html": "Hi\r<br />\napologies if this has all been dealt with elsewhere, but I just get more confused the deeper I delve :(\r<br />\nI am trying to provide a user with an add-in that will pop-up a form to allow them to enter validated data, which will then be used to fill in the next available row in the current sheet.  Seems a reasonable enough task.\r<br />\nI can generate a button in the ribbon, I can create a windows from which pops up and runs a function when the OK button is clicked.\r<br />\nUsing Interop, I can detect the range of occupied cells, but to locate the next row I need to do some extreme regex parsing of the range returned by Application.ActiveSheet.UsedRange as their may be empty cells (so using .End or .Next doesn't behave correctly.\r<br />\nI was hoping that NetOffice would a) help me over this and/or provide me with office version independence.  However I can see no way of getting hold of the ActiveSheet, and all of the examples seem to work by creating new instance of excel and then creating a new workbook within that instance.<br />\nAm I simply missing the point of what/how netoffice does - or am I simply going about things in an unreasonable way?\r<br />\nadvice please?\r<br />\npretty please?\r<br />\n<br />\nJustin<br />\n",
+    "PostedDate": "2013-03-25T09:19:40.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021153",
+    "ThreadId": "437917",
+    "Html": "<strong>jathalls wrote:</strong><br />\n<blockquote>\nI was hoping that NetOffice would a) help me over this and/or provide me with office version independence.  However I can see no way of getting hold of the ActiveSheet, and all of the examples seem to work by creating new instance of excel and then creating a new workbook within that instance.  \n<br />\n</blockquote>\nHere is an example of getting active sheet in VB.NET. _application variable is already defined in addin code generated with NetOffice Project Wizard.<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">Dim</span> <span style=\"color:Blue;\">WithEvents</span> _application <span style=\"color:Blue;\">As</span> Excel.Application\n...\n<span style=\"color:Blue;\">Dim</span> sheet <span style=\"color:Blue;\">As</span> Excel.Worksheet\nsheet = _application.ActiveSheet\n\r\n</pre></div>",
+    "PostedDate": "2013-03-26T04:02:32.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021239",
+    "ThreadId": "437917",
+    "Html": "<strong>artnib wrote:</strong><br />\n<blockquote>\nHere is an example of getting active sheet in VB.NET. _application variable is already defined in addin code generated with NetOffice Project Wizard.<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">Dim</span> <span style=\"color:Blue;\">WithEvents</span> _application <span style=\"color:Blue;\">As</span> Excel.Application\n...\n<span style=\"color:Blue;\">Dim</span> sheet <span style=\"color:Blue;\">As</span> Excel.Worksheet\nsheet = _application.ActiveSheet\n\r\n</pre></div></blockquote>\nHi\r<br />\nthanks for the response.  I am actually using C# (Visual Studio 2010 Ult, with office 2010 installed on the development machine) but I can generally interpret from VB.  I had found the Excel.Application class and the static method GetActiveWorksheet(), but any reference to Excel.Application simply generates a compiler error 'Interop type 'NetOffice.ExcelApi.Application' cannot be embedded. Use the applicable interface instead.'  There was a mention of this in an earlier thread in the discussion which referred to changing a property to false, but it did not say what it was a property of or how to access it so it was a bit of a dead end.\r<br />\n:)<br />\n",
+    "PostedDate": "2013-03-26T07:19:27.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021646",
+    "ThreadId": "437917",
+    "Html": "To get rid of 'Interop type 'NetOffice.ExcelApi.Application' cannot be embedded. Use the applicable interface instead.' error do the following:<br />\n<ol>\n<li>in the Solution Explorer right-click on Excel reference and choose <em>Properties</em> item</li>\n<li>\nset <strong>Embed Interop Values</strong> property value to <em>False</em>.<br />\n</li>\n</ol>\n",
+    "PostedDate": "2013-03-27T02:33:16.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021665",
+    "ThreadId": "437917",
+    "Html": "Hello jathalls,<br />\n<br />\nI had this issue often too.<br />\n<br />\nWhen you download <a href=\"http://netoffice.codeplex.com/downloads/get/454192\" rel=\"nofollow\">http://netoffice.codeplex.com/downloads/get/454192</a><br />\n<br />\nDownload and try to go in NetOffice 1.5.1.2 [RC] folder and choose the correct version of the .NET framework (3.5 for example) -&gt; Assemblies -&gt; Any CPU<br />\nCopy the correct .dll you need, really important!<br />\n<br />\nCopy them in your project.<br />\n<br />\nProject (top) -&gt; Add References -&gt; Browse -&gt; choose the .dll you need<br />\n<br />\nThen, from your Explorer window, just drag and drop the .dll in your Assemblies file for example and as artnib mentioned -&gt; set Embed Interop Values property value to False.<br />\n<br />\nIn your Reference, you can always right click -&gt; Properties -&gt; Local Copy -&gt; True<br />\n<br />\nIn case it works, you can test and do : <br />\n<pre><code>using Excel = NetOffice.ExcelApi;</code></pre>\n\nIt should show you the ExcelApi properties<br />\n<br />\nOr what else you can do is to copy the needed .dll files into C:\\Windows\\System32<br />\n<br />\nAnd open command shell with cmd.exe -&gt; cd C:\\Windows\\System32 -&gt; regsvr32 &lt;filename&gt;.dll but I don't think it will be necessary here and use the Assemblies from there.<br />\n<br />\nLater, while working with COM's don't forget to close them, or your memory will be overloaded.<br />\n<pre><code>Process[] processes = System.Diagnostics.Process.GetProcessesByName(&quot;EXCEL&quot;);\nforeach (Process p in processes)\np.Kill();</code></pre>\n\nTo create an application;<br />\n<pre><code>Excel.Application xlsApp = new Excel.Application();</code></pre>\n\nCreating a new workbook:<br />\n<pre><code>Excel.Workbook workbook;\nworkbook = xlsApp.Workbooks.Open(&lt;open from another xls file for example&gt;, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\n                                                Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\n                                                Type.Missing, Type.Missing);</code></pre>\n\nNow if you want to loop through worksheets, cells and loop through shapes/images/figure:<br />\n<pre><code>Excel.Worksheet workSheet;\nforeach (Excel.Worksheet sheet in workbook.Sheets)\n{   \n                        workSheet = (Excel.Worksheet)xlsApp.Worksheets[worksheetnumber];\n                        foreach (Excel.Range cell in workSheet.UsedRange)\n                        {\n                        }\n}</code></pre>\n\n<pre><code>foreach (Excel.Worksheet sheet in workbook.Sheets)\n{\n                    foreach (Excel.Shape shape in sheet.Shapes)\n                    {\n                          Console.WriteLine(shape.AlternativeText);\n                    }\n}</code></pre>\n\nIf you want to Paste some content from Clipboard:<br />\n<pre><code>Clipboard.SetText(html);\nsheet.Range(&quot;A1&quot;).PasteSpecial();</code></pre>\n\nNow, don't forget to close/quit everything you created.<br />\n<pre><code>workbook.SaveAs(&lt;file destination&gt;);\nworkbook.Close();\nxlsApp.Quit();</code></pre>\n\nVery important, if you plan to do modifications on an existing Excel file, don't work on the original one, make a copy of it and work with the copy:<br />\n<pre><code>File.Copy(TemplateFile,ExportedFile);</code></pre>\n\nI hope, this might help you to overcome some future issues. ( I had those ).<br />\n<br />\nFor the regex part, I don't really understood what exactly you are looking for, but this might give you a hint.<br />\n<pre><code>string html = Clipboard.GetText(&lt;your range&gt;);\nint start = html.IndexOf(&quot;&lt;HEAD&gt;&quot;);\nint end = html.IndexOf(&quot;&lt;/TABLE&gt;&quot;);\nif (start != -1)\n{\n          html = html.Substring(start, ((end + 9) - start - 1));\n          Regex reTH = new Regex(@&quot;&lt;TH&quot;, RegexOptions.IgnoreCase);\n          Regex reTD = new Regex(@&quot;&lt;TD&quot;, RegexOptions.IgnoreCase);\n          html = reTH.Replace(html, &quot;&lt;TH class='convertTableHeader' &quot;);\n           if (reTD.IsMatch(html))\n            {\n                         html = reTD.Replace(html, &quot;&lt;TD class='convertTableCell' &quot;);\n            }\n          html = html.Replace(&quot;&lt;TABLE &quot;, &quot;&lt;TABLE class='convertTable'&quot;);\n}\n</code></pre>\n\nGive a feedback, if someone fits your issue.<br />\n",
+    "PostedDate": "2013-03-27T03:21:14.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021690",
+    "ThreadId": "437917",
+    "Html": "Many thanks Mike, and artnib too - that gets the whole project moving again.  I can do the regex business to parse a $A$1:$B$3 style reference to extract the $A$4 that I then need to write to, it just seemed a longwinded way of navigating about the sheet.  Nevertheless it will do, and I can get on now, thanks again\r<br />\nJustin<br />\n",
+    "PostedDate": "2013-03-27T04:06:23.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

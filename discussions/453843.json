@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1082268",
+    "ThreadId": "453843",
+    "Html": "Error 2 The type of interoperability 'NetOffice.WordApi.Application' can not be embedded. Use the applicable interface instead. C: \\ TFS \\ External \\ PAY-WRK \\ PAY-WRK \\ PayWrk \\ UserControls \\ Clients \\ UCClientsResult.xaml.cs 42 14 PayWrk\r<br />\nCan you help me please?<br />\n",
+    "PostedDate": "2013-08-19T10:00:17.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082269",
+    "ThreadId": "453843",
+    "Html": "go the project references and disable the option 'embed interop types' for all NetOffice assemblies.\r<br />\n<br />\n'Sebastian<br />\n",
+    "PostedDate": "2013-08-19T10:06:09.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082272",
+    "ThreadId": "453843",
+    "Html": "Thank you sebastian :)) Work's fine :)<br />\n",
+    "PostedDate": "2013-08-19T10:07:09.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1083728",
+    "ThreadId": "453843",
+    "Html": "I had this same problem and I did what you said. Now, I get \r<br />\n<br />\nThe type or namespace name 'NetOffice' could not be found (are you missing a using directive or an assembly reference?)\r<br />\n<br />\nAll I have done so far is using NetOffice;\r<br />\n<br />\nAny idea?<br />\n",
+    "PostedDate": "2013-08-22T09:33:27.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

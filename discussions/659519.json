@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1488261",
+    "ThreadId": "659519",
+    "Html": "I used NetOffice to read Office files.<br />\nI have problem when deploying to server.<br />\nFor now, in the server I could read Word files(DOC, RTF), but I don't know why it couldn't read Powerpoint files(PPT), it run forever... and didn't return any errors.<br />\nI have <strong>Office 2016</strong> in the server.<br />\n<br />\nI found my problem:<br />\n<pre><code>pptApplication.Quit();\npptApplication.Dispose();</code></pre>\n\nPowerpoint application cannot quit. It keeps running...<br />\nPlease help me if you know this problem.<br />\nThanks you so much.<br />\n",
+    "PostedDate": "2016-11-17T19:34:48.297-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491030",
+    "ThreadId": "659519",
+    "Html": "this might be tricky because, office product are not designed to run as or on a server, and there for not supported in this way, future PPT is a difficult product to work with at the best of times, and has it own &quot;rules&quot; to some extent!\r<br />\n<br />\none suggestions, make sure nothing is left open - i.e. no PPT file\r<br />\n<br />\nhow do you create the PPT application? <br />\n",
+    "PostedDate": "2017-01-12T03:54:55.773-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1020579",
+    "ThreadId": "437880",
+    "Html": "I have been going through the net office COMAddinTaskPaneExample. I notice the following lines are added at the start of the Public Addin Class sub (.Net 4.0)\r<br />\nPrivate Shared ReadOnly _addinOfficeRegistryKey As String = &quot;Software\\Microsoft\\Office\\Word\\AddIns\\&quot;\r<br />\nPrivate Shared ReadOnly _prodId As String = &quot;WordAddinVB4.TaskPaneAddin&quot;\r<br />\nPrivate Shared ReadOnly _addinFriendlyName As String = &quot;NetOffice Sample Addin in VB&quot;\r<br />\nPrivate Shared ReadOnly _addinDescription As String = &quot;NetOffice Sample Addin with custom Task Pane&quot;\r<br />\nAre these lines added as a result from registering the assembly with regasm utility.\r<br />\n<br />\nAlso I notice the following when building the example project:<br />\n<ul>\n<li>\nwindows xp when I build the solution the Com addin is automatically added to word 2007 and works perfectly<br />\n</li>\n<li>\nwindows vista and 7 can sometimes build the solution however cannot see the Com addin added to word. Note both windows vista and 7 have bit defender installed (whether that needs to be set up to accept the building of the solutions). Not sure.<br />\n</li>\n</ul>\nAnd help on the above would be great appreciated<br />\n",
+    "PostedDate": "2013-03-25T04:42:20.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021162",
+    "ThreadId": "437880",
+    "Html": "Here is my assumption.\r<br />\nYour addin was automatically added to Word on Windows XP because you have administrator privilegies.\r<br />\nOn Windows Vista/7 UAC prevents Visual Studio from automatic registering assembly for COM interop even if you have administrator privilegies. So your should manually register your addin with <em>regasm.exe</em> or run Visual Studio as administrator.<br />\n",
+    "PostedDate": "2013-03-26T04:20:26.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021527",
+    "ThreadId": "437880",
+    "Html": "No Windows XP is a work computer so do not have administration privileges. I think it could go back to your theory that Windows XP does not require registration. Have you found that Windows XP com addins require registration?\r<br />\n<br />\nAlso what do the following lines of code do. Why do all the examples have it:\r<br />\n<br />\nPrivate Shared ReadOnly _addinOfficeRegistryKey As String = &quot;Software\\Microsoft\\Office\\Word\\AddIns\\&quot; \r<br />\nPrivate Shared ReadOnly _prodId As String = &quot;WordAddinVB4.TaskPaneAddin&quot; \r<br />\nPrivate Shared ReadOnly _addinFriendlyName As String = &quot;NetOffice Sample Addin in VB&quot; \r<br />\nPrivate Shared ReadOnly _addinDescription As String = &quot;NetOffice Sample Addin with custom Task Pane&quot; <br />\n",
+    "PostedDate": "2013-03-26T19:16:00.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

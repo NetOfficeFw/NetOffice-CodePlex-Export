@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1443634",
+    "ThreadId": "644736",
+    "Html": "Hi\r<br />\n<br />\nI'm trying to load some icons (for a custom task pane) using the GetImageMso method. However I failed with below exception which i understand to mean (also by looking at core.cs) that netoffice cannot find the Picture class within it's own Assemblies. Something that is not extremly surprising as it's within the external stdole library...\r<br />\n<br />\nIs there some trick to make the stdole library part of the search path or is this simply a bug, that the GetImageMso method should use a custom proxy method (Or that netoffice should wrap the picture class) ?\r<br />\n<br />\nAny ideas?\r<br />\n<br />\nBr\r<br />\nAsk\r<br />\n<br />\n<br />\nClass 00020430-0000-0000-c000-000000000046:Picture not found in loaded NetOffice Assemblies\r<br />\n<br />\nCurrently loaded NetOfficeApi Assemblies\r<br />\n<br />\nLoaded NetOffice Assembly:System.Guid[] PowerPointApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=2aedeb5ce89d4005\r<br />\n<br />\nLoaded NetOffice Assembly:System.Guid[] OfficeApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=7c1c3e9d16cace88\r<br />\n<br />\nLoaded NetOffice Assembly:System.Guid[] VBIDEApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=a3637beacf571e8a<br />\n",
+    "PostedDate": "2015-09-08T12:08:15.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1443648",
+    "ThreadId": "644736",
+    "Html": "I got this working by making a custom version of netoffice where i have the GetImageMso() method which simply casts directly to IPictureDisp.<br />\n<br />\nI did try using the CreateKnownObjectFromComProxy method first, but since all the stdole (I)Picture* stuff is interfaces, that fails when calling Activator.CreateInstance (as the interfaces does not have constructors). <br />\n<br />\nAlso i changed the method to return an stdole.IPictureDisp (as consistent with MS documentation) instead of an stdole.Picture as it did before (but i didn't test if both will work).<br />\n<br />\ni.e. the code in my custom version is<br />\n<pre><code>public stdole.IPictureDisp GetImageMso(string idMso, Int32 width, Int32 height)\n{\n  object[] paramsArray = Invoker.ValidateParamsArray(idMso, width, height);\n  object returnItem = Invoker.MethodReturn(this, &quot;GetImageMso&quot;, paramsArray);\n  return (stdole.IPictureDisp)returnItem;\n}\n</code></pre>\n\nwhile the official 1.7.3 code is <br />\n<pre><code>public stdole.Picture GetImageMso(string idMso, Int32 width, Int32 height)\n{\nobject[] paramsArray = Invoker.ValidateParamsArray(idMso, width, height);\nobject returnItem = Invoker.MethodReturn(this, &quot;GetImageMso&quot;, paramsArray);\nstdole.Picture newObject = Factory.CreateObjectFromComProxy(this, returnItem) as stdole.Picture;\nreturn newObject;\n}\n</code></pre>\n\nSebastian: maybe you can provide some insight into what is the correct approach here?<br />\n<br />\nBr<br />\nAsk<br />\n",
+    "PostedDate": "2015-09-08T13:10:31.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1444332",
+    "ThreadId": "644736",
+    "Html": "hey men,\r<br />\n<br />\ni did not realized stdole is more as a stupid helper in some early bind scenarios(interface implementations and so on..)\r<br />\nthats why i've been never created a wrapper for.\r<br />\n<br />\nnow i see its also used in MS Office methods and/or properties.  i'm sorry for that.\r<br />\n<br />\nwhat happen:\r<br />\nThe NetOffice Invoker try to find the corresponding wrapper class for stdole.Picture in current application domain and failed because we dont have a wrapper here so far. \r<br />\n<br />\nWhat i have to do is to create an stdole Wrapper in NO 1.7.4.\r<br />\nAs Hotfix, i suggest you to use the NetOffice.Invoker directly.\r<br />\nSomething like:\r<br />\nInvoker.MethodReturn(myInstance, &quot;GetImageMso&quot;, new object[]{argument1, argument2});\r<br />\n<br />\n(i need 5-7 days from now to create the stdole wrapper and want upgrade the current release as fast as possible)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-09-14T08:18:20.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1446045",
+    "ThreadId": "644736",
+    "Html": "Hi\r<br />\n<br />\nSorry for no reply - i missed the notification in my inbox.\r<br />\n<br />\nI did use a hotfix like you suggested (basically i just copied the existing GetImageMso Wrapper but changed it so it cast the returned object directly to stdole.Picture\r<br />\n<br />\nBut i'm looking forward to a more complete fix \r<br />\n<br />\nBr\r<br />\nAsk<br />\n",
+    "PostedDate": "2015-09-26T13:01:13.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1366333",
+    "ThreadId": "587736",
+    "Html": "Hi,\r<br />\n<br />\nI just want to open an Excel that already exists and read some fixed cells of the third worksheet.\r<br />\nfor example: A5 and A6.\r<br />\n<br />\nSorry for the stupid question. I have been searching how to do it and I have not found it. With your libraries you can really do many things.\r<br />\n<br />\nKind regards,\r<br />\nJoan<br />\n",
+    "PostedDate": "2015-03-17T12:02:19.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366611",
+    "ThreadId": "587736",
+    "Html": "Try one of the examples in release folder.<br />\n<br />\nJust like:<br />\n<br />\nExcel.Application app = new Excel.Application();<br />\nvar book = app.Workbooks.Add();<br />\nvar sheet = book.Workseets[1] as Excel.WorkSheet;<br />\nvar value = sheet.Cells[&quot;A5&quot;].Value; // get value from A5<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-18T04:50:40.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366660",
+    "ThreadId": "587736",
+    "Html": "Thanks for the fast answer.\r<br />\n<br />\nYes, I have seen it in many examples. I thought it was creating an Excel from scratch. I mean to open an Excel, something like:\r<br />\n<br />\napp.open(&quot;c:\\ExcelFile.xsl&quot;);\r<br />\n<br />\nJoan<br />\n",
+    "PostedDate": "2015-03-18T07:26:55.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366663",
+    "ThreadId": "587736",
+    "Html": "nearly correct. its:\r<br />\n<br />\nExcel.Application app = new Excel.Application();     <br />\napp.Workbooks.Open(&quot;C:\\MyFiles\\MyWorkbook.xls&quot;);\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-18T07:34:20.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2015-03-18T10:29:58.797-07:00"
+  }
+]

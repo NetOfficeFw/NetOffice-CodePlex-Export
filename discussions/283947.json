@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "716279",
+    "ThreadId": "283947",
+    "Html": "\r\n<p>I would love an example, if possible,&nbsp;of implementing a Split Button Popup Control on a CommandBar.&nbsp; I've read a couple of forums that state that this may not be possible, but I personally have been able to load a built in control and modify it\r\n a little bit.</p>\r\n<p>Thanks,</p>\r\n<p>MindCore</p>\r\n",
+    "PostedDate": "2011-12-22T12:49:17.533-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "716694",
+    "ThreadId": "283947",
+    "Html": "<p>hello,</p>\r\n<p>i find the following VBA topic: <a href=\"http://peltiertech.com/Excel/CustomDwgCmdBar.html\">http://peltiertech.com/Excel/CustomDwgCmdBar.html</a></p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">Set</span> MyPopup = .Controls.Add(Type:=msoControlSplitButtonPopup, Id:=1692)\r\n\r\nlooks very typical i find. did you mean that?<br /></pre>\r\n<pre><br /><br />*Sebastian</pre>\r\n</div>",
+    "PostedDate": "2011-12-23T09:31:46.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "717044",
+    "ThreadId": "283947",
+    "Html": "<p>hello again,</p>\n<p>i do a test for you and the following code works fine. (based on netoffice excel example09)<br /><br />Office.CommandBarPopup splitbuttonPopup = (Office.CommandBarPopup)commandBar.Controls.Add(<br />MsoControlType.msoControlSplitButtonPopup, 1691, System.Type.Missing, System.Type.Missing, <span style=\"color: blue;\">true</span>);</p>\n<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">&nbsp;</span></span></span></p>",
+    "PostedDate": "2011-12-25T08:07:13.3-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1044979",
+    "ThreadId": "444021",
+    "Html": "Hi\r<br />\n<br />\nI am trying to link the control of a checkbox in the ribbon to toggle the custom task pane visibility status. I believe I am almost there however missing a step or 2.\r<br />\n<br />\nAssistance would be greatly appreciated thanks<br />\n<pre><code>Private taskPane As Office._CustomTaskPane\nPrivate ctpFactory As Office.ICTPFactory\n\nPrivate Const taskPane_PROGID As String = &quot;Advance Tools with Custom Task Pane&quot;\n\nShared _application As Word.Application\n\nShared myuserControl As UserControl1\n\nPublic Sub CTPFactoryAvailable(ByVal CTPFactoryInst As Object) Implements NetOffice.OfficeApi.ICustomTaskPaneConsumer.CTPFactoryAvailable\n\n    ctpFactory = CTPFactoryInst\n\nEnd Sub\n\nPublic Sub CheckBox1_Pressed(ByVal control As Office.IRibbonControl, ByVal CheckBox1State As Boolean)\n\n    If CheckBox1State Then\n\n        taskPane = ctpFactory.CreateCTP(GetType(Addin).Assembly.GetName().Name + &quot;.UserControl1&quot;, &quot;Picture Table Editor&quot;, Type.Missing)\n        taskPane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionFloating\n        taskPane.Width = 300\n        taskPane.Height = 420\n        taskPane.Visible = True\n        taskPane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionLeft\n        taskPane.Width = 300\n        myuserControl = taskPane.ContentControl\n\n    Else\n\n        taskPane.Visible = False\n\n    End If\n\nEnd Sub</code></pre>\n\n",
+    "PostedDate": "2013-05-17T02:28:15.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

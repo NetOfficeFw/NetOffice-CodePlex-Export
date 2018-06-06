@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "953567",
+    "ThreadId": "406144",
+    "Html": "\r\n<p>I've built a small Outlook COM Add-in using Netoffice.</p>\r\n<p>I'm running Outlook 2010 (64-bit) on my local machine and added a post-build step that uses the appropriate version of regasm (found here&nbsp;http://netoffice.codeplex.com/discussions/392507).</p>\r\n<p>Everything was working fine.</p>\r\n<p>I then decided to start versioning my assembly. &nbsp;So I changed the AssemblyVersion found in the Add-in's AssemblyInfo.cs from 1.0.0.0 to 1.0.2.0 . I built and ran Outlook. &nbsp;Everything continued to work fine.</p>\r\n<p>I then put the AssemblyVersion back to 1.0.0.0, and built and ran Outlook. &nbsp;The Add-in did not load. &nbsp;The COM Add-Ins window reports &quot;Not loaded. &nbsp;A runtime error occurred during the loading of the COM Add-in.&quot;</p>\r\n<p>I then changed the AssemblyVersion back to 1.0.2.0 . Built and ran and everything worked fine.</p>\r\n<p>I can live with this... but its bugging me that I can't figure out what's happening. &nbsp;I've tried manually unregistering and registering the assembly (I'm using the /codebase option). &nbsp;I do not see my assembly in the GAC. &nbsp;I see nothing in\r\n DbgView. &nbsp;</p>\r\n<p>Is the Assembly version cached somewhere? &nbsp;Is Netoffice caching it and checking that the version its about to load isn't older? &nbsp;</p>\r\n<p>Any light you can shed would be helpful. &nbsp;Thanks!</p>\r\n",
+    "PostedDate": "2012-12-09T09:38:22.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "954050",
+    "ThreadId": "406144",
+    "Html": "\r\n<p>you have to use regasm again after changing. :-)<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2012-12-10T08:43:49.4-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

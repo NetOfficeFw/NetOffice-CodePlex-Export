@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "940205",
+    "ThreadId": "402834",
+    "Html": "\r\n<p>The following code used to work with Outlook 2010, with exchange 2003 and NetOffice 1.5.1.2 [RC].</p>\r\n<p><br>\r\nNow testing for new client using Outlook 2013 and pst files, all other outlook interaction is fine, i.e. sending email etc... but unable to loop around folders, it returns null folders.</p>\r\n<p><br>\r\nOutlook.Application outlookApplication = new Outlook.Application();</p>\r\n<p>Outlook._NameSpace outlookNS = outlookApplication.GetNamespace(&quot;MAPI&quot;);</p>\r\n<p><br>\r\nOutlook.MAPIFolder objDefaultInboxFolder = outlookNS.GetDefaultFolder(OlDefaultFolders.olFolderInbox);</p>\r\n<p><br>\r\nfor (int f = 1; f &lt; outlookNS.Folders.Count; f&#43;&#43;<br>\r\n{<br>\r\n...<br>\r\n}</p>\r\n<p>Any ideas</p>\r\n",
+    "PostedDate": "2012-11-12T02:13:04.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "941272",
+    "ThreadId": "402834",
+    "Html": "\r\n<p>i do test today with outlook 2013 and window7 and i see its not applicable in outlook 2013.<br>\r\ni find a way for me based on this code snippet: http://msdn.microsoft.com/de-de/library/office/ff184607.aspx<br>\r\n<br>\r\nprivate void Main()<br>\r\n{<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outlook.Application outlookApplication = new Outlook.Application();<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; EnumerateFoldersInDefaultStore(outlookApplication);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outlookApplication.Dispose();<br>\r\n}<br>\r\n<br>\r\nprivate void EnumerateFoldersInDefaultStore(Outlook.Application outlookApplication)<br>\r\n&nbsp;{<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outlook.MAPIFolder root = outlookApplication.Session.DefaultStore.GetRootFolder() as Outlook.MAPIFolder;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EnumerateFolders(outlookApplication, root);<br>\r\n}<br>\r\n<br>\r\nprivate void EnumerateFolders(Outlook.Application outlookApplication, Outlook.MAPIFolder folder)<br>\r\n{<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outlook.Folders childFolders = folder.Folders as Outlook.Folders;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (childFolders.Count &gt; 0)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach (Outlook.MAPIFolder childFolder in childFolders)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(childFolder.FolderPath);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EnumerateFolders(outlookApplication, childFolder);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n",
+    "PostedDate": "2012-11-13T15:22:52.88-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "941645",
+    "ThreadId": "402834",
+    "Html": "\r\n<p>Hi Sebastian.</p>\r\n<p><span>Thank you for your prompt reply.</span><span><br>\r\n<br>\r\n<span>Your code worked perfectly!!</span><br>\r\n<br>\r\n<span>I would also like to thank you for all your efforts, over the years I have written a lot of office interop &nbsp;office code, but always using early binding. Your library is an exceptional body of work, which should act as an inspiration to us all.<br>\r\n<br>\r\n</span></span><span>Thanks for your amazing work!</span></p>\r\n",
+    "PostedDate": "2012-11-14T08:16:35.797-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

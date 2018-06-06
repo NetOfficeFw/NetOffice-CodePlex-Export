@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1018937",
+    "ThreadId": "437518",
+    "Html": "I'm writing COM Add-In for Outlook using NetOffice. I would like it to be compatible with any version of Office &gt; 2003 regardless of bitness. <br />\n<br />\nAs I understand you say in FAQ for question <strong>What do I have to do to deliver my application with NetOffice?</strong> that I need to distribute only required NetOffice assemblies in addition to my COM Add-In.<br />\n<br />\nBut I'm think I will have to also distribute Extensibility PIA (Extensibility.dll) as it might not be present on target computer. Am I right?<br />\n<br />\nThis assembly contains <strong>IDTExtensibility2</strong> Interface which is needed for my Add-In. <br />\n",
+    "PostedDate": "2013-03-21T08:45:03.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1019031",
+    "ThreadId": "437518",
+    "Html": "the IDTExensibility Interface is defined in serveral assemblies, its not important which assembly u use.\r<br />\nyou can also re-define the interface in your application.\r<br />\nthe envdte.dll (Microsoft Shared\\MsEnv\\Public Assemblies\\envdte.dll) is a part of the .NET Framework and contails the interface.\r<br />\nno reason to (re-)distribute another assembly :)\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-03-21T09:51:19.22-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1019666",
+    "ThreadId": "437518",
+    "Html": "Thank you for the suggestion, of course it perfectly works!<br />\n",
+    "PostedDate": "2013-03-22T10:01:08.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

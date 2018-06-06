@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "676134",
+    "ThreadId": "273696",
+    "Html": "\r\n<p>I get the following build error when adding latest NetOffice references in my .Net 2.0 solution. According to the docs v2.0 is supported ?</p>\r\n<p>C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\Microsoft.Common.targets(1490,5): warning MSB3258: The primary reference &quot;OfficeApi&quot; could not be resolved because it has an indirect dependency on the .NET Framework assembly &quot;mscorlib, Version=4.0.0.0, Culture=neutral,\r\n PublicKeyToken=b77a5c561934e089&quot; which has a higher version &quot;4.0.0.0&quot; than the version &quot;2.0.0.0&quot; in the current target framework.</p>\r\n",
+    "PostedDate": "2011-09-24T03:00:59.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676227",
+    "ThreadId": "273696",
+    "Html": "<p>hello wjb,</p>\r\n<p>i dont have these warning all the time. looks like i forget to remove a reference. netoffice supports .NET 2.0 of course.<br />all examples in repository source code are based and testet in .net 2.0. this is also my primary .net&nbsp;version personaly.<br /> do you use VB or C#? which IDE? NetOffice 1.2?</p>\r\n<p>*sebastian</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-09-24T13:38:09.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676277",
+    "ThreadId": "273696",
+    "Html": "<p>Ouch - I had copied the dll's from a 4.0 project to a 2.0 project. Everything works fine with the right dll's. Sorry for the confusion.&nbsp;</p>",
+    "PostedDate": "2011-09-25T00:28:27.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

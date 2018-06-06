@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1295257",
+    "ThreadId": "562918",
+    "Html": "I swear. Seen this happen 10 times today. <br />\n<br />\nCode: <br />\n<pre><code>protected virtual void WorkbookSheetActivate(NetOffice.COMObject sheetObj) \n{\n  try\n    {\n      if (_sheetTaskPanes == null || sheetObj is Excel.Chart)     </code></pre>\n\nSo I hover over <code>sheetObj</code> and expand  it, then expand the base and the base of that. Then I scroll down to <code>ListObjects</code> and EVERY TIME it causes Outlook to open. Since I don't have Outlook configured but do have it installed, it starts with the wizard. <br />\n<br />\nAny suggestions here? This is just weird weird behavior but it's super annoying. <br />\n<br />\nEdit: the debugger appears to be accessing the <code>MailEnvelope (NetOffice.OfficeApi.MsoEnvelope)</code> property of the object. <br />\n",
+    "PostedDate": "2014-08-29T14:41:56.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308559",
+    "ThreadId": "562918",
+    "Html": "I know this problem. This is an MS Office-problem.\r<br />\nSome years ago, i face the problem first time n VB6(in the debugger!!!!) while i try to analyze a collection in the watch window.\r<br />\nNot sure why but Outlook is started. NO idea why....\r<br />\n<br />\nAnyway, this problem is regardless from any API. Its just a scary MS-behaviour. (Your outlook is not configurated and f*cking wizard dialog is shown)\r<br />\nI cant't change the office implementation  ;)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-09-27T00:24:18.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

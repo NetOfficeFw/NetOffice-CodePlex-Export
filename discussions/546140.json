@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1248057",
+    "ThreadId": "546140",
+    "Html": "I am trying to get a data from a database into Excel and apply a table style to it in the most quickest time; whilst still using NetOffice for the interoperability it offers. I assume that using Excel's inbuilt query functions will be far faster so I am using that (please correct me if I am wrong on this)<br />\n<br />\nI can use a query table:<br />\n<pre><code>var sheet = (_excel.ActiveSheet as Excel.Worksheet);\nvar rng = sheet.Range(&quot;A1&quot;);\n\nvar qt = sheet.QueryTables.Add(&quot;ODBC;...&quot;, rng, &quot;SELECT * FROM myTable&quot;);\nqt.Refresh();</code></pre>\n\nand this will import the data correctly (e.g. dates actually display as dates etc...). But when I try and access the ListObject to apply a TableStyle I get an exception.<br />\n<br />\nNow if I add a list object like:<br />\n<pre><code>var sheet = (_excel.ActiveSheet as Excel.Worksheet);\n\nvar qt = sheet.ListObjects.Add(\n    Excel.Enums.XlListObjectSourceType.xlSrcQuery,\n    &quot;ODBC;...&quot;,\n    null,\n    Excel.Enums.XlYesNoGuess.xlNo,\n    rng,\n    &quot;TableStyleMedium9&quot;).QueryTable;\n\nqt.CommandType = Excel.Enums.XlCmdType.xlCmdSql;\nqt.CommandText = &quot;SELECT * FROM myTable&quot;;\nqt.Refresh();</code></pre>\n\nThe the dates in the query display as decimal numbers and not dates...<br />\n<br />\nI could just format the columns afterwards, but the problem is that I won't actually know the query that is being run as the user types this at runtime, so I would prefer to get Excel to do this.<br />\n<br />\nSo essentially, what I want, is to use the first bit of code and apply a TableStyle to it.<br />\n<br />\nCan anyone help?<br />\n",
+    "PostedDate": "2014-05-21T10:03:28.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1248301",
+    "ThreadId": "546140",
+    "Html": "So I can see that when I create a list object that the NumberFormat of the whole range is set to &quot;General&quot;....however, on the QueryTable (which has the correct number formatting), it is null which means that the range has different formats according to the documentation.\r<br />\n<br />\nSo my question is, how do I get the ListObject to take the NumberFormat from query like QueryTable does.<br />\n",
+    "PostedDate": "2014-05-22T02:25:54.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1248497",
+    "ThreadId": "546140",
+    "Html": "I've just realised I can record a macro to record what happens when I use the GUI:<br />\n<pre><code>    With ActiveSheet.ListObjects.Add(SourceType:=0, Source:= _\n        &quot;ODBC;...&quot; _\n        , Destination:=Range(&quot;$A$1&quot;)).QueryTable\n        .CommandText = Array(&quot;SELECT * FROM myTable&quot;)\n        .RowNumbers = False\n        .FillAdjacentFormulas = False\n        .PreserveFormatting = True\n        .RefreshOnFileOpen = False\n        .BackgroundQuery = True\n        .RefreshStyle = xlInsertDeleteCells\n        .SavePassword = False\n        .SaveData = True\n        .AdjustColumnWidth = True\n        .RefreshPeriod = 0\n        .PreserveColumnInfo = True\n        .ListObject.DisplayName = &quot;Table_myTable&quot;\n        .Refresh BackgroundQuery:=False\n    End With</code></pre>\n\nHowever, I can't seem to replicate it via NetOffice and get the same result?<br />\n<pre><code>            var sheet = (_excel.ActiveSheet as Excel.Worksheet);\n            var rng = sheet.Range(&quot;$A$1&quot;);\n\n            var lo = sheet.ListObjects.Add(\n                0,\n                &quot;ODBC;...&quot;,\n                Missing.Value,\n                Excel.Enums.XlYesNoGuess.xlNo,\n                rng);\n\n            var qt = lo.QueryTable;\n            qt.CommandText = new[] { &quot;SELECT TOP 1 * FROM myTable&quot; };\n            qt.RowNumbers = false;\n            qt.FillAdjacentFormulas = false;\n            qt.PreserveFormatting = true;\n            qt.RefreshOnFileOpen = false;\n            qt.BackgroundQuery = true;\n            qt.RefreshStyle = Excel.Enums.XlCellInsertionMode.xlInsertDeleteCells;\n            qt.SavePassword = false;\n            qt.SaveData = true;\n            qt.AdjustColumnWidth = true;\n            qt.RefreshPeriod = 0;\n            qt.PreserveColumnInfo = true;\n            qt.ListObject.DisplayName = &quot;Table_myTable&quot;;\n            qt.Refresh();</code></pre>\n\n",
+    "PostedDate": "2014-05-22T10:05:00.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

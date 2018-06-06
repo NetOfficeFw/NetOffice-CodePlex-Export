@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "931689",
+    "ThreadId": "400618",
+    "Html": "\r\n<p>Hi,&nbsp;</p>\r\n<p>Is Visio in this Version actually supported?&nbsp;<br>\r\nI've successfuly implemented Word, Excel, Powerpoint and Outlook Support, but i can't get Visio to run.&nbsp;</p>\r\n<p>I'm trying to implement a Solution using the Interface:</p>\r\n<p>Visio.IVApplication app = new Visio.IVApplication();<br>\r\nVisio.IVDocument doc = app.Documents.Open(filepath);</p>\r\n<p>Leads to:</p>\r\n<p></p>\r\n<hr>\r\n<p></p>\r\n<p>System.Runtime.InteropServices.COMException(0x80004005): See inner exception(s) for details.<br>\r\n----&gt; System.NullReferenceException: Object reference not set to an instance of an object. At NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray) ...&nbsp;<br>\r\n<br>\r\n</p>\r\n<hr>\r\n<p></p>\r\n<p>&nbsp;</p>\r\n<p>Cheers, Daniel</p>\r\n",
+    "PostedDate": "2012-10-24T06:18:12.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932307",
+    "ThreadId": "400618",
+    "Html": "<p>hey daniel,<br /><br />yes, the visio support in NetOffice can be better(i dont use visio all the time)<br />i do a test and find a keytoken bug in NetOffice.dll <br />the bug is fixed in latest source state!<br /><br />please change:<br />Visio.IVApplication app = new Visio.IVApplication();<br />to:<br />Visio.IVApplication app = new Visio.Application();</p>\r\n<p>because IVApplication is a dispatch interface. its impossible to create them directly regardless from the API(NetOffice, VBA, VSTO...)<br /><br />Sebastian<br /><br /></p>",
+    "PostedDate": "2012-10-25T04:08:53.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932313",
+    "ThreadId": "400618",
+    "Html": "<p>Hi Sebastian<br /><br />Great, thanks for your Answer! I will test your Change and let you know if i come across any other Bugs in Visio :)</p>\r\n<p>Greetings,<br />Daniel&nbsp;</p>",
+    "PostedDate": "2012-10-25T04:21:55.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

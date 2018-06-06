@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1446615",
+    "ThreadId": "645665",
+    "Html": "Hi All,\r<br />\n<br />\nI've created an Addin for Word using RibbonUI.xml for the toolbar and buttons.\r<br />\nHow can I disable a button e.g. after the user closed the Word doc?\r<br />\n<br />\nThanks.\r<br />\n<br />\nregards,\r<br />\nLong<br />\n",
+    "PostedDate": "2015-09-30T19:30:30.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1447394",
+    "ThreadId": "645665",
+    "Html": "I think you should call invalidate on ribbonui, this will cause the callbacks to be invoked. If you've implemented a callback for GetEnabled, I think that shul do it<br />\n",
+    "PostedDate": "2015-10-07T01:10:49.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1447815",
+    "ThreadId": "645665",
+    "Html": "Ok, I will try it.\r<br />\nThanks.<br />\n",
+    "PostedDate": "2015-10-09T04:25:51.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

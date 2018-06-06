@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "822496",
+    "ThreadId": "351941",
+    "Html": "\r\n<p>&nbsp;&nbsp;Dim obj As Object,ws as worksheet<br>\r\n'Error&nbsp;155&nbsp;Expression is of type 'LateBindingApi.Core.COMObject', which is not a collection type.&nbsp;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For Each obj In ws.DrawingObjects</p>\r\n<p>&nbsp;&nbsp;should I use</p>\r\n<p>For Each obj In CType(ws, Object).DrawingObjects&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-04-11T10:44:09.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822553",
+    "ThreadId": "351941",
+    "Html": "<p>same problem as before.</p>\r\n<p>DrawingObjects is defined as anonym COM Proxy. currently is COMObject in NetOffice.<br />the next release do that better and its defined as Object.<br /><br />*Sebastian</p>",
+    "PostedDate": "2012-04-11T12:30:58.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

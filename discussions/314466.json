@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "765342",
+    "ThreadId": "314466",
+    "Html": "\r\n<p>Hi</p>\r\n<p>What a great project you put together here. I can imaging you spend a lot of hours on this - thanks.</p>\r\n<p>I was&nbsp;wandering&nbsp;if you could recommend the best way to deploy an (Excel) addin created with netoffice. I like the idea of doing a xcopy deployment but that would require the client to run a batch/powershell file to register the addin (regasm -\r\n right?). Is regasm always present on client&nbsp;machines&nbsp;with .net installed? Would you recommend using MSI og NSIS instead?</p>\r\n<p>Thanks,<br>\r\nMichael&nbsp;</p>\r\n",
+    "PostedDate": "2012-02-14T15:04:16.227-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "767305",
+    "ThreadId": "314466",
+    "Html": "<p>hello michael,<br /><br />2 things are necessary for a COM addin</p>\r\n<p>- register:&nbsp;<a href=\"http://netoffice.codeplex.com/wikipage?title=FAQ\">http://netoffice.codeplex.com/wikipage?title=FAQ</a><br />- think about 32 and 64bit support: <a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_32Bit_64Bit\">http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_32Bit_64Bit</a><br /><br />i use the standard visual studio installer project(MSI) for COM addin deployment and registering.<br />regasm is a fixed part of the .net framework but i have no idea for the client profile version.<br />use regasm in a command shell is not the best idea for my experience, 1 from 10 machines makes trouble.<br />a completly wrong way is to deploy regasm and try to use in other machines. regasm is helper tool for developers and not even more i find.</p>\r\n<p>*happy deployment<br />Sebastian</p>",
+    "PostedDate": "2012-02-15T03:27:30.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "767368",
+    "ThreadId": "314466",
+    "Html": "<p>Hi Sebastian,</p>\r\n<p>Thanks for your answer. So - regasm is only for dev/testing - ok. What kind of setup project do you suggest. Standard .NET 4 setup project?&nbsp;Whan using that with your ExcelClassicAddInExample I can see that the tlb file should be registred as vsdrfCOM, but when installed on a client&nbsp;machine&nbsp;it&nbsp;doesn't&nbsp;work. Only after using regasm on the client the addin is avalible in Excel. Sorry for the stupid questions but do you have info on your site on how to create an installer, or could you help me here?</p>\r\n<p>Thanks,</p>",
+    "PostedDate": "2012-02-15T04:15:36.743-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "767401",
+    "ThreadId": "314466",
+    "Html": "hey michael,yeah, its not so easy, and a good question. you can set the register property for an assembly to vsdraCOM but doesnt helps, the installer calls regsvr32&nbsp;in this way(thats&nbsp;realy stupid) regsvr32 is the register tool for unmanaged COM assemblies.my solution is excatly the same as you can see in the following topic(scroll down) [link removed because its not valid anymore]<br />\n",
+    "PostedDate": "2012-02-15T04:36:00.933-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1310069",
+    "ThreadId": "314466",
+    "Html": "Hi,\r<br />\n<br />\nthis link is transferring to some book page and not a discussion about deployment.\r<br />\n<br />\ncan you repost a correct link or the solution you use for deployment?\r<br />\n<br />\nthanx<br />\n",
+    "PostedDate": "2014-10-02T15:54:38.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1310409",
+    "ThreadId": "314466",
+    "Html": "link removed, thx for pointing this out.\r<br />\n<br />\nfor the moment: a walktrough+screenshot gallery is available in german: <a href=\"https://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS\" rel=\"nofollow\">https://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS</a>\r<br />\ni hope this is also available in english as fast is possible. (documentation and translation is not my part in this project)\r<br />\n<br />\nIf you have question, feel free ;) <br />\n",
+    "PostedDate": "2014-10-03T22:15:09.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1398840",
+    "ThreadId": "314466",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nYou have provided documentation on inbuilt msi setup project template in visual studio, I am using visual studio 2013 &amp; I need to create setup with InstallShield .\r<br />\nAnyone can guide me?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2015-04-01T21:59:29.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

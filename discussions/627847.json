@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1411246",
+    "ThreadId": "627847",
+    "Html": "Hello everyone\r<br />\nI am a starter as a VSTO learner and NEToffice learner. I used VS 2008 VSTO developed an Addin for Word, which can work perfect with Word 2007 and above versions. And I already tested it for Word 2007, 2010 and 2013. But it can't work in Word 2003.  So I search online and find the NETOffice, that's the solution I want.\r<br />\n<br />\nBut when I start with the NETOFFICE, the examples doesn't work on my computer. The Word application doesn't load the ComAddin. It's really confusing. By the way, I use the VS 2010 on the Win7 X64 computer, and I already installed two version of office, the office 2003(X86) and 2010(X64).\r<br />\n<br />\nIn fact, what I need is a very simple Addin for Word. For the 2003, a commandbar with 3 buttons, for 2007 and above version with Ribbon UI, 3 buttons on the TabHome page, and two of buttons are linked to sub function, and the last one should be linked to load a UserForm. \r<br />\n<br />\nIs anyone can help me to build the framework for the Addin. I can send my VSTO code to him (or she?)\r<br />\nThanks!<br />\n",
+    "PostedDate": "2015-04-14T07:23:05.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1415663",
+    "ThreadId": "627847",
+    "Html": "Hi taotaomy,\r<br />\n<br />\nsince I'm still a learner myself, I'm not able to give you a working solution. But it might be a good start for you to download the &quot;NetOffice Developer Toolbox&quot; (latest version) from the download site. In this little tool (which you have to start as Administrator!) you'll find a &quot;Project Wizard&quot; giving you setup options like &quot;Extend Classic GUI&quot; and &quot;Extend Ribbon UI&quot; as simple checkboxes.\r<br />\n<br />\nI don't know why, but it looks like this requires to choose the type &quot;Automation AddIn&quot; – all the other options don't allow you to check the &quot;Use NetOffice Tools&quot; checkbox, so that the GUI options don't show up anymore.\r<br />\n<br />\nHope it helps you a little bit.\r<br />\n<br />\nRegards\r<br />\nMick<br />\n",
+    "PostedDate": "2015-04-19T03:06:09.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1415667",
+    "ThreadId": "627847",
+    "Html": "Thanks for you reply!\r<br />\n<br />\nI choose the &quot;Automation AddIn&quot; to build a Netoffice project. It's really strange, when I debug this project (without any change), the word doesn't load this Addin. \r<br />\nI check in the COM Addin in word, my Netoffice addin is not there. I run it as administrator, the problem still there. Do you have this problem?\r<br />\n<br />\nBy the way, I use the VS 2010 and Word 2010 (X86) on a Windows 7 X64 based computer to run the addin.<br />\n",
+    "PostedDate": "2015-04-19T03:38:16.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1415871",
+    "ThreadId": "627847",
+    "Html": "Finally, I use another computer to create a Netoffice project and it works! This computer is based on win8.1 X86, Word 2013 and VS 2013.\r<br />\n<br />\nIt is still a tough task for me to switch the Office VB  code into Netoffice VB code. \r<br />\n<br />\nThanks again!<br />\n",
+    "PostedDate": "2015-04-20T02:08:57.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

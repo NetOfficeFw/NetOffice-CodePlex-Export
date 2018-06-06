@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "680449",
+    "ThreadId": "274901",
+    "Html": "\r\n<p>Right now I extracted the library from Excel.exe (2003) and use that as my library, it works great. What advantages would NetOffice hold over using this method (assuming I only work in Excel)?</p>\r\n<p>Also, would there be any advantage in including ExcelDNA in conjunction with NetOffice?</p>\r\n",
+    "PostedDate": "2011-10-05T12:37:23.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680530",
+    "ThreadId": "274901",
+    "Html": "<p>this means you use Interop right?<br />when everything works fine you have no reason to switch the API of course.<br />what NetOffice can do for you is what you can see in mainpage feature list.<br />key features(i find):<br />- true platform and versionindependent(includes events) without deployment trouble<br />- COM proxy management, smaller code without ReleaseComObject(...) or MemoryLeaks<br />- IntelliSense benefits, make sure all excel versions supports your target functionality<br />- my personal support all the time ;)<br /><br />&nbsp;currently in development: NetOffice.DeveloperUtils AssemblyAnalyzer<br />&nbsp;reflection with Mono.Cecil about your created assembly and shows you wich excel versions support your excel code.<br /><br />at last: ExcelDNA and NetOffice is an approved combination. a lot&nbsp;of other developers use&nbsp;them.&nbsp;<br /><br />spend 5 minutes for the mainpage and documentation. if you have more questions, please go on.<br /><br />*sebastian</p>",
+    "PostedDate": "2011-10-05T15:00:51.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "689798",
+    "ThreadId": "274901",
+    "Html": "<p>The NetOffice Developer Toolbox is online.<br />check your created assembly which office versions are compatible with your code.<br />NetOffice is the only API in free and commercial market there supports developers in multiple version development in this way.<br />multiple version development is more than just possible in NetOffice, you have an active support with the intellisense text and the assembly analyzer.<br />i'm very proud of this. :)</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-26T11:30:19.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

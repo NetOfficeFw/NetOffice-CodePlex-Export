@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "834825",
+    "ThreadId": "355372",
+    "Html": "\r\n<p>According to the <a href=\"http://netoffice.codeplex.com/documentation\">deployment table</a>, NetOffice.dll is a required assembly for ExcelApi.dll (and all other office applications for that matter). &nbsp;However, I cannot find NetOffice.dll in NetOffice\r\n Release 1.4.1.</p>\r\n<p>I tried running my project without NetOffice.dll, but I received the following error:</p>\r\n<p>Run-time exception thrown : System.IO.FileNotFoundException - Could not load file or assembly 'ExcelApi, Version=1.4.0.1, Culture=neutral, PublicKeyToken=b1d22616f2ea9ad3' or one of its dependencies. The system cannot find the file specified.</p>\r\n<p>I have CopyLocal = True for ExcelApi.dll and it appears to be able to find ExcelApi.dll. &nbsp;That is what makes me think that it is the dependency, NetOffice.dll, which is actually missing.</p>\r\n<p>&nbsp;</p>\r\n<p>I'm still pretty new at this whole .Net thing, so I may be missing something obvious.</p>\r\n<p>Thanks,</p>\r\n<p>Mike</p>\r\n",
+    "PostedDate": "2012-05-10T14:21:18.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "834988",
+    "ThreadId": "355372",
+    "Html": "<p>hello mike,<br /><br />the documentation is currently under construction for the new 1.5&nbsp; release. <br />the 1.4 release has the LateBindingApi.Core.dll(renamed to NetOffice.dll in 1.5)<br />please checkout the example projects or try the 1.5 release[RC]<br />sorry for the confusion!<br /><br />Sebastian</p>",
+    "PostedDate": "2012-05-11T01:30:00.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "835247",
+    "ThreadId": "355372",
+    "Html": "<p>Thanks, Sebastian. &nbsp;That cleared things up considerably. &nbsp;</p>\r\n<p>I was using ExcelDnaPack.exe to pack my Excel DNA add-in into a single .xll file. &nbsp;I had to add the following lines to my .DNA file to get things working again:</p>\r\n<p>&nbsp; &lt;Reference Path=\"NetOffice.dll\" Pack=\"true\" /&gt;&nbsp;<br />&nbsp; &lt;Reference Path=\"OfficeApi.dll\" Pack=\"true\" /&gt;<br />&nbsp; &lt;Reference Path=\"ExcelApi.dll\" Pack=\"true\" /&gt;<br />&nbsp; &lt;Reference Path=\"VBIDEApi.dll\" Pack=\"true\" /&gt;</p>\r\n<p>Hopefully that will help someone in the future.</p>\r\n<p>PS. Great work on NetOffice. &nbsp;Keep it up!</p>",
+    "PostedDate": "2012-05-11T10:54:33.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

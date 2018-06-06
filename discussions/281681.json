@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "706833",
+    "ThreadId": "281681",
+    "Html": "\r\n<p>Can someone please, post a code. how can i open and read word document using NetOffice.</p>\r\n<p>&nbsp;</p>\r\n<p>thanks</p>\r\n",
+    "PostedDate": "2011-12-02T23:38:58.68-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706900",
+    "ThreadId": "281681",
+    "Html": "<p>hello amer9264,</p>\n<p>open and read a document in word is very easy and exactly the same as interop or VBA. here is sample in C#<br /><br /></p>\n<div style=\"background-color: white; color: black;\">\n<pre><span style=\"color: green;\">// initialize NetOffice, must be called 1 times in your application before use</span>\r\nLateBindingApi.Core.Factory.Initialize();\r\n\r\n<span style=\"color: green;\">// open word and an existing document</span>\r\nWord.Application wordApplication = <span style=\"color: blue;\">new</span> Word.Application();\r\nWord.Document newDocument = wordApplication.Documents.Open(<span style=\"color: #a31515;\">@\"C:\\myWordFile.doc\"</span>);\r\n\r\n<span style=\"color: green;\">// read text of document</span>\r\n<span style=\"color: blue;\">string</span> plainContent = newDocument.Content.Text;\r\n\r\n<span style=\"color: green;\">// close word and dispose reference </span>\r\nwordApplication.Quit();\r\nwordApplication.Dispose();\r\n\r\n</pre>\n</div>\n<p><br /><br />NetOffice gives you a lot sample projects in C# and VB. checkout the examples folder in release package.<br />the most example code is also&nbsp;online available. an overview you find here:<br /><a href=\"http://netoffice.codeplex.com/wikipage?title=Word_ExampleOverview\">http://netoffice.codeplex.com/wikipage?title=Word_ExampleOverview</a></p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-12-03T05:49:36.533-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "817192",
+    "ThreadId": "350489",
+    "Html": "\r\n<p>the document.Content.Find.Execute() throws me an error when I try to pass a string with more than 255 characters as the replace value.</p>\r\n<p>maybe I could replace the searchstring with an empty string and write my value directly to that position (while keeping font and style)...</p>\r\n<p>But how would I do that? It's hard to figure all that out as I don't find any good documentation.</p>\r\n<p>Thank you very much in advance</p>\r\n",
+    "PostedDate": "2012-03-29T07:24:12.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "817222",
+    "ThreadId": "350489",
+    "Html": "<p>this is a well known limitation in all the office products. (not a NetOffice mistake)<br />i have the same problems sometimes in excel with range and given address parameter string.<br />what i do in this situation is to split the string for multiple calls but this is not possible for search and replace maybe.<br /><br />another way can looks like as follows:<br /><br />find.Text = \"searchText\";<br />find.Replace.Text = \"MyLongTextPartOne{1}\";<br />find.Execute();<br /><br />find.Text = \"{1}\";<br />find.Replace.Text = \"MyLongTextPartTwo\";<br />find.Execute();<br /><br /><br />Not realy funny i know :/</p>",
+    "PostedDate": "2012-03-29T08:06:37.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "817699",
+    "ThreadId": "350489",
+    "Html": "<p>Yes, it wasn't funny. But it works smoothly now.</p>\r\n<p>Thank you very much, for everything!</p>",
+    "PostedDate": "2012-03-30T05:31:34.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

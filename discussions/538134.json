@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1219822",
+    "ThreadId": "538134",
+    "Html": "Is any chance of NetOffice will be fully integrated to SharpDevelop with NetOffice ToolBox?\r<br />\nIt can be full free solution for develop with all features of VS with including NetOffice...<br />\n",
+    "PostedDate": "2014-03-06T03:25:20.357-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1220032",
+    "ThreadId": "538134",
+    "Html": "of course, yes. as far i known, its possible to use native vs solutions in sharpdevelop, aren't so? \r<br />\nbtw: next NO release comes with a visual ui designer and this works in vs express and sharpdevelop too.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-03-06T12:20:49.76-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1220171",
+    "ThreadId": "538134",
+    "Html": "Projects created with NetOffice ToolBox can't be properly loaded in SharpDevelop for example. There is some incompatibility with version standard in &quot;.csproj&quot; file, where ToolBox create &quot;3,5&quot; .NET format version, but SharpDevelop need &quot;3.5&quot; with dot. It can be changed manually of course. \r<br />\nBut more interested in visual ribbon designer (as far as I know it come with NetOffice in feature) and possibility of creating NetOffice addins projects as full integrated tool, like in VS (not Express) with VSTO. In SharpDevelop it is very possible... \r<br />\nI'm don't complaining or something. You are doing the great job.<br />\n",
+    "PostedDate": "2014-03-07T00:32:07.533-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

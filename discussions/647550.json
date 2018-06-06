@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1452379",
+    "ThreadId": "647550",
+    "Html": "Using NetOffice I have customized my ribbon and added my custom images to the ribbon.  Is it possible to add references to the Quick Access Toolbar (QAT).  In a regular Word VBA addin I use the Custom UI Editor for MS Office to create items on the ribbon then I manually customize the QAT referencing items on the custom ribbon.  If you unzip the addin (dotm) you see the QAT xml file 'customUI.xml' in the 'userCustomization' directory'.<br />\n<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;\n&lt;mso:customUI xmlns:mso=&quot;http://schemas.microsoft.com/office/2006/01/customui&quot; xmlns:doc=&quot;http://schemas.microsoft.com/office/2006/01/customui/currentDocument&quot;&gt;\n   &lt;mso:ribbon&gt;\n      &lt;mso:qat&gt;\n         &lt;mso:documentControls&gt;\n            &lt;mso:control idQ=&quot;doc:LabOnBt&quot; visible=&quot;true&quot; /&gt;\n            &lt;mso:control idQ=&quot;doc:OfficeOnBt&quot; visible=&quot;true&quot; /&gt;\n         &lt;/mso:documentControls&gt;\n      &lt;/mso:qat&gt;\n   &lt;/mso:ribbon&gt;\n&lt;/mso:customUI&gt;</code></pre>\n\nIt would be great if QAT customization was possible.  If not, I could use the task pane to accomplish a one click solution.<br />\n",
+    "PostedDate": "2015-11-14T10:01:34.663-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

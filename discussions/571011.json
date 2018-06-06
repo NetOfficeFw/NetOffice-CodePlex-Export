@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1317986",
+    "ThreadId": "571011",
+    "Html": "Hi, i'm trying to write an AddIn for WinWord that should work with a currently running WinWord instance. I'm using Win 7 64bit, MS Office 2010, Visual Studio Express Desktop 2013 and VisualBasic.<br />\n<br />\nI've tried to adapt the example from Tutorial 9: <a href=\"https://netoffice.codeplex.com/wikipage?title=Tutorial09_DE_VB\" rel=\"nofollow\">https://netoffice.codeplex.com/wikipage?title=Tutorial09_DE_VB</a><br />\n<pre><code>Dim wordType As Type = Type.GetTypeFromProgID(&quot;Word.Application&quot;)\nDim wordProxy As Object = Activator.CreateInstance(wordType)\noWordApplication = New NetOffice.WordApi.Application(Nothing, wordProxy)</code></pre>\n\nI had to replace <code>Excel.Application(null, excelProxy)</code> by <code>Application(Nothing, wordProxy)</code> since Visual Studio didn't accept <code>null</code> as argument (<em>i think <code>null</code> works in C#, but it seems not to be valid within VB</em>). So, i tried <strong><code>Nothing</code> as nearest equivalent</strong>.<br />\n<br />\nBut this doesn't seem to work. If i run the AddIn from within WinWord with a document open, i receive a <code>TargetInvocationException</code> when trying to access <code>oWordApplication.ActiveDocuments</code>:<br />\n<pre><code>Type:TargetInvocationException\nMessage:Ein Aufrufziel hat einen Ausnahmefehler verursacht.\nTarget:System.Object InvokeDispMethod(System.String, System.Reflection.BindingFlags, System.Object, System.Object[], Boolean[], Int32, System.String[])\nStack:   bei System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n   bei System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n   bei NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\n\nType:COMException\nMessage:Dieser Befehl ist nicht verfügbar, weil kein Dokument geöffnet ist.\nTarget:&lt;Empty&gt;\nStack:&lt;Empty&gt;</code></pre>\n\nIt seems that oWordApplication doesn't point to my running WinWord instance. In the task manager, i can see two <code>WINWORD.EXE</code> processes, so it seems the AddIn is starting a second WinWord instance (with no <code>ActiveDocuments</code>) instead of giving me access to my already-running WinWord instance.<br />\n<br />\nWhat am i doing wrong? Any help would be greatly appreciated!<br />\n",
+    "PostedDate": "2014-10-31T09:09:41.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1318039",
+    "ThreadId": "571011",
+    "Html": "First problem solved - i've changed to <code>oWordApplication = NetOffice.WordApi.Application.GetActiveInstance(True)</code> which gives me access to the running WinWord application. But now, when running my add-in, a second WINWORD.EXE process appears in the Task Manager, and it doesn't disappear if i exit WinWord. I've tried to call<br />\n<pre><code>oWordApplication.Dispose()\noWordApplication = Nothing</code></pre>\n\nbut this doesn't help. If i call <code>oWordApplication.Quit()</code> from within my AddIn, the winword window gets closed and the &quot;first&quot; WINWORD.EXE process disappears, but the second process keeps running. How do i close that process cleanly from within my AddIn?<br />\n",
+    "PostedDate": "2014-10-31T11:12:45.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1318457",
+    "ThreadId": "571011",
+    "Html": "oops, of course null is not allowed in VB.\r<br />\nthx for pointing this out.\r<br />\n<br />\nyour addin is a COM addin or just an external application? (important)\r<br />\n<br />\nit looks like you create a second word instance in your code,  but i need more code to clearify the problem.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-11-02T15:17:51.973-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1318522",
+    "ThreadId": "571011",
+    "Html": "My AddIn is a COM AddIn, created with the NetOffice Developer Toolbox -&gt; VS Project Wizard, Type &quot;Automation AddIn&quot;. I'm trying to &quot;translate&quot; a WinWord VBA project to VB.\r<br />\n<br />\nRegarding the word instances: I'll try to create a minimal example to track down the cause.<br />\n",
+    "PostedDate": "2014-11-02T23:50:48.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1318541",
+    "ThreadId": "571011",
+    "Html": "Oh - sorry, i should have taken a look into <code>Examples\\Word\\VB\\COMAddin Examples\\COMAddinRibbonExample</code> first! This works perfectly for me. Thanks a lot for those example projects - they are really helpful. Problem solved!<br />\n",
+    "PostedDate": "2014-11-03T01:18:47.703-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

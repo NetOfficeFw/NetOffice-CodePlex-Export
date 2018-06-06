@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1074008",
+    "ThreadId": "451665",
+    "Html": "I'm new at this but trying to learn.\r<br />\n<br />\nI've tried to write an standalone program to send an email through Outlook.  The program will not compile though I'm using the example given in the documentation.  I get 13 errors of the following types:\r<br />\n<br />\nError\t1\tInterop type 'NetOffice.OutlookApi.Application' cannot be embedded. Use the applicable interface instead.\r<br />\nError\t2\tThe type 'NetOffice.OutlookApi.Application' has no constructors defined\r<br />\nError\t3\tInterop type 'NetOffice.OutlookApi.Application' cannot be embedded. Use the applicable interface instead.\r<br />\nError\t4\tInterop type 'NetOffice.OutlookApi.MailItem' cannot be embedded. Use the applicable interface instead.\r<br />\nError\t5\t'NetOffice.OutlookApi.Application' does not contain a definition for 'CreateItem' and no extension method 'CreateItem' accepting a first argument of type 'NetOffice.OutlookApi.Application' could be found (are you missing a using directive or an assembly reference?)\r<br />\nError\t6\tInterop type 'NetOffice.OutlookApi.MailItem' cannot be embedded. Use the applicable interface instead.\r<br />\nError\t7\t'NetOffice.OutlookApi.MailItem' does not contain a definition for 'Recipients' and no extension method 'Recipients' accepting a first argument of type 'NetOffice.OutlookApi.MailItem' could be found (are you missing a using directive or an assembly reference?)\r<br />\n<br />\n<br />\n<br />\n<br />\nWhat am I doing wrong?\r<br />\n<br />\nThe following is the complete code for the standalone program.  I use VS2012.\r<br />\n<br />\nusing System;\r<br />\nusing System.Collections.Generic;\r<br />\nusing System.ComponentModel;\r<br />\nusing System.Data;\r<br />\nusing System.Drawing;\r<br />\nusing System.Linq;\r<br />\nusing System.Text;\r<br />\nusing System.Threading.Tasks;\r<br />\nusing System.Windows.Forms;\r<br />\nusing OfficeApi;\r<br />\nusing NetOffice;\r<br />\nusing NetOffice.OutlookApi.Enums;\r<br />\nusing Outlook = NetOffice.OutlookApi;\r<br />\n<br />\nnamespace NetOfficeOutlook\r<br />\n{<br />\n<pre><code>public partial class Form1 : Form\n{\n    public Form1()\n    {\n        InitializeComponent();\n    }\n\n    private void button1_Click(object sender, EventArgs e)\n    {\n        // start outlook\n        Outlook.Application outlookApplication = new Outlook.Application();\n\n        // create a new MailItem.\n        Outlook.MailItem mailItem =\n        outlookApplication.CreateItem(OlItemType.olMailItem) as Outlook.MailItem;\n\n        // prepare item and send\n        mailItem.Recipients.Add(&quot;user@gmail.com&quot;);\n        mailItem.ReplyRecipients.Add(&quot;otheruser@gmail.com&quot;);\n        mailItem.Subject = &quot;Test&quot;;\n        mailItem.Body = &quot;Test&quot;;\n        mailItem.Send();\n\n        // close outlook and dispose\n        outlookApplication.Quit();\n        outlookApplication.Dispose();\n\n    }\n}</code></pre>\n\n}<br />\n",
+    "PostedDate": "2013-07-27T23:27:19.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1074014",
+    "ThreadId": "451665",
+    "Html": "hello,\r<br />\n<br />\ngo to the references and set the option 'embedd interop types' to false for all NetOffice assemblies.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-07-27T23:50:35.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1074261",
+    "ThreadId": "451665",
+    "Html": "Thanks.  No issues now.<br />\n",
+    "PostedDate": "2013-07-29T03:09:00.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

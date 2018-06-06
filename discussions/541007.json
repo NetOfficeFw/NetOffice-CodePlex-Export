@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1229781",
+    "ThreadId": "541007",
+    "Html": "Hi, while I'm able to add a Merge Field this way:<br />\n<pre><code>        Dim s As ToolStripMenuItem = CType(sender, ToolStripMenuItem)\n        Dim objFieldName As Object = s.Tag\n        Dim myFormfield As Word.Field\n        myFormfield = oWord.Selection.Fields.Add(range:=oWord.Selection.Range, type:=WdFieldType.wdFieldMergeField, text:=objFieldName)\n</code></pre>\n\nI'd like to add a Form text input but I can't get it to work :<br />\nmyFormfield = oWord.Selection.Fields.Add(range:=oWord.Selection.Range, type:=WdFieldType.wdFieldFormTextInput, text:=objFieldName)<br />\n<br />\nps: the myFormfield .Result = &quot;sometext&quot; is not working, it says it requires a range!<br />\n<br />\nCould you please help me?<br />\nThank you<br />\n<br />\nok solved<br />\n<pre><code>        Dim myFormfield As Word.FormField\n        myFormfield = oWord.ActiveDocument.FormFields.Add(oWord.Selection.Range, WdFieldType.wdFieldFormTextInput)\n        myFormfield.Name = Variabile.Cod\n        myFormfield.Result = Variabile.Description</code></pre>\n\n",
+    "PostedDate": "2014-04-03T00:52:49.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1231214",
+    "ThreadId": "541007",
+    "Html": "&quot;I can't get it to work &quot; is not realy helpful. Please spend more exception details in order to anaylze the problem. \r<br />\nI want reproduce the problem. Do me a pleasure and try o use it without named argmuents in the the Add method.(you may reach a wrong method oberload, not sure yet..)\r<br />\n \r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-04-07T04:14:07.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1232535",
+    "ThreadId": "541007",
+    "Html": "Thank you Sebastian, I finally made it!\r<br />\nEven if I prefer C# I had to write it in Vb.net:\r<br />\n<br />\nThis works like a charm:<br />\n<pre><code>Private oWord As Word.Application\n</code></pre>\n\n......<br />\n<pre><code>                    myFormfield = oWord.ActiveDocument.FormFields.Add(oWord.Selection.Range, WdFieldType.wdFieldFormTextInput)\n                    myFormfield.Name = Variabile.Codice &amp; &quot;_&quot; &amp; value.ToString(&quot;00&quot;)\n                    myFormfield.Result = Variabile.Descrizione\n                    oWord.Selection.MoveRight(1)\n</code></pre>\n\nThank You<br />\n",
+    "PostedDate": "2014-04-09T13:07:22.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "853317",
+    "ThreadId": "360854",
+    "Html": "\r\n<p>I'm trying to loop through the pivottables collection like so:</p>\r\n<pre><div style=\"color:black; background-color:white\"><pre><span style=\"color:blue\">For</span> <span style=\"color:blue\">Each</span> pt <span style=\"color:blue\">As</span> PivotTable <span style=\"color:blue\">In</span> wks.PivotTables</pre>\n</div>\n</pre>\r\n<p>But it shows the error:</p>\r\n<p>Error 19 Expression is of type 'LateBindingApi.Core.COMObject', which is not a collection type.</p>\r\n<p>Is there something that I'm missing?</p>\r\n<p>-------------------</p>\r\n<p>Update, I found the answer. It was <a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management\">\r\nin the documentation</a>.</p>\r\n<pre><pre>Dim pts As PivotTables = wks.PivotTables           &nbsp;</pre>\n<pre>       For Each pt As PivotTable In pts</pre>\n</pre>\r\n",
+    "PostedDate": "2012-06-25T12:48:22.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

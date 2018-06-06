@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "802461",
+    "ThreadId": "346527",
+    "Html": "<p><strong>﻿0. Requirements﻿﻿</strong></p>\n<p>This topics was tested with a signed Excel-Ribbon-AddIn for Office 2010. It should also work for 2007 with kb976477 Hotfix installed.&nbsp;</p>\n<p>&nbsp;</p>\n<p><strong>1. Determine correct cmd </strong></p>\n<p>It depends what Office Version you use:</p>\n<p>If you have a <strong><span style=\"color: #ff0000;\">32bit Office</span></strong>, use the 32bit-Version of cmd.exe, found in <em>%windir%\\System32\\cmd.exe </em>for <strong><span style=\"color: #ff0000;\">32-bit OS </span></strong>or <em>%windir%\\SysWoW64\\cmd.exe </em>for <strong><span style=\"color: #ff0000;\">64bit OS</span></strong>.</p>\n<p>If you have a<strong><span style=\"color: #ff0000;\"> 64bit Office</span></strong>, use the 64bit-Version of cmd.exe, found in<em> %windir%\\System32\\cmd.exe</em>.</p>\n<p>Note: Compiling the AddIn with AnyCPU enables both worlds, X86 or X64 only the corresponding favor (only Office 32bit or 64bit).</p>\n<p>&nbsp;</p>\n<p><strong>2. Determine correct regasm </strong></p>\n<p>It depends what .net Version you compiled against:</p>\n<p><strong><span style=\"color: #ff0000;\">.net 2.0 ... 3.51</span></strong>: <em>%windir%\\Microsoft.NET\\Framework\\v2.0.50727\\RegAsm.exe </em></p>\n<p><strong><span style=\"color: #ff0000;\">.net 4.0</span></strong>: <em>%windir%\\Microsoft.NET\\Framework\\v4.0.30319\\RegAsm.exe </em></p>\n<p><em>&nbsp;</em></p>\n<p><strong>3. Installation on MultiUser Environments </strong></p>\n<p><span style=\"text-decoration: underline;\">Only 1-time as Administrator:</span></p>\n<p>- Open correct cmd (as described in 1.) Run it as an Administrator!</p>\n<p>- Type <em>RegAsm.exe YourAddIn.dll /codebase </em>(with the correct path of Regasm as described in 2.)</p>\n<p>- Open your Office and test AddIn functionallity</p>\n<p>- Navigate in registry to <em>HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\Excel\\Addins\\YourAddIn </em>and export it to a registry file, e.g. called <em>YourAddIn.reg </em></p>\n<p><span style=\"text-decoration: underline;\">1-time each user (no admin privilegues required): </span></p>\n<p>- Register the created YourAddIn.reg (doubleclick)</p>\n<p>&nbsp;</p>\n<p><strong>4. Installation on SingleUser Environment </strong></p>\n<p>I didn't figure this out. May someone else&nbsp;add a comment on this topic!&nbsp;</p>",
+    "PostedDate": "2012-02-28T01:09:05.723-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "804668",
+    "ThreadId": "346527",
+    "Html": "<p>hello,</p>\r\n<p>thanks for this posting!</p>\r\n<p>your addin runs in in 32 and 64bit office as well? ( the same assembly?)<br /> <br />your addin will be registered while using regasm,&nbsp; you can change the hive-key in the register method from the addin himself. set current user to local machine, if you want a systemwide office addin, but this is very static. your way is better for a simple deployment(without installer), create one script for single user and one for local machine and runs the target script dynamicly. <br /><br />the /codebase option creates the path to the assembly in the registry.<br />the com addin examples from NetOffice creates this registry codebase entry at hand in the register method, called from regasm. thats all what regasm or regsvr32 basicly do. an addin registers himself. its not necessary to use the /codebase option if you create the codebase entry in the register method.</p>\r\n<p>Sebastian</p>",
+    "PostedDate": "2012-03-02T14:20:12.3-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

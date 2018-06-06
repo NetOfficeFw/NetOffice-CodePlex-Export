@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "900810",
+    "ThreadId": "392075",
+    "Html": "\r\n<p>When running the following test code, the output for Proxy Count is 1,5,0.</p>\r\n<p>Q1: It seems creating the commandBarButton increases the ProxyCount by 4. Why does this happen?</p>\r\n<p>Q2: After _app.Dispose(), ProxyCount is reduced to 0. But the ContextClick event does not take effect. If _app.Dispose() is removed, ContextClick event takes effect. Is it necessary to call _app.Dispose?</p>\r\n<p>Excel.Application _app = new Excel.Application(null, ExcelDnaUtil.Application);<br>\r\nDebug.WriteLine(Factory.ProxyCount);<br>\r\n<br>\r\nOffice.CommandBarButton commandBarButton = (Office.CommandBarButton)_app.CommandBars[&quot;Cell&quot;].Controls.Add(<br>\r\nMsoControlType.msoControlButton,<br>\r\nSystem.Type.Missing, //id<br>\r\nSystem.Type.Missing, //parameters<br>\r\nSystem.Type.Missing, <br>\r\ntrue);<br>\r\ncommandBarButton.Caption = &quot;TestButton&quot;;<br>\r\nDebug.WriteLine(Factory.ProxyCount);<br>\r\n<br>\r\ncommandBarButton.ClickEvent &#43;= new Office.CommandBarButton_ClickEventHandler(ContextClick);<br>\r\n<br>\r\n_app.Dispose();<br>\r\nDebug.WriteLine(Factory.ProxyCount);<br>\r\n<br>\r\n</p>\r\n",
+    "PostedDate": "2012-08-17T11:45:42.63-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "900868",
+    "ThreadId": "392075",
+    "Html": "<p>hello,<br /><br />let me explain. <br /><br />_app.CommandBars&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // commandbars is the first proxy<br />CommandBars[\"Cell\"]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // cell is the second proxy<br />_app.CommandBars[\"Cell\"].Controls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // controls is the third proxy<br />Office.CommandBarButton commandBarButton // the returning object is your last proxy<br /><br />you have to know:<br />every time you call _app.CommandBars you get a new proxy for the commandbars object on the COM server(Office)<br />you have to free all proxies at hand with the ms-interop assemblies to avoid memory leaks but its easier in NetOffice.<br />In your example, NetOffice store the proxies in a table as follows:<br /><br />&nbsp;app<br />&nbsp;&nbsp; + CommandBars<br />&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; + Cel<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + Controls<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + Button<br /><br />if you call Dispose() for the application then NetOffice dispose the app proxy( Marshal.ReleaseComObject) and all descendent proxies to avoid memory leaks.<br />Dispose have an overload Dispose(bool disposeEventBinding) you can use Dispose(false) but this is an unsafe way(not supported from all office apps in any version) <br /><br />of course the event trigger doesnt works when you free the COM proxy. dispose the proxy at the end of your application lifecycle.<br /><br />Sebastian<br /><br /> <br />&nbsp;&nbsp; <br /><br /><br /><br /><br /><br /><br /></p>",
+    "PostedDate": "2012-08-17T14:12:36.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

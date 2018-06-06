@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "870993",
+    "ThreadId": "371363",
+    "Html": "\r\n<p>hi Sebestian,</p>\r\n<p>I am working on a proof of concept for com addin. I have created com addin with some ribbon controls. I have used your COMAddinRibbonExample to create the ribbon.</p>\r\n<p>I have a ribbon with 2 buttons(button 1 and button2). When I click on the button1 I add Custom Task Pane (Panel1) to the workbook. When I click on button2 it adds another panel (Panel2)&nbsp;to the workbook. Now when I click on a button&nbsp;on Panel2 it\r\n should add another button to ribbon called button3 and disable the button1 and button2..</p>\r\n<p>Basically I want to manipulate the buttons on ribbon control i.e. name,image and state at runtime depending on the task pane selected. I have looked through all the examples and discussion forum but so far I have not found any code to gain access to the\r\n ribbon controls in the addin.</p>\r\n<p>Could you please provide some suggestion/ pointers as to how I can achieve that with NetOffice 1.5.1</p>\r\n<p>regards,</p>\r\n<p>Tanveer</p>\r\n",
+    "PostedDate": "2012-07-17T12:32:36.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

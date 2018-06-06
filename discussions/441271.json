@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1034452",
+    "ThreadId": "441271",
+    "Html": "Hi<br />\n<br />\nI want to be able to load (ie make visual) a custom task pane via a check box. The following is the code that I have added. I added a simple 150 x 150 usercontrol.<br />\n<br />\nI cannot seem to link up the checkbox1state with the custom task pane (user control). I want to be able to dock the pane both left and right and float it. <br />\n<br />\nI also want to added the following functionality:<br />\n<ul>\n<li>If the user closes the pane the checkbox is unchecked </li>\n<li>\nWhen the user rechecks the chextbox, the pane is displayed where the user last had it<br />\n</li>\n</ul>\nAny assistance would be greatly appreciated.<br />\n<br />\n<br />\n<br />\nIn the RibbonUI.xml I have added the xml statement<br />\n&lt;checkBox id=&quot;CheckBox1&quot; label=&quot;Picture Table Editor Pane&quot; onAction=&quot;CheckBox1_Pressed&quot;/&gt;<br />\n<br />\n<br />\n<br />\nAnd I have added the following lines of code to Addin.vb (I added the message boxes as a means to test if the ribbon check box was working - so this can be removed)<br />\n<pre><code>Dim myUserControl As New UserControl1()\n\nDim CheckBox1State As Boolean\n\nPublic Sub CheckBox1_Pressed(ByVal control As Office.IRibbonControl, ByVal CheckBox1State As Boolean)\n\n    myUserControl.Dock = MsoCTPDockPosition.msoCTPDockPositionLeft\n    myUserControl.Width = 300\n\n    If CheckBox1State Then\n        MessageBox.Show(&quot;Checkbox is Checked&quot;)\n        myUserControl.Visible = True\n    Else\n        MessageBox.Show(&quot;Checkbox is Unchecked&quot;)\n        myUserControl.Visible = False\n    End If\n\nEnd Sub</code></pre>\n\n",
+    "PostedDate": "2013-04-23T03:50:58.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1035888",
+    "ThreadId": "441271",
+    "Html": "Hi\r<br />\n<br />\nIf anyone could assist with the above that would be great. Thanks.<br />\n",
+    "PostedDate": "2013-04-25T18:05:15.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1036377",
+    "ThreadId": "441271",
+    "Html": "I have been going through the custom task pane example in VB. I know to use the following code. How do I link this with the checkbox in the ribbon UI to change the visibility state, ie link the checkbox toggle status with the visibility status of the custom task pane\r<br />\n<br />\nAdding the ICustomTaskPaneConsumer to the Implements\r<br />\nOffice.ICustomTaskPaneConsumer\r<br />\n<br />\nAnd use the CTPFactoryAvailable sub to create the custom task pane.\r<br />\n<br />\nPublic Sub CTPFactoryAvailable(ByVal CTPFactoryInst As Object) Implements NetOffice.OfficeApi.ICustomTaskPaneConsumer.CTPFactoryAvailable<br />\n<pre><code>        Dim ctpFactory As Office.ICTPFactory = New Office.ICTPFactory(_wordApplication, CTPFactoryInst)\n        Dim taskPane As Office._CustomTaskPane = ctpFactory.CreateCTP(GetType(Addin).Assembly.GetName().Name + &quot;.SampleControl&quot;, &quot;NetOffice Sample Pane(VB4)&quot;, Type.Missing)\n        taskPane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionLeft\n        taskPane.Width = 300\n        taskPane.Visible = True\n        _sampleControl = taskPane.ContentControl\n</code></pre>\n\nEnd Sub<br />\n",
+    "PostedDate": "2013-04-26T18:54:56.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077862",
+    "ThreadId": "441271",
+    "Html": "tried an answer <a href=\"https://netoffice.codeplex.com/discussions/449517\" rel=\"nofollow\">here</a>, hope it helps!<br />\n",
+    "PostedDate": "2013-08-07T10:38:35.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "631086",
+    "ThreadId": "262328",
+    "Html": "<p>Hi! I wanted to know if there is a way to 'send' email to Outlook instead of directly 'sending through' Outlook.</p>\n<div style=\"color: black; background-color: white;\">\n<pre><span style=\"color: blue;\">using</span> Outlook = NetOffice.OutlookApi;\n\n...\n\n<span style=\"color: green;\">// Create an Outlook Application object. </span>\nOutlook.Application outlookApplication = <span style=\"color: blue;\">new</span> Outlook.Application();\n\n<span style=\"color: green;\">// Create a new MailItem.</span>\nOutlook.MailItem mailItem = outlookApplication.CreateItem(OlItemType.olMailItem) <span style=\"color: blue;\">as</span> Outlook.MailItem;\n\n...\n\nmailItem.Send();\n</pre>\n</div>\n<p>Also, I don't want to quit Outlook through my code. If I use 'outlookApplication.Dispose();', this should only allow GC to re-claim the object but the Outlook would still be running... right?</p>\n<p>My requirements are that once I transpose the grids and stuff to HTML, I need to manually generate the HTML body for the email and add 'To' and 'CC' and then fire up Outlook and present the final email to the user. He/She send at his/her convenience. The  Email needs to be a Draft-like as the use may wants to add further information to it.</p>\n<p>Is it possible using NetOffice Suite?</p>",
+    "PostedDate": "2011-06-22T06:05:38.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631100",
+    "ThreadId": "262328",
+    "Html": "<p>sure, outlookApplication.Dispose() release the application COM Proxy and all created child proxies but outlook is still alive after Dispose();<br />please keep in your mind, netoffice is 1:1 wrapper, all what is possible with vba or interop its also possible in netoffice with same syntax.<br />i'm not sure that i'm understand your question but i think you want display the mail item and not send. look at the last line of the following code:</p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: green;\">// Create a new MailItem.</span>\r\nOutlook.MailItem mailItem = outlookApplication.CreateItem(OlItemType.olMailItem) <span style=\"color: blue;\">as</span> Outlook.MailItem;\r\n          \r\n<span style=\"color: green;\">// prepare item </span>\r\nmailItem.Recipients.Add(<span style=\"color: #a31515;\">\"ballmer@microsoft.com\"</span>);\r\nmailItem.CC = <span style=\"color: #a31515;\">\"bill@microsoft.com\"</span>;\r\nmailItem.Subject = <span style=\"color: #a31515;\">\"cloud computing is bullshit\"</span>;\r\nmailItem.Body = <span style=\"color: #a31515;\">\"rename software on demand to cloud computing is a dirty marketing trick.\"</span>;\r\n\r\n<span style=\"color: green;\">// display the item</span>\r\nmailItem.Display();\r\n</pre>\r\n</div>\r\n<p>regards<br />sebastian</p>\r\n<p><br />&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-06-22T06:45:54.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631112",
+    "ThreadId": "262328",
+    "Html": "<p>Excellent. I found `.Save()` before your reply. My issue is now a tissue.</p>",
+    "PostedDate": "2011-06-22T07:05:59.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

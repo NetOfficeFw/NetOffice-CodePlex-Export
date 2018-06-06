@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "931111",
+    "ThreadId": "400474",
+    "Html": "\r\n<p>I'm trying to convert a small piece of vba code to NetOffice. Here is my not working NetOffice VB.Net Code:<br>\r\n</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:green\">' open the template and display it</span>\r\n                    <span style=\"color:blue\">Dim</span> olApp <span style=\"color:blue\">As</span> <span style=\"color:blue\">New</span> Outlook.Application\r\n                    <span style=\"color:blue\">Dim</span> newItem <span style=\"color:blue\">As</span> Outlook.MailItem\r\n                    newItem = olApp.CreateItemFromTemplate(<span style=\"color:#a31515\">&quot;c:\\Outlook-Vorlage.oft&quot;</span>)\r\n                    newItem.Display()\r\n                    <span style=\"color:green\">'newItem = Nothing</span>\r\n\r\n<span style=\"color:green\">'trying to get a WordEditor Object to do some bookmark substitution later on.</span>\r\n                    <span style=\"color:blue\">Dim</span> doc <span style=\"color:blue\">As</span> Outlook.Application\r\n                    <span style=\"color:blue\">Dim</span> docword <span style=\"color:blue\">As</span> Outlook.Inspector\r\n                    docword = newItem.GetInspector\r\n                    doc = docword.WordEditor\r\n\r\n<span style=\"color:green\">'after successful compilation this failed in outlook and the following error pops up:</span><br>An error occured in OnAction:</pre>\r\n</div>\r\n<p></p>\r\n<p>Details:</p>\r\n<p>Class not exists: NetOffice.OfficeApi.Document</p>\r\n<p>&nbsp;</p>\r\n<p>It seems it could not load the Outlook.GetInspector.WordEditor property correctly. I've tested it with the import of the Netoffice.wordapi but without luck. What is wrong?</p>\r\n<p>Thanks</p>\r\n<p>Jens</p>\r\n",
+    "PostedDate": "2012-10-23T07:45:57.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932255",
+    "ThreadId": "400474",
+    "Html": "<p>hey jens,<br /><br />i see: docword.WordEditor is NetOffice.WordApi.Document<br />this is specal situation. let me explain. the core api looks for the target wrapper assembly/class. if its failed then a failback mechanism try to look for a type with the same name and dispatch id because some types are multiple defined. its forbidden in COM but microsoft do that(i dont know why).<br /><br />the problem is ms word is no dependency from outlook. the core api looks for all referenced assemblies and checks for the NetOfficeAssembly attribute. and here comes the problem. the optimization! if you dont use any features from the word assembly, the clr removes the assembly reference. as hotfix you can do a dumy:<br /><br />Dim dumy As NetOffice.OfficeApi.COMAddIn = Nothing<br /><br />write this as first line or in any other line and the clr doesnt remove the assembly reference and it works.<br />good to know:<br />any netoffice assembly contains a list of directly references(Outlook-&gt;Office,VBEIDE) and the core api try to load these assemblies regardless from assembly references in the application domain.<br /><br />i create an item on my todo list for these problem.<br /><br />Sebastian<br /><br /><br /></p>",
+    "PostedDate": "2012-10-25T02:23:04.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932844",
+    "ThreadId": "400474",
+    "Html": "\r\n<p>Hi Sebatian,</p>\r\n<p>this line does exactly what i need:</p>\r\n<p>Dim dumy As NetOffice.OfficeApi.COMAddIn = Nothing</p>\r\n<p>Thanks for your precise and outstanding fast reply.</p>\r\n<p>Jens</p>\r\n",
+    "PostedDate": "2012-10-26T01:21:13.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "932845",
+    "ThreadId": "400474",
+    "Html": "<p>hey jens,</p>\r\n<p>btw you dont the dumy line hm?<br />change your last line&nbsp; <br />doc = docword.WordEditor<br />to <br />Dim doc As Word.Document =docword.WordEditor<br />because your doc variable is Outlook.Application<br />after changing this you dont need the dumy line because you use a wordapi type and the CLR doesnt remove the assembly reference.<br /><br />Sebastian</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-10-26T01:24:31.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1079988",
+    "ThreadId": "453247",
+    "Html": "I'm experiencing some difficulties with customising the ribbon with NetOffice (SharpDevelop). For example, when I try to declare a Label Control as follows:<br />\n<br />\n&lt;labelControl id=&quot;&quot;lblFirstName&quot;&quot; getLabel=&quot;&quot;getLabel&quot;&quot;&gt;&lt;/labelControl&gt;&quot;<br />\n<br />\nand then add the following procedure:<br />\n<pre><code>Sub getLabel(control As Office.IRibbonControl, ByRef label)\n    Select Case control.ID\n        Case &quot;lblFirstName&quot;\n            label = &quot;set to something else&quot;\n    End Select\nEnd Sub</code></pre>\n\nThen SharpDevelop wouldn't let me compile, because label in getLabel has not been assigned a type - although this would be ok in VBA. When I add a type to label, like ByRef label as Object, then Office, Outlook 2007 in my case, complains because the CallBack-Signatures do not match. <br />\n<br />\nCan someone give me a pointer here what I'm missing? <br />\n",
+    "PostedDate": "2013-08-13T02:39:02.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1079996",
+    "ThreadId": "453247",
+    "Html": "ups, that was some kind of a really basic misunderstanding: getLabel is of course not a Sub, but a Function, returning the desired value for the label:<br />\n<br />\n...<br />\n&lt;labelControl id=&quot;&quot;lblFirstName&quot;&quot; getLabel=&quot;&quot;getLabel&quot;&quot;&gt;&lt;/labelControl&gt;&quot; <br />\n... <br />\n<pre><code>Function getLabel(control As Office.IRibbonControl)\n    Select Case control.ID\n        Case &quot;lblFirstName&quot;\n            return &quot;Beispiellabel&quot;\n  \nEnd Function</code></pre>\n\ndoes the trick<br />\n",
+    "PostedDate": "2013-08-13T02:56:31.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

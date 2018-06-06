@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1054076",
+    "ThreadId": "446349",
+    "Html": "I have to create functionality, where I have to add Next Field in word file with &lt;&lt;Next Record&gt;&gt; as a display text, same as &quot;Update Labels&quot; functionality provided by word.\r<br />\nI  have programmatically added Address label in word (.dot) file . Then when i am adding Next field into each cell, it is not visible because text is empty.\r<br />\n<br />\nI have added wbFieldNext in vb.net, as follows\r<br />\n<br />\ntbLabel = m_CurrentDoc.Tables(1)\r<br />\ncSource = tbLabel.Cell(1, 1)\r<br />\noRange = cSource.Range\r<br />\noRange.Collapse(Word.WdCollapseDirection.wdCollapseStart)\r<br />\nm_CurrentDoc.Fields.Add(range:=oRange, type:=Word.WdFieldType.wdFieldNext, text:=&quot;&lt;&lt;Next Record&gt;&gt;&quot;, preserveFormatting:=False)\r<br />\ncSource.Range.Copy()\r<br />\n<br />\nBut when I used wdFieldNext in my code then &quot;Next&quot; field is added in each cell, but without any text. If we check properties of that field, it is Next Field.\r<br />\n<br />\nHow Can I change text property of wdFieldNext field in each cell or Is there any other way to add NEXT field in word? \r<br />\n<br />\nThanks in advance.\r<br />\n<br />\nRegards,\r<br />\n<br />\nShraddha29<br />\n",
+    "PostedDate": "2013-06-07T08:27:06.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

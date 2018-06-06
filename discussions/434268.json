@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1005772",
+    "ThreadId": "434268",
+    "Html": "Hi\r<br />\n<br />\nOnce you have set up a project using the netoffice developer toolbox, written the code in visual studio express 2010, how then do you build the solution and say bring it into Word 2007 for example.\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-02-23T16:33:55.06-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1005867",
+    "ThreadId": "434268",
+    "Html": "<ol>\n<li>Clear checkbox &quot;Register for COM interop&quot; (if you didn't run Visual Studio as administrator)</li>\n<li>Choose <em>Build</em> command from <em>Solution Explorer</em> or <em>Build</em> menu.</li>\n<li>Register your assembly with <em>regasm</em> utility (if you didn't run Visual Studio as administrator)</li>\n</ol>\n",
+    "PostedDate": "2013-02-24T04:21:57.83-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1006042",
+    "ThreadId": "434268",
+    "Html": "Thanks for that. So for testing purposes you really want to run visual studio as the administrator so you don't have to keep registering your assembly. Thus you don't keep loading up the registry.<br />\n",
+    "PostedDate": "2013-02-24T16:17:45.11-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1017409",
+    "ThreadId": "434268",
+    "Html": "Following on from the previous discussion I have been going through the net office COMAddinTaskPaneExample. I notice the following lines are added at the start of the Public Addin Class sub<br />\n<pre><code>Private Shared ReadOnly _addinOfficeRegistryKey As String = &quot;Software\\\\Microsoft\\\\Office\\\\Word\\\\AddIns\\\\&quot;\nPrivate Shared ReadOnly _prodId As String = &quot;WordAddinVB4.TaskPaneAddin&quot;\nPrivate Shared ReadOnly _addinFriendlyName As String = &quot;NetOffice Sample Addin in VB&quot;\nPrivate Shared ReadOnly _addinDescription As String = &quot;NetOffice Sample Addin with custom Task Pane&quot;\n</code></pre>\n\nAre these lines added as a result from registering the assembly with regasm utility\r<br />\n<br />\nI also went through and clicked build on the project, it went through with no errors (obviously) what file type (I thought .exe however I could only find .dll files)do I then bring into word to use as a COM Addin.\r<br />\n<br />\nThanks again for your assistance<br />\n",
+    "PostedDate": "2013-03-18T17:47:58.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1005607",
+    "ThreadId": "434214",
+    "Html": "Hallo,\r<br />\n<br />\nich versuche gerade Kontakte aus einem anderen System nach Outlook zu synchronisieren und bin dadurch auf NetOffice gestoßen.<br />\n<pre><code>Outlook.MAPIFolder contactFolder = _application.Session.GetDefaultFolder(OlDefaultFolders.olFolderContacts);\n                            Outlook.ContactItem ci = new Outlook.ContactItem(&quot;&quot;);\n                            ci.FirstName = &quot;max&quot;;\n                            ci.LastName = &quot;muster&quot;;\n                            ci.Save();</code></pre>\n\nBeim Aufruf des Konstruktors von Outlook.ContactItem(&quot;&quot;) wird eine progld benötigt. Leider bin ich mit der Outlook Programmierung noch ganz am Anfang, also bitte entschuldigt meine Frage: Was ist diese progld??\r<br />\n<br />\nVIelen Dank<br />\n",
+    "PostedDate": "2013-02-23T02:11:32.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1005641",
+    "ThreadId": "434214",
+    "Html": "<a href=\"http://msdn.microsoft.com/en-us/library/vstudio/ms268866.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-us/library/vstudio/ms268866.aspx</a><br />\n",
+    "PostedDate": "2013-02-23T05:31:40.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

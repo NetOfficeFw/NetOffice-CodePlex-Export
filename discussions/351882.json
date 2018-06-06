@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "822293",
+    "ThreadId": "351882",
+    "Html": "\r\n<p>How do I dim the Control type?</p>\r\n<p><br>\r\nDim ctl As control<br>\r\nError&nbsp;30&nbsp;Type 'control' is not defined.&nbsp;</p>\r\n<p><br>\r\nDim ctl As System.windows.forms.control<br>\r\nError&nbsp;30&nbsp;Type 'System.windows.forms.control' is not defined.&nbsp;</p>\r\n",
+    "PostedDate": "2012-04-11T02:17:43.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822300",
+    "ThreadId": "351882",
+    "Html": "<p>Import the System.Windows.Forms namespace. <br />add the reference to your project. \"System.Windows.Forms\"<br /><br />Sebastian&nbsp;</p>",
+    "PostedDate": "2012-04-11T02:40:18.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822309",
+    "ThreadId": "351882",
+    "Html": "<p>Ah, the add reference is what I had missed.</p>\r\n<p>Thank you!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-04-11T03:16:00.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

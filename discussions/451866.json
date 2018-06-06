@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1074689",
+    "ThreadId": "451866",
+    "Html": "Hi there\r<br />\n<br />\nI'm about to access ActiveX controls by NetOffice. Using the following code:<br />\n<pre><code>Excel.OLEObjects objs = (Excel.OLEObjects)((Excel.Worksheet)ActiveWorkbook.ActiveSheet).OLEObjects(System.Reflection.Missing.Value);\n\n((ComboBox)((Excel.OLEObject)objs[&quot;combo1&quot;]).Object).AddItem(&quot;asdf&quot;);</code></pre>\n\nThe following exception is thrown: &quot;Class not exists: NetOffice.OfficeApi.ComboBox&quot;\r<br />\n<br />\nDoes anyone have an idea what is going on?\r<br />\nThank you<br />\n",
+    "PostedDate": "2013-07-30T06:26:48.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1076924",
+    "ThreadId": "451866",
+    "Html": "i'm wondering about the (ComboBox) cast. NetOffice doesnt contains a class with these name(except in the AccessApi namespace). where ist that from?<br />\n<br />\n*sebastian <br />\n<br />\n<br />\nEDIT: i try to reproduce your scenario but it fails.<br />\nplease contact via skype when its possible(username:public.Sebastian)<br />\n",
+    "PostedDate": "2013-08-05T13:20:17.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077574",
+    "ThreadId": "451866",
+    "Html": "ComboBox is from Microsoft.Vbe.Interop.Forms.\r<br />\n<br />\nActually the cast is not necessary. This is already causing the excpetion: (Excel.OLEObject)objs[&quot;combo1&quot;])\r<br />\nNetOffice is trying to cast it to a NetOffice.OfficeApi.ComboBox<br />\n",
+    "PostedDate": "2013-08-06T23:59:10.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1078483",
+    "ThreadId": "451866",
+    "Html": "hello again,\r<br />\n<br />\nas hotfix please use:\r<br />\n<br />\nusing Vbe = Microsoft.Vbe.Interop.Forms;\r<br />\nVbe.ComboBox comboBox = Invoker.PropertyGet(oleObject, &quot;Object&quot;) as Vbe.ComboBox;\r<br />\n// stuff\r<br />\nMarshal.ReleaseComObject(comboBox);\r<br />\n<br />\nplease keep in your mind. Microsoft.Vbe.Interop.Forms is not NetOffice,\r<br />\n<br />\nwhat i have to do is mark the Object property as non-analyzing property or much better, spend a NetOffice wrapper assembly for Microsoft.Vbe.Interop.Forms. added to todo-list for NO 1.6.1\r<br />\n<br />\nthanks man for pointing this out!\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-08T15:44:51.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1078612",
+    "ThreadId": "451866",
+    "Html": "thank you sebastian.\r<br />\n<br />\nwe will use this workaround to acces activex components.\r<br />\nand we will check future releases for fixes.\r<br />\n<br />\ncheers\r<br />\nroland<br />\n",
+    "PostedDate": "2013-08-09T02:04:36.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

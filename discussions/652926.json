@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1468011",
+    "ThreadId": "652926",
+    "Html": "The following code crashes on mail.Attachments.Add() with error &quot;Exception has been thrown by the target of an invocation.&quot;. The mailItem is valid, the Attachment object is valid, the path is valid, but still it crashes when I try to add it. \r<br />\n<br />\nSystem.Net.Mail.Attachment attachment = new System.Net.Mail.Attachment(myFilePath);\r<br />\nmail.Attachments.Add(attachment);\r<br />\n<br />\nI have also tried to create a NetOffice Attachment type instead but it does not have any constructor that takes in a file path so I cannot use it. Any clue?\r<br />\n Outlook.Attachment a = new Outlook.Attachment();\r<br />\n<br />\nMany thanks.<br />\n",
+    "PostedDate": "2016-03-25T13:29:21.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472981",
+    "ThreadId": "652926",
+    "Html": "Hi,\r<br />\n<br />\njust came across your request. What exactly are you trying to do? I guess &quot;mail&quot; is a NetOffice.OutlookApi.MailItem? In this case the &quot;attachment&quot; should be a normal string, e.g.<br />\n<pre><code>Outlook.MailItem myMessage = (Outlook.MailItem)outApp.CreateItem(NetOffice.OutlookApi.Enums.OlItemType.olMailItem);\nmyMessage.Attachments.Add(&quot;C:\\\\test.txt&quot;);</code></pre>\n\n",
+    "PostedDate": "2016-05-10T04:06:38.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1473462",
+    "ThreadId": "652926",
+    "Html": "I got this solved. It was my own fault.<br />\n",
+    "PostedDate": "2016-05-14T15:25:50.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

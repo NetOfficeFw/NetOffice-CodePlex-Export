@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "955043",
+    "ThreadId": "406508",
+    "Html": "\r\n<p>Hello Sebastian,</p>\r\n<p>When using NetOffice Project Wizard on Windows 8, the wizard reports &quot;Access to the path C:\\Settings.xml is denied&quot;.</p>\r\n<p>Visual Studio needs to be started as administrator to work around the issue. Once the file settings.xml has been created the Wizard works even when VS2010 is run without admin rights.</p>\r\n<p>Maybe the settings file could be written into the %temp% directory, which does not need admin rights?</p>\r\n<p>Best regards<br>\r\nBoris</p>\r\n",
+    "PostedDate": "2012-12-12T03:43:20.193-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "955247",
+    "ThreadId": "406508",
+    "Html": "\r\n<p>Hello Boris,<br>\r\n<br>\r\nthis is is strange, the RootPath is stored in HKEY_CURRENT_USER\\Software\\\\NetOffice &quot;Path&quot; and the was created while installation. typical is &quot;C:\\Program Files\\NetOffice\\NetOffice Project Wizard&quot;. it looks like the .msi package doesnt works well in Windows8\r\n or you have &quot;C:\\&quot; selected in the Setup Dialog.<br>\r\ni do a Windows8 test at the weekend to clearfiy the situation.<br>\r\n<br>\r\nSebastian<br>\r\n<br>\r\n</p>\r\n",
+    "PostedDate": "2012-12-12T11:44:41.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "956963",
+    "ThreadId": "406508",
+    "Html": "\r\n<p>Hi Sebastian,</p>\r\n<p>I have checked the Path registry entry on my machine. It is set to&nbsp;C:\\Program Files (x86)\\NetOffice\\NetOffice Project Wizard</p>\r\n<p>Not sure where C:\\ is coming from, I haven't specified it during the installation. As you probably know, in Windows 8 an application needs to have elevated rights to be able to write to C:\\Program Files ...&nbsp;Maybe the write process fails and then it defaults\r\n to C:\\?</p>\r\n",
+    "PostedDate": "2012-12-17T06:21:08.153-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

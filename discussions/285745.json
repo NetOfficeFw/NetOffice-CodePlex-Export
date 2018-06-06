@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "723605",
+    "ThreadId": "285745",
+    "Html": "\r\n<p>Hi All,</p>\r\n<p>I have a label template, I want to update all the labels when I click on some button. Previously it was possible with MailMergePropagateLabel function.</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>If m_currentDoc.MailMerge.MainDocumentType = Word.wdMailMergeMainDocType.wdMailingLables Then\r\nm_currentDoc.Application.WordBasic.MailMergePropagateLabel()\r\nEnd <span style=\"color:blue\">if</span>\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>I am getting this error:</p>\r\n<pre>m_currentDoc.Application.WordBasic.message = &quot;<span style=\"font-family:'Segoe UI','Microsoft Sans Serif',Arial,Geneva,sans-serif; white-space:normal\">Specified cast is not valid.&quot;.</span></pre>\r\n<pre><span style=\"font-family:'Segoe UI','Microsoft Sans Serif',Arial,Geneva,sans-serif; white-space:normal\"><br></span></pre>\r\n<pre><span style=\"font-family:'Segoe UI','Microsoft Sans Serif',Arial,Geneva,sans-serif; white-space:normal\">Thanks in advance</span></pre>\r\n<pre><span style=\"font-family:'Segoe UI','Microsoft Sans Serif',Arial,Geneva,sans-serif; white-space:normal\">Sunny</span></pre>\r\n",
+    "PostedDate": "2012-01-11T04:17:53.483-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

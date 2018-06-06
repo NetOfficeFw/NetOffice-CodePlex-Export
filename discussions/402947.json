@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "940613",
+    "ThreadId": "402947",
+    "Html": "\r\n<p>Hello, Sir</p>\r\n<p>I use NetOffice 1.2 (have not got a chance to update yet)</p>\r\n<p>I know it should not be limited to 255</p>\r\n<p>From the spec of excel 2003, it is 1024</p>\r\n<p>but when I set in code like this</p>\r\n<p>range.Formula = formuaStr;</p>\r\n<p>When formulaStr is longer than 255, I get an exception</p>\r\n<p>Name:TargetInvocationException<br>\r\nMessage:Exception has been thrown by the target of an invocation.<br>\r\nTarget:System.Object InvokeDispMethod(System.String, System.Reflection.BindingFlags, System.Object, System.Object[], Boolean[], Int32, System.String[])<br>\r\nStack:&nbsp;&nbsp; at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br>\r\n&nbsp;&nbsp; at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br>\r\n&nbsp;&nbsp; at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)<br>\r\n&nbsp;&nbsp; at LateBindingApi.Core.Invoker.PropertySet(COMObject comObject, String name, Object[] value)</p>\r\n<p>Name:COMException<br>\r\nMessage:Exception from HRESULT: 0x800A03EC</p>\r\n<p>&nbsp;</p>\r\n<p>thanks</p>\r\n",
+    "PostedDate": "2012-11-12T15:05:46.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "941230",
+    "ThreadId": "402947",
+    "Html": "\r\n<p>255 is the well known limit for formulas, range adresses and so on regardless from NetOffice, Interop, VSTO or each other API trough the COM Object model in .NET<br>\r\ncan i see the document what say the limit is 1024 ???<br>\r\n<br>\r\nSebastian<br>\r\n&nbsp;<br>\r\n</p>\r\n",
+    "PostedDate": "2012-11-13T14:17:13.247-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "941671",
+    "ThreadId": "402947",
+    "Html": "\r\n<p>thanks for your reply.&nbsp; I check Excel 2003 specification @ <a href=\"http://office.microsoft.com/en-us/excel-help/excel-specifications-and-limits-HP005199291.aspx\">\r\nhttp://office.microsoft.com/en-us/excel-help/excel-specifications-and-limits-HP005199291.aspx</a></p>\r\n",
+    "PostedDate": "2012-11-14T08:52:33.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "941716",
+    "ThreadId": "402947",
+    "Html": "\r\n<div>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">Maybe this will help:</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">&nbsp;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\"><a href=\"http://www.dailydoseofexcel.com/archives/2005/01/10/entering-long-array-formulas-in-vba/\">http://www.dailydoseofexcel.com/archives/2005/01/10/entering-long-array-formulas-in-vba/</a></span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">&nbsp;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">&nbsp;</span></p>\r\n<p>&nbsp;</p>\r\n<p><span style=\"font-size:9.0pt\">From: toosensitive</span></p>\r\n<div id=\"ThreadNotificationPostBody\" style=\"margin-bottom:24.0pt\">\r\n<p><span style=\"font-size:9.0pt\">thanks for your reply. I check Excel 2003 specification @\r\n<a href=\"http://office.microsoft.com/en-us/excel-help/excel-specifications-and-limits-HP005199291.aspx\">\r\nhttp://office.microsoft.com/en-us/excel-help/excel-specifications-and-limits-HP005199291.aspx</a></span></p>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2012-11-14T10:02:27-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "941888",
+    "ThreadId": "402947",
+    "Html": "\r\n<p>this looks good. thank you! (the replace trick is the best option i find)<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2012-11-14T15:30:00.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "942174",
+    "ThreadId": "402947",
+    "Html": "\r\n<p>Thank you all very much.</p>\r\n<p>I tried the following in C#, does not work.&nbsp;&nbsp;Do you know how to replace in&nbsp;C#? thanks<span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">&nbsp;</span></span></span></p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">&nbsp;</span></span></span></p>\r\n<p><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\">var</span></span></span><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">\r\n tmpformula = </span></span><span style=\"font-family:Consolas; color:#a31515; font-size:x-small\"><span style=\"font-family:Consolas; color:#a31515; font-size:x-small\"><span style=\"font-family:Consolas; color:#a31515; font-size:x-small\">&quot;~~~&quot;</span></span></span><span style=\"font-family:Consolas; font-size:x-small\">\r\n</p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\">; </p>\r\n<p>rangeFunction.Formula = tmpformula;</p>\r\n<span style=\"font-family:Consolas; font-size:x-small\">\r\n<p>rangeFunction.Replace(tmpformula, formula,</p>\r\n</span></span>\r\n<p></p>\r\n</span>\r\n<p></p>\r\n<p><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\">null</span></span></span><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">,\r\n</span></span><span style=\"font-family:Consolas; color:#2b91af; font-size:x-small\"><span style=\"font-family:Consolas; color:#2b91af; font-size:x-small\"><span style=\"font-family:Consolas; color:#2b91af; font-size:x-small\">XlSearchOrder</span></span></span><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">.xlByRows,\r\n</span></span><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\">null</span></span></span><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">,\r\n</span></span><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\">null</span></span></span><span style=\"font-family:Consolas; font-size:x-small\">\r\n</p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\">);</span></p>\r\n</span>\r\n<p></p>\r\n",
+    "PostedDate": "2012-11-15T08:11:28.517-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "942178",
+    "ThreadId": "402947",
+    "Html": "\r\n<p>I use this rangeFunction.Replace(tmpformula, formula) to get replace work. However, if formula is longer than 255,&nbsp; I still get the same exception as before. thanks</p>\r\n",
+    "PostedDate": "2012-11-15T08:20:27.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "942369",
+    "ThreadId": "402947",
+    "Html": "\r\n<div>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">The &bdquo;trick&ldquo; is not to replace the hole value, but only max 255 characters!\r\n</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">&nbsp;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">Eg .</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">&nbsp;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:10.0pt; font-family:Consolas\">Tmpformula1</span><span lang=\"EN-US\" style=\"font-size:11.0pt\"> = &ldquo;First_part_of_formular_max_252_charuntil_here ~~~&rdquo;;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:10.0pt; font-family:Consolas\">tmpformula</span><span lang=\"EN-US\" style=\"font-size:11.0pt\"> 2 = &ldquo;Second_part_of_formular_max_252_charuntil_here ~~~&rdquo;;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:10.0pt; font-family:Consolas\">tmpformula</span><span lang=\"EN-US\" style=\"font-size:11.0pt\"> 3 = &ldquo;Third_part_of_formular_max_252_charuntil_here~~~&rdquo;;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">&nbsp;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:10.0pt; font-family:Consolas\">&nbsp;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:10.0pt; font-family:Consolas\">rangeFunction.Formula = Tmpformula1;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:10.0pt; font-family:Consolas\">rangeFunction.Replace(&ldquo;~~~&rdquo;, tmpformula2,\r\n<span style=\"color:blue\">null</span>, <span style=\"color:#2b91af\">XlSearchOrder</span>.xlByRows,\r\n<span style=\"color:blue\">null</span>, <span style=\"color:blue\">null</span>);</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:10.0pt; font-family:Consolas\">rangeFunction.Replace(&ldquo;~~~&rdquo;, tmpformula3,\r\n<span style=\"color:blue\">null</span>, <span style=\"color:#2b91af\">XlSearchOrder</span>.xlByRows,\r\n<span style=\"color:blue\">null</span>, <span style=\"color:blue\">null</span>);</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">&nbsp;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">&nbsp;</span></p>\r\n<p><span lang=\"EN-US\" style=\"font-size:11.0pt\">&nbsp;</span></p>\r\n<br>\r\n<p><span style=\"font-size:9.0pt\">From: toosensitive</span></p>\r\n<div id=\"ThreadNotificationPostBody\" style=\"margin-bottom:24.0pt\">\r\n<p><span style=\"font-size:9.0pt\">I use this rangeFunction.Replace(tmpformula, formula) to get replace work. However, if formula is longer than 255, I still get the same exception as before. thanks</span></p>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2012-11-15T14:38:41.33-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "942949",
+    "ThreadId": "402947",
+    "Html": "\r\n<div id=\"_mcePaste\" style=\"width:1px; height:1px; overflow:hidden; top:0px; left:-10000px\">\r\n&#65279;</div>\r\n<p><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Segoe UI; color:#000000\">Thanks,\r\n I tried your approach, still get the same exception. <br>\r\nI guess that's b/c I cut formula in short and make it invalid formula. <br>\r\nThen I tried this, it seems this works till 323 chars, but I get the same exception if the length is longer</span></span></span></span></p>\r\n<p><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\"><span style=\"font-family:Consolas; color:#0000ff; font-size:x-small\">&nbsp;</span></span></span></p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var tt = XLApp.ErrorCheckingOptions;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XLApp.ErrorCheckingOptions.InconsistentFormula = false;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XLApp.ErrorCheckingOptions.EvaluateToError = false;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XLApp.ErrorCheckingOptions.UnlockedFormulaCells = false;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XLApp.DisplayFormulaAutoComplete = false;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rangeFunction.Formula = formula;</p>\r\n",
+    "PostedDate": "2012-11-16T11:10:29.333-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "944791",
+    "ThreadId": "402947",
+    "Html": "\r\n<p>Thanks all for your help.</p>\r\n<p>I find using & will solve the issue.&nbsp; say MyUDF(param1,...)</p>\r\n<p>If Param1 is longer than 255, cut it into trunks (255 or less), then using & to cancatenate them</p>\r\n<p>eg param1 = subpart1 & subpart2, etc</p>\r\n",
+    "PostedDate": "2012-11-20T12:43:27.297-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

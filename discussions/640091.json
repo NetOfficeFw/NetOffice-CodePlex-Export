@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1430867",
+    "ThreadId": "640091",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nfirst of all thanks for the great library you have created!!!\r<br />\n<br />\nI am using it to develop an Office plugin. This plugin is working on my local machine when (somehow magically) deployed through Visual Studio. All fine till here. However, I need to deploy it to other people's computers (who do not have VS installed) and I am really struggling to find a way on how to do that.\r<br />\n<br />\nMy plugin looks like this:<br />\n<pre><code>[COMAddin(Constants.ProjectName, &quot;Tool&quot;, 3)]\n[Guid(&quot;B3F60319-1A11-4F3E-9C1B-3AE908D9CA86&quot;), ProgId(&quot;Tool.OutlookIntegration&quot;)]\npublic class OutlookIntegration : COMAddin\n{\n    public OutlookIntegration()\n    {\n        this.OnStartupComplete += new OnStartupCompleteEventHandler(this.Integrate);\n\n        _settings = new Settings();\n    }\n\n    /* Integrate creates a menu item which does what I need. */\n}\n</code></pre>\n\nThe project type is library. Now, the question is how do I make this run on someone elses PC? If you happen to know about some tutorial or anything like that, please let me know.\r<br />\n<br />\nI am also happy to provide any additional details needed.\r<br />\n<br />\nBest regards,\r<br />\nD.<br />\n",
+    "PostedDate": "2015-06-18T05:56:05.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1432215",
+    "ThreadId": "640091",
+    "Html": "what you have to do is copy the assembly (incl. depencies) to the target system and register your assembly here as office addin.\r<br />\n<br />\nthe common ways:\r<br />\n<br />\n1.) register your assembly at hand with the .net utiltity tool RegAsm.exe\r<br />\n<br />\n2.) build an installer package and let the installer do the register process for you. \r<br />\nYou find 2 example projects for .MSI deployment in the NetOffice download section.\r<br />\n  [Example] MSI Deployment (C#)\r<br />\n  [Example] MSI Deployment (VB)\r<br />\nYou can also use Wix or something else to create a ready-to-go setup package. Just make sure to set the options\r<br />\n&quot;Register for COM&quot; (or something like this)\r<br />\n<br />\n*Sebastian <br />\n",
+    "PostedDate": "2015-06-28T14:01:51.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1432256",
+    "ThreadId": "640091",
+    "Html": "Will try, thanks a lot!<br />\n",
+    "PostedDate": "2015-06-29T01:36:54.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1433814",
+    "ThreadId": "640091",
+    "Html": "At the hedge fund where I recently worked we deployed <strong>VSTO add-ins using ClickOnce</strong>. <br />\n<br />\nThat was no problem at all for users. We simply sent them a link to the deployment server and had them create a desktop shortcut for the &quot;.application&quot; file. (I liked that better than &quot;setup.exe&quot;.)<br />\n<br />\nI don't see any reason why that would not work equally well for <strong>NetOffice</strong>.<br />\n<br />\n<em>BTW: You can include any number of additional support assemblies in the &quot;required files&quot; on the ClickOnce property page.</em><br />\n<br />\nIf you prefer to avoid learning the details of ClickOnce, you can always try out something like <a href=\"https://github.com/Squirrel/Squirrel.Windows\" rel=\"nofollow\">Squirrel.Windows</a> or <a href=\"https://autoupdaterdotnet.codeplex.com/\" rel=\"nofollow\">AutoUpdater.NET</a>.<br />\n",
+    "PostedDate": "2015-07-09T13:20:40.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

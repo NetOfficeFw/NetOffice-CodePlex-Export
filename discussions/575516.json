@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1332687",
+    "ThreadId": "575516",
+    "Html": "Even if you set visible = false on the application object, Excel opens as visible unless you are a local admin or right click and run as admin.\r<br />\nIs there any other way to make Excel open invisible without making the user an admin?<br />\n",
+    "PostedDate": "2014-12-15T13:39:04.47-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337102",
+    "ThreadId": "575516",
+    "Html": "i need more info to reproduce the scenario.\r<br />\n<br />\nOperating System Version(32 or 64)\r<br />\nExcel Version (32 or 64)\r<br />\nProject Details, Addin or Application, if application: from desktop or running from system service(like IIS on a server).\r<br />\nif addin: which IExensibility trigger is currently running. \r<br />\nSome code is greatly appreciated of course.\r<br />\n<br />\n(btw: make sure excel doesnt load other third party addins for a clean test scenario)\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-25T01:25:13.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

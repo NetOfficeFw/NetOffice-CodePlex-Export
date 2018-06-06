@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1465698",
+    "ThreadId": "652129",
+    "Html": "Hello,<br />\nFirst off all great software. I have a problem i've created addin that is working on my local computer now i'm tring to create a setup program i follow this link <a href=\"https://msdn.microsoft.com/en-us/library/cc442767.aspx\" rel=\"nofollow\">https://msdn.microsoft.com/en-us/library/cc442767.aspx</a> - created registry entries and addin after install is not showing in excel when i add Manifest ( what should i add there as a value ?) entry it is showing in excel but not loading - A runtime error when loading com exception.<br />\n<br />\n<br />\nalso i looked at this <a href=\"http://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS\" rel=\"nofollow\">http://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS</a> with same result. I use vs 2015, office 2013 32-bits  and the same setup templates as in this tutorial.<br />\n<pre><code>  [COMAddin(&quot;Excel DataBridge test&quot;, &quot;This Addin ....&quot;, 3)]\n    [ComVisible(true)]\n    [CustomUI(&quot;RibbonUI.xml&quot;, true), RegistryLocation(RegistrySaveLocation.CurrentUser)]\n    [Guid(&quot;BA38FD48-47BD-43de-8177-0D067A01B566&quot;), ProgId(&quot;DataBridge.Addin&quot;)]\n    public class Addin : COMAddin\n    {\n\n        public Addin()\n        {\n            this.OnStartupComplete += new OnStartupCompleteEventHandler(Addin_OnStartupComplete);\n        }\n}</code></pre>\n\nMaybe i'm doing something wrong ?<br />\n<br />\nAny help ? <br />\n",
+    "PostedDate": "2016-03-05T09:37:20.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1472059",
+    "ThreadId": "652129",
+    "Html": "Hi Beczka,\r<br />\n<br />\nYour post is old so I don't know if you have been able to solve your problem.\r<br />\n<br />\nI have always used Installshield for setup to install Addin and it always works for me but it should be the same working from Visual Studio.\r<br />\nThe problem could be from registry entries.\r<br />\n<br />\nIf you have not been able to solve the problem yet, let me know and I will see how I can offer some help.\r<br />\n<br />\nRegards.<br />\n",
+    "PostedDate": "2016-05-01T04:26:16.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1245622",
+    "ThreadId": "545404",
+    "Html": "Hi, \r<br />\n<br />\ngreat tool, but if i call <br />\n<pre><code>word.ActiveDocument.Variables.Clear() </code></pre>\n\nor update a Variable via<br />\n<pre><code>var varToWrite = variables.FirstOrDefault(variable =&gt; variable.Name == name);\nvarToWrite.Value = value;</code></pre>\n\nthe access is very slow (office 2013).\r<br />\n<br />\nWhat can I do?\r<br />\n<br />\nRegards,\r<br />\nChristoph<br />\n",
+    "PostedDate": "2014-05-15T00:38:58.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1246350",
+    "ThreadId": "545404",
+    "Html": "what means very slow in fact? (milliseconds, seconds or minutes?)\r<br />\n<br />\ni want reproduce your scenario but need to know the count (and may content) of your variables and your office document format(.xlsx?) and its a new document or existing document.\r<br />\n<br />\n(my current idea is is: the application use some harddrive operations to validate the variables and this ops decrease the performance)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-05-16T14:01:40.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1246407",
+    "ThreadId": "545404",
+    "Html": "Here some facts:<br />\n<ul>\n<li>the performance ist reduced by factor 30 (about)</li>\n<li>The count of variables is about 70, strings with length of 10-50</li>\n<li>The document ist new generated Word-Document via a template (loading DOCX)</li>\n<li>this problem occours at an customer sytem, at my test system, all ist fine</li>\n<li>My previous method controls addin/opdating variables by OLE-Automation (Visual Foxpro). In this case, there ist a small performance impact only at the customer system (about factor 2), </li>\n<li>The customer uses Office 2010 (not 2013), my Test System uses Office 2003.</li>\n<li>The Customer uses Office in as Terminal Services Environment (Windows 2003)</li>\n<li>\nI try to take some measures in end of the next week.<br />\n</li>\n</ul>\nWhat do you mean with &quot;harddrive operations to validate&quot;? Word hosts the Variables in memory.\r<br />\n<br />\nIf this is too specifically for this forum, you can mail me: Dressler.at.comfuture.de\r<br />\n<br />\n-Christoph<br />\n",
+    "PostedDate": "2014-05-16T23:17:45.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1247296",
+    "ThreadId": "545404",
+    "Html": "hey man,\r<br />\n<br />\ni didnt understand your prev solution. ( i need this to compare &amp; analyze the problem) sounds like VBA for me. (BTW: FoxPro is still alive? never heard of them since 2000....)\r<br />\n<br />\nwhat i mean with hd operations is: word is a bit special in deal with meta data. this means, word check for the doc/docx file in any case here for all meta data operations( you can see/observe this with a a special SysInternals tool(by the great Mark Russinovic).\r<br />\nthats the reason why i ask for its new or existing file.(i see, its new and UNSAVED(true???), no need for hd operations)\r<br />\n<br />\nWhat can i say currently is:\r<br />\n<br />\nmay bad news: accessing a COM application from .NET is MUCH slower as VBA or VB6/5. ( a lot of .NET infrastructure code is necessary to break the wall from managed to unmanaged) regardless from any API(VSTO, NetOffice, Interop) you want you use.\r<br />\nyou may face this kind of performance problem.  the only way to fix this is, reduce the count of calls to office as much you can. in other words: the call to office himself is the reason for the performance decrease.<br />\n\r<br />\nSummary: This is a performance problem(very special, normaly is gimme some code snippets and i told you whats happen). \r<br />\nThis situation is different. Anyway, i want reproduce the scenario now,  (A)VBA in Word, (B)NetOffice in .exe. if its done, i want come back. \r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-05-20T02:00:24.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

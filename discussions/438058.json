@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1021342",
+    "ThreadId": "438058",
+    "Html": "Hello,<br />\n<br />\nSomeone any idea how I can paste my ClipBoard content into a range?<br />\n<br />\nhtml is a html file.<br />\n<pre><code>Clipboard.SetText(html);</code></pre>\n\nLike that I can visualize HTML code in <br />\n<pre><code>sheet.Range(&quot;A1&quot;).Value = Clipboard.GetText();</code></pre>\n\nBut it will be interpret like text and will appear as text also.<br />\n<br />\nIf I don't do that and I open my Excel and do PasteSpecial, I can in fact paste the content of<br />\n<pre><code>Clipboard.SetText(html);</code></pre>\n\nAnd my table will be a real table in Excel.<br />\n<br />\nI thought about doing with PasteSpecial and to give him Parameter the html file.<br />\n<pre><code>sheet.PasteSpecial(Clipboard.GetText()); //throws error</code></pre>\n\nThanks.<br />\n<br />\nMike<br />\n",
+    "PostedDate": "2013-03-26T10:43:42.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021654",
+    "ThreadId": "438058",
+    "Html": "Found it with a bit of research...\r<br />\n<br />\nClipboard.SetText(html);\r<br />\nsheet.Range(&quot;A1&quot;).PasteSpecial();<br />\n",
+    "PostedDate": "2013-03-27T02:57:18.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

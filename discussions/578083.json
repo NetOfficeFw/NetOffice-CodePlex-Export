@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1343331",
+    "ThreadId": "578083",
+    "Html": "I am trying to read the current Workbook in Excel.\r<br />\n<br />\nI call:\r<br />\n<br />\nExcel.Application excelApplication = Excel.Application.GetActiveInstance();\r<br />\nExcel.Workbook currentWorkBook = excelApplication.ActiveWorkbook;\r<br />\n<br />\ncurrentWorkBook is null after these calls, even though I can physically see that a workbook is open in excel.\r<br />\n<br />\nDo I need to make some call beforehand? Is this a known issue? Any information would help.\r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2015-01-19T12:03:33.187-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343796",
+    "ThreadId": "578083",
+    "Html": "GetActiveInstance() gives you the first instance in memory. may you have multiple instances in memory.\r<br />\n<br />\nforeach(var item in Excel.Application.GetActiveInstances())\r<br />\n{\r<br />\n   Console.WriteLine(&quot;Book: {0}&quot;, item.ActiveWorkbook);\r<br />\n}\r<br />\n<br />\n(BTW: GetActiveInstances in NO 1.7.2 level a microsoft issue in the COM Running Object Table. make sure to use NO 1.7.2 or higher)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-01-21T06:00:13.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

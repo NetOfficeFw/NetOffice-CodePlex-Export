@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1310101",
+    "ThreadId": "568929",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nDo you have any plans to create an official release of NetOffice v1.7?\r<br />\n<br />\nAlso could you give me some pointers on how are you currently generating all the assemblies targeting the different versions of the .NET Framework, so I can repeat the process?\r<br />\n<br />\nI've been receiving a number of e-mails from people asking me to update the <a href=\"https://github.com/CaioProiete/NetOffice-NuGet\" rel=\"nofollow\">NuGet Packages</a>, so if I make sure I generate the assemblies the right way, I can at least create pre-release versions of the packages as this repository gets updated.\r<br />\n<br />\nThanks,\r<br />\nCaio Proiete<br />\n",
+    "PostedDate": "2014-10-02T19:54:30.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1310407",
+    "ThreadId": "568929",
+    "Html": "absolutly,\r<br />\n<br />\nthe problem is my notebook is completely wrecked and a lot of code are lost, so i still figure out to recover last state from different working copies :/\r<br />\n<br />\nthe tool i use to generate the code files is also available on codeplex: <a href=\"https://latebindingapi.codeplex.com\" rel=\"nofollow\">https://latebindingapi.codeplex.com</a> (you need an active x control(tlbinf32.dll) to use this tool(given in the source code) this tool analyze the com type libs from office and save the informations as xml file.\r<br />\n<br />\nwhat i do to generate a new release code is as follows.\r<br />\n<br />\n1.) create 6 virgin virtual windows machines(2000,2002,2003,2007,2010, 2014), just office is installed.\r<br />\n2.) run the tool on the first machine, analyze, office core, excel, word, outlook, access and save the xml file.\r<br />\n3.) move the xml file to the second machine, load the xml file with tool and analyze the same office type libs in higher version, the new informations want be added with version informations. save the xml file and repeat this until the last machine.\r<br />\n<br />\nyou find a complete (compressed) xml file in the last source state: NetOffice 1.7.0.xml.rar\r<br />\nthis is the last file i have generated the NO 1.7 preview\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-10-03T21:44:51.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1318194",
+    "ThreadId": "568929",
+    "Html": "Hi,\r<br />\n<br />\nwould it be possible to even migrate the project to some better hosting (such sa Github), as this Subversion repository on Codeplex is super slow and I can't browser history of the project, or even do simple checkout of source code as I receive timeout many times.\r<br />\n<br />\nThis would allow better collaboration, and also way better support for generating NuGet packages.\r<br />\n<br />\n<br />\nRegards,\r<br />\nJozef.<br />\n",
+    "PostedDate": "2014-11-01T04:11:59.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

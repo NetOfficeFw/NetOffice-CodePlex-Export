@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1093348",
+    "ThreadId": "457131",
+    "Html": "Hi,\r<br />\nI am facing problems with my code which is using the &quot;OutlookAPI.dll&quot;,&quot;OfficeAPI.dll&quot; and &quot;NetOffice.dll&quot; for working with my application using Outlook. THE REASON I AM USING NETOFFICE IS FOR BACKWARD COMPATIBILITY WITH DIFFERENT VERSIONS OF OUTLOOK. \r<br />\n<br />\nI am currently refereing the 3 DLL's - &quot;OutlookAPI.dll&quot;,&quot;OfficeAPI.dll&quot; and &quot;NetOffice.dll&quot; and using the below code \r<br />\n<br />\nusing OfficeApi.Utils; \r<br />\n... \r<br />\n... \r<br />\n... \r<br />\nOutlook.Application _Outlook = null; \r<br />\nOutlook.MailItem mi = null; \r<br />\n_Outlook = new Outlook.Application(); \r<br />\nOutlook.Explorer oExplorer = _Outlook.ActiveExplorer(); \r<br />\nOutlook.Selection oSelection = oExplorer.Selection; \r<br />\n... \r<br />\n... \r<br />\nmi = (Outlook.MailItem)item; \r<br />\n<br />\nI am getting an error - &quot;The type or namespace name 'OfficeApi' could not be found (are you missing a using directive or an assembly reference?)&quot; \r<br />\ni have downloaded the entire source code and checked the examples. even they have the &quot;Missing Reference&quot; error. Kindly help \r<br />\n<br />\nThanks and Regards \r<br />\nGurudatt<br />\n",
+    "PostedDate": "2013-09-16T17:59:12.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093477",
+    "ThreadId": "457131",
+    "Html": "illegal double post.\r<br />\n<a href=\"https://netoffice.codeplex.com/discussions/456989#post1092943\" rel=\"nofollow\">https://netoffice.codeplex.com/discussions/456989#post1092943</a>\r<br />\n[closed]<br />\n",
+    "PostedDate": "2013-09-17T04:11:26.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

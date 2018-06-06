@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1428116",
+    "ThreadId": "638960",
+    "Html": "In VSTO, it is possible to expose the addin object by overriding the RequestComAddinAutomationService method. As a consequence, the addin object can be accessed from outside, that is, it no longer null. For example, in vba as follows<br />\n<br />\nApplication.COMAddIns(1).Object <br />\n<br />\nHow to achieve a similar behaviour with netoffice? RequestComAddinAutomationService is not available in netoffice<br />\n<br />\nAny help is really appreciated, <br />\ncheers<br />\n<br />\nDominik<br />\n",
+    "PostedDate": "2015-05-30T11:04:24.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1428714",
+    "ThreadId": "638960",
+    "Html": "hello dominik,\r<br />\n<br />\nthanks for pointing this out. i did not realize vsto spend a property like this and add to my to do list.\r<br />\n<br />\nA quick hotfix in c# is to use the OnConnection event. something like this:\r<br />\n<br />\n// create an instance of 'MyClass' and set to addin 'Object' property\r<br />\nvoid Addin_OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)\r<br />\n{<br />\n<pre><code>        object[] param = new object[1];\n        param[0] = new MyClass();\n        Application.GetType().InvokeMember(&quot;Object&quot;, System.Reflection.BindingFlags.SetProperty, null, AddInInst, param);</code></pre>\n\n}\r<br />\n<br />\n*hope this help\r<br />\nI want give a notification here when RequestComAddinAutomationService is available in NetOffice (next preview release).\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2015-06-03T23:37:23.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2015-06-04T00:20:41.627-07:00"
+  },
+  {
+    "Id": "1428722",
+    "ThreadId": "638960",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nthank you very much, your solution works perfectly. The workaround I found in the meantime was also to use the onConnection event, <br />\n<pre><code>  if ((AddInInst as Microsoft.Office.Core.COMAddIn) != null)\n   {\n                    Microsoft.Office.Core.COMAddIn comaddin = AddInInst as Microsoft.Office.Core.COMAddIn;\n                    comaddin.Object = objectToBeUsed;\n    }</code></pre>\n\nbut the solution via reflection is much more elegant. \r<br />\n<br />\nDominik<br />\n",
+    "PostedDate": "2015-06-04T00:20:29.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

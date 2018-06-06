@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "824583",
+    "ThreadId": "352486",
+    "Html": "\r\n<p>After adding a reference to an unrelated .NET library to my code, the call to LateBindingApi.Core.<span style=\"color:#2b91af\">Factory</span>.Initialize() results in FileNotFoundException.</p>\r\n<p>The library in question is <a href=\"http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET\" target=\"_blank\">\r\nTime Period Library for .NET</a> but it is not used in any way in the class using the NetOffcie assemblies to export some data from a datagrid to an Excel spreadsheet. There is no &quot;<span style=\"color:blue\">using</span>&nbsp;Itenso.TimePeriod;&quot; statement at\r\n the top of the file and the code in this class is not using that assembly in any way...</p>\r\n<p>Why would LateBindingApi need to look for this assembly and throw this exception which happens even if I copy the assembly dll to the folder LateBindingApi is looking for it in? Any ideas how to solve the problem?</p>\r\n<p>Exception Details:</p>\r\n<p>Message: Could not load file or assembly 'Itenso.TimePeriod, Version=1.4.6.0, Culture=neutral, PublicKeyToken=d7f23b760ed5c748' or one of its dependencies. The system cannot find the file specified.</p>\r\n<p>Source: LateBindingApi.Core</p>\r\n",
+    "PostedDate": "2012-04-16T14:42:25.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824595",
+    "ThreadId": "352486",
+    "Html": "<p>Hello,<br /><br />In the Intialize() method, NetOffice detect all depencies in currently loaded ApplicationDomain.<br />All currently loaded NetOffice assemblies was stored in a dictionary now.&nbsp;The analyzing of the dependent 'Itenso.TimePeriod' assembly failed here.<br />nice to know whats the problem, but anyway this is a NetOffice issue. Gimme one day to fix them and NetOffice ignore -failed- assemblies in current application domain.</p>\r\n<p>Sebastian&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-04-16T15:01:48.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824597",
+    "ThreadId": "352486",
+    "Html": "<p>Thanks for a quick reply Sebastian...</p>",
+    "PostedDate": "2012-04-16T15:12:05.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

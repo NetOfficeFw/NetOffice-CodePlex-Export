@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1416622",
+    "ThreadId": "632123",
+    "Html": "Hi there!\r<br />\n<br />\nI'd like to migrate an existing VSTO Excel Application Addin to NetOffice. \r<br />\n<br />\nThis Addin uses RibbonControls which are populated with dynamic data at runtime (mostly &quot;dynamicMenu&quot; and some databound &quot;comboBox&quot; controls). For &quot;dynamicMenu&quot; I used to implement a &quot;getContent&quot; callback that instanciates and returns nested RibbonMenu controls. \r<br />\n<br />\nWhat is the preferred way to do this with NetOffice (without using &quot;Microsoft.Office.Tools.Ribbon&quot;)? \r<br />\nCan &quot;Microsoft.Office.Tools.Ribbon&quot; coexist with NetOffice (without loosing NetOffice's flexibility regarding Office and Visiual Studio versions)?\r<br />\n<br />\nThanks for your help and for your amazing project!\r<br />\n<br />\nBest regards,\r<br />\nThomas<br />\n",
+    "PostedDate": "2015-04-22T01:31:21.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1416785",
+    "ThreadId": "632123",
+    "Html": "hey thomas,\r<br />\n<br />\nIts a NetOffice Tools Addin or just implement IExtensibility2 ?\r<br />\n<br />\nI currently work for a visual ribbon designer (as similar as possible to VSTO)\r<br />\nAt the moment, to create a ribbon dynamicly at runtime you have to override the GetCustomUI method.<br />\n<pre><code>    public override string GetCustomUI(string RibbonID)\n    {\n        return _myXml;\n    }\n</code></pre>\n\nFor more runtime flexibility in dropdown elements you have to set the names of the callback methods(&quot;getContent&quot;) at hand in the ribbon.xml schema.\r<br />\n(VSTO gives you a nice option to generate an xml schema from the designer. its a good way to start from)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-04-22T06:11:34.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

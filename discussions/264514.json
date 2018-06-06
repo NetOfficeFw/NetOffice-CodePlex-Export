@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "639838",
+    "ThreadId": "264514",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I want to remove a outlook rule with following code, but i get&nbsp;an error but no error in Microsoft.Office.Interop.Outlook</p>\r\n<p>System.Runtime.InteropServices.Marshal.ReleaseComObject(rules);</p>\r\n<p>&nbsp;error :</p>\r\n<p>Message=The object's type must be __ComObject or derived from __ComObject.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-07-09T05:25:39.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "639846",
+    "ThreadId": "264514",
+    "Html": "<p>what the hell you doing? :o<br />ReleaseComObject release a COM proxy, you dont remove anything in outlook with this(btw: i dont know what is a rule in outlook)<br />the method awaits a com proxy but NetOffice wraps COM proxies&nbsp;for you in wrapper classes and&nbsp;gives you a smarter way to release: rule.Disose();<br />please read:<br /><a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management\">http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management</a><br />and take a look at the tutorials.<br /><br />regards<br />Sebastian</p>",
+    "PostedDate": "2011-07-09T05:54:45.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "639854",
+    "ThreadId": "264514",
+    "Html": "<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thank you very much ,i can remove a outlook rule.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pls open Outlook client such Outlook 2007 ,Outlook -- Tools -- Rules and Alerts..,you can see the Outlook rule. ^_^</p>\r\n<p>&nbsp;</p>\r\n<p>BR.</p>\r\n<p>dxdnj</p>\r\n<p style=\"padding-left: 60px;\">&nbsp;</p>",
+    "PostedDate": "2011-07-09T07:01:49.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

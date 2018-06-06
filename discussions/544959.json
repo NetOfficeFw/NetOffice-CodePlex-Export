@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1243966",
+    "ThreadId": "544959",
+    "Html": "Add C++ shim, the exception is still throwed.\r<br />\nDO I HAVE TO FOLLOW THE ClickOnce publish method?\r<br />\n<br />\nSystem.IO.IsolatedStorage.IsolatedStorageException: 无法确定域的标识。(Unable to determine the identity of domain)\r<br />\n   在 System.IO.IsolatedStorage.IsolatedStorage._GetAccountingInfo(Evidence evidence, Type evidenceType, IsolatedStorageScope fAssmDomApp, Object&amp; oNormalized)\r<br />\n   在 System.IO.IsolatedStorage.IsolatedStorage.GetAccountingInfo(Evidence evidence, Type evidenceType, IsolatedStorageScope fAssmDomApp, String&amp; typeName, String&amp; instanceName)\r<br />\n   在 System.IO.IsolatedStorage.IsolatedStorage._InitStore(IsolatedStorageScope scope, Evidence domainEv, Type domainEvidenceType, Evidence assemEv, Type assemblyEvidenceType, Evidence appEv, Type appEvidenceType)\r<br />\n   在 System.IO.IsolatedStorage.IsolatedStorage.InitStore(IsolatedStorageScope scope, Type domainEvidenceType, Type assemblyEvidenceType)\r<br />\n   在 System.IO.IsolatedStorage.IsolatedStorageFile.GetStore(IsolatedStorageScope scope, Type domainEvidenceType, Type assemblyEvidenceType)\r<br />\n   在 MS.Internal.IO.Packaging.PackagingUtilities.ReliableIsolatedStorageFileFolder.GetCurrentStore()\r<br />\n   在 MS.Internal.IO.Packaging.PackagingUtilities.ReliableIsolatedStorageFileFolder..ctor()\r<br />\n   在 MS.Internal.IO.Packaging.PackagingUtilities.GetDefaultIsolatedStorageFile()\r<br />\n   在 MS.Internal.IO.Packaging.PackagingUtilities.CreateUserScopedIsolatedStorageFileStreamWithRandomName(Int32 retryCount, String&amp; fileName)\r<br />\n   在 MS.Internal.IO.Packaging.SparseMemoryStream.EnsureIsolatedStoreStream()\r<br />\n   在 MS.Internal.IO.Packaging.SparseMemoryStream.SwitchModeIfNecessary()\r<br />\n   在 MS.Internal.IO.Packaging.SparseMemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)\r<br />\n   在 MS.Internal.IO.Packaging.CompressEmulationStream.Write(Byte[] buffer, Int32 offset, Int32 count)\r<br />\n   在 MS.Internal.IO.Packaging.CompressStream.Write(Byte[] buffer, Int32 offset, Int32 count)\r<br />\n   在 MS.Internal.IO.Zip.ProgressiveCrcCalculatingStream.Write(Byte[] buffer, Int32 offset, Int32 count)\r<br />\n   在 MS.Internal.IO.Zip.ZipIOModeEnforcingStream.Write(Byte[] buffer, Int32 offset, Int32 count)\r<br />\n   在 System.Xml.XmlUtf8RawTextWriter.FlushBuffer()\r<br />\n   在 System.Xml.XmlUtf8RawTextWriter.RawText(Char* pSrcBegin, Char* pSrcEnd)\r<br />\n   在 System.Xml.XmlUtf8RawTextWriter.RawText(String s)\r<br />\n   在 System.Xml.XmlUtf8RawTextWriter.WriteStartElement(String prefix, String localName, String ns)\r<br />\n   在 System.Xml.XmlWellFormedWriter.WriteStartElement(String prefix, String localName, String ns)\r<br />\n   在 System.Xml.Linq.ElementWriter.WriteStartElement(XElement e)\r<br />\n   在 System.Xml.Linq.ElementWriter.WriteElement(XElement e)\r<br />\n   在 System.Xml.Linq.XElement.WriteTo(XmlWriter writer)\r<br />\n   在 System.Xml.Linq.XContainer.WriteContentTo(XmlWriter writer)\r<br />\n   在 System.Xml.Linq.XDocument.WriteTo(XmlWriter writer)\r<br />\n   在 System.Xml.Linq.XDocument.Save(XmlWriter writer)<br />\n",
+    "PostedDate": "2014-05-10T22:37:18.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1244307",
+    "ThreadId": "544959",
+    "Html": "please explain: this is just for big files(you say), in other words, this works fine with small files? \r<br />\n(it looks like you have no valid appdomain, but i need more info about environment to clearify the situation, an example solution is may helpfull. (public.sebastian[at]web.de, remove private code if you want)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-05-12T04:36:40.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1244332",
+    "ThreadId": "544959",
+    "Html": "Yes the AppDomain has no evidence. \r<br />\nIn the Shim CLRLoader.cpp<br />\n<pre><code>    // Create an AppDomain that will run the managed assembly, and get the\n    // AppDomain's _AppDomain pointer from its IUnknown pointer.\n    IfFailGo( m_pCorRuntimeHost-&gt;CreateDomainEx(T2W(szDirectory), \n        pUnkDomainSetup, 0, &amp;pUnkAppDomain) ); //the evidence is null. I DONT KNOWN HOW TO SET</code></pre>\n\n",
+    "PostedDate": "2014-05-12T05:44:09.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1244346",
+    "ThreadId": "544959",
+    "Html": "As first:\r<br />\n<br />\nI find a similar topic: (<a href=\"http://www.lyquidity.com/devblog/?p=65\" rel=\"nofollow\">http://www.lyquidity.com/devblog/?p=65</a> (IsolatedStorageException) with big files in Office)\r<br />\nI still figure out how its possible to create an AppDomain in an umanaged .NET hosting scenario.\r<br />\n(Just an idea is to create the appdomain at hand while startup in c# or vb)\r<br />\n<br />\nI try to find a solution. (create an appdomain in c++)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-05-12T06:31:16.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1244623",
+    "ThreadId": "544959",
+    "Html": "Thank you!<br />\n",
+    "PostedDate": "2014-05-12T17:47:11.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

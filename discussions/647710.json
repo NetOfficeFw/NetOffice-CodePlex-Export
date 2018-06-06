@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1452770",
+    "ThreadId": "647710",
+    "Html": "I can't get the breakpoints to work on a NO Word addin.  I created the addin using the NO Toolbox.  I am using the project created by the toolbox, no mods.  I load the project into VS 2015 Community and set a breakpoint on the About click .  I run it using F5.  Word 2010 loads and the addin installs.  I click on About and the message shows the it doesn't breakpoint.  If I debug a simple C# program it breakpoints fine.  I have never debugged a DLL.  Is there something I need to set?\r<br />\n<br />\nI cleaned the project and built it again.  I checked the debug properties and everything appears right, at least to me.  I set breakpoints on other lines and nothing works.\r<br />\n<br />\nAny suggestions are appreciated.<br />\n",
+    "PostedDate": "2015-11-17T07:31:19.513-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1452856",
+    "ThreadId": "647710",
+    "Html": "VS 2015 use the .Net 4.5 Debugger as default. If you have another .Net Framework version in your project you have to create a &quot;Winword.exe.config&quot; file in the same directory as Winword.exe.\r<br />\n<br />\nThis is an Winword.exe.config example content for targeting .Net framework version 2.\r<br />\n<br />\n&lt;configuration&gt;\r<br />\n&lt;startup&gt;\r<br />\n&lt;supportedRuntime version=&quot;v2.0.50727&quot;/&gt;\r<br />\n&lt;/startup&gt;\r<br />\n&lt;/configuration&gt; \r<br />\n<br />\n(This is not a NetOffice specific behavior)\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-11-17T13:34:11.577-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1452886",
+    "ThreadId": "647710",
+    "Html": "Thanks!!! Works now.  The problem was there was already a WINWORD.EXE.CONFIG in the directory pointing to v2.0.50727. <br />\n",
+    "PostedDate": "2015-11-17T17:42:59.55-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

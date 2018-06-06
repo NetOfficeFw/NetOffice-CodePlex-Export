@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "825381",
+    "ThreadId": "352679",
+    "Html": "<p>Hello Sebastian,</p>\n<p>&nbsp;</p>\n<p>I'm trying to export a doc file into xps format with ExportAsFixedFormat but all the time I've this error Message:\"<strong>ExportAsFixedFormat gives HRESULT : 0x80020006 (DISP_E_UNKNOWNNAME)</strong>\"</p>\n<p>&nbsp;</p>\n<div style=\"color: black; background-color: white;\">\n<pre><span style=\"color: blue;\">dim</span> wordApplication <span style=\"color: blue;\">as</span> <span style=\"color: blue;\">new</span> Word.Application\n<span style=\"color: blue;\">dim</span> p_newDocument <span style=\"color: blue;\">as</span> Word.Document\n\np_newDocument= wordApplication.Documents.Open(<span style=\"color: #a31515;\">\"c:\\Fichier.doc\"</span>)\np_newDocument.ExportAsFixedFormat(<span style=\"color: #a31515;\">\"c:\\fichier.xps\"</span>, WdExportFormat.wdExportFormatXPS, <span style=\"color: blue;\">False</span>)\n</pre>\n</div>\n<p>&nbsp;</p>\n<p>Do you have an idea why ?</p>\n<p>Thanks in advance !</p>\n<p>&nbsp;</p>\n<p>Johnny</p>\n<p>Ps: NetOffice helps me a lot to generate quickly some word reports ! Thanks :)</p>",
+    "PostedDate": "2012-04-18T05:35:36.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "825387",
+    "ThreadId": "352679",
+    "Html": "<p>Hello Johnny<br /><br />Have a look on the IntelliSense text. you see ExportAsFixedFormat is supported from Word 12 / 14 (2007 and 2010)<br />do you use a previous version or have multiple versions installed?<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-18T05:49:49.4-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "825391",
+    "ThreadId": "352679",
+    "Html": "<p>Hello Sebastian,</p>\r\n<p>&nbsp;</p>\r\n<p>Unfortunately, I've only Word 2003 installed; sorry I've not seen the information of the IntelliSence...</p>\r\n<p>Maybe another solution will be to use the virtual XPS printer installed on the computer ? Is it possible to print on this printer \"Microsoft XPS Document Writer\" and give a filename ?</p>\r\n<p>Thanks Sebastian :)</p>\r\n<p>&nbsp;</p>\r\n<p>John</p>",
+    "PostedDate": "2012-04-18T05:59:14.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "825396",
+    "ThreadId": "352679",
+    "Html": "<p>Hello John,<br /><br />For IntelliSence support you need the XML documentation file in the same directory as the netoffice assemblies. WordApi.xml -&gt; WordApi.dll<br />You can accessing a registered Printer in .NET of course. The easiest way is the PrintDocument class from Windows.Forms namespace.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-18T06:08:57.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

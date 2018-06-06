@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1475571",
+    "ThreadId": "655368",
+    "Html": "I was able to successfully export using netoffice in my local development machine. However When i deployed it in web server windows 2012 R2 with office 2013, Initially i got this error Retrieving the COM class factory for component with CLSID {00024500-0000-0000-C000-000000000046} failed due to the following error: 80070005 Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED)).\r<br />\n<br />\nThen going through this article <a href=\"https://social.msdn.microsoft.com/Forums/en-US/65a355ce-49c1-47f1-8c12-d9cf5f23c53e/word-automation-under-aspnet-114322-vista-64bit?forum=netfx64bit\" rel=\"nofollow\">https://social.msdn.microsoft.com/Forums/en-US/65a355ce-49c1-47f1-8c12-d9cf5f23c53e/word-automation-under-aspnet-114322-vista-64bit?forum=netfx64bit</a> \r<br />\n<br />\nI have created folder desktop Create the folder:  C:\\Windows\\SysWOW64\\config\\systemprofile\\Desktop\r<br />\n<br />\nNow the error changed to progId not found. Excel.Application , going through one of you reply <a href=\"http://netoffice.codeplex.com/discussions/451079\" rel=\"nofollow\">http://netoffice.codeplex.com/discussions/451079</a>\r<br />\n<br />\nI found the registry entry but no value is set<br />\n",
+    "PostedDate": "2016-06-09T06:50:59.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

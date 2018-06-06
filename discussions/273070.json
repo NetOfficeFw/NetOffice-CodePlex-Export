@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "673674",
+    "ThreadId": "273070",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I have a problem with the creation of a word file througth a .net application.</p>\r\n<p>locally on my PC all works fine, the .doc file is created and I can open it properly.</p>\r\n<p>But when I publish my site to the server I encounter this error when I try to create the file:<em><br>\r\n<br>\r\n<strong>Object reference not set to an instance of an object.</strong></em></p>\r\n<p><span style=\"font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif\"><strong>Description:\r\n</strong>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.\r\n<br>\r\n<br>\r\n<strong>Exception Details: </strong>System.Exception: Object reference not set to an instance of an object.<br>\r\n<br>\r\n<strong>Source Error:</strong> <br>\r\n<br>\r\n</span></p>\r\n<table width=\"100%\" bgcolor=\"#ffffcc\">\r\n<tbody>\r\n<tr>\r\n<td><code>An unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.</code></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style=\"font-family:Arial,Helvetica,Geneva,SunSans-Regular,sans-serif\"></span></p>\r\n<p>...</p>\r\n<p>&nbsp;</p>\r\n<p>And this is the portion of Code where the error appear:</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">#region</span> Start word and turn off msg boxes\r\nwordApplication = <span style=\"color:blue\">new</span> Word.Application();\r\nwordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;\r\n<span style=\"color:blue\">#endregion</span>\r\n\r\n<span style=\"color:blue\">#region</span> Add a new document\r\nWord.Document newDocument = wordApplication.Documents.Add();\r\n<span style=\"color:blue\">#endregion</span>\r\n\r\n<span style=\"color:blue\">#region</span> Header of Document\r\n<span style=\"color:blue\">foreach</span> (Word.Section section <span style=\"color:blue\">in</span> newDocument.Sections)<br>{\r\n<span style=\"color:blue\">string</span> picturePath = <span style=\"color:#a31515\">@&quot;C:\\\\Temp\\\\logo.gif&quot;</span>;\r\nsection.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary].Range.InlineShapes.AddPicture(picturePath);\r\nsection.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary].Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;\r\n}\r\n<span style=\"color:blue\">#endregion</span>\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>The null reference exception is on the foreach loop,<br>\r\nI think that the variable newDocument is null.. but why ?</p>\r\n<p>I'm missing something on the server ?</p>\r\n<p>I will be very appreciate if someone can help me...</p>\r\n<p>thanks</p>\r\n",
+    "PostedDate": "2011-09-19T07:16:24.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "673681",
+    "ThreadId": "273070",
+    "Html": "<p>can you clarify the exactly codeline with the exception?<br />i do a test with your code and works fine but one of your codelines are wrong</p>\r\n<pre><span style=\"color: blue;\">string</span> picturePath = <span style=\"color: #a31515;\">@\"C:\\\\Temp\\\\logo.gif\"</span>;<br /><br />the @ means you dont have to use \"\\\\\". remove the @ or change \"\\\\\" to \"\\\"<br /><br /><br />*Sebastian</pre>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-09-19T07:27:09.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "674024",
+    "ThreadId": "273070",
+    "Html": "<p>Hi Sebastian,</p>\r\n<p>thank for your reply....</p>\r\n<p>Locally all works fine, I don't know what is wrong...</p>\r\n<p>this is the exact error:</p>\r\n<p><span>\r\n<h2><em>Object reference not set to an instance of an object.</em></h2>\r\n</span><span style=\"font-family: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif;\"><strong>Description: </strong>An unhandled exception occurred during the execution of the current web  request. Please review the stack trace for more information about the error and  where it originated in the code. <br /><br /><strong>Exception Details: </strong>System.NullReferenceException: Object reference not set to an instance of an  object.<br /><br /><strong>Source Error:</strong> <br /><br /> </span></p>\r\n<table width=\"100%\" bgcolor=\"#ffffcc\">\r\n<tbody>\r\n<tr>\r\n<td><code>An unhandled exception was generated during the execution of the  current web request. Information regarding the origin and location of the  exception can be identified using the exception stack trace below.</code></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style=\"font-family: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif;\"> <br /><strong>Stack Trace:</strong> <br /><br /> </span></p>\r\n<table width=\"100%\" bgcolor=\"#ffffcc\">\r\n<tbody>\r\n<tr>\r\n<td>\r\n<pre>[NullReferenceException: Object reference not set to an instance of an object.]\r\n   ShipmentRequest.ctrl_Invoice.ctrl_popUpInvoiceCreate_Click(Object sender, EventArgs e) in C:\\ShipmentRequest\\ctrl_Invoice.ascx.cs:114\r\n   DevExpress.Web.ASPxEditors.ASPxButton.OnClick(EventArgs e) +96\r\n   DevExpress.Web.ASPxEditors.ASPxButton.RaisePostBackEvent(String eventArgument) +539\r\n   DevExpress.Web.ASPxClasses.ASPxWebControl.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument) +13\r\n   System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument) +13\r\n   System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData) +36\r\n   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +5563\r\n</pre>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style=\"font-family: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif;\"> </span></p>\r\n<p>&nbsp;</p>\r\n<p>Thank you</p>",
+    "PostedDate": "2011-09-19T22:46:03.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "674227",
+    "ThreadId": "273070",
+    "Html": "<p>i see no indicator the exception comes from netoffice in your stacktrace.'<br />NetOffice throws strictly COMException's.<br />its possible to test your netoffice code in a winforms application?<br />can you debug your aspx code? (i'm not an asp expert) in that case goto visual studio menu/debug/exceptions and <br />activate the checkbox 'Common Language Runtime Exceptions'. the debugger stops now for you&nbsp;on&nbsp;the code line with the exception.<br />btw: whats your word version?</p>\n<p>section headers was related to print layout right?<br />i know from excel the accessing of headers and footers failed in case of the spooler service is not running.</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-09-20T08:02:14.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "674732",
+    "ThreadId": "273070",
+    "Html": "<p>Thank for your reply....</p>\r\n<p>I cann't debug the code because it is on server..</p>\r\n<p>I think that the problem by executing Word on server is that the application (Word) try to start with the Internet Guest Account but cann't start...</p>\r\n<p>I have playing a little bit with permissions on the COM Object permission, but now a new Exception appear...</p>\r\n<p><span>\r\n<h1>Server Error in '/ShipmentRequest' Application.  \r\n<hr size=\"1\" />\r\n</h1>\r\n<h2><em>There is insufficient memory. Save the document now.</em></h2>\r\n</span><span style=\"font-family: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif;\"><strong>Description: </strong>An unhandled exception occurred during the execution of the current web  request. Please review the stack trace for more information about the error and  where it originated in the code. <br /><br /><strong>Exception Details: </strong>System.Runtime.InteropServices.COMException: There is insufficient memory.  Save the document now.<br /><br /><strong>Source Error:</strong> <br /><br /> </span></p>\r\n<table width=\"100%\" bgcolor=\"#ffffcc\">\r\n<tbody>\r\n<tr>\r\n<td><code>An unhandled exception was generated during the execution of the  current web request. Information regarding the origin and location of the  exception can be identified using the exception stack trace below.</code></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style=\"font-family: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif;\"> <br /><strong>Stack Trace:</strong> <br /><br /> </span></p>\r\n<table width=\"100%\" bgcolor=\"#ffffcc\">\r\n<tbody>\r\n<tr>\r\n<td>\r\n<pre>[COMException (0x800a13e9): There is insufficient memory. Save the document now.]\r\n\r\n[TargetInvocationException: Exception has been thrown by the target of an invocation.]\r\n   System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters) +0\r\n   System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams) +2584\r\n   LateBindingApi.Core.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray) +68\r\n\r\n[COMException (0x80004005): See inner exception for details.]\r\n   LateBindingApi.Core.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray) +105\r\n   NetOffice.WordApi.Documents.Add() +22\r\n   ShipmentRequest.ctrl_Invoice.ctrl_popUpInvoiceCreate_Click(Object sender, EventArgs e) in C:\\ShipmentRequest\\ctrl_Invoice.ascx.cs:110\r\n   DevExpress.Web.ASPxEditors.ASPxButton.OnClick(EventArgs e) +96\r\n   DevExpress.Web.ASPxEditors.ASPxButton.RaisePostBackEvent(String eventArgument) +539\r\n   DevExpress.Web.ASPxClasses.ASPxWebControl.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument) +13\r\n   System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument) +13\r\n   System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData) +36\r\n   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +5563\r\n</pre>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><span style=\"font-family: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif;\"> </span></p>\r\n<p><span style=\"font-family: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif;\">In the</span> C:\\ShipmentRequest\\ctrl_Invoice.ascx.cs page on line 110 i have this code:</p>\r\n<p><span style=\"font-family: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif;\"></span></p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><div style=\"color: black; background-color: white;\"><pre>Word.Document newDocument = wordApplication.Documents.Add();\r\n</pre>\r\n</div>\r\nAnd WordApplication is declared before like this:<br />\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>wordApplication = <span style=\"color: blue;\">new</span> Word.Application();\r\n</pre>\r\n</div>\r\n<br />I don't know wath to do... If someone can give me more clarifcation about this problem will be very appreciate...<br /><br /></pre>\r\n</div>\r\n</p>",
+    "PostedDate": "2011-09-21T07:40:11.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "674774",
+    "ThreadId": "273070",
+    "Html": "<p>please read this&nbsp;topic completly</p>\r\n<p><a href=\"http://objectmix.com/cold-fusion/765392-automationexception-0x800a13e9.html\">http://objectmix.com/cold-fusion/765392-automationexception-0x800a13e9.html</a><br /><br /><a href=\"http://stackoverflow.com/questions/1491123/system-unauthorizedaccessexception-retrieving-the-com-class-factory-for-componen\">http://stackoverflow.com/questions/1491123/system-unauthorizedaccessexception-retrieving-the-com-class-factory-for-componen</a><br /><br /></p>",
+    "PostedDate": "2011-09-21T08:32:26.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "675112",
+    "ThreadId": "273070",
+    "Html": "<p>I have solved the issue by adding this in my web.config file:</p>",
+    "PostedDate": "2011-09-22T00:17:31.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "675114",
+    "ThreadId": "273070",
+    "Html": "<p>sorry for double post...</p>\r\n<p>&nbsp;</p>\r\n<p>solved by adding this in my web.config file:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>&lt;identity impersonate=<span style=\"color: #a31515;\">\"true\"</span> userName=<span style=\"color: #a31515;\">\"Domain or ComputerName\\UserName\"</span> password=<span style=\"color: #a31515;\">\"Password\"</span>/&gt;\r\n</pre>\r\n</div>\r\n</p>\r\n<p>Thnak you very much for your help...</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-09-22T00:18:49.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "826366",
+    "ThreadId": "352942",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>first thanks for this great framework!</p>\r\n<p>Is there a way to use NetOffice from different threads in the same application?</p>\r\n<p>In this case in could happen that e. g. an Outlook folder is accessed from 2 threads at the same time.</p>\r\n<p>I tested it and I get this ArgumentException (&quot;An element with the same key already exists in the Dictionary.<span>&quot;)</span>:<br>\r\n&nbsp; &nbsp;at LateBindingApi.Core.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy)<br>\r\n&nbsp; &nbsp;at NetOffice.OutlookApi._Application.GetNamespace(String type)<br>\r\n&nbsp; &nbsp;[...]</p>\r\n<p>Is that by design or is there a way to use this late binding API from different threads at the same time?</p>\r\n<p>Best regards and thanks in advance for a short reply<br>\r\nAndreas&nbsp;</p>\r\n",
+    "PostedDate": "2012-04-20T01:17:32.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "826380",
+    "ThreadId": "352942",
+    "Html": "<p>hmmmm....<br /><br />what microsoft say is: COM Interop and Multithreading doesn works together but anyway. the error message sounds like we have a NetOffice issue here.<br />whats up behind? NetOffice stores meta infos about COM proxies in serveral dictionaries and re-use these infos in later calls for the same type. thats the reason for the performance in NetOffice ist not slower as earlybind calls. checkout the performance page: <a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Performance\">http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Performance</a>&nbsp;what i have to do is to implement a thread safe mode with the C# lock keyword for critical sections. please gimme 2 days to implement these feature in the new NetOffice 1.5 release and please gimme a feedback that works for you.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-20T01:46:44.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "826382",
+    "ThreadId": "352942",
+    "Html": "<p>Hello Sebastian,</p>\n<p>first thank you very much for your super-fast reply!</p>\n<p>I would be very happy to test your thread safe implementation. Just post here when it's done and I'll test it immediately. 2 days sounds perfect. ;-)</p>\n<p>Best regards and thanks again<br /> Andreas</p>",
+    "PostedDate": "2012-04-20T01:51:54.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "826755",
+    "ThreadId": "352942",
+    "Html": "<p>hello andreas,<br /><br />NetOffice 1.5 [Public Beta] contains bool Settings.EnableThreadSafe; now.<br />its true by default, no issues to use. why its true by default?<br />you help me&nbsp;to realize the problem with different threads dependent on events. if you register an event trigger, then the call comes from the office thread and all what you do here with office is in concurrence with your UI thread and NetOffice was not safe in this way before. thanks for your suggestion!<br /><br />Sebastian<br /><br />PS: the only reason for the beta flag in 1.5 is because the english documentation is not done.</p>",
+    "PostedDate": "2012-04-20T18:35:42.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "826794",
+    "ThreadId": "352942",
+    "Html": "<p>Hello Sebastian,</p>\r\n<p>you're great, there are no issues with this new version anymore!</p>\r\n<p>Best regards and thank you very much for your very fast support<br />Andreas</p>",
+    "PostedDate": "2012-04-21T00:56:27.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

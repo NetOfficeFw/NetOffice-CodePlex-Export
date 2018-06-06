@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "669930",
+    "ThreadId": "272116",
+    "Html": "\r\n<p>Hello Sebastian,</p>\r\n<p>you created a great framework with NetOffice.<br>\r\n<br>\r\nBut I still have a question about this: How should I debug NetOffice projects?<br>\r\n<br>\r\nI am developing a small Outlook Addin. So far, I test the function of the add-in as a command line application. If it runs correctly, I create the class library and test it directly in Outlook. Debugging is then no longer possible, of course.<br>\r\n<br>\r\nIs there another way to debug in the Apllikation directly?</p>\r\n<p><span lang=\"en\"><span>Regards<br>\r\nbudul<br>\r\n</span></span></p>\r\n",
+    "PostedDate": "2011-09-09T15:57:53.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670044",
+    "ThreadId": "272116",
+    "Html": "<p>hell budul,<br />first: thank you :-)<br />debugging COMAddins is exactly the same like interop.<br />i dont know you use C# or Vb. in C# go to project properties -&gt; Tab 'Debugging'<br />select 'start external program' in start action and choose &lt;fullpath&gt;outlook.exe<br />now start debugging. outlook starts and loads your addin(if you have registered and no issues)<br />your breakpoints and all the other nice debbuging benefits works now.<br />Debugging COMAddins is always a little bit tricky i find but a cool thing its possible.</p>\r\n<p>*OL_Regards<br />Sebastian</p>",
+    "PostedDate": "2011-09-10T06:06:19.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670330",
+    "ThreadId": "272116",
+    "Html": "<p><span id=\"result_box\" lang=\"en\"><span class=\"hps\">Thanks for the quick</span> <span class=\"hps\">and</span> <span class=\"hps\">good recommendation</span><span>.</span> <span class=\"hps\">That worked</span> <span class=\"hps\">perfectly</span><span>.</span><br /><br /> <span class=\"hps\">Another</span> <span class=\"hps\">tip to other</span> <span class=\"hps\">readers</span><span>:</span> <span class=\"hps\">In</span> <span class=\"hps\">the</span> <span class=\"hps\">Express versions</span> <span class=\"hps\">of</span> <span class=\"hps\">Visual</span> <span class=\"hps\">Studio</span> <span class=\"hps atn\">the option '</span><span>Start</span> <span class=\"hps\">external program</span><span>'  does not exist.</span> But you s<span class=\"hps\">till</span> <span class=\"hps\">can</span> <span class=\"hps\">use this feature</span> <span class=\"hps\">in VS</span> <span class=\"hps\">Express also</span><span>.</span> <span class=\"hps\">You have to</span> <a title=\"Start External Program to Debug a Class in Visual C# 2008 Express\" href=\"http://softwaresalariman.blogspot.com/2010/05/start-external-program-to-debug-class.html\" target=\"_blank\"><span class=\"hps\">activate</span> <span class=\"hps\">this</span> <span class=\"hps\">option</span> <span class=\"hps\">on the</span> <span class=\"hps\">equally</span> <span class=\"hps\">free</span> <span class=\"hps\">IDE</span> <span class=\"hps\">SharpDevelop</span></a><span>.</span> <span class=\"hps\">Then</span> <span class=\"hps\">the 'start external program' function</span> <span class=\"hps\">is also</span> <span class=\"hps\">available</span> <span class=\"hps\">in</span> <span class=\"hps\">VS</span> <span class=\"hps\">Express</span><span>.</span></span></p>",
+    "PostedDate": "2011-09-11T13:16:22.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1122425",
+    "ThreadId": "272116",
+    "Html": "I know this is a really old thread, but I found a technique that someone else has posted very useful: \r<br />\n<br />\nLast section of this page(<a href=\"http://blogs.msdn.com/b/mshneer/archive/2010/03/19/com-shim-wizards-for-vs-2010.aspx\" rel=\"nofollow\">http://blogs.msdn.com/b/mshneer/archive/2010/03/19/com-shim-wizards-for-vs-2010.aspx</a>), add Outlook / Excel / etc to your solution as the startup application.<br />\n",
+    "PostedDate": "2013-11-12T09:05:06.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

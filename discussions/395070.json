@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "910779",
+    "ThreadId": "395070",
+    "Html": "\r\n<p>Hi Sebastian,<br>\r\ni have some questions for you :)<br>\r\n<br>\r\n<br>\r\nQ1: about saving<br>\r\n<br>\r\nActually, i save my workbook like that :<br>\r\n<br>\r\nString workbookFile = String.Format(@&quot;d:\\myExcelFile{0}&quot;, GetDefaultExtension( _exApplication ));<br>\r\nworkBook.SaveAs(workbookFile);<br>\r\n<br>\r\nString GetDefaultExtension(Excel.Application application)<br>\r\n{<br>\r\n&nbsp;&nbsp;&nbsp; double version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);<br>\r\n&nbsp;&nbsp;&nbsp; if ( version &gt;= 12.00 )<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ( &quot;.xlsx&quot; );<br>\r\n&nbsp;&nbsp;&nbsp; return ( &quot;.xls&quot; );<br>\r\n}<br>\r\n<br>\r\nSo it's ok.<br>\r\n<br>\r\nWith Excel 2007, it is possible to save a file that is compatible with Excel 2003.<br>\r\nHow can i do that from my c# code ?<br>\r\n<br>\r\nJust forcing the .xls extension is not enough i think !<br>\r\n<br>\r\n<br>\r\nQ2: about saving file which contains VBA code<br>\r\n<br>\r\nI have generated from my c# code Excel files with VBA code (this works very well for both 2003 &amp; 2007 versions)<br>\r\n<br>\r\nI save my workbook like that :<br>\r\n<br>\r\nString workbookFile = String.Format(@&quot;d:\\myExcelFile{0}&quot;, GetDefaultExtension( _exApplication ));<br>\r\nworkBook.SaveAs(workbookFile, GetFileFormat(_exApplication));<br>\r\n<br>\r\nString GetDefaultExtension(Excel.Application application)<br>\r\n{<br>\r\n&nbsp;&nbsp;&nbsp; double version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);<br>\r\n&nbsp;&nbsp;&nbsp; if ( version &gt;= 12.00 )<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ( &quot;.xlsm&quot; );<br>\r\n&nbsp;&nbsp;&nbsp; return ( &quot;.xls&quot; );<br>\r\n}<br>\r\n<br>\r\nXlFileFormat GetFileFormat(Excel.Application application)<br>\r\n{<br>\r\n&nbsp;&nbsp;&nbsp; double version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);<br>\r\n&nbsp;&nbsp;&nbsp; if ( version &gt;= 12.00 )<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ( XlFileFormat.xlOpenXMLWorkbookMacroEnabled );<br>\r\n&nbsp;&nbsp;&nbsp; return ( XlFileFormat.xlExcel7 );<br>\r\n}<br>\r\n<br>\r\nMy question 2 is not far away from Q1. Is it possible to save an Excel 2007 file (with macros) that is compatible with Excel 2003<br>\r\n<br>\r\nSo the file result extension will be .xls<br>\r\n<br>\r\nWhat XlFileFormat should i use to achived this ?<br>\r\n<br>\r\n<br>\r\nthank you very much<br>\r\nFred<br>\r\n<br>\r\n<br>\r\n------<br>\r\n<br>\r\nI use NetOffice 1.5.1 (sept 01 2012)</p>\r\n",
+    "PostedDate": "2012-09-11T02:04:15.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911293",
+    "ThreadId": "395070",
+    "Html": "<p>XlFileFormat.xlExcel8 is the best way for Q1 and Q2 :-)<br /><br />if you want alway a .xls file then try the follows<br /><br />XlFileFormat GetFileFormat(Excel.Application application)<br /> {<br /> &nbsp;&nbsp;&nbsp; double version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);<br /> &nbsp;&nbsp;&nbsp; if ( version &gt;= 12.00 )<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ( XlFileFormat.xlExcel8);<br />&nbsp;&nbsp; else<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return (XlFileFormat.xlWorkbookNormal); <br /> }</p>",
+    "PostedDate": "2012-09-11T22:51:24.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911839",
+    "ThreadId": "395070",
+    "Html": "<p>this works perfectly</p>\r\n<p>thx again !</p>\r\n<p>Fred</p>",
+    "PostedDate": "2012-09-12T14:05:55.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

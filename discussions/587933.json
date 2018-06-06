@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "1366711",
+    "ThreadId": "587933",
+    "Html": "Hi!\r<br />\n<br />\nI just noticed that there was a new release 1.7.3. What has changed since 1.7.2? It would be very valuable if you can add some kind of release information on the website so one can easily see if one needs to upgrade.\r<br />\n<br />\nThanks for the great job.<br />\n",
+    "PostedDate": "2015-03-18T12:18:10.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1367491",
+    "ThreadId": "587933",
+    "Html": "hey men,<br />\n<br />\ngood point! <br />\nfor the future: i want create a release notes posting here and spend a link for every new release.<br />\n<br />\nAbout NO 1.7.3<br />\n<ul>\n<li>\nImprove/Fix Assembly load in NetOffice Core.<br />\n (old releases may cause issues if you have multiple -unshimmed- office addins in one application that using different NO versions)<br />\n</li>\n<li>\nfix DAOApi.dll<br />\n  (DAOApi is based on 2 components DAO360.dll and ACEDAO.dll, the old jet-engine and the new ace enginge.<br />\n  In NO 1.7.2 - DAOApi cant handle ACEDAO.dll correctly because the ACEDAO library id was missing in DAOApi.dll)<br />\n</li>\n<li>\nadd MSFormsApi.dll<br />\n  (The MsForms Api contains the embeded default VBA ui controls, like TextBox, Button, etc.<br />\n  Now you can use/access these ones also in NetOffice with all support)<br />\n</li>\n<li>\nimprove/fix NetOffice.Outlook security<br />\n (Doesnt works as expected in NO 1.7.2 if a firewall dialog or something like that occurs)<br />\n</li>\n<li>\nimprove NetOffice Tools layer:<br />\n</li>\n</ul>\nCustomUI attribute doesnt need a hard coded rootnamespace like:<br />\n<pre><code> CustomUI(&quot;MyApplication.RibbonUI.xml&quot;)</code></pre>\n\nuse<br />\n<pre><code>  CustomUI(&quot;RibbonUI.xml&quot;, true) // true means detect and use root namespace automaticly</code></pre>\n\ninstead.<br />\n<ul>\n<li>\nadd Utils to NO Tools layer:<br />\n</li>\n</ul>\nOfficeApi.Tools.CommonUtils<br />\n  ExcelApi.Tools.CommonUtils (inherites from OfficeApi.Tools.CommonUtils)<br />\n  OutlookApi.Tools.CommonUtils (inherites from OfficeApi.Tools.CommonUtils)<br />\n  WordApi.Tools.CommonUtils (inherites from OfficeApi.Tools.CommonUtils)<br />\n  PowerPointApi.Tools.CommonUtils (inherites from OfficeApi.Tools.CommonUtils)<br />\n  AccessPointApi.Tools.CommonUtils (inherites from OfficeApi.Tools.CommonUtils)<br />\n<br />\n  (The COMAddin base class contains an own instance of CommonUtils. this.Utils)<br />\n<br />\n  The various utils features is depending on the application.<br />\n  Common(inherites from Office utils) is:<br />\n<pre><code>   bool ApplicationIs2007OrHigher {get;}\n   bool AdminPermissions {get;}\n   bool IsAutomation {get;}\n   DialogUtils {get;}     // show dialogs \n   ResourceUtils {get;} // access embeded resources\n   TrayUtils {get;}        // use a tray icon for your addin(NO is handle the dispose)\n   ImageUtils {get;}     // conversion to IPictureDisp incl. mask\n   ColorUtils {get;}      // conversion from Drawing.Color to double vice versa\n   SystemInformations {get;} // various system informations\n</code></pre>\n\nExcel, Word, Outlook, Word contains also FileUtils to build a document path with current extension very easy.<br />\n   Outlook and PowerPoint contains also ApplicationUtils to handle some well known bugs/disadvantages.<br />\n <br />\n   Why the dialog utils ???<br />\n   DialogUtils allows you to show a message, pre-defined or own dialogs.<br />\n   Sounds stupid of course... but you can suspend this if an application is currently hidden or in automation(may testing)<br />\n<br />\n   from DialogUtils.cs:<br />\n<pre><code>        // Events\n        public DialogShowEventHandler DialogShow;\n\n        public DialogShownEventHandler DialogShown;\n\n        // Properties\n        public bool SuppressOnAutomation { get; set; }\n\n        public bool SuppressOnHide { get; set; }\n\n        public bool SupressGeneraly { get; set; }</code></pre>\n\nAddin scenario: example to show a message box.<br />\n<pre><code>   // last argument is the default result if the dialog is not shown\n   var result = this.Utils.Dialog.ShowMessageBox(&quot;hello world&quot;, MessageBoxIcon.Information, DialogResult.None);\n   if(result == DialogResult.None)\n         Log(&quot;MessageBox suspended&quot;);</code></pre>\n\n<ul>\n<li>\nfix NetOffice Tools for MS Project<br />\n  (NO 1.7.2 use regkey &quot;MSProject&quot; instead of &quot;MS Project&quot;<br />\n</li>\n</ul>\nnot sure thats all but i think so for the moment<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-20T04:53:38.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1367507",
+    "ThreadId": "587933",
+    "Html": "Thanks! An additional benefit of have a clear visible release version log on the website with changes is that the project will attract more users since new users see it is being actively maintained.<br />\n",
+    "PostedDate": "2015-03-20T05:50:52.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1367509",
+    "ThreadId": "587933",
+    "Html": "Can you expand on the below (preferably in a not too technical terms)?\r<br />\n<br />\n&quot;(old releases may cause issues if you have multiple -unshimmed- office addins in one application that using different NO versions)&quot;\r<br />\n<br />\nI have an Outlook add-in that is deployed based on 1.7.2. In what cases will this affect my users?<br />\n",
+    "PostedDate": "2015-03-20T06:00:51.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1367532",
+    "ThreadId": "587933",
+    "Html": "I think I get it now. NO = NetOffice. Stupid me :)<br />\n",
+    "PostedDate": "2015-03-20T06:49:36.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1367593",
+    "ThreadId": "587933",
+    "Html": "exactly, NO is NetOffice :)\r<br />\n<br />\nIts not easy to explain in detail but simple and the point...long text may boring developers.\r<br />\n<br />\nFor your outlook addin users, its a bit more safety to use NO 1.7.3 because no possible side effects with other NO-based addins that use a different NO version.\r<br />\nFor you: Improved NetOffice.OutlookSecurity and ApplicationsUtils shows you the application is currenty visible or hidden(Outlook.Application miss a Visible property)\r<br />\n<br />\n*Sebastian <br />\n",
+    "PostedDate": "2015-03-20T09:24:58.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1392565",
+    "ThreadId": "587933",
+    "Html": "Hello Sebastian,\r<br />\n<br />\nI do not want to annoy, when will you update NuGet?\r<br />\nThank you for your very good and hard work.\r<br />\n<br />\nHaRo<br />\n",
+    "PostedDate": "2015-03-24T03:30:17.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1392853",
+    "ThreadId": "587933",
+    "Html": "hey haro,\r<br />\n<br />\ni do not own the nuget packages on github.\r<br />\ni give a release notification to the owner(Caio Proiete) but no answer yet.\r<br />\n<br />\n*Sebastian <br />\n",
+    "PostedDate": "2015-03-24T04:50:42.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1393832",
+    "ThreadId": "587933",
+    "Html": "Hey Sebastian,\r<br />\nthank you, I try to be patient ;)\r<br />\n<br />\ngreetings,\r<br />\nHaRo<br />\n",
+    "PostedDate": "2015-03-24T15:50:39.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1448400",
+    "ThreadId": "587933",
+    "Html": "Hello,<br />\n<br />\nI've just released the NuGet packages for NetOffice 1.7.3.<br />\n<br />\nThey are available directly from nuget.org:<br />\n<a href=\"https://www.nuget.org/profiles/caio%20proiete\" rel=\"nofollow\">https://www.nuget.org/profiles/caio%20proiete</a><br />\n<br />\nAnd also available for download in my GitHub repository (if you run your private NuGet feed):<br />\n<a href=\"https://github.com/caioproiete/NetOffice-NuGet\" rel=\"nofollow\">https://github.com/caioproiete/NetOffice-NuGet</a><br />\n<br />\nSorry for the delay. Getting ready to release 1.7.4 shortly.<br />\n<br />\nThanks,<br />\nCaio Proiete<br />\n",
+    "PostedDate": "2015-10-13T21:00:06.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

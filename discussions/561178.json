@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1290085",
+    "ThreadId": "561178",
+    "Html": "My addin has a refresh all button. When it is clicked, I will look through worksheet and look for methods (defined in my addin) and refresh data for all these methods, this is done in a separate thread,  now in main thread, I show a modal dialog window with &quot;Cancel&quot; button on it.\r<br />\nWhen refresh is done, the modal window closes.<br />\nEverything works fine.\r<br />\nExcept when I close Excel, Excel.exe stays in task manage. \r<br />\n<a href=\"http://stackoverflow.com/questions/158706/how-to-properly-clean-up-excel-interop-objects\" rel=\"nofollow\">http://stackoverflow.com/questions/158706/how-to-properly-clean-up-excel-interop-objects</a>\r<br />\nI think maybe at least one member of a COM object is not released \r<br />\nSo I track down my refresh method on the separate thread,  the proxy count when entering the method and exiting are the same.  So I guess there is no memory leak and all COM object are released properly.  but I do not understand why Excel.exe stays\r<br />\n<br />\nSorry not sure if I make it clear \r<br />\n<br />\nThanks <br />\n",
+    "PostedDate": "2014-08-14T09:04:01.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1290094",
+    "ThreadId": "561178",
+    "Html": "Here is code I have <br />\n<pre><code>public partial class XLWindow : Window\n{\n    public XLWindow()\n    {\n        InitializeComponent();\n    } \n    private void UserControlLoaded(object sender, RoutedEventArgs e)\n    {\n        model = DataContext as MainViewModel;\n        if (model != null)\n        {\n            if(RefreshTrehad != null &amp;&amp; RefreshTrehad.IsAlive) \n            {\n                RefreshTrehad.Abort();  //only allow one refresh thread at a time\n                RefreshTrehad = null;\n            }\n            RefreshTrehad = new Thread(\n                () =&gt;\n                {\n                    if (model.RefreshMode == Helper.RefreshMode.RefreshOneWorkbook)\n                    {\n                        model.RefreshAll(this);\n                    }\n                    else if (model.RefreshMode == Helper.RefreshMode.Refresh)\n                    {\n                         model.Refresh(this);\n                    }\n                }\n            );\n            RefreshTrehad.Start();\n        }\n    }\n\n    private void DoRefreshWork(MainViewModel model)\n    {\n        //loop through each worksheet, find method,  call web service to get data asychronously\n        //when data comes back, plot data in Excel\n    }\n}\n\n\n        //call refresh \n        private void RefreshAll()\n        {\n                var mainVM = MainViewModel;\n                var xlWindow = new XLWindow();                  \n                xlWindow.DataContext = mainVM;\n                bool? successNullable = xlWindow.ShowDialog();\n                RefreshTrehad.Join();\n                mainVM.Dispose();\n        }       \n\n        public class MainViewModel\n        {\n            ....\n            public void Dispose()\n            {            \n                if (Cells != null) Cells.Dispose();\n                if (Rng != null) Rng.Dispose();\n                if (Sheet != null) Sheet.Dispose();\n                if (Sheets != null) Sheets.Dispose();\n                if (Workbook!=null) Workbook.Dispose();\n                if (Workbooks != null) Workbooks.Dispose();\n                XLApp = null;\n            }\n        }</code></pre>\n\n",
+    "PostedDate": "2014-08-14T09:28:56.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1290528",
+    "ThreadId": "561178",
+    "Html": "I created a sample project to show the issue @ <a href=\"http://1drv.ms/1phJSag\" rel=\"nofollow\">http://1drv.ms/1phJSag</a>\r<br />\nPlease take a look when you get a chance, \r<br />\n<br />\nThanks <br />\n",
+    "PostedDate": "2014-08-15T10:22:35.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

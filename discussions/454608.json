@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1085220",
+    "ThreadId": "454608",
+    "Html": "Hallo,<br />\nich versuche seit einiger Zeit einen Button in die Standard-CommandBars zu integrieren, aber nur, wenn ein neues Mailfenster bzw. eine vorhandene Mail geöffnet wird, also nicht beim Öffnen einer Notiz oder eines Kallendereintrages.<br />\n<br />\nHier mal mein bisheriger Stand der Dinge:<br />\n<br />\nAls erstes klinke ich mich in das Event ein, wenn ein neues Fenster geöffnet wird:<br />\n<pre><code>void IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom) {\n   _outlookApplication = new Application(null, application);\n   _outlookInspectors = _outlookApplication.Inspectors as Inspectors;\n   \n   if (_outlookInspectors != null) {\n     _outlookInspectors.NewInspectorEvent += OutlookInspectorsNewInspectorEvent;\n   }\n}</code></pre>\n\nWenn dann ein Fenster geöffnet wird, schaue ich nach, ob es ein Mailitem ist. Wenn ja, dann füge einen Button zur standardBar hinzu<br />\n<pre><code>void OutlookInspectorsNewInspectorEvent(_Inspector inspector) {\n  try {\n    var citem = inspector.CurrentItem;\n    if (citem is MailItem) {\n      _standardBar = inspector.CommandBars[&quot;Standard&quot;];\n\n      _mBttn = (CommandBarButton)_standardBar.Controls.Add(MsoControlType.msoControlButton, 1, null, 3, true);\n      _mBttn.Style = MsoButtonStyle.msoButtonIconAndCaption;\n      _mBttn.FaceId = 225;  // Schloss (Icon)\n\n      _mBttn.Caption = &quot;Test&quot;;\n      _mBttn.Tag = &quot;MBUTTON&quot;;\n      _mBttn.ClickEvent += MCmdBarBttnClickEvent;\n    }\n  }\n}</code></pre>\n\nUnd zum Schluß noch der Button Event:<br />\n<pre><code>void MCmdBarBttnClickEvent(CommandBarButton ctrl, ref bool cancelDefault) {\n  ...\n  ctrl.Dispose();\n}</code></pre>\n\nAllerdings habe ich hier das Problem, dass sich mein ProxyCount immer weiter erhöht und ich nicht weiss, <br />\nob bei einem Count von mehreren Hundert bis Tausend nach einem Arbeitstag, dies negative Auswirkungen auf die Performance haben könnte.<br />\n<br />\nWie sieht hier ein sauberes Vorgehen aus, um die Proxys so gering wie möglich zu halten ohne z.B. das Event für den dynamisch erstellten Button<br />\nin der Standardbar zu verlieren? Was ja z.B passieren würde, wenn ich am Ende von OutlookInspectorsNewInspectorEvent ein _standardBar.Dispose(); ausführen würde.<br />\n<br />\nOder gibt es eine ganz andere Vorgehensweise, wie ich einen Button in die StandardBar bekomme, eventuell mit &quot;ein- und ausblenden&quot;?<br />\n<br />\nDanke und viele Grüße, Daniel<br />\n",
+    "PostedDate": "2013-08-26T22:38:35.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1085256",
+    "ThreadId": "454608",
+    "Html": "Nach meiner Erfahrung ist alles &lt;1000 Proxies okay (meine Faustregel) Allerdings hängt es auch davon ab was für ein Objekt hinter Proxy steht. Zur Erinnerung: Der Proxy ist nur ein Stellvertreter in der eigenen Anwendung für eine Instanz in der Office Anwendung. Je nachdem wieviel Speicher dieses tatsächliche Objekt belegt, steigt dadurch der Speicherverbrauch der Office Anwendung und irgendwann wird diese dann behäbig. <br />\n<br />\nZu deiner Frage:<br />\nNetOffice bietet für solche Fälle eine Überladung der Dispose und DisposeChildInstance Methoden an: <br />\n<em>void Dispose(bool disposeEventBinding);</em><br />\n<br />\nDu kannst also am Ende des Inspector Events <em>inspector.Dispose(false);</em> aufrufen um möglichst effizizient vorzugehen.<br />\n<br />\n<br />\n*Sebastian <br />\n",
+    "PostedDate": "2013-08-27T00:24:34.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

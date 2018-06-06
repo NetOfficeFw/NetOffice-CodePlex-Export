@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1490689",
+    "ThreadId": "660515",
+    "Html": "Hi,\r<br />\n<br />\nI have an Outlook VBA project which I want to convert to a .Net addin, using NetOffice 1.7.3 and Visual Studio Express 2013. So far 90% is finished and running smoothly, but now I'm scratching my head. I'm using the BeforeItemPasteEvent: <br />\n<pre><code>m_objExplorer.BeforeItemPasteEvent += new Outlook.Explorer_BeforeItemPasteEventHandler(BeforeItemPasteEvent);</code></pre>\n\nIt passes the pasted object as COMObject:<br />\n<pre><code>public void TaskBeforeItemPaste(ref object ClipBoard)</code></pre>\n\nIn my old VBA project I could easily access this object:<br />\n<pre><code>Public Sub TaskBeforeItemPaste(ClipboardContent As Variant)\n      \n    Dim Appt As Outlook.TaskItem\n    Dim t As String\n    t = ClipboardContent.Item(1).MessageClass\n    If t = &quot;IPM.Task&quot; Then\n        Set Appt = ClipboardContent.Item(1)\n        Appt.Role = t 'Set flag\n        Appt.Save\n    End If\nEnd Sub</code></pre>\n\nThis easy access to the pasted item seems not to be possible with the COMObject which I get with the BeforeItemPasteEventHandler. I googled a lot and got as far as using the IDispatch interface and confirming the type of the passed object. But I'm completely out of my depth here when trying to use the IDispatch.Invoke method. Up to now I get an access violation exception. And even if I get around that, I wouldn't trust myself to write code which doesn't cause security issues, memory leaks or other problems.\r<br />\nIs there an easy way to get the pasted item from 'ref object ClipBoard' and change it before it's actually pasted?\r<br />\n<br />\nTIA,\r<br />\nChristian<br />\n",
+    "PostedDate": "2017-01-05T13:29:59.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1490719",
+    "ThreadId": "660515",
+    "Html": "I found the solution. When an Explorer fires the BeforeItemPasteEvent the Explorer's 'Selection' property contains the selection which is also passed in the COMObject 'ClipboardContent'. So instead of bothering with the passed COMObject, I work with the Explorer property.\r<br />\n<br />\nFor an event handler which is defined like this:<br />\n<pre><code>m_objExplorer.BeforeItemPasteEvent += new Outlook.Explorer_BeforeItemPasteEventHandler(BeforeItemPasteEvent);</code></pre>\n\nMy code would be this:<br />\n<pre><code>public void TaskBeforeItemPaste(ref object ClipBoard)\n{\n    IEnumerator&lt;object&gt; enumerator = m_objExplorer.Selection.GetEnumerator();\n    if (enumerator.MoveNext())\n    {\n        object item = enumerator.Current;\n        if (item.GetType() == typeof(Outlook.TaskItem))\n        {\n            Outlook.TaskItem task = (Outlook.TaskItem)item;\n            task.Role = &quot;IPM.Task&quot;;\n            task.Save();\n        }\n    }           \n}</code></pre>\n\n",
+    "PostedDate": "2017-01-06T09:01:04.37-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2017-01-06T09:01:19.33-08:00"
+  }
+]

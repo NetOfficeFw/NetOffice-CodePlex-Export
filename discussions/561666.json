@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1291649",
+    "ThreadId": "561666",
+    "Html": "Hello,\r<br />\n I have been searching for 2 days, but found now answer.\r<br />\n I am adding a simple picture to my slide like this:<br />\n<pre><code>Shape ss = sl.Shapes.AddPicture(file,MsoTriState.msoCTrue,MsoTriState.msoCTrue,0,0);</code></pre>\n\nhow do I set the alignment of the picture inside the slide?\r<br />\n I want it to align center and middle (vertically/horizontally)\r<br />\n<br />\n Also, a side question, how can I set the text color/background color of a textbox. I set the font name, size but I can't set the font color/background color:<br />\n<pre><code>Shape ss2 = sl.Shapes.AddTextbox(MsoTextOrientation.msoTextOrientationHorizontal, 0, 0, 200, 200);\n                            ss2.TextFrame.TextRange.Text = lst[i].Subtitle;\n                            ss2.TextFrame.TextRange.Font.Name = lst[i].text_font.Name;\n                            ss2.TextFrame.TextRange.Font.Size = lst[i].text_font.Size;\n                            ss2.TextFrame.AutoSize = PpAutoSize.ppAutoSizeShapeToFitText;\n                            ss2.TextFrame.TextRange.ParagraphFormat.Alignment = PpParagraphAlignment.ppAlignCenter;\n                            ss2.TextFrame.TextRange.ParagraphFormat.BaseLineAlignment = PpBaselineAlignment.ppBaselineAlignCenter;</code></pre>\n\nThanks!\r<br />\n Vlad<br />\n",
+    "PostedDate": "2014-08-20T04:30:07.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

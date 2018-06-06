@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "898977",
+    "ThreadId": "391434",
+    "Html": "\r\n<p>I have converted a VB.NET Excel Add-in project from VSTO in Visual Studio 2012 to NetOffice in #Develop. I've managed to work through most all of the issues, but haven't been able to figure out how to return the result of a function properly. I taught myself\r\n to program, so that's probably why I can't get it to work. My function looks something like this:</p>\r\n<pre>Function myFunction(Arg1 As String) As Object\r\n\r\nIf ThisCode0 Then\r\n\tReturn {0, &quot;Result&quot;}\r\nElseIf ThisCode1\r\n\tReturn {1, &quot;Result1&quot;}\r\nElse ThisCode2\r\n\tReturn {2, &quot;Result2&quot;}\r\nEnd If\r\n\r\nEnd Function</pre>\r\n<p>I end up with a result that looks something like this:</p>\r\n<p>myFunction(0) = &quot;This object does not have an indexer property&quot;</p>\r\n<p>myFunction(1) =&nbsp;&quot;This object does not have an indexer property&quot;</p>\r\n<p>&nbsp;</p>\r\n<p>It worked fine in VSTO with VS2012, any idea why it's not working now?</p>\r\n<p><span style=\"white-space:pre\"></span></p>\r\n",
+    "PostedDate": "2012-08-13T19:46:12.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "899964",
+    "ThreadId": "391434",
+    "Html": "<p>I was able to solve the problem by storing the array to return in a variable first prior to returning it:</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<pre>Dim result(1) As Object\r\n\r\nresult = {0, \"result\"}\r\nReturn result</pre>\r\n</p>",
+    "PostedDate": "2012-08-16T08:41:38.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

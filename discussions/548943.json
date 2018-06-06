@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1257192",
+    "ThreadId": "548943",
+    "Html": "Hi Sebastian, <br />\n<br />\nFirst off huge thanks for NetOffice! Extrmely good stuff! <br />\n<br />\nI want to store extra data about workbooks, and select the right data when a user selects another workbook (to load into a taskpane). I have this code, but if I have two workbooks open and switch between then a couple of times, they get added to the List again every time, it seems the Wb reference points to a different object every time (some wrapper?). <br />\n<br />\nIs there a way to uniquely identify a workbook after the WorkbookActivateEvent (Preferably without having to use the name as it may change) ? <br />\n<pre><code>XL.WorkbookActivateEvent += XL_WorkbookActivateEvent;</code></pre>\n\nand handler:<br />\n<pre><code>List&lt;Workbook&gt; _workbooks = new List&lt;Workbook&gt;();\n\nvoid XL_WorkbookActivateEvent(Workbook Wb) {\n    if (!_workbooks.Contains(Wb)) { \n        // reference seem different every time event is fired\n        _workbooks.Add(Wb);\n        Wb.SheetChangeEvent += Wb_SheetChangeEvent;\n    }\n}</code></pre>\n\n",
+    "PostedDate": "2014-06-17T11:48:34.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1055360",
+    "ThreadId": "446679",
+    "Html": "Hello,\r<br />\n<br />\ni need an Word-Object from the running word process.\r<br />\n<br />\ndo it in this way:<br />\n<pre><code>Word._Application wordApplication = (Word._Application)System.Runtime.InteropServices.Marshal.GetActiveObject(&quot;Word.Application&quot;);</code></pre>\n\nthrow an exception<br />\n<blockquote>\nDas COM-Objekt des Typs \\&quot;Microsoft.Office.Interop.Word.ApplicationClass\\&quot; kann nicht in den Klassentyp \\&quot;NetOffice.WordApi._Application\\&quot; umgewandelt werden. Instanzen von Typen, die COM-Komponenten repräsentieren, können nicht in andere Typen umgewandelt werden, die keine COM-Komponenten repräsentieren. Eine Umwandlung in Schnittstellen ist jedoch möglich, sofern die zugrunde liegende COM-Komponente QueryInterface-Aufrufe für die IID der Schnittstelle unterstützt. <br />\n<br />\nThe COM object of type \\ &quot;Microsoft.Office.Interop.Word.ApplicationClass \\&quot; can not be converted to the class type \\ &quot;NetOffice.WordApi._Application \\&quot;.<br />\nInstances of types that represent COM components can not be converted to other types that do not represent COM components.<br />\nHowever, conversion to interfaces is possible, provided that supports the underlying COM component QueryInterface calls for the IID of the interface.<br />\n</blockquote>\nIf i try to get the object in this way<br />\n<pre><code>Type wordType = Type.GetTypeFromProgID(&quot;Word.Application&quot;);\nobject wordProxy = Activator.CreateInstance(wordType);\nwordApplication = new Word._Application(null, wordProxy);</code></pre>\n\nthan its starting at <br />\n<pre><code>object wordProxy = Activator.CreateInstance(wordType);</code></pre>\n\na new word process in taskmanager.\r<br />\n<br />\nBut i dont need the object of a new word instance in taskmanager, i need exactly that object of the active word instance.\r<br />\n<br />\nmay someone can help me?\r<br />\n<br />\nTanks a lot and...sorry for my bad english.<br />\n",
+    "PostedDate": "2013-06-11T06:12:06.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1055375",
+    "ThreadId": "446679",
+    "Html": "Du musst den ROT Proxy den du bekommst doch einfach nur genauso in die Wrapperklasse von NetOffice stecken wie du es beim erzeugen einer ganz neuen Instanz tust. object wordProxy = System.Runtime.InteropServices.Marshal.GetActiveObject(&quot;Word.Application&quot;);\r<br />\n wordApplication = new Word._Application(null, wordProxy); Sebastian ________________________________<br />\n",
+    "PostedDate": "2013-06-11T06:35:27.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1055396",
+    "ThreadId": "446679",
+    "Html": "Ähm ja Danke. Stimmt. Keine Ahnung warum ich das vorher so durcheinandern gemacht habe....thx.<br />\n",
+    "PostedDate": "2013-06-11T07:12:24.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1127039",
+    "ThreadId": "446679",
+    "Html": "Hallo,\r<br />\n<br />\nalso bei Word hat das natürlich ganz wunderbar geklappt. Allerdings habe ich nun ein Problem mit Excel. Ich bräuchte jede geöffnete Arbeitsmappe, bekomme aber immer nur die gleiche. Ich habe auch versucht, verschiedene Proxies aus der ROT zu bekommen, was wohl auch funktioniert, aber immer wenn ich dann pro rotproxy mit<br />\n<pre><code>_excelApplication = new Excel.Application(null, excelProxy);</code></pre>\n\nein Excel-Object erzeuge, habe ich die selbe Arbeitsmappe im Zugriff.\r<br />\n<br />\nHat jemand einen Tipp?<br />\n",
+    "PostedDate": "2013-11-20T05:27:23.25-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1127048",
+    "ThreadId": "446679",
+    "Html": "Ja die ROT zeigt zwar alle Elemente an aber liefert immer nur die erste Instanz zurück wie sich herausgestellt hat.\r<br />\nSiehe dazu: Issue 20313 <a href=\"https://netoffice.codeplex.com/workitem/20313\" rel=\"nofollow\">https://netoffice.codeplex.com/workitem/20313</a>\r<br />\n<br />\nIm letzten Source State findest du im Ordner Tests\\Concept Tests\\ObjectFromWindow\r<br />\neine Lösung die tatsächlich Zugriff auf alle laufenden Excel Instanzen ermöglicht und im nächsten Release mit eingebaut ist.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-11-20T05:44:58.74-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1127096",
+    "ThreadId": "446679",
+    "Html": "Super! Danke für die Info :)<br />\n",
+    "PostedDate": "2013-11-20T07:23:46.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "847887",
+    "ThreadId": "359287",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I am trying to retrieve TOC items without having to go through hoops with String split.</p>\r\n<p>I can get the all the TOC item using</p>\r\n<p>&nbsp;Dim rawToc As String = aDoc.TablesOfContents(1).Range.Text.ToString</p>\r\n<p>But i am sure there is a better way by which i can get each TOC item individually.</p>\r\n<p>Any pointers would be appreciated!</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks</p>\r\n<p>Sameer</p>\r\n",
+    "PostedDate": "2012-06-12T04:46:21.1-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

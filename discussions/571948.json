@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1321558",
+    "ThreadId": "571948",
+    "Html": "ComAddin for Word, Powerpoint, Excel.<br />\nNew document in Powerpiont and Excel to call .Save() ,the result is not like in word.<br />\n<br />\nand my .Save Code:<br />\nin Powerpoint: &quot;_powerpointApplication.ActivePresentation.Save()&quot;,<br />\nin Excel: &quot;_excelApplication.ActiveWorkbook.Save() &quot;  , <br />\nin Word: &quot;_wordApplication.ActiveDocument.Save() &quot; , <br />\n<br />\nIn word, new document to .Save, will show &quot;Save as&quot; dialog, but not in Powerpoint and Excel.<br />\nWhy? and how to do, let  in Powerpoint and Excel to show the &quot;Save as &quot; dialog.<br />\n",
+    "PostedDate": "2014-11-12T23:24:32.717-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

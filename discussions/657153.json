@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1481176",
+    "ThreadId": "657153",
+    "Html": "Hi,<br />\nwithin my application I'm creating an excel instance and registering a XLL. Afterwards I'm trying to release everything but excel stays in memory.<br />\n<br />\nMy code looks like that:<br />\n<pre><code>// start\nNetOffice.ExcelApi.Application _excel = new Excel.Application();\n_excel.RegisterXLL(xllFullPath);\n\n//release\n_excel.Quit();\n_excel.Dispose();\n_excel = null;</code></pre>\n\n<strong>Update 2016-08-17: The problem is registering the XLL</strong><br />\nIs their a way to &quot;unregister&quot; the XLL? (it's an Excel-DNA XLL that loads a XLA...)<br />\n<br />\nThanks in advance,<br />\nKarsten<br />\n",
+    "PostedDate": "2016-08-15T08:59:25.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

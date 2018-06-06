@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1494828",
+    "ThreadId": "662279",
+    "Html": "Hi,\r<br />\nI'm new to Netoffice and had designs on building addons for Outlook.\r<br />\nOn downloading the source for 1.7.3 and pulling it into a SharpDevelop (4.4.1) project, I encountered a couple of initial issues (missing axImp.exe etc.) that I think i've resolved with SDK installations  (8.0, 8.1) as well as needing to pull in some NUnit dependencies.\r<br />\n<br />\nBeyond these though , i've now come up against apparent dependency issues with a couple of the Api projects and references to NetOffice, namely<br />\n<ul>\n<li>WordApi</li>\n<li>PowerpointApi</li>\n<li>\nOutlookApi<br />\n</li>\n</ul>\nThe response is the same for each of these, as follows:<br />\n<pre><code>Cannot embed interop type 'NetOffice.Tools.WndUtils.ChildWindowEnumerator.EnumWindowProc' found in both assembly 'C:\\_MyPath_\\Documents\\SharpDevelop Projects\\NetOffice\\out\\Debug\\NetOffice\\NetOffice.dll' and 'C:\\_MyPath_\\Documents\\SharpDevelop Projects\\NetOffice\\out\\Debug\\NetOffice\\NetOffice.dll'. Consider setting the 'Embed Interop Types' property to false. (CS1758)</code></pre>\n\nI'm fairly certain its some sort of referencing problem (cyclic?, since it names the same .dll twice?), but after trying various forums that describe the issue and possible solutions, I just can't seem to get past it.\r<br />\nWhat I find odd is that if this was a more generic project issue, why it only seems to impact these those 3 ..Api subprojects and not others.\r<br />\n<br />\nThings i've tried,<br />\n<ul>\n<li>Removing NetOffice references from those subprojects and reinstating</li>\n<li>\nVarious reference property alterations including, 'Embed interop types = false' <br />\n</li>\n</ul>\nThese have no impact, unless of course I leave the reference omitted for build, in which case - as expected; it complains regarding the unresolved calls from the project in question.\r<br />\n<br />\nAs I said, since my general searching hasn't turned up anyone else with the same issue, I can only think its something stupid, but any help much appreciated.\r<br />\n<br />\nregards,\r<br />\nSim<br />\n",
+    "PostedDate": "2017-03-29T04:59:20.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1494925",
+    "ThreadId": "662279",
+    "Html": "Please go to the reference options and disable all &quot;Embedd Interop types&quot; option(s) for the NetOffice assemblies.\r<br />\nThis want to fix it for sure. \r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2017-03-30T13:22:36.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

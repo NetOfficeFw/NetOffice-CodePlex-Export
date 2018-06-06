@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "989473",
+    "ThreadId": "430226",
+    "Html": "\r\n<p>Hi</p>\r\n<p>Migrating from VBA and word add-ins and venturing into creating COMM add-ins</p>\r\n<p>To start a new project do I download visual studio 2010 express (because it is not compatible with visual studio express 2012) and then add in the developer toolbox 1.1 and NetOffice 1.5.1.2</p>\r\n<p>How do I go about creating my first project?</p>\r\n<p>Any help would be much&nbsp;appreciated.</p>\r\n<p>Thanks&nbsp;</p>\r\n",
+    "PostedDate": "2013-01-20T18:46:04.62-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "989798",
+    "ThreadId": "430226",
+    "Html": "\r\n<p>I think Visual Studio 2012 Express is capable of converting Visual Studio 2010 solution to own format so&nbsp;try the following way:</p>\r\n<ol>\r\n<li>Run VS Project Wizard in the Developer Toolbox and create Automation Addin project.\r\n</li><li>Open project in Visual Studio 2012 Express </li></ol>\r\n<p>Good luck and inform us of your result!</p>\r\n",
+    "PostedDate": "2013-01-21T08:26:39.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "991821",
+    "ThreadId": "430226",
+    "Html": "\r\n<p>I'm doing it with VB 2010 Express + NetOffice + Developer Toolbox.</p>\r\n<p>It's dead easy. Just create a new project and in the template dialog, choose &quot;Automation Addin&quot; under &quot;NetOffice&quot;. The wizard will do the rest.</p>\r\n",
+    "PostedDate": "2013-01-24T16:02:49.283-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1255192",
+    "ThreadId": "430226",
+    "Html": "I have VS2013 Premium version, installed NetOffice 1.6.0, not displaying project template NetOffice in VS2013 projects...any setting need to configure? Any help is appreciated.<br />\n",
+    "PostedDate": "2014-06-11T06:02:53.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1255226",
+    "ThreadId": "430226",
+    "Html": "Got it...it is just tab on Toolbox UI..I believe it is not integrated with Visual Studio..<br />\n",
+    "PostedDate": "2014-06-11T07:44:13.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

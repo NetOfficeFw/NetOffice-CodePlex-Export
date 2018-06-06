@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1008369",
+    "ThreadId": "434906",
+    "Html": "Hi\r<br />\n<br />\nI'd like to add a new worksheet to the existing active workbook based on a template (.xltx). I can add a new workbook with<br />\n<pre><code>Excel.Application.Workbooks.Open(&quot;path&quot;);</code></pre>\n\nbut this opens a new window. How can I load the template into the active book?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-02-28T10:36:22.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008925",
+    "ThreadId": "434906",
+    "Html": "It seems to be no method for direct loading template into workbook. You can open template and then copy worksheet into your workbook.<br />\n",
+    "PostedDate": "2013-03-01T08:50:53.68-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008974",
+    "ThreadId": "434906",
+    "Html": "<pre><code>Excel.Application.Sheets.Add(Type:=&quot;TemplateWorkbookPath&quot;)</code></pre>\n\nYou can do it from your workbook variable that you are currently working in:<br />\n<pre><code>wkb.Application.Sheets.Add(Type:=&quot;TemplateWorkbookPath&quot;)</code></pre>\n\n",
+    "PostedDate": "2013-03-01T10:36:08.737-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1009067",
+    "ThreadId": "434906",
+    "Html": "Thanks Jon49 it works!<br />\n",
+    "PostedDate": "2013-03-01T15:01:35.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1009071",
+    "ThreadId": "434906",
+    "Html": "I was just doing a reply, but you beat me to it! For anyone that looks at this in the future this is how it should be done in .NET:\r<br />\n<br />\nThat's how you would type it in VBA. Sorry, I should have put it in .NET for you.<br />\n<pre><code>Excel.Application.Sheets.Add(Type.Missing,Type.Missing, Type.Missing, &quot;TemplateWorkbookPath&quot;)</code></pre>\n\nI'm not sure what would be the equivalent of Type.Missing in C#, that is in VB.<br />\n",
+    "PostedDate": "2013-03-01T15:12:57.607-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1170651",
+    "ThreadId": "434906",
+    "Html": "System.Reflection.Missing _missing = System.Reflection.Missing.Value;<br />\nString path = @&quot;path of excel&quot;;<br />\nExcel.Application.Sheets.Add(_missing ,_missing , _missing , path );<br />\n```\n\nRegards<br />\nWarren<br />\n",
+    "PostedDate": "2014-01-16T09:47:25.367-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

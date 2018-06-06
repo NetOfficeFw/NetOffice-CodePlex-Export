@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1076899",
+    "ThreadId": "452469",
+    "Html": "Hi, \r<br />\n<br />\nI was able to add shapes , Table etc.\r<br />\nWhen it comes to AddChart (as shown in code below) it raises exception as shown below.\r<br />\n<br />\nI am using Office 2013. on Windows 7.\r<br />\nWhat might be the problem ?\r<br />\n<br />\nCode:\r<br />\n---snip---<br />\n<pre><code>        slide = presentation.Slides.Add(1, PpSlideLayout.ppLayoutChartAndText);\n        slide.Shapes.AddChart(XlChartType.xlLine);</code></pre>\n\n---snip---\r<br />\n<br />\nStack Trace\r<br />\n   at NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)\r<br />\n   at NetOffice.PowerPointApi.Shapes.AddChart(XlChartType type)\r<br />\n   at MyAssembly.Form1.MakePPT(String filename) in c:\\work\\ACN\\App\\DV\\MyAssembly\\Form1.cs:line 74\r<br />\n   at MyAssembly.Form1.Form1_Load(Object sender, EventArgs e) in c:\\work\\ACN\\App\\DV\\MyAssembly\\Form1.cs:line 31\r<br />\n<br />\nInner Exception\r<br />\n<br />\n{&quot;Unspecified error (Exception from HRESULT: 0x80004005 (E_FAIL))&quot;}\r<br />\n<br />\nRegards\r<br />\nTejasvi<br />\n",
+    "PostedDate": "2013-08-05T12:09:36.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1076910",
+    "ThreadId": "452469",
+    "Html": "PowerPoint is a bit strange in automation. make powerpoint visible before and it works.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-05T12:38:49.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077070",
+    "ThreadId": "452469",
+    "Html": "Thanks a lot! :)<br />\n<br />\nYou are right! it works with PowerPoint window open. strange PowerPoint.<br />\n<br />\nNow using <br />\nPowerPoint.Presentation presentation = powerApplication.Presentations.Add(MsoTriState.msoTrue);<br />\n<br />\ninstead of <br />\nMsoTriState.msoFalse<br />\n<br />\nRegards<br />\nTejasvi<br />\n",
+    "PostedDate": "2013-08-05T22:34:17.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

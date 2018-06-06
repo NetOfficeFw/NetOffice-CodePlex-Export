@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "925047",
+    "ThreadId": "398914",
+    "Html": "\r\n<p>I created a project that open / process word document on windows 2003 using VS2008. And it works perfect on windows 2003.</p>\r\n<p>But when I deploy the site to windows 2008, there is an error of null pointer after opening a word document.</p>\r\n<p>The code snippet is doing things that: open a word, and save as htm.</p>\r\n<p>I debug and find variable &quot;oneDocument&quot; is always null, but this code snippet works perfect on windows2003.</p>\r\n<p>(This is not the privilege issue, I already set impersonate as administrator account)</p>\r\n<p>Please help me.... I really don't know what kind of new things in IIS7.</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">using</span> System;\r\n<span style=\"color:blue\">using</span> System.Collections.Generic;\r\n<span style=\"color:blue\">using</span> System.Linq;\r\n<span style=\"color:blue\">using</span> System.Web;\r\n<span style=\"color:blue\">using</span> System.Web.UI;\r\n<span style=\"color:blue\">using</span> System.Web.UI.WebControls;\r\n\r\n<span style=\"color:blue\">using</span> NetOffice.WordApi.Enums;\r\n<span style=\"color:blue\">using</span> Word = NetOffice.WordApi;\r\n\r\n<span style=\"color:blue\">namespace</span> OfficeWebTest\r\n{\r\n    <span style=\"color:blue\">public</span> <span style=\"color:blue\">partial</span> <span style=\"color:blue\">class</span> _Default : System.Web.UI.Page\r\n    {\r\n        <span style=\"color:blue\">protected</span> <span style=\"color:blue\">void</span> Page_Load(<span style=\"color:blue\">object</span> sender, EventArgs e)\r\n        {\r\n            SaveWordAsHtm();\r\n        }\r\n\r\n        <span style=\"color:blue\">public</span> <span style=\"color:blue\">static</span> <span style=\"color:blue\">void</span> SaveWordAsHtm()\r\n        {\r\n            <span style=\"color:blue\">string</span> wordFile = <span style=\"color:#a31515\">@&quot;E:\\Develop\\SQOA\\SQOA\\InternalProcessing\\2012-10-11\\2012CS0023\\Sharepoint 2010.docx&quot;</span>;\r\n            <span style=\"color:blue\">string</span> htmFile = <span style=\"color:#a31515\">@&quot;E:\\Develop\\SQOA\\SQOA\\InternalProcessing\\2012-10-11\\2012CS0023\\Sharepoint 2010.htm&quot;</span>;\r\n            WdSaveFormat htmFormat = WdSaveFormat.wdFormatFilteredHTML;\r\n\r\n            <span style=\"color:green\">// start word and turn off msg boxes</span>\r\n            Word.Application wordApplication = <span style=\"color:blue\">new</span> Word.Application();\r\n            wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;\r\n\r\n            <span style=\"color:green\">//open a document</span>\r\n            Word.Document oneDocument = wordApplication.Documents.Open(wordFile);\r\n\r\n            <span style=\"color:green\">// save as filtered htm</span>\r\n            oneDocument.SaveAs(htmFile, htmFormat);\r\n\r\n            <span style=\"color:green\">// close word and dispose reference</span>\r\n            wordApplication.Quit();\r\n            wordApplication.Dispose();\r\n        }\r\n    }\r\n}\r\n\r\n</pre>\r\n</div>\r\n",
+    "PostedDate": "2012-10-10T23:12:41.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925050",
+    "ThreadId": "398914",
+    "Html": "<p>I also&nbsp;tested in VS2010, the code snippet works if I'm using VS development application server, but doesn't work after creating virtual folder on IIS7.</p>",
+    "PostedDate": "2012-10-10T23:20:08.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925599",
+    "ThreadId": "398914",
+    "Html": "<p>first: its not recommended to use office in server scenarios.<br />okay: you say the open method returns null and no exception occured? <br />i cant believe it but i dont have any IIS developer experience.<br />its possible to save a new ccreated worbook in the virtual folder?</p>",
+    "PostedDate": "2012-10-11T19:19:45.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925861",
+    "ThreadId": "398914",
+    "Html": "<p>Thank you for the reply.&nbsp; But customer strongly expect that they can upload doc/docx and ASP.NET can do some simply processing.</p>\r\n<p>After several hours search, I found a blog that mention this issue:</p>\r\n<p><a href=\"http://www.bloing.net/2011/01/how-to-make-iis7-play-nice-with-office-interop/\">http://www.bloing.net/2011/01/how-to-make-iis7-play-nice-with-office-interop/</a></p>\r\n<p>&nbsp;</p>\r\n<p>One of the solution is create \"Desktop\" folder in a specific folder in windows 2008. It's unbelievable, but it works for me.</p>\r\n<p>Anyway, hope it can help other guys who are working on IIS7 and office programming.</p>",
+    "PostedDate": "2012-10-12T08:38:39.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

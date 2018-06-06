@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1366724",
+    "ThreadId": "587938",
+    "Html": "I'd like to subclass the NetOffice.ExcelApi.Worksheet class because I need a &quot;custom&quot; worksheet with the extra fields. As part of the construction of an instance of this new class, I'd like to just call the base class' constructor. That is, basically I need a regular Worksheet but need to set a few extra fields and have a couple of extra functions on it.<br />\n<br />\nHow do I create and new Worksheet? So far, I've only used the Add method from the Sheets class, which automatically does this for you and then adds it to the sheets. As far as I can tell, the constructor of the the Worksheet class needs to get the parent object (which is not a problem to get) and a COM proxy passed in. How do I do this?<br />\n",
+    "PostedDate": "2015-03-18T13:12:51.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1367494",
+    "ThreadId": "587938",
+    "Html": "not sure i understand as well...\r<br />\n<br />\nYou want inherite from Worksheet and replace the origin with your own in com proxy management?\r<br />\n<br />\nIf its true:\r<br />\nOverride Worksheet as your will and spend necessary ctors(redirect all to base).\r<br />\nAfter the add method from sheets, use the replace ctor in your custom worksheet class.\r<br />\n<br />\nhere it is(from NetOffice.ExcelApi.Worksheet.cs):\r<br />\n<br />\n///&lt;param name=&quot;replacedObject&quot;&gt;object to replaced. replacedObject are not usable after this action&lt;/param&gt;\r<br />\n[EditorBrowsable(EditorBrowsableState.Never), Browsable(false)]\r<br />\npublic Worksheet(COMObject replacedObject) : base(replacedObject)\r<br />\n{\r<br />\n\t\t\t\r<br />\n}\r<br />\n<br />\nNow, your custom instance is part of the proxy management instead of the origin instance.\r<br />\n<br />\n<br />\n*Sebastain<br />\n",
+    "PostedDate": "2015-03-20T05:11:49.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1398655",
+    "ThreadId": "587938",
+    "Html": "Thank you Sebastian for your reply! I tried it out and it works. I now however have the following problem:\r<br />\n<br />\nAfter creating my own, custom, derived Worksheet and &quot;adding&quot; it by using the replace constructor I can't seem to be able to get it back. That is, if I loop through the Sheets property or use something like Application.ActiveSheet (on a sheet that I know is my derived sheet) I can't cast that to my derived class. It seems to me that I should be able to do that, shouldn't I?\r<br />\n<br />\nMy whole purpose in extending the Worksheet class was that I could add some extra functionality to it, but if I can't get the added object from Sheets as my derived ws then it's all useless.\r<br />\nThanks a lot for your continued help!<br />\n",
+    "PostedDate": "2015-04-01T08:41:26.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1403085",
+    "ThreadId": "587938",
+    "Html": "test 123 test test<br />\n",
+    "PostedDate": "2015-04-11T01:48:40.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1403112",
+    "ThreadId": "587938",
+    "Html": "The discussion board is back :) \r<br />\n<br />\n(i used stackoverflow for a previous answer <a href=\"http://stackoverflow.com/questions/29131735/how-to-instantiate-a-new-worksheet\" rel=\"nofollow\">http://stackoverflow.com/questions/29131735/how-to-instantiate-a-new-worksheet</a> )\r<br />\n<br />\nI have created an CreateInstance event in NO 1.7.4 (preview available .NET 4.0, .NET 4.5).\r<br />\nHave a look in latest source state &quot;Tests\\Concept Tests\\CreateInstanceEvent&quot; to see how its possible to replace NO classes with your custom.\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-04-11T01:57:51.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1409898",
+    "ThreadId": "587938",
+    "Html": "Thanks Sebastian again. I read your answer on Stackoverflow and I looked at the example in the new source. It seems to me however that your example would replace all newly created sheets with an instance of my custom Worksheet. The example you gave on Stackoverflow replaces only the ones with a specific name, but this would not work for me either. \r<br />\n<br />\nIn my case I basically would have &quot;regular&quot; Worksheets and my custom worksheets mixed in the same workbook and I want to be able to tell which ones are the custom ones (and use their custom functionality) depending on the sheet. <br />\n",
+    "PostedDate": "2015-04-13T09:29:59.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

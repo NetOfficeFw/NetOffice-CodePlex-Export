@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1488862",
+    "ThreadId": "659750",
+    "Html": "I am using NetOffice and it is an awesome product!\r<br />\n<br />\nI have a problem getting my office add-in to work for a local user. It all works fine when using regasm.exe as administrator. The office-add-in cannot be registered by a local users using RegAsm.exe.\r<br />\n<br />\nWhen I try to add the add-in in Word manually for the local user (via COM Add-ins) I get this message: MyOfficeAddin.dll is not a valid Office Add-in. \r<br />\n<br />\nDoes anyone has an idea or a solution? Thanks!<br />\n",
+    "PostedDate": "2016-11-27T12:16:24.96-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491028",
+    "ThreadId": "659750",
+    "Html": "I think I have had this or something like it before. I'm sorry I can be sure, and worst I can remember what I did to solve the issue. one suggestion would be to try playing around with the &quot;com visible&quot;, settings for the project, I think this is sometime a factor - sorry not a very good answer. <br />\n",
+    "PostedDate": "2017-01-12T03:51:01.883-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "822039",
+    "ThreadId": "351816",
+    "Html": "\r\n<p>Hello -</p>\r\n<p>First off, I wanted to say thanks - this is a very useful framework!</p>\r\n<p>Now, my question: is there a reason why the COMObject class doesn't have a finalizer? It seems like using the finalizer/dispose pattern would provide a good &quot;failsafe&quot; for instances where someone forgets to dispose an object. Are there other factors that\r\n could make it a bad idea? Or maybe it's taken care of somewhere else and I just missed it?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks again,</p>\r\n<p>Sebastian C.</p>\r\n",
+    "PostedDate": "2012-04-10T09:23:22.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822086",
+    "ThreadId": "351816",
+    "Html": "<p>hello,<br /><br />do you the COM Proxy management concept in NetOffice?<br />the current documentation is small and could be better: <a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management\">http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management</a><br />i create new tutorials and examples at the moment. a finalizer is a good idea, i need some tests to verify the idea works well with COM Interop but i think it doesnt works. a problem with the finalizer is you have no control the finalizer is called or not and also&nbsp;the calling time and you have no control about the calling order. this means:<br /><br />//example<br />Excel.WorkSheet sheet = app.ActiveSheet;<br />foreach(ExcelRange cell in sheet.Range(\"A1:A100))<br />{<br />&nbsp;&nbsp; Console.WriteLine(cell.Value);<br />}<br />sheet.Dispose(); // all proxies destroyed now</p>\n<p>we have 102 ComProxies created here. the Sheet, the Range enumerator and 100 cells. NetOffice store the proxies in&nbsp;a special tree for you.<br /><br />- sheet<br />&nbsp;&nbsp;&nbsp; -range enumerator<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - cell<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - cell<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - cell<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ......<br /><br />if you dispose an object then all created child proxies are disposed now, in a reverse order from creation. <br />in our sample sheet.Dipose() calls dispose for the 100 cells first, now the range enumerator and as last himself.<br />this reverse release direction is important, otherwise a COMException was thrown in some situations \"Parent proxy is being released from the COM Server\" maybe the garbage collector calls the finalizer for the application first and as next step the other proxies. a limitless exception party...<br /><br />Sebastian<br /><br /><br /><br /></p>",
+    "PostedDate": "2012-04-10T11:40:00.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1093168",
+    "ThreadId": "457069",
+    "Html": "Hi,\r<br />\n<br />\nIs it possible to read a office documents like word/Excel and convert the result to a image/HTML using .NETOffice.\r<br />\n<br />\nThanks,\r<br />\nMallikarjun<br />\n",
+    "PostedDate": "2013-09-16T08:50:34.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093482",
+    "ThreadId": "457069",
+    "Html": "you can open a document and save as html but as far i know office the html looks not very pretty.\r<br />\n<br />\nsee: \r<br />\n<a href=\"http://stackoverflow.com/questions/4923970/net-interop-excel-to-html\" rel=\"nofollow\">http://stackoverflow.com/questions/4923970/net-interop-excel-to-html</a>\r<br />\n<a href=\"http://bytes.com/topic/c-sharp/answers/477965-excel-files-html-using-c\" rel=\"nofollow\">http://bytes.com/topic/c-sharp/answers/477965-excel-files-html-using-c</a><br />\n",
+    "PostedDate": "2013-09-17T04:21:42.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1236079",
+    "ThreadId": "457069",
+    "Html": "It's not easy to directly convert office docs to html, and even if it does it will lose some of the original formats (just imagine the format difference between the two). However, most of office solutions and applications can allow you to <a href=\"http://www.yiigo.com/guides/vbnet/how-to-word-convert.shtml\" rel=\"nofollow\">save word to image format</a>.<br />\n",
+    "PostedDate": "2014-04-21T02:07:26.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

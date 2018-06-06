@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1200817",
+    "ThreadId": "528395",
+    "Html": "Hi All<br />\nAfter reinstalling the Office, the sample add-ins are not loaded on my development machine. I have tried Outlook and Word add-ins with 3.5 and 4.0 framework. The add-ins are registered successfully (checked in registry), but not loaded in the Outlook and Word. <br />\n<br />\nHere is the registry entry:<br />\n[HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\Outlook\\AddIns\\SimpleOutlookCS35.Addin]<br />\n&quot;LoadBehavior&quot;=dword:00000003<br />\n&quot;FriendlyName&quot;=&quot;NetOfficeCS35 Sample Outlook Addin&quot;<br />\n&quot;Description&quot;=&quot;This Addin shows you the COMAddin base class from the NetOffice Tools&quot;<br />\n<br />\nThe COM add-in settings dialog shows Load behavior is Unloaded, the checkbox is unchecked and not possible to activate it. <br />\nThe samples worked with Office 2010 and 32 bit 2013.<br />\nI tried to log with FusionLog, but nothing is logged related to sample add-ins :(.<br />\nOS: Windows 7, Office version: Office 2013, 64 bit, Built with Microsoft Visual Studio Premium 2012<br />\n<br />\nThanks for your help<br />\n",
+    "PostedDate": "2014-01-30T01:18:55.25-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1200894",
+    "ThreadId": "528395",
+    "Html": "Looks like some startup error. You need to find the exception during the addin startup which inactivates it again.\r<br />\nSet the environment variable VSTO_SUPPRESSDISPLAYALERTS = 0 \r<br />\n<br />\nPlease follow the instructions in this link \r<br />\n<a href=\"http://www.scinaptic.com/support/0053.html\" rel=\"nofollow\">http://www.scinaptic.com/support/0053.html</a><br />\n",
+    "PostedDate": "2014-01-30T04:13:31.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1201245",
+    "ThreadId": "528395",
+    "Html": "It has been solved in the meantime, the reason was that the code had to be complied as 64bit, AnyCPU did not work. What a bigger issue was that there was no clue, no error message, log, etc.<br />\n",
+    "PostedDate": "2014-01-31T02:21:57.643-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1201282",
+    "ThreadId": "528395",
+    "Html": "thanks, my add-in is working now.<br />\n",
+    "PostedDate": "2014-01-31T04:35:09.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

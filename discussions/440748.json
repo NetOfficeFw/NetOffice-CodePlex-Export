@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1032372",
+    "ThreadId": "440748",
+    "Html": "Hi\r<br />\n<br />\nI have successfully loaded in the COMAddinTaskPaneExample into Word 2007 using Windows XP and registered it in Windows Vista. When using Windows 7 and Office 2010, I copied all the .dll files into both my System32 folder and Syswow64 folder. Used the v4.0.30319\\RegAsm.exe from both the Framework64 and Framework folders to register the project. When using Visual Studio 2010 it builds successfully however when rebuilding it cannot and states that the files need to be registered.\r<br />\n<br />\nIn Microsoft Word it makes the entry for NetOffice Example in the Word Addin's however cannot load it and leaves the location blank. Not sure what I am doing wrong. Windows 7 seems to be in a league of it's own.\r<br />\n<br />\nAny help on the matter would be greatly appreciated. Cheers<br />\n",
+    "PostedDate": "2013-04-18T04:22:10.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1032903",
+    "ThreadId": "440748",
+    "Html": "Hello,\r<br />\n<br />\nMake a folder where you store the .dll and let your project take reference on them.\r<br />\n<br />\nWhile importing the references of your .dll, did you tell them in the Project Manager to be &quot;Always copied&quot;?\r<br />\n<br />\n<img src=\"http://imageshack.us/a/img707/7307/40634937.jpg\" alt=\"Image\" />\r<br />\n<br />\nMaybe it could help you. I didn't register any .dll too and it's working.<br />\n",
+    "PostedDate": "2013-04-19T03:07:57.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1032916",
+    "ThreadId": "440748",
+    "Html": "Sorry not sure how you find that using visual studio express 2010<br />\n",
+    "PostedDate": "2013-04-19T03:20:45.45-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1032924",
+    "ThreadId": "440748",
+    "Html": "Actually realised my problem. I ran the visual studio express 2010 as administrator and that worked. Question if I run visual studio as administrator do I have ever require registering of com interop via regasm.exe?<br />\n",
+    "PostedDate": "2013-04-19T03:31:04.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

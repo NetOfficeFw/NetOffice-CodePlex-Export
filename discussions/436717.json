@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1015652",
+    "ThreadId": "436717",
+    "Html": "This is a very very good project!\r<br />\n<br />\nNetOffice.MSComctlLibApi.ImageList.ListImages.Add\r<br />\nIs there any one knew what is the right type object for the third parameter?\r<br />\nI tried to use this as the pic\r<br />\nobject pic = <a href=\"mailto:Microsoft.VisualBasic.Compatibility.VB6.Support.ImageToIPictureDisp(Image.FromFile(@&quot;C:\\Users\\Public\\Pictures\\Sample\" rel=\"nofollow\">Microsoft.VisualBasic.Compatibility.VB6.Support.ImageToIPictureDisp(Image.FromFile(@\"C:\\Users\\Public\\Pictures\\Sample</a> Pictures\\Koala.jpg&quot;));\r<br />\nit threw an exception for the Add method call.\r<br />\nHow can we construct this parameter?\r<br />\n<br />\nI will be appreciate your helps, thanks!\r<br />\n<br />\nMike<br />\n",
+    "PostedDate": "2013-03-14T18:31:56.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

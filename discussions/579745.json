@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "1350060",
+    "ThreadId": "579745",
+    "Html": "downloaded &quot;NetOffice 1.7.2.zip&quot; and unzipped it<br />\nrun &quot;DeveloperToolbox.exe&quot; and started &quot;Project Wizard&quot;<br />\nbut at the very last step, on clicking &quot;finish&quot; I got the following error<br />\n<br />\n&quot;1 | I percorsi di origine e destinazione devono avere radici identiche. Non è possibile effettuare spostamenti da un volume all'altro. | IOException | Void InternalMove(System.String, System.String, Boolean)&quot;<br />\n<br />\nwhich could be translated as &quot;origin and destionation paths must have identical roots. it's not possible moving things from one volume to another...&quot;<br />\n<br />\nhope someone can help me<br />\n<br />\nhere are my exact steps through the wizard:<br />\n<br />\n&quot;Project type&quot; step:<br />\nProject type item<br />\n<ul>\n<li>selected &quot;automatic addin&quot; radio button</li>\n<li>checked &quot;Use NetOffice Tools&quot; checkbox<br />\nproject folder item</li>\n<li>\nselected &quot;Custom&quot; radio button and typed in the path to a folder I created &quot;C:\\Users\\Riccardo\\Documents\\NetOffice\\Excel&quot;<br />\n</li>\n</ul>\n&quot;Environment&quot; step<br />\nLanguage item<br />\n<ul>\n<li>selected C# radio button<br />\nEnvironment item</li>\n<li>\nselected &quot;Visual Studio 2010 Express radio button<br />\n.Net Runtme item<br />\nselected 3.5 Net version from the listbox<br />\n</li>\n</ul>\n&quot;Which Office application you want support?&quot; step<br />\ncheked &quot;Excel&quot; checkbox<br />\n<br />\n&quot;Informations about your assembly&quot; step<br />\ntyped &quot;MyAssembly_n001&quot; in &quot;Name&quot; text box<br />\ntyped &quot;first attempt with excel and NetOffice&quot; in &quot;Description&quot; textbox<br />\n<br />\n&quot;Choose Load Behavior options&quot; step<br />\nChoose addin is available  for all users or not item<br />\n<ul>\n<li>selected &quot;Curent User&quot; radio button<br />\nDecide when it has to be loaded item</li>\n<li>\nselected &quot;3   = Load at startup&quot; from listbox<br />\n</li>\n</ul>\n&quot;User Interface&quot; step<br />\nchecked &quot;I want customize the Ribbon UI&quot;, &quot;Ich want a custom Task Pane&quot; and &quot;Create a Toggle Button for the Task Pane (Visibility)&quot; checkboxes<br />\n<br />\n&quot;Done!&quot; step<br />\nclicked &quot;Finish&quot; button<br />\n",
+    "PostedDate": "2015-02-08T04:13:44.597-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1350685",
+    "ThreadId": "579745",
+    "Html": "thanks for pointing this out !!!\r<br />\n<br />\ni want replace the NO Toolbox 1.4.0 with 1.4.2(available as beta in the download section) tomorrow !\r<br />\n<br />\n<br />\n*Sebastian <br />\n",
+    "PostedDate": "2015-02-10T09:57:19.21-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1351618",
+    "ThreadId": "579745",
+    "Html": "done. toolbox 1.4.2 is now part of the release package.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-02-11T18:08:06.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352415",
+    "ThreadId": "579745",
+    "Html": "Thank you Sebastian\r<br />\n<br />\nI downloaded &quot;NO Developer Toolbox 1.4.2 (Beta)&quot; but I'm still stuck.\r<br />\nHere's how I acted\r<br />\nI saw &quot;NO Developer Toolbox 1.4.2 (Beta)&quot; folder contained subfolders named as some of those already downloaded with &quot;NetOffice 1.7.2&quot;, namely &quot;Source&quot; and &quot;Toolbox Binaries&quot;. but while the latter seemed to be much the same as the one already downloaded, the former contained brand new folders only and the new &quot;NetOffice Toolbox.exe&quot;.\r<br />\nSo I copied and pasted:<br />\n<ul>\n<li>folders from &quot;...\\NO Developer Toolbox 1.4.2 (Beta)\\Source&quot; in &quot;...\\NetOffice 1.7.2\\Source&quot;</li>\n<li>\n&quot;NetOffice Toolbox.exe&quot; from &quot;..\\NO Developer Toolbox 1.4.2 (Beta)&quot; to &quot;...\\NetOffice 1.7.2&quot;\r<br />\nand no copying&amp;pasting of the &quot;Source&quot; folder.<br />\n</li>\n</ul>\nwent through the wizard and still got the error\r<br />\n&quot;1 | I percorsi di origine e destinazione devono avere radici identiche. Non è possibile effettuare spostamenti da un volume all'altro. | IOException | Void InternalMove(System.String, System.String, Boolean)&quot;\r<br />\n<br />\nhave I done something wrong?<br />\n",
+    "PostedDate": "2015-02-14T00:36:51.967-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352418",
+    "ThreadId": "579745",
+    "Html": "okay, now i see.\r<br />\n<br />\n&quot;which could be translated as &quot;origin and destionation paths must have identical roots. it's not possible moving things from one volume to another...&quot;\r<br />\n<br />\ndo you start the toolbox from another drive(may D:\\ or something like this) or is your temp directory on another drive instead of C:\\ ?\r<br />\n<br />\ni have to fix this asap(File.Copy and File.Delete instead of File.Move if the root directory(drive) is different).\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-02-14T00:59:50.643-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352432",
+    "ThreadId": "579745",
+    "Html": "I downloaded both  &quot;NO Developer Toolbox 1.4.2 (Beta)&quot; and &quot;NetOffice 1.7.2&quot; in my &quot;E&quot; drive\r<br />\nVS2010 Express is forced to be installed in &quot;C&quot; drive\r<br />\nI have &quot;Temp&quot; folders in &quot;C&quot;, &quot;D&quot; and &quot;E&quot; drives\r<br />\n<br />\nwhat shall I do?\r<br />\n<br />\nthank you\r<br />\n<br />\nRiccardo<br />\n",
+    "PostedDate": "2015-02-14T02:19:08.143-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352440",
+    "ThreadId": "579745",
+    "Html": "You have only one registered temp directory in windows. typical on &quot;C:...&quot;\r<br />\nas hotfix, i suggest you to move the toolbox to a folder in &quot;C:\\&quot;\r<br />\n<br />\nunfortunately the toolbox is currently not ready to move files from one drive to another. i want fix this as fast as possible.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-02-14T02:55:29.703-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352447",
+    "ThreadId": "579745",
+    "Html": "I moved both &quot;NO Developer Toolbox 1.4.2 (Beta)&quot; and &quot;NetOffice 1.7.2&quot; in my &quot;C&quot; drive\r<br />\nstill hitting the same error\r<br />\n<br />\nmaybe I'm doing something wrong elsewhere\r<br />\nfor instance I'm just executing &quot;NetOffice Toolbox.exe&quot; (1.4.2.0) , with no VS2010 Express running\r<br />\nMoreover, when in VS2010 express I can't find any VS Project Wizard available\r<br />\n<br />\nRiccardo<br />\n",
+    "PostedDate": "2015-02-14T03:32:03.117-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352454",
+    "ThreadId": "579745",
+    "Html": "The same error at same time in project wizard(regarding first message)? It can't be...\r<br />\n<br />\ndo you see the netoffice error dialog? if its true please use the button &quot;copy exception details to clipboard&quot; and paste the content here.\r<br />\n<br />\nwhat about VS2010 ? the toolbox doesnt spend a project wizard addin. moreover VS2010 express doesnt load addins(only VS2010 pro)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-02-14T04:04:51.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352465",
+    "ThreadId": "579745",
+    "Html": "I swear!<br />\n<br />\nfrom &quot;Copy to clipboard&quot; button (I don't have &quot;copy exception details to clipboard&quot; label as you mentioned) I get:<br />\n<br />\n1 | I percorsi di origine e destinazione devono avere radici identiche. Non è possibile effettuare spostamenti da un volume all'altro. | IOException | Void InternalMove(System.String, System.String, Boolean)<br />\n<br />\nclicking on the only item in the table inside the &quot;Error&quot; window, I get:<br />\nSystem.IO.IO.Exeption: I percorsi di origine e destinazione devono avere radici identiche. Non è possibile effettuare spostamenti da un volume all'altro<br />\nin<br />\n System.IO.Directory.InternalMove(String sourceDirName, String destDirName, Boolean checkHost)<br />\nin<br />\n NetOfficeDeveloperToolbox.ToolboxControls.ProjectWizard.ProjectConverters.ToolsSingleAddinConverterCS.CreateSolution()<br />\nin<br />\n NetOfficeDeveloperToolbox.ToolboxControls.ProjectWizard.ProjectWizardControl.finishButton_Click(Object sender, EventArgs e)<br />\n<br />\n(Note: i clicked &quot;insert Img&quot; up-right button in thid editor but it only inserts &quot;<img src=\"http://example.com/logo.jpg\" alt=\"Image\" />&quot; ) <br />\n<br />\nas for VS2010 and project wizard:<br />\nI got from this <a href=\"https://netoffice.codeplex.com/discussions/430226\" rel=\"nofollow\">post </a> the following<br />\n<blockquote>\n&quot;I'm doing it with VB 2010 Express + NetOffice + Developer Toolbox.<br />\nIt's dead easy. Just create a new project and in the template dialog, choose &quot;Automation Addin&quot; under &quot;NetOffice&quot;. The wizard will do the rest.!&lt;<br />\n</blockquote>\nI also tried with VS2010 Ultimate, but couldn't see the template I see <a href=\"http://netoffice.codeplex.com/wikipage?title=ProjectWizardScreenshots_English\" rel=\"nofollow\">Here</a><br />\n",
+    "PostedDate": "2015-02-14T05:43:17.513-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352867",
+    "ThreadId": "579745",
+    "Html": "I have created Toolbox 1.4.2.1 today. Its available now in the download section(scroll down).\r<br />\nPlease let me know how this works for you.\r<br />\nThe project wizard addin for visual studio is not part of the toolbox himself and currently unavailable.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-02-15T02:18:16.253-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352869",
+    "ThreadId": "579745",
+    "Html": "Thank you Sebastian<br />\n<br />\nto avoid errors please let me know how am I supposed to treat the content of the newly downloaded &quot;NO Developer Toolbox 1.4.2 (Beta)&quot; folder with respect to &quot;NetOffice 1.7.2&quot; folder I already had.<br />\nHave I to substitute this latter &quot;Source&quot; and &quot;Toolbox Binaries&quot; folders content totally?<br />\n<br />\nAnd, finally, can I place those folders in &quot;E&quot; drive?<br />\n<br />\nRiccardo<br />\n",
+    "PostedDate": "2015-02-15T02:32:58.34-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352870",
+    "ThreadId": "579745",
+    "Html": "no need for the source.\r<br />\njust replace the toolbox.exe and the dependencies folder &quot;Toolbox Binaries&quot;.\r<br />\n(the source is for troubleshooting, you can run the toolbox project directly in visual studio.\r<br />\nmay this is helpful to pin point the problem if it doesnt works again. please enable the visual studio option:\r<br />\nDebugging/Exception/CommonLanguageRuntimeExceptions in this case to make sure vs stops in the failure line of code)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-02-15T02:42:11.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352878",
+    "ThreadId": "579745",
+    "Html": "it all works\r<br />\nfrom E drive, too\r<br />\n<br />\nthank you\r<br />\n<br />\nRiccardo<br />\n",
+    "PostedDate": "2015-02-15T03:44:01.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

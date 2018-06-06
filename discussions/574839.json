@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1331533",
+    "ThreadId": "574839",
+    "Html": "Hello,<br />\nComAddin for Word, Powerpoint, Excel.<br />\nNew document in Powerpiont and Excel to call .Save() ,the result is not like in word.<br />\n<br />\nand my .Save Code:<br />\nin Powerpoint: &quot;_powerpointApplication.ActivePresentation.Save()&quot;,<br />\nin Excel: &quot;_excelApplication.ActiveWorkbook.Save() &quot; , <br />\nin Word: &quot;_wordApplication.ActiveDocument.Save() &quot; , <br />\n<br />\nIn word, new document to .Save, will show &quot;Save as&quot; dialog, but not in Powerpoint and Excel.<br />\nWhy? and how to do, let in Powerpoint and Excel to show the &quot;Save as &quot; dialog.<br />\n",
+    "PostedDate": "2014-12-12T18:23:34.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1331943",
+    "ThreadId": "574839",
+    "Html": "no idea about powerpoint. excel and word is pretty the same. Save() works silent if the document is already saved(not new and unsafed) otherwise the dialog occurs. The SaveAs dialog is also  suspended in any case if the Application.DisplayAlerts property is set  to false in excel and WdAlertLevel.wdAlertsNone in word. \r<br />\nThats all i know so far ...\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-15T01:45:10.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

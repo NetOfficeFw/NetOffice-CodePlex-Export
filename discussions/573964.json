@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1328625",
+    "ThreadId": "573964",
+    "Html": "Hi,\r<br />\n<br />\nI am referring the required NetOffice dlls in a Windows service application \r<br />\nto convert docs to pdf.\r<br />\n<br />\n'Embed Interop Types' property is missing on NetOffice and all other referred NetOffice dll's properties window.\r<br />\n<br />\nWhen I try to build the project, I am getting this error.\r<br />\n&quot;The type or namespace name 'NetOffice' could not be found (are you missing a using directive or an assembly reference?)&quot;\r<br />\n<br />\nCould you please help me with this.\r<br />\n<br />\nThank you<br />\n",
+    "PostedDate": "2014-12-03T21:42:38.1-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1328657",
+    "ThreadId": "573964",
+    "Html": "&quot;'Embed Interop Types' property is missing on NetOffice and all other referred NetOffice dll's properties window. &quot;\r<br />\n<br />\nnot sure this is a compiler error?\r<br />\n<br />\nplease check the assembly reference settings for each NetOffice assembly and make sure the option &quot;Embed Interop Types&quot; is set to 'false'.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-12-04T00:40:36.89-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1328670",
+    "ThreadId": "573964",
+    "Html": "Hi,\r<br />\n<br />\n&quot;.Net Framework&quot; was set to 3.5\r<br />\n<br />\nAfter changing Target framework to &quot;.NET Framework 4&quot; (Project Properties --&gt; Application tab) and setting &quot;Embed Interop Types&quot; to &quot;false&quot; for each dll referred it started working like a charm.\r<br />\n<br />\nThank you<br />\n",
+    "PostedDate": "2014-12-04T01:32:43.76-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

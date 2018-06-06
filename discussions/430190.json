@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "989353",
+    "ThreadId": "430190",
+    "Html": "\r\n<p>Hi. I am having trouble adding a custom category to Outlook.<br>\r\nI simply use:</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">Outlook.Application _outlookApplication;</span>\n<span style=\"color:blue\">string</span> customCat = <span style=\"color:#a31515\">&quot;MyCat&quot;</span>;\n<span style=\"color:blue\">if</span> (!CategoryExists(customCat)) {\n \tOutlook._Categories categories = _outlookApplication.Session.Categories;\n<span style=\"white-space:pre\">\t</span>categories.Add(customCat, Color.Orange);\n}\n</pre>\r\n</div>\r\n<p>CategoryExists works. I have checked this. It fails at categories.Add(customCat, Color.Orange). It throws an inner exception with message: Exception has been thrown by the target of an invocation. If I do a</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>categories.Count.ToString()</pre>\r\n</div>\r\n<p>it returns 9, which are the number of categories I have in Outlook.</p>\r\n<p>This is driving me nuts. Any help would be greatly appreciated.</p>\r\n",
+    "PostedDate": "2013-01-20T08:04:35.783-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "989368",
+    "ThreadId": "430190",
+    "Html": "\r\n<p>You should use Outlook color constant&nbsp;instead of&nbsp;System.Drawing.Color property:</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>categories.Add(customCat, Outlook.Enums.OlCategoryColor.olCategoryColorOrange);\r\n</pre>\r\n</div>\r\n",
+    "PostedDate": "2013-01-20T09:20:14.4-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "989398",
+    "ThreadId": "430190",
+    "Html": "\r\n<p>Oh man. How could I have missed that!</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks artnib!</p>\r\n",
+    "PostedDate": "2013-01-20T12:16:07.03-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

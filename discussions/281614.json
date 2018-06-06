@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "706483",
+    "ThreadId": "281614",
+    "Html": "\r\n<p>hi</p>\r\n<p><span>sorry</span> <span>for my english</span></p>\r\n<p><span>&nbsp;</span><br>\r\n<span>I thank you</span> <span>for the excellent</span> <span>job you did</span> <span>\r\nand useful</span></p>\r\n<p>if you use foreach&nbsp;like this :</p>\r\n<p>LateBindingApi.Core.Factory.Initialize();<br>\r\n<br>\r\n<br>\r\nOutlook.Application outlookApplication = new Outlook.Application();</p>\r\n<p><br>\r\nOutlook._NameSpace outlookNS = outlookApplication.GetNamespace(&quot;MAPI&quot;);<br>\r\n<br>\r\nforeach (NetOffice.OutlookApi.MAPIFolder ff in outlookNS.Folders)<br>\r\n{<br>\r\nConsole.WriteLine(ff.Name); <br>\r\n}</p>\r\n<p>return error (index Out of bound) in GetEnumerator of object</p>\r\n<p>because COMObject[] start with 0 and this start with 1<br>\r\n&nbsp;<br>\r\nPublic IEnumerator GetEnumerator()<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;int count = Count;<br>\r\n&nbsp;&nbsp;&nbsp;COMObject[] enumeratorObjects = new COMObject[count];<br>\r\n&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt;= count; i&#43;&#43;)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;enumeratorObjects[i] = this[i];</p>\r\n<p>&nbsp;foreach (COMObject item in enumeratorObjects)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;yield return item;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n<p>if you replace with i work ok</p>\r\n<p>&nbsp;Public IEnumerator GetEnumerator()<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;int count = Count;<br>\r\n&nbsp;&nbsp;&nbsp;COMObject[] enumeratorObjects = new COMObject[count];<br>\r\n&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt;= count-1; i&#43;&#43;)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;enumeratorObjects[i] = this[i&#43;1];</p>\r\n<p>&nbsp;&nbsp;&nbsp;foreach (COMObject item in enumeratorObjects)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;yield return item;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n<p><span>I hope</span> <span>to check out</span> <span>state</span> <span>aid</span><br>\r\n<br>\r\n<span>Thanks again for</span> <span>your work ...</span> <span>you're a great</span>\r\n<span>developer</span></p>\r\n<p><span>ciao</span></p>\r\n<p><span>&nbsp;</span></p>\r\n<p><span>&nbsp;</span></p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-12-02T07:44:26.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706487",
+    "ThreadId": "281614",
+    "Html": "<p>thanks for your suggestion, is an issue now. needs one day to fix them.<br /><br />your issue: <a href=\"http://netoffice.codeplex.com/workitem/16994\">http://netoffice.codeplex.com/workitem/16994</a><br /><br />thanks for show me that !<br />*Sebastian</p>",
+    "PostedDate": "2011-12-02T07:56:38.947-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706560",
+    "ThreadId": "281614",
+    "Html": "<p>its' done, the&nbsp;issue is fixed.<br />an updated release is available.<br /><br />btw: what a damn mistake from me :(</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-12-02T09:29:07.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

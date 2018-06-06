@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "891264",
+    "ThreadId": "389019",
+    "Html": "\r\n<p>I'm using the above code in VBA and can't seem to replicate it using the&nbsp;NetOffice.ExcelApi.</p>\r\n<p>Is it possible? This is what I&nbsp;currently&nbsp;have working in VBA.</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>    Worksheets.Add(After:=Worksheets(Sheets.<span style=\"color:blue\">Count</span>)).Name = <span style=\"color:#a31515\">&quot;tmpCopy&quot;</span>\r\n    Sheets(<span style=\"color:#a31515\">&quot;Dashboard&quot;</span>).<span style=\"color:blue\">Select</span>\r\n    Range(<span style=\"color:#a31515\">&quot;D10:H18&quot;</span>).<span style=\"color:blue\">Select</span>\r\n    Selection.Copy\r\n    Sheets(<span style=\"color:#a31515\">&quot;tmpCopy&quot;</span>).<span style=\"color:blue\">Select</span>\r\n    ActiveSheet.Pictures.Paste.<span style=\"color:blue\">Select</span>\r\n    Sheets(<span style=\"color:#a31515\">&quot;Dashboard&quot;</span>).<span style=\"color:blue\">Select</span>\r\n    Range(<span style=\"color:#a31515\">&quot;J6:N18&quot;</span>).<span style=\"color:blue\">Select</span>\r\n    Selection.Copy\r\n    Sheets(<span style=\"color:#a31515\">&quot;tmpCopy&quot;</span>).<span style=\"color:blue\">Select</span>\r\n    Range(<span style=\"color:#a31515\">&quot;H1&quot;</span>).<span style=\"color:blue\">Select</span>\r\n    ActiveSheet.Pictures.Paste.<span style=\"color:blue\">Select</span>\r\n    ActiveSheet.Pictures.Copy\r\n    Range(<span style=\"color:#a31515\">&quot;A30&quot;</span>).<span style=\"color:blue\">Select</span>\r\n    ActiveSheet.Pictures.Paste\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>It's taking two different cell ranges on the dashboard tab and coping as pics to the tmpCopy tab. Then uses&nbsp;ActiveSheet.Pictures.Paste to select all pictures on that tab to paste into cell&nbsp;&quot;A30&quot; on the same tab.</p>\r\n<p>In a PowerPoint slide I then do a&nbsp;ActiveWindow.View.Paste and works perfectly.</p>\r\n<p>If this doesn't exist in Netoffice can someone guide me on how to do it? I'm currently trying to use range.CopyPicture but the paste operations doesn't apply right, picture all black or variety of other weirdness.</p>\r\n<p>Thanks</p>\r\n<p>-Tom</p>\r\n",
+    "PostedDate": "2012-07-25T10:43:30.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "891379",
+    "ThreadId": "389019",
+    "Html": "<p>the code is 99% compatible in NetOffice 1.5.1<br /><br />make sure have an import for the globals module in your VB.NET code module and a valid Excel.Application object.<br /><br />Imports NetOffice.ExcelApi.GlobalHelperModules.GlobalModule<br /><br />you have to modify the first line of your code:<br /><br />ActiveWorkbook.Worksheets.Add(Type.Missing, Worksheets(Sheets.Count)).Name = \"tmpCopy\"<br /><br />thats all.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-07-25T15:57:41.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

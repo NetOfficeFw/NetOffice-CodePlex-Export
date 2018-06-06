@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "838393",
+    "ThreadId": "356379",
+    "Html": "\r\n<p>Hi!</p>\r\n<p>In VB.Net I'm using </p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>ExcelApplication.Run(<span style=\"color:#a31515\">&quot;TestMacro&quot;</span>)\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>to run some macro.</p>\r\n<p>However, is it possible to check in advance, if this macro exists or not?</p>\r\n<p>I can only think of Try / Catch Exception... is there a better solution?</p>\r\n<p>Thanks,<br>\r\nDaniel</p>\r\n",
+    "PostedDate": "2012-05-19T07:15:34.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "838452",
+    "ThreadId": "356379",
+    "Html": "<p>hello,</p>\r\n<p>is your macro defined in a VBA code modul or in Excel-DNA?<br /><br />for VBA:</p>\r\n<p>http://www.cpearson.com/excel/vbe.aspx</p>\r\n<p>you can modify the Listing All Modules In A Project and Listing All Procedures In A Module tutorials.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-05-19T12:32:59.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "838521",
+    "ThreadId": "356379",
+    "Html": "<p>Hi Sebastian</p>\r\n<p>Thank you for the quick answer! It works perfectly fine!</p>\r\n<p>Daniel</p>",
+    "PostedDate": "2012-05-20T00:53:50.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

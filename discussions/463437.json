@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1111682",
+    "ThreadId": "463437",
+    "Html": "Hi all,<br />\n<br />\nI make a simple code to test &quot;memory leak&quot; of NetOffice with MS Project. My code listing looks like following<br />\n<pre><code>using MSProject = NetOffice.MSProjectApi;\n\nMSProject.Application msProjectApplication = new MSProject.Application();\nmsProjectApplication.Visible = false;\nmsProjectApplication.DisplayAlerts = false;\nmsProjectApplication.Calculation = PjCalculation.pjManual;\nmsProjectApplication.FileOpen(filePath, false, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, PjPoolOpen.pjPoolReadWrite, Type.Missing, Type.Missing, Type.Missing, Type.Missing);\nMSProject.Project project = msProjectApplication.ActiveProject;\n\nfor (int index = 1; index &lt;= project.Tasks.Count; index++)\n{\n    Task task = proj.Tasks[index];\n    if (task != null)\n    {       \n        Console.WriteLine(&quot;Do nothing&quot;);\n    }\n    task.Dispose();\n}\n</code></pre>\n\nWhen I let the code run and observe the memory. The memory keeps growing up. I would like to ask how I should &quot;dispose&quot; the object correctly to get &quot;memory back&quot;?<br />\n<br />\nThank you.<br />\n",
+    "PostedDate": "2013-10-24T08:25:07.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1111755",
+    "ThreadId": "463437",
+    "Html": "Your code creates the Tasks enumerator intance more than on times.\r<br />\nThis listing is more efficient:\r<br />\n<br />\nvar tasks = project.Tasks;\r<br />\nfor (int index = 1; index &lt;= tasks.Count; index++)\r<br />\n{<br />\n<pre><code>Task  task = tasks[index];\ntask .Dispose();</code></pre>\n\n}\r<br />\ntasks.Dispose();\r<br />\n<br />\nYou can observe the count of open proxies in your application with:\r<br />\n<br />\nint NetOffice.Factory.ProxyCount{get;} \r<br />\n<br />\nand the ProxyCountChanged event.\r<br />\n<br />\n'Sebastian<br />\n",
+    "PostedDate": "2013-10-24T10:22:54.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112003",
+    "ThreadId": "463437",
+    "Html": "Thank you Sebastian for your suggesstions. It really works. However I extend the example by reading/setting property of tasks as following<br />\n<pre><code>var tasks = project.Tasks;\nforeach (MSProject.Task task in tasks)\n{\n    if (task != null)\n    {\n        Console.WriteLine(task.Name);                            //test for getting\n        task.Start1 = DateTime.Now.Date;                       //test for setting\n\n        //task.DisposeChildInstances();                           &lt;-- I think this row is not necessary because Dipose() on main object will dispose all child instances\n        task.Dispose();\n    }\n}\n\ntasks.Dispose();</code></pre>\n\nWhen I let code run, the memory still get growing up. I think when I access the properties, I create again a proxy to COM object. But I don't know how to correctly 'dispose' these objects (Name, Start1 objects in this example). Can you give me some hints?<br />\n<br />\nThank you. <br />\n",
+    "PostedDate": "2013-10-25T02:14:05.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112094",
+    "ThreadId": "463437",
+    "Html": "this code looks okay so far. when you access a property you create a proxy for com reference types(based on COMObject) you dont do this for value types(int, bool) and also string.\r<br />\n<br />\nof course you dont have to call DisposeChildInstances explicitly. Dispose() relase all the childs too.\r<br />\n<br />\ndid you have more code for me? and please observe NetOffice.Factory.Proxy count, the last code listing (include open project application and open file) creates &lt;10 com proxies simultaneously in your application.<br />\n",
+    "PostedDate": "2013-10-25T06:48:04.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112928",
+    "ThreadId": "463437",
+    "Html": "Thank you for your explanations. Until now I have just tried with reading  therefore I don't have &quot;more&quot; codes. I will add feedbacks when I find anything &quot;weird&quot;. Thank you again for your support.<br />\n",
+    "PostedDate": "2013-10-28T02:10:18.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

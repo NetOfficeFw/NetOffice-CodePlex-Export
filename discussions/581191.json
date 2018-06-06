@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1353394",
+    "ThreadId": "581191",
+    "Html": "I have a C# user defined function that I wish to use to edit the active worksheet, however it appears to be read only<br />\n<pre><code>Excel.Application excelApplication = Excel.Application.GetActiveInstance();\nExcel.Worksheet workSheet = (Excel.Worksheet) excelApplication.ActiveSheet;\nExcel.Range cell = workSheet.Cells[2, 2];\n\nobject value = cell.Value; //works\ncell.Value = 3; //Throws Exception\n</code></pre>\n\nIs there a workaround?\r<br />\n<br />\nThe Exception FYI is \r<br />\n<br />\n&quot;System.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details. ---&gt; System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; System.Runtime.InteropServices.COMException: Exception from HRESULT: 0x800A03EC\r<br />\n   --- End of inner exception stack trace ---\r<br />\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\r<br />\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\r<br />\n   at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)\r<br />\n   at NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\r<br />\n   at NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)\r<br />\n   at NetOffice.ExcelApi.Range.set_Value(Object value)\r<br />\n   at ExcelExamplesCS45.Example01.RunExample() in \\psf\\home\\Documents\\Visual Studio 2013\\Projects\\Excel-REPL\\Excel-REPL\\Example01.cs:line 29\r<br />\n   at ClojureExcel.MainClass.Test() in \\psf\\home\\Documents\\Visual Studio 2013\\Projects\\Excel-REPL\\Excel-REPL\\MainClass.cs:line 310&quot;<br />\n",
+    "PostedDate": "2015-02-17T06:08:25.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

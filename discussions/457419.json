@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1094460",
+    "ThreadId": "457419",
+    "Html": "Hi, <br />\n<br />\nNetOffice is simply GREAT.<br />\n<br />\nI have developed Office Addin using NetOffice and its working perfectly with Office 2007, Office 2010 and Office 2013. <br />\n<br />\nNow i want to deploy the Addin using an Installer. I have good experience with NSIS and i have already deployed VSTO Addins using NSIS. <br />\n<br />\nAs per my understanding to deploy my addin i have to create registry entries among other things. <br />\n<br />\nSo, could anyone please guide me about what should be the registry entries?<br />\n<br />\n<br />\nRegards<br />\n",
+    "PostedDate": "2013-09-19T06:43:35.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1098059",
+    "ThreadId": "457419",
+    "Html": "It's a question I will want answering soon. I know the VSTO ones are like this:<br />\n<br />\n<br />\nWindows Registry Editor Version 5.00<br />\n<br />\n[HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\Outlook\\Addins\\MailAlert3]<br />\n&quot;Description&quot;=&quot;Mail Alert Utils&quot;<br />\n&quot;LoadBehavior&quot;=dword:00000003<br />\n&quot;FriendlyName&quot;=&quot;Mail Alert&quot;<br />\n&quot;Manifest&quot;=&quot;C:\\Users\\Rimsey2\\AppData\\Roaming\\Cameltoe\\MailAlertSetup\\MailAlert.vsto|vstolocal&quot;<br />\n<br />\nHowever my Eset Nod32 addin is like this:<br />\n<br />\nWindows Registry Editor Version 5.00<br />\n<br />\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Office\\Outlook\\Addins\\ESET.OutlookAddin]<br />\n&quot;FriendlyName&quot;=&quot;ESET Outlook Add-in&quot;<br />\n&quot;LoadBehavior&quot;=dword:00000003<br />\n<br />\nBut I don't know about netoffice com addins and where does Outlook get the path of the addin from?<br />\n<br />\nJust found this<br />\n<br />\n<a href=\"https://netoffice.codeplex.com/discussions/438726\" rel=\"nofollow\">https://netoffice.codeplex.com/discussions/438726</a><br />\n",
+    "PostedDate": "2013-09-23T08:19:41.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100683",
+    "ThreadId": "457419",
+    "Html": "first you dont need the manifest key in netoffice. (all other things looks good)\r<br />\nabout the addin path: \r<br />\nhave a look:\r<br />\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Office\\Outlook\\Addins\\ESET.OutlookAddin]\r<br />\n<br />\n&quot;ESET.OutlookAddin&quot; is the registered ProgID from your Addin, The ProgID is stored in the HKEY_CLASSES_ROOT registry hive with the corresponding codebase.\r<br />\nthis is why you need a registration(typical regasm or installer) in the deployment system, and the static register/unregister methods in your addin.\r<br />\n<br />\nYou have to set the ProgID with the Progid Attribute for you addin class.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-09-29T15:01:00.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

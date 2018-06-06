@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1061909",
+    "ThreadId": "448392",
+    "Html": "Hi,\r<br />\n<br />\nIm using netoffice to open outlook address book with suppressed CC, BCC options, When user click a button on WPF form this address book should open up as a pop up and user can select name from there. It works fine but the address book goes behind the running screen always. basically user has to click the button and click on outlook email cilent on the windows tray to view the address book. Is this a bug in netoffice is there anything i can do to fix this ?<br />\n<pre><code>   //Initializing application object\n            Application application = GetApplicationObject();\n\n            //Holds the outlook recipients object\n            Recipients outlookRecipients = new Recipients();\n\n            if (null != application)\n            {\n                //Initializing SelectNamesDialog from the current session\n                SelectNamesDialog addressBooKDialog = application.Session.GetSelectNamesDialog();\n\n                //Restricts multiple selections\n                addressBooKDialog.AllowMultipleSelection = false;\n\n                //Disabling To, Cc, Bcc lists\n                addressBooKDialog.NumberOfRecipientSelectors = OlRecipientSelectors.olShowNone;\n\n                //Set the global address list as default\n                addressBooKDialog.InitialAddressList = application.Session.GetGlobalAddressList();\n                addressBooKDialog.Display();\n\n                //Get the selected  recipients collection\n                outlookRecipients = addressBooKDialog.Recipients;</code></pre>\n\n",
+    "PostedDate": "2013-06-27T03:51:10.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

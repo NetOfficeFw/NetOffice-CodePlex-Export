@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1074306",
+    "ThreadId": "451743",
+    "Html": "Hi\r<br />\n<br />\nI am creating a word add-in in visual basic express 2010 and would like to deploy the add in and create an msi file for the add on or equivalent.\r<br />\n<br />\nI have had a quick look at WiX Toolset and NSIS however not sure how to create the msi file.<br />\n",
+    "PostedDate": "2013-07-29T06:51:06.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1074502",
+    "ThreadId": "451743",
+    "Html": "you have to create a deployment project in your solution (not sure its supported in vb express)\r<br />\nyou find a vb addin deployment sample solution in the download section.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-07-29T16:23:29.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1074530",
+    "ThreadId": "451743",
+    "Html": "You cannot make a deployment project with the express editions. This could be a suggestion to develop in future editions of NetOffice Toolbox to have this functionality.\r<br />\n<br />\nThe reason why I am going for an installation is that I cannot register the program (via regasm) on my work computer. I do not have administration rights and I have Windows 7. This is why I have to create deployment package to get around this. So the aim is to create a deployment package home where I have administration rights and install the add in at work.\r<br />\n<br />\nI was aware of open source deployment software like WiX Toolset and NSIS however have no idea how to use it. Do you have experience in open source deployment .NET software.<br />\n",
+    "PostedDate": "2013-07-29T19:23:23.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

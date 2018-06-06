@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1074878",
+    "ThreadId": "451911",
+    "Html": "Is it necessary to call application.Quit() before calling Dispose()? My user wants to be able to have outlook always open. The application I am creating will then open a new message and add some attachments. The message will be filled in by the user. Once the user either sends the message or closes it, I call Dispose on the message and the application objects. Calling close like in the examples will close out of the open instance of outlook, which the user does not want. As of right now I have just left out the call to close the application and it seems to be working fine. I just want to make sure I am not leaving myself open to memory issues or outlook locking up after extended use (an early version of the application caused this somehow).\r<br />\n<br />\nThanks for the help.<br />\n",
+    "PostedDate": "2013-07-30T15:39:14.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1075035",
+    "ThreadId": "451911",
+    "Html": "its not necessary to call Quit() before.  you can call Dispose() only but of course, the OutlookApi.Application instance is not usable any longer.\r<br />\nif you do more as some lines of code then the first 3 NetOffice tutorials about COM proxy management may helpful for you.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-07-31T02:57:53.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

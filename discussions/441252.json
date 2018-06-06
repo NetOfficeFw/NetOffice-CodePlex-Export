@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "1034354",
+    "ThreadId": "441252",
+    "Html": "Following COMException indicates a busy application while iterating through the cells.<br />\nI don't really know, why the exception is thrown. In the table i want to iterate through 25x13 cells.<br />\n<ul>\n<li>\nInnerException\t{&quot;Durch den Messagefilter wurde angezeigt, dass die Anwendung ausgelastet ist. (Ausnahme von HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER))&quot;}\tSystem.Exception {System.Runtime.InteropServices.COMException}<br />\n</li>\n</ul>\nThe range will be set by<br />\n<pre><code>Excel.Range dataRange = (((Excel.Worksheet)cscExcelApp.ActiveWorkbook.ActiveSheet)).get_Range(&quot;A&quot; + rowNumber + &quot;:M&quot; + rowNumber);</code></pre>\n\nI wanna put every row in a object (every cell is like a property in the object) having property getters and setters to pick up later the values for further processing in another worksheet. Every row is logically indepent of the others except the fact that every column has a special property e.g. column1 indicates the name property of the data object<br />\n<br />\nYou should know, i am regular a java developer, so i am used to beans to abstract to real world object.<br />\nFor my special task i use C#.<br />\nHave i use System.Data.DataTable to convert the cells or is there a short way (independent of ole db)?<br />\n",
+    "PostedDate": "2013-04-23T00:32:53.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034373",
+    "ThreadId": "441252",
+    "Html": "Hello,\r<br />\n<br />\nThere are several ways to do it.\r<br />\n<br />\nThe one I'm using is to say, that every object in Excel is a shape, which means it can have an AlternativeText<br />\n<pre><code>shape.AlternativeText</code></pre>\n\nNow, when I put an object into a row, I give him an alternative text<br />\n<pre><code>shape.AlternativeText = ConvertToAlphaColumnReferenceFromInteger(sheet.Application.ActiveCell.Column)+ sheet.Application.ActiveCell.Row</code></pre>\n\nIf you want to keep it's reference, while Drag&amp;Drop you can give him as Alternative text the current cell that you select.\r<br />\n<br />\nFor the procedure, you might want to look it up here: <a href=\"http://stackoverflow.com/questions/181596/how-to-convert-a-column-number-eg-127-into-an-excel-column-eg-aa\" rel=\"nofollow\">http://stackoverflow.com/questions/181596/how-to-convert-a-column-number-eg-127-into-an-excel-column-eg-aa</a>\r<br />\n<br />\nNow in order to simulate that object you can use the class<br />\n<pre><code>using System.Object;\nusing System.Windows.Forms.DragDropEffects;\nusing BrightIdeaSoftware.SimpleDragSource;</code></pre>\n\nWith those, you can work with the object and simulate the Drag and Drop.\r<br />\n<br />\nNow for your getters and setters.\r<br />\n<br />\nSince every object that you import, is actually a shape, you can access its properties with<br />\n<pre><code>worksheetnumber = 1;\nforeach (Excel.Worksheet sheet in workbook.Sheets)\n                    {\n                        sheet.Activate();\n                        workSheet = (Excel.Worksheet)xlsApp.Worksheets[worksheetnumber];\n                        Console.WriteLine(workSheet.Name);\n                        foreach (Excel.Range cell in workSheet.UsedRange)\n                        {\n                            int rowIndex = cell.Row;\n                            int columnIndex = cell.Column;\n                            if (cell.Text.Equals(&quot;&lt;some test&gt;&quot;))\n                            {    \n                                cell.Value = &lt;your new value&gt;\n                                //Console.WriteLine(&quot;Changement done.&quot; + cell.Text);\n                            }\n                        }\n                        worksheetnumber++;\n                    }</code></pre>\n\nIf you want to test what type the shape is of your object<br />\n<pre><code>shape.Type.ToString().Equals(&quot;msoTable&quot;);</code></pre>\n\nYou want probably to change your object/shape?<br />\n<pre><code>sheet.Range(&quot;A1&quot;).PasteSpecial(); //Paste a new object in your current row/column</code></pre>\n\nIf you want only the used data in your worksheet, you can use:<br />\n<pre><code>sheet.UsedRange</code></pre>\n\nI think, you have now enough answers to start with something.\r<br />\n<br />\nIf you are interested in something more complex, you might have a look at <a href=\"http://www.microsoft.com/en-us/download/details.aspx?id=5124\" rel=\"nofollow\">http://www.microsoft.com/en-us/download/details.aspx?id=5124</a>\r<br />\n<br />\nOpen XML SDK, this is the next generation to work with.\r<br />\n<br />\nThis was one of my post and the reply of the forum master: <a href=\"http://social.msdn.microsoft.com/Forums/en-US/officegeneral/thread/90e639e5-1acc-460a-bb02-094f089c3693\" rel=\"nofollow\">http://social.msdn.microsoft.com/Forums/en-US/officegeneral/thread/90e639e5-1acc-460a-bb02-094f089c3693</a><br />\n",
+    "PostedDate": "2013-04-23T01:31:28.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034382",
+    "ThreadId": "441252",
+    "Html": "Thx Mike,\r<br />\n<br />\ni have now another approach. I wanna share it l8ter.<br />\n",
+    "PostedDate": "2013-04-23T01:51:46.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034439",
+    "ThreadId": "441252",
+    "Html": "Hi all,<br />\n<br />\ni am not an expert of .NETOffice, but i think there's sth wrong with the release of the COM Objects.<br />\nAs i am using .NETOffice to accomplish my task, i've found a hint which brings me to this conclusion<br />\n<blockquote>\nTo avoid these errors, implement an IOleMessageFilter handler function in your application. When you do this, if your external application thread calls into Visual Studio and is rejected (that is, it returns SERVERCALL_RETRYLATER from the IOleMessageFilter.HandleIncomingCall method), then your application can handle it and either retry or cancel the call. To do this, initiate the new thread from your Visual Studio application in a single-threaded apartment (STA) and surround your automation code with the IOleMessageFilter handler.<br />\n</blockquote>\nWell, i've also read that NetOffice will accomplish the release of the COM objects for me. I have only to dispose the app like in the examples. Am i rght? So why I've got still SERVERCALL_RETRYLATER? I don't think that i have to implement an IOleMessageFilter.<br />\n<br />\nIsn't my console application per default a STAThread? Should i have to be aware about the COM?<br />\n<br />\nPlease don't misunderstand me, i appreciate the work in NetOffice! <br />\n",
+    "PostedDate": "2013-04-23T03:29:14.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034488",
+    "ThreadId": "441252",
+    "Html": "excel is not acessable trough code in some situations. while calculate macros or the user is editing a cell for example.\r<br />\nyou got the RETRYLATER exception in this case.\r<br />\n<br />\nthe latest source state contains a message filter with more support to handle this scenario.\r<br />\nyou can do something like this:\r<br />\n<br />\nNetOffice.Settings.MessageFilter.RetryMode = RetryMessageFilterMode.Delayed;\r<br />\nNetOffice.Settings.MessageFilter.Enabled = true;\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-04-23T05:28:41.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034527",
+    "ThreadId": "441252",
+    "Html": "Thx Sebastian ;)<br />\n<br />\n2 issues blocked my coding.<br />\n<ol>\n<li>I holded the information in a collection, so it was my responsibilty to clear the list in the end after processing the data.</li>\n<li>Following assignment was called too early</li>\n</ol>\n<pre><code>myExcelApp.DisplayAlerts = false;</code></pre>\n\nThis assignment should be called as late as possible. The reason was a messagebox which popped up asking read/access mode. So i used it before disposing the app. Afterwards everything was ok. But i wanna use your recommendation if this happens again.<br />\n",
+    "PostedDate": "2013-04-23T06:36:43.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034552",
+    "ThreadId": "441252",
+    "Html": "Hi Sebastian, are you sure about the suggested above assignments. It seems that NetOffice.Settings has no definition for MessageFilter.\r<br />\n<br />\nI have only found this:\r<br />\nNetOffice.Settings.EnableMessageFilter = true;<br />\n",
+    "PostedDate": "2013-04-23T07:13:49.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034567",
+    "ThreadId": "441252",
+    "Html": "yes, im sure. please read my message again. specialy the part 'latest source state'<br />\n",
+    "PostedDate": "2013-04-23T07:27:07.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034592",
+    "ThreadId": "441252",
+    "Html": "My latest download is  NetOffice 1.5.1.2 [RC]. Isn't it the latest source state?<br />\nWhat's your suggestion? Should i take the latest source and compile it on my own?<br />\n<br />\nSorry for the dumb question!<br />\n",
+    "PostedDate": "2013-04-23T07:55:07.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034640",
+    "ThreadId": "441252",
+    "Html": "this means the latest release.\r<br />\nplease checkout:\r<br />\n<a href=\"https://netoffice.codeplex.com/SourceControl/list/changesets\" rel=\"nofollow\">https://netoffice.codeplex.com/SourceControl/list/changesets</a>\r<br />\nthe latest state is: 98664\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-04-23T09:00:25.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034959",
+    "ThreadId": "441252",
+    "Html": "Ok, thx. I am just checking out<br />\n",
+    "PostedDate": "2013-04-24T00:03:44.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034987",
+    "ThreadId": "441252",
+    "Html": "Still get COMException with  HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER)<br />\nInnerException with -&gt; HRESULT -2147467259<br />\n<br />\nStacktrace:<br />\n   bei System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br />\n   bei System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br />\n   bei System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)<br />\n   bei NetOffice.Invoker.Method(COMObject comObject, String name, Object[] paramsArray)<br />\n<br />\n<br />\nAny idea?<br />\n",
+    "PostedDate": "2013-04-24T01:08:25.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1036006",
+    "ThreadId": "441252",
+    "Html": "A heavy burden, but I've got it. As i opened the workbook i havn't set notification to false (only Type.Missing was set). Due to this there was a hidden dialog behind the excel app.<br />\nIt has broken the further processing of the code and caused a COMException (unhappily i couldn't really locate the problem). Luckily i read in a VBA forum that there is a notify property when open method of workbook is used. So i tried it and succeeded :)<br />\n",
+    "PostedDate": "2013-04-26T03:13:21.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

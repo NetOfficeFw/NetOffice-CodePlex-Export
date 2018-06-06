@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "982815",
+    "ThreadId": "428433",
+    "Html": "\r\n<p>I have 7464 *434 values to set to Range with 7464 rows by 434 columns</p>\r\n<p><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\"></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>\r\n<p>XL.<span style=\"font-family:Consolas; color:#2b91af; font-size:x-small\"><span style=\"font-family:Consolas; color:#2b91af; font-size:x-small\"><span style=\"font-family:Consolas; color:#2b91af; font-size:x-small\">Range\r\n</span></span></span><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">newDataRange = dataRange.get_Resize(rowCount, colCount);\r\n</span></span><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">&nbsp;</span></span><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">&nbsp;</span></span><span style=\"font-family:Consolas; font-size:x-small\"><span style=\"font-family:Consolas; font-size:x-small\">\r\n</span></span></p>\r\n<p>newDataRange.Value2 = arr;</p>\r\n<p>I am using the latest NetOffice i.e. 1.5.1.2, thanks</p>\r\n<p>It works sometimes but other times it gives an OutOfMemoryException</p>\r\n<p>It seems randomly and I do not know for sure when the exception will be thrown.</p>\r\n<p>It says &quot;Insufficient memory to continue the execution of the program.&quot;</p>\r\n<p>Message: Exception has been thrown by the target of an invocation.</p>\r\n<p>Source: &quot;mscorlib&quot;</p>\r\n<p>Stack Trace:</p>\r\n<p>&nbsp;&nbsp; at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br>\r\n&nbsp;&nbsp; at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br>\r\n&nbsp;&nbsp; at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)<br>\r\n&nbsp;&nbsp; at NetOffice.Invoker.PropertySet(COMObject comObject, String name, Object[] value)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n<p></p>\r\n&nbsp;",
+    "PostedDate": "2013-01-03T13:33:29.17-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "983121",
+    "ThreadId": "428433",
+    "Html": "\r\n<p>It could be not NetOffice issue but real out of memory. It is&nbsp;not clear from one line of code what your program&nbsp;has done before. Could you give the more context? Have you tried to run similar code in VBA? Perhaps system get out of memory due to repeatedly\r\n memory allocation say for resizing Excel ranges. Did your monitor memory consumed by your application (e.g. with Task Manager or Process Explorer)?</p>\r\n",
+    "PostedDate": "2013-01-04T10:16:01.98-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "983793",
+    "ThreadId": "428433",
+    "Html": "\r\n<p>thanks, artnib.</p>\r\n<p>I monitor memory in task manager and there is still lots of memory available when the exception occurrs.</p>\r\n<p>My code has been like this for a while, I do not know why it starts to have the issue now.</p>\r\n<p>I&nbsp; am thinking the issue exists before and is discovered just now.</p>\r\n<p>I do resize&nbsp;ranges, but I did dispose after use</p>\r\n<p>&nbsp;</p>\r\n<p>thanks</p>\r\n",
+    "PostedDate": "2013-01-07T08:06:55.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "985613",
+    "ThreadId": "428433",
+    "Html": "\r\n<p>did you have a small example solution for me?<br>\r\nits difficult to help you in very general problem. OutOfMemoryExceptions are the last line in a complex problem most of the time.<br>\r\n7464 *434 is a big thing!!! maybe i can help you to keep the memory usage small and tiny ;)<br>\r\n<br>\r\nSebastian<br>\r\n<br>\r\n</p>\r\n",
+    "PostedDate": "2013-01-11T11:48:43.927-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

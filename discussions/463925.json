@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1113197",
+    "ThreadId": "463925",
+    "Html": "Hi all,\r<br />\nafter having used the fantastic NetOffice library for a while to process Excel data, I'd like to start using it to have a PowerPoint addin.\r<br />\nI'd like to create a PowerPoint addin that the user needs to install manually (so no registration desired from my side). \r<br />\nIf needed, there can be a classic PowerPoint VBA Addin that calls the .Net code like a wrapper.\r<br />\nI am a beginner in this field so I would like to ask how to start with this.\r<br />\nI found in the source code several COM Examples for PowerPoint but they try to register themselves when I compile them.\r<br />\nSo is there anybody who can show me a simple &quot;Hello World&quot; example how I need to create a PowerPoint Addin that calls a sample .net method?\r<br />\n<br />\nThanks a lot in advance,\r<br />\nThomas<br />\n",
+    "PostedDate": "2013-10-28T09:56:47.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1113254",
+    "ThreadId": "463925",
+    "Html": "not sure what you mean. you want call some .net code or addin from vba? (it's possible)<br />\nbtw: a COMAddin needs always a registration(regardless from VB(6) or .net or C++). the first registration is during while regasm.exe is processing and make sure the com component is visible in the local machine. anyone can use these component now. you can use a simple msi deployment project to deploy and register your addin. the second (manualy) registering want create the specific office addin keys for your addin. this is not necessary if users select the Addin in the COMAddins dialog and click okay.<br />\n",
+    "PostedDate": "2013-10-28T11:06:54.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1113490",
+    "ThreadId": "463925",
+    "Html": "Hi,\r<br />\nthanks for the fast reply.\r<br />\nI am sorry I caused confusion: actually I don't want to use a COMAddin, it should be a PowerPoint Addin (.ppam) that contains a function which calls a method of a .Net library. So is this possible and if yes how?\r<br />\n<br />\nThanks in advance,\r<br />\nThomas<br />\n",
+    "PostedDate": "2013-10-28T23:54:52.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1113742",
+    "ThreadId": "463925",
+    "Html": "you need a reference to mscoree.tlb\r<br />\n<br />\nDim CORHost As New mscoree.CorRuntimeHost\r<br />\nDim Domain As AppDomain\r<br />\nSet a = Domain.CreateInstanceFrom(&quot;C:\\myAssembly.dll&quot;, &quot;MyNamespace.MyClassName&quot;).Unwrap\r<br />\n<br />\n' call a void HelloWorld() method in the .net assemby class\r<br />\na.HelloWord()<br />\n",
+    "PostedDate": "2013-10-29T09:34:56.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1114062",
+    "ThreadId": "463925",
+    "Html": "Great idea, thanks a lot. I used your code and built a simple .net library, but I got always a Runtime 91 error all the time ;-)<br />\nBut i checked further and found something similar here:<br />\n<a href=\"http://www.vb-paradise.de/allgemeines/tipps-tricks-und-tutorials/vba-office/87001-net-dll-in-vba-ohne-com-registrierung-nutzen/\" rel=\"nofollow\">Call .Net DLL in VBA without registration</a><br />\nBut it's not possible to use .Net 4 / 4.5 libraries though...which is a killer for me.<br />\nFor Excel I found the Excel DNA project which is together with NetOffice very powerful, it creates an XLL file with all the .Net Stuff and can be referenced by Excel directly (so no VBA wrapper code needed).<br />\nUnfortunately PowerPoint itself doesn't seem to have a similar functionality, I can only add ppa / ppam files.<br />\n<br />\nAre there any other possibilities (maybe there is a new feature of .net 4.5)?<br />\n<br />\nThanks and best regards,<br />\nThomas<br />\n",
+    "PostedDate": "2013-10-30T03:41:13.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1350444",
+    "ThreadId": "579856",
+    "Html": "I have used VSTO for years but can't even get a HelloWorld working as a com addin in outlook. There does not seem to be any steps listed to manually setup one so it can be tested??\r<br />\n<br />\nIs there a tutorial on how to actually get this done?\r<br />\n<br />\nThanks for your help.<br />\n",
+    "PostedDate": "2015-02-09T19:16:00.82-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1350683",
+    "ThreadId": "579856",
+    "Html": "you find examples for each office product in the release folder.\r<br />\n<br />\nExcel(.NET 40) in C# for example:\r<br />\n<br />\n&quot;Release\\NET4.0\\Examples\\Excel\\C#\\NetOffice COMAddin Examples&quot;\r<br />\n<br />\nYou have to make sure the addin is registered(during regasm.exe)  on the dev and/or deploy system - thats all.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-02-10T09:52:39.597-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1351606",
+    "ThreadId": "579856",
+    "Html": "Thanks for your reply Sebatian there are good examples of code but not much on how to register the addin etc\r<br />\n<br />\nOK got it working now with a bit of fiddling this is what I did in case anyone else doesn't know and or is as slow as me :) :\r<br />\n<br />\nI did a simple example to show it was working just a helloworld in the Addin_OnStartupComplete frunction.\r<br />\n<br />\n1) Built the project\r<br />\n2) used regasm<br />\n<pre><code>regasm.exe c:\\[My Path]\\HelloWorld.dll /codebase</code></pre>\n\nThat does some magic and places an empty registry entry under the office app you made the addin for\r<br />\n<br />\nHKEY_CURRENT_USER\\Software\\Microsoft\\Office\\Outlook\\Addins\\HelloWorld.Addin\r<br />\n<br />\n3) Fill in the empty registry entry with values I copied another addin that was working the important values seem to be \r<br />\nLoadBehavior Reg_DWord hex3 (3 = open at load)\r<br />\nFriendly Name REG_SZ &quot;&quot;\r<br />\nDescription  REG_SZ &quot;&quot;\r<br />\n<br />\nRestart the app in my case outlook and it worked.<br />\n",
+    "PostedDate": "2015-02-11T17:07:22.98-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1351616",
+    "ThreadId": "579856",
+    "Html": "you dont have to call regasm at hand on your dev system if the project option &quot;Register For Com Interop&quot; is enabled. (true in NO examples)\r<br />\nIn this case Visual Studio calls regasm.exe for you after compile. make sure to start VS with admin privileges otherwise a permission exception ocurred.\r<br />\n<br />\nAn empty created reg key is an unexpected behavior so far. do you use the tools or normal IExtensibility2 sample?\r<br />\n<br />\nIn NO Tools:\r<br />\nthe registry values(LoadBehavoir,...) want set while register(trough regsam) with the annotation informations from your addin class.\r<br />\nhere you can see the annotations with loadbehavior=3<br />\n<pre><code>[COMAddin(&quot;Addin FriendlyName&quot;, &quot;Addin Description&quot;, 3), RegistryLocation(RegistrySaveLocation.CurrentUser)]   \n[Guid(&quot;B3F60319-1A11-4F3E-9C1B-3AE908D9CA86&quot;), ProgId(&quot;SampleLib.Addin&quot;)]\npublic class Addin : COMAddin\n{\n}\n\n</code></pre>\n\n*Sebastian<br />\n",
+    "PostedDate": "2015-02-11T17:53:26.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1359927",
+    "ThreadId": "579856",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nI run &quot;regasm &lt;dll name&gt; /codebase&quot; under Office 2013 but I could not see the custom tab or buttons.\r<br />\nIn the Word Options dialog, under the Add-ins, I did not see my  add-in.\r<br />\nI did not have problem on Office 2010.\r<br />\n<br />\nI've used the Developer Toolbox and verified that my dll supports 2013.\r<br />\n<br />\nWhat did I miss out?\r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2015-03-04T18:26:30.923-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1359932",
+    "ThreadId": "579856",
+    "Html": "<strong>long1000 wrote:</strong><br />\n<blockquote>\nHi Sebastian,<br />\n<br />\nI run &quot;regasm &lt;dll name&gt; /codebase&quot; under Office 2013 but I could not see the custom tab or buttons.<br />\nIn the Word Options dialog, under the Add-ins, I did not see my  add-in.<br />\nI did not have problem on Office 2010.<br />\n<br />\nI've used the Developer Toolbox and verified that my dll supports 2013.<br />\n<br />\nWhat did I miss out?<br />\n<br />\nThanks.<br />\n</blockquote>\nWait, I actually have the same problem on Office 2010 if I didn't run it from Visual Studio. \r<br />\nIf I run Word from Program Files direct, I could not see the custom buttons.\r<br />\nIf I run Word from Visual Studio, then I can see the buttons.\r<br />\n<br />\nI tried on Office 2003 but cannot see any buttons as well.\r<br />\nThen, I compiled and regasm the sample NetOfficeTools.SimpleWordCS2.dll but still, I couldn't see any custom buttons.\r<br />\n<br />\nWhere did I do wrong?\r<br />\nThanks.<br />\n",
+    "PostedDate": "2015-03-04T19:17:28.617-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1360287",
+    "ThreadId": "579856",
+    "Html": "hey men,\r<br />\n<br />\nfor me, this sounds like a dependency(assembly) is missing because it works as well in visual studio.\r<br />\ndo you use more than the well known .net references in your solution?\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-05T16:56:35.427-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1360296",
+    "ThreadId": "579856",
+    "Html": "No, it wasn't dependency. Its a registration problem. <br />\nI got it working on Office 2007. Had to unregister and then, re-register it again.<br />\n<br />\nHowever, I still have no luck with Office 2013.<br />\nAfter I register it, I couldn't see my addin in the Word Options dialog, under the Add-ins section. <br />\n<br />\nI currently compile the addin with AnyCPU option.<br />\nDoes it matter if I regasm it in 32 or 64 bit windows?<br />\n<br />\nWhen I regasm the sample NetOfficeTools.SimpleWordCS2.dll and SuperAddinCS2.dll, they are placed under the &quot;Inactive Application Add-ins&quot; in the Word Options dialog, under the Add-ins section. Did I miss anything?<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2015-03-05T17:42:08.483-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

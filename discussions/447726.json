@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1059301",
+    "ThreadId": "447726",
+    "Html": "Hi,\r<br />\n<br />\nI'm kind of stuck because I'm trying to do this :\r<br />\n<a href=\"http://social.msdn.microsoft.com/Forums/vstudio/en-US/f7dd6f82-13e7-4a28-8316-9c535eaa7518/customize-outlook-options-dialog\" rel=\"nofollow\">http://social.msdn.microsoft.com/Forums/vstudio/en-US/f7dd6f82-13e7-4a28-8316-9c535eaa7518/customize-outlook-options-dialog</a>\r<br />\n<br />\nAnd as you can see I have to create a class that inherit from class &quot;UserControl&quot; and that implements &quot;Outlook.PropertyPage&quot;. But this is an interface in the example (in Microsoft.Office.Interop.Outlook) but with NetOffice this interface became a class, so I couldn't inherit from both UserControl and PropertyPage. \r<br />\n<br />\nHow I'm supposed to do ? \r<br />\nThanks for your help<br />\n",
+    "PostedDate": "2013-06-20T10:33:30.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1059325",
+    "ThreadId": "447726",
+    "Html": "hello, this an VSTO example, i try to convert this to a native example at the weekend (VSTO is a library top of the standard Office COM interface(simplified)) NetOffice doesnt provide the PropertyPage as early-bind interface at the moment i see(issue)\r<br />\n please wait for the weekend, i change them as fast as possible and provide an example. Sebastian ________________________________<br />\n",
+    "PostedDate": "2013-06-20T11:27:57.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1059328",
+    "ThreadId": "447726",
+    "Html": "Great! \r<br />\nThank you very much <br />\n",
+    "PostedDate": "2013-06-20T11:32:44.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1060497",
+    "ThreadId": "447726",
+    "Html": "You probably didn't got the time last week-end to work on it, but do you think you'll time next week-end ? \r<br />\nI'm sorry being pushy but I'd like to know because I have to end this project in 2 weeks.<br />\n",
+    "PostedDate": "2013-06-24T10:38:27.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1062692",
+    "ThreadId": "447726",
+    "Html": "sorry for the delay. the propertypage interface is a scary one. \r<br />\ni create a custom property page exampe with NetOffice 1.6.0 and the new tools namespace.\r<br />\nits available in the download section.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-06-28T19:53:08.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1062767",
+    "ThreadId": "447726",
+    "Html": "Great!<br />\nNow the interface works well, but I still have a problem. <br />\nThe &quot;isDirty&quot; property doesn't seem to be called at anytime, neither the Apply method. Moreover, the button &quot;Apply&quot; is always disabled. When I click on &quot;Ok&quot; button the window is closed but the configuration is not saved.<br />\n<br />\nHere : <a href=\"http://www.outlookcode.com/codedetail.aspx?id=978\" rel=\"nofollow\">http://www.outlookcode.com/codedetail.aspx?id=978</a><br />\nThey seems to say that we need to notify the parent object but I cannot cast it into NetOffice object :<br />\nThe COM object &quot;System.__ComObject&quot; cannot be cast to the class type &quot;NetOffice.OutlookApi.PropertyPageSite&quot;<br />\nI tried to replace the cast by &quot;new Outlook.PropertyPageSite((COMObject)propertyPageSite)&quot; at line 162 in the given example, but it fails too (cannot cast System.__ComObject into NetOffice.COMObject).<br />\n<br />\nI'm not sure the example I found is a good one, as it use reflection and it's quite dirty but according to this : <a href=\"http://www.codeproject.com/Articles/8917/Adding-custom-property-pages-to-Outlook-2003-using\" rel=\"nofollow\">http://www.codeproject.com/Articles/8917/Adding-custom-property-pages-to-Outlook-2003-using</a> it's mandatory <br />\n<br />\nTherefore, I'm sure it's almost done, I just have to found a way to cast Combject into NetOffice.COMObject, and I'm sure you can help me with that :)<br />\n<br />\n<br />\nEdit: I just figured out how to do.<br />\nThe solution is to do new Outlook.PropertyPageSite(_application, propertyPageSite) (line 162 in the given  example) <br />\nwith _application being your &quot;Outlook.Application&quot; <br />\n<br />\nThank you for your help :)<br />\n",
+    "PostedDate": "2013-06-29T06:32:39.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1062785",
+    "ThreadId": "447726",
+    "Html": "not sure .. solved? <em>lol</em><br />\n",
+    "PostedDate": "2013-06-29T08:21:21.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1062824",
+    "ThreadId": "447726",
+    "Html": "Yes this is solved ;) \r<br />\n<br />\nMy explanation appears not to be clear, so here is the code as this is clearer.<br />\n<pre><code>      /// &lt;summary&gt;\n        /// This represents a C# Propertypage Sample for .Net Outlook AddIns\n        /// for use with VS2003 and VS2005 and VSTO Tools for Outlook.\n        /// Implements the Outlook.PropertyPage Interface.\n        /// &lt;remarks&gt;\n        /// 1. Add a C# Usercontrol to your Project named &quot;OptionsPage&quot;.\n        /// 2. Add a Button to your Control named &quot;button1&quot;.\n        /// 3. See code below.\n        /// &lt;/remarks&gt;\n        /// &lt;example &gt;\n        /// void ThisApplication_OptionsPagesAdd(Microsoft.Office.Interop.Outlook.PropertyPages Pages)\n        /// {\n        ///    try\n        ///    {\n        ///        Pages.Add(new OptionPage(), &quot;X4U Tools&quot;);\n        ///    }\n        ///    catch (System.Exception ex)\n        ///    {\n        ///        Trace.WriteLine (ex.Message);\n        ///    }\n        /// }\n        /// &lt;/example&gt;\n        /// &lt;/summary&gt;\n        [ComVisible(true)]\n        public partial class OptionPage : UserControl, Outlook.PropertyPage\n        {\n            #region Private Variables\n\n            /// &lt;summary&gt;\n            /// This is the parent PropertyPageSite Object.\n            /// If we want to enable the Apply Button, we must call the\n            /// OnStatusChange() and the PropertyPageSIte Object will check our Dirty Flag. \n            /// &lt;/summary&gt;\n            Outlook.PropertyPageSite _PropertyPageSite = null;\n\n            /// &lt;summary&gt;\n            /// This is our Statusvariable indicating that our Options has changed.\n            /// &lt;/summary&gt;\n            bool _Dirty = false;\n\n            #endregion\n\n            #region Construction / Cleanup\n            Outlook.Application _application;\n            /// &lt;summary&gt;\n            /// The Construction.\n            /// At this point we have no Parent Object.\n            /// &lt;/summary&gt;\n            public OptionPage(Outlook.Application application)\n            {\n                InitializeComponent();\n                _application = application;\n                // Register for the Load event.\n                this.Load += new EventHandler(OptionPage_Load);\n            }\n\n            /// &lt;summary&gt;\n            /// Eventhandler for the OptionPage_Load event.\n            /// Here we can access our ParentObject.\n            /// &lt;/summary&gt;\n            /// &lt;param name=&quot;sender&quot;&gt;This OptionPage Object.&lt;/param&gt;\n            /// &lt;param name=&quot;e&quot;&gt;The Arguments, not used.&lt;/param&gt;\n            void OptionPage_Load(object sender, EventArgs e)\n            {\n                // Load our Settings here\n                LoadOptions();\n\n                // Get our Parent PropertyPageSite Object and store it into Classvariable.\n                _PropertyPageSite = GetPropertyPageSite();\n            }\n\n            #endregion\n\n            #region PropertyPage Members\n\n            /// &lt;summary&gt;\n            /// This function is called when the user clicks &quot;Apply&quot; or &quot;OK&quot;.\n            /// &lt;/summary&gt;\n            public void Apply()\n            {\n                if (_Dirty)\n                {\n                    // Save Settings\n                    SaveOptions();\n\n                    // Reset Dirty Flag\n                    OnDirty(false);\n                }\n            }\n\n            /// &lt;summary&gt;\n            /// The Dirty Property used form parent PropertyPageSite object.\n            /// &lt;/summary&gt;\n            public bool Dirty\n            {\n                get { return _Dirty; }\n            }\n\n            /// &lt;summary&gt;\n            /// The GetPageInfo function used form parent PropertyPageSite object,\n            /// when user requests help.\n            /// &lt;/summary&gt;\n            /// &lt;param name=&quot;HelpFile&quot;&gt;The name of the Helpfile.&lt;/param&gt;\n            /// &lt;param name=&quot;HelpContext&quot;&gt;The Index of the HelpContext requested.&lt;/param&gt;\n            public void GetPageInfo(ref string HelpFile, ref int HelpContext)\n            {\n                // TODO: Implement Helpfile\n            }\n\n            /// &lt;summary&gt;\n            /// The Caption Property.\n            /// Bugfix for the &quot;unnamed&quot; Error.\n            /// &lt;/summary&gt;\n            [DispId(-518)]\n            public string Caption\n            {\n                // Return the OptionsPage Caption here.\n                get { return &quot;Whatever you want&quot;; }\n            }\n\n            #endregion\n\n            #region Helper functions\n\n            /// &lt;summary&gt;\n            /// This function gets the parent PropertyPageSite Object using Reflection.\n            /// Must be called in Load event.\n            /// &lt;/summary&gt;\n            /// &lt;returns&gt;The parent PropertyPageSite Object&lt;/returns&gt;\n            Outlook.PropertyPageSite GetPropertyPageSite()\n            {\n                Type type = typeof(System.Object);\n                string assembly = type.Assembly.CodeBase.Replace(&quot;mscorlib.dll&quot;, &quot;System.Windows.Forms.dll&quot;);\n                assembly = assembly.Replace(&quot;file:///&quot;, &quot;&quot;);\n\n                string assemblyName = System.Reflection.AssemblyName.GetAssemblyName(assembly).FullName;\n                Type unsafeNativeMethods = Type.GetType(System.Reflection.Assembly.CreateQualifiedName(assemblyName, &quot;System.Windows.Forms.UnsafeNativeMethods&quot;));\n\n                Type oleObj = unsafeNativeMethods.GetNestedType(&quot;IOleObject&quot;);\n                System.Reflection.MethodInfo methodInfo = oleObj.GetMethod(&quot;GetClientSite&quot;);\n                object propertyPageSite = methodInfo.Invoke(this, null);\n                // The line below is specific to NetOffice\n                return new Outlook.PropertyPageSite(_application, propertyPageSite);\n            }\n\n            /// &lt;summary&gt;\n            /// This Function sets our Control Drity or Clean and\n            /// calls our Parent to check the control state.\n            /// &lt;/summary&gt;\n            /// &lt;param name=&quot;isDirty&quot;&gt;&lt;/param&gt;\n            void OnDirty(bool isDirty)\n            {\n                _Dirty = isDirty;\n\n                // When this Method is called, the PageSite checks for Dirty Flag of all Optionspages.\n                \n                _PropertyPageSite.OnStatusChange();\n            }\n\n            #endregion\n\n            #region Load / Save Settings\n\n            /// &lt;summary&gt;\n            /// Loads OptionSettions from DataStore\n            /// &lt;/summary&gt;\n            void LoadOptions()\n            {\n                settingBox.Text = Properties.Settings.Default.settingName;\n            }\n\n            /// &lt;summary&gt;\n            /// Save OptionSettings into DataStore\n            /// &lt;/summary&gt;\n            void SaveOptions()\n            {\n                // do ... \n                Properties.Settings.Default.settingName = settingBox.Text;\n                // ...  this for every seting\n                Properties.Settings.Default.Save();\n            }\n\n            #endregion\n\n            #region Eventhandlers for Controls\n            // do ...\n            private void settingBox_TextChanged(object sender, EventArgs e)\n            {\n                // This prevent firing OnDirty while loading\n                if (settingBox.Text != Properties.Settings.Default.settingName)\n                    OnDirty(true);\n            }\n            // ...  this for every seting. Be sure to actually set the event (double click on the box in Designer view)\n            #endregion\n        }</code></pre>\n\n",
+    "PostedDate": "2013-06-29T12:30:38.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

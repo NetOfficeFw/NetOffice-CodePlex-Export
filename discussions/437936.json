@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1020823",
+    "ThreadId": "437936",
+    "Html": "Hi, <br />\n<br />\nIn VSTO i can use following code snippet:<br />\n<blockquote>\nproperties.Add(propertyName, false, Microsoft.Office.Core.MsoDocProperties.msoPropertyTypeString, propertyValue, Type.Missing);<br />\n</blockquote>\nTried to use<br />\n<blockquote>\nproperties.Add(propertyName, false,  typeof(String), propertyValue);<br />\n</blockquote>\nBut it doesnt work. Is there equivalent to msoPropertyTypeString in Framework?<br />\nThank You<br />\n<br />\n<br />\n<strong>Fixed</strong><br />\nproperties.Add(propertyName, false,NetOffice.OfficeApi.Enums.MsoDocProperties.msoPropertyTypeString , propertyValue);<br />\n",
+    "PostedDate": "2013-03-25T12:15:24.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

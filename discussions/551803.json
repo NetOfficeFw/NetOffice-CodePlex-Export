@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1273468",
+    "ThreadId": "551803",
+    "Html": "Hi All, \r<br />\nwhat i need is to add a custom choices  into mail items' context menu.\r<br />\nWhat i'm trying to do is to catch the context menu display event, but with no luck,\r<br />\n(taken from here <a href=\"http://www.noordam.it/writing-a-context-menu-outlook-addin/[TEXT](http://www.noordam.it/writing-a-context-menu-outlook-addin/\" rel=\"nofollow\">http://www.noordam.it/writing-a-context-menu-outlook-addin/[TEXT](http://www.noordam.it/writing-a-context-menu-outlook-addin/</a>)\r<br />\nhere's a branch of my IDTExtensibility2.OnConnection event code:<br />\n<pre><code>Try\n            _outlookApplication = New Outlook.Application(Nothing, Application)\n        Catch ex As Exception\n            Dim message As String = String.Format(&quot;Errore.{0}{0}{1}&quot;, Environment.NewLine, ex.Message)\n            MessageBox.Show(message, _progId, MessageBoxButtons.OK, MessageBoxIcon.Error)\n        End Try\n        If Not _outlookApplication Is Nothing Then\n            AddHandler _outlookApplication.NewMailExEvent, AddressOf NuovoMessaggio\n            AddHandler _outlookApplication.ItemContextMenuDisplayEvent, AddressOf ApplicationItemContextMenuDisplay             \n        End If</code></pre>\n\nhere's the event handler:<br />\n<pre><code>Private Sub ApplicationItemContextMenuDisplay(CommandBar As Office.CommandBar, Selection As Outlook.Selection) \n        messagebox.show(&quot;click&quot;)        \n    End Sub</code></pre>\n\nAny idea about where i'm wrong?\r<br />\nTIA\r<br />\nDaniele.<br />\n",
+    "PostedDate": "2014-07-17T03:59:56.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

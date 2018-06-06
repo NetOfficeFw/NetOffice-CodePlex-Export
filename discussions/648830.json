@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1456106",
+    "ThreadId": "648830",
+    "Html": "Hi All,\r<br />\n<br />\nI've been using NetOffice to develop an Outlook 2013 plugin. Since I am using the WordEditor as well, I selected Outlook and Word in the developer toolbox, and at the end I selected to Customize the Ribbon and that I want to add a Task Pane.\r<br />\n<br />\nNow when the project is originally created, I had to make some modifications for the plugin to show up in outlook, and I ended up with this code:<br />\n<pre><code>&lt;COMAddin(&quot;Moist&quot;, &quot;My Outlook Integrated Support Tool&quot;, 3), ProgId(&quot;Moist.Addin&quot;), Guid(&quot;3C0FB897-8026-4AD3-8599-4DFCA3FF873E&quot;)&gt;\n&lt;RegistryLocation(RegistrySaveLocation.CurrentUser), CustomUI(&quot;Moist.RibbonUI.xml&quot;), CustomPane(GetType(MyTaskPane), &quot;My TaskPane&quot;, True, PaneDockPosition.msoCTPDockPositionRight)&gt;</code></pre>\n\nalso I changed the inherits to:<br />\n<pre><code>Inherits Outlook.Tools.COMAddin</code></pre>\n\nNow when I registered the DLL with RegAsm.Exe it showed up in outlook perfectly, even the task pane.\r<br />\n<br />\nI created all the functions I needed, and then zipped all the assembly and all other DLLs.\r<br />\n<br />\nWhen I tried to register the Assembly on another computer (same windows, same version of outlook) when the user starts outlook the following error message appears:<br />\n<blockquote>\nan error occurred in CTPFactoryAvailable<br />\n</blockquote>\nI did a mad search, but found no such function (or word) in my solution in VS Express. I did some Googling, and found that this function is in the IEXtensibilty examples, so I guess it's part of the DLLs accompanying my assembly.\r<br />\n<br />\nDo you guys have any idea, why I would get the task pane error? It seems to work perfectly on my computer, and I used the exact same DLLs in the Debug Folder on the other computer.\r<br />\n<br />\nI created a new project, just with the task pane, completely blank and tried that on the other computer, still nothing, I just get the &quot;an error occurred in CTPFactoryAvailable&quot; when outlook launches.\r<br />\n<br />\nAny help would be much appreciated.\r<br />\n<br />\nMany thanks,\r<br />\nKrisz<br />\n",
+    "PostedDate": "2015-12-16T02:49:39.513-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456108",
+    "ThreadId": "648830",
+    "Html": "Just a quick update, I tested in on multiple computers, and I get the same error.<br />\n",
+    "PostedDate": "2015-12-16T03:26:27.98-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456215",
+    "ThreadId": "648830",
+    "Html": "can you show me the exception details please?\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-12-16T16:07:30.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456234",
+    "ThreadId": "648830",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nHere is the exception:<br />\n<blockquote>\nSystem.Runtime.InteropServices.COMException (0x80004005): See inner exception(s) for details. ---&gt; System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; System.Runtime.InteropServices.COMException: Unable to create specified ActiveX control.<br />\n--- End of inner exception stack trace ---<br />\nat System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br />\nat System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br />\nat NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)<br />\nat NetOffice.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)<br />\nat NetOffice.OfficeApi.ICTPFactory.CreateCTP(String cTPAxID, String cTPTitle)<br />\nat NetOffice.OutlookApi.Tools.COMAddin.CTPFactoryAvailable(Object CTPFactoryInst)<br />\n</blockquote>\nThank you for the quick response! :)<br />\n",
+    "PostedDate": "2015-12-16T23:50:27.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456358",
+    "ThreadId": "648830",
+    "Html": "Outlook failed to create an instance of MyTaskPane.\r<br />\n<br />\nYou say it works fine on your dev system. For me now, its an exception in the ctor of your pane or in a corresponding event trigger or last but not least, a dependent assembly is missing.  (please keep in your mind: CLR bind referenced assemblies while first access-on demand - may you use something special in your task pane)\r<br />\n<br />\nyou can send me a simplified version of your project to public.sebastian[at]web.de and i want see how it works in my virtual machines.(remove any private code if you want but keep all assembly references alive)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-12-17T23:14:22.373-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456383",
+    "ThreadId": "648830",
+    "Html": "I used the standard project created by the Developer Toolbox, haven't even added anything to the taskpane yet. I created another blank project with the only customization changing:<br />\n<pre><code>Inherits Word.Tools.COMAddin</code></pre>\n\nto<br />\n<pre><code>Inherits Outlook.Tools.COMAddin</code></pre>\n\nI'll send you an email of both the VB Project, and a zip files of the assemblys I copied over.\r<br />\n<br />\nMillion thanks for your help.\r<br />\n<br />\nMany thanks,\r<br />\nKrisz<br />\n",
+    "PostedDate": "2015-12-18T03:40:16.373-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1457869",
+    "ThreadId": "648830",
+    "Html": "Many thanks Sebastian for your software. Just to note the following:-\r<br />\n<br />\nI'm finding the same error as described above on one of my machines  - Windows 10 64 bit with Outlook 2010 64 bit.\r<br />\n<br />\nBut this error does not appear on my other machine - Windows 10 64 bit with Outlook 2010 32 bit - the addin loads and the task pane appears.\r<br />\n<br />\nMany thanks for your work,\r<br />\n<br />\nMichael<br />\n",
+    "PostedDate": "2016-01-04T03:15:54.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

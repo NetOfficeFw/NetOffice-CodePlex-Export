@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1309366",
+    "ThreadId": "568709",
+    "Html": "Hello everyone.\r<br />\n<br />\nI am using C# with VS 2013. I have some images saved as resources (MyProject.Properties.Resources.SomeImage, as a System.Drawing.Bitmap), for email template generation. I was wondering if it was possible to add these images to a MailItem without having to save them to a temporary file on my computer, then upload the file again into an attachment (giving its path), then delete the temporary file once the email has been sent.\r<br />\n<br />\nIs it possible to use base64 encoding, and reference it with a cid or something similar?\r<br />\n<br />\nCould somebody post a short (2-3 line) code example? \r<br />\n<br />\nI've been struggling with this all day, any help would be greatly appreciated.<br />\n",
+    "PostedDate": "2014-09-30T14:16:37.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1309383",
+    "ThreadId": "568709",
+    "Html": "you want to use an image to a contact/mail item?\r<br />\n<br />\nlet me know what you try do so far(in code) to pin point the problem\r<br />\nplease explain in detail what do you want. change the image for a contact? just add a attachmen for a mailt. its not clearly for me. please help me to help you.\r<br />\ni need an error message and code, this is my begin... &quot;works not&quot; is not helpful for me.\r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2014-09-30T15:08:17.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1309397",
+    "ThreadId": "568709",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nSorry if I wasn't very clear. What I want to do is really simple.\r<br />\n<br />\nI have a System.Drawing.Bitmap object. I want to attach it to a MailItem, and set its content id to some value.\r<br />\n<br />\nExample of what I would like to do is something like this:<br />\n<pre><code>// I have a variable called img that is of type System.Drawing.Bitmap\n\nvar att = mailItem.Attachments.Add( /* Add img here somehow? */);\natt.SetSomeProperty(&quot;someId&quot;); // Set the cid of att somehow?\nmailItem.HTMLBody = &quot;&lt;img src='cid:someId' /&gt;&quot;;</code></pre>\n\nI'm not getting a specific error, I just have no idea how to do this. Can I attach a System.Net.Mail.LinkedResource, or a Stream somehow?\r<br />\n<br />\nI hope this clarifies what I'm trying to do.\r<br />\n<br />\nThanks for taking the time to answer my question. :)<br />\n",
+    "PostedDate": "2014-09-30T15:40:10.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1309668",
+    "ThreadId": "568709",
+    "Html": "Update:\r<br />\n<br />\nThis isn't the ideal solution, because I won't be able to guarantee that the client always has write access, but I wrote an extension method:<br />\n<pre><code>        public static string AttachInlineImage(this MailItem mail, Image img) {\n            string fn = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + &quot;.bmp&quot;;\n            img.Save(fn);\n            var att = mail.Attachments.Add(fn, OlAttachmentType.olByValue, mail.Body.Length, Type.Missing);\n            System.IO.File.Delete(fn);\n            return att.FileName;\n        }</code></pre>\n\nThis will allow me to add an inline image by doing the following:<br />\n<pre><code>mailItem.HTMLBody += &quot;&lt;img src='cid:&quot; + mailItem.AttachInlineImage((Image)App.Properties.Resources.SomeImage) + &quot;' /&gt;&quot;;</code></pre>\n\n",
+    "PostedDate": "2014-10-01T11:15:56.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

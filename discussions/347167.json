@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "804930",
+    "ThreadId": "347167",
+    "Html": "\r\n<p>Hi all. I have a datagridview and I want to fill the cells of my worksheet dynamically from it. Is it possible? Is there a way to populate the worksheet from the gridview? this works\r\n</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>workSheet.Cells[2,2].Value = <span style=\"color:#a31515\">&quot;test&quot;</span>;\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>but this does not</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">for</span> (<span style=\"color:blue\">int</span> r = 0; r &lt; dataGridView1.RowCount; r&#43;&#43;)\r\n                {\r\n                    <span style=\"color:blue\">for</span> (<span style=\"color:blue\">int</span> c = 0; c &lt; dataGridView1.ColumnCount; c&#43;&#43;)\r\n                    {\r\n\r\nworkSheet.Rows[r,c].Value = dataGridView1.Rows[r].Cells[c].Value.ToString();\r\n}\r\n}\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>Any alternatives of how to accomplish this? Is there a way to populate worksheet from a datatable or dataset?</p>\r\n<p>Please note that it is the first time that I use NetOffice. Thanks in advance</p>\r\n",
+    "PostedDate": "2012-03-03T10:34:59.697-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "804939",
+    "ThreadId": "347167",
+    "Html": "<pre><span style=\"color: blue;\">Hey,<br />All collections in office starts with the index 1. add \"+1\" to the destination adress<br />and use the Cells property. looks like this:<br /><br />for</span> (<span style=\"color: blue;\">int</span> r = 0; r &lt; dataGridView1.RowCount; r++)\n{\n<span style=\"color: blue;\">   for</span> (<span style=\"color: blue;\">int</span> c = 0; c &lt; dataGridView1.ColumnCount; c++)\n   {\n      workSheet.Cells[r+1,c+1].Value = dataGridView1.Rows[r].Cells[c].Value.ToString();\n   }\n}<br /><br /><br />the non zero based index is not implemented by NetOffice. <br />this is an MS-Office \"feature\" independent from the way you <br />accessing office. (NetOffice, VBA, VSTO, Interop...)<br /><br />*happy coding<br />Sebastian</pre>",
+    "PostedDate": "2012-03-03T11:01:44.697-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "804951",
+    "ThreadId": "347167",
+    "Html": "<p>It works!!! Thank you so much!!!&nbsp; I was not aware of this \"feature\". :) Is there a way to speed up this process for large datasets???</p>",
+    "PostedDate": "2012-03-03T11:33:18.803-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "804962",
+    "ThreadId": "347167",
+    "Html": "<p>one way is OleDb: <br /><br />http://www.developmentalmadness.com/archive/2008/09/12/readwrite-excel-data-using-oledb.aspx<br /><br />http://www.codeproject.com/Articles/37055/Working-with-MS-Excel-xls-xlsx-Using-MDAC-and-Oled<br /><br />antother way is open-xml. supported since excel 2007. open-xml is a xml specification to describe a worksheet completly.<br />you dont need excel to create an open-xml document and its fast of course(just create a textfile), but advanced knowledge about, xml, xml namespace and so on. a nice and easy way to deal with open xml is the closed-xml project: http://closedxml.codeplex.com</p>\r\n<p>if you have a COM Addin for excel and you want fast processing data in excel then Excel-DNA is the best way on this planet. http://exceldna.codeplex.com<br />Excel-DNA doesnt use COM behind and read/writeback 1 million cells in a second!</p>\r\n<p><br />*Sebastian</p>",
+    "PostedDate": "2012-03-03T12:04:44.46-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "804988",
+    "ThreadId": "347167",
+    "Html": "<p>Actually I am looking to speedup the process of writing dataset to excel with netoffice. I use background worker for this. I am testing it now. In any case, thank you very much Sebastian!! I will look at the links and will come back for further questions :)</p>",
+    "PostedDate": "2012-03-03T13:20:35.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "804993",
+    "ThreadId": "347167",
+    "Html": "<p>please keep in your mind: COM Interop and multithreading doesnt works together. you have to access ms-excel from the created thread.<br />you can calculate and recieve data in the async backgroundworker DoWork trigger.&nbsp; but use only RunWorkerCompleted to set any stuff in your worksheet. otherwise you have various problems, exceptions, freeze of the application, excel chrashes or doesnt remove from process list if you close and dispose them.<br /><br />*Sebastian</p>",
+    "PostedDate": "2012-03-03T13:56:30.23-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "805166",
+    "ThreadId": "347167",
+    "Html": "<p>So this code is wrong? Excel*32 in process manager does not close/kill itself when finishing writing the sheet. Same happens with no backgroundworker. Could you please suggest me a fix? Windows 64bit pro here. Thank you.</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>  <span style=\"color: blue;\">private</span> <span style=\"color: blue;\">void</span> button2_Click(<span style=\"color: blue;\">object</span> sender, EventArgs e)\r\n        {\r\n            sFD.Filter = <span style=\"color: #a31515;\">\"Xlsx Files|*.xls|All Files|*.*\"</span>;\r\n            sFD.FilterIndex = 2;\r\n            DialogResult result = sFD.ShowDialog();\r\n\r\n            <span style=\"color: blue;\">if</span> (result == DialogResult.OK)\r\n            {\r\n                <span style=\"color: blue;\">string</span> fileout = sFD.FileName;\r\n\r\n               backgroundWorker1.RunWorkerAsync(fileout);            \r\n                 \r\n        }\r\n\r\n\r\n               \r\n                \r\n            \r\n            <span style=\"color: blue;\">else</span>\r\n            {\r\n                MessageBox.Show(<span style=\"color: #a31515;\">\"Opening file aborted\"</span>);\r\n            }\r\n        }\r\n\r\n        <span style=\"color: blue;\">private</span> <span style=\"color: blue;\">void</span> backgroundWorker1_DoWork(<span style=\"color: blue;\">object</span> sender, DoWorkEventArgs e)\r\n        {\r\n            <span style=\"color: blue;\">string</span> fileout = (<span style=\"color: blue;\">string</span>)e.Argument;\r\n            LateBindingApi.Core.Factory.Initialize();\r\n            \r\n            Excel.Application excelApplication = <span style=\"color: blue;\">new</span> Excel.Application();\r\n            excelApplication.DisplayAlerts = <span style=\"color: blue;\">false</span>;\r\n\r\n            <span style=\"color: green;\">// add a new workbook</span>\r\n            Excel.Workbook workBook = excelApplication.Workbooks.Add();\r\n            Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];\r\n           \r\n           \r\n             <span style=\"color: blue;\">for</span> (<span style=\"color: blue;\">int</span> c = 0; c &lt; dataGridView1.ColumnCount; c++)\r\n             {\r\n\r\n\r\n                 workSheet.Cells[1, c + 1].Value = dataGridView1.Rows[0].Cells[c].Value.ToString();\r\n\r\n            }\r\n\r\n\r\n            <span style=\"color: blue;\">for</span> (<span style=\"color: blue;\">int</span> r = 1; r &lt; dataGridView1.RowCount; r++)\r\n            {\r\n                <span style=\"color: blue;\">for</span> (<span style=\"color: blue;\">int</span> c = 0; c &lt; dataGridView1.ColumnCount; c++)\r\n                {\r\n                    \r\n\r\n                    workSheet.Cells[r , c+1 ].Value = dataGridView1.Rows[r].Cells[c].Value.ToString();\r\n                  \r\n                }\r\n\r\n            }\r\n\r\n            workBook.SaveAs(fileout, XlFileFormat.xlWorkbookNormal, Missing.Value, Missing.Value, Missing.Value, Missing.Value,\r\n                                                        NetOffice.ExcelApi.Enums.XlSaveAsAccessMode.xlExclusive);\r\n\r\n            <span style=\"color: green;\">// close excel and dispose reference</span>\r\n            excelApplication.Quit();\r\n            excelApplication.Dispose();\r\n        }\r\n\r\n        <span style=\"color: blue;\">private</span> <span style=\"color: blue;\">void</span> backgroundWorker1_RunWorkerCompleted(<span style=\"color: blue;\">object</span> sender, RunWorkerCompletedEventArgs e)\r\n        {\r\n           \r\n\r\n           \r\n            MessageBox.Show(<span style=\"color: #a31515;\">\"Workbook saved.\"</span>);\r\n        }\r\n    }\r\n</pre>\r\n</div>\r\n</p>",
+    "PostedDate": "2012-03-04T07:59:33.417-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "805272",
+    "ThreadId": "347167",
+    "Html": "<p>your code looks okay. keep an eye of com proxies in your app with: LateBindingApi.Core.Factory.ProxyCount;<br />did you call LateBindingApi.Core.Factory.Initialize() multiple times?<br /><br />*Sebastian</p>",
+    "PostedDate": "2012-03-04T13:27:26.923-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "805295",
+    "ThreadId": "347167",
+    "Html": "<p>As far as I know I call it once as it is shown above. How can I terminate EXCEL*32 process when worker finishes do_work Code?</p>",
+    "PostedDate": "2012-03-04T15:20:45.517-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "806012",
+    "ThreadId": "347167",
+    "Html": "<p>i'm suprised. the dispose mechanism in NetOffice works serious. its possible you send me your solution to <a href=\"mailto:public.sebastian@web.de\">public.sebastian@web.de</a> ?<br />*Sebastian</p>",
+    "PostedDate": "2012-03-06T00:18:46.347-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "807117",
+    "ThreadId": "347167",
+    "Html": "<p>Sorry for the delay, you have mail.</p>\r\n<p>Nick</p>",
+    "PostedDate": "2012-03-07T12:40:53.19-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "807139",
+    "ThreadId": "347167",
+    "Html": "<p>hey nick,</p>\n<p>i do a test and its as i said. it works fine without the background worker but with the worker you have issues.<br />You have to create excel in STA threads and you cant change the kind of thread for the backgroundworker. but you can use a normal Thread.</p>\n<div style=\"background-color: white; color: black;\">\n<pre> <span style=\"color: blue;\">void</span> Foo()\r\n {\r\n   System.Threading.Thread thread = <span style=\"color: blue;\">new</span> System.Threading.Thread(BigJob);\r\n   thread.SetApartmentState(System.Threading.ApartmentState.STA);\r\n   thread.Start();\r\n }\r\n\r\n <span style=\"color: blue;\">void</span> BigJob()\r\n {\r\n    <span style=\"color: blue;\">try</span>\r\n    {\r\n       <span style=\"color: blue;\">string</span> fileout = <span style=\"color: #a31515;\">\"C:\\\\...\\\\myFile.xlsx\"</span>;\r\n       LateBindingApi.Core.Factory.Initialize();\r\n       Excel.Application excelApplication = <span style=\"color: blue;\">new</span> Excel.Application();\r\n       excelApplication.DisplayAlerts = <span style=\"color: blue;\">false</span>;\r\n       \r\n       <span style=\"color: green;\">// add a new workbook</span>\r\n       Excel.Workbook workbook = excelApplication.Workbooks.Add();\r\n       Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[1];\r\n\r\n       <span style=\"color: green;\">// doe something here</span>\r\n\r\n       workbook.SaveAs(fileout, XlFileFormat.xlWorkbookNormal, Missing.Value, Missing.Value, Missing.Value, Missing.Value,\r\n                                                       NetOffice.ExcelApi.Enums.XlSaveAsAccessMode.xlExclusive);\r\n       workbook.Close();\r\n       <span style=\"color: green;\">// close excel and dispose reference</span>\r\n       excelApplication.Quit();\r\n       excelApplication.Dispose();\r\n     }\r\n     <span style=\"color: blue;\">catch</span> (Exception exception)\r\n     {\r\n        MessageBox.Show(exception.Message);\r\n     }\r\n  }\r\n\r\n</pre>\n</div>\n<p>thats works good for me.<br />you can also try to save performance and dont using any thread stuff. you can push the performance with some tricks.<br />the performance slow down is asociated with the count of calls to excel. reduce these calls. one basic trick is a value array.</p>\n<div style=\"background-color: white; color: black;\">\n<pre>  <span style=\"color: green;\">// create the value matrix array </span>\r\n  <span style=\"color: blue;\">object</span>[,] tempArray = <span style=\"color: blue;\">new</span> <span style=\"color: blue;\">object</span>[dataGridView1.RowCount, dataGridView1.ColumnCount];\r\n\r\n  <span style=\"color: blue;\">for</span> (<span style=\"color: blue;\">int</span> r = 0; r &lt; dataGridView1.RowCount; r++)\r\n  {\r\n     <span style=\"color: blue;\">for</span> (<span style=\"color: blue;\">int</span> c = 0; c &lt; dataGridView1.ColumnCount; c++)\r\n        tempArray[r , c ] = dataGridView1.Rows[r].Cells[c].Value.ToString();\r\n  }\r\n  \r\n  <span style=\"color: green;\">// get the range, the size of the range needs the same or bigger size as value array</span>\r\n  <span style=\"color: green;\">// i use $A1:$Z1000 here as hardcoded example, thats a real wide range an big enough i think.</span>\r\n  Excel.Range range = workSheet.Range[<span style=\"color: #a31515;\">\"$A1:$Z1000\"</span>]\r\n  range.Value2 = tempArray;\r\n  \r\n  <span style=\"color: green;\">// one call and much faster <br />  <br />  *xlRegards</span>\r\n\r\n</pre>\n</div>",
+    "PostedDate": "2012-03-07T13:32:27.787-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "807416",
+    "ThreadId": "347167",
+    "Html": "<p>Seems to work ok! Thank you SO MUCH Sebastian.!!!! You saved me ;) Thank you again!</p>",
+    "PostedDate": "2012-03-08T05:37:52.36-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824485",
+    "ThreadId": "347167",
+    "Html": "<p>When exporting data to excel keep in mind the following restrictions. It's&nbsp;my experience as they all caused errors in real-live-code when dealing with a large amount of data (some million! rows, all datatypes in cells):</p>\n<ul>\n<li>Using the old excel file format (*.xls) you are not allowed to export more than 65535 rows </li>\n<li>Using excel &lt;= Version 11 you are not allowed to write text cells larger than 911 characters (see <a href=\"http://support.microsoft.com/kb/818808/en-us\">http://support.microsoft.com/kb/818808/en-us</a>)</li>\n<li>When writing numbers as strings (eg postal code \"00123\") you should set the column format. This prevents from trimming the zeros:<br /><span style=\"color: #0000ff;\">workSheet.Columns[col].NumberFormat = \"@\";<br /> </span></li>\n<li>Using more rows than about 50.000 at once with the method above (<span style=\"color: #0000ff;\">range.Value2 = tempArray</span>) generates an com exception.<br />In this case you should use a loop and transform the data in chunks of about 50.000.<br />I didn't find any hint for this in the www, so if someone has further infos on this please let me know and reply to this topic. </li>\n<li>Using DateTime values &lt; 1.1.1900 generally are not allowed in excel </li>\n<li>Using and accessing the Excel-range should be like this, using Value not Value2:<br /><span style=\"color: #0000ff;\">var start = workSheet.Cells[row1, col1];</span><br /><span style=\"color: #0000ff;\">var end = workSheet.Cells[row2, col2];</span><br /><span style=\"color: #0000ff;\">using( var range = workSheet.get_Range(start, end))</span><br /><span style=\"color: #0000ff;\">{</span><br /><span style=\"color: #0000ff;\">&nbsp;&nbsp;&nbsp; range.Value = tempArray;</span><br /><span style=\"color: #0000ff;\">} </span></li>\n</ul>\n<p>&nbsp;</p>",
+    "PostedDate": "2012-04-16T10:14:09.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1069102",
+    "ThreadId": "347167",
+    "Html": "I have one problem regarding date format\r<br />\n<br />\nI use portuguese date format (dd - mm - yyyy)\r<br />\n<br />\nwhen the file is created  the dates appear in  (mm-dd-yyyy) format \r<br />\nhow do i change  to the default format date appear inn (dd-mm-yyyy)??<br />\n",
+    "PostedDate": "2013-07-16T10:25:31.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1069433",
+    "ThreadId": "347167",
+    "Html": "Never mind. Problem Solved<br />\n",
+    "PostedDate": "2013-07-17T02:41:33.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

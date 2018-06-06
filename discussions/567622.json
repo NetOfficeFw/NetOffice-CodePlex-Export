@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1305353",
+    "ThreadId": "567622",
+    "Html": "This is driving me crazy, not sure what I'm missing.\r<br />\n<br />\nThis line of code within an assembly I'm building (a plugin for Act!) causes Act! to crash and throws a StackOverflow exception when I attach to Act! to debug it.\r<br />\n<br />\nProject is set for x86, .NET 4.0\r<br />\n<br />\nI can do this no problem with a new Windows Form application, and a colleague has used NetOffice with Excel (same line of code) for another Act! plugin no problem.\r<br />\n<br />\nAny ideas what I might be missing?\r<br />\n<br />\nThanks in advance!\r<br />\nLen<br />\n",
+    "PostedDate": "2014-09-16T13:56:18.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308211",
+    "ThreadId": "567622",
+    "Html": "hey man!\r<br />\n<br />\nI need some code(exception strack trace) to pin point the problem. (no reported bugs like this in NetOffice so far)\r<br />\n<br />\nthe common understanding problem is: you try to access the host application and start a new one.(check your taskmanager for excel.exe if the problem occours)\r<br />\n<br />\nfor my feel: its a vb.net plugin, right???\r<br />\n<br />\nAnother fast option is to send me your solution to public.sebastian[at]web.de (Remove any other private code if you want) In this case i can reproduce the problem and give you an answer very feasy(fast and easy)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-09-25T15:46:19.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308252",
+    "ThreadId": "567622",
+    "Html": "It doesn't give me an exception stack trace, but here is the code I'm using, which is pretty basic:\r<br />\n<br />\nNetOffice.ExcelApi.Application excelApp = new NetOffice.ExcelApi.Application();\r<br />\nNetOffice.ExcelApi.Workbook book;\r<br />\nNetOffice.ExcelApi.Worksheet sheet;\r<br />\n<br />\nStrangely, this works fine on two different development machines my colleague uses, and on two of mine it exhibits this problem.\r<br />\n<br />\nWe ran it on another computer, and got yet a different message &quot;Worksheet not found in loaded NetOffice Assemblies&quot;.\r<br />\n<br />\nAny ideas?\r<br />\n<br />\nThanks,\r<br />\nLen<br />\n",
+    "PostedDate": "2014-09-25T20:59:43.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308557",
+    "ThreadId": "567622",
+    "Html": "&quot;Worksheet not found in loaded NetOffice Assemblies&quot;\r<br />\nSounds like a reference problem. NO cant' find the loaded ExcelApi.dll in the current AppDomain. I need to know your NetOffice version and operating system version to reproduce the problem. (op-system in test and failed prod system) BTW: make sure the solution is not loaded from a network ressource(forbidden in .NET default policies)\r<br />\n<br />\nI see, your example code is not real, its impossible that Workbook works fine and Worksheet cause trouble. (BTW the compiler removes unused variables and the NO types are never adressed/analyzed/called. I need your (nearly)real scenario to find a solution for you. otherwise i only can point you the right direction (based on I/O prinicple)\r<br />\n<br />\n*\r<br />\nSebastian\r<br />\n<br />\nTroubleshooting/Analyze Hint: Disable other extensions/addins on your problem-child system. This helps to identify the problem.  <br />\n",
+    "PostedDate": "2014-09-27T00:05:37.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308979",
+    "ThreadId": "567622",
+    "Html": "Just sent the source to your address.\r<br />\n<br />\nWill check the difference in specs between OS's and report back.\r<br />\n<br />\nThanks for your help thus far.\r<br />\n<br />\nLen<br />\n",
+    "PostedDate": "2014-09-29T10:29:21.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

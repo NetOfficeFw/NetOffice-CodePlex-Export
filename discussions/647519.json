@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1452279",
+    "ThreadId": "647519",
+    "Html": "I have a VBA Word addin and I was looking to convert it to VSTO so I downloaded VS Community 2015 and added VSTO using MS Web Platform Installer.  While looking for VSTO info I accidentally ran across NetOffice.  I was really impressed and want to try it.  I downloaded and created a project using the NO toolbox.  I was wondering if there was a way to directly install the templates in VS Community 2015 similar to VSTO.<br />\n",
+    "PostedDate": "2015-11-13T08:53:21.01-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1452288",
+    "ThreadId": "647519",
+    "Html": "hey men, \r<br />\n<br />\ni didnt find a question or i'm blind :o\r<br />\n<br />\n2 years ago i've been created a visual extension to put some project templates and wizards to visual studio.\r<br />\nBUT only few people have using it and is very expensive to develope and support them(also for multiple visual studio version). for this reason - i drop them\r<br />\nto save time and energy for the toolbox project wizard. if you want to use VS 2015, please use VS210 Express as option in the wizard because its full compatible.\r<br />\n(and make sure set the option &quot;Use NetOffice Tool&quot; because its more familar to VSTO)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-11-13T09:44:59.767-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1452327",
+    "ThreadId": "647519",
+    "Html": "Thanks.  The project wizard works well.  I just got started on VSTO when I found NetOffice.  Looking forward to using NetOffice<br />\n",
+    "PostedDate": "2015-11-13T16:16:25.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

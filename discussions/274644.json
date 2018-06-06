@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "679543",
+    "ThreadId": "274644",
+    "Html": "\r\n<p>NetOffice works fine with my EXCEL application.</p>\r\n<p>The only issue I have is the size of the dll files.<br>\r\nWhat would be the best approach to shrink the files and excluding libraries that I don't need?</p>\r\n<p>So far I am just using the COM Events, for everything else I am using the API access within EXCELDna.</p>\r\n<p>Holger</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-10-03T16:11:14.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "679559",
+    "ThreadId": "274644",
+    "Html": "<p>hey Holger,</p>\r\n<p>\"NetOffice works fine with my EXCEL application.\"<br />the most important thing all the time ;) <br />NetOffice want to be an easy API without&nbsp;any trouble.</p>\r\n<p>you want to shrink the assemblies? why?<br />as first you dont need any of all netoffice assemblies.<br />here is a part of the NetOffice deployment table from the documentation:</p>\r\n<table border=\"1\" cellspacing=\"0\" cellpadding=\"2\" width=\"398\">\r\n<tbody>\r\n<tr>\r\n<td width=\"148\" valign=\"top\"><span>ExcelApi.dll</span></td>\r\n<td width=\"248\" valign=\"top\">&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td width=\"150\" valign=\"top\">&nbsp;</td>\r\n<td width=\"247\" valign=\"top\"><span>OfficeApi.dll</span></td>\r\n</tr>\r\n<tr>\r\n<td width=\"151\" valign=\"top\">&nbsp;</td>\r\n<td width=\"246\" valign=\"top\"><span>VBIDEApi.dll</span></td>\r\n</tr>\r\n<tr>\r\n<td width=\"152\" valign=\"top\">&nbsp;</td>\r\n<td width=\"245\" valign=\"top\"><span>LateBindingApi.Core.dll</span></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>this is what you need to use excel.<br />as a second step delete the source code documentation files(.xml)<br />as a third step remove all unsed types and enums&nbsp;from source code and build your own NetOffice assemblies.<br />if you need signed custom assemblies, send me your modified source code.<br />helps?<br /><br />`*Sebastian</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-03T16:53:56.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "679581",
+    "ThreadId": "274644",
+    "Html": "<p>Thanks Sebastian.</p>\n<p>Did I mention that&nbsp;NetOffice works great =;-)</p>\n<p><br />The ExcelApi.dll is ~ 2.4Mb and the OfficeApi.dll ~0.6Mb.<br />I would lile to email the final application, so size matters.<br /><br />I will follow you advise and remove types and enums.</p>\n<p>Holger</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-03T18:37:11.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

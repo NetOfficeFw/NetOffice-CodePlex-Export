@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1229118",
+    "ThreadId": "540842",
+    "Html": "Hi, I've got this question, I'm using this code<br />\n<br />\nPrivate oWord As Word.Application()<br />\n<br />\n<br />\nthen instancing oWord like this<br />\n<br />\nPrivate Sub NuovoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NuovoToolStripMenuItem.Click<br />\n<pre><code>    Dim oWord = New Word.Application()\n    oWord.DisplayAlerts = WdAlertLevel.wdAlertsAll\n\n    Dim oWordDoc As New Word.Document()\n    oWordDoc = oWord.Documents.Add()\n\n    oWord.Visible = True\n\nEnd Sub\n\n</code></pre>\n\nthen I would like to use the same instance like this<br />\n<pre><code>Protected Sub mnuRtime_Click(ByVal sender As Object, ByVal e As EventArgs)\n\n    Dim s As ToolStripMenuItem = CType(sender, ToolStripMenuItem)\n\n    oWord.Selection.TypeText(s.Tag) &lt;-----BUT IT SAYS THAT 'Selection' is not meber of 'System.Array'\n\nEnd Sub\n</code></pre>\n\nAnyway, the fact is that I would like to use the created document from other function, events.<br />\n<br />\n<br />\nOtherwise, how can I write on the active doument on the screen?<br />\n<br />\n\t<br />\nThanks in advance<br />\n",
+    "PostedDate": "2014-04-01T11:18:30.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

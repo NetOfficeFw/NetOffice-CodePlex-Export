@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1442555",
+    "ThreadId": "644405",
+    "Html": "The solution and project have the package NetOffice Core and visio installed.  This line:<br />\n<br />\nMicrosoft.Office.Interop.Visio.Application application = new Microsoft.Office.Interop.Visio.Application(null, visioProxy)<br />\n<pre><code>Type visioType = Type.GetTypeFromProgID(&quot;Visio.Application&quot;);\nobject visioProxy = Activator.CreateInstance(visioType);\nMicrosoft.Office.Interop.Visio.Application application = new Microsoft.Office.Interop.Visio.Application(null, visioProxy);</code></pre>\n\nworks fine on my machine when I build but not on our build server.  The error returned is: 'Application' does not contain a contstructor that takes 2 arguments.<br />\n<br />\nWhat is our build server missing?  The project has a reference to NetOffice Core Api and VisioApi<br />\n<br />\nAppears that two parameters is not liked, but it builds on vs 2013 but not vs 2015?<br />\n",
+    "PostedDate": "2015-08-31T09:46:11.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1442618",
+    "ThreadId": "644405",
+    "Html": "This can't work on any system because you have to use NetOffice instead of interop.\r<br />\n<br />\nReplace Interop:\r<br />\nMicrosoft.Office.Interop.Visio.Application application = new Microsoft.Office.Interop.Visio.Application(null, visioProxy);\r<br />\nWith NetOffice:\r<br />\nNetOffice.VisioApi.Application application = new NetOffice.VisioApi.Application(null, visioProxy);\r<br />\n<br />\nMoreover you can use a ctor without arguments directly:\r<br />\nNetOffice.VisioApi.Application application = new NetOffice.VisioApi.Application();\r<br />\n<br />\nNow, NetOffice want fetch the type and create the instance for you.\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-08-31T23:15:28.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1442684",
+    "ThreadId": "644405",
+    "Html": "Thank you, now i am receiving:<br />\n<br />\nError\t6\tInterop type 'NetOffice.VisioApi.Application' cannot be embedded. Use the applicable interface instead.\t<br />\n<br />\nOk, I do not see an interface.... this is crazy.  Stupid day I guess.  I am missing the obvious i'm sure.<br />\n<br />\nI'll try setting Embed Interop Types under properties of the dlls to false and see if that works.<br />\n",
+    "PostedDate": "2015-09-01T07:32:23.003-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1442686",
+    "ThreadId": "644405",
+    "Html": "hey,\r<br />\n<br />\nplease go to the reference option set &quot;embed interop types&quot; to false.(for each NO assembly)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-09-01T07:34:20.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1442687",
+    "ThreadId": "644405",
+    "Html": "Just did and thank you very much!  Don't know how I missed that, but it dawned on me after I typed that reply (see my edits).\r<br />\n<br />\nThat was just pure brain block on not using the Netoffice instead of Microsoft.  Tested in one service, added it another service late and night and automatically typed Microsoft.    etc.\r<br />\n<br />\nSheesh.  THANK YOU<br />\n",
+    "PostedDate": "2015-09-01T07:49:49.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1442693",
+    "ThreadId": "644405",
+    "Html": "i know that feel bro' \r<br />\n<br />\ngood luck and bye!\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-09-01T08:11:43.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1449025",
+    "ThreadId": "644405",
+    "Html": "This is now working on all machines except one - a windows server 2012 machine (the only windows server 2012).  Is there something different required for permissions, configuration?  Here is what we are doing on all machines (which works) except the 2012:<br />\n<pre><code>For enabling COM +  from applications:\n\n1.  Run DCOMCNFG and Navigate to:\na.  Component Services\nb.  Computers\nc.  My Computer\nd.  DCOM Config\ne.  Microsoft Visio 2003-2010 Drawing\nf.  Right click on Microsft Visio 2003-2010 Drawing and select Properties\ng.  Click on the Identity tab:\ni.  Select This user.\nii. Enter a valid user and password (recommend same user/password used for MDS installation)\niii.    Click Apply\n*NOTE*  When the password changes or expired, it will need to be updated here\n\n2.  Open Windows Services (services.msc) and Navigate to:\na.  COM+ Event System\ni.  Double click to open properties and navigate to the Log On tab.  Set:\nii. Select This account:\niii.    Enter Local Service (or browse to it using the Browse button)\niv. Clear out the password fields\nv.  Click Apply\nvi. Click OK when the restart notifications appear.\nb.  COM+ System Application\ni.  Double click to open properties and navigate to the Log On tab.  Set:\nii. Select Local System account\niii.    Ensure Allow service to interact with desktop is checked!\niv. Click Apply\nv.  Click OK when the restart notifications appear.\n3.  Open Visio\na.  Create a blank drawing\nb.  Navigate to File, Options, Trust Center\nc.  Click Trust Center Settings\ni.  Select Trusted Locations\n1.  Add new location button\n2.  Enter the path to the accdraw files our service is configured to use\n3.  Click OK to save\nii. Select Trusted Documents\n1.  Ensure Allow documents on a network to be trusted is checked\niii.    Select File Block Settings \n1.  Remove all checks (deselect) Open and Save for each File Type under File Block settings \n*Note* This is counter-intuitive, make sure all are NOT selected*\n2.  Click OK\n</code></pre>\n\n",
+    "PostedDate": "2015-10-19T06:32:56.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1487903",
+    "ThreadId": "644405",
+    "Html": "I have the same issue on Win 2012 and needs to change the setting in DCOMCNFG for it to work.\r<br />\nIs there any other way without changing DCOM setting?\r<br />\nThanks.<br />\n",
+    "PostedDate": "2016-11-14T23:49:52.133-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

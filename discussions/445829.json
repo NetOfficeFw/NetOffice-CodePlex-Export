@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1052153",
+    "ThreadId": "445829",
+    "Html": "Hi,\r<br />\n<br />\nWenn ich versuche ein aus der Developer Toolbox erstelltes Office Addin (z.b Word) zu laden erhalte ich bei der Proxy Funktion Factory.CreateObjectFromComProxy(null, application); folgende Fehlermeldung:\r<br />\n<br />\nclass 00020905-0000-0000-c000-000000000046:Application not found in loaded LateBindingApi Assemblies. Currently loaded LateBindingApi Assemblies Loaded LateBindingApi Assembly:2df8d04c-5bfa-101b-bde5-00aa0044de52 OfficeApi, Version=1.5.0.1, Culture=neutral, PublicKeyToken=a39beb0835c43c8e<br />\n",
+    "PostedDate": "2013-06-03T07:27:10.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1052162",
+    "ThreadId": "445829",
+    "Html": "Hat sich bereits erledigt! In der Developer Toolbox werden die Netoffice Assemblies 1.5.0.1 included welche veraltet sind, als Referenz müssen die neuen Assemblies angegeben werden und leere Instanzen der jeweiligen Applikationen erstellt werden (Word.Application _oWd = null; Excel.Application _oxl = null; ....)<br />\n",
+    "PostedDate": "2013-06-03T07:43:54.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "827211",
+    "ThreadId": "353183",
+    "Html": "\r\n<p>We're getting the COM exception below when trying to Open a .xslx created under Linux by a client of ours. The file can be opened by Excel directly (with a warning). I can send you the file by direct mail.</p>\r\n<p>System.Runtime.InteropServices.COMException occurred&nbsp; HResult=-2147467259&nbsp; Message=See inner exception for details.&nbsp; Source=LateBindingApi.Core&nbsp; ErrorCode=-2147467259&nbsp; StackTrace:&nbsp; &nbsp; &nbsp; &nbsp;at LateBindingApi.Core.Invoker.MethodReturn(COMObject\r\n comObject, String name, Object[] paramsArray)&nbsp; &nbsp; &nbsp; &nbsp;at NetOffice.ExcelApi.Workbooks.Open(String filename)&nbsp; &nbsp; &nbsp; &nbsp;at AuditorAP.OpenTaskFileController.OpenCore(TaskFileXpo taskFile, Boolean readOnly, Nullable`1 version)\r\n in C:\\Users\\Public\\Documents\\Dev\\Unit4\\FDS\\TFS\\trunk\\AuditorAP\\IOpenTaskFileController.cs:line 440&nbsp; InnerException: System.Reflection.TargetInvocationException&nbsp; &nbsp; &nbsp; &nbsp;HResult=-2146232828&nbsp; &nbsp; &nbsp; &nbsp;Message=Exception has\r\n been thrown by the target of an invocation.&nbsp; &nbsp; &nbsp; &nbsp;Source=mscorlib&nbsp; &nbsp; &nbsp; &nbsp;StackTrace:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target,\r\n Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[]\r\n modifiers, CultureInfo culture, String[] namedParams)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\r\n &nbsp; at LateBindingApi.Core.Invoker.MethodReturn(COMObject comObject, String name, Object[] paramsArray)&nbsp; &nbsp; &nbsp; &nbsp;InnerException: System.Runtime.InteropServices.COMException&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; HelpLink=C:\\Program Files\r\n (x86)\\Microsoft Office\\Office12\\1043\\XLMAIN11.CHM&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; HResult=-2146827284&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Message=Eigenschap Open van klasse Workbooks kan niet worden opgehaald.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\r\n &nbsp; Source=Microsoft Office Excel&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ErrorCode=-2146827284&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; InnerException:&nbsp;</p>\r\n",
+    "PostedDate": "2012-04-23T01:18:17.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "827430",
+    "ThreadId": "353183",
+    "Html": "<p>its possible to the file at hand?<br />the error message seems like its not a netoffice issue, excel cant open the file. you are sure the file is utf-8 encoded?<br />just waiting for the file... <br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-23T10:07:03.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "827474",
+    "ThreadId": "353183",
+    "Html": "\r\n<div>See atttached file.<br>\r\n<br>\r\n<div>2012/4/23 SebastianDotnet <span dir=\"ltr\">&lt;<a href=\"mailto:notifications@codeplex.com\" target=\"_blank\">notifications@codeplex.com</a>&gt;</span><br>\r\n<blockquote style=\"margin:0 0 0 .8ex; border-left:1px #ccc solid; padding-left:1ex\">\r\n<div>\r\n<p>From: SebastianDotnet</p>\r\n<div>\r\n<p>its possible to the file at hand?<br>\r\nthe error message seems like its not a netoffice issue, excel cant open the file. you are sure the file is utf-8 encoded?<br>\r\njust waiting for the file... <br>\r\n<br>\r\nSebastian</p>\r\n</div>\r\n<div>\r\n<p>Read the <a href=\"http://netoffice.codeplex.com/discussions/353183#post827430\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email (<a href=\"mailto:netoffice@discussions.codeplex.com?subject=[netoffice:353183]\" target=\"_blank\">netoffice@discussions.codeplex.com</a>)</p>\r\n<p>To start a new discussion for this project, email <a href=\"mailto:netoffice@discussions.codeplex.com\" target=\"_blank\">\r\nnetoffice@discussions.codeplex.com</a></p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://netoffice.codeplex.com/discussions/353183/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on CodePlex.com.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com</p>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n</div>\r\n",
+    "PostedDate": "2012-04-23T11:48:35.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "827493",
+    "ThreadId": "353183",
+    "Html": "<p>your e-mail is redirected from codeplex to the NetOffice discussion board. any attachments get lost here. send the file to public.sebastian@web.de<br /> same question again: you can open the file at hand? ooops, now i see you told me you can do that with a warning.<br /> Sebastian</p>",
+    "PostedDate": "2012-04-23T12:12:07.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1011296",
+    "ThreadId": "435612",
+    "Html": "Hi guys,<br />\n<br />\nI'm trying to glue some code together interacting with Visio. (.NET 4.0/Visio 2010/NetOffice v1.5.1.2)<br />\n<br />\nPlease see the basic code below. What happens is, that I see Visio beeing started, and also closed at the end. But for whatever reason - I'll get an &quot;Please call NetOffice.Factory.Initialize()&quot; NetOfficeException when trying to open/create any Document.<br />\n<br />\nAny ideas what goes wrong here?<br />\n<pre><code>using System;\nusing System.Collections.Generic;\nusing System.Text;\nusing NetOffice;\nusing Visio = NetOffice.VisioApi;\nusing NetOffice.VisioApi.Enums;\n\n\nnamespace TestApp {\n    class Program {\n        static void Main(string[] args) {\n\n            NetOffice.Factory.Initialize();            \n            Visio.IVApplication app = new Visio.Application();\n            try {\n                // all of the commands below fail \n                Visio.IVDocument doc = app.Documents.Add(&quot;&quot;);\n                //Visio.IVDocument doc = app.Documents.Add(&quot;C:\\\\New.vsd&quot;);\n                //Visio.IVDocument doc = app.Documents.Open(&quot;C:\\\\Test.vsd&quot;);\n                \n            } catch (Exception e) {\n                Console.WriteLine(e.ToString());\n            }\n            app.Quit();\n            app.Dispose();\n        }\n    }\n}</code></pre>\n\n",
+    "PostedDate": "2013-03-06T09:11:52.193-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1011319",
+    "ThreadId": "435612",
+    "Html": "I managed to sort it out... Actually all the information is there... Just some more digging required.\r<br />\n<br />\nFrom what I currently understand the &quot;current release download package&quot; does not support Visio due to the &quot;keytoken bug&quot; that has already been fixed. (95603) \r<br />\nWhen I download the latest source code and link against the DLLs provided there, all works fine (no more errors)\r<br />\n<br />\nI would be great if you could include the fix already in the main download packages and e.g. go up to v1.5.1.3, so no more people are forced to stumble across this ;)\r<br />\n<br />\nAnyhow thanks for your great work! <br />\n",
+    "PostedDate": "2013-03-06T09:55:03.667-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

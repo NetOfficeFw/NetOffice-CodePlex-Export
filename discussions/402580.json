@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "939207",
+    "ThreadId": "402580",
+    "Html": "\r\n<p>In a production server when I access the Recipients object (i.e. mailItem.Recipients.Add(...))</p>\r\n<p>I get this error:</p>\r\n<p>The error occurred:<br>\r\n&nbsp;&nbsp;&nbsp; Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; COMException<br>\r\n&nbsp;&nbsp;&nbsp; Message:&nbsp;&nbsp;&nbsp; See inner exception(s) for details.<br>\r\n&nbsp;&nbsp;&nbsp; Data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 entries<br>\r\n&nbsp;&nbsp;&nbsp; Stack trace:<br>\r\n<br>\r\n&nbsp;&nbsp; in NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)<br>\r\n&nbsp;&nbsp; in NetOffice.OutlookApi._MailItem.get_Recipients()<br>\r\n&nbsp;&nbsp; in PitagoraDoc.Module.BusinessLogic.OutlookHelper.SendEmail(Dictionary`2 destinatari, String oggetto, String corpo, FileData[] allegati)<br>\r\n&nbsp;&nbsp; in PitagoraDoc.Module.BusinessLogic.ComunicazioneHelper.SendMail(Comunicazione comunicazione)<br>\r\n&nbsp;&nbsp; in PitagoraDoc.Module.Controllers.ComunicazioneController.SalvaEInvia_Execute(Object sender, SimpleActionExecuteEventArgs e)<br>\r\n&nbsp;&nbsp; in DevExpress.ExpressApp.Actions.ActionBase.ExecuteCore(Delegate handler, ActionBaseEventArgs eventArgs)<br>\r\n&nbsp;&nbsp;&nbsp; ----------------<br>\r\n&nbsp;&nbsp;&nbsp; InnerException:<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TargetInvocationException<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Message:&nbsp;&nbsp;&nbsp; Eccezione generata dalla destinazione di una chiamata.<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 entries<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Stack trace:<br>\r\n<br>\r\n&nbsp;&nbsp; in System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br>\r\n&nbsp;&nbsp; in System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br>\r\n&nbsp;&nbsp; in NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ----------------<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; InnerException:<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; COMException<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Message:&nbsp;&nbsp;&nbsp; Operazione terminata. (Eccezione da HRESULT: 0x80004004 (E_ABORT))<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 entries<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Stack trace:<br>\r\n<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; InnerException is null</p>\r\n<p>---------------------------------------------------------------------------</p>\r\n<p>My code is pretty simple:</p>\r\n<p>...<br>\r\nOutlook.Application outlookApplication = new Outlook.Application();<br>\r\nOutlook.MailItem mailItem = outlookApplication.CreateItem(OlItemType.olMailItem) as Outlook.MailItem;<br>\r\nmailItem.Recipients.Add(&quot;xxx@xxx.xx&quot;);&nbsp;&nbsp;&nbsp; //&lt;- Error<br>\r\n...</p>\r\n<p>I noted that using another NetOffice API in my application (Session.GetDefaultFolder) first and then try to send a email the error go away.</p>\r\n<p>So as a workaround I call:<br>\r\nOutlook.MAPIFolder contactFolder = outlookApplication.Session.GetDefaultFolder(OlDefaultFolders.olFolderContacts);</p>\r\n<p>just after the creation of outlookApplication.</p>\r\n<p><span id=\"result_box\" lang=\"en\"><span>What might have happened?</span></span></p>\r\n<p><span lang=\"en\"><span>Thank you, Giorgio.<br>\r\n</span></span></p>\r\n",
+    "PostedDate": "2012-11-09T08:34:40.633-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "939456",
+    "ThreadId": "402580",
+    "Html": "<p>hello,<br /><br />can you translate the message \" Eccezione generata dalla destinazione di una chiamata.\" for me???<br />It looks like a security exception btw.&nbsp; is your application a desktop application (console, winforms,...) or IIS hosted ???<br />please note: outlook use variuos security features and parts of the object model was restricted. the user has to agree the accessing from a third party component in a special dialog box. automating office in a server system is generaly not a good idea. did you see any chance to use the Exchange Server Web API (EWS)? <br /><br />Sebastian<br /><br /></p>",
+    "PostedDate": "2012-11-09T19:00:21.26-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "940182",
+    "ThreadId": "402580",
+    "Html": "<p>Hello Sebastian,</p>\r\n<p>can you translate the message \" Eccezione generata dalla destinazione di una chiamata.\" for me???<br /> Exception has been thrown by the target of an invocation</p>\r\n<p>It looks like a security exception btw. is your application a desktop application (console, winforms,...) or IIS hosted ???<br /> Is a terminal services server, so, OS apart, is a shared desktop pc.</p>\r\n<p>User access my application (Windows forms application) either by remote desktop or remote application.</p>\r\n<p>In the tests I am doing I impersonate the Administrator and the outlook security has been adjusted in \"Trust center/Programmatic access/Never warn me about suspicious activity\" so no dialog box pop up.</p>\r\n<p>In development environment (Windows 7 64 bit) all it is ok.</p>\r\n<p>User send emails from the application and want to find it later in sent items in Outlook.</p>\r\n<p>did you see any chance to use the Exchange Server Web API (EWS)</p>\r\n<p>Then I don't need it...?</p>\r\n<p>At the end what look me strange, or significant, is that after a call to \"Outlook.MAPIFolder contactFolder = outlookApplication.Session.GetDefaultFolder(OlDefaultFolders.olFolderContacts);\" something change in internal state of Outlook end subsequent call to \"mailItem.Recipients\" has success from this point till the application shutdown.</p>\r\n<p>But my knowledge with Outlook is poor and I don't figure out the reason.</p>\r\n<p>Thank you.</p>\r\n<p><a href=\"mailto:giorgio_vaccarino@wpformat.com\">giorgio.vaccarino@wpformat.com</a></p>",
+    "PostedDate": "2012-11-12T01:12:47.623-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "941275",
+    "ThreadId": "402580",
+    "Html": "\r\n<p>hmm i can't reproduce your scenario because i dont have a terminal server for my vm's. thats a problem.<br>\r\n<br>\r\nthe Microsoft EWS API is a nice way to deal with the exchange server via XML based communication, send mails, create contacts and all the other stuff.<br>\r\nyou dont need automate a local application, all what you need is an impersonation account for the exchange access.<br>\r\n<br>\r\n&quot;send e-mail example&quot;<br>\r\nhttp://msdn.microsoft.com/en-us/library/exchange/dd633628%28v=exchg.80%29.aspx<br>\r\n<br>\r\ni use the EWS in a lot&nbsp; of server solutions.<br>\r\n<br>\r\nanother possible solution for you is a local desktop proxy ( maybe an outlook addin ) and you send orders to the local addin via remoting. crazy but i think it works also. the google translation example addin in the download section shows a similar scenario\r\n and use IPC remoting. you can take look into this. you may need TCP remoting because IPC remoting doesnt works in different user accounts.<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2012-11-13T15:37:31.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "941444",
+    "ThreadId": "402580",
+    "Html": "\r\n<p>Hello Sebastian,</p>\r\n<p>first I will surely give a try to EWS because I like the idea of a message based communication between applications.</p>\r\n<p>Thank you for your advices.</p>\r\n<p>Giorgio.</p>\r\n",
+    "PostedDate": "2012-11-14T00:17:25.707-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "941447",
+    "ThreadId": "402580",
+    "Html": "\r\n<p>if you need help to start with the EWS API&nbsp; then please feel free to contact me.<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2012-11-14T00:20:48.583-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

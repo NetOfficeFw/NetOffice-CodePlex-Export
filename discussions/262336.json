@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "631115",
+    "ThreadId": "262336",
+    "Html": "\r\n<p>Hi!</p>\r\n<p>I need to understand how I can control the Outlook.MailItem.Sender Object.</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:green\">mailItem.SenderName = UserStuff.LoggedInUser.FirstName  &#43; &quot; &quot; &#43; UserStuff.LoggedInUser.LastName;</span>\r\n<span style=\"color:green\">mailItem.SenderEmailAddress = UserStuff.LoggedInUser.Email;</span>\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>The above code will not compile as these properties are read only. How shall I go about if I need to change the Sender Name and Email?</p>\r\n<p>Regards.</p>\r\n",
+    "PostedDate": "2011-06-22T07:09:37.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631119",
+    "ThreadId": "262336",
+    "Html": "<p><span style=\"font-size: x-small;\">\r\n<p>please try mailItem.SentOnBehalfOfName</p>\r\n</span></p>",
+    "PostedDate": "2011-06-22T07:11:40.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

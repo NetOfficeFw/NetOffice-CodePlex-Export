@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "860442",
+    "ThreadId": "362842",
+    "Html": "\r\n<p>Hi&nbsp;</p>\r\n<p>Are there any samples or tutorials on creating custom task panes using the NetOffice API.</p>\r\n<p>Chris</p>\r\n",
+    "PostedDate": "2012-07-11T10:31:00.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "860451",
+    "ThreadId": "362842",
+    "Html": "<p>a custom taskpane addin example is available for any office application.<br />please ceckout the latest 1.5.1 release in the download section.<br /><br />for example, the .net 4.0 c# example for excel is here located:<br />NetOffice 1.5.1\\NET 4.0\\Examples\\Excel\\C#\\COMAddin Examples\\COMAddinTaskPaneExample<br /><br />Sebastian</p>",
+    "PostedDate": "2012-07-11T10:42:42.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "860474",
+    "ThreadId": "362842",
+    "Html": "<p>Thanks. Exactly what I was looking for.</p>\r\n<p>Is it possible for the user control within the pane to access properties of the custom task pane, for example to dynamically control the width of the pane at runtime?</p>\r\n<p>Regards</p>\r\n<p>Chris</p>",
+    "PostedDate": "2012-07-11T11:31:38.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "860499",
+    "ThreadId": "362842",
+    "Html": "<p>hello chris,<br /><br />not by default but you can use a trick. we use the netoffice tutorial as example.<br /><br />1.) define a public property in the sampleControl: <br />&nbsp; public Office._CustomTaskPane TaskPane;<br /><br />2.) modify the CTPFactoryAvailable method in Addin.cs<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Office._CustomTaskPane taskPane = ctpFactory.CreateCTP(typeof(Addin).Assembly.GetName().Name + \".SampleControl\", \"NetOffice Sample Pane(CS4)\", Type.Missing);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; taskPane.DockPosition = MsoCTPDockPosition.msoCTPDockPositionRight;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; taskPane.Width = 300;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; taskPane.Visible = true;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _sampleControl = taskPane.ContentControl as SampleControl;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _sampleControl.TaskPane = taskPane;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ctpFactory.Dispose();<br /><br />remove the last line and set _sampleControl.TaskPane. now you can set the width of the control dynamicly inside your control. something like this:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private void button1_Click(object sender, EventArgs e)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TaskPane.Width = 600;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br /><br /></p>",
+    "PostedDate": "2012-07-11T12:03:52.777-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "864082",
+    "ThreadId": "362842",
+    "Html": "<p>Thanks for your help with this. Since we are removing ctpFactory.Dispose(); is there another place in the code where it should be called?</p>\r\n<p>Regards,</p>\r\n<p>Chris</p>",
+    "PostedDate": "2012-07-13T03:38:34.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "865422",
+    "ThreadId": "362842",
+    "Html": "<p>hello,<br /><br />the ctpFactory object is a child from the hostapplication(excel, word, whatever you use)<br /><br />you have to dispose the hostapplication in the IDTExtensibility2.OnDisconnection method <br /><br />&nbsp;_excelApplication.Dispose();<br /><br />now, all childs from hostapplication are diposed too(recursiv) this means also ctpFactory of course. <br />any object in NetOffice implements the Dispose() method but yout dont need to dispose any object explictitly.<br />By calling Dispose() the element and all other elements created through it will be freed.<br /><br /><a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management\">Documentation: COM Proxy Management in NetOffice</a><br /><br /><br />Sebastian</p>",
+    "PostedDate": "2012-07-13T14:57:08.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

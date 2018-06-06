@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1437976",
+    "ThreadId": "642524",
+    "Html": "Hello,<br />\n<pre><code>     Its my first time creating an addin for outlook. I want to save the current mail item to the downloads folder but my code doesnt seem to work(it saves a type &quot;file&quot;, i need .msg). Can anyone have a look at this?\n</code></pre>\n\n<pre><code>        public void SendButton_Click(Office.IRibbonControl control)\n        {\n            try\n            {\n                var inspector= GlobalModule.ActiveInspector();\n                var mail = test.CurrentItem as MailItem;\n                string userRoot = System.Environment.GetEnvironmentVariable(&quot;USERPROFILE&quot;);\n                string downloadFolder = Path.Combine(userRoot, &quot;Downloads&quot;);\n                mail.SaveAs(downloadFolder + @&quot;\\test&quot;, OlSaveAsType.olMSG);\n                MessageBox.Show(downloadFolder, &quot; &quot;, MessageBoxButtons.OK, MessageBoxIcon.Information);\n            }\n            catch (System.Exception e)\n            {\n                MessageBox.Show(string.Format(&quot;Error in Addins: {0}&quot;, e.ToString()), &quot; &quot;, MessageBoxButtons.OK, MessageBoxIcon.Error);\n            }\n        }</code></pre>\n\nThank you in advance :)<br />\n",
+    "PostedDate": "2015-08-10T03:30:59.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1446305",
+    "ThreadId": "642524",
+    "Html": "You should add extension &quot;.msg&quot; to let Windows know that it is message file.<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n...\nmail.SaveAs(downloadFolder + <span style=\"color:#A31515;\">@&quot;\\test.msg&quot;</span>, OlSaveAsType.olMSG);\n...\r\n</pre></div>",
+    "PostedDate": "2015-09-29T03:41:12.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

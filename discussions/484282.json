@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1151760",
+    "ThreadId": "484282",
+    "Html": "Hello,\r<br />\n<br />\ni have developed an addin for Outlook. This addin queries a server for customer data that is replaced in the email template the user has opened. What i want to do is display informations about the server request like Status codes.\r<br />\n<br />\nBut i don't find any example thats showing how to access the statusbar ... or i'm blinded :P\r<br />\nCan someone please help me and provide a small sample how to do this with netoffice? \r<br />\n<br />\nThank you and best regards,\r<br />\nMarcus<br />\n",
+    "PostedDate": "2014-01-10T06:00:21.257-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1169679",
+    "ThreadId": "484282",
+    "Html": "I will give you some food for thought: <br />\n<pre><code>CommandBar bar = mApplication.ActiveExplorer().CommandBars[&quot;Status Bar&quot;];</code></pre>\n\nBut I don't know what to do next...sorry!<br />\n",
+    "PostedDate": "2014-01-15T10:23:44.38-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

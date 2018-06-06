@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "669118",
+    "ThreadId": "271926",
+    "Html": "\r\n<p>Why is there no Quit event in the Excel assembly ?</p>\r\n<p>I have to handle this to properly dispose of the Excel object in case the user closes the Excel application.</p>\r\n",
+    "PostedDate": "2011-09-08T07:14:44.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "669121",
+    "ThreadId": "271926",
+    "Html": "<p>In order to prevent naming conflict, every event name in NetOffice has \"Event\" appended.<br /> for you this means \"NetOffice.ExcelApi.Application.QuitEvent\"<br /> <br /> please take a look in technical information<br /> http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Events<br /> <br /></p>",
+    "PostedDate": "2011-09-08T07:18:18.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "669127",
+    "ThreadId": "271926",
+    "Html": "<p>There's a Word.QuitEvent but not a Excel.QuitEvent. I first thought it was an intellisense problem (Word.Dispose isn't recognized and more) but it really isn't. (ExcelApi v1.2)</p>\r\n<p>Error<span> </span>1<span> </span>'NetOffice.ExcelApi.Application' does not contain a definition for 'QuitEvent' and no extension method 'QuitEvent' accepting a first argument of type 'NetOffice.ExcelApi.Application' could be found (are you missing a using directive or an assembly reference?)<span> </span></p>",
+    "PostedDate": "2011-09-08T07:29:38.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "669135",
+    "ThreadId": "271926",
+    "Html": "<p>oh yes now i see the excel application has no quit event. this is not a mistake from netoffice. <br />microsoft doesnt implement this event in excel. (i dont no why)<br /><br />i take a look with google about this problem and find some interesstent things<br /><br />http://stackoverflow.com/questions/3724301/prevent-excel-from-quitting<br /><br />http://blogs.msdn.com/b/vsod/archive/2009/10/02/blog-idea-how-do-you-implement-application-quit-event-in-excel-how-do-you-intercept-excel-application-quit.aspx<br /><br />http://www.pcreview.co.uk/forums/trapping-excel-close-event-t961034.html</p>",
+    "PostedDate": "2011-09-08T07:40:24.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "669215",
+    "ThreadId": "271926",
+    "Html": "<p>Thanks, I assumed you had simply forgotten the event - apologies :-)</p>",
+    "PostedDate": "2011-09-08T10:10:11.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

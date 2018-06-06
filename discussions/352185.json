@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "823321",
+    "ThreadId": "352185",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>my AddIn always crashes at this line in the&nbsp;IDTExtensibility2.OnConnection method:<br>\r\n_application = Factory.CreateObjectFromComProxy(null, Application);</p>\r\n<p>and throws this Error:</p>\r\n<p>LateBindingApi.Core.LateBindingApiException: Please call LateBindingApi.Core.Factory.Initialize() at LateBindingApi.Core.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy) at TestAddin1.Addin.Extensibility.IDTExtensibility2.InConnection(Object\r\n Application, ext_ConnectMode ConnectMode, Object AddInInst, Array&amp;custom) in C:\\Users\\Administrator\\Documents\\Visual Studio 2010\\Projects\\TestAddin1\\TestAddin1\\Addin.cs:line 41</p>\r\n<p>&nbsp;</p>\r\n<p>LateBindingApi.Core.Factory.Initialize() is called in the constructor, so why do I get this Exception? Would really appreciate your help!</p>\r\n<p>&nbsp;</p>\r\n<p>Bye</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-04-13T01:52:30.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "823394",
+    "ThreadId": "352185",
+    "Html": "<p>are you sure the call is&nbsp;passed? <br /> which NetOffice assemblies is referenced?<br /> can you use the NetOffice debug console and copy the content here?<br /> <a href=\"http://netoffice.codeplex.com/wikipage?title=Misc01\">http://netoffice.codeplex.com/wikipage?title=Misc01</a><br /> <br /> Sebastian</p>",
+    "PostedDate": "2012-04-13T05:18:07.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1014649",
+    "ThreadId": "352185",
+    "Html": "Hi,\r<br />\n<br />\n  I have the same problem my AddIn crashes on second line of the OnConnection method:<br />\n<pre><code>using Office2 = Microsoft.Office.Core;\nusing Extensibility;\nusing NetOffice;</code></pre>\n\n//    using Office = NetOffice.OfficeApi;\r<br />\n//    using NetOffice.OfficeApi.Enums;<br />\n<pre><code>using Word = NetOffice.WordApi;\nusing NetOffice.WordApi.Enums;\n\npublic class Connect : Object, Extensibility.IDTExtensibility2, Office2.IRibbonExtensibility\n{\n    public void OnConnection(object application, Extensibility.ext_ConnectMode connectMode, object addInInst, ref System.Array custom)\n    {\n        MessageBox.Show(&quot;OnConnection&quot;);\n        COMObject app = Factory.CreateObjectFromComProxy(null, application);\n    }\n}\n</code></pre>\n\nruntime exception that I copied from VS output:\r<br />\n &quot;A first chance exception of type 'NetOffice.LateBindingApiException' occurred in NetOffice.dll&quot;\r<br />\n<br />\nI use Microsoft.Office.Core because of that exception.\r<br />\nYour sample console application works on the same machine.\r<br />\nWindows Server 2008 R2\r<br />\nMicrosoft Office 2010 64bit\r<br />\nVisual Studio 2010\r<br />\n.Net 3.5<br />\n",
+    "PostedDate": "2013-03-13T08:29:18.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1014659",
+    "ThreadId": "352185",
+    "Html": "hello,\r<br />\n<br />\nyou want an addin for serveral office products right?\r<br />\nthe problem is (i guess) you dont use a specific netoffice type in your code. the CLR doesnt load the referenced assembly in this case.\r<br />\nthe factory method analyze the current loaded assemblies in the application domain and bazinga! nothing found in this case. \r<br />\ndid you try the latest source state assemblies? (i create a better handling for non-loaded assemblies here) another way is to create a dumy method(never called) with Excel.Application exApp =null; Word.Application wdApp=null; to avoid the CLR optimization.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-03-13T08:41:46.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1015083",
+    "ThreadId": "352185",
+    "Html": "I have added three private fields for Excel, Word and PowerPoint applications as you recommended me\r<br />\nand it works now!\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-03-14T02:24:48.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

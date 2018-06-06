@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1077151",
+    "ThreadId": "452529",
+    "Html": "Hi there,\r<br />\nI try to build a solution in C# that change and create BuiltInDocumentProperties and CustomDocumentProperties of Word Documents (doc and docx). I test with NetOffice but my changes will not save in the Document. Can anybody help to solve my problem?\r<br />\n<br />\nI test it like this:<br />\n<pre><code>try\n{\n  app = new Word.Application();\n  Word.Document doc = app.Documents.Open(@&quot;test.doc&quot;);\n               \n  ((NetOffice.OfficeApi.DocumentProperties)doc.CustomDocumentProperties)[&quot;Test&quot;].Value = DateTime.Now.ToLongTimeString();\n  ((NetOffice.OfficeApi.DocumentProperties)doc.CustomDocumentProperties).Add(&quot;NewProp&quot;, false, NetOffice.OfficeApi.Enums.MsoDocProperties.msoPropertyTypeString, DateTime.Now.ToLongTimeString());\n\n  doc.Save();\ncatch { }\nfinally\n{\n  app.Quit();\n  app.Dispose();\n}</code></pre>\n\n",
+    "PostedDate": "2013-08-06T02:18:52.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077240",
+    "ThreadId": "452529",
+    "Html": "this post facing the same problem\r<br />\n<br />\n<a href=\"http://stackoverflow.com/questions/1527204/saving-word-2007-document-properties-in-c-sharp-2-0\" rel=\"nofollow\">http://stackoverflow.com/questions/1527204/saving-word-2007-document-properties-in-c-sharp-2-0</a>\r<br />\n<br />\n&quot;\r<br />\nWhen you add/change custom properties seems that the document is no changed, \r<br />\nso the WordApplication.ActiveDocument.Saved is still true.\r<br />\nSet it to false and then call the Save method of the Document, it will work!! \r<br />\n&quot;\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-08-06T06:26:15.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077685",
+    "ThreadId": "452529",
+    "Html": "Thx a lot, that solve this problem. \r<br />\nThis works for local and network files, now I try to save files from Sharepoint (WSS 3.0 o_O) that didn´t works cause of other reasons. Does anybody know spontaneous a simple solution for the Sharepoint problem? \r<br />\nI start a google search by the way :)<br />\n",
+    "PostedDate": "2013-08-07T04:58:04.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

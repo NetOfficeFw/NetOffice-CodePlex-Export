@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1093104",
+    "ThreadId": "457050",
+    "Html": "How do I create a named range in Excel with a worksheet scope and not a workbook scope? I have tried the following but both give a workbook scoped named range...<br />\n<pre><code>Excel.Range range = ...\nrange.Name = &quot;some name&quot;;</code></pre>\n\n<pre><code>Excel.Worksheet sheet =...\nExcel.Range range = ...\nsheet.Names.Add(&quot;some name&quot;, range);</code></pre>\n\n",
+    "PostedDate": "2013-09-16T07:16:52.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

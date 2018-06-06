@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "620425",
+    "ThreadId": "259553",
+    "Html": "<p>Hi, have you tested the examples (or the framework in general)&nbsp;against 64 bit version of Outlook 2010? ﻿﻿﻿﻿</p>\n<p>I can't get it to run - both Add-Ins end up under \"Inacitve Application Add-ins\", and trying to enable them with the \"Go\"-button at the bottom of the Add Ins management page does not work. ﻿Prior experience trying to get add-ins working with Outlook x64 are unfortunately not very positive.</p>\n<p>edit: I&nbsp;did try changing the Platform target in&nbsp;VS2010 ultimate from&nbsp;\"Any CPU\" to \"x64\" on all 9 projects in OutlookExamples.sln, but that resulted in compilation error due to references to OutlookClassicAddinCSharp.dll yielding \"(...) is not a valid assembly.\" Probably because it's compiled with the&nbsp;x86&nbsp;architecture flag?<br /><br />&nbsp;</p>",
+    "PostedDate": "2011-05-30T12:55:49.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620461",
+    "ThreadId": "259553",
+    "Html": "<p>hello Nilzor,</p>\r\n<p>i do tests (exactly project member hurby do tests) with 64 architecture word and&nbsp;works fine.<br />but&nbsp;maybe its&nbsp;necessary build 32 and 64 bit assemblies.<br />its possible to send you compiled 64 bit netoffice assemblies(and outlook examples)&nbsp;and you test it ?( in this case please send me mail or msn adress)</p>\r\n<p>Sebastian</p>",
+    "PostedDate": "2011-05-30T14:34:44.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620467",
+    "ThreadId": "259553",
+    "Html": "<p>hi,</p>\r\n<p>I would appreciate that. I will send you a message with my email.</p>",
+    "PostedDate": "2011-05-30T14:49:15.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "621443",
+    "ThreadId": "259553",
+    "Html": "<p>Yea just wanted to let you know that 64 bit version works just fine :) It wasn't the build at all that was the problem, it was the Outlook ribbon&nbsp;that I couldn't get to start up at first.</p>",
+    "PostedDate": "2011-06-01T08:33:57.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "910993",
+    "ThreadId": "395140",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>when i display active printer with this code <span style=\"font-family:Consolas; color:#008000; font-size:x-small\">\r\n<span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"font-family:Consolas; color:#008000; font-size:x-small\">excelApplication.ActivePrinter</span></span></span>, debugger diisplay &quot;PDFCreator sur Ne00:&quot;.</p>\r\n<p>But when i list printer with this code System.Drawing.Printing.PrinterSettings.InstalledPrinters the printer name is &quot;PDFCreator&quot; and not &quot;PDFCreator sur Ne00:&quot;.</p>\r\n<p>When i set property like this <span style=\"font-family:Consolas; color:#008000; font-size:x-small\">\r\n<span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"font-family:Consolas; color:#008000; font-size:x-small\">excelApplication.ActivePrinter=&quot;PDFCreator&quot;\r\n<span style=\"color:#000000\">netoffice crash becau</span></span></span></span><span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"color:#000000\">se\r\n it can't find the printer .</span></span></span></span></p>\r\n<p><span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"color:#000000\">NetOffice 1.5.1</span></span></span></span></p>\r\n<p><span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"font-family:Consolas; color:#008000; font-size:x-small\"><span style=\"font-family:Consolas; color:#008000; font-size:x-small\">&nbsp;</span></span></span></p>\r\n<p>Best regards</p>\r\n",
+    "PostedDate": "2012-09-11T08:34:28.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911555",
+    "ThreadId": "395140",
+    "Html": "\r\n<p>NetOffice doesnt crash, excel throw an exception because the global printer information is not valid in excel. this is a well known propblem in all office applications (moreover access and outlook doesnt implement the ActivePrinter property) you have to\r\n use &quot;PDFCreator sur Ne00&quot;<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2012-09-12T07:09:00.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

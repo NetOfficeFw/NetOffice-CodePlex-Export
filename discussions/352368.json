@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "824083",
+    "ThreadId": "352368",
+    "Html": "\r\n<p>I'm experimenting with C# Express and as per documentation it refers me to the development toolkit for project creation activity. But I cannot, for the life of me find 0.9.4.</p>\r\n",
+    "PostedDate": "2012-04-15T13:31:09.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824151",
+    "ThreadId": "352368",
+    "Html": "<p>hello,<br /><br />oh yes the documentation is in the future here. the new toolbox reach the final level at 19/04 (currently beta and i need the test feedback first)<br />sorry for your wasted time :/ i create a hint now in the documentation.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-15T19:32:57.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824157",
+    "ThreadId": "352368",
+    "Html": "<p>No worries... Things got a lot easier when I switched computers. Not sure why the other one was funky, but the 'fresh' computer got things working pretty easily.</p>\r\n<p><br />Interestingly enough it looks like C# Express 2010 does work with the wizard.</p>",
+    "PostedDate": "2012-04-15T20:08:42.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824162",
+    "ThreadId": "352368",
+    "Html": "<p>From the MSDN Magazine: <a href=\"http://msdn.microsoft.com/de-de/magazine/gg535675.aspx\">http://msdn.microsoft.com/de-de/magazine/gg535675.aspx</a><br />\"Note, however, that the Express versions of Visual Studio don&rsquo;t support extensions\"<br /><br />My first mistake was,&nbsp;i dont give a hint for this problem in documentation and installation. a looot of e-mails was the result.<br />BTW: SharpDevelop doesnt support custom wizards at all. I hope the new Developer Toolbox is helpfull here :-)<br /><br />Sebastian<br /><br /></p>",
+    "PostedDate": "2012-04-15T20:51:22.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

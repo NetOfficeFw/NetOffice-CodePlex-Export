@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1022328",
+    "ThreadId": "438304",
+    "Html": "Hello,\r<br />\nI want to implement a AutoFit mechanism in my Excel in order to auto fit my columns are rows.<br />\n<pre><code>                    double excelmaxcolumncounter = 128;\n                    for (double i = 1; i &lt;= excelmaxcolumncounter; i++)\n                    {\n                        sheet.Cells.Columns[i].AutoFit();\n                    }\n                    double excelmaxrowcounter = 1000;\n                    for (double i = 1; i &lt;= excelmaxrowcounter; i++)\n                    {\n                        sheet.Cells.Rows[excelmaxrowcounter].AutoFit();\n                    }</code></pre>\n\nThe issue is, that it requires LOT of execution time, 128*1.000. Taking in consideration that I might have 10-20 worksheets to auto fit, it will take a day to do that process.\r<br />\n<br />\nIsn't there any other possibility to return the max used column number and max used row number?<br />\n",
+    "PostedDate": "2013-03-28T04:23:23.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1022386",
+    "ThreadId": "438304",
+    "Html": "Nevermind,\r<br />\n<br />\nFound it out with<br />\n<pre><code>                    Excel.Workbook workbook;\n                    workbook = xlsApp.Workbooks.Open(myFile, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\n                                                Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\n                                                Type.Missing, Type.Missing);\n                    Excel.Worksheet workSheet;\n                    Excel.Worksheet sheet in workbook.Sheets\n\n                    sheet.Columns.AutoFit();\n                    sheet.Rows.AutoFit()</code></pre>\n\nBut, when I write &quot;sheet.&quot; it doesn't show me Columns or Rows as properties.<br />\n",
+    "PostedDate": "2013-03-28T06:25:29.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1022399",
+    "ThreadId": "438304",
+    "Html": "Type.Missing is not necessary here. did you use the latest source state?\r<br />\nRows and Colums are marked as NonBrowsable. this is a mistake (my bad).\r<br />\n<br />\ni see you use some code like this:\r<br />\n<br />\nProcess[] processes = System.Diagnostics.Process.GetProcessesByName(&quot;EXCEL&quot;);\r<br />\nforeach (Process p in processes)\r<br />\np.Kill();\r<br />\n<br />\nthis is not necessary in NetOffice.\r<br />\n<br />\nplease check this documentation page and the tutorial projects:\r<br />\n<a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management\" rel=\"nofollow\">http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management</a>\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-03-28T06:46:51.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1022465",
+    "ThreadId": "438304",
+    "Html": "Yes,\r<br />\n<br />\nAt beginning I was getting some Exception errors with <br />\n<pre><code>p.Kill();</code></pre>\n\nHad to remove it and put the .Dispose/.Quit into the finally part of my code in order to always close my application, either PPT or XLS.\r<br />\n<br />\nThanks for the information.<br />\n",
+    "PostedDate": "2013-03-28T08:21:40.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

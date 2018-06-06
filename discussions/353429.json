@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "828093",
+    "ThreadId": "353429",
+    "Html": "\r\n<p>Do you plan on adding more support for Outlook? Like browsing calendar, being able to create/delete/copy calendar events etc? Supporting multiple calendar/mailboxes. Creating tasks and other events with all the bells and whistles?</p>\r\n",
+    "PostedDate": "2012-04-24T14:33:59.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "828139",
+    "ThreadId": "353429",
+    "Html": "<p>yes and no.&nbsp;NetOffice is a simple 1:1 Wrapper to the automation object modell/programming interface. you can do all the things with NetOffice but you do that on the basic level in comparsion to VSTO. i have created a concept for the Free Developer Tools for Office as VSTO copy. let me explain: VSTO is a Microsoft&nbsp;library top of the basic office programming interface and provides useful functionality. VSTO cause problems too, thats the problem.&nbsp;The Free Developer Tools want be better top of the NetOffice API. this is the next step for me in the strategy. The Free Developer Tools contains more support for the cool stuff in modern office applications(also Outlook), keep your&nbsp;lines of code&nbsp;low,&nbsp;and provide the typical ThisAddin project(VSTO). Currently i have to create NetOffice 1.5.1. When its done, the Free Developer Tools started immediately. The release date for&nbsp;a stable 1.0 is planned in this year, in any case with the next MS-Office Release. In a simple way: Yes i want to support them for the future so far. I'm not an Outlook specialist. If you have any suggestion here then&nbsp;please show me whats your problem. What do you wish to do the things what you do all the things a&nbsp;little bit easier? you can send me a mail too: <a href=\"mailto:public.sebastian@web.de\">public.sebastian@web.de</a></p>\r\n<p>Sebastian</p>",
+    "PostedDate": "2012-04-24T16:53:54.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

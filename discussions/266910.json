@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "648949",
+    "ThreadId": "266910",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; First ,thank you for your NetOffice lib.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I have written a word Ribbon addin application,but this project output type is Class Library.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I want to install my application to my friend's computer,could you tell me how to publish it as a .exe file?</p>\r\n<p>Thank you.</p>\r\n",
+    "PostedDate": "2011-07-28T06:28:02.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "648974",
+    "ThreadId": "266910",
+    "Html": "<p>a .dll file was loaded by another application and its not possible to make an exe file that runs as addin.<br />what you have to do is copy your addin asssembly and the netoffice assemblies to a folder on the target system.<br />as next step register the addin via .NET Utility <a href=\"http://msdn.microsoft.com/en-us/library/tzat5yw6%28v=vs.71%29.aspx\">RegAsm</a> thats all. another way is to build a setup routine with msi installer, this was supported by visual studio.(i'm not sure also vs express)<br /><br /><br /><br /></p>",
+    "PostedDate": "2011-07-28T06:52:09.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "649384",
+    "ThreadId": "266910",
+    "Html": "<p>Thank you very much</p>",
+    "PostedDate": "2011-07-28T23:43:25.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658221",
+    "ThreadId": "266910",
+    "Html": "<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; First,Thank you for your help,i excute RegAsm to publish word addin application .</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RegAsm successfully but the new Ribbon Tab can not display in a Word.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In the VS2010 or SharpDevelope IDE,press F5 debug project ,the new Ribbon Tab can display in a word.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Could you help me ?</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you</p>",
+    "PostedDate": "2011-08-15T02:54:25.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658370",
+    "ThreadId": "266910",
+    "Html": "<p>hello dx,</p>\r\n<p>gimme few infos about operating system and word version please.<br />after the registration check your addin registry key:<br />HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\Word\\Addins\\{ProgId from Your Addin}<br />You see here on the right side: Load Behaviour: 3<br />After start word the value 3 is changed from 3 to 2 ?<br /><br /></p>",
+    "PostedDate": "2011-08-15T08:57:42.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658787",
+    "ThreadId": "266910",
+    "Html": "<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I have closed this problem cause of we need add a parameter which is CodeBase.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example, RegAsm ***.dll /codebase</p>\r\n<p>Thank you very much!</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-08-16T05:11:45.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658789",
+    "ThreadId": "266910",
+    "Html": "<p>no problem. btw: in the addin examples i do the codebase entry manualy in the register function and you don't the /codebase param.</p>",
+    "PostedDate": "2011-08-16T05:15:12.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

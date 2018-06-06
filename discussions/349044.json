@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "812015",
+    "ThreadId": "349044",
+    "Html": "<p>Is there an equivalent of Globals.ThisAddIn.Application in NetOffice</p>",
+    "PostedDate": "2012-03-17T18:53:40.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "812103",
+    "ThreadId": "349044",
+    "Html": "<p>Hello,<br /><br />NetOffice is designed as substitute for the interop assemblies. These Globals are VSTO specific. VSTO is an own concept/framework top of the interop assemblies. thats the reason&nbsp;for, its easy to convert a interop assembly project to NetOffice&nbsp;but more difficult to convert a VSTO&nbsp;project.<br /> anway, the autor from the Excel-DNA project suggest me to create a globals module 3 weeks ago. this module is not excactly the same as VSTO.<br />its the &lt;Global&gt; module with all&nbsp;the nice&nbsp;helpermethods und properties(also application object)&nbsp;what you know from VBA maybe, this module comes with NetOffice 1.4.1 next week.&nbsp;for the future i want more VSTO features in NetOffice of course, its still a&nbsp;young project :-)&nbsp;<br /><br />*Sebastian</p>",
+    "PostedDate": "2012-03-18T04:17:11.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1085077",
+    "ThreadId": "349044",
+    "Html": "Similar to the question above I used to use the line below in a static function to return a reference to the com addin:\r<br />\n<br />\nreturn Globals.ThisAddin;\r<br />\n<br />\n<br />\nCan you please tell me how I can get a reference to the current addin object.\r<br />\n<br />\nPS only been using this one day and it looks like a great project, thanks.\r<br />\n<br />\nAT<br />\n",
+    "PostedDate": "2013-08-26T13:11:38.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1085096",
+    "ThreadId": "349044",
+    "Html": "NO spend a static helper module for the office application but not for the adinn instance currently (except for the NO tools namespace with more options)\r<br />\nbut its easy to implement i find:\r<br />\n// example\r<br />\nclass MyAddin\r<br />\n{<br />\n<pre><code>MyAddn()\n{\n   _singleton = this;\n}\ninternal static Addin Singleton { get{ return _singleton;} } \nprivate static Addin _singleton;</code></pre>\n\n}\r<br />\n<br />\n// usage\r<br />\nreturn MyAddin.Singleton;\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-08-26T14:07:26.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1085106",
+    "ThreadId": "349044",
+    "Html": "Sorry I didn't read you code properly, you are answering my question I will give it a go now <br />\n<br />\nCheers<br />\n<br />\nAT<br />\n",
+    "PostedDate": "2013-08-26T14:27:22.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1085118",
+    "ThreadId": "349044",
+    "Html": "Yep that works thank you so much :)<br />\n",
+    "PostedDate": "2013-08-26T14:57:06.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

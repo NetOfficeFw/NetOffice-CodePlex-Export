@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1079520",
+    "ThreadId": "453150",
+    "Html": "Hi\r<br />\n<br />\nhow can I work with the visio dll? I tried it the same why like word/excel/powerPoint but I'll get an error.\r<br />\n<br />\nI add the dll references and tried to load like this:<br />\n<pre><code>object visioProxy = System.Runtime.InteropServices.Marshal.GetActiveObject(&quot;Visio.Application&quot;);\nVisio.Application visioApplication = new Visio.Application(null, visioProxy);</code></pre>\n\nBut get an error :&quot; Interop typ 'NetOffice.VisioApi.Apllication' cannot be embedded. Use the applicable interface instead&quot;.\r<br />\n<br />\nWhich Interface should I use?\r<br />\n<br />\nI hope u can help me, THX.<br />\n",
+    "PostedDate": "2013-08-12T05:27:18.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1079523",
+    "ThreadId": "453150",
+    "Html": "you have to set the reference property 'embed interop types' to false for all NetOffice assemblies.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-08-12T05:37:21.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1079524",
+    "ThreadId": "453150",
+    "Html": "oh ok it's working. THX<br />\n",
+    "PostedDate": "2013-08-12T05:40:09.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

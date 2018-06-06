@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1491244",
+    "ThreadId": "660763",
+    "Html": "can we work with net office without have ms office software installed in the machine?\r<br />\nThe reason is we don't have msoffice in all the machines and we don't want to depend our CI machines with  msoffice .Please let me know if I am not clear.\r<br />\n<br />\nThanks,\r<br />\nSwathi<br />\n",
+    "PostedDate": "2017-01-17T20:40:05.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491294",
+    "ThreadId": "660763",
+    "Html": "NetOffice is an Office automation Framework.\r<br />\nYou need to have Office installed in some version.\r<br />\nYou find a lot of projects like Closed XML or DocX here on codeplex to deal with Office documents and need for MS Office installed.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2017-01-18T09:41:06.637-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1494287",
+    "ThreadId": "660763",
+    "Html": "if you have to have ms office installed on your computer what is the point of NetOffice I was under the impression NetOffice would create word documents and excel spreadsheets without the need to have ms office installed.<br />\n",
+    "PostedDate": "2017-03-18T08:56:40.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1494297",
+    "ThreadId": "660763",
+    "Html": "NetOffice is a smart replacement for MS Office PIAs. If you don't know what a PIA is, please Google it.<br />\n",
+    "PostedDate": "2017-03-18T17:32:54.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

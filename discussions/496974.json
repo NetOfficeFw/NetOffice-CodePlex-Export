@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1165376",
+    "ThreadId": "496974",
+    "Html": "Hi,<br />\n<br />\nWith some experience in VBA and OOP, but beginner in C# and COM programming, I decided to take Office programming to the next level with COM component thanks to NetOffice.<br />\n<br />\nI am looking to build a CustomTaskPane in Excel to list all Named Range of a Workbook. <br />\nI used the CTP example given with NetOffice (list of customers) as a &quot;template&quot; to build my add-in.<br />\n<br />\nAt Excel Startup, I got a &quot;see inner exception(s)&quot; error. After some investigation, I figured out I cannot access <em>Addin.Application.Names</em> (Named range collection) at launch of the add-in, as (I suppose) no workbook is opened, so no Names collection is available.<br />\n<br />\nI am trying to encapsulate my code in a try / catch procedure<br />\n<pre><code>try {\n  ... \n     foreach (Excel.name XLName in Addin.Application.Names)  \n  ...\n} catch (Exception ex) {\n  ...\n} </code></pre>\n\nbut the error is still here.<br />\n<br />\nAm I missing something ? or how/when can I use Addin.Application.Names ?<br />\nIs catching exception not sufficient ?<br />\n<br />\nThanks in advance for your help!<br />\n",
+    "PostedDate": "2014-01-14T08:02:54.617-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1165674",
+    "ThreadId": "496974",
+    "Html": "sounds like the error occures in another place. may your taskpane instance? when its possible, send me a min. sample solution to public.sebastian[at]web.de i want clearify the situation for you.\r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2014-01-14T09:43:32.417-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1165755",
+    "ThreadId": "496974",
+    "Html": "Thanks for your reactive reply.<br />\n<br />\nYou were right, the problem came from the CTP instance creation (i did not change the name of the add-in in the properties of the project - still learning).<br />\nI manage to move my way forward on my project : get the list populated and some basic interaction.<br />\nAs I am moving forward, I have some additional questions that would definitly help me to move faster in this new &quot;land&quot; of C# and COM.<br />\n<ul>\n<li>\nFrom what I read on the net, it is not possible to select a range that is not in the activesheet. That you have to first activate the sheet, then select the range.<br />\nIn VBA you could have done a <code>Application.Range(&quot;Sheet1!A1:B2&quot;).Select</code> to get the right range in the right sheet selected.<br />\n=&gt; Could you confirm that it is not the case in NetOffice or COM (i.e. <code>Addin.Application.get_Range(&quot;Sheet1!A1:B2&quot;).Select()</code> or equivalent will not work) ? <br />\n</li>\n<li>\nFrom what I understand, COM object are &quot;silos&quot; and therefore each object must be invoked (first activate the sheet, then select the range) in order to work. <br />\n=&gt; Is that correct ?<br />\n</li>\n<li>\nLast point : how can I debug my addin within Excel ? Could not find any elements on this.<br />\n</li>\n</ul>\nThanks a lot for your time and help. <br />\nYour library is brilliant and I hope I will soon have the level to get it work perfectly with what I need.<br />\n",
+    "PostedDate": "2014-01-14T10:11:15.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1165984",
+    "ThreadId": "496974",
+    "Html": "hey man,\r<br />\n<br />\nas first i want explain how its possible to debug a managed office addin.\r<br />\n1.) go to the project options =&gt; top main menu=&gt;project=&gt;$myProjectProperties (sorry my VS is in german, i hope its the same in yours)<br />\n<ol>\n<li>go to the debbuging tab in the project options dialog</li>\n<li>\nchange the start action from &quot;start project&quot; to &quot;start external program&quot; and choose excel.exe in the openfile dialog.<br />\n</li>\n</ol>\nthats all. now you can set breakpoints and use all other debugging features.\r<br />\n<br />\nthe second one. your example select a range for the current active sheet(its failed without an active sheet. not sure what does VBA in this case). Range or get_Range means the same in NO. (get_Range is just for compatibility with the stupid plain interop assemblies from Microsoft because C# can't use properties with arguments)\r<br />\n<br />\nthe third: &quot;COM Objects&quot; is not realy true. we say &quot;COM proxies&quot;, because the original instance lives still in the COM server memory(office application) all what you have is a substitute, just a proxy. But you dont have to activate a COM proxy before use(In your scenario, its just an Excel behaviour.\r<br />\n) but you have to make sure to dispose a COM proxy after using because the instance in the office COM server memory lives so long as more &gt;0 registered proxies exists.  Its a common problem in the .net world that the office instance not dies after quit and still live in memory because not all proxies are disposed from client caller. VBA and VB6 does this more intelligent and dipose com proxies automaticly for you if a proxy its no longer used.\r<br />\n<br />\nNO use a special concept to handle this problem, in other words, NO make sure, its impossible to forget proxy release (dispose9 . I suggest you to have a look for the NO tutorials section. specialy the first 3 tutorials about COM proxy management.\r<br />\n<br />\n*sebastian \r<br />\n<br />\n<br />\n<br />\n \r<br />\n<br />\n \r<br />\n<br />\n  . <br />\n",
+    "PostedDate": "2014-01-14T11:29:56.57-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

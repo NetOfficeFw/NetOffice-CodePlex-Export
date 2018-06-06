@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1076782",
+    "ThreadId": "452440",
+    "Html": "Hey,\r<br />\n<br />\ndo someone know how I can use something like this, cause I dont want to insert each Cell separatly?\r<br />\n<br />\nExcel.Range r = Worksheet.Range(&quot;A3;A5;$A$29;E10&quot;)?\r<br />\n<br />\n<br />\n<br />\nif I try this, I get a COM Exception, \r<br />\nI hope someone can help.\r<br />\n<br />\nregards and sorry for my english\r<br />\n<br />\nbot1q<br />\n",
+    "PostedDate": "2013-08-05T06:35:46.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1076783",
+    "ThreadId": "452440",
+    "Html": "looks like is localized system and you need another seperator. try &quot;,&quot; instead of &quot;;&quot;\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-08-05T06:43:33.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077130",
+    "ThreadId": "452440",
+    "Html": "ty for the fast awnser, still dont work get the same com exception.\r<br />\n<br />\nMaybe I explained bad what i want to do.\r<br />\n<br />\nI need the aquivalent to this vba &quot;formula&quot; Range(&quot;D56,F57,D61,C59,C54,D53,H54&quot;)\r<br />\nthat is what i do in code<br />\n<blockquote>\nExcel.Range r = dataToBeWritten.Sheet.Range(dataToBeWritten.RangeString);<br />\n</blockquote>\nSheet have the type:  Excel.Worksheet\r<br />\n<br />\nusing Excel = NetOffice.ExcelApi;\r<br />\nExcel.Worksheet sheet;\r<br />\n<br />\nThis Exception i get: HRESULT: 0x800A03EC&quot;\r<br />\nI use the new version of Netoffice\r<br />\n<br />\n<br />\nregards<br />\n",
+    "PostedDate": "2013-08-06T01:17:55.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077145",
+    "ThreadId": "452440",
+    "Html": "k Problem solved, the COMException is throwed if in the string are &quot;$&quot;, so first of all delete all &quot;$&quot; in the string and use &quot;;&quot; Seperator.\r<br />\n<br />\nTy<br />\n",
+    "PostedDate": "2013-08-06T02:08:12.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077235",
+    "ThreadId": "452440",
+    "Html": "are they any maxiama cells?<br />\n",
+    "PostedDate": "2013-08-06T06:12:27.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077241",
+    "ThreadId": "452440",
+    "Html": "did you mean the maximum cell number is this way? the maximum number is 2^32 as far i known and the range address string &quot;A1,B2,....&quot; must  be &lt;=64 in lenght.<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-08-06T06:28:09.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

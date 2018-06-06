@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1453874",
+    "ThreadId": "648089",
+    "Html": "Do I need Office instaled to use NetOffice?<br />\n",
+    "PostedDate": "2015-11-27T03:43:44.863-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1453878",
+    "ThreadId": "648089",
+    "Html": "In short: yes. From documentation:\r<br />\n<br />\nNetOffice eliminates these disadvantages and remains a 1:1 wrapper that is syntactically and semantically identical to the interop assemblies.  <br />\n",
+    "PostedDate": "2015-11-27T05:00:44.79-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1453921",
+    "ThreadId": "648089",
+    "Html": "<em>true</em> NetOffice is an API for automation and designed to create plugins/addins in an easy way. the good news: you find a lot of awesome projects here on codeplex to create office documents without MS-Office. for example &quot;ClosedXML&quot; - Excel and &quot;DocX&quot; - Word.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-11-27T23:08:13.91-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

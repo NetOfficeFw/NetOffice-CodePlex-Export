@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "853983",
+    "ThreadId": "361024",
+    "Html": "\r\n<p>Hi Sebastian,</p>\r\n<p>&nbsp;&nbsp;&nbsp; Very Cool library, I am trying to supply int parameters to a range call, on a worksheet, this works in 2007 interop, but not here. I've traced to the reflection property invoke, it does'nt matter if I use a string paramters or numeric\r\n ones.</p>\r\n<p>Any suggestions?</p>\r\n<p>Thx</p>\r\n<p>Dave</p>\r\n",
+    "PostedDate": "2012-06-26T11:38:05.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "854624",
+    "ThreadId": "361024",
+    "Html": "<p>hey dave,<br /><br />do you have a code snippet for me?<br /><br />var v = worksheet.Range(1); // something like this?<br /><br />Sebastian<br /><br /><br /></p>",
+    "PostedDate": "2012-06-27T15:05:45.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "854751",
+    "ThreadId": "361024",
+    "Html": "<p>Here you go.</p>\r\n<pre style=\"font-family: Consolas; font-size: 13; color: black; background: white;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: blue;\">public</span>&nbsp;<span style=\"color: blue;\">static</span>&nbsp;<span style=\"color: #2b91af;\">List</span>&lt;<span style=\"color: #2b91af;\">String</span>&gt;&nbsp;GetColumnNames(Excel.<span style=\"color: #2b91af;\">Range</span>&nbsp;TopLeft)\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: #2b91af;\">List</span>&lt;<span style=\"color: #2b91af;\">String</span>&gt;&nbsp;columnNames&nbsp;=&nbsp;<span style=\"color: blue;\">new</span>&nbsp;<span style=\"color: #2b91af;\">List</span>&lt;<span style=\"color: #2b91af;\">String</span>&gt;();\r\n \r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: blue;\">bool</span>&nbsp;finished&nbsp;=&nbsp;<span style=\"color: blue;\">false</span>;\r\n \r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: blue;\">int</span>&nbsp;top&nbsp;=&nbsp;TopLeft.Row;\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: blue;\">int</span>&nbsp;left&nbsp;=&nbsp;TopLeft.Column;\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: blue;\">int</span>&nbsp;columnCount&nbsp;=&nbsp;0;\r\n \r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: blue;\">while</span>&nbsp;(!finished)\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: #2b91af;\">String</span>&nbsp;cellValue&nbsp;=&nbsp;TopLeft.Worksheet.Range(top,&nbsp;left&nbsp;+&nbsp;columnCount).FormulaR1C1.ToString();<br /><br /><br /></pre>",
+    "PostedDate": "2012-06-27T23:02:21.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "854762",
+    "ThreadId": "361024",
+    "Html": "<p>i do 2 tests with interop and netoffice and excel 2007. <br /><br />var v = worksheet.Range(1,20); // netoffice<br />var v = worksheet.Range[1,20]; // interop<br /><br />i got the same exception: HRESULT: 0x800A03EC<br />but worksheet.Cells(1,20) works fine.<br /><br />did you use the interop assemblies, the primary interop assemblies or VSTO ?<br /><br />Sebastian</p>",
+    "PostedDate": "2012-06-27T23:25:52.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "854780",
+    "ThreadId": "361024",
+    "Html": "<p>Ah the old problem between the keyboard and the chair ;)</p>\r\n<p>There is no overload of Range that takes numeric! sorry to have wasted your time.</p>\r\n<p>my fault, all I can do is plead tirdness in the first ;)</p>\r\n<p>thx Dave</p>",
+    "PostedDate": "2012-06-28T00:08:10.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1080357",
+    "ThreadId": "453346",
+    "Html": "Hi All,<br />\n<br />\nI have some code that allows the user to open a file, edit it, then save it with a new name (SaveAs). The code saves the file with the new name &amp; then deletes that older file. <br />\nThis code used to work properly on Word 2003 &amp; 2007, but not 2010 <strong>BEFORE</strong> I switched to NetOffice.<br />\n<br />\nOn Word 2010, the code fails at the delete function because the newer version of word is not dropping the file handle from the first named file when user saves it to the new filename. In older versions (2003 &amp; 2007) this handle was released as soon as file was saved to a different name. Using NetOffice, the problem now occurs with all versions.<br />\n<br />\nI can't seem to figure out how to release the old document filename so the old document file can be deleted.<br />\n<br />\nAny ideas?<br />\n<br />\nThanks &amp; regards,<br />\n",
+    "PostedDate": "2013-08-13T22:29:30.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1080482",
+    "ThreadId": "453346",
+    "Html": "do you have a code snippet for me for testing?\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-08-14T05:27:26.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1080837",
+    "ThreadId": "453346",
+    "Html": "The code I'm referring to is part of a rather lengthy code. I'll try to simplify the code &amp; get back to you. \r<br />\n<br />\nThanks <br />\n",
+    "PostedDate": "2013-08-15T00:09:21.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1081772",
+    "ThreadId": "453346",
+    "Html": "Here's the code snippet:<br />\n<pre><code>Private wordApp As NetOffice.WordApi.Application\nPrivate wordDoc As NetOffice.WordApi.Document\n\nPrivate Sub btnSaveAs_Click(sender As Object, e As EventArgs) Handles btnSaveAs.Click\n        ' Save As\n        Try\n            Dim oldFileName As String = Me.wordDoc.FullName\n            Dim newFileName As String = Me.txtNewFileName.Text\n            Me.wordDoc.SaveAs2(newFileName)\n            IO.File.Delete(oldFileName)   'Throws Exception\n\n        Catch ex As Exception\n            MsgBox(ex.Message &amp; vbCrLf &amp; ex.StackTrace)\n        End Try\nEnd Sub</code></pre>\n\n&amp; the exception is:<br />\n<pre><code>The process cannot access the file 'oldFileName' because it is being used by another process.\nStack Trace:    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)\n   at System.IO.File.InternalDelete(String path, Boolean checkHost)\n   at System.IO.File.Delete(String path)</code></pre>\n\nPlease note that for Word 2003 &amp; 2007, I can delete the <em>oldFileName</em> file from Windows Explorer after I SaveAs, while the file will be locked to Word process in Word 2010:\r<br />\n<img src=\"http://s21.postimg.org/455re7v2f/Word_2010_error_message.png\" alt=\"Image\" /> \r<br />\n<br />\nThe documents I'm referring to can be either .doc or .docx\r<br />\n<br />\nYour help is really appreciated, thanks.<br />\n",
+    "PostedDate": "2013-08-17T22:29:37.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1081781",
+    "ThreadId": "453346",
+    "Html": "my first test works fine ( i use SaveAs instead of SaveAs2 because i use OfficeXP)\r<br />\ni do a new test on my workplace with office 2010 (monday)\r<br />\n<br />\ni have modified the example01.vb  from the NetOffice examples.<br />\n<pre><code>    Public Sub RunExample() Implements ExampleBase.IExample.RunExample\n\n        ' start word and turn off msg boxes\n        Dim wordApplication As New Word.Application\n        wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone\n\n        ' add a new document\n        Dim newDocument As Word.Document\n        newDocument = wordApplication.Documents.Add()\n\n        ' more code here !!!\n\n        ' we save the document as .doc for compatibility with all word versions\n        Dim documentFile As String = String.Format(&quot;{0}\\Example01{1}&quot;, _hostApplication.RootDirectory, &quot;.doc&quot;)\n        Dim documentFile2 As String = String.Format(&quot;{0}\\Example01{1}&quot;, _hostApplication.RootDirectory, &quot;2.doc&quot;)\n\n        Dim wordVersion As Double = Convert.ToDouble(wordApplication.Version, CultureInfo.InvariantCulture)\n        If (wordVersion &gt;= 12.0) Then\n            newDocument.SaveAs(documentFile, WdSaveFormat.wdFormatDocumentDefault)\n        Else\n            newDocument.SaveAs(documentFile)\n        End If\n\n        SaveNew(newDocument, documentFile, documentFile2)\n\n        ' close word and dispose reference\n        wordApplication.Quit()\n        wordApplication.Dispose()\n\n        ' show dialog for the user(you!)\n        _hostApplication.ShowFinishDialog(Nothing, documentFile)\n\n    End Sub\n\n    Private Sub SaveNew(ByVal document As Word.Document, ByVal oldFileName As String, ByVal newFileName As String)\n        Try\n            document.SaveAs(newFileName)\n            IO.File.Delete(oldFileName)   'Throws Exception\n\n        Catch ex As Exception\n            MsgBox(ex.Message &amp; vbCrLf &amp; ex.StackTrace)\n        End Try\n    End Sub\n</code></pre>\n\n",
+    "PostedDate": "2013-08-17T23:44:43.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1081788",
+    "ThreadId": "453346",
+    "Html": "btw: please tell me your operating system (windows version, looks like window <em>fuckyou</em>8)<br />\n",
+    "PostedDate": "2013-08-18T00:37:05.4-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1081840",
+    "ThreadId": "453346",
+    "Html": "What's the difference between SaveAs &amp; SaveAs2? I tried both &amp; got the same results.<br />\n<br />\nAs for the document format, the original code expects multiple formats so it looks something like this:<br />\n<pre><code>Dim Word_Format As WdSaveFormat\nSelect Case filExt.ToLower     \n        Case &quot;.rtf&quot;\n                Word_Format = WdSaveFormat.wdFormatRTF\n        Case &quot;.doc&quot;\n                Word_Format = WdSaveFormat.wdFormatDocument\n        Case &quot;.docx&quot;\n                Word_Format = WdSaveFormat.wdFormatXMLDocument\n        Case &quot;.txt&quot;\n                Word_Format = WdSaveFormat.wdFormatText\n        Case &quot;.xml&quot;\n                Word_Format = WdSaveFormat.wdFormatXML\n        Case &quot;.dot&quot;\n                Word_Format = WdSaveFormat.wdFormatTemplate\n        Case &quot;.html&quot;\n                Word_Format = WdSaveFormat.wdFormatHTML\n        Case Else\n                Word_Format = WdSaveFormat.wdFormatRTF\nEnd Select\n\nMe.wordDoc.SaveAs2(newFileName, Word_Format)</code></pre>\n\nI tried the code on Windows 7 (Word 2003, 2007, &amp; 2010), &amp; Windows 8 (Word 2010), &amp; got the exception in all cases.<br />\n",
+    "PostedDate": "2013-08-18T08:13:01.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1085641",
+    "ThreadId": "453346",
+    "Html": "Hi,\r<br />\n<br />\nAny updates about this issue?\r<br />\n<br />\nBest regards<br />\n",
+    "PostedDate": "2013-08-27T22:16:22.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1315615",
+    "ThreadId": "453346",
+    "Html": "Before  the statement<br />\n<pre><code>IO.File.Delete(oldFileName)</code></pre>\n\nyou have to close the document which can be done by <br />\n<pre><code>document.Close(WdSaveOptions.wdDoNotSaveChanges, oMissing, oMissing);</code></pre>\n\nAeter this, make a delete call. <br />\n<br />\nHope this helps.<br />\n",
+    "PostedDate": "2014-10-22T02:35:14.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

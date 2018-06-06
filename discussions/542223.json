@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1233987",
+    "ThreadId": "542223",
+    "Html": "Hi team,\r<br />\n I am getting error when it tries to create excel using Netoffice. It is working in my local but when I deploy it to the server I am getting below error. Can anybody please help me.\r<br />\n<br />\n System.ArgumentException: progId not found. Excel.Application<br />\n",
+    "PostedDate": "2014-04-14T11:33:30.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234002",
+    "ThreadId": "542223",
+    "Html": "typical is(progId not found. means microsoft excel is not present(not installed) on this system.\r<br />\nyou have 2 options now:\r<br />\n<br />\na)  Make sure excel is present(installed). (if you try accessing from an asp.net application, let me know)\r<br />\nb) create and manipulate an excel file directly(without excel). since 2007 its very easy. Excel use an open xml file format. The Closed XML project(<a href=\"https://closedxml.codeplex.com/\" rel=\"nofollow\">https://closedxml.codeplex.com/</a>) available on codeplex, is very easy to use. Just give'm a try,\r<br />\n<br />\n<em>hope it's helpful</em>\r<br />\n*sebastian<br />\n",
+    "PostedDate": "2014-04-14T12:06:27.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234012",
+    "ThreadId": "542223",
+    "Html": "Thank You Sebastian, yes I am using asp.net to build this, I cannot install excel because it is server where I don't have access.<br />\n",
+    "PostedDate": "2014-04-14T12:25:14.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234025",
+    "ThreadId": "542223",
+    "Html": "Hi Sebastian,\r<br />\n Can I create multiple sheets in one book using Closed XML?<br />\n",
+    "PostedDate": "2014-04-14T12:47:25.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234484",
+    "ThreadId": "542223",
+    "Html": "of course, its possible with ClosedXML.\r<br />\n<br />\nabout the server situation:\r<br />\nthis thread is may helpful for you. (check the link in last posting)\r<br />\n<a href=\"https://netoffice.codeplex.com/discussions/471485\" rel=\"nofollow\">https://netoffice.codeplex.com/discussions/471485</a>\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-04-15T14:04:26.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

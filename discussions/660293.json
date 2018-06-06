@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1490189",
+    "ThreadId": "660293",
+    "Html": "I am new to NetOffice and I am using it to create a robust application using Excel as the UI with lots of work begin done behind the scenes.\r<br />\n<br />\nI generate reports so lots of Excel model access.  At the moment I have not optimized the reading or ranges and am reading rows and cells of rows.  It is currently slow but I haven't finished the application and waiting to optimize at the end.\r<br />\n<br />\nI work with a lot of tables.  So list rows and list columns get used alot.<br />\n\r<br />\n<strong>So the problem:</strong>\r<br />\nWhen I close Excel it hangs for a long time trying to close.  Sometimes it doesn't close with the CPU spiked.\r<br />\n<br />\nI do not have any on close code.  I assume it is the clean up process.  The disposing of all the COM objects.  I have read the article on how NetOffice handles COM Objects.  I'll read it again though.  I even tried adding some dispose calls to try to minimize the amount of objects needing disposal at the end; however, I have run into problems with objects being disposed of while I still need them.  (my design issue).\r<br />\n<br />\nWhat is the recommend pattern for usage, disposal and clean up?<br />\n",
+    "PostedDate": "2016-12-22T09:27:23.103-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1490248",
+    "ThreadId": "660293",
+    "Html": "How many proxies you have at the end?\r<br />\n(&lt;=1000 is the recomended maximum based on my experience.)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-12-23T19:16:04.863-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1490576",
+    "ThreadId": "660293",
+    "Html": "Oh I have way, way, way more than that.\r<br />\n<br />\nI have not been worrying about disposing and I pass ranges around.  Is there a particular pattern you use for accessing the Excel Model?\r<br />\n<br />\nWhat I am doing at the moment is using Excel like a database.  One sheet contains data and I have created gui's that manipulate the data in an Excel Table.\r<br />\nSo I get the list object, get a row, parse it into an object.  Manipulate the object and push the changes back into the row.  One cell at a time ( I know changing this into an array will solve some problems).\r<br />\n<br />\nBut I do alot of grab a list row, read / write / push back.\r<br />\n<br />\nI know that is not a lot of information but any direction would be great!\r<br />\n<br />\nChris<br />\n",
+    "PostedDate": "2017-01-03T08:49:25.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491025",
+    "ThreadId": "660293",
+    "Html": "yeah you should not be passing back one cell at a time, \r<br />\n<br />\nbut this should not case the slowness at close down? <br />\n",
+    "PostedDate": "2017-01-12T03:45:06.373-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

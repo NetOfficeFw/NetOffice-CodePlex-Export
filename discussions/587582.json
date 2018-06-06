@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "1366108",
+    "ThreadId": "587582",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nNetOffice is a very good library to develop native office Addins. I have ported our VSTO-Addin to your library. Now we have fast start up times and we do not need the ugly VSTO-Runtime anymore.\r<br />\n<br />\nGreat work!\r<br />\n<br />\nIt would be nice when your library can support Office 2016 in the near future. Today I have installed the preview of Office 2016 and your library gave me an error message box in Outlook:\r<br />\n<br />\n&quot;Initialize: Outlook version is not defined. SetOutlookVersion.&quot;\r<br />\n<br />\nKirk Koenigsbauer wrote in his Blog:\r<br />\n<br />\n&quot;We’re not making any changes to Macros or Add-ins in this release. It’s rare that “no changes” is a something we’d want to highlight, but we think it’s worth celebrating the consistency in the programming model across releases. We understand how important this is and we’re committed to a high level of compatibility as we continue to innovate.&quot;\r<br />\n<br />\nSo I think that the Office 2016 API is full compatible to the Office 2013 API.\r<br />\n<br />\nRegards\r<br />\n<br />\nNico<br />\n",
+    "PostedDate": "2015-03-17T06:46:37.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366115",
+    "ThreadId": "587582",
+    "Html": "okay then!\r<br />\n<br />\nthe 2016 preview is available for anyone?\r<br />\ni need this to analyze the automation model and generate new assemblies.\r<br />\n(a link was helpful but i want figure out today)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-17T07:27:24.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366135",
+    "ThreadId": "587582",
+    "Html": "Hi,<br />\n<br />\n<br />\nhere is the link:<br />\n<br />\n<a href=\"https://connect.microsoft.com/office/Downloads/DownloadDetails.aspx?DownloadID=57208\" rel=\"nofollow\">https://connect.microsoft.com/office/Downloads/DownloadDetails.aspx?DownloadID=57208</a><br />\n<br />\nBut you must have a Microsoft account.<br />\n",
+    "PostedDate": "2015-03-17T08:44:11.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366146",
+    "ThreadId": "587582",
+    "Html": "okay, now i have a connect accout. \r<br />\nbut you url doesnt works for me.\r<br />\n<br />\nit seems to be you have to pass some hurdles(and enable  f****g javascript):\r<br />\n<a href=\"https://connect.microsoft.com/office/Survey/NominationSurvey.aspx?SurveyID=17274&amp;ProgramID=8819\" rel=\"nofollow\">https://connect.microsoft.com/office/Survey/NominationSurvey.aspx?SurveyID=17274&ProgramID=8819</a>\r<br />\n<br />\nanyway, i want try this today :)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-17T09:01:34.257-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366617",
+    "ThreadId": "587582",
+    "Html": "state notification: waiting for microsoft agree my submission.\r<br />\n<br />\nbtw: &quot;Initialize: Outlook version is not defined. SetOutlookVersion.&quot; \r<br />\nthis is not a netoffice exception message. generaly.\r<br />\n(I see no reason why NetOffice currently doesnt works with 2016.\r<br />\nJust some limitations, new features not available and missing attribute/documentation support)\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-18T05:04:16.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1366860",
+    "ThreadId": "587582",
+    "Html": "Hi Sebastian,<br />\n<br />\nI have created a new simple Outlook-Addin with NetOffice 1.7.3. Now it works. I don't now why but the message box is gone.<br />\n<br />\nThanks for your support!<br />\n<br />\nNico<br />\n",
+    "PostedDate": "2015-03-19T00:36:20.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1367524",
+    "ThreadId": "587582",
+    "Html": "Office 2016 does not introduce any new features for add-ins:<br />\n<blockquote>\nMacros and Add-ins—We’re not making any changes to Macros or Add-ins in this release. It’s rare that “no changes” is a something we’d want to highlight, but we think it’s worth celebrating the consistency in the programming model across releases. We understand how important this is and we’re committed to a high level of compatibility as we continue to innovate.  (See dev.office.com for more on how we’re innovating in Office extensibility.)<br />\n<br />\n<a href=\"http://blogs.office.com/2015/03/16/announcing-the-office-2016-it-pro-and-developer-preview/\" rel=\"nofollow\">http://blogs.office.com/2015/03/16/announcing-the-office-2016-it-pro-and-developer-preview/</a><br />\n</blockquote>\n",
+    "PostedDate": "2015-03-20T06:25:14.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1367588",
+    "ThreadId": "587582",
+    "Html": "thanks, i want analyze this as fast as possible. we will see its true or not.\r<br />\n<br />\n<br />\nBTW: i do this also in 2013 (3 years ago)\r<br />\n<br />\ncompletly new stuff in Office 2013:\r<br />\n<a href=\"https://netofficedotnet.wordpress.com/2012/07/20/whats-new-in-office-2013\" rel=\"nofollow\">https://netofficedotnet.wordpress.com/2012/07/20/whats-new-in-office-2013</a>\r<br />\n<br />\nchanges in existing stuff in Office 2103:\r<br />\n<a href=\"http://netoffice.codeplex.com/wikipage?title=TypeAdditionalsOffice2013Overview\" rel=\"nofollow\">http://netoffice.codeplex.com/wikipage?title=TypeAdditionalsOffice2013Overview</a>\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-03-20T09:13:50.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1401516",
+    "ThreadId": "587582",
+    "Html": "<h2>got a strange mail today from office pre-release program</h2>\nYou are receiving this email as part of the Office Pre-Release Program for Business and/or the Office Pre-Release Program for Home/Consumer\r<br />\n \r<br />\nHello Sebastian:\r<br />\n \r<br />\nAre you a frequent traveler? Are you always behind in your expense reports? Do those envelopes of receipts piling up give you a headache?\r<br />\n \r<br />\nIf this is you, we’re pleased to announce a pre-release opportunity that might take away some of that pain!\r<br />\n \r<br />\nNOTE:This opportunity is currently limited to US participants only.\r<br />\n \r<br />\nTo qualify you <em>must</em>:\r<br />\n \r<br />\nUse an iPhone as your primary mobile device\r<br />\nWork at a company that uses Concur as their Expense Reporting backend. Not sure if this is you? Does your expense system look like the following:\r<br />\n[]\r<br />\n \r<br />\nYou are actively travelingfor your job with at-least 3 domestic overnight trips a month. If you don’t have any travel in the next few weeks, then you will not qualify.<br />\n",
+    "PostedDate": "2015-04-03T06:48:35.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1431340",
+    "ThreadId": "587582",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nI haven't personally tried NetOffice with Office 2016 yet and you may be aware of the open availability of Office 2016 Preview already. But just in case, here's where you can get it:\r<br />\n<br />\n<a href=\"https://products.office.com/en-us/office-2016-preview\" rel=\"nofollow\">https://products.office.com/en-us/office-2016-preview</a>\r<br />\n<br />\nThey have a key posted right on that page and I didn't need to sign in to download the installer.\r<br />\n<br />\nHopefully it just works without too much effort. NetOffice is a great product and I'm very happy seeing that you're interested in continuing to support it.\r<br />\n<br />\nMike<br />\n",
+    "PostedDate": "2015-06-22T08:17:29.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

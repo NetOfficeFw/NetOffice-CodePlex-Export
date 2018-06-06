@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "947503",
+    "ThreadId": "404703",
+    "Html": "\r\n<p>Hello</p>\r\n<p>how I can walk throw all Sheets (not only worksheets)</p>\r\n<p>I try something</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>Excel.Workbook wb = xl.ActiveWorkbook;\r\n<span style=\"color:blue\">for</span> (<span style=\"color:blue\">int</span> i = 0; i &lt; wb.Sheets.Count; i&#43;&#43;) {                  \r\n         <span style=\"color:blue\">if</span> (wb.Sheets[i] <span style=\"color:blue\">is</span> Excel.Worksheet ) {                       \r\n             <span style=\"color:green\">//type of worksheet</span>\r\n          }\r\n           <span style=\"color:blue\">if</span> (wb.Sheets[i] <span style=\"color:blue\">is</span> Excel.Chart ) {\r\n               <span style=\"color:green\">//type of chart</span>\r\n          }\r\n          <span style=\"color:blue\">if</span> (wb.Sheets[i] <span style=\"color:blue\">is</span> Excel.Dialog){\r\n              <span style=\"color:green\">//type of dialog</span>\r\n         }                    \r\n }\r\n</pre>\r\n</div>\r\n<p></p>\r\n<p>Thanks for answer</p>\r\n<p>Radek</p>\r\n",
+    "PostedDate": "2012-11-27T02:39:20.107-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

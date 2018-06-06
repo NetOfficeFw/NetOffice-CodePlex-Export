@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1450728",
+    "ThreadId": "646931",
+    "Html": "hello;\r<br />\n<br />\ni'm trying to learn about using this API, but i'm having unknown exceptions that are not blocking my test application but always showing when running project : <br />\n<pre><code> Dim WordApp As NetOffice.WordApi.Application = New NetOffice.WordApi.Application()\n        WordApp.DisplayAlerts = NetOffice.WordApi.Enums.WdAlertLevel.wdAlertsNone\n        WordApp.Visible = False\n\n\n        Dim WordDoc As NetOffice.WordApi.Document = WordApp.Documents.Open(&quot;C:\\Users\\Abinn\\Desktop\\test.docx&quot;)\n\n        WordDoc.Close()\n        WordApp.Quit()\n        WordApp.Dispose()</code></pre>\n\n<strong>Exception levée : 'System.Runtime.InteropServices.COMException' dans NetOffice.dll</strong>\r<br />\n<br />\nmy code is too basic what is causing this<br />\n",
+    "PostedDate": "2015-11-03T05:25:17.813-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

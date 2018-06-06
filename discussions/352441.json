@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "824389",
+    "ThreadId": "352441",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>First thanks for the great library.</p>\r\n<p>I'm developing an Excel Add-In that needs to communiccate using a WCF service. Therfeore i neet my Add-In to load the app.config that i added to my project. Unfortuantelly Excel simply ignores the config file and the solution to directly edit the Excel.exe.config\r\n is a no-go for me.</p>\r\n<p>Could you give me a hint where i can tell Excel/.Net config system to load my file and make WCF configuration work. The Project is based on the&nbsp;COMAddinRibbonExample you ship with the library.</p>\r\n<p>Thanks in advance for any kind of help.</p>\r\n<p>kind regards,<br>\r\nChris</p>\r\n",
+    "PostedDate": "2012-04-16T06:45:53.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824539",
+    "ThreadId": "352441",
+    "Html": "<p>Hello Chris,<br /><br />I know this problem from my own projects and i dont have a simple solution for :(<br />What i do in this case is to shift the communication in a service or simple .exe assembly.<br />in other words, create a local .exe&nbsp;programm, this programm do all the things with WCF and provide these functionality to other local programs, also your addin. the easiest way to realize them is the&nbsp;COM Running Object Table. .NET still missing a lot shared features for desktop application development.<br />btw: this is a typical pattern. its not allowed for an Addin to establish an internet connection, you run here as an InProc Server, for local or external Firewall, the HostApplication&nbsp;is the bad guy here. Its a better way to shift the communication in an external process and provide some configuration for administrators.<br />if you need help about local process to process communication in .NET then gimme a sign.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-16T12:32:25.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824547",
+    "ThreadId": "352441",
+    "Html": "<p>Hi,</p>\n<p>Thanks a lot for your answer. So if i understand correctly there is simply no \"best practice\" solution for using WCF directly from the Add-In code... good to know, this is my first Office Add-In and you saved me from a lot of headache. As i have not done  any process communication on the windows platform it would be really great if you can give me hint to the right sources on the net to get into this stuff.</p>\n<p>[EDIT]:&nbsp;Some googling resulted in the possibility to use WCF over named pipes. Do you have any experience with that, as WCF is a technology i'm familiar with. Or is there any \"hidden\" office feature preventing that from working...</p>\n<p>thanks a lot,</p>\n<p>Chris</p>",
+    "PostedDate": "2012-04-16T13:01:04.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824581",
+    "ThreadId": "352441",
+    "Html": "<p>hello chris,<br /><br />[if you a german native speaker please gimme a hint].<br /><br />first: i have experience with named pipes as a nice alternative to shared memory, its okay to&nbsp;push signals&nbsp;but not anyone else.&nbsp;<br />Preliminary: What is the Running Object Table?<br />The ﻿﻿Running Object Table(also known as ROT) is a systemwide table in memory&nbsp;for running COM Components. Its easy to accesing these components with one call at runtime, also for .NET Components(with some prequisits)<br /><br />I use the Running Object Table most of the time.<br />The Running Object Table is great but works only in the same user context. for example. a windows service runs typical as Account:LocalSystem and typical programm runs in&nbsp;the context of the current user. The Running Object Table doenst support these situtation(safety first) The WIN32 API makes sure all calls are guilty in the current user context.<br /><br />What you have to dor for ROT Support:<br />For the server:<br />You can create a typical .NET class with some COM attributes. make sure the program is already running.(Autostart) any client can accesing these Component now in local desktop environment with one call. the office applications are usable in the same way. what i have to say is:&nbsp;NET doesnt suppport desktop application development.&nbsp;you&nbsp;need some line of code&nbsp;to create an entry.&nbsp;thats all:<br /><br />For the clients:&nbsp;&nbsp;.NET Clients have to call <a href=\"http://msdn.microsoft.com/de-de/library/system.runtime.interopservices.marshal.getactiveobject.aspx\">Marshall.GetRunnningObject</a>(with the progID given by the server)&nbsp;this is the same method you have called for runnig Office instances. Office use COM all of the the the time. For full development support you have to include the type library definition from the server application. now you can cast the object from the table to your type given by the libary. <br />&nbsp;<br />Summary: COM is an ummanaged standard and resolves problems you never kown in .NET(by design). But anyway, the basic idea is simple. Create a server and publish a type library.(These&nbsp;type library&nbsp;includes the&nbsp;server)&nbsp;these type library use client developers in her local programs. the type library contains stupid type definitions(not real code). a client converts the table object at runtime in&nbsp;a type from the published type library. the type library can use the objects now but keep in your mind. the objects are COM Proxies. i can create a sample solution for you with a server and a client. helpfull?<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-16T14:39:05.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824691",
+    "ThreadId": "352441",
+    "Html": "<p>Hallo,</p>\r\n<p>[Ja ich bin aus wien, also schreib ich jetzt mal einfach in Deutsch weiter. ]</p>\r\n<p>Ich bin deswegen auf WCF mit Named Pipes gekommen weil ich da die Technologie schon kenne bzw. schon viel mit WCF gemacht haben.Aber sch&ouml;n langsam d&auml;mmert mir das ich an der ganzen COM Interop problematik nicht vorbeikommen werde... bin bis jetzt in der Windowswelt mit purem .Net/Managed Code durchgekommen (prim&auml;r Web Apps/LOB Applikationen etc).</p>\r\n<p>Also ROT bietet mir zugang zu den laufenden Programen wenn ich das richtig verstehe, und aus der kann ich mir dann mein Interface Casten? Wie spielt das mit Async WCF zusammen BeginFoo/EndFoo? Ich kenne mich damit leider noch &uuml;berhaupt nicht aus.</p>\r\n<p>Wenn es f&uuml;r dich nicht zu viel Aufwand ist (will dich ich mit meinen Problemen aufhalten) w&uuml;rde ich das Angebot der example Solution gerne annehmen.&nbsp;</p>\r\n<p>Danke vielmals,<br />Christian&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-04-16T23:51:41.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824824",
+    "ThreadId": "352441",
+    "Html": "<p>Hallo,</p>\r\n<p>Ich habe eine Solution in in den Downloadbereich gestellt: Local Shared Data Example<br />Die Solution demonstriert wie ich das &uuml;blicherweise in meinen Projekten umsetze.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-17T05:31:37.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "824835",
+    "ThreadId": "352441",
+    "Html": "<p>Hallo Sebastian,</p>\r\n<p>Bin wirklich beeindruckt wieviel Aufwand Du in dieses Projekt und den Support steckst.</p>\r\n<p>Vielen, vielen Dank,<br />Christian</p>",
+    "PostedDate": "2012-04-17T05:58:54.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "825185",
+    "ThreadId": "352441",
+    "Html": "<p>Hallo Christian,<br /> <br /> Dankesch&ouml;n! Nat&uuml;rlich kann ich nicht zu jeder Zeit an NetOffice arbeiten bzw. zeitnahen guten Support liefern aber diese Woche gehts gerade mal wieder ;)<br /> Ein kurzer Hinweis zum Local Shared Data Example. Das Beispiel nutzt LateBinding und ist nur in der Lage einfache wie Typen wie String oder int vom Server ann den Client zu reichen. Es ist m&ouml;glich dies auch earlyBind auszuf&uuml;hren, d.h. ohne Wrapper auf der Client-Seite.  Man kann dabei auch mit echten Typen zur Entwicklungszeit arbeiten sowie eigene bzw. .NET Referenztypen wie XDocument weitergeben, dazu muss der Server jedoch als COM Komponente registriert werden was ein Deployment Erschwerniss bedeutet. In den meisten F&auml;llen  m&ouml;chte man dies nicht und geht lieber den einfachen Weg daher habe ich mich f&uuml;r das LateBinding Beispiel entschieden.<br /> <br /> Sebastian</p>",
+    "PostedDate": "2012-04-17T17:51:45.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

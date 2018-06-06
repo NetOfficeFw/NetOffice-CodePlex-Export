@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "850608",
+    "ThreadId": "360054",
+    "Html": "\r\n<p>I've downloaded the .rar file and opened it. Where do I extract the files to and how do I tell SharpDevelop where they are (do I need to do so)? Should this be a FAQ?</p>\r\n",
+    "PostedDate": "2012-06-18T16:29:23.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "859328",
+    "ThreadId": "360054",
+    "Html": "<p>Anyone?</p>",
+    "PostedDate": "2012-07-09T12:40:47.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "859332",
+    "ThreadId": "360054",
+    "Html": "<p>hello<br /><br />its necessary to tell SharpDevelop the assembly location. extract the .Dll's in any location you want. a good place is the %personal userfolder%\\NetOffice1.5.1<br /><br />- create a new sharp develop project<br />- go to the reference(s) node -&gt; right mouse click / add reference and follow the dialog<br />the next step you choose the assembly location, in our example %personal userfolder%\\NetOffice1.5.1\\%NETVersion%\\Assemblies<br />and select the target NetOffice assemblies for your target office application. dont forget the using (Import in VB) statements as top of your code own code files.<br /><br />which assembly you need for which office application<br />is defined in a table here: http://netoffice.codeplex.com/documentation<br /><br />helps a bit?</p>",
+    "PostedDate": "2012-07-09T12:57:45.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "859379",
+    "ThreadId": "360054",
+    "Html": "<p>Many thanks indeed. Is it worth adding a short readme to this effect within the rar file?</p>",
+    "PostedDate": "2012-07-09T14:23:35.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "860259",
+    "ThreadId": "360054",
+    "Html": "<p>one thing more. its possible to register .net assemblies in a common register(GAC = Global assembly cache). all registered assemblies are listed in Visual Studio and i think SharpDevelop does the same. the next release comes with an option to register the assemblies in the GAC and a short how for the different way(but its pretty basic stuff for developers i find)<br /><br />Sebastian</p>",
+    "PostedDate": "2012-07-11T05:23:17.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "623619",
+    "ThreadId": "260367",
+    "Html": "\r\n<p>First of all, congratulations for a great great idea and job.</p>\r\n<p>Second, I am not clear about if I must have Office installed in the machine where you are deploying your project. I am considering an ASP.NET application. Should I have Microsoft Office installed in the server or could I just copy some dlls in bin folder?</p>\r\n<p>Thank you very much.</p>\r\n",
+    "PostedDate": "2011-06-06T10:37:01.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "623960",
+    "ThreadId": "260367",
+    "Html": "<p>hello there,</p>\r\n<p>using office in your application means you have to install ms office of course. no registering or something like that required.<br />of lot of nice codeplex&nbsp;projects offers you to deal with office files without an installed office.</p>\r\n<p>sebastian</p>",
+    "PostedDate": "2011-06-07T00:53:59.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "649830",
+    "ThreadId": "260367",
+    "Html": "<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp; For netoffice requires MS office to be installed in web server ? I have no MS office installed in the web server.</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2011-07-29T15:59:00.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "649834",
+    "ThreadId": "260367",
+    "Html": "<p>hello,<br /><br />netoffice requires an installed office in any version.<br />for web server development try ClosedXML or othter Codeplex projects.(requires office2007 or higher)<br /><br />sebasian</p>",
+    "PostedDate": "2011-07-29T16:01:28.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

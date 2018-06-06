@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1247415",
+    "ThreadId": "545954",
+    "Html": "Much thanks to the creator and everyone who has made this project possible. It has definitely made things a lot more organized and easier when dealing with the <em>Microsoft.Office.Interop</em> libraries.<br />\n<br />\nI have a question concerning the use of a field property. The following code would normally just work under the <em>Microsoft.Office.Interop.Access</em> and <em>Microsoft.Office.Interop.Dao</em> namespaces.<br />\n<pre><code>// open database\n\nApplication app = new Application()\nDatabase db = app.DBEngine.Workspaces[0].OpenDatabase(filePath);\nTableDef myTable = db.TableDefs[tableName];\nField myField = myTable.Fields[&quot;FirstName&quot;];\nProperties myProperties = myField.Properties;   //I get 39 properties for myField\nProperty fieldTextAlign = myProperties[&quot;TextAlign&quot;];\nvar value = fieldTextAlign .Value;</code></pre>\n\nCurrently when I look at the Properties and Property Class in NetOffice, I get an error:<br />\n<ol>\n<li>\nbase = {&quot;Class not exists: NetOffice.AccessApi.Property&quot;}<br />\n</li>\n</ol>\nMicrosoft intellisense shows that <strong>Properties</strong> is in the NetOffice.DAOApi namespace even though my original application object (app) belongs in the AccessApi namespace. How do I access these properties. I tried casting but could not make it work. Any help greatly appreciated.<br />\n<br />\nDun<br />\n",
+    "PostedDate": "2014-05-20T07:01:11.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1248132",
+    "ThreadId": "545954",
+    "Html": "in which codeline occurs the problem? (its not clearly for me)\r<br />\nplease me let me know also your NetOffice version and your current office version.\r<br />\n(I need this to reproduce your scenario and give you some hotfix tips until i pin point the problem)\r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2014-05-21T13:00:52.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1248387",
+    "ThreadId": "545954",
+    "Html": "Hi Sebastian,<br />\n<br />\nThank you for your time and for looking into this issue. I am using <strong>NetOffice 1.6.0.0</strong> and <strong>Microsoft Office 2013</strong>. Basically I am trying to get the value of  <strong>&quot;TextAlign&quot;, &quot;Caption&quot;, and &quot;Description&quot;</strong>  properties from a table field in Microsoft Access. Do you have any examples of getting the values of these properties from a table field? <br />\n<br />\nThank you.<br />\nDun<br />\n",
+    "PostedDate": "2014-05-22T06:50:47.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

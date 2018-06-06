@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1314048",
+    "ThreadId": "569979",
+    "Html": "Hi Sebastian, \r<br />\n<br />\nHow are you?\r<br />\n<br />\nI'm having the following issue. I have an office and an outlook addins. I started both from the examples i downloaded from here.\r<br />\n<br />\nNow, i want to delopy both addins in a same folder. The problem is that each one has a reference to a different officeapi.dll file. If i reference both projects to the dll in the office example i get an error message:\r<br />\nError\t1\tThe type 'NetOffice.Tools.IDTExtensibility2' is defined in an assembly that is not referenced. You must add a reference to assembly 'NetOffice, Version=1.6.0.0, Culture=neutral, PublicKeyToken=297f57b43ae7c1de'.\r<br />\n<br />\nIf i reference both to the dll in outlook example i get the same error, with a defferent PublicKeyToken.\r<br />\n<br />\nHow can i use the same officeApi.dll for both?\r<br />\n<br />\nthanks very much,\r<br />\n<br />\nEhud.<br />\n",
+    "PostedDate": "2014-10-16T10:18:07.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

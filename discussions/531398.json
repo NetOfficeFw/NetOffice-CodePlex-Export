@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1207011",
+    "ThreadId": "531398",
+    "Html": "I am trying to change the font size, of the text for a bookmark, but can not get it work, just wondering if someone has any ideas on where I am going wrong.\r<br />\n<br />\nThe following are 2 methods I have for dealing with bookmarks. The first replaces the bookmark with the required value, and the second is what I was hoping would change the size<br />\n<pre><code>        public static void ReplaceText(string Bookmark, string NewText)\n        {\n            if (newDocument.Bookmarks.Exists(Bookmark))\n            {                \n                newDocument.Bookmarks[Bookmark].Range.Text = NewText;\n            }\n        }\n        public static void ChangeFontSize(string Bookmark, float font_size)\n        {\n            if (newDocument.Bookmarks.Exists(Bookmark))\n            {                \n                newDocument.Bookmarks[Bookmark].Range.Font.Size = font_size;\n            }\n         }</code></pre>\n\nWhen I execute the ChangeFontSize method the new size is NOT set.\r<br />\n<br />\nIf someone has an answer it would be appreciated\r<br />\n<br />\nThanks\r<br />\n<br />\nDave<br />\n",
+    "PostedDate": "2014-02-11T14:48:55.593-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

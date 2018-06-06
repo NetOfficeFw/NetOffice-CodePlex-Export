@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1031630",
+    "ThreadId": "440571",
+    "Html": "Well, i used in the beginning <br />\n<pre><code>Workbooks.Open </code></pre>\n\nto open the workbook with one sheet for data.\r<br />\nAfterwards added a template file (xltx) with <br />\n<pre><code>((Excel.Worksheet)myApp.ActiveWorkbook.Sheets[1]).Select(Type.Missing);\n</code></pre>\n\nCuriously i just looked up the Sheet Names with <br />\n<pre><code>Console.WriteLine(&quot;Codename: &quot; + ((Excel.Worksheet)myApp.ActiveWorkbook.Sheets[1]).Name);\nConsole.WriteLine(&quot;Codename: &quot; + ((Excel.Worksheet)myApp.ActiveWorkbook.Sheets[2]).Name);\n</code></pre>\n\n<ol>\n<li>Whats the cause for the identical names?</li>\n<li>Does anyone know how to select the sheets with the sheet names?</li>\n</ol>\n",
+    "PostedDate": "2013-04-17T02:49:09.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031634",
+    "ThreadId": "440571",
+    "Html": "<pre><code>            Excel.Application xlsApp = new Excel.Application();\n            workbook = xlsApp.Workbooks.Open(filename, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\n                                            Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\n                                            Type.Missing, Type.Missing);\n            int worksheetnumber = 1;\n            Excel.Worksheet workSheet;                   \n            foreach (Excel.Worksheet sheet in workbook.Sheets)\n            {\n                    workSheet = (Excel.Worksheet)xlsApp.Worksheets[worksheetnumber];\n                    Console.WriteLine(workSheet.Name);\n                    foreach (Excel.Range cell in workSheet.UsedRange)\n                    {\n                        int rowIndex = cell.Row;\n                        int columnIndex = cell.Column;\n                        // you can work with used range values\n                    }\n                    worksheetnumber++;\n                }\n</code></pre>\n\nHope this might help you somehow.<br />\n",
+    "PostedDate": "2013-04-17T02:59:08.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031657",
+    "ThreadId": "440571",
+    "Html": "No, that can't work for me. After adding the template file to the worksheets i should have 2 worksheets. Indeed there are 2 worksheets.<br />\nBut the operations to transform my data should be in first worksheet, which was opened with <br />\n<pre><code>Workbooks.Open </code></pre>\n\nI know how to select the sheets in VBA, but it doesn't work with C#.<br />\n<br />\nBut thank u for your code sample. I am just asking why do you use the same worksheetnumber? I appreciate that you wanted to help me ;)<br />\n",
+    "PostedDate": "2013-04-17T03:38:19.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031694",
+    "ThreadId": "440571",
+    "Html": "Why don't you do a copy of your original template?<br />\n<pre><code>File.Copy(originaltemplate, destinationoutput);</code></pre>\n\nKeep the original, create a new one according from your template and only change what you need to be changed.<br />\n<br />\nworksheetnumber helps me to go through each worksheets, that's why I increase it.<br />\n<pre><code>workSheet = (Excel.Worksheet)xlsApp.Worksheets[worksheetnumber];\nworksheetnumber++;</code></pre>\n\nworkSheet is the current worksheet that I select, in your case, if you always do a modification on 1 worksheet, it should be <br />\n<pre><code>workSheet = (Excel.Worksheet)xlsApp.Worksheets[1];</code></pre>\n\nBut if you want only one specific worksheet to be changed, you can do it with a condition.<br />\n<pre><code>if (workSheet.Name=&quot;Test&quot;)\n{\n   &lt;Do something&gt;\n   workSheet.Name=&quot;NewTest&quot;;\n}</code></pre>\n\nI was doing the same, opening a template and replacing images/tables/charts according to the one I import.<br />\n",
+    "PostedDate": "2013-04-17T04:34:15.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031702",
+    "ThreadId": "440571",
+    "Html": "I've solved it with <br />\n<pre><code>((Excel.Worksheet)cscExcelApp.ActiveWorkbook.Sheets[&quot;my_data&quot;]).Select(Type.Missing);</code></pre>\n\nMy goal was to reference the sheets by name. I have to switch between the sheets to copy the block from the template to a third sheet and put the data in this copied block. Well, maybe i don't need 3 sheets for my needs, but i am still unsure.<br />\n",
+    "PostedDate": "2013-04-17T04:43:00.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031709",
+    "ThreadId": "440571",
+    "Html": "Hey Mike, do you know how to unset a defined style for specific cells in a range e.g. of B2:K2?<br />\n",
+    "PostedDate": "2013-04-17T04:50:40.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "627548",
+    "ThreadId": "261334",
+    "Html": "<p>It seems that the examples for word/excel always create a new application object.</p>\n<p>How to get the&nbsp;running application object?</p>",
+    "PostedDate": "2011-06-14T07:34:24.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "628292",
+    "ThreadId": "261334",
+    "Html": "<p>excel holds open workbooks in running object table.<br />word holds application and open documents in running object&nbsp;table.<br />Examples\\Misc\\GetRunningOutloukInstance.sln demonstrate&nbsp;to accsessing a runnng object from ROT(running object table)<br />i do examples for other office applications very soon.<br />create an issue if you want.</p>\n<p>best wishes<br />sebastian</p>\n<p><br /><br />.</p>",
+    "PostedDate": "2011-06-15T11:43:32.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "638008",
+    "ThreadId": "261334",
+    "Html": "<p>You need to be careful when using the Application reference from the ROT, particularly when you are running as an add-in inside the office application.&nbsp;The instance registered in the ROT will refer to the last instance of the application that was started, which might differ from the instance you are actually running in.</p>\r\n<p>The right way to get the Application instance from within your add-in (if you didn't store the instance in Connect) is to get a window handle for your instance, then call&nbsp;AccessibleObjectFromWindow(..). There is some useful discussion here: <a href=\"http://blogs.officezealot.com/whitechapel/archive/2005/04/10/4514.aspx\">http://blogs.officezealot.com/whitechapel/archive/2005/04/10/4514.aspx</a>&nbsp;and here:&nbsp;<a href=\"http://blogs.msdn.com/b/andreww/archive/2008/11/30/starting-or-connecting-to-office-apps.aspx\">http://blogs.msdn.com/b/andreww/archive/2008/11/30/starting-or-connecting-to-office-apps.aspx</a>.</p>\r\n<p>-Govert</p>\r\n<p><a href=\"http://exceldna.codeplex.com\">Excel-DNA</a> - Free and easy .NET for Excel</p>",
+    "PostedDate": "2011-07-06T03:30:45.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "638021",
+    "ThreadId": "261334",
+    "Html": "<p><span style=\"font-size: x-small;\">&nbsp;</span>partially right, different office applications do different things. for example outlook can be started one time and its easy to get application object from ROT.<br />excel stores all open workbooks to ROT and not the application object but you can get the application object from the worbook proxy.<br />anyway, a COMAddin has to use the Connect function from IDTExtensiblity2 of course to get the application proxy.<br />*best regards<br /><br /></p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-07-06T04:04:07.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

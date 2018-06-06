@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1009828",
+    "ThreadId": "435265",
+    "Html": "I've added the line<br />\n<br />\nNetOffice.OutlookSecurity.Supress.Enabled = true<br />\n<br />\ninto my code on several places, but our users still get the security warning from Outlook (using a RDP Session on a Windows 2008 R2 terminal server).<br />\n<br />\nI recognized, that it looks like some commands are resetting the .Enabled = true to false:<br />\n<br />\nNetOffice.OutlookSecurity.Supress.Enabled = True<br />\ncOutlook = New Outlook.Application                                    ---&gt; reset to false<br />\nNetOffice.OutlookSecurity.Supress.Enabled = True<br />\ncOutlookNameSpace = cOutlook.GetNamespace(&quot;MAPI&quot;)     --&gt; reset to false<br />\nNetOffice.OutlookSecurity.Supress.Enabled = True<br />\ncOutlookMailItem = cOutlookNameSpace.OpenSharedItem(strFileName) --&gt; reset to false<br />\n<br />\nLooks like I made a mistake understanding how this command is working.<br />\n<br />\nI'm using VB 2010.<br />\n<br />\nAny help would be appreciated.<br />\n",
+    "PostedDate": "2013-03-04T02:46:01.283-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1009984",
+    "ThreadId": "435265",
+    "Html": "What Outlook version do you work with?<br />\n",
+    "PostedDate": "2013-03-04T07:34:48.333-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1010399",
+    "ThreadId": "435265",
+    "Html": "Outlook 2007<br />\n<br />\nAnd I've done some investigations and found the following behaviour:<br />\n<br />\nIf Outlook is not startet or Oulook is in the background or minimized, the Outlook icon in the start bar starts to blink when you access Outlook from the VB application the first time and the VB application is locked. If you bring Outlook to the front, the window with the security alert is shown very shortly and disappears nearly immediatly. Then everything works well.<br />\n<br />\nThe problem is that sometimes you can't bring Outlook to the front (I don't know why), and then the VB application is locked and the only way to solve this is to terminate the process.<br />\n",
+    "PostedDate": "2013-03-05T00:05:56.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1012280",
+    "ThreadId": "435265",
+    "Html": "I have to say that I'm a little bit upset with the NetOffice.OutlookSecurity.Supress.Enabled function.\r<br />\n<br />\nIt looks like this property isn't changing anything in the Outlook security settings, it's just pressing buttons in the security popup of Outlook (or using the bad bad &quot;sendkey&quot; command)\r<br />\n<br />\nI recognized this because if I enable the Supress property, all popup dialog windows of outlook starts to show a strange behaviour. You can try this by opening, let's say, an appointment, the open the drop down &quot;Categorize&quot; and select &quot;all categories&quot;. You will see that the &quot;Add New Category&quot; dialog pops up and starts blinking like someone is hitting a wrong button. You can also open the &quot;all categories&quot; and then set the Supress.Enable property to true. The dialog &quot;Add New Category&quot; will magically appear and start to blink. This happens also if you try to add a folder in your personal folders. \r<br />\n<br />\nTogether with the problems I pointed in my previous post this function is causing more troubles than it solves.\r<br />\n<br />\nAny comments?<br />\n",
+    "PostedDate": "2013-03-08T03:43:04.117-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1012356",
+    "ThreadId": "435265",
+    "Html": "According to the NetOffice source code it really clicks controls in security dialog.<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n...\n                <span style=\"color:Blue;\">foreach</span> (SecurityDialog item <span style=\"color:Blue;\">in</span> _listDialogs)\n                {\n                    List&lt;IntPtr&gt; childWindows = User32.GetChildWindows(item.Handle);\n                    <span style=\"color:Blue;\">if</span> (!IncludeOneComboBox(childWindows))\n                        <span style=\"color:Blue;\">continue</span>;\n\n                    IntPtr checkBox = GetCheckBox(childWindows, item.Handle);\n                    <span style=\"color:Blue;\">string</span> checkBoxText = User32.GetWindowText(checkBox);\n                    <span style=\"color:Blue;\">if</span> ((IntPtr.Zero != checkBox) &amp;&amp; (!<span style=\"color:Blue;\">string</span>.IsNullOrEmpty(checkBoxText)))\n                        PostSendClick(checkBox);\n\n                    IntPtr leftButton = GetLeftButton(childWindows, item.Handle);\n                    <span style=\"color:Blue;\">string</span> buttonText = User32.GetWindowText(leftButton);\n                    <span style=\"color:Blue;\">if</span> ((IntPtr.Zero != leftButton) &amp;&amp; (!<span style=\"color:Blue;\">string</span>.IsNullOrEmpty(buttonText)))\n                        PostSendClick(leftButton);\n...\r\n</pre></div><a href=\"http://netoffice.codeplex.com/wikipage?title=OutlookSecurity_English\" rel=\"nofollow\">NetOffice Outlook Security wiki</a> tells the same:<br />\n<blockquote>\nAlong with the introduction of this security feature in 2002, a tool named &quot;ClickYes&quot; gained popularity among Outlook developers. This tool runs in the background and automatically confirms the security dialog.  The Outlook Security Component works in principle just like &quot;ClickYes&quot; and confirms the dialog automatically.<br />\n</blockquote>\n",
+    "PostedDate": "2013-03-08T06:27:39.657-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1013232",
+    "ThreadId": "435265",
+    "Html": "If it would only click yes in the security dialog it would be fine.\r<br />\nBut it tries to click yes in every dialog window.\r<br />\nAnd it doesn't click yes, if Outlook is in the background.<br />\n",
+    "PostedDate": "2013-03-11T06:24:36.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1013295",
+    "ThreadId": "435265",
+    "Html": "So it's time to add a bug to an issue tracker?<br />\n",
+    "PostedDate": "2013-03-11T08:13:42.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1014410",
+    "ThreadId": "435265",
+    "Html": "<strong>artnib wrote:</strong><br />\n<blockquote>\nSo it's time to add a bug to an issue tracker?<br />\n</blockquote>\ndone, please vote ;)<br />\n",
+    "PostedDate": "2013-03-13T01:23:28.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

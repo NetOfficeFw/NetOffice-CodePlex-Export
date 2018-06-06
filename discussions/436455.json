@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1014546",
+    "ThreadId": "436455",
+    "Html": "Hello,\r<br />\n<br />\nCould you provide me step by step instructions how to install an outlook plugin builded by 2010 C# Express for Outlook 2010 under windows 7 64bit.  For example, let's use your example &quot;COMAddinRibbonExample&quot;.\r<br />\n<br />\nThank you very much in advance.<br />\n",
+    "PostedDate": "2013-03-13T05:55:02.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1014700",
+    "ThreadId": "436455",
+    "Html": "What is your target Office version: 32- or 64-bit?<br />\n",
+    "PostedDate": "2013-03-13T10:05:56.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021031",
+    "ThreadId": "436455",
+    "Html": "artnib,\r<br />\n<br />\nThank you very much for your fast answer and I am sorry for my late one.\r<br />\nMy target office is 32-bit.<br />\n",
+    "PostedDate": "2013-03-25T22:56:21.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1021160",
+    "ThreadId": "436455",
+    "Html": "<ol>\n<li>In the project properties choose x86 as target platform</li>\n<li>build your addin project</li>\n<li>register your addin with 32-bit regasm.exe</li>\n</ol>\n",
+    "PostedDate": "2013-03-26T04:11:07.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

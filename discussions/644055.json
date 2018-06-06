@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1441420",
+    "ThreadId": "644055",
+    "Html": "Hallo,\r<br />\n<br />\nich versuche innerhalb von meinem PowerPoint AddIn alle Shapes einer Präsentation zu holen, leider erfolglos. \r<br />\nMeine letzte Hoffnung war, dass dies über Slides.Range().Shapes gehen würde, allerdings kriege ich  dann folgende Exception(Der Aufruf ist im Immediate Window):<br />\n<pre><code>&gt;NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes\n\n{NetOffice.PowerPointApi.Shapes}\n    Application: {NetOffice.PowerPointApi.Application}\n    Count: '(NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes).Count' threw an exception of type 'System.Runtime.InteropServices.COMException'\n    Creator: 1347899476\n    HasTitle: '(NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes).HasTitle' threw an exception of type 'System.Runtime.InteropServices.COMException'\n    InstanceType: {Name = &quot;__ComObject&quot; FullName = &quot;System.__ComObject&quot;}\n    IsCurrentlyDisposing: false\n    IsDisposed: false\n    IsEventBinding: false\n    IsEventBridgeInitialized: false\n    IsWithEventRecipients: false\n    Parent: {NetOffice.PowerPointApi.SlideRange}\n    ParentObject: {NetOffice.PowerPointApi.SlideRange}\n    Placeholders: '(NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes).Placeholders' threw an exception of type 'System.Runtime.InteropServices.COMException'\n    Title: '(NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes).Title' threw an exception of type 'System.Runtime.InteropServices.COMException'\n    UnderlyingComponentName: &quot;&quot;\n    UnderlyingObject: {System.__ComObject}\n    UnderlyingTypeName: &quot;Shapes&quot;\n    _callQuitInDispose: false\n    _instanceType: {Name = &quot;__ComObject&quot; FullName = &quot;System.__ComObject&quot;}\n    _isCurrentlyDisposing: false\n    _isDisposed: false\n    _isEnumerator: false\n    _listChildObjects: Count = 2\n    _parentObject: {NetOffice.PowerPointApi.SlideRange}\n    _underlyingObject: {System.__ComObject}\n    Results View: Expanding the Results View will enumerate the IEnumerable</code></pre>\n\nIch denke, es ist sehr wahrscheinlich, dass ich auf dieser Art die Shapes nicht  holen kann, aber ich bin mir nicht ganz  sicher...<br />\n",
+    "PostedDate": "2015-08-22T17:08:41.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1441893",
+    "ThreadId": "644055",
+    "Html": "Hallo,\r<br />\n<br />\nIch hab das NetOffice Standard Beispiel 1 angepasst und folgende Zeile laufen lassen.\r<br />\n<br />\n int i = NetOffice.PowerPointApi.Application.GetActiveInstance().ActivePresentation.Slides.Range().Shapes.Count;\r<br />\n<br />\nHat problemlos funktioniert. \r<br />\nKannst du genauer bestimmen ob jetzt die Range() Methode oder der Zugriff auf Slides das Problem verursacht?\r<br />\n(Bei Office Anwendungen ist es oft so gerade bei den Collections alles lazy initialisiert wird.\r<br />\nWenn also keine Slides da sind(==0) schlägt der Zugriff auf die Collection evtl. fehl.)\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-08-25T13:07:27.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1442071",
+    "ThreadId": "644055",
+    "Html": "Hi,\r<br />\n<br />\ndanke, dass du überprüft hast. \r<br />\nIch habe jetzt geschaut und siehe da, es ist mein Fehler, denn ich hab einfach die Aufrufe zu einem Zeitpunkt gemacht, zu dem die Objekte nicht mehr da sind...\r<br />\nAsche auf mein Haupt!<br />\n",
+    "PostedDate": "2015-08-26T15:27:28.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

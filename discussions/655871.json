@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1477183",
+    "ThreadId": "655871",
+    "Html": "Hi,\r<br />\n<br />\nI wanted to ask how to register for a change of items in a folder. It seems like I can't get access to the event.\r<br />\n<br />\nIn VSTO I would write for example:<br />\n<pre><code>var folder = this.Application.Session.GetDefaultFolder(OlDefaultFolders.olFolderToDo);\n((ItemsEvents_Event)folder.Items).ItemAdd += item =&gt; { ... }\n</code></pre>\n\nIt looks like ItemsEvents_Event does not exist in Netoffice?\r<br />\n<br />\nthanks,\r<br />\nMartin<br />\n",
+    "PostedDate": "2016-06-24T11:23:29.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477213",
+    "ThreadId": "655871",
+    "Html": "Of course NetOffice want support ItemsEvents_Event.\r<br />\nAny event name in NetOffice comes with &quot;Event&quot; as postfix.\r<br />\nSo &quot;ItemAdd&quot; is now &quot;ItemAddEvent&quot; in NetOffice.\r<br />\n<br />\nThe reason is because a lot of events in office classes use events/properties/methods with the same name.\r<br />\nFor example Excel.Range has an &quot;Activate();&quot; method and an &quot;event Activate;&quot; event. (Moreover Excel.Range has a method called Range but the name of the class in .Net is preserved for the .ctor) This is allowed in COM (which Office comes from) but not suitable in .Net Languages.\r<br />\n<br />\nIn order to prevent this downcast(you do here) NetOffice do this one breaking syntax change for events.\r<br />\n(Other COM/.Net issues with Properties/methods with same name was resolved by an intermediate base class..so the base class can have the same property name like the top class methods...only visual basic.net face some problems here...)\r<br />\n<br />\n<em>let me know this helps</em>\r<br />\nSebastian<br />\n",
+    "PostedDate": "2016-06-24T16:04:27.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477311",
+    "ThreadId": "655871",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nthanks for yor reply. As a result I have finally been able to find the reason for my problem:\r<br />\nI need to cast the Items collection to Outlook.Items.\r<br />\n<br />\nI wanted to suggest to add this use-case to the tutorials or examples.\r<br />\n<br />\nFor me the following code works now:<br />\n<pre><code>        var todoFolder = session.GetDefaultFolder(OlDefaultFolders.olFolderToDo);\n        var todoFolderItems = (Outlook.Items)todoFolder.Items;\n        todoFolderItems.ItemAddEvent += Items_ItemAddEvent;\n        todoFolderItems.ItemRemoveEvent += Items_ItemRemoveEvent;\n        todoFolderItems.ItemChangeEvent += Items_ItemChangeEvent;\n</code></pre>\n\nthanks for your help,\r<br />\nMartin<br />\n",
+    "PostedDate": "2016-06-26T13:04:49.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

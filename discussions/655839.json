@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1477094",
+    "ThreadId": "655839",
+    "Html": "Hi all,\r<br />\nWhat a great project this is. I am returning to coding after 13 years break. I was using a lot of COM with Office back then. It seems to be just as difficult as ever to get installed and runinng reliably on a clients machine.\r<br />\nI am new to .net and the NetOffice so I have a bit of a learning curve. I got an addin developed (Using NetOffice) by a freelance, who is no longer around and I am trying to debug it and create some setups.\r<br />\nI think I need to create a new project in order to get all the paths correct, opening the old solution file on my new PC just doesn't work.\r<br />\nhere is my first problem. What type of project do I need to create ?\r<br />\nI tried &quot; create new project from existing code&quot; but builds with more than 1000 errors.\r<br />\nShould I use a class file type?\r<br />\nI have VS 2015 community edition\r<br />\n<br />\nAny advice would be really appreciated.\r<br />\nI am tempted to just find a freelancer again but I am really keen to learn\r<br />\n<br />\nThank sin advance\r<br />\n<br />\nEd<br />\n",
+    "PostedDate": "2016-06-23T06:52:42.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477215",
+    "ThreadId": "655839",
+    "Html": "hello there,\r<br />\n<br />\nfirst of it all: thank you very much. 13 years ago, i end my development in COM/Office with visual basic 6 and start to join the .net idea. \r<br />\n<br />\nIf you want to create an addin, you need to create a &quot;Class Library&quot; project in Visual studio. BTW: the NetOffice examples give you good point to start from.\r<br />\nYou find example addin projects in the &quot;$NetVersion\\Examples\\Addins&quot; folder. (there are 2 options here, the plain IExtensibility2 interface addins like VB6 or the NetOffice.Tools based Addin projects which is more familar to VSTO)\r<br />\n<br />\nThe 1000 errors problem sounds like reference problem. (thats all what i can say at this point, or may a syntax problem, i dont know)  make sure to disable the &quot;Embed Interop Types&quot; option for each NetOffice assembly. in other words, goto the references explorer, mark each NetOffice assembly and disable &quot;Embedd Interop Types&quot;\r<br />\nin the property grid.\r<br />\n<br />\n(If you need a freelancer again, please let me know)\r<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-06-24T16:24:05.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477370",
+    "ThreadId": "655839",
+    "Html": "\r\n<div dir=\"ltr\">Thanks Sebastian,\r\n<div>I do appreciate this and it is good to know I can get a freelancer as I will surely want to at some point.</div>\r\n<div>I am determined just now to get a better grasp of .net and NetOffice so I can architect my stuff properly at least.</div>\r\n<div>I got past the errors and got things running though sadly I am not sure what I did to cause it.</div>\r\n<div>It reminds me of when COM used to stay in memory and run your old code even after debugging. Something like tis was happening.</div>\r\n<div>I kept making new projects and copying stuff across manually until eventually I got all the references to work and ran the app.</div>\r\n<div><br>\r\n</div>\r\n<div>What kind of cost can I expect fr a freelancer to do fairly straightforward routines in c# to extend the add-in once i have it in shape?</div>\r\n<div><br>\r\n</div>\r\n<div>Ed<br>\r\n<br>\r\n<p><span style=\"font-size:10.0pt; font-family:\"></span></p>\r\n<p><a name=\"_MailAutoSig\" target=\"_blank\"><span style=\"font-size:10.0pt; font-family:\">Ed Taaffe</span></a><span style=\"font-size:12.0pt; font-family:\"></span></p>\r\n<div>\r\n<hr size=\"5\" width=\"200\" noshade=\"\" align=\"left\" style=\"width:150.0pt\">\r\n</div>\r\n<b><span style=\"font-size:10.0pt; font-family:\">Web:</span></b><span style=\"font-size:10.0pt; font-family:\">\r\n</span><span style=\"font-size:10.0pt; font-family:\"></span><a href=\"http://www.thebridger.co.uk/\" target=\"_blank\"><span style=\"font-size:10.0pt; font-family:\">www.thebridger.co.uk</span></a><br>\r\n<b><span style=\"font-size:10.0pt; font-family:\">Skype:</span></b><span style=\"font-size:10.0pt; font-family:\">\r\n</span><span style=\"font-size:10.0pt; font-family:\"><span style=\"color:#400000\">edwardtaaffe<br>\r\n</span><b><span style=\"color:#D56A00\">Linkedin</span></b><span style=\"color:#D56A00\">:\r\n</span></span><a href=\"http://uk.linkedin.com/in/edtaaffe\" target=\"_blank\"><span style=\"font-size:10.0pt; font-family:\">http://uk.linkedin.com/in/edtaaffe</span></a><br>\r\n<b><span style=\"font-size:10.0pt; font-family:\">Mobile:</span></b><span style=\"font-size:10.0pt; font-family:\">\r\n<span style=\"color:#400000\">&#43;44 (0) 7730956672</span></span><span style=\"font-size:10.0pt; font-family:\"><br>\r\n<br>\r\n</span><br>\r\n<br>\r\n<br>\r\n<div>\r\n<hr id=\"stopSpelling\">\r\n</div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2016-06-27T12:15:29.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477422",
+    "ThreadId": "655839",
+    "Html": "Hey Ed,\r<br />\n<br />\nI need some more informations about these errors. so it is compile-time errors right?\r<br />\nCan you give me the first 3 error messages incl. the line(s) of code which is come from? \r<br />\ni still believe in the reference problem(for the &gt;thousand errors), may the \r<br />\nNetOffice assemblies are not in the same .net version or something like that. Have you tried to disable &quot;Embedd Interop Types&quot; - it is an important must-have for NetOffice.<br />\n<blockquote>\nIt reminds me of when COM used to stay in memory and run your old code even after debugging. Something like tis was happening.<br />\nYes i remember for something like Set x = Nothing can fix all the problems. (Most of the time the problems comes from &quot;abort debugging&quot; so the cleanup code is never executed)<br />\n</blockquote>\nI want give you a private message for your last question at all.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-06-27T22:43:41.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477595",
+    "ThreadId": "655839",
+    "Html": "\r\n<div dir=\"ltr\">Hi Sebastian,\r\n<div><br>\r\n</div>\r\n<div>I resolved this issue and am making progress.</div>\r\n<div>I wish I knew for certain what I id that fixed it. I was stuck in a loop where my code changes were ignored and breakpoints ignored and knew that somehow it was executing another copy of the code. By force of habit (com on MTS back in the day) I rebooted\r\n the machine t o force update. Build again and everything worked . I was able to step through and resolve the immediate issues.<br>\r\nI think the problem is that the addin is installing on all live workbooks not just the target one. I had another workbook open for a different client and this workbook possibly had a pointer to the old COM proxy. I'm just guessing, need to really read up on\r\n this one day soon.</div>\r\n<div>Thanks for the help. Contact me privately for a discussion on up and coming freelance needs</div>\r\n<div><br>\r\n</div>\r\n<div>Ed<br>\r\n<p><span style=\"font-size:10.0pt; font-family:\"></span></p>\r\n<p><a name=\"_MailAutoSig\" target=\"_blank\"><span style=\"font-size:10.0pt; font-family:\">Ed Taaffe</span></a><span style=\"font-size:12.0pt; font-family:\"></span></p>\r\n<div>\r\n<hr size=\"5\" width=\"200\" noshade=\"\" align=\"left\" style=\"width:150.0pt\">\r\n</div>\r\n<b><span style=\"font-size:10.0pt; font-family:\">Web:</span></b><span style=\"font-size:10.0pt; font-family:\">\r\n</span><span style=\"font-size:10.0pt; font-family:\"></span><a href=\"http://www.thebridger.co.uk/\" target=\"_blank\"><span style=\"font-size:10.0pt; font-family:\">www.thebridger.co.uk</span></a><br>\r\n<b><span style=\"font-size:10.0pt; font-family:\">Skype:</span></b><span style=\"font-size:10.0pt; font-family:\">\r\n</span><span style=\"font-size:10.0pt; font-family:\"><span style=\"color:#400000\">edwardtaaffe<br>\r\n</span><b><span style=\"color:#D56A00\">Linkedin</span></b><span style=\"color:#D56A00\">:\r\n</span></span><a href=\"http://uk.linkedin.com/in/edtaaffe\" target=\"_blank\"><span style=\"font-size:10.0pt; font-family:\">http://uk.linkedin.com/in/edtaaffe</span></a><br>\r\n<b><span style=\"font-size:10.0pt; font-family:\">Mobile:</span></b><span style=\"font-size:10.0pt; font-family:\">\r\n<span style=\"color:#400000\">&#43;44 (0) 7730956672</span></span><span style=\"font-size:10.0pt; font-family:\"><br>\r\n<br>\r\n</span><br>\r\n<br>\r\n<br>\r\n<div>\r\n<hr id=\"stopSpelling\">\r\n</div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2016-06-29T02:58:54.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477720",
+    "ThreadId": "655839",
+    "Html": "Hey Ed,\r<br />\n<br />\n(for your information)\r<br />\nIf you use a .net framefork version that is different from 4.5 you may need to create a .config file to make sure Visual Studio want use the debugger you need.\r<br />\n(otherwise your breakpoints doesnt work because VS2015 use the .Net 4.5 debugger by default and each .net framework comes with its own debugger)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-06-30T02:25:42.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

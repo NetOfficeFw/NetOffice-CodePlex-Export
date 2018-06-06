@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "620158",
+    "ThreadId": "259487",
+    "Html": "\r\n<p>Hi, I just came over this project. Looks really interesting. One question:</p>\r\n<p>If I for instance want to make an Outlook plugin that works with both Outlook 2007 and 2010, AND integrates with the user interface by adding menu items (2007) and ribbon buttons (2010). In what way would NetOffice help me here? Would it? Or would I still\r\n have to make deployment projects for the different Outlook versions?</p>\r\n",
+    "PostedDate": "2011-05-30T00:26:07.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620290",
+    "ThreadId": "259487",
+    "Html": "<p>Hello Nilzor,</p>\r\n<p>Its not necessary to create different deployment projects, use one&nbsp;.dll assembly&nbsp;but you&nbsp;have to combine a classic ui addin and a ribbon addin functionality of course.<br />Please look at the folder: Example\\Misc\\C#\\SuperAddin. The sample addin creates also ribbons dynamicly in outlook&nbsp;version 14 and classic menu items in older versions.<br /><br />In other words, write a normal addin there create ribbons. In OnStartupCompleteEvent check RibbonExtensibility method was called (with a flag maybe) or check !application.Version.StartsWith(\"14\")<br />then create normal items gui if an older outlook version.</p>\r\n<p>let me know, you have more questions about this.</p>\r\n<p>Sebastian</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-05-30T06:07:11.497-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620295",
+    "ThreadId": "259487",
+    "Html": "<p>Ok, this sounds really cool. I've lost count on how many hours I've wasted trying to get deployment projects, interop versions, vsto prerequisites, manifest files etc etc correct. If this project does half the things you say it do, I'll be very happy :)</p>",
+    "PostedDate": "2011-05-30T06:27:18.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1330841",
+    "ThreadId": "259487",
+    "Html": "@SebastianDotNet Thanks for your great idea!<br />\n",
+    "PostedDate": "2014-12-10T20:08:05.327-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

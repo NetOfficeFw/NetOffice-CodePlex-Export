@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1433189",
+    "ThreadId": "640960",
+    "Html": "Like some other posters, I am having trouble using NetOffice with ILMerge.\r<br />\n<br />\nI use NetOffice with Excel, through both add-ins and stand-alone apps.  My apps or add-ins will run fine before merging, but after merging I will get &quot;Factory has not been initialized with NetOffice libraries&quot; exceptions in different places.  Some references to classes in ExcelApi.dll or the other NetOffice libraries will work fine, but some will not.<br />\n\r<br />\nThe current example that I'm stuck on is with the ExcelApi.Application.AddIns property.  I can get a reference to an AddIn object with an expression like <br />\n<pre><code>AddIn a = app.AddIns.Add(filepath); </code></pre>\n\nbut I cannot query the contents of an AddIns collection with an expression like <br />\n<pre><code>foreach (AddIn a in app.Addins) do stuff;</code></pre>\n\nThis will give me the &quot;Factory not initialized&quot; exception, but only if I've use ILMerge.\r<br />\n<br />\nI've tried explicitly calling<br />\n<pre><code>NetOffice.Core.Default.Initialize();</code></pre>\n\nbut that does not change anything.\r<br />\n<br />\nI've looked at the source code for the Core/Factory object and my guess is that it has to do with the factory loading assemblies by name.  Is this correct?  How can I get around this?<br />\n",
+    "PostedDate": "2015-07-06T01:14:24.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1433269",
+    "ThreadId": "640960",
+    "Html": "*first what i have to say:\r<br />\n<br />\nits first time for me to face an ILMerge problem(Like some other posters? realy???)\r<br />\n<br />\ni need 1-2 day(s) to reproduce the problem because i have no experience with ILMerge - at all.\r<br />\n<br />\nits a kind of magic. my current idea is ILMerge works in another AppDomain and the NetOffice enumerators are not ready to handle this for self-initializing. in other words: your Intialize() call is in your appdomain works well but ILMerge works in his own AppDomain and the first enumerator doesnt works because NetOffice miss the self-initializing check here. as possible hot fix and error trace for me: please try to call a foo[!] Application method or property before . (the methods and properties initialize the NetOffice.Core in his AppDomain but may the self-check is missing for enumerators <em>possible bug</em>)\r<br />\n<br />\n(nice to know: did you use Office from multiple threads?)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-07-06T11:07:44.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "822473",
+    "ThreadId": "351935",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I've just started getting familiar with NetOffice. Seems very useful to me. But I haven't found out how to get a simple &quot;hello world&quot; program to run on MS Project. There is no checkbox in the Automation Add-In Assistant where you can choose Project to be\r\n supported. So there is no auto generated register function for it. I copied the <span>\r\nMSProjectApi.dll and <span>MSHTMLApi.dll into the folder with all the .dlls and added to the</span></span>&nbsp;source code:</p>\r\n<p>Registry.CurrentUser.CreateSubKey(@&quot;Software\\Microsoft\\Office\\Project\\Addins\\TestAddin1.Addin&quot;);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\r\n<p>RegistryKey regKeyProject = Registry.CurrentUser.OpenSubKey(@&quot;Software\\Microsoft\\Office\\Project\\Addins\\TestAddin1.Addin&quot;, true);&nbsp;</p>\r\n<p>regKeyProject.SetValue(&quot;LoadBehavior&quot;, Convert.ToInt32(3));&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\r\n<p>regKeyProject.SetValue(&quot;FriendlyName&quot;, &quot;TestAddin1&quot;);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\r\n<p>regKeyProject.SetValue(&quot;Description&quot;, &quot;No Description available&quot;);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\r\n<p>regKeyProject.Close();</p>\r\n<p>But this does not work. Any ideas?&nbsp;</p>\r\n<p>Thank you!</p>\r\n",
+    "PostedDate": "2012-04-11T09:46:16.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822477",
+    "ThreadId": "351935",
+    "Html": "<p>hello,</p>\r\n<p>i long time ago an italian it-company give me call its possible&nbsp;NetOffice supports MS-Project. i work for these issue and integrate MS-Project but never heard of the italian guys after my work. i have no experience with MS Project, if you want to help me a little bit here? i see the addin registry key is wrong<br />please change \"Project\"&nbsp;to \"MS Project\"<br /><br />(@\"Software\\Microsoft\\Office\\Project\\Addins\\TestAddin1.Addin\") // wrong !!<br /><br />(@\"Software\\Microsoft\\Office\\MS Project\\Addins\\TestAddin1.Addin\") // better !!<br /><br />works?<br /><br />*sebastian</p>",
+    "PostedDate": "2012-04-11T09:53:46.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822789",
+    "ThreadId": "351935",
+    "Html": "<p>Yes man, that's it. Thank you!<br />Works fine now.&nbsp;</p>",
+    "PostedDate": "2012-04-12T01:37:07.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

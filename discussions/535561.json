@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1214920",
+    "ThreadId": "535561",
+    "Html": "Hey, guys\r<br />\n<br />\nI am create an outlook add-in by NetOffice. \r<br />\nBut I don't know how to create a custom form region?\r<br />\n<br />\nI read the link below\r<br />\n<a href=\"http://msdn.microsoft.com/ru-ru/library/cc513845.aspx\" rel=\"nofollow\">Chapter 13: Creating Form Regions</a>\r<br />\n<br />\nBut in the article, MS has a interface &quot;Outlook.FormRegionStartup&quot;\r<br />\nIn NetOffice, there is also a &quot;FormRegionStartup&quot;, BUT IT IS A CLASS\r<br />\n<br />\nAnd until now, I already have a class inherit from COMAddin, and it is the entry of office add-in.\r<br />\nSo I completely do not know how to use  FormRegionStartup class in NetOffice. \r<br />\nI even can not find it in NetOffice example.\r<br />\n<br />\nCan anyone give me an example or some codes? \r<br />\nPlease, help me finish this problem.\r<br />\nThank you very much.<br />\n",
+    "PostedDate": "2014-02-25T16:57:18.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1215179",
+    "ThreadId": "535561",
+    "Html": "I have started similar discussion last year (<a href=\"https://netoffice.codeplex.com/discussions/428189\" rel=\"nofollow\">https://netoffice.codeplex.com/discussions/428189</a>) and got an answer that NetOffice doesn't have desired interface.<br />\n",
+    "PostedDate": "2014-02-26T08:01:16.36-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

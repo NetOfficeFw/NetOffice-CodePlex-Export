@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "905649",
+    "ThreadId": "393510",
+    "Html": "\r\n<p>Currently, the word document have one table and one section title. The section title is above on the table. I used following code to get the table, the problem is how to get the section object based on retrieved table objcect?</p>\r\n<p>Word.Application wordApplication = new Word.Application();<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Word.Document newDocument = wordApplication.Documents.Open(@&quot;C:\\Users\\john\\Documents\\Visual Studio 2010\\Projects\\WindowsFormsApplication3\\WindowsFormsApplication3\\BBB.doc&quot;);</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // read text of document<br>\r\nvar table = newDocument.Tables[1];</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-08-29T06:11:08.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

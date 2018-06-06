@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1360324",
+    "ThreadId": "584731",
+    "Html": "Hi,<br />\n<br />\nWhen trying to run the following code during the COMAddin startup, it gave the error<br />\n&quot;Target instance is not running&quot; at the line (in bold) where I'm trying to the active instance.<br />\nAny ideas what could cause this error?<br />\nThanks.<br />\n<pre><code>    private void Addin_OnStartupComplete(ref Array custom)\n    {\n            try\n            {\n                /* Exception happened here */\n                Outlook.Application outApp = NetOffice.OutlookApi.Application.GetActiveInstance(true);\n\n                Office.CommandBar commandBar = null;\n                Office.CommandBarButton commandBarSaveBtn = null;\n\n                // add a new toolbar\n                commandBar = outApp.ActiveExplorer().CommandBars.Add(&quot;MyOutlook&quot;, MsoBarPosition.msoBarTop, false, true);\n                commandBar.Visible = true;\n\n                // add a button to the toolbar\n                commandBarSaveBtn = (Office.CommandBarButton)commandBar.Controls.Add(MsoControlType.msoControlButton, System.Type.Missing, System.Type.Missing, System.Type.Missing, true);\n                commandBarSaveBtn.Style = MsoButtonStyle.msoButtonIconAndCaption;\n                commandBarSaveBtn.Caption = &quot;Save to Local&quot;;\n                commandBarSaveBtn.FaceId = 3;\n                commandBarSaveBtn.ClickEvent += new Office.CommandBarButton_ClickEventHandler(outlookSaveBtn_Click);\n\n    }</code></pre>\n\n",
+    "PostedDate": "2015-03-05T23:31:49.22-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "722197",
+    "ThreadId": "285400",
+    "Html": "\r\n<p>Hi Sebastian,</p>\r\n<p>We had a go last on Friday at porting a small VBA add-in that also uses DAO for data access to VB.NET with Excel-DNA and the NetOffice assemblies. It went pretty well, with no nasty surprises.</p>\r\n<p>We have some questions (we were using NetOffice version 1.3, not the latest sources):</p>\r\n<p>* The Recordset.Update method in DAO takes two optional parameters. In the corresponding NetOffice method the parameters are required. (<a href=\"http://msdn.microsoft.com/en-us/library/bb221108(v=office.12).aspx\">http://msdn.microsoft.com/en-us/library/bb221108(v=office.12).aspx</a>).</p>\r\n<p>* In Excel, the Worksheet.Range property is an indexed property which NetOffice exposes only as Worksheet.get_Range. I know that C# had issues with indexed properties before C# 4, but there should be no issue from VB.NET. For example Range.Value seems to\r\n work right.</p>\r\n<p>* In VBA the DAO library brings a bunch of methods and constants into the global namespace, for example an OpenDatabase method. You can see these from the VBA Object Browser when selecting the DAO library and looking at &lt;globals&gt;. This allows one to\r\n call OpenDatabase directly from the VBA code, without having an object reference. In VB.NET you can do the same with static methods - by 'Importing' a .NET type (instead of a namespace), the static methods of that type become accessible in VB.NET without needing\r\n the type qualifier. So a static method 'OpenRecordset' on some DAO.Globals class would be directly available as from VBA.</p>\r\n<p>Do you think it would be possible to make these &lt;globals&gt; exported from a NetOffice type which could bring them in directly into VB.NET? I'm not sure how the COM coclass / interface story works in the back.&nbsp;The Excel API has the same story, with\r\n a &lt;globals&gt; section containing ActiveSheet, ActiveCell etc.</p>\r\n<p>* One trick was that to instantiate the DAO DBEngine object, we couldn't just use 'New DBEngine()' but actually had to add the ProgId: 'New DBEngine(&quot;DAO.DBEngine.36&quot;)'. I think this has to do with DAO not registering a version-independent ProgId.</p>\r\n<p>* I know .NET does not support 'default properties', but in some cases it might make for very nice compatibility with VBA if one can simulate the default collections and their indexers. For example, on a DAO recordset one can say:</p>\r\n<p>myRs!MyField = &quot;New Value&quot;.</p>\r\n<p>which actually means</p>\r\n<p>myRS.Fields!MyField.Value = &quot;New Value&quot; - or equivalently &nbsp;myRs.Fields(&quot;MyField&quot;).Value = &quot;New Value&quot;</p>\r\n<p>Note that VB.NET still supports the &quot;!&quot; indexed property dereferencing.</p>\r\n<p>I was wondering if it would make sense to generate an indexed property for the Recordset which shortcuts to the default collection's indexed property. Then one could at least write:</p>\r\n<p>myRS!MyField.Value = &quot;New Value&quot;.</p>\r\n<p>(This is not a suggestion yet - just a thought on what might be possible. I think rewriting the VBA / VB.NET to add the default properties explicitly is fine, and is cool since it is compatible with with both VBA and VB.NET. )</p>\r\n<p>&nbsp;</p>\r\n<p>We packed the Excel-DNA / NetOffice add-in with the new VB.NET assembly into a single-file .xll using ExcelDnaPack.exe. With the various NetOffice assemblies for Excel and the DaoApi.dll, the resulting packed .xll was about 750 KB.</p>\r\n<p>&nbsp;</p>\r\n<p>As a general thought, I was thinking that the initial goal for NetOffice was probably compatibility with the Primary Interop Assemblies. But from my point of view, having NetOffice make the VBA -&gt; VB.NET porting experience better is even more valuable.\r\n And these are not necessarily the same goals.</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks again for the great project!</p>\r\n<p>-Govert&nbsp;</p>\r\n",
+    "PostedDate": "2012-01-08T15:46:57.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "722206",
+    "ThreadId": "285400",
+    "Html": "<p>Hello Govert,</p>\r\n<p>Yes i see these 2 parameters are optional, i have no idea at the moment why its not optional in NetOffice.<br />i need a day to see what happens.</p>\r\n<p>worksheet has no enumerator, and thats the reason for my codegenerator creates no default property here.<br />i change them and make it better.<br /><br />static methods ... shame on me, i never think about that, NetOffice supports code moduls as static classes but no other static methods.<br />i need some days to checkout the COM Type Libraries for that info und how i can perform a latebinding call without a specific instance.<br /><br />thanks for your very good sugestions govert<br />i give you an update when its done.<br /><br />*Sebastian</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-01-08T16:50:41.34-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "722208",
+    "ThreadId": "285400",
+    "Html": "<p>first update:</p>\r\n<p>the DAO COM Type Library tolds me these parameters are not optional but i see also now these parameters has default values(1 and false)&nbsp;and i think thats the reason you can use these parameters in VBA as optional. my codegenerator checks only for the optional flag currently and&nbsp;i have to change that.<br /><br />*Sebastian</p>",
+    "PostedDate": "2012-01-08T17:08:10.623-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "722215",
+    "ThreadId": "285400",
+    "Html": "<p>second update: <br /><br />&gt;&gt; In Excel, the Worksheet.Range property is an indexed property<br /><br />Worksheet has no default property.&nbsp; you can use the ITypeLib Viewer also know as OLE/COM Object Viewer and see Worksheet has no _Default member.<br />i change that at hand in my xml source file in this case&nbsp;and make Range to an indexer, as far known the interop assemblies has a special COM attribute/annotation for default members. tomorrow i take a look with the .NET Reflector and when its true, i put these attribute also to the default members in NetOffice.</p>\r\n<p>*Sebastian</p>",
+    "PostedDate": "2012-01-08T17:47:47.767-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "722278",
+    "ThreadId": "285400",
+    "Html": "<p>I don't mean that Worksheet.Range should become an indexer or default property on Worksheet. It isn't that way in VBA.</p>\n<p>Currently NetOffice Worksheet.Range is not exposed as a .NET property, only via \"get_Range\". I want this code to work in VB.NET:</p>\n<div style=\"color: black; background-color: white;\">\n<pre><span style=\"color: blue;\">Sub</span> Test()\n    <span style=\"color: blue;\">Dim</span> ws <span style=\"color: blue;\">As</span> Worksheet\n    <span style=\"color: blue;\">Dim</span> r <span style=\"color: blue;\">As</span> Range\n    <span style=\"color: blue;\">Set</span> ws = Application.ActiveSheet\n    <span style=\"color: blue;\">Set</span> r = ws.Range(<span style=\"color: #a31515;\">\"A1\"</span>)\n    r.Value = <span style=\"color: #a31515;\">\"XXX\"</span>\n<span style=\"color: blue;\">End</span> <span style=\"color: blue;\">Sub</span>\n</pre>\n</div>\n<p>And then with the \"Globals\" we can possibly figure out how to make this work:</p>\n<div style=\"color: black; background-color: white;\">\n<pre><span style=\"color: blue;\">Imports</span> NetOffice.ExcelApi.Global\n\n<span style=\"color: blue;\">Sub</span> Test()\n    <span style=\"color: blue;\">Dim</span> ws <span style=\"color: blue;\">As</span> Worksheet\n    <span style=\"color: blue;\">Dim</span> r <span style=\"color: blue;\">As</span> Range\n    <span style=\"color: blue;\">Set</span> ws = ActiveSheet\n    <span style=\"color: blue;\">Set</span> r = ws.Range(<span style=\"color: #a31515;\">\"A1\"</span>)\n    r.Value = <span style=\"color: #a31515;\">\"XXX\"</span>\n<span style=\"color: blue;\">End</span> <span style=\"color: blue;\">Sub</span>\n</pre>\n</div>\n<p>-Govert</p>",
+    "PostedDate": "2012-01-08T23:08:12.953-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "722835",
+    "ThreadId": "285400",
+    "Html": "<p>hey govert!<br /><br />i create 2 issues for Recordset.Update and avoid the \"get_\" prefix.<br />a release preview (release 1.4) with fixed issues is available in the download section.<br />please take a look an give me a response, its okay for the vba community.<br /><br />as next step i will see what can i do with the static methods. i see the interop assemblies doesnt support them and the OLE Viewer dont show me a &lt;global&gt; namespace. i'm very confused...</p>\r\n<p>*Sebastian</p>",
+    "PostedDate": "2012-01-09T16:46:37.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "722894",
+    "ThreadId": "285400",
+    "Html": "<p>Thanks Sebastian. I appended some comments to those issues, and will look out for the next version. It is certainly not urgent.</p>\r\n<p>About &lt;global&gt;: I see in the COM type library (e.g. for Excel) that the coclass Global is marked with an \"appobject\" attribute. Maybe that is what tells VBA to hook up a Global object (with interface _Global) to the application object, and since it is in the same COM library, it knows what kind of Application object to hook up. But the \"appobject\" attribute seems to be the key.</p>\r\n<p>So one possible approach is to have the a class with static members for everything in _Global and then have some static method to tell it the underlying \"Application\" object to work against. I think all the _Global methods just delegate the call to the Application object. _Global is also hidden (you could mark with EditorBrowsable(Never)). &nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>For the constants exposed to VBA through &lt;global&gt;, we'd just need a class (possible sealed and marked with [StandardModule] with all the enum values exported as static constants. I'm just worried it bloats the assemblies a lot if you do this. If that's a problem, what about having it in a separate helper assembly?</p>",
+    "PostedDate": "2012-01-09T23:13:08.147-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "722946",
+    "ThreadId": "285400",
+    "Html": "<p>Hi Sebastian,</p>\r\n<p>OK, I've looked at the preview version 1.4.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>The fixes you make for Recordset.Update and Worksheet.Range(\"A1\") work perfectly, thank you.</p>\r\n<p>I noticed an issue with the IEnumerable&lt;T&gt; change, which I posted as a new discussion.</p>\r\n<p>-Govert</p>\r\n<p>&nbsp;</p>\r\n<p>(It's a bit confusing on Codeplex if you use the same 'Download' entry for different versions. Maybe you can make a new 'Download' entry for the next version instead of re-using and renaming the current release?)</p>",
+    "PostedDate": "2012-01-10T01:15:08.503-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

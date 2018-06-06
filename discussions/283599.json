@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "714777",
+    "ThreadId": "283599",
+    "Html": "<p>Hi,</p>\n<p>I get a System.Exception when trying to access MyAddIn.Object:</p>\n<p>Message:<br /> class f3aaca24-47d5-4d10-a924-c33f903de7f0:AddInCommunication not found in loaded LateBindingApi Assemblies<br /> Currently loaded LateBindingApi Assemblies<br /> Loaded LateBindingApi Assembly:00062fff-0000-0000-c000-000000000046 OutlookApi, Version=1.3.0.2, Culture=neutral, PublicKeyToken=ab91c198d7b96dca<br /> Loaded LateBindingApi Assembly:2df8d04c-5bfa-101b-bde5-00aa0044de52 OfficeApi, Version=1.3.0.2, Culture=neutral, PublicKeyToken=1208423a019d3443</p>\n<p>Stack Trace:<br /> &nbsp;&nbsp; bei LateBindingApi.Core.Factory.CreateObjectFromComProxy(COMObject caller, Object comProxy)<br /> &nbsp;&nbsp; bei NetOffice.OfficeApi.COMAddIn.get_Object()</p>\n<p>For better understanding I will paste some code snippets:</p>\n<p>1. Solution \"MyAddIn\", build with VS2008, Template Outlook 2007 Add-In, Running in Outlook 2010. Build-Options: Register for COM interop: true. In AssemblyInfo.cs set ComVisible: true. The addin works as desired.</p>\n<p>public partial class ThisAddIn<br /> {<br /> &nbsp;&nbsp;&nbsp; private IAddInCommunication addInCommunication;<br /> <br /> &nbsp;&nbsp;&nbsp; protected override object RequestComAddInAutomationService()<br /> &nbsp;&nbsp;&nbsp; {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (addInCommunication == null)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; addInCommunication = new AddInCommunication();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br /> <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return addInCommunication;<br /> &nbsp;&nbsp;&nbsp; }<br /> }</p>\n<p>[ComVisibleAttribute(true)]<br /> [ClassInterface(ClassInterfaceType.None)]<br /> public class AddInCommunication : StandardOleMarshalObject, Outlook.IAddInCommunication<br /> {<br /> &nbsp; public void Test()<br /> &nbsp; {<br /> &nbsp; }<br /> }</p>\n<p>2. Solution \"Outlook\", Class-Lib, Build-Options: Register for COM interop: true. In AssemblyInfo.cs set ComVisible: true</p>\n<p>[ComVisibleAttribute(true)]<br /> [InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]<br /> public interface IAddInCommunication<br /> {<br /> &nbsp; void Test();<br /> }</p>\n<p>3. Solution \"WinForms\", trying to access AddInCommunication of MyAddIn running in Outlook 2010.:</p>\n<p>public void Connect()<br /> {<br /> &nbsp; LateBindingApi.Core.Factory.Initialize();<br /> &nbsp; var app = GetApplicationInstance();<br /> &nbsp; Application = app != null<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ? new Application(null, app)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : new Application();</p>\n<p>&nbsp; var addin = Application.COMAddIns[\"MyNamespace.MyAddIn\"];<br /> &nbsp; var comm = addin.Object as Outlook.IAddInCommunication; //this throws the exception<br /> }</p>\n<p>As I interpret the exception, NetOffice is looking in OutlookApi and OfficeApi for AddInCommunication.<br /> This will cause the exception - the class exists in assembly MyAddIn. But here is maybe another problem: I will not work with the implentation (no reference between WinForms and MyAddIn!) of AddInCommunication. I need to use IAddInCommunication...</p>\n<p>Doing this with normal Outlook COM access (not NetOffice) works as follow:</p>\n<p>&nbsp;object index = \"MyNamespace.MyAddIn\";<br /> &nbsp;var addin = Application.COMAddIns.Item(ref index);<br /> &nbsp;object obj = addin.Object; //while debugging type is System.__ComObject<br /> &nbsp;var xx = obj as IAddInCommunication;</p>\n<p>So my question is: What are I am doing wrong?</p>",
+    "PostedDate": "2011-12-20T05:14:37.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714787",
+    "ThreadId": "283599",
+    "Html": "<p>hello,</p>\n<p>oh this is special scenario, NetOffice analyze the proxy and try to find an coresponding wrapper.<br />in this case we have no NetOffice wrapper class of course because the return value is not an office type.<br />please use the low-level invoker in this case:<br /><br /></p>\n<div style=\"background-color: white; color: black;\">\n<pre><span style=\"color: blue;\">object</span> proxy = LateBindingApi.Core.Invoker.PropertyGet(addin, <span style=\"color: #a31515;\">\"Object\"</span>);\r\n</pre>\n</div>\n<p>&nbsp;</p>\n<p>as far i known the Object property is null by default, you have to set this property in your addin.<br /><br />*regards<br />Sebastian<br /><br /></p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-12-20T05:32:12.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714800",
+    "ThreadId": "283599",
+    "Html": "<p>works perfect! thank you so much!</p>",
+    "PostedDate": "2011-12-20T05:49:15.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

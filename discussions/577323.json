@@ -1,0 +1,90 @@
+[
+  {
+    "Id": "1340496",
+    "ThreadId": "577323",
+    "Html": "Hi, \r<br />\nI'm using Visual Studio 2013 with NetOffice, and I try to deploy my Outlook Addin via InstallShield. I'd like to know which files I have to put in my project to make it works on the client's pc. \r<br />\n<br />\nWith vsto, there's a manifest, a vsto and an output file to put in the application files section, but I don't know wich file I have insert to make the addin start in Outlook. \r<br />\n<br />\nVSTO also need a prq for Microsoft Visual Studio 2010 Tools for Office Runtime, but what do I have to set for NetOffice?\r<br />\n<br />\nOn the client, I see the registers and the paths are pointing in the installation folder, where the dll are localized, but nothing happened when Outlook open. I see dlls in the com components. \r<br />\n<br />\nOn my pc, in debug and release mode, it starts by itself... Everything's fine.\r<br />\n<br />\nI searched for Informations in french/english, but found nothing. \r<br />\n<br />\nHelp me please!<br />\n",
+    "PostedDate": "2015-01-09T12:29:50.813-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1340511",
+    "ThreadId": "577323",
+    "Html": "hey,\r<br />\n<br />\n(first of all: JE SUIES CHARLIE)\r<br />\n<br />\nno idea what is a prq but you find a deployment table in the NetOffice documentation page: <a href=\"http://netoffice.codeplex.com/documentation\" rel=\"nofollow\">http://netoffice.codeplex.com/documentation</a>\r<br />\n(please scroll down)\r<br />\n<br />\nnormaly is, the .msi installer/deployment project find the dependencies automaticly. (no idea about install shield)\r<br />\n<br />\n[Advanced]\r<br />\n1.=Let me know your NO version and the operating system on the client pc. moreover, your addin use the NO Tools or not.\r<br />\n2.) Addin is registered for the current user or systemwide on local machine.\r<br />\n3.) Is you scenario a local desktop session or works from IIS or another web scenario.\r<br />\n[/Advanced]\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-01-09T13:55:16.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1341063",
+    "ThreadId": "577323",
+    "Html": "Hi,\r<br />\n<br />\n&quot;Je suis Chalie&quot; too!\r<br />\n<br />\nThanks for your response. Maybe my question was not clear.\r<br />\n<br />\nMy first try was this one : <a href=\"http://msdn.microsoft.com/en-us/library/cc442767.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-us/library/cc442767.aspx</a> and it works fine.\r<br />\nIn this example, wich use Install Shield, I had to insert 3 files: dll.manifest, output, and vsto. &quot;.prq&quot; was a prerequiste for Microsoft Visual Studio 2010 tools for Office Runtime installation on the client's pc. I ran it by cmd line, wiith /s /v/qn, and when I open Outlook, my ribbon appears and the code is running.\r<br />\nBut I had to create more than one deployer for multiple Office version. Then I found netOffice.\r<br />\n<br />\nI have downloaded the example VB deployment project on the website, but it's not compatible with Visual Studio 2013.\r<br />\n<br />\nSecond, I watched the tuto there: <a href=\"https://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS\" rel=\"nofollow\">https://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS</a>.\r<br />\nI translated it with Google, but I don't have new setup project in the choices of Visual Studio new project tab, as I see there.\r<br />\nWhen I go to new Project, Setup and deployment, in VStudio, I only see Install Shiled, that I've installed previously.\r<br />\n<br />\nI'd like to know wich files do I have to put/install/register on the client's pc to make my Outlook with netOffice dll run, and if I can use Install Shield to do that, else, how to create msi/installer compatible with netOffice .\r<br />\n<br />\n<br />\nIs there any example with Visual Studio 2013 (vb net) and netOffice 1.4.0.0?\r<br />\n<br />\nI hope this is clear, my first language is french... \r<br />\nThanks for your help!<br />\n",
+    "PostedDate": "2015-01-12T06:26:58.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1341330",
+    "ThreadId": "577323",
+    "Html": "In Install Shield LE I only add the project dll and set (COM Interop and &quot;Extract COM Information&quot;). After Setup is finished I run regasm.exe \r<br />\n<br />\nc:\\Windows\\Microsoft .Net\\Framework\\v4.0.30319\\Regasm.exe nameofdll.dll /codebase\r<br />\n<br />\nBut currently I also search for a better solution because sometimes it dosen't work.<br />\n",
+    "PostedDate": "2015-01-12T23:22:47.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1341410",
+    "ThreadId": "577323",
+    "Html": "@MarieChristine\r<br />\n<br />\nAs first please do me a pleasure and use the latest NO 1.7.2 version(available on nuget). \r<br />\n(It is very challenging for me to support all the older NO versions in detail.)\r<br />\n<br />\nThe most important question: What is  your target office application and whats your current NO assemblies on the target system?\r<br />\n<br />\nPlease check the following registry key on the target system: HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\$YourOfficeApplication\\$YourAddinProgID\r<br />\nThis is the central load information for the Office application. The loadbehavior key must be &quot;3&quot; to load at startup. if this key not exists the register process failed, if its loadbehavior set to &quot;2&quot; after office application start, an error occurs while loading the addin. (Try the Wow3264Node also on 64bit systems)\r<br />\n<br />\n&quot;I have downloaded the example VB deployment project on the website, but it's not compatible with Visual Studio 2013. &quot;\r<br />\nooops, as far i known Microsoft drop the .msi installation support in visual studio. (no idea why but i guess its a trick to bring more people to the app store)\r<br />\n<br />\nAt last: I suggest you to use the NO Tools, available since NO 1.6 No need to create register code at hand. Checkout the new example projects.\r<br />\n<br />\n<br />\n@GermanSniper\r<br />\n&quot;because sometimes it dosen't work.&quot;\r<br />\nplease explain...what happen?<br />\n",
+    "PostedDate": "2015-01-13T03:47:13.597-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343475",
+    "ThreadId": "577323",
+    "Html": "Hello,\r<br />\n<br />\nI have got almost the same issue as MariChristine, i want to deploy my ribbon for outlook.\r<br />\nAt the moment the ribbon work and can be used in my own outlook, when i generate the solution in VS2012 the addIn is automatically installed, but i can't figure out how to deploy it. InstallShield don't help. When i try to install manually the .dll in outlook i got an error message saying &quot;the dll is not a correct outlook dll&quot; (i use the french version of outlook).\r<br />\nIm stuck here and I may stop using NetOffice if i can't solve this issue quickly.\r<br />\n<br />\nThank you for your help.<br />\n",
+    "PostedDate": "2015-01-20T03:42:58.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343792",
+    "ThreadId": "577323",
+    "Html": "please explain how you register the addin manually? (gacutil/regasm?) and your used NetOffice version.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-01-21T05:55:29.787-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343818",
+    "ThreadId": "577323",
+    "Html": "I use the latest version of NetOffice. I didn't used anything special to install the addin in outlook. When i said &quot;manually&quot; i mean that i tried to install the dll from the option menu in outlook.<br />\n<img src=\"http://img11.hostingpics.net/pics/951173addinoutlook.jpg\" alt=\"Image\" /><br />\n",
+    "PostedDate": "2015-01-21T07:20:11.343-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343895",
+    "ThreadId": "577323",
+    "Html": "Hi,\r<br />\nSorry, I worked on other things...\r<br />\nI have the latest NO version, the one I gave you was the Toolbox's version. Sorry for the mistake.\r<br />\n<br />\nI'd like to know how to make generate a msi deployer that will install my ribbon on any Outlook version, on any Windows version. \r<br />\n<br />\nWhen I run my msi, the application is installed, I can see it in &quot;Program File&quot; or &quot;Program Files X86&quot;, but I have to run manually in cmd &quot;C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\regasm &quot;path\\name.dll&quot;&quot; to make it works in Outlook. \r<br />\n<br />\nThanks for your patience and help.<br />\n",
+    "PostedDate": "2015-01-21T11:36:22.78-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343904",
+    "ThreadId": "577323",
+    "Html": "Just as MarieChristine, I am looking for the same tool, but with InstallShield and not msi.<br />\n<br />\nEDIT: <br />\nI think the solution is in the <a href=\"http://netoffice.codeplex.com/wikipage?title=Tutorial11_DE_CS\" rel=\"nofollow\">tutorial 11</a> which is only in german and in a .msi version. I don't understand german and i use InstallShield.<br />\n",
+    "PostedDate": "2015-01-21T12:30:10.69-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1345593",
+    "ThreadId": "577323",
+    "Html": "An Office addin is a COM component (except for document-based addins)\r<br />\n<br />\nYou have to register a COM component on the target system in any case.\r<br />\nYou can do this at hand with regasm.exe or let the installer of your choice do this for you.\r<br />\n<br />\nI have tried to use google with &quot;C# install shield register com interop&quot;\r<br />\nand this topic looks promising. \r<br />\n<br />\n<a href=\"http://stackoverflow.com/questions/15104982/how-to-make-my-c-sharp-dll-a-self-registering-dll\" rel=\"nofollow\">http://stackoverflow.com/questions/15104982/how-to-make-my-c-sharp-dll-a-self-registering-dll</a>\r<br />\n<br />\n(Scroll down to the screenshot.)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-01-25T01:32:34.027-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

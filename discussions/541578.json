@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1231755",
+    "ThreadId": "541578",
+    "Html": "Hi,\r<br />\n<br />\nwe currently developing an Outlook addin for outlook 2010 and 2013. We want to give Netoffice a try because we think it's an powerfull piece of software.\r<br />\n<br />\nFor our addin we used the aproach to extend the COMAddin class.\r<br />\n<br />\nNo we have the situation that we need access to the MAPIOBJECT of an outlook application session. But we get always an Nullreferenceexception while accessing  this MAPIOBJECT.\r<br />\n<br />\nTo reproduce the behaviour the following sample COMAddin should do:<br />\n<pre><code>using System;\nusing System.Windows.Forms;\nusing System.Runtime.InteropServices;\nusing NetOffice.Tools;\nusing NetOffice.OutlookApi.Tools;\nusing NetOffice.OutlookApi;\n\n/*\n  * This project shows you the COMAddin base class from the NetOffice tools.\n  * Its designed to reduce infrastructure code from your own.\n  * You have to set some attributes and thats all. \n  * You see also the host application is available as class instance property. no need for dispose here because the base class do this for you while shutdown.\n*/\n\nnamespace NetOfficeTools.SimpleOutlookCS45\n{\n    [COMAddin(&quot;NetOfficeCS45 Sample Outlook Addin&quot;, &quot;This Addin shows you the COMAddin base class from the NetOffice Tools&quot;, 3)]\n    [GuidAttribute(&quot;E84FBA68-FDA6-4cf6-A0E7-5F025C0F9867&quot;), ProgId(&quot;SimpleOutlookCS45.Addin&quot;)]\n    public class Addin : COMAddin\n    {\n        public Addin()\n        {\n            this.OnStartupComplete += new OnStartupCompleteEventHandler(Addin_OnStartupComplete);\n            this.OnDisconnection += new OnDisconnectionEventHandler(Addin_OnDisconnection);\n        }\n\n        void Addin_OnStartupComplete(ref Array custom)\n        {\n            // get the host application version\n            string hostVersion = this.Application.Version;\n            MessageBox.Show(&quot;Host Application Version:&quot; + hostVersion);\n            try\n            {\n                var session = this.Application.Session;\n                //here the error occurs....\n                var mapi = session.MAPIOBJECT;\n            }\n            catch (System.Exception ex)\n            {\n                 MessageBox.Show(&quot;Error:&quot; + ex.StackTrace);\n            }\n        }\n\n        void Addin_OnDisconnection(ext_DisconnectMode RemoveMode, ref Array custom)\n        {\n\n        }\n    }\n}</code></pre>\n\nWhat are my options?\r<br />\n<br />\nThanx for help in advance\r<br />\n<br />\nBest regards\r<br />\nThomas<br />\n",
+    "PostedDate": "2014-04-08T03:46:27.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1231757",
+    "ThreadId": "541578",
+    "Html": "hi,\r<br />\n<br />\nits NO 1.6 ??\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-04-08T03:50:32.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1231759",
+    "ThreadId": "541578",
+    "Html": "Hi Sebastian,<br />\n<br />\nmany thanx for your ultra fast reply :)<br />\n<br />\nYes we use NO 1.6.0. We tried the 1.7.0 preview too. Unfortunatly with the same result.<br />\n<br />\nThomas<br />\n",
+    "PostedDate": "2014-04-08T03:53:44.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1231784",
+    "ThreadId": "541578",
+    "Html": "the problem is: the MAPIOBJECT com class doesnt implement the IDispatch interface. this is a must-have to use late-binding. i try to access the MAPIOBJECT with vb latebinding and c# dynamics. this works but i can't use any property or method for the MAPIOBJECT instance here (COMException.{&quot;IDispatch wird nicht vom COM-Ziel implementiert.&quot;}) This is the first time i see an office class without IDispatch implementation. NO convert the proxy to IDispatch in order to analyze and resolve the corresponding wrapper class. this operation fails and the NullReferenceException occurs. i need few days to anzalyze the com type library and create a workarround(if possible, my current idea is to call the vtable early bind interface directly, not sure this works as expected without problems in all versions and platforms) \r<br />\n<br />\nas hotfix i suggest i you to use the highest available pia's and use the 'embedd interop types' reference feature. its also versionindependent and its possible to combine both API's if you need events or something like that(embedd interop cant give you events) I want help you as best i can if you need further assistance here.\r<br />\n<br />\nGimme few days please to find and create a solution for the problem.  currently, im very suprised. :/\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-04-08T04:52:03.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1231849",
+    "ThreadId": "541578",
+    "Html": "Hi Sebastian,<br />\n<br />\nmany thanx for having a look into this.<br />\n<br />\nMy temporary workaround now:<br />\n<pre><code> Microsoft.Office.Interop.Outlook.Application msApp =\n               (Microsoft.Office.Interop.Outlook.Application)this.Application.UnderlyingObject;\n                var mapiObj = msApp.Session.MAPIOBJECT;</code></pre>\n\nAfter some very quick tests i made it seems to work as expected. So both we won some time to find a solution if one exists.<br />\n<br />\nbest regards<br />\nThomas<br />\n",
+    "PostedDate": "2014-04-08T06:26:20.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1231868",
+    "ThreadId": "541578",
+    "Html": "exactly. thats what i mean to combine the PIA's and NO.\r<br />\ni'm still suprised because this problem was not detected for a long time  :o \r<br />\nyes i know.. its not a mistake, just a little happy accident....(*grrrrrrr)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-04-08T06:40:21.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1315844",
+    "ThreadId": "541578",
+    "Html": "Hi Subastian,\r<br />\n<br />\nDid you ever figure out a way to access the underlying MAPI object without having to rely INTEROP?\r<br />\n<br />\nThanks,\r<br />\n<br />\nJohnny<br />\n",
+    "PostedDate": "2014-10-22T17:06:00.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1490077",
+    "ThreadId": "660230",
+    "Html": "Hi all - I have a project that opens an Excel file (used as a template), writes to it, and then saves it.  The solution works on my desktop (where Excel is installed), but when I deploy it to the server and execute I get this message:\r<br />\n<br />\nLine 56:             l_oExcelApp = New ExcelInterop.Application()\r<br />\n<br />\n[ArgumentException: progId not found. Excel.Application]\r<br />\n   NetOffice.COMObject..ctor(String progId) in C:\\NetOffice6\\Source\\NetOffice\\COMObject.cs:350\r<br />\n   NetOffice.ExcelApi.Application..ctor() in C:\\NetOffice6\\Source\\Excel\\Classes\\Application.cs:148\r<br />\n   index.CreateExcelExportFile() in D:\\ExcelExport\\index.aspx.vb:56\r<br />\n   index.btnExport_click(Object sender, EventArgs e) in D:\\ExcelExport\\index.aspx.vb:13\r<br />\n   System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument) +155\r<br />\n   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +3804\r<br />\n<br />\nI copied over the entirety of the solution on the server, no luck.  all referenced .dlls are there.\r<br />\nCan anyone help?<br />\n",
+    "PostedDate": "2016-12-19T14:02:38.49-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1490249",
+    "ThreadId": "660230",
+    "Html": "That means Excel is not installed or you have no access to the desktop because your code is running in a network/system account.\r<br />\n<br />\nThis topic is good explanation how you fix it:\r<br />\n<a href=\"http://www.integra4notes.com/faq/pages/0168\" rel=\"nofollow\">http://www.integra4notes.com/faq/pages/0168</a>\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-12-23T19:18:51.27-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

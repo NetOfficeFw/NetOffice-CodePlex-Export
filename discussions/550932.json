@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1263620",
+    "ThreadId": "550932",
+    "Html": "Hello,\r<br />\n<br />\nI don't find sample in c# for opening a .doc file.\r<br />\n<br />\nI have tried Documents.open2000(), Documents.openOld(), etc...\r<br />\nAlways have an exception.\r<br />\nIt is the same as with Microsoft.Office.Interop.\r<br />\n<br />\nI have Office 1010 on my computer and i can open without problem these files with WinWord applications.\r<br />\nAPI works for .DOCX files\r<br />\n<br />\nAny suggest ?\r<br />\n<br />\nbest regards.<br />\n",
+    "PostedDate": "2014-07-08T05:15:50.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

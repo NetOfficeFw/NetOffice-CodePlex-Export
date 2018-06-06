@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1326421",
+    "ThreadId": "573230",
+    "Html": "Hi,<br />\n<br />\nI have a strange problem I can't resolve. On my local maschine an some others my code is working fine. If I try to use it at a Windows 2003 Server I have a problem to get an instance of Worksheet.<br />\n<br />\nI use VS 2010 and my application is written in VB.NET 3.5. I use NetOffice 1.7.2<br />\n<br />\nHere is what I'm doing. It is very simple and really no magic:<br />\n<pre><code>Imports NetOffice\nImports Excel = NetOffice.ExcelApi\n....\nDim lobjExcel As Excel.Application = New Excel.Application()\nDim lobjWorkbook As Excel.Workbook = lobjExcel.Workbooks.Add()\nlog.Debug(lobjWorkbook.Worksheets.ToString()) --&gt; Output is Sheets</code></pre>\n\nEvery of the following line is crashing (tried them seperatly):<br />\n<pre><code>Dim sheet As Excel.Worksheet = lobjExcel.Workbooks(1).Worksheets(1)\nDim sheet As Excel.Worksheet = lobjWorkbook.Worksheets(1)\nDim sheet As Excel.Worksheet = lobjWorkbook.Sheets(1)\n</code></pre>\n\nException Message:<br />\nbei NetOffice.IDispatch.GetTypeInfo(Int32 iTInfo, Int32 lcid)<br />\n   bei NetOffice.Core.GetParentLibraryGuid(Object comProxy)<br />\n   bei NetOffice.Core.GetFactoryInfo(Object comProxy)<br />\n   bei NetOffice.Core.CreateObjectFromComProxy(COMObject caller, Object comProxy)<br />\n   bei NetOffice.ExcelApi.Sheets.get_Item(Object index)<br />\n<br />\nCan someone help me with that problem?<br />\n",
+    "PostedDate": "2014-11-26T06:36:19.4-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1326738",
+    "ThreadId": "573230",
+    "Html": "looks for a security issue. make sure your code is running in a local desktop session.\r<br />\notherwise, give closedxml a try: <a href=\"https://closedxml.codeplex.com\" rel=\"nofollow\">https://closedxml.codeplex.com</a>\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-11-27T01:51:33.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

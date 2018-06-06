@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "986923",
+    "ThreadId": "429637",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>Yesterday I&nbsp;decided to migrate&nbsp;on VS2012 &#43; Office 2013 (RTM)&nbsp;&#43; Windows 7 and since i haven't been able to access the VBE property.</p>\r\n<p>Each time I get an exception :<br>\r\n-&nbsp;&nbsp;InnerException&nbsp;{&quot;Exception from HRESULT: 0x800A03EC&quot;}&nbsp;System.Exception {System.Runtime.InteropServices.COMException}<br>\r\n<br>\r\nStack Trace:<br>\r\n&nbsp;&nbsp; at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)<br>\r\n&nbsp;&nbsp; at NetOffice.ExcelApi._Application.get_VBE()<br>\r\n&nbsp;&nbsp; at CallSite.Target(Closure , CallSite , Object )<br>\r\n&nbsp;&nbsp; at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)<br>\r\n&nbsp;&nbsp; at Microsoft.CSharp.RuntimeBinder.DynamicMetaObjectProviderDebugView.TryGetMemberValue[T](T obj, String propName, Type accessibilityContext, Boolean isResultIndexed)</p>\r\n<p><br>\r\nNote: Access to VBA object model is trusted.<br>\r\n<br>\r\nIs this a known issue?<br>\r\n<br>\r\nThank you,</p>\r\n<p>Sébastien</p>\r\n",
+    "PostedDate": "2013-01-15T02:04:05.933-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "986929",
+    "ThreadId": "429637",
+    "Html": "\r\n<p>Oki :) I found my answer!</p>\r\n<p>Apparently the Handle.AutomationSecurity = MsoAutomationSecurity.msoAutomationSecurityByUI is preventing me from accessing the VBE property...</p>\r\n",
+    "PostedDate": "2013-01-15T02:12:27.117-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

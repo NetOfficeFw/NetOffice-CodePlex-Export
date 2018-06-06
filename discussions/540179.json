@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1226837",
+    "ThreadId": "540179",
+    "Html": "hi,\r<br />\nI have com addin project developed for office 2003/07 I need to upgrade to 2010/13.\r<br />\nHow can I migrate my code to netOffice? or I need to rewrite all/portion of code?\r<br />\nI can not find help in documentation! \r<br />\n<br />\nKind Regards<br />\n",
+    "PostedDate": "2014-03-26T02:54:56.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1227236",
+    "ThreadId": "540179",
+    "Html": "I can't give you an answer because i need to know more details.<br />\nThe 2003/2007 addin is written in VB6, or C# or VB.Net?<br />\nIt's a VSTO project, or plain interop?<br />\n<br />\nNO is very very similar(nearly 100%) to the standard office automation modell.<br />\nBut you have to use Dispose() instead of Marshal.ReleaseComObject. <br />\nCurrently, some VSTO features are missing.<br />\n<br />\n(Take a look at the example projects. Typical is you can use &gt;90% old code without changes)<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2014-03-27T01:21:05.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1227657",
+    "ThreadId": "540179",
+    "Html": "Project is plain interop and in C#!\r<br />\nI need to change some libraries or build new project?\r<br />\ncan i get help step by step?\r<br />\n<br />\nKind Regards<br />\n",
+    "PostedDate": "2014-03-27T22:33:20.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1228044",
+    "ThreadId": "540179",
+    "Html": "<ol>\n<li>\ncreate a backup copy(or ignore if svn,tfs,... is present)<br />\n</li>\n<li>\nremove interop assembly references<br />\n</li>\n<li>\nadd NO assemblies( for word its: NetOffice.dll, OfficeApi.dll, VBIDEApi.dll, WordApi.dll) you find a deployment table in the [documentation])(<a href=\"https://netoffice.codeplex.com/documentation\" rel=\"nofollow\">https://netoffice.codeplex.com/documentation</a>)<br />\n</li>\n<li>\nchange the reference property 'Embed Interop Types' for each NO assembly to 'false'<br />\n</li>\n<li>\nChange your using statements, i suggest you using ' Word = NetOffice.WordApi;' and so on(you may have to change your code depending on using statements)<br />\n</li>\n<li>\nEvents in NO ends with 'Event', Change your code  eg:<br />\napp.Activate += new EventHandler(...) to app.ActivateEvent += new EventHandler(...) <br />\n(the reason for the event annotation is some office objects use the same name for an event and a member method. this is not allowed in c# or vb and confuse some developers)<br />\n</li>\n<li>\nChange all Marshal.ReleaseComObject(myObject) calls to<br />\n if(null != myObject)<br />\n   myObject.Dispose();<br />\n</li>\n</ol>\nThats all so far. You also have to know, NO use Enums in seperate Sub-Namespaces, for example NetOffice.WordApi.Enums or NetOffice.OfficeApi.Enums:<br />\n<br />\nMoreover, its highly recommended to study the first 3 tutorials about com proxy management. A short explanation to compare the scenario is <a href=\"https://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_Management\" rel=\"nofollow\">online available</a>.<br />\n",
+    "PostedDate": "2014-03-28T17:54:36.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1228529",
+    "ThreadId": "540179",
+    "Html": "Thank you for help :)<br />\nnow one major issue I am facing is when MS Word starts, following event triggers<br />\n<pre><code>private CommandBar cellbar;\npublic void OnConnection(object application, Extensibility.ext_ConnectMode connectMode, object addInInst, ref System.Array custom)\n{\n    cellbar = (application as Word.Application).CommandBars[&quot;Fields&quot;];\n    //here application object parent type is Microsoft.Office.Interop.Word.Application\n    //so I can not convert application it to Word.Application because its type is NetOffice.WordApi.Application\n    //any solution to it?? or how can I get CommandBar from CommandBars?\n...\n}</code></pre>\n\nI have also tried this<br />\n<pre><code> void IDTExtensibility2.OnConnection(object Application, ext_ConnectMode ConnectMode, object AddInInst, ref Array custom)\n{\n            try\n            { \n                _wordApplication = new Word.Application(null, Application);\n                 //but here properties of _wordApplication are not mapped! \n                 //i.e. every thing inside is null! still missing anything??\n            }\n            catch (Exception exception)\n            {\n               ...\n            }\n}</code></pre>\n\nKind Regards<br />\n",
+    "PostedDate": "2014-03-31T03:28:35.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1229215",
+    "ThreadId": "540179",
+    "Html": "looks good(second version) i can't pin point the problem. (are you sure, no debugger timeout or something like that?)  if possible: send me a sample to public.sebastian[at]web.de(remove personal code if you want) i want clearify the situation for you.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-04-01T16:08:46.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

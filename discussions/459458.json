@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1100103",
+    "ThreadId": "459458",
+    "Html": "I need to create a new contact folder in outlook contacts then i need to add some contacts inside this newly created folder.<br />\n<br />\nI'm be able to create a new contact inside the default folder, but i can't create new folder and use it to add some specific contacts.<br />\n<br />\nmy not working code:<br />\n<pre><code>    Outlook.Application outlookApplication = new Outlook.Application();\n            Outlook._NameSpace outlookNS = outlookApplication.GetNamespace(&quot;MAPI&quot;);\n            Outlook.MAPIFolder objDefaultContactsFolder = outlookNS.GetDefaultFolder(OlDefaultFolders.olFolderContacts);\n\n            //Outlook.MAPIFolder InboxFolder = oNS.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox);\n            Outlook.MAPIFolder customFolder = default(Outlook.MAPIFolder);\n            try\n            {\n                customFolder = objDefaultContactsFolder.Folders.Add(&quot;Authorcode&quot;, objDefaultContactsFolder);\n                \n            }\n            catch (System.Exception ex)\n            {\n                MessageBox.Show(&quot;The following error occurred: &quot; + ex.Message);\n            }\n            \n            \n            \n            MessageBox.Show(objDefaultContactsFolder.Name);\n\n</code></pre>\n\ncan someone help me?<br />\n<br />\nthank you<br />\n",
+    "PostedDate": "2013-09-27T06:17:29.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100685",
+    "ThreadId": "459458",
+    "Html": "did you got an exception? whats in it? do you work with an exchange server behind?\r<br />\nplease gimme more details.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-09-29T15:05:39.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

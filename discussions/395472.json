@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "912425",
+    "ThreadId": "395472",
+    "Html": "\r\n<p>Hey Sebastian,&nbsp;</p>\r\n<p>Wanted to first say thank you for netoffice, I have used it extensively.</p>\r\n<p>&nbsp;</p>\r\n<p>I was hoping there was a way to force a certain IAP, say 12 as opposed to 14. I have office 2010 installed on my box locally and noticed that it is at the root of a failed Excel paste call. Using Excel Interop 14 libraries the paste worksheet method always\r\n gives me:&nbsp;<strong>That command cannot be used on multiple selections.</strong></p>\r\n<p>Running the same application on a box that only has Interop 12 alleviates said issues. Is there a way to force Interop 12 as opposed to 14 without uninstalling Office 2010 in favor of Office 2007?</p>\r\n<p>Cheers</p>\r\n",
+    "PostedDate": "2012-09-13T15:24:04.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

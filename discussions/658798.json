@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1486367",
+    "ThreadId": "658798",
+    "Html": "On Downloads, why does it say &quot;NetOffice 1.7.3 Oct 10, 2016, updated Oct 11&quot; ?\r<br />\nI downloaded, but it is still the version from March 2015.<br />\n",
+    "PostedDate": "2016-10-18T17:34:24.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486440",
+    "ThreadId": "658798",
+    "Html": "I've been just added the current source state to the downloads because some people ask for.\r<br />\n(microsoft stop any maintenance for codeplex and the SVN bridge is still broken)\r<br />\nIt looks like codeplex update the release date here automaticaly - sorry for that.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-10-19T21:53:56.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486513",
+    "ThreadId": "658798",
+    "Html": "I understand, thanks.<br />\n",
+    "PostedDate": "2016-10-20T10:15:00.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486938",
+    "ThreadId": "658798",
+    "Html": "Hi,\r<br />\n<br />\nSomeone could confirm if this current version is compatible with Excel 2016 ..?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2016-10-26T06:21:26.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1487982",
+    "ThreadId": "658798",
+    "Html": "Yes it is.<br />\n",
+    "PostedDate": "2016-11-15T15:46:53.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1488016",
+    "ThreadId": "658798",
+    "Html": "true. Office 2016 is the same as its previous version because Microsoft left off the COM API.\r<br />\nThe good news: This means to have more space for agressive optimizations in NetOffice. No need to take care for the future anymore.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-11-16T02:34:12.26-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1081723",
+    "ThreadId": "453694",
+    "Html": "Hi All,\r<br />\n<br />\nI was trying to use NetOffice to create a VBE addin that can be used in the VBA IDE (rather than Excel/PowerPoint etc.) However, when loading the addin (i.e. when it hits OnConnect), I receive the below error message:<br />\n<blockquote>\nSystem.InvalidCastException: Unable to cast COM object of type 'System.__ComObject' to class type 'NetOffice.VBIDEApi.VBE'. Instances of types that represent COM components cannot be cast to types that do not represent COM components; however they can be cast to interfaces as long as the underlying COM component supports QueryInterface calls for the IID of the interface.<br />\n</blockquote>\nI referenced VBIDEApi.dll and NetOffice.dll in my solution and am using .NET 2.0 and testing my solution against Office 2010 32-bit.\r<br />\n<br />\nHere's my code for the OnConnection part, I've snipped the code to make it a bit more readable:<br />\n<pre><code>Imports NetOffice.VBIDEApi\n\nPrivate _VBE As VBE\n\nPublic Sub OnConnection(ByVal application As Object, ByVal connectMode As NetOffice.Tools.ext_ConnectMode, ByVal addInInst As Object, ByRef custom As System.Array) Implements NetOffice.Tools.IDTExtensibility2.OnConnection\n\n  Try\n    _VBE = DirectCast(application, NetOffice.VBIDEApi.VBE)\n  Catch ex As Exception\n    MessageBox.Show(ex.ToString())\n  End Try\n\nEnd Sub</code></pre>\n\nPlease could anyone suggest anything I could try to get it to work? Just out of curiosity I changed the VBIDEApi.dll for Microsoft.Vbe.Interop.dll and it works fine - is there an issue with the VBIDEAPI.dll?\r<br />\n<br />\nThank you for any suggestions!<br />\n",
+    "PostedDate": "2013-08-17T15:22:07.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1081729",
+    "ThreadId": "453694",
+    "Html": "NetOffice spend [Wrapper] assemblies.\r<br />\nplease try this:\r<br />\n_VBE = new NetOffice.VBIDEApi.VBE(Nothing, application)\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-08-17T16:10:49.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1081734",
+    "ThreadId": "453694",
+    "Html": "Ahhh thank you! \r<br />\n<br />\nI just changed the code to use your suggestion and it works perfectly! Sorry, I must read more of the documentation :)\r<br />\n<br />\nThank you for such a great library!<br />\n",
+    "PostedDate": "2013-08-17T16:43:03.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

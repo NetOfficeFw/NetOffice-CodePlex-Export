@@ -1,0 +1,138 @@
+[
+  {
+    "Id": "1100153",
+    "ThreadId": "459474",
+    "Html": "First I want to say that it is a great project.\r<br />\n<br />\nI'm developing an Outlook addin for archiving outgoing mails.\r<br />\nIt is installed by a software distributor system, so I need to install for all users on a target maschine.\r<br />\nMy try:\r<br />\n<br />\n...\r<br />\n[COMAddin(&quot;add1 Addin&quot;, &quot;This is the DMS Addin V.0.1.5.&quot;, 3)]<br />\n<pre><code>[GuidAttribute(&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;),\nProgId(&quot;addins.dmsidx&quot;)]\n[RegistryLocation(RegistrySaveLocation.LocalMachine)]\npublic class add1 : COMAddin ...\n</code></pre>\n\nAfter registration(with regasm), a key is generated : CURRENT_USER\\Software\\Microsoft\\Office\\Outlook\\AddIns\\addins.dmsidx. Except the standard value nothing in it.\r<br />\nNote that it is under CURRENT_USER. Under LOCAL_MACHINE is no key generated.\r<br />\n<br />\nWith  [RegistryLocation(RegistrySaveLocation.CurrentUser)] is the addin registered under the same key correctly and functioning properly. Unfortunately, of course, only for the current user.\r<br />\n<br />\nThe developer environment is XP/32 but the same effect occurs on a test target machine with Win7/64. NetOffice version is 1.6.0.\r<br />\n<br />\nDoes anyone have an idea what is going wrong?\r<br />\n<br />\nThanks in advance\r<br />\n<br />\nAndrás<br />\n",
+    "PostedDate": "2013-09-27T08:14:33.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1100684",
+    "ThreadId": "459474",
+    "Html": "looks like a bug. i want check and fix this tomorrow! (monday) thanks for pointing this out. \r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2013-09-29T15:03:44.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1101052",
+    "ThreadId": "459474",
+    "Html": "i confirm the horrible bug. i fix the bug and add NetOffice 1.6.1 to the download section. (upload is currently in progress)\r<br />\nits marked as preview because its only source/assemblies/examples/tutorial for .NET 4.\r<br />\ni need few days to create a fully loaded release with all improvements and .net versions.\r<br />\nif you need another .net version i suggest you to replace the register/unregisters methods with the NetOffice RegisterFunction attribute and the replace argument (tools addin - extended example).\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-09-30T13:31:59.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102832",
+    "ThreadId": "459474",
+    "Html": "Hi,\r<br />\n<br />\nThanks for the fix, quiet same pb I think..\r<br />\nDue to company security restriction, I have to install with adm account.. and make it available for all users.\r<br />\nCOMAddin examples work fine after modification to Registry.LocalMachine.. but not possible to get same behaviour from NetOffice Tools ones.\r<br />\nTried to play a bit with src when modifying mother class NetOffice.PowerPointApi.Tools.COMAddin RegisterFunction meth<br />\n<pre><code>RegistryKey key = Registry.ClassesRoot.CreateSubKey(&quot;CLSID\\\\{&quot; + type.GUID.ToString().ToUpper() + &quot;}\\\\InprocServer32\\\\&quot; + GetAssemblyVersionString(type.Assembly));</code></pre>\n\nreplaced by<br />\n<pre><code>RegistryKey key = Registry.ClassesRoot.CreateSubKey(&quot;CLSID\\\\{&quot; + type.GUID.ToString().ToUpper() + &quot;}\\\\InprocServer32&quot;);</code></pre>\n\nand\r<br />\nlocation bifurcation as follow<br />\n<pre><code>RegistryKey regKeyWord = null;\nRegistry.ClassesRoot.CreateSubKey(@&quot;CLSID\\{&quot; + type.GUID.ToString().ToUpper() + @&quot;}\\Programmable&quot;);\nif (location.Value == RegistrySaveLocation.LocalMachine)\n{\n    Registry.LocalMachine.CreateSubKey(_addinOfficeRegistryKey + progId.Value);\n    regKeyWord = Registry.LocalMachine.OpenSubKey(_addinOfficeRegistryKey + progId.Value, true);\n}\nelse\n{\n    Registry.CurrentUser.CreateSubKey(_addinOfficeRegistryKey + progId.Value);\n    regKeyWord = Registry.CurrentUser.OpenSubKey(_addinOfficeRegistryKey + progId.Value, true);\n}</code></pre>\n\nbut.. still no good result.\r<br />\nWill check then your fix, cool to find it just at the end of the day!\r<br />\n<br />\nNB: really nice job this project!<br />\n",
+    "PostedDate": "2013-10-02T09:59:03.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102835",
+    "ThreadId": "459474",
+    "Html": "not sure i'm understand the problem..\r<br />\nyou mean COMAddin still doesnt create the reg keys in local machine?\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-10-02T10:14:54.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102849",
+    "ThreadId": "459474",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nGood fix this 1.6.1 modulo little modif to follow evolution of NetOffice.PowerPointApi.Tools.ITaskPane.OnConnection, at least on powepoint examples.\r<br />\n<br />\n&quot;NetOffice Tools - Simple&quot;,  NetOfficeTools.SimplePPointCS4.dll, works fine... congrats !\r<br />\n<br />\nBut &quot;NetOffice Tools - Extended&quot;, NetOfficeTools.ExtendedPPointCS4.dll,  still doesn't :-o\r<br />\n-&gt; admin account it is fine, task pane and ribbon with smilley are loaded\r<br />\n-&gt; user account.. not even listed in COM add-ins list of PPT..\r<br />\n<br />\nSehr schön Reaktivität!\r<br />\nCharles<br />\n",
+    "PostedDate": "2013-10-02T10:49:08.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102859",
+    "ThreadId": "459474",
+    "Html": "oh yes i know, the ITaskpane-&gt;OnConnection has a third argument Office._CustomTaskpane parent because you have set with or height/visible for your panel control here and think its easier with these argument. its fixed in the full release, i currently working on it.\r<br />\n<br />\ni test the machine key load problem today and give you request immediately.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-10-02T11:15:44.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102867",
+    "ThreadId": "459474",
+    "Html": "Hi,\r<br />\nDo not worry Sebastian, here in Bavarian we are already in long we.. then can wait up to next week!\r<br />\nAnother question.. is there a system to install add-in just for the current user, ie without admin right / unable to modify root registry key..?\r<br />\nIf it is the case, would it be possible to pass as class attribute such option, following registry location one?\r<br />\nKind regards,\r<br />\nCharles<br />\n",
+    "PostedDate": "2013-10-02T11:35:29.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102921",
+    "ThreadId": "459474",
+    "Html": "okay weils schon spät ist mach ich jetzt in deutsch weiter.\r<br />\nmein test für das extended sample ist wunderbar verlaufen, keine probleme. die taskpane die du siehst kommt doch auch aus dem extended sample. die simple variante bietet keine taskpane und auch keine ribbon buttons. daher verstehe ich jetzt nicht so recht das du meinst das extended sample wird nicht geladen. scheinbar ja doch.\r<br />\n<br />\ndie frage nach den admin rechten und dem current user kann ich aus dem kopf gerade nicht beantworten. es gibt ein deplyoment(.msi) sample im download bereich das dass assembly im gac registriert und msi die office keys im current user der office anwendung eintragen lässt. ausserdem übernimmt msi gleich die com registrierung, ruft dabei aber nicht die statischen register funktionen auf (das kann msi nur mit unmanaged addins). wenn das ohne admin rechte nicht klappt dann seh ich da auch keinen weg. das problem sind auch weniger die keys im current user der office andwenung sondern das registerieren des assemblies als systemweite com componente(com kennt keine user einschränkungen) und fallweise das registrieren des assemblies im GAC.\r<br />\n<br />\n*sebastian<br />\n",
+    "PostedDate": "2013-10-02T13:12:27.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102939",
+    "ThreadId": "459474",
+    "Html": "Hum.. sorry but not so at ease in German.. sounds interesting but would take long to me to translate everything and avoiding mistakes :-o\r<br />\nKind regards,\r<br />\nCharles<br />\n",
+    "PostedDate": "2013-10-02T14:25:05.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1103739",
+    "ThreadId": "459474",
+    "Html": "okay once again.\r<br />\n<br />\nmy test works glady. you told me you see the taskpane and the happy face buttons. this buttons and pane comes from the extended sample and and i'm dont understand why you say the extended sample is not working in office.\r<br />\n<br />\nabout the admin rights:\r<br />\nnot sure but please try the netoffice msi deployment sample(in the download sections, c# and vb available). these sample deploy project register the addin assemby in GAC and set the office specific addin hive keys at hand.(msi register the addin for the COM runtime also) msi doesnt call the static register/unregister methods in your addin(this is only available for unmanaged addins. this is why you have to create the office keys at hand in the deployment project) if this is not working you have no chance to deploy an addin without admin rights. the security issue is not the office keys. as far i know you can modify the current user hivekey without admin rights. the problem is to register the addin as COM component for the complete machine(COM cant register a component just for the user) and register the assembly in GAC.\r<br />\n<br />\nnice to know: \r<br />\nits not nessecary to register an addin in the global assembly cache. but if you dont do that you to create a sepific codebase entry in the local machine registry. now, mscorlib knows the location of the assembly. you can do that with regasm on you local machine and the /codebase argument but of course this not usable for deployment. what is your deployment strategy??  the comaddin base class in NO try to create the codebase machine in the register method key but of course an exception occured without admin rights(may i can do that better and try do detect for GAC registration/admin rights and dont try to create this key)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-10-04T10:44:41.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1106045",
+    "ThreadId": "459474",
+    "Html": "Hi,\r<br />\n<br />\nJust a bit more precision dealing with what is not working to me.\r<br />\nBoth NetOffice ppt examples are deployed thanks to Inno setup, one given on this forum.\r<br />\nThen both addin are loaded and available if I run ppt as admin, whereas just the simple one is correctly loaded when ppt is launched as normal user.\r<br />\nAs normal user there's then no taskpane neither happy face buttons.. :-o\r<br />\n<br />\nThanks for complementary info, will try to understand them at next coffee pause ;)\r<br />\n<br />\nKind regards,\r<br />\nCharles<br />\n",
+    "PostedDate": "2013-10-10T08:35:36.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1106304",
+    "ThreadId": "459474",
+    "Html": "Hi,\r<br />\n<br />\nDeployment strategy would consist in providing to enduser the addin and ask them to do the installation, ie with limited rights.\r<br />\nIf admin rights are needed, could still be ok.. but just for installation and not for launching ppt..\r<br />\n<br />\nYou gave me an intuition about inno setup file: in the example given in the forum you could add &quot;PrivilegesRequired&quot; param to let user go through the installation process. Here is the complete file used:<br />\n<pre><code>[Setup]\nAppName=MSPPTExporterAddin\nAppVersion=1.0\nDefaultDirName={pf}\\MSPPTExporterAddin\nPrivilegesRequired=none\n[Files]\nSource: bin\\Release\\NetOfficeTools.ExtendedPPointCS4.dll; DestDir: {app}\nSource: bin\\Release\\NetOffice.dll; DestDir: {app}\nSource: bin\\Release\\OfficeApi.dll; DestDir: {app}\nSource: bin\\Release\\PowerPointApi.dll; DestDir: {app}\nSource: bin\\Release\\VBIDEApi.dll; DestDir: {app}\n[Run]\nFilename: &quot;{dotnet40}\\regasm.exe&quot;; Parameters: /register /codebase /tlb NetOfficeTools.ExtendedPPointCS4.dll; WorkingDir: {app}; StatusMsg: &quot;Registering Addin.&quot;; Flags: runminimized\n[UninstallRun]\nFilename: &quot;{dotnet40}\\regAsm.exe&quot;; Parameters: /unregister NetOfficeTools.ExtendedPPointCS4.dll; WorkingDir: {app}; StatusMsg: &quot;Unregistering Addin.&quot;; Flags: runminimized</code></pre>\n\nBut.. doesn't change the thing.\r<br />\nHere is a test result tab, KO means that the addin is not loaded (ribbon Developer &gt; Com addins)\r<br />\nNB: 3 OK and 5 KO<br />\n<pre><code>            installation admin      installation local\nppt admin   netoffice simple OK     netoffice simple KO\n            netoffice extended OK   netoffice extended KO\nppt local   netoffice simple OK     netoffice simple KO\n            netoffice extended KO   netoffice extended KO</code></pre>\n\nKind regards,\r<br />\nCharles<br />\n",
+    "PostedDate": "2013-10-11T00:46:23.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1109934",
+    "ThreadId": "459474",
+    "Html": "i create NO 1.7(alpha preview)  today with new code and diagnostics(in the download section). i create 2 new addin main tests to see how it works and looks good. you want tryout this and gimme response. please also let me know: this works not on your system or the developer system?<br />\n",
+    "PostedDate": "2013-10-21T04:40:14.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1117092",
+    "ThreadId": "459474",
+    "Html": "Hi,\r<br />\n<br />\nI dev an addin (re)offering PowerPoint hidden format as html and mhtml, thx to your great job it is working fine on my personnal laptop (Win7 32bit).\r<br />\nBut then, at work, it is not working so fine.. WinXP 32bits with strong restriction on normal user.\r<br />\nThe only way to get it working properly is installation admin / ppt admin.. a bit constraining for my colleagues :-o\r<br />\nI should use de diagnostic tool to follow the load process.. but already wondering why I don't see my addin in tab Developer &gt; COM Add-Ins when launching ppt in local mode..\r<br />\n<br />\nKind regards,\r<br />\nCharles<br />\n",
+    "PostedDate": "2013-11-04T01:08:12.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1309962",
+    "ThreadId": "459474",
+    "Html": "Hi,\r<br />\n<br />\ni have the same issue as andyluiz. I cant find the 1.6.1 download under the downloads section.\r<br />\n<br />\nWhere can i get it?\r<br />\n<br />\nThanx for the help and for this great project.<br />\n",
+    "PostedDate": "2014-10-02T09:18:49.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1310410",
+    "ThreadId": "459474",
+    "Html": "This is a known NO bug specialy on 64Bit systems  :(   I suggest you as hotfix to overwrite the register methods and create the reg keys at hand. I'm very very sorry :(\r<br />\nNo idea how this happen :( but i want fix this.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-10-03T22:22:06.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

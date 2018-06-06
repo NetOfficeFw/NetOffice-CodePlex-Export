@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1298623",
+    "ThreadId": "565086",
+    "Html": "I've seen a lot of VB examples where you specify a start and length to a range of a Word table cell, but how do you do that in C#? So far I have been able to edit the font in a cell but only 1 character at a time which gets really slow with a lot of text.\r<br />\n<br />\nThis works setting &quot;position&quot; in a little for loop but I'm sure is wildly inefficient not setting a whole range at a time:<br />\n<pre><code>table.Cell(row, column).Range.Characters[position].Font.Size = 10;\ntable.Cell(row, column).Range.Characters[position].Font.Bold = 1;\ntable.Cell(row, column).Range.Characters[position].Font.Italic = 0;</code></pre>\n\nThanks!<br />\n",
+    "PostedDate": "2014-09-03T08:13:55.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1321364",
+    "ThreadId": "565086",
+    "Html": "Bump - This is still working great changing 1 character at a time, but its getting pretty slow for fields with a lot of text! Having trouble finding the equivalent of the Visual Basic style of specifying a range in C#.<br />\n",
+    "PostedDate": "2014-11-12T10:58:04.373-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

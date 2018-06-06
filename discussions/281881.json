@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "707697",
+    "ThreadId": "281881",
+    "Html": "\r\n<p>Hi everyone,</p>\r\n<p>I'm trying to change the fill color of individual data series after creating the chart in Excel and according to MSDN (http://msdn.microsoft.com/en-us/library/ff838988.aspx) it should be as simple as this:</p>\r\n<pre>Chart.SeriesCollection(1).Interior.Color = RGB(255, 0, 0)</pre>\r\n<p>However, Chart.SeriesCollection method in NetOffice does not have this property...</p>\r\n<p>Here is my code...</p>\r\n<p></p>\r\n<pre>var myWorkSheet = (Excel.Worksheet)workBook.Worksheets[1];\r\nExcel.Range dataRange = PutSessionData(myWorkSheet , myData);\r\nExcel.ChartObject chart = ((Excel.ChartObjects)myWorkSheet .ChartObjects()).Add(50, 50, 375, 225);                \r\nchart.Chart.SeriesCollection(0) // Interior property not available...<br><br>Thanks...</pre>\r\n<p></p>\r\n",
+    "PostedDate": "2011-12-05T11:26:14.003-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "707716",
+    "ThreadId": "281881",
+    "Html": "<p>Hello netizenk,</p>\n<p>the msdn example is a VBA Code-Snippet. programming excel in vba is a little bit easier, you dont need a specific cast for any object.<br />The type of the collection is not known at design, In .NET you have to cast the collection at runtime, in VBA the script interpreter&nbsp;do that for you.<br /><br />Excel.<span class=\"me1\">Series</span> series = <span class=\"br0\">(</span>Excel.<span class=\"me1\"><span class=\"me1\">Series</span></span><span class=\"br0\">)chart.</span>Chart.<span class=\"me1\">SeriesCollection</span><span class=\"br0\">(1</span><span class=\"br0\">);</span></p>\n<p><span class=\"br0\">please keep in your mind, all collections in office starts with the lower bound index 1.</span></p>\n<div style=\"background-color: white; color: black;\">\n<pre><br /></pre>\n</div>\n<div id=\"_mcePaste\" class=\"mcePaste\" style=\"position: absolute; width: 1px; height: 1px; overflow: hidden; top: 0px; left: -10000px;\">﻿</div>",
+    "PostedDate": "2011-12-05T11:58:24.203-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "707738",
+    "ThreadId": "281881",
+    "Html": "<p>Great, thanks a lot, but this gives me a collection of data series and I don't see how to access individual data series to change their color... thanks...</p>",
+    "PostedDate": "2011-12-05T12:26:20.54-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "707750",
+    "ThreadId": "281881",
+    "Html": "<p>To answer myself, data series are Points of the SeriesCollection so here is how to change the individual data series color using NetOffice:</p>\n<p>&nbsp;</p>\n<pre>                var chartSeries = (Excel.Series) chart.Chart.SeriesCollection(1);\n                var p1 = (Excel.Point) chartSeries.Points(1);\n                p1.Interior.Color = Color.LightGreen;\n                var p2 = (Excel.Point) chartSeries.Points(2);\n                p2.Interior.Color = Color.Crimson;</pre>",
+    "PostedDate": "2011-12-05T12:54:45.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "707784",
+    "ThreadId": "281881",
+    "Html": "<p>thanks for the sample code!<br />see you next time :)<br />*sebastian</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-12-05T13:55:43.75-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

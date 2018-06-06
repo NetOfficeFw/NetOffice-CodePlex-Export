@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1088107",
+    "ThreadId": "455449",
+    "Html": "Hi\r<br />\n<br />\nI want to test my office add-in on my test machine. I registered it with regasm.exe name.dll /codebase\r<br />\n<br />\nThe plug-in is available in office, but I can't activate it. It tells: &quot;Not loaded. A runtime error occurred during the loading of the COM Add-In&quot;\r<br />\n<br />\nI checked following:<br />\n<ul>\n<li>LoadBehavior = 3</li>\n<li>.Net 4 Client Profil and .Net 4.5 is installed</li>\n<li>\nafter &quot;OnConnection&quot; in my add-in I added an MessageBox but this do not appear. So plugin do not throw an exception.<br />\n</li>\n</ul>\nDo I Need any more pre-requisites. Or can I get an log file what is going wrong while loading. Or other possible solutions?<br />\n",
+    "PostedDate": "2013-09-04T01:08:15.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1088126",
+    "ThreadId": "455449",
+    "Html": "mh totaly crazy. After complete removal (+ registry) and new installation  it's running now. <br />\n",
+    "PostedDate": "2013-09-04T02:03:49.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

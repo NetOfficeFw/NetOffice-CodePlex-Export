@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "773644",
+    "ThreadId": "321779",
+    "Html": "<pre><br /><span style=\"color: #000000;\">What could be the cause of the following exceptions (with v1.2.0.0):</span></pre>\n<pre><br /></pre>\n<pre><span style=\"color: #000000;\">Call was rejected by callee. (Exception from HRESULT: 0x80010001 (RPC_E_CALL_REJECTED))See inner exception for details.&nbsp;</span></pre>\n<pre><span style=\"color: #000000;\">System.Runtime.InteropServices.COMException&nbsp;</span></pre>\n<pre><span style=\"color: #000000;\">Stack Trace:</span></pre>\n<pre><span style=\"color: #000000;\">&nbsp;&nbsp; at LateBindingApi.Core.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)</span></pre>\n<pre><span style=\"color: #000000;\">&nbsp;&nbsp; at NetOffice.WordApi._Document.get_Saved()</span></pre>\n<p><span style=\"color: #000000;\">[...]</span></p>\n<p><span style=\"color: #000000;\">and</span></p>\n<p style=\"color: #500050;\"><span style=\"font-size: 10pt; color: #000000;\" lang=\"EN-US\">Stack Trace:</span></p>\n<p style=\"color: #500050;\"><span style=\"font-size: 10pt; color: #000000;\" lang=\"EN-US\">&nbsp; &nbsp;at LateBindingApi.Core.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)</span></p>\n<p style=\"color: #500050;\"><span style=\"font-size: 10pt; color: #000000;\" lang=\"EN-US\">&nbsp; &nbsp;at NetOffice.WordApi._Application.get_Documents()</span></p>",
+    "PostedDate": "2012-02-17T00:32:22.933-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "773684",
+    "ThreadId": "321779",
+    "Html": "<p>this means(most of the time) the application is not ready for programmatic access at the moment. a displayed modal child window is a typical reason or another operation is in progress.</p>\r\n<p>a known issue is also: http://support.microsoft.com/kb/935405/en-us<br /><br />*Sebastian</p>",
+    "PostedDate": "2012-02-17T00:42:21.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

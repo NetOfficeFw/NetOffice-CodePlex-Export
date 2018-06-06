@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1486047",
+    "ThreadId": "658712",
+    "Html": "I need to develop a quick application to interact with excel.  I have a brief look at the examples but could not see how to.<br />\n<ol>\n<li>select a spreadsheet page (tab)</li>\n<li>\nFind a value in a column on a page.<br />\n</li>\n</ol>\nWould love some direction on where to find an example or what I use to do the above tasks.\r<br />\n<br />\nOutline of the task I have to do.\r<br />\n<br />\nOpen an existing spreadsheet.\r<br />\nFind a value in a column on a page (tab)\r<br />\nUpdate/add a value to a column in the same row.\r<br />\nWhen completed save sheet.\r<br />\n<br />\nMany thanks for any replys.<br />\n",
+    "PostedDate": "2016-10-13T18:37:26.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486106",
+    "ThreadId": "658712",
+    "Html": "Just do it. (i'm sorry to all the lawyers from Nike here)\r<br />\n<br />\nWorkbooks.Open - to open the excel file\r<br />\nWorkbooks.Sheets[x] - to select your target sheet\r<br />\nRangle.Find - to find the target cell of your value\r<br />\nRange/Cell Value - to set your value\r<br />\nWorkbook.Save - to save the changes\r<br />\n<br />\nDone in a minute! i can give you a code snippet if you need it anyway.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2016-10-14T08:53:26.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486224",
+    "ThreadId": "658712",
+    "Html": "Hi Sebastian<br />\n<br />\nThanks for that it all works.<br />\n<br />\nTwo further question.<br />\n<br />\nIs there a way to stop a macro/s from running when the excel file is opened or click a button of the first form that is displayed.<br />\nEasiest way to append a row to a sheet.<br />\n<br />\nAll other works well and great product.<br />\n<br />\nBest Regards<br />\nJeff<br />\n",
+    "PostedDate": "2016-10-16T20:32:20.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486361",
+    "ThreadId": "658712",
+    "Html": "I found a way to get the last empty row\r<br />\n<br />\nint newRow = workSheet.UsedRange.Rows.Count + workSheet.UsedRange.Row;\r<br />\n<br />\nnow to disable the macro built into the spreadsheet to prevent it running on opening of the spreadsheet\r<br />\n<br />\nBest Regards\r<br />\nJeff<br />\n",
+    "PostedDate": "2016-10-18T13:36:06.68-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "678379",
+    "ThreadId": "274308",
+    "Html": "\r\n<p>Hello, Sir:</p>\r\n<p>I am trying to free out com proxy objects in my project and find one issue i.e. each time when control goes to event handler, com proxy count increases by 1</p>\r\n<p>say, when I click MyBtn,&nbsp; control goes to MyBtnClick, upon entering the handler com proxy count increases by 1.</p>\r\n<p>Next time, when I click it again, com proxy count increases again.</p>\r\n<p>but I can't dispose the control b/c if I do,&nbsp; the button will not response next time.</p>\r\n<p>Wonder how do I get it right? thanks</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void MyBtnClick(CommandBarButton Ctrl, ref bool CancelDefault)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp; //do sth.<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch(Exception ex)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Helper.LogError(ex);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n<p>// can't use Ctrl.Dispose();<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n",
+    "PostedDate": "2011-09-29T14:04:43.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "678381",
+    "ThreadId": "274308",
+    "Html": "<p>i have problems again to understand. what means b/c ???<br />you means to dispose the button paramenter (CommandBarButton Ctrl) kills the event trigger?</p>",
+    "PostedDate": "2011-09-29T14:08:36.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "678388",
+    "ThreadId": "274308",
+    "Html": "<p>Sorry, b/c&nbsp; - \"because\"</p>\r\n<p>if I do Ctrl.Dispose() in handler, next time the&nbsp; click event for the button will not be triggered.</p>",
+    "PostedDate": "2011-09-29T14:29:44.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "678391",
+    "ThreadId": "274308",
+    "Html": "<p>hmm i dont have these effect in all my addin projects.<br />whats up with your orginal button object? its still alive?&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-09-29T14:40:22.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "678412",
+    "ThreadId": "274308",
+    "Html": "<p>Sorry, Sebastian. Now it works fine even with Ctrl.Dispose() in handler.&nbsp;&nbsp; I guess it probably was messed up by other stuff in my code.&nbsp;</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void MyBtnClick(CommandBarButton Ctrl, ref bool CancelDefault)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</p>\n<p>//proxy count increases by 1</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br /> &nbsp; //do sth.<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch(Exception ex)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Helper.LogError(ex);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ctrl.Dispose(); ////proxy count decreases by 1<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\n<p>&nbsp;</p>\n<p>found the cause, another method(called by event handler) disposed button.</p>",
+    "PostedDate": "2011-09-29T15:26:48.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "678891",
+    "ThreadId": "274308",
+    "Html": "<p>Another question,&nbsp; after I dispose all COM proxy objects after use.</p>\r\n<p>When I debug MyAddIn in Visual Studio, I get an COMException at Range.Value2 = ...</p>\r\n<p>but if I simply run it without debug,&nbsp; everything works fine.</p>\r\n<p>I am not sure what's wrong</p>\r\n<p>&nbsp;</p>\r\n<p>thanks</p>",
+    "PostedDate": "2011-09-30T20:16:25.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "678947",
+    "ThreadId": "274308",
+    "Html": "<p>you dispose the range and use range.Value2 after them?<br />this is strictly prophited in COM.<br />have you a code snippet for me?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-01T06:03:03.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "679465",
+    "ThreadId": "274308",
+    "Html": "<p>Thanks, I will try to explain as&nbsp; code base is not well organized and it scatters in several files. Will try to give you some snippet later.</p>\r\n<p>MyAddIn has a button RefreshAll, once it is clicked, I will loop through cells on each worksheet and re-calculate all UDFs</p>\r\n<p>those UDFs will call web service asynchronously and plot data in Excel in callback method.&nbsp; During the process, there is a modal window displayed and users can cancel the process by clicking a cancel button on the modal window.</p>\r\n<p>During the process, if I do not catch COMException in Visual studio, then everything works just fine.</p>\r\n<p>If I go to Debug-&gt; Exceptions-&gt;find COMException, then run it, I will get the following exception at</p>\r\n<p>AttributeRange.Value2 = attr_data;</p>\r\n<p>when the exception happens, I check AttributeRange.IsDisposed is false.&nbsp; I googled and it seems it is about cross-thread issue.</p>\r\n<p>See if you have any idea what's wrong? thanks a lot!</p>\r\n<p>&nbsp;</p>\r\n<p>2011-10-03 13:36:41,612 [1] ERROR MyShared.Helper [(null)] - Name:COMException<br />Message:See inner exception for details.<br />Target:Void PropertySet(LateBindingApi.Core.COMObject, System.String, System.Object[])<br />Stack:&nbsp;&nbsp; at LateBindingApi.Core.Invoker.PropertySet(COMObject comObject, String name, Object[] value)<br />&nbsp;&nbsp; at NetOffice.ExcelApi.Range.set_Value2(Object value)<br />&nbsp;&nbsp; at MyXLUIFunc.Models.VerticalTemplate.PlotSR_NonSeasonal()<br />&nbsp;&nbsp; at MyXLUIFunc.Models.VerticalTemplate.PlotSR()<br />&nbsp;&nbsp; at MyXLUIFunc.Models.VerticalTemplate.Plot()<br />&nbsp;&nbsp; at MyXLUIFunc.Models.ReportBuilder.DataRequestJobFinished(DataRequestResponse response)<br /><br />Name:TargetInvocationException<br />Message:Exception has been thrown by the target of an invocation.<br />Target:System.Object InvokeDispMethod(System.String, System.Reflection.BindingFlags, System.Object, System.Object[], Boolean[], Int32, System.String[])<br />Stack:&nbsp;&nbsp; at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)<br />&nbsp;&nbsp; at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)<br />&nbsp;&nbsp; at System.Type.InvokeMember(String name, BindingFlags invokeAttr, Binder binder, Object target, Object[] args, CultureInfo culture)<br />&nbsp;&nbsp; at LateBindingApi.Core.Invoker.PropertySet(COMObject comObject, String name, Object[] value)<br /><br />Name:COMException<br />Message:Exception from HRESULT: 0x800AC472<br />Target:<br />Stack:</p>",
+    "PostedDate": "2011-10-03T12:17:25.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "679782",
+    "ThreadId": "274308",
+    "Html": "<p>okay this is not a problem about dipose. its a cross thread problem.<br />all your excel calls have to come from creator thread. are you sure you dont use another thread?<br /><br />the following thread indicates its helpfull to create a message filter.</p>\r\n<p>http://social.msdn.microsoft.com/Forums/en-US/vsto/thread/9168f9f2-e5bc-4535-8d7d-4e374ab8ff09</p>\r\n<p>in NetOffice its very easy to do.</p>\r\n<p>LateBindingApi.Core.Settings.EnableMessageFilter = true;</p>",
+    "PostedDate": "2011-10-04T06:20:56.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "679888",
+    "ThreadId": "274308",
+    "Html": "<p>thanks.</p>\n<p>I did this call Refresh on main thread, then on its callback, plot data in Excel.&nbsp; I think and tracked the callback which is on main thread.</p>\n<p>I put LateBindingApi.Core.Settings.EnableMessageFilter = true; but still get the same exception when debug.</p>\n<p>If I do not debug,&nbsp; or I do not catch COMException, then it works fine -- this is so weird. I found the issue accidentally. It makes me think maybe there are more unknown exceptions in code and I should try catching those in Visual Studio -&gt;Debug-&gt;Exceptions -&gt; Find</p>",
+    "PostedDate": "2011-10-04T09:44:55.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680520",
+    "ThreadId": "274308",
+    "Html": "<p>your call comes from another thread. what you can do is to invoke your main thread and call excel from them.<br />this is not a NetOffice problem, moreover an Excel problem.</p>\r\n<p>this topic helps:<br /><a href=\"http://www.techtalkz.com/c-c-sharp/66608-invoking-method-main-thread-worker-thread.html\">http://www.techtalkz.com/c-c-sharp/66608-invoking-method-main-thread-worker-thread.html</a></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-05T14:45:03.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "721707",
+    "ThreadId": "274308",
+    "Html": "<p>Hello,</p>\r\n<p>At last I&nbsp;created a sample project trying to reproduce the issue with no avail.&nbsp;</p>\r\n<p>Now the sample project shows a different issue. When you click Refresh All the first time in Excel session,&nbsp; you will get some exception.&nbsp; After that everything is fine.&nbsp; Not sure if it is related to orginal issue I have. but maybe when you get a chance,&nbsp; you can take a look and may find something&nbsp;related. thanks</p>\r\n<p>Sample project is&nbsp; @</p>\r\n<p><a href=\"https://skydrive.live.com/redir.aspx?cid=d4422fd0fce557d3&amp;resid=D4422FD0FCE557D3!195&amp;parid=D4422FD0FCE557D3!119&amp;authkey=!ADlak7hD9xmB0nc\">https://skydrive.live.com/redir.aspx?cid=d4422fd0fce557d3&amp;resid=D4422FD0FCE557D3!195&amp;parid=D4422FD0FCE557D3!119&amp;authkey=!ADlak7hD9xmB0nc</a></p>",
+    "PostedDate": "2012-01-06T13:35:55.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

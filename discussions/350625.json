@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "817649",
+    "ThreadId": "350625",
+    "Html": "<p>Hi</p>\n<p>How can I grab the current running instance of Word to get an reference for the actice document.</p>\n<p>I do not want to create a new application in netoffice, beacuse the user has Word already running. Is there a way to attach the running instance to netoffice, to grad the activedocument from there?</p>\n<p>The word was not created through netoffice!</p>\n<p>&nbsp;</p>\n<p>thanks</p>",
+    "PostedDate": "2012-03-30T03:28:56.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "817826",
+    "ThreadId": "350625",
+    "Html": "<p>hello,</p>\n<p>this is an example code snippet:<br />&nbsp;</p>\n<p>// Initialize NetOffice<br />LateBindingApi.Core.Factory.Initialize();</p>\n<p>object wordProxy = System.Runtime.InteropServices.Marshal.GetActiveObject(\"Word.Application\");<br />Word.Application wordApplication = new Word.Application(null, wordProxy);</p>\n<p>//<br />// do all the things here<br />//</p>\n<p>wordApplication.Dipose();<br />&nbsp;</p>\n<p><br />an advanced exemplary workflow is available in the examples. Misc\\GetRunningOutlookInstance</p>\n<p>Sebastian</p>",
+    "PostedDate": "2012-03-30T09:32:35.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

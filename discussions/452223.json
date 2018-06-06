@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1075964",
+    "ThreadId": "452223",
+    "Html": "hello con someone tell me why I can't change bookmarks this way:<br />\n<pre><code>        Word.Application oWord = new Word.Application();\n        Word.Document oWordDoc = new Word.Document();\n        if (oWordDoc.Bookmarks.Exists(&quot;name&quot;))\n        {\n            object oBookMark = &quot;name&quot;;\n            oWordDoc.Bookmarks.get_Item(ref oBookMark).Range.Text = textBox1.Text;\n        }\n</code></pre>\n\nthere's an error on: get_Item\r<br />\n<br />\nThanks in advance<br />\n",
+    "PostedDate": "2013-08-02T05:11:50.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1076080",
+    "ThreadId": "452223",
+    "Html": "works this for you?\r<br />\n<br />\noWordDoc.Bookmarks[&quot;name&quot;].Range.Text<br />\n",
+    "PostedDate": "2013-08-02T09:21:16.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1076102",
+    "ThreadId": "452223",
+    "Html": "Yes dude!!! Thanks a lot!\r<br />\nEven if usually I use mergefield I wanted to know how to deal with bookmarks too.\r<br />\n<br />\nThanks again<br />\n",
+    "PostedDate": "2013-08-02T10:33:20.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

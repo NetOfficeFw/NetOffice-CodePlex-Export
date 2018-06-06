@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "996169",
+    "ThreadId": "431900",
+    "Html": "Hello,\r<br />\nafter i close a new or edited Note and i will close outlook, then the error message shows: &quot;the process can not be completed. At least one parameter is not valid&quot; (original german error message: &quot;Der Vorgang kann nicht abgeschlossen werden. Mindestens ein Parameterwert ist nicht gültig&quot;.\r<br />\n<br />\nThis problem only occur, when my ComPlugIn installed. Otherwise my Plugin works very fine.\r<br />\n<br />\nEnvironment: Outlook 2003, .NET Framework 2.0, NETOffice 1.5.1.2\r<br />\n<br />\nIdea?\r<br />\n<br />\nthx, Daniel<br />\n",
+    "PostedDate": "2013-02-04T07:46:20.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "996192",
+    "ThreadId": "431900",
+    "Html": "Ok,<br />\ni find the row, that makes trouble:<br />\n<pre><code>if (_outlookInspectors != null) {\n     _outlookInspectors.NewInspectorEvent += new Inspectors_NewInspectorEventHandler(OutlookInspectorsNewInspectorEvent);\n}</code></pre>\n\nHere is the complete method:<br />\n<pre><code>void IDTExtensibility2.OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom) {\n   try {\n      LateBindingApi.Core.Factory.Initialize();\n\n      _outlookApplication = new Application(null, application);\n      _outlookInspectors = _outlookApplication.Inspectors as Inspectors;\n  \n      if (_outlookInspectors != null) {\n         _outlookInspectors.NewInspectorEvent += new Inspectors_NewInspectorEventHandler(OutlookInspectorsNewInspectorEvent);\n      }\n   }\n   catch (Exception ex) {\n      ...\n   }</code></pre>\n\n",
+    "PostedDate": "2013-02-04T08:14:04.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "999407",
+    "ThreadId": "431900",
+    "Html": "Moin moin, have any an idea, why this occurs?\r<br />\n<br />\nOr any idea for avoid this problem?\r<br />\n<br />\nthank you!<br />\n",
+    "PostedDate": "2013-02-10T21:56:22.377-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "999463",
+    "ThreadId": "431900",
+    "Html": "i do a test(.NET 2.0 Outlook 2007)  and works fine.<br />\n<blockquote>\nThis problem only occur, when my ComPlugIn installed. Otherwise my Plugin works very fine. <br />\n</blockquote>\nnot sure what you mean....\r<br />\n<br />\nthe LateBindingApi.Core.Factory.Initialize() call is not supported in NetOffice 1.5.1.2 because it has been renamed to NetOffice.Core\r<br />\nare you sure to use 1.5.1.2 ?\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-02-11T00:48:10.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1000403",
+    "ThreadId": "431900",
+    "Html": "Good Morning Sebastian,<br />\ni don't find &quot;Core&quot; in the NetOffice Namespace. I have set a referenz to NetOffice (V 1.5.1.2), OfficeApi (V 1.5.1.2) and to outlookApi (V 1.5.1.2)<br />\n<br />\nMy problem only occurs with Outlook 2003.<br />\n<br />\nthe way, how to trace the problem:<br />\n<ol>\n<li>open outlook</li>\n<li>open notes and edit or create a new note</li>\n<li>\nwhen now you close outlook, then the following error shows: &quot;the process can not be completed. At least one parameter is not valid&quot; (original german error message: &quot;Der Vorgang kann nicht abgeschlossen werden. Mindestens ein Parameterwert ist nicht gültig&quot;. <br />\n</li>\n</ol>\nthank you, Daniel<br />\n",
+    "PostedDate": "2013-02-12T21:16:07.637-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1003211",
+    "ThreadId": "431900",
+    "Html": "Good Morning,\r<br />\nalternative: Can you tell me, how i create a Button in the standardmenubar only, when i open a new/reply/forward Mailwindow?\r<br />\n<br />\nthank you, Daniel<br />\n",
+    "PostedDate": "2013-02-18T22:43:32.447-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "768151",
+    "ThreadId": "316870",
+    "Html": "\r\n<p>How would I go about opening an access database using the .OpenDatabase() method and supplying the password?</p>\r\n<p><span style=\"font-size:x-small\"><span style=\"font-size:x-small\"></p>\r\n<p>DAO.<span style=\"color:#2b91af; font-size:x-small\"><span style=\"color:#2b91af; font-size:x-small\">Database</span></span><span style=\"font-size:x-small\"> existingDatabase = accessApplication.DBEngine.Workspaces[0].OpenDatabase(documentFile);</span></p>\r\n</span></span>\r\n<p></p>\r\n",
+    "PostedDate": "2012-02-15T12:09:03.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "768584",
+    "ThreadId": "316870",
+    "Html": "<p>hello there,</p>\r\n<p>OpenDatabase works with the database typical connection string.<br />very common is:<br /><br />DBEngine.Workspaces(0).OpenDatabase(\"documentFile\", false, false, \";pwd=myPassword\")</p>\r\n<p>*happy coding<br />Sebastian</p>",
+    "PostedDate": "2012-02-15T17:18:20.573-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "777855",
+    "ThreadId": "316870",
+    "Html": "\r\n<div>Sebastian,</div>\r\n<div><br>\r\n</div>\r\n<div>Thank you for the quick reply. I will pass those args in the constructor. Also, do you have documentation on the API for the various classes and methods?<br>\r\n<br>\r\nSent from my iPhone</div>\r\n<div><br>\r\nOn Feb 15, 2012, at 7:18 PM, &quot;SebastianDotNet&quot; &lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt; wrote:<br>\r\n<br>\r\n</div>\r\n<div></div>\r\n<blockquote type=\"cite\">\r\n<div>\r\n<p>From: SebastianDotNet</p>\r\n<div id=\"ThreadNotificationPostBody\">\r\n<p>hello there,</p>\r\n<p>OpenDatabase works with the database typical connection string.<br>\r\nvery common is:<br>\r\n<br>\r\nDBEngine.Workspaces(0).OpenDatabase(&quot;documentFile&quot;, false, false, &quot;;pwd=myPassword&quot;)</p>\r\n<p>*happy coding<br>\r\nSebastian</p>\r\n</div>\r\n</div>\r\n</blockquote>\r\n",
+    "PostedDate": "2012-02-18T11:39:42.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "777886",
+    "ThreadId": "316870",
+    "Html": "<p>NetOffice is an 1:1 Wrapper to the original Microsoft API there you know from VBA or Interop. you can use the local help files(*.chm)&nbsp;or microsoft online documentation. <a href=\"http://msdn.microsoft.com/en-us/office/aa905369.aspx\">http://msdn.microsoft.com/en-us/office/aa905369.aspx</a><br /><br />as i start with NetOffice i think about delivering office developer documentation with NetOffice releases but its not allowed.<br />\"Redistribution of any content or parts of content&nbsp;is strictly prohibited\"<br />- from the ms licence agreement<br /><br />for questions you can use the NetOffice discussion board(i'm happy to help any time)&nbsp;or&nbsp;one of the limitless office developer boards, specialy the ms-online discussion board for office.<br /><a href=\"http://answers.microsoft.com/en-us/office/forum\">http://answers.microsoft.com/en-us/office/forum</a><br /><br />*happy coding<br />Sebastian</p>",
+    "PostedDate": "2012-02-18T12:03:36.44-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

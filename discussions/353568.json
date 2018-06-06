@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "828502",
+    "ThreadId": "353568",
+    "Html": "<p><strong>The NetOffice 1.5.1 release candidate is available.</strong><br /> <br /> whats new?<br /> <br /> - improve parametrized properties. no issues for c# developers in any case, <br />&nbsp; vb.net developers have one issue with parametrized properties there have 0 parameters in the minimal version <br />&nbsp; and have to use get_Property(...) for a call with given parameters(not affected to the overload without parameters)<br /><br />- change COMObject declarations to object to make it easier for vb.net developers to use late binding<br /><br />- change LateBindingApi.Core.dll to NetOffice.dll<br /><br />- the Inialize() call at startup is not necessary any longer<br /><br />- improve documentation, examples and tutorials<br /><br />- implement Settings.EnableThredSafe for mulithread scenarios<br />&nbsp; all systemsteps from NetOffice himself are threadsafe now<br /><br />- implement Settings.EnableOperatorOverloads<br />&nbsp; for example, its possible to use:&nbsp; <br />&nbsp; if(range.Parent = application.ActiveWorksheet) <br /><br />- add support for MS Visio 2003,2007,2010<br /><br />- change .NET 3.4/ 4.0 to Client Profile<br /><br />- implement Globals Module for VB Developers<br />&nbsp; for example:<br />&nbsp; Imports NetOffice.ExcelApi.GlobalHelperModules.GlobalModule<br />&nbsp; Sub Main<br /><br />&nbsp;&nbsp; Dim sheetName = ActiveSheet.Name 'Just like VBA<br /><br />&nbsp; End Sub<br />&nbsp; <br />- implement ConsoleMode.Trace (Debug Console) <br /><br />- implement Settings.EnableEventDebugOutput (Debug Console)<br />&nbsp; 'special protocol for NetOffice systemsteps for objects with events&nbsp;&nbsp;&nbsp;&nbsp; <br /><br />- small bug fixes and improvements<br /> <br /> This is the last planned release in this year(depending on the next MS-Office release). unplanned releases(issues and bugfixes) are possible of course.<br /> <br /> Sebastian<br /><br />updated: 05/07/2012</p>",
+    "PostedDate": "2012-04-25T09:53:42.347-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

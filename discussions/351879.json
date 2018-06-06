@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "822276",
+    "ThreadId": "351879",
+    "Html": "\r\n<p>Sebastian,</p>\r\n<p>I presume the workaround for below is dim shp as Object but let me ask anyway in case there's a better way:</p>\r\n<p>Dim shp As Shape<br>\r\nshp = ActiveSheet.Shapes(sName)<br>\r\nshp.ShapeRange.AlternativeText = sText&nbsp;<br>\r\n&nbsp;</p>\r\n<p>Error&nbsp;1&nbsp;'ShapeRange' is not a member of 'NetOffice.ExcelApi.Shape'.&nbsp;</p>\r\n",
+    "PostedDate": "2012-04-11T01:27:20.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822291",
+    "ThreadId": "351879",
+    "Html": "<p>the COM type library definition says to me: no ShapeRange property or method is impemented in Excel.Shape<br />did that works in VBA??<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-11T02:16:29.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822307",
+    "ThreadId": "351879",
+    "Html": "<p>Sorry. my mistake!</p>\r\n<p>I had originally Selection.ShapeRange and that worked fine and still does, for some reason I had inserted a line to cast</p>\r\n<p>shp = CType( Selection, Shape )</p>\r\n<p>and changed the code to use Shp.</p>\r\n<p>Bit too overkeen on casting, then ;-(</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-04-11T03:14:00.33-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822349",
+    "ThreadId": "351879",
+    "Html": "<p>just a hint*<br /><br />all my casting code in netoffice vb.net examples is easier <br /><br />Dim worksheet As Excel.Worksheet = workbook.Sheets(1) ' defined as sheet while design time<br />' works fine<br /><br />Sebastian<br /><br /></p>",
+    "PostedDate": "2012-04-11T05:39:57.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822367",
+    "ThreadId": "351879",
+    "Html": "<p>OK, I would never do:</p>\r\n<p>Dim worksheet As Excel.Worksheet = workbook.Sheets(1)</p>\r\n<p>because the first sheet may not be a Worksheet.</p>\r\n<p>I iterate Sheets when I need to list all sheets such as Charts, Dialogsheets, etc, and to then check the Type to see if it's a worksheet before doing more.</p>\r\n<p>I iterate Worksheets when I specifically want only Worksheets.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-04-11T06:10:14.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

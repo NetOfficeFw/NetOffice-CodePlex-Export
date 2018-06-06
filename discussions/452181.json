@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1075851",
+    "ThreadId": "452181",
+    "Html": "According to Microsoft, this is not recommended:\r<br />\n<br />\n<em>&quot;Microsoft does not currently recommend, and does not support, Automation of Microsoft Office applications from any unattended, non-interactive client application or component (including ASP, ASP.NET, DCOM, and NT Services), because Office may exhibit unstable behavior and/or deadlock when Office is run in this environment.&quot;</em>\r<br />\n<br />\n<a href=\"http://support.microsoft.com/default.aspx?scid=kb;EN-US;q257757#kb2\" rel=\"nofollow\">Link</a>\r<br />\n<br />\nAnd if still I want to do this, what are the things to look out for ? (try/catch/disposing/closing?) <br />\n",
+    "PostedDate": "2013-08-01T23:23:16.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1076078",
+    "ThreadId": "452181",
+    "Html": "its true, unattended automation is not recommend but in fact, many people use that.\r<br />\nthe most server people want generate reports or something like this. since 2007 the office .*x (docx,xlsx) based on xml and allows you to modify or create a document whitout automation. a lot of very nice projects on codeplex to help you to make it easier to create this files. closed xml for excel and docx for word, just for example.\r<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2013-08-02T09:18:00.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1132459",
+    "ThreadId": "472098",
+    "Html": "Hi,\r<br />\n<br />\ndue to some reasons I have to use netoffice for .net 3.5.\r<br />\nWhen I set RegistryLocation to currentuser <br />\n<pre><code>RegistryLocation(RegistrySaveLocation.CurrentUser)]</code></pre>\n\nEverything works as desired. But with registrylocation set to LocalMachine (which is a requiremnt)<br />\n<pre><code> RegistryLocation(RegistrySaveLocation.LocalMachine)]</code></pre>\n\nthe addin simply does not load., no registry Keys are set in HKLM.\r<br />\n<br />\nFYI: I'm working on a 64bit-Win7-Machine, and I am local admin\r<br />\n<br />\nRegards,\r<br />\n<br />\nAndreas<br />\n",
+    "PostedDate": "2013-12-06T04:16:24.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1132794",
+    "ThreadId": "472098",
+    "Html": "yepp, this is a well known bug in NO 1.6 because the tools namespace was unpublished here(just a beta), but incredible, many customers want and use them.<br />\n<br />\nthe problem is because the outlook tools addin use the user key in the register method (COMAddin.cs) anytime(just only for outlook, what a fucking quality issue)<br />\ni suggest you to overwrite the register method and register at hand-. (or use the the latest source state, or modify the 1.6 source code(Outlook\\Tools\\COMAddin.cs), otherwise wait a week for NO 1.7)<br />\n<br />\nsorry men for any convenience :(<br />\n*Sebastian<br />\n",
+    "PostedDate": "2013-12-07T10:33:20.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1132879",
+    "ThreadId": "472098",
+    "Html": "<em>edit answer notification</em> <br />\n",
+    "PostedDate": "2013-12-08T00:33:45.13-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1133504",
+    "ThreadId": "472098",
+    "Html": "TY for the information, I'll wait for 1.70.\r<br />\n<br />\nRegards,\r<br />\n<br />\nAndreas<br />\n",
+    "PostedDate": "2013-12-10T02:11:10.913-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1134314",
+    "ThreadId": "472098",
+    "Html": "just for info:\r<br />\n<br />\noverwrite COM register methods is a bit special because these methods was static. no chance to use virtual/overwrite.\r<br />\nto overwrite a static register method for a NO Tools Addin you need a special static method with an annotation in your addin.\r<br />\nsomething like this:\r<br />\n<br />\n[RegisterFunction(RegisterMode.Replace)] // replace means, replace the base tools register method completly\r<br />\npublic static void MyRegister(Type type, RegisterCall registerCall)\r<br />\n{\r<br />\n   // create office registry keys\r<br />\n}\r<br />\n<br />\nsame for the unregister method:\r<br />\n<br />\n[UnRegisterFunction(RegisterMode.CallBeforeAndAfter)]\r<br />\npublic static void MyUnRegister(Type type, RegisterCall registerCall)\r<br />\n{\r<br />\n  // remove office registry keys\r<br />\n}<br />\n",
+    "PostedDate": "2013-12-11T08:18:08.297-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1207358",
+    "ThreadId": "472098",
+    "Html": "Hi Sebastian,\r<br />\n<br />\nAre you sure that this is a Netoffice-Issue? I just played a bit with the registry keys, and I think that it is likely that it is an Outlook-Issue.\r<br />\n<br />\nWhat I did is this: \r<br />\n<br />\nSelected a working Outlook-Addin that is installed locally on my PC<br />\n<ul>\n<li>Exported all relevant Registry Keys into regfiles (*.reg)</li>\n<li>Deleted all Registry Keys, that I exported before</li>\n<li>Changed the path of the registry Keys in the Regfiles from HKCU to HKLM</li>\n<li>\nImported the modified regfiles.<br />\n</li>\n</ul>\nEffect: The Addin was gone in Outlook. \r<br />\n<br />\nThe reason of this experiment was that the Prerelease-Version of Netoffice 1.7 that you released (<a href=\"https://netoffice.codeplex.com/downloads/get/737223\" rel=\"nofollow\">https://netoffice.codeplex.com/downloads/get/737223</a>) did not solve the issue.\r<br />\n<br />\nOh, btw: Wouldn't it be easier if we discussed this in German? :-)<br />\n",
+    "PostedDate": "2014-02-12T07:44:10.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1208590",
+    "ThreadId": "472098",
+    "Html": "hey andreas, \r<br />\n<br />\ncurrently, i'm very busy. no way to review the NO Forum daily. please contact me here in german: public.sebastian[at]web.de.\r<br />\nplease gimme all possible informations about your op system and your office version to replicate the problem in a virtual machine.\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2014-02-14T15:14:16.253-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

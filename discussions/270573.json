@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "664025",
+    "ThreadId": "270573",
+    "Html": "<p>I have been having success with an application which uses NetOffice (kudos for your work, it's been a breeze working with it!) on my dev machine. (WinXP SP3 with MS Office 2000)</p>\n<p>&nbsp;</p>\n<p>Today I finally deployed it to our Windows Server 2003 machine for testing in a production environment, and it is throwing an exception as soon as I attempt to create an instance of the NetOffice.ExcelApi.Application object.</p>\n<p>(The server it is failing on is the domain controller of our domain, but I am testing the program as the domain administrator account so I don't think it is a permissions issue...)</p>\n<p>I have referenced the following assemblies in the project:</p>\n<p>ExcelApi.dll</p>\n<p>LateBindingApi.Core.dll</p>\n<p>OfficeApi.dll</p>\n<p>VBIDEApi.dll</p>\n<p>Here is a code snippet which produces the error on our Windows Server 2003 (w/Microsoft Office 2000) but which is working flawlessly on my Windows XP SP3 (w/Microsoft Office 2000) system:</p>\n<p>&nbsp;</p>\n<p><span>&nbsp;</span></p>\n<div style=\"color: black; background-color: white;\">\n<pre><span style=\"color: blue;\">using</span> Excel = NetOffice.ExcelApi;\n\n<span style=\"color: blue;\">public</span> Excel.Application ExcelApplication\n{\n\t<span style=\"color: blue;\">get</span> { <span style=\"color: blue;\">return</span> _ExcelApplication; }\n}\nExcel.Application _ExcelApplication;\n\n<span style=\"color: blue;\">public</span> <span style=\"color: blue;\">void</span> LoadExcel()\n{\n\t<span style=\"color: green;\">// Initialize Api COMObject Support</span>\n\tLateBindingApi.Core.Factory.Initialize();\n\n\t_ExcelApplication = <span style=\"color: blue;\">new</span> Excel.Application(); &lt;--This causes the Exception 80010108...\n\n\t_ExcelApplication.Visible = <span style=\"color: blue;\">false</span>;\n\t_ExcelApplication.DisplayAlerts = <span style=\"color: blue;\">false</span>;\n\t\n}\n</pre>\n<pre style=\"color: black;\"><br /></pre>\n<pre style=\"color: black;\">Here is the exception:</pre>\n<pre style=\"color: black;\"><br /></pre>\n<pre style=\"color: black;\">System.Runtime.InteropServices.COMException: Creating an instance of the COM component with</pre>\n<pre style=\"color: black;\">CLSID {00024500-0000-0000-C000-000000000046} from the IClassFactory failed due to the following error: 80010108.</pre>\n<pre style=\"color: black;\">&nbsp; &nbsp;at Object System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)</pre>\n<pre style=\"color: black;\">&nbsp; &nbsp;at Object System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)</pre>\n<pre style=\"color: black;\">&nbsp; &nbsp;at static Object System.Activator.CreateInstance(Type type, Boolean nonPublic)</pre>\n<pre style=\"color: black;\">&nbsp; &nbsp;at void LateBindingApi.Core.COMObject.CreateFromProgId(String progId)</pre>\n<pre style=\"color: black;\">&nbsp; &nbsp;at void NetOffice.ExcelApi.Application..ctor()<br /></pre>\n</div>",
+    "PostedDate": "2011-08-26T12:22:48.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "664054",
+    "ThreadId": "270573",
+    "Html": "<p>are you sure excel is installed? :o<br />it's possible you create a test program with Interop Assemblies and Visual Basic ( CreateObject ) and see the same error occurs?<br />sounds like a registry problem/security settings maybe. shame on me, i never do any tests on a server with an old office version.<br />gimme a day, i create these tests for you. please send me your e-mail adress. use codeplex contact user form.</p>\r\n<p>btw: give me&nbsp;informations abour you programm environment.&nbsp;IIS hosted?&nbsp;sandboxed or something like that.&nbsp;<br /><br /></p>",
+    "PostedDate": "2011-08-26T13:38:35.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "664439",
+    "ThreadId": "270573",
+    "Html": "<p>hello,<br />i try to send you a mail but your mail adress is not working.<br />you have another adress for me?<br />&nbsp;</p>",
+    "PostedDate": "2011-08-28T04:40:56.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "664982",
+    "ThreadId": "270573",
+    "Html": "<p>I have been able to get it working by providing \"Excel.Application.9\" to the Application's constructor, instead of relying on COM to find the last used version of Excel.</p>\n<p>I guess for some reason the COM runtime isn't finding the right registry entries for my installation of Office 2000. I suppose I could uninstall/reinstall, but it's just as easy for me to make one small change to the instance constructor (My program is only going to run in-house at our home office and won't be distributed commercially).</p>\n<p>Once my app gets  Excel running, everything is working as I expected.</p>\n<p>&nbsp;</p>\n<p>Thanks for your help!</p>",
+    "PostedDate": "2011-08-29T11:43:45.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

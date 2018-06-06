@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "621499",
+    "ThreadId": "259811",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>when I found this project I almost didn't believe what I see - truly impressive, congrats.</p>\r\n<p>I first tried the Outlook examples (C#, VS2010, Win 7 x64, Office x86).</p>\r\n<p>They only work, when Outlook is not currently running.</p>\r\n<p>This is, of course, a show-stopper for any real-world usage, because I do not have control over whether my end-users have Outlook running or not.</p>\r\n<p>Am i missing anything?</p>\r\n<p>Robert</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-06-01T10:16:54.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "621560",
+    "ThreadId": "259811",
+    "Html": "<p>what happens when outlook is running? nothing or you got&nbsp;a exception?<br />gimme a day please to setup a&nbsp;test scenario with your environment specifications and please tell me your office version.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-06-01T11:26:52.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "622727",
+    "ThreadId": "259811",
+    "Html": "<p>hello again,</p>\n<p>all my tests with outlook runs fine on different machines with various outlook versions.<br />maybe i've been misunterstood? you want accessing a running outlook instance?<br />i do an example Misc\\C#\\GetRunningOutlookInstance and put it&nbsp;on latest source code.<br />it's also available as VB in next release(comes this sunday)</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-06-03T12:18:18.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

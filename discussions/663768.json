@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1498037",
+    "ThreadId": "663768",
+    "Html": "Hi,\r<br />\nwhy fired the event not, when i create a new email?\r<br />\nIt's a Outlook-Addin.\r<br />\n<br />\nMy code:<br />\n<pre><code>Private WithEvents inspectors As Outlook.Inspectors\n\nPublic Sub OnStartupComplete(ByRef custom As System.Array) Implements NetOffice.Tools.IDTExtensibility2.OnStartupComplete\n        Dim i As _Inspectors\n        i = CType(olApp.Inspectors, Outlook._Inspectors)\n        inspectors = CType(olApp.Inspectors, Inspectors)\nEnd Sub\n\nPrivate Sub inspectors_NewInspectorEvent(Inspector As _Inspector) Handles inspectors.NewInspectorEvent\n        Dim mailItem As Outlook.MailItem = CType(Inspector.CurrentItem, Outlook.MailItem)\n        If Not (mailItem Is Nothing) Then\n            If mailItem.EntryID Is Nothing Then\n                mailItem.Subject = &quot;This text was added by using code&quot;\n                mailItem.Body = &quot;This text was added by using code&quot;\n            End If\n        End If\nEnd Sub</code></pre>\n\nNetOffice v1.7.3, Outlook 2013\r<br />\n<br />\nthanks<br />\n",
+    "PostedDate": "2017-09-14T12:23:08.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1498049",
+    "ThreadId": "663768",
+    "Html": "Hey men,\r<br />\n<br />\nI want take a look into this weekend.\r<br />\n<br />\nLet me know, you have a COM addin that implements IDTExtensibility2? (Not a NetOffice Tools.COMAddin) \r<br />\nWhich environment? (Windows version 32/64 and Outlook version 32/64)\r<br />\nEvent is attached by visual basic designer service?\r<br />\n<br />\n(BTW: Some office office applications does not fire various events when the main window is invisible)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2017-09-15T10:41:31.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1498056",
+    "ThreadId": "663768",
+    "Html": "My test works fine.<br />\n<br />\nIt is possible that the event works fine but the CType(Inspector.CurrentItem, Outlook.MailItem) failed ?<br />\n(And &quot;If Not (mailItem Is Nothing)&quot; do not pass)<br />\nCan you clearify that?<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2017-09-16T13:56:30.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

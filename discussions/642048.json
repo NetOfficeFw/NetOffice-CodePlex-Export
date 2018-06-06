@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1436302",
+    "ThreadId": "642048",
+    "Html": "When i create a new MSProjectApplication I can see that a new WInProj.Exe process starts, How can I obtain the PID of this process? I need It 'cause i would like to be able to kill that process\r<br />\n<br />\nMy Office application run in background.<br />\n",
+    "PostedDate": "2015-07-28T07:59:51.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1436529",
+    "ThreadId": "642048",
+    "Html": "I can show how you enumerate all MSProject main windows(from the desktop with some NetOffice utils classes) and get the associated PID('s) from them.\r<br />\nBut this is a wrong way of course. (a well known anti-pattern.. <em>the abort hammer</em>)\r<br />\n<br />\nDo you have problems because MSProject is not going down after quit/exit?\r<br />\nNetOffice spend a lot of help here to make sure you dont leave the place with open (COM)references. (just 1 call more...)\r<br />\n<br />\nlet me know...and choose\r<br />\n<br />\n1:) i want kill !!! no matters for your blabla...\r<br />\n2) how i can make this better\r<br />\n<br />\n<br />\n*Sebastian <br />\n",
+    "PostedDate": "2015-07-29T12:15:20.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1436600",
+    "ThreadId": "642048",
+    "Html": "The problem I need to solve is this one, : \r<br />\nI have a WCF service that operate with MSProject, MSProject is STA and I need to operate in an MTA context, with multiple instances of MSProject that might work at the sime time in response of the simoultaneus client requests, for solve this  I have created a pool of users that instance the MSproject, when I receive a request i serach for an user  that is free and call a thread impersonated with the user tha open the MSProject app and work with this. so I can have more instances of the MSProject that can work at the same time.\r<br />\nI would like to manage a list that report the User that have actualy instanciated the MSProject, the MSProject Instances reference and a timestamp that reeport when the MSProject was Instanciated<br />\nIf there are no problems the MSProject app is closed and the thread released and the user return free (release the user from the List).\r<br />\nIf there are problems, sometimes MSProject app hangs and I need to manually kill the process but If I'Ve more instances at the same time I'm not able to kill it in a secure way, for avoiding this If I can associate the user with the process Id of the MS Project when pass 10 minutes form the timestamp i can decide that the MSProject is hanging and so kill them by code and release the user from the list.\r<br />\nIn my context MSProject work in a background way without open Windows.\r<br />\nCan you help me to solve this problem?<br />\n",
+    "PostedDate": "2015-07-30T01:11:36.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1436780",
+    "ThreadId": "642048",
+    "Html": "hello,\r<br />\n<br />\nthe first what i have to say is about multi-application scenarios.\r<br />\nits more safe/isolated to create an own NetOffice core for each application.\r<br />\n(NetOffice.Core manage all open com proxies, make sure to dispose the root object i.e application to cleanup your environment)\r<br />\nMSProject has also problems sometimes with the automation api (RPC_REJECTED_EXCEPTION)\r<br />\na good way is to use something like this.<br />\n<pre><code>    public static MSProject.Application CreateApplication()\n    {\n        NetOffice.Core core = new NetOffice.Core();\n        core.Settings.MessageFilter.Enabled = true; // MSProject has known issues without\n        // core.ProxyCount &lt;= watch the current open proxies always a bit. more than 1000 is very exceptional\n\n        // NetOffice doesnt spend the right ctor to give an own core if application is created at hand.\n        // we fool the application a bit and create an application instance with ouer own core. \n        // (default core is always NetOffice.Core.Default)\n        MSProject.Application application = new MSProject.Application();\n        application = new MSProject.Application(core, null, application.UnderlyingObject);\n        return application; // make sure to call dispose after quit \n    }\n</code></pre>\n\nFor the PID its good to use the Win Api here.<br />\n<pre><code>  [DllImport(&quot;user32.dll&quot;, SetLastError = true)]\n  static extern int GetWindowThreadProcessId(int hWnd, out int processId);\n</code></pre>\n\nBut unfourtently, MSProject doesnt have an accessible main window handle. for this reason use a bypass trick:<br />\n<pre><code> int pid = 0;\n GetWindowThreadProcessId(application.VBE.MainWindow.HWnd, out pid);\n</code></pre>\n\nThis sample use the integrated VBA window instead. Works fine and no security hurdles for the readonly access.\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-07-31T09:08:27.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

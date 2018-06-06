@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1454209",
+    "ThreadId": "648247",
+    "Html": "NetOffice is fantastic.  I have managed to work out how to do most actions. Some are slightly different to how I would execute in a Excel Macro.<br />\n<br />\nI am just stuck on how to delete a row.  How can you delete a row in a open Excel.Worksheet?<br />\n<br />\nThx.<br />\n",
+    "PostedDate": "2015-12-01T20:53:52.343-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1454210",
+    "ThreadId": "648247",
+    "Html": "Ok...  The following works.  I found this in a code snippet in another thread.<br />\n<pre><code>                    Excel.Range range = workSheet.Range(&quot;A&quot; + currentRow);\n                    range.EntireRow.Delete(Excel.Enums.XlDeleteShiftDirection.xlShiftUp);</code></pre>\n\nI couldn't find this initially because Intellisense is not showing the EntireRow property.  If I type it in directly it works????<br />\n\r<br />\nI am using Visual Studio 2015 and have had a few issues using NetOffice classes not showing correctly with Intellisense.  Anyone else having this issue?<br />\n",
+    "PostedDate": "2015-12-01T21:11:37.427-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2015-12-01T21:17:51.467-08:00"
+  },
+  {
+    "Id": "1454299",
+    "ThreadId": "648247",
+    "Html": "hey men,\r<br />\n<br />\ni'm sorry for that. The EntireRow,EntireColumn property is marked as hidden in NetOffice 1.7.3. I've been changed this in latest source state and want publish them in NetOffice 1.7.4 if you find more hidden stuff - please let me know.\r<br />\n<br />\nBTW: An easy bypass for the issue is to activate the option &quot;show hidden/advanced members&quot; in the VS Tools/Options menu(restart recommended).\r<br />\n<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2015-12-02T11:39:17.6-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

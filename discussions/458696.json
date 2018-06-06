@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1097559",
+    "ThreadId": "458696",
+    "Html": "Hi, I have once again a Problem ;-)<br />\n<br />\nI try to get the currently open presentation to modify document properties while starting the plugin.<br />\n<pre><code>PowerPoint.Application powerPointApplication = PowerPoint.Application.GetActiveInstance();\npowerPointApplication.Visible = MsoTriState.msoTrue;\nPowerPoint.Presentation presentation = null;\n            try {\n                presentation = powerPointApplication.ActivePresentation;\n            } catch (Exception e) { ...}\n</code></pre>\n\nBut this request always throws following error: ActivePresentation: Invalid request, there is not active presention.<br />\n<br />\nI think the presentation isn't fully loaded while the plugin is starting. But how can I avoid this or do some workaround? I've I run it directly from VS it is working!!!! The same problem occours in excel. Word is working perfectly.<br />\n<br />\nPowerPoint 2010 was used.<br />\n<br />\nTHX<br />\n",
+    "PostedDate": "2013-09-22T02:16:57.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1097561",
+    "ThreadId": "458696",
+    "Html": "quick and dirty way is with an timer but it's not nice!!!!<br />\n",
+    "PostedDate": "2013-09-22T02:34:23.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1490529",
+    "ThreadId": "660434",
+    "Html": "Hello,<br />\n<br />\nI can't find a sulution to do Thinks like that:<br />\n<pre><code>With .Cells(9, 1)\n        .Value = &quot;ISC&quot;\n        .Characters(Start:=2, Length:=2).Font.Subscript = True\nEnd With</code></pre>\n\nDo you see any way to do that?<br />\n<br />\nThank you!!!<br />\n",
+    "PostedDate": "2017-01-02T02:51:57.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491026",
+    "ThreadId": "660434",
+    "Html": "try \r<br />\n<br />\n.text = &quot;Put here what you want&quot; \r<br />\n<br />\n<br />\n<br />\nvalue, is read only\r<br />\n<br />\nRoss<br />\n",
+    "PostedDate": "2017-01-12T03:46:14.217-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

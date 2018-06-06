@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "822492",
+    "ThreadId": "351939",
+    "Html": "\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dim vItem(4) As Object, oConn As NetOffice.ExcelApi.ODBCConnection<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'Error&nbsp;159&nbsp;Value of type 'NetOffice.ExcelApi.WorkbookConnection' cannot be converted to 'NetOffice.ExcelApi.ODBCConnection'.&nbsp;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For Each oConn In wb.Connections<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vItem(1) = TypeName(oConn)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vItem(2) = oConn.Connection<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vItem(3) = oConn.CommandText<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vItem(4) = oConn.CommandType</p>\r\n",
+    "PostedDate": "2012-04-11T10:33:15.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822500",
+    "ThreadId": "351939",
+    "Html": "<p>hello patrick, <br /><br />it is possible the workbook contains different kind of connections?<br />do you use ODBC connetction in VBA and works fine?<br />gimme a day to checkout what happen.</p>\r\n<p><br />Sebastian</p>",
+    "PostedDate": "2012-04-11T10:48:50.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822503",
+    "ThreadId": "351939",
+    "Html": "<p>Here's the VBA code:</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dim vItem(4) As Variant, oConn As ODBCConnection<br />For Each oConn In wb.Connections<br />vItem(1) = TypeName(oConn)<br />vItem(2) = oConn.Connection</p>",
+    "PostedDate": "2012-04-11T10:58:30.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822557",
+    "ThreadId": "351939",
+    "Html": "<p>this is not helpfull. same code as before. most of the time i see your notations ws&nbsp;means Workbook? aaah okay i have to research about the workbook type.<br />but anyway, your code works fine if you re-define oConn to ODBC Connection?<br /><br />*Sebastian</p>",
+    "PostedDate": "2012-04-11T12:35:06.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822572",
+    "ThreadId": "351939",
+    "Html": "<p>\"same code as before.\" The code before was what I am trying in VB.NET, the second post is the original VBA from which it came.</p>\r\n<p>\"&nbsp;ws&nbsp;means Workbook\", yes, and wb means workbook, always Dim wb as Workbook</p>\r\n<p>\"your code works fine if you re-define oConn to ODBC Connection?<br />The code does not even work yet, I'm still trying to get it to compile!</p>\r\n<p>The line \"For Each oConn In wb.Connections\" is giving a compile&nbsp;error</p>\r\n<p>&nbsp;'Error&nbsp;159&nbsp;Value of type 'NetOffice.ExcelApi.WorkbookConnection' cannot be converted to 'NetOffice.ExcelApi.ODBCConnection'.&nbsp;</p>\r\n<p>I can see from the Object Browser</p>\r\n<p>Public Class Connections<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inherits LateBindingApi.Core.COMObject<br />and</p>\r\n<p>Public ReadOnly Property Connections As NetOffice.ExcelApi.Connections<br />&nbsp;&nbsp;&nbsp;&nbsp; Member of NetOffice.ExcelApi._Workbook<br />&nbsp;</p>\r\n<p>If I Dim oConn as WorkbookConnection I can then iterate,</p>\r\n<p>and I can type oConn.ODBCConnection&nbsp;&nbsp;&nbsp;</p>\r\n<p>I can see</p>\r\n<p>&nbsp;Public Property CommandText As Object<br />&nbsp;&nbsp;&nbsp;&nbsp; Member of NetOffice.ExcelApi.ODBCConnection<br />&nbsp;</p>\r\n<p>So that tells me I can do this:</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For Each oConn In wb.Connections<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vItem(1) = TypeName(oConn)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vItem(2) = oConn.ODBCConnection&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vItem(3) = oConn.ODBCConnection.CommandText<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vItem(4) = oConn.ODBCConnection.CommandType<br />&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>&nbsp;So that tells me I have to write separate code for OLEDBConnection, although VBA seems to allow a mixture.</p>\r\n<p>OK, I can do that.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-04-11T12:57:48.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "822582",
+    "ThreadId": "351939",
+    "Html": "<p>i am confused. the Connections Property in Excel is defined as WorkbookConnection.<br />the exception occurs at runtime in which line?(generaly helpfull)&nbsp;oConn.ODBCConnection.CommandText?<br />gimme a chance to reproduce the situation on my system when! its possible. <br />thanks patrick ;)<br />Sebastian</p>\r\n<div id=\"_mcePaste\" class=\"mcePaste\" style=\"position: absolute; width: 1px; height: 1px; overflow: hidden; top: 0px; left: -10000px;\">﻿</div>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-04-11T13:14:00.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

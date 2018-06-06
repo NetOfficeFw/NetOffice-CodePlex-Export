@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1467270",
+    "ThreadId": "652668",
+    "Html": "Hello, I created a function, what exports DataTable to excel document, but i don't understand how to add more than one worksheet to this document?<br />\n<pre><code>Excel.Application application = new Excel.Application();\napplication.DisplayAlerts = false;\nExcel.Workbook workBook = application.Workbooks.Add();\nExcel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];\n// ....   filling workSheet  .... \napplication.ActiveWorkbook.SaveAs(myDialog.FileName);\napplication.Quit();\napplication.Dispose();</code></pre>\n\n",
+    "PostedDate": "2016-03-18T05:39:30.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

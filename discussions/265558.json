@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "643708",
+    "ThreadId": "265558",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I have read the word &#65279;&#65279;&#65279;&#65279;COMAddinRibbonExample and add&nbsp;two editBoxes to &#65279;&#65279;RibbonUI.xml ,but i can not find any way to get a editBox value?</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Could you tell me how to get editBox's value?</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br>\r\n&lt;customUI xmlns=&quot;<a href=\"http://schemas.microsoft.com/office/2006/01/customui\">http://schemas.microsoft.com/office/2006/01/customui</a>&quot; &gt;<br>\r\n&nbsp; &lt;ribbon&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;tabs&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;tab id=&quot;myTab&quot; label=&quot;C# RibbonAddin Example&quot;&nbsp;&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;group id=&quot;group1&quot; label=&quot;Example&quot;&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;button id=&quot;customButton1&quot; label=&quot;Perference&quot; imageMso=&quot;HappyFace&quot; size=&quot;large&quot; onAction=&quot;OnAction&quot; /&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;button id=&quot;customButton2&quot; label=&quot;About iFax&quot; imageMso=&quot;HappyFace&quot; size=&quot;large&quot; onAction=&quot;OnAction&quot; /&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/group&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;&lt;group id=&quot;group2&quot; label=&quot;Example2&quot;&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;editBox id=&quot;editBox1&quot; label=&quot;Number1:&quot;/&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;editBox id=&quot;editBox2&quot; label=&quot;Number2:&quot;/&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;button id=&quot;customButton3&quot; label=&quot;&quot; imageMso=&quot;HappyFace&quot; size=&quot;large&quot; onAction=&quot;Sum&quot; /&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/group&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;<br>\r\n&nbsp;&nbsp;&nbsp; &nbsp;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tab&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;/tabs&gt;<br>\r\n&nbsp; &lt;/ribbon&gt;<br>\r\n&lt;/customUI&gt;</p>\r\n",
+    "PostedDate": "2011-07-18T07:02:12.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "643785",
+    "ThreadId": "265558",
+    "Html": "<p>A little (bit more) about Ribbons<br /><a href=\"http://msdn.microsoft.com/en-us/library/aa338202%28v=office.12%29.aspx\">http://msdn.microsoft.com/en-us/library/aa338202%28v=office.12%29.aspx</a><br /><br />You see here as example:<br /><br />&lt;editBox id=\"EditBox1\" getText=\"ThisDocument.MyTextMacro\" <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; label=\"My EditBox\" onChange=\"ThisDocument.MyEditBoxMacro\"/&gt;</p>\r\n<p>getText means a public function similar to OnAction in your addin looks as follows<br /><br />public string GetText(IRibbonControl control) <br />{<br />&nbsp;&nbsp;&nbsp; return control.Id;<br />}<br /><br />Attribute Text maybe also supported to support text set without function call, i dont know.</p>\r\n<p>&nbsp;</p>\r\n<p>sebastian</p>",
+    "PostedDate": "2011-07-18T09:35:21.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

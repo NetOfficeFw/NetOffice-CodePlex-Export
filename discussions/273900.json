@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "676866",
+    "ThreadId": "273900",
+    "Html": "<p>I notice com proxy count increases dramatically as my AddIn runs so I try to clean up and dispose unused objects.&nbsp; Now I track down the following method,</p>\n<p>after it runs, proxy count increases by 2&nbsp; (nextRange.Value2 = relSb.Tostring())</p>\n<p>I wonder how to make it memory-leak free.&nbsp; It seems set Value2 will create com proxy and I am unable to release it. thanks</p>\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private void SetFormulaToCell_AjustButtonsEnabled(Range selectedRange, StringBuilder relSb)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (selectedRange.Count != 0)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var cells = selectedRange.Cells;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var nextRange = cells[1, 1];<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nextRange.Value2 = relSb.ToString();<br /> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nextRange.Dispose();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cells.Dispose();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; selectedRange.Dispose();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>",
+    "PostedDate": "2011-09-26T14:01:55.45-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676889",
+    "ThreadId": "273900",
+    "Html": "<p>hmm i'm not sure i'm understand your question (it's 00:06am here...)<br />you mean nextRange.Value2 = \"anyway\";&nbsp;increases the comproxy count by 2?<br />this is impossible. are you sure? i do a test tomorrow. when the counter is changed netoffice holds<br />the proxy in a internal table.&nbsp; you not have to fear a memory leak is occured.<br /><br />btw: its not necessary to dispose nextRange and cells. the objects was created about selectedRange.<br />with selectedRange.Dispose(); in your last line you dispose also the created childs and childs of childs and so on.<br />use DisposeChildInstances() to dipose&nbsp;all descendents and keep the parent object(means selectedRange) still alive.&nbsp;<br />when nextRange is disposed all childs was diposed to, okay maybe value2 creates a proxy but anyway,&nbsp;he is also&nbsp;diposed with parent disposing.</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-09-26T15:07:59.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "677172",
+    "ThreadId": "273900",
+    "Html": "<p>Yes,&nbsp; nextRange.Value2 = \"anyway\";&nbsp;increases the comproxy count by 2. that's what I see.&nbsp; thanks</p>",
+    "PostedDate": "2011-09-27T07:32:32.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "677183",
+    "ThreadId": "273900",
+    "Html": "<p>sorry yinru but its impossible what you say. look!</p>\n<p>&nbsp;&nbsp; int proxyCount = LateBindingApi.Core.Factory.ProxyCount;<br /> &nbsp;&nbsp; var cells = selectedRange.Cells;<br /> &nbsp;&nbsp; proxyCount = LateBindingApi.Core.Factory.ProxyCount;<br /> &nbsp; // one proxy more<br /> <br /> &nbsp; var nextRange = cells[1, 1];<br /> &nbsp; proxyCount = LateBindingApi.Core.Factory.ProxyCount;&nbsp; <br /> &nbsp; // two proxies more</p>\n<p>&nbsp; nextRange.Value2 = \"anyway\";<br /> &nbsp; proxyCount = LateBindingApi.Core.Factory.ProxyCount;&nbsp; <br /> &nbsp; // no proxy count changing</p>",
+    "PostedDate": "2011-09-27T07:47:19.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "677282",
+    "ThreadId": "273900",
+    "Html": "<div dir=\"ltr\">Hi, thanks. <br /> I tried to get a video for you but could not get camstudio work<br /> I did see nextRange.Value2 = relSb.ToString(); proxycount increases by 2. <br /> <br /> I have an xls file with VBA code and with my addin installed, the VBA has nothing to do with my AddIn, <br /> It does a lot of delete row, combine one row of data to the next row, etc.<br /> eg. <br /> I debug the code and found every time when a cell value is assigned , com proxy count increases by 2 <br /> <br /> For i = 1 To 80<br /> Sheets(\"Organized\").Cells(Output_Counter, 3 + i) = Point_Date_Value(i)<br /> Next i<br /> <br /> the VBA code heavily access each cell in loop, which make com proxy count increases dramatically <br /> <br /> I can email you the VBA code if this is your personal mailbox. (I do not want to post VBA code to discussion there b/c it is not my code) <br /> <br /> thanks <br /> <br /></div>",
+    "PostedDate": "2011-09-27T10:49:29.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "677321",
+    "ThreadId": "273900",
+    "Html": "<div dir=\"ltr\"><br /> Here is what I debug in VS2010 and it shows com proxy changes <br /> I am using 1.2 release. <br /> Hmm, if it works on your side, I suspect I did something wrong or miss something?<br /> I emailed swf file to your mailbox, too.</div>\n<div dir=\"ltr\"><br /> thanks <br /> <br /></div>",
+    "PostedDate": "2011-09-27T12:22:49.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "677416",
+    "ThreadId": "273900",
+    "Html": "<p>Thanks a lot for your help &amp; patience, <a class=\"UserProfileLink\" href=\"http://www.codeplex.com/site/users/view/SebastianDotNet\">SebastianDotNet</a>, appreciate it!</p>\r\n<p>The issue is solved!</p>\r\n<p>Long time ago a developer hooked up an empty SheetChangeEvent which causes com proxy count increases by 2 every time VBA code does Sheets(*), at that time it was COM AddIn using PIA.&nbsp; I did not change this after I switch to NetOffice</p>\r\n<p>Now I add two dispose methods in the handler and the issue is solved. &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>void Application_SheetChange(COMObject Sh, Excel.Range Target)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TODO: In future when the sheet selection changes - unhook event on current sheet and add event on new sheet.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sh.Dispose();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(Target!=null) Target.Dispose();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n<p>thanks again</p>\r\n<p>&nbsp;</p>\r\n<p><br /><a class=\"UserProfileLink\" href=\"http://www.codeplex.com/site/users/view/SebastianDotNet\"></a></p>",
+    "PostedDate": "2011-09-27T15:26:04.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1466527",
+    "ThreadId": "652435",
+    "Html": "I am trying to set the value of OptionButton in Excel but can't do it.\r<br />\nThe code:\r<br />\nObject PCI_no = _myxlWorkSheet.OLEObjects(&quot;rob_tabDev_row12_PCI_N&quot;);\r<br />\nif (PCI_no != null)\r<br />\n{\r<br />\nxcel.OptionButton PCI_no1 = (Excel.OptionButton)PCI_no;\r<br />\nPCI_no1.Value = false;\r<br />\n}\r<br />\n<br />\nWhen use Microsoft.Office.Interop.Excel\r<br />\nI can do it like this:\r<br />\nvar PCI_no = _myxlWorkSheet.OLEObjects(&quot;rob_tabDev_row12_PCI_N&quot;).Object;\r<br />\nif (PCI_no!=null)<br />\n<pre><code>          PCI_no.Value = false;\n</code></pre>\n\nHow can i do it in NetOffice?\r<br />\nPlease HELP!<br />\n",
+    "PostedDate": "2016-03-11T05:41:04.27-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1481604",
+    "ThreadId": "652435",
+    "Html": "Hi,\r<br />\n<br />\nI have similar question, I would use this to set my checkbox value:-<br />\n<pre><code>         xlWorkSheet.OLEObjects(&quot;CheckBox1&quot;).Object.Value = false;\n</code></pre>\n\nHow do you set the value in netoffice?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2016-08-19T14:00:33.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1481611",
+    "ThreadId": "652435",
+    "Html": "The current release doesnt handle external references as well. (And OLE is external stuff)\r<br />\nAs hotfix i try to suggest you to use the Invoker to call them trough late binding.\r<br />\n<br />\nThe upcoming NO release want handle this better(specialy in Visuak Basic) - coming next weekend - i hope so.\r<br />\n<br />\n<br />\nBTW; any exception details is greatly appreciated.<br />\n",
+    "PostedDate": "2016-08-19T16:11:48.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1483076",
+    "ThreadId": "652435",
+    "Html": "Sorry about the delay in responding, was on vacation. I know this line for instance as found my checkbox:-\r<br />\n<br />\nExcel.OLEObject oleObjects = (Excel.OLEObject)xlWorkSheet.OLEObjects(&quot;CheckBox1&quot;);\r<br />\n<br />\nand oleObjects then as a whole bunch of properties (visible, width, height etc. etc.) that I can affect it with but it does not have one for value.\r<br />\n<br />\nSo can you give me an example using Invoker to change the Value property?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2016-09-06T12:13:44.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1483080",
+    "ThreadId": "652435",
+    "Html": "Ok Ive figured it out:-<br />\n<pre><code>            Excel.OLEObject oleObjects = (Excel.OLEObject)xlWorkSheet.OLEObjects(&quot;CheckBox1&quot;);\n            Excel.CheckBox CheckBox1 =  (Excel.CheckBox)oleObjects.Object;\n            CheckBox1.Value = false;\n</code></pre>\n\nThis works fine now.<br />\n",
+    "PostedDate": "2016-09-06T13:04:56.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1483082",
+    "ThreadId": "652435",
+    "Html": "BTW: There is a special library called Forms 2.0 .The buttons, textboxes, labels from the integretaded VBA designer(VBEIDE)\r<br />\nNetOffice spend an individual wrapper library here, just include them to your solution.\r<br />\n(Use it or loose it)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-09-06T13:18:18.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

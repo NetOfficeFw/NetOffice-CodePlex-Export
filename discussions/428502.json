@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "983052",
+    "ThreadId": "428502",
+    "Html": "\r\n<p>I have another question, i´m using the CustomTaskPane, and i'm creating the taskPane content thru the ctpFactory.CreateCTP(, is there some way to use UserControls from another assembly thru this method or other way? I have a Class with all my UserControl\r\n that i will use thru the Addin, and i´m reference this Assembly in the principal Assembly of my outlook AddIn.<br>\r\nJust for help, when i try to create i gotta this error message &quot;Unable to create the Specified ActiveX Control &quot;<br>\r\nBR,<br>\r\n&nbsp;<br>\r\nRicardo</p>\r\n",
+    "PostedDate": "2013-01-04T06:47:32.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "985621",
+    "ThreadId": "428502",
+    "Html": "\r\n<p>sorry for the delay , i got no notications from codeplex since december,2012 for new discussions.<br>\r\n<br>\r\nplease show me your current code. you try use the custom taskpane outside of the addin?<br>\r\nyou may customize a NetOffice example solution but these small examples are not ready to go for that.<br>\r\nyour need just some small attributes more to use the taskpanes here(from outside). please help me to understand your current situation.<br>\r\n<br>\r\nSebastian</p>\r\n",
+    "PostedDate": "2013-01-11T12:01:48.627-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

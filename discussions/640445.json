@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1431840",
+    "ThreadId": "640445",
+    "Html": "Hi! I need to embed images (but not references) in email body with NetOffice Outlook.<br />\nThe only information I found is the following:<br />\n<a href=\"http://www.codeproject.com/Tips/326346/How-to-embed-a-image-in-email-body\" rel=\"nofollow\">http://www.codeproject.com/Tips/326346/How-to-embed-a-image-in-email-body</a><br />\nBut this method doesn't work with NetOfiice (I didn't find anything similar to LinkedImage.ContentId = &quot;MyPic&quot;).<br />\nCan anybody give an idea?<br />\n<br />\nP.S.<br />\nI found the solution:<br />\n<a href=\"http://stackoverflow.com/questions/8480534/embeding-images-in-an-email-using-outlook-interop\" rel=\"nofollow\">http://stackoverflow.com/questions/8480534/embeding-images-in-an-email-using-outlook-interop</a><br />\n<br />\nI hope the informations can be useful :)<br />\n",
+    "PostedDate": "2015-06-25T06:54:53.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

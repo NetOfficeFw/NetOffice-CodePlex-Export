@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1023984",
+    "ThreadId": "438726",
+    "Html": "Excel.Application excelApp = null;<br />\n<pre><code>        Excel.Workbook oWB = null;\n        try\n        {\n            excelApp = new Excel.Application();\n            excelApp.DisplayAlerts = false;\n            excelApp.Visible = true;\n            excelApp.AlertBeforeOverwriting = false;\n            excelApp.Interactive = false;\n\n\n            excelApp.DefaultFilePath = CurrentExecutionPath;\n\n            oWB = (Excel.Workbook)(excelApp.Workbooks.Add(Missing.Value));\n\n\n            //string filter = &quot;*.xll&quot;;\n            string[] Files = Directory.GetFiles(CurrentExecutionPath).Where(FileName =&gt;\n                                    FileName.EndsWith(&quot;.xll&quot;) || FileName.EndsWith(&quot;.XLL&quot;)).ToArray&lt;string&gt;();\n            foreach (string File in Files)\n            {\n\n                bool Installed = excelApp.RegisterXLL(Path.GetFileName(File));\n                //Excel.AddIn AddIn =  excelApp.AddIns2.Add(File);\n                if (Installed)\n                //if (AddIn != null)\n                {\n\n                    logger.Debug(File + &quot; Registration Completed. &quot;);\n                }\n                else\n                {\n                    logger.Debug(File + &quot; Registration Failed &quot;);\n                }\n            }\n\n            foreach (Excel.AddIn AddIn in excelApp.AddIns2)\n            {\n                logger.Debug(string.Format(&quot;Add In Name : {0} , Location : {1}, File Name : {2}, Path : {3}&quot;,\n                    AddIn.Application, AddIn.FullName, AddIn.Name, AddIn.Path));\n            }\n            oWB.Save();\n        }\n        catch (Exception ex)\n        {\n            logger.Debug(ex.ToString());\n            MessageBox.Show(ex.ToString(), &quot;Error&quot;);\n            MessageBox.Show(ex.ToString(), &quot;Error&quot;);\n        }\n        finally\n        {\n            //excelApp.Quit();\n            oWB.Close();\n            excelApp.Quit();\n            oWB.Dispose();\n            excelApp.Dispose();\n        }\n\n</code></pre>\n\nAbove is my code for Registering AddIn; But they are not getting actually registered. I see they are being loaded when I call \r<br />\nbool Installed = excelApp.RegisterXLL(Path.GetFileName(File)); And if i put break point then I can see AddIn in bar but once program gets executed and then I reopen Excel I don't find them as &quot;registered&quot;...\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-04-01T16:58:42.22-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024125",
+    "ThreadId": "438726",
+    "Html": "Hello,\r<br />\n<br />\nDid you register your Add-In in Microsoft Registry?<br />\n<pre><code>                // http://support.microsoft.com/kb/948461\n                // register addin in Excel\n                Registry.CurrentUser.CreateSubKey(@&quot;Software\\Microsoft\\Office\\Excel\\Addins\\&lt;Addin name&gt;&quot;);\n                RegistryKey regKeyWord = Registry.CurrentUser.OpenSubKey(@&quot;Software\\Microsoft\\Office\\Excel\\Addins\\&lt;Addin name&gt;&quot;, true);\n                regKeyWord.SetValue(&quot;LoadBehavior&quot;, Convert.ToInt32(3));\n                regKeyWord.SetValue(&quot;FriendlyName&quot;, &quot;&lt;Addin name&gt;&quot;);\n                regKeyWord.SetValue(&quot;Description&quot;, &quot;&lt;Description&gt;&quot;);\n                regKeyWord.Close();</code></pre>\n\nYour Add-In can be done with .dll too instead of .xll which make the possibility of deploying it in Word/Excel/PowerPoint in same time.<br />\n",
+    "PostedDate": "2013-04-02T01:54:15.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1025375",
+    "ThreadId": "438726",
+    "Html": "I can not understand how I set Addin cherep Windows Installer. Where in the Installer I prescribe the following code:<br />\n<pre><code>Registry.CurrentUser.CreateSubKey(@&quot;Software\\Microsoft\\Office\\Excel\\Addins\\&lt;Addin name&gt;&quot;);\n                RegistryKey regKeyWord = Registry.CurrentUser.OpenSubKey(@&quot;Software\\Microsoft\\Office\\Excel\\Addins\\&lt;Addin name&gt;&quot;, true);\n                regKeyWord.SetValue(&quot;LoadBehavior&quot;, Convert.ToInt32(3));\n                regKeyWord.SetValue(&quot;FriendlyName&quot;, &quot;&lt;Addin name&gt;&quot;);\n                regKeyWord.SetValue(&quot;Description&quot;, &quot;&lt;Description&gt;&quot;);\n                regKeyWord.Close();</code></pre>\n\nThis is the only thing to do in the registry to Excel hooked up addin?<br />\n",
+    "PostedDate": "2013-04-04T06:27:11.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1028501",
+    "ThreadId": "438726",
+    "Html": "I do not want to add Registry entries because I am deploying through ClickOnce and we do not have access to Registry. I am trying to deploy this without help of Administrator.\r<br />\n<br />\nLet me know...\r<br />\n<br />\nThanks <br />\n",
+    "PostedDate": "2013-04-10T08:39:00.003-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031209",
+    "ThreadId": "438726",
+    "Html": "First of you need you a GUID for your application<br />\n<pre><code>[GuidAttribute(&quot;56F843AD-ECB8-45D6-9E33-C0928BD2FB03&quot;), ProgId(&quot;&lt;Add-In name&gt;&quot;), ComVisible(true)]</code></pre>\n\n<pre><code>            try\n            {\n                // add codebase value\n                Assembly thisAssembly = Assembly.GetAssembly(typeof(Addin));\n                RegistryKey key = Registry.ClassesRoot.CreateSubKey(&quot;CLSID\\\\{&quot; + type.GUID.ToString().ToUpper() + &quot;}\\\\InprocServer32\\\\1.0.0.0&quot;);\n                key.SetValue(&quot;CodeBase&quot;, thisAssembly.CodeBase);\n                key.Close();\n\n                key = Registry.ClassesRoot.CreateSubKey(&quot;CLSID\\\\{&quot; + type.GUID.ToString().ToUpper() + &quot;}\\\\InprocServer32&quot;);\n                key.SetValue(&quot;CodeBase&quot;, thisAssembly.CodeBase);\n                key.Close();\n\n                // add bypass key\n                // http://support.microsoft.com/kb/948461\n                key = Registry.ClassesRoot.CreateSubKey(&quot;Interface\\\\{000C0601-0000-0000-C000-000000000046}&quot;);\n                string defaultValue = key.GetValue(&quot;&quot;) as string;\n                if (null == defaultValue)\n                    key.SetValue(&quot;&quot;, &quot;Office .NET Framework Lockback Bypass Key&quot;);\n                key.Close();\n\n                // register addin in PowerPoint\n                Registry.CurrentUser.CreateSubKey(@&quot;Software\\Microsoft\\Office\\Excel\\Addins\\&lt;Add In name&gt;&quot;);\n                RegistryKey regKeyWord = Registry.CurrentUser.OpenSubKey(@&quot;Software\\Microsoft\\Office\\Excel\\Addins\\&lt;Add In name&gt;&quot;, true);\n                regKeyWord.SetValue(&quot;LoadBehavior&quot;, Convert.ToInt32(3));\n                regKeyWord.SetValue(&quot;FriendlyName&quot;, &quot;&lt;Add In name&gt;&quot;);\n                regKeyWord.SetValue(&quot;Description&quot;, &quot;&lt;description&gt;&quot;);\n                regKeyWord.Close();\n\n\n            }\n            catch (Exception ex)\n            {\n                string details = string.Format(&quot;{1}{1}Details:{1}{1}{0}&quot;, ex.Message, Environment.NewLine);\n                MessageBox.Show(&quot;An error occured.&quot; + details, &quot;Register Addin&quot;, MessageBoxButtons.OK, MessageBoxIcon.Error);\n            }\n        }</code></pre>\n\nThis is a way to register it to your registry. Notice that the GUID must be unique, to avoid conflict between other Add-Ins.<br />\n<br />\nHope this might overcome your issue.<br />\n<br />\nWith VSTO, it generates at the end a Setup.exe, you don't need to use ClickOnce.<br />\n",
+    "PostedDate": "2013-04-16T08:19:46.257-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031599",
+    "ThreadId": "438726",
+    "Html": "Another thing you could do is,<br />\n<br />\nIn Microsoft Visual C# 2010 Express in Project Option-&gt; Publish<br />\n<br />\nYou can create a ClickOnce there too which can check every xy day to update the software. <br />\n<br />\nIt also generates a setup.exe<br />\n<br />\nJust created one and it works fine and updates also when a new version has been released, means it works with NetOffice too it's independent from it.<br />\n<br />\nI open a window that allows me to Install/UnInstall my Add-In and it adds/removes my Add-In from registry.<br />\n",
+    "PostedDate": "2013-04-17T01:35:06.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1037154",
+    "ThreadId": "438726",
+    "Html": "I do not want to add entries into Registry. <br />\n",
+    "PostedDate": "2013-04-29T07:44:53.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1478213",
+    "ThreadId": "656154",
+    "Html": "I am trying to create a workbook and set the value of the first cell, but I get an exception.<br />\nWhat am I missing? (Note: I am using Office 2016).<br />\n<br />\nHere is the code:<br />\n<pre><code>            using (var app = new Application())\n            using (var wb = app.Workbooks.Add())\n            {\n                var sheet = (Worksheet)wb.Sheets.Add();\n                sheet.Cells[0, 0].Value = &quot;Test&quot;;\n                wb.Save();\n            }\n        }</code></pre>\n\nIt throws this exception at sheet.Cells[0, 0].Value = &quot;Test&quot;:<br />\n<pre><code>System.Runtime.InteropServices.COMException was unhandled by user code\n  ErrorCode=-2147467259\n  HResult=-2147467259\n  Message=See inner exception(s) for details.\n  Source=NetOffice\n  StackTrace:\n       at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\n       at NetOffice.ExcelApi.Range.get_Item(Object rowIndex, Object columnIndex)\n       at blah.Export.ExcelExporter.AddRow(Worksheet sheet, Int32 rowIndex, Action`1 format, String[] values) in C:\\blah\\Vault\\blah\\blahSource\\blah.Export\\ExcelExporter.cs:line 51\n       atblah.Export(ModelContents[] modelContents, String targetFilePath) in C:\\blah.Export\\ExcelExporter.cs:line 27\n       at MAS.RevitAddin.Export.Tests.ExportTests.ExportOneFamilyWithOneParam() in blah.Export.Tests\\ExportTests.cs:line 26\n  InnerException: \n       HResult=-2146232828\n       Message=Exception has been thrown by the target of an invocation.\n       Source=mscorlib\n       StackTrace:\n            at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\n            at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\n            at NetOffice.Invoker.PropertyGet(COMObject comObject, String name, Object[] paramsArray)\n       InnerException: \n            ErrorCode=-2146827284\n            HResult=-2146827284\n            Message=Exception from HRESULT: 0x800A03EC\n            Source=&quot;&quot;\n            InnerException: \n</code></pre>\n\n",
+    "PostedDate": "2016-07-06T09:28:07.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1478222",
+    "ThreadId": "656154",
+    "Html": "In MS-Office applications generaly, the lower index bounds for arrays/indexers is 1 for history reasons(vba).<br />\nSo please try: &quot;sheet.Cells[1, 1]&quot; instead of &quot;sheet.Cells[0, 0]&quot;.<br />\n<br />\nSebastian<br />\n",
+    "PostedDate": "2016-07-06T10:42:39.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2016-07-06T12:31:26.84-07:00"
+  },
+  {
+    "Id": "1478235",
+    "ThreadId": "656154",
+    "Html": "That was the issue.\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2016-07-06T12:31:22.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

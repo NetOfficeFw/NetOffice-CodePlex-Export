@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1345956",
+    "ThreadId": "578629",
+    "Html": "Hi<br />\n<br />\nI love the project, it's the second add-on that i'm creating using netoffice and i really love it.<br />\n<br />\nHowever i have a problem with configuration file. I'm trying to use SQL Compact Edition in the add-on, but i need to define some entries in app.config. Which is not possible because of the calling assembly which is ignoring app.config of my add-on class, and it's trying to load Outlook.exe.config, which doesn't exist. My question is  ... is there any other way of configuring add-on than editing Outlook.exe.config ?<br />\n<br />\nIf i don't understand something please, at least point me in the right direction.<br />\n",
+    "PostedDate": "2015-01-26T14:28:57.55-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1363078",
+    "ThreadId": "578629",
+    "Html": "Same question about this topic, when I try to add the code behind to the app.config, <br />\n<pre><code>  &lt;runtime&gt;\n    &lt;assemblyBinding xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;\n      &lt;probing privatePath=&quot;NetOffice&quot; /&gt;\n    &lt;/assemblyBinding&gt;\n  &lt;/runtime&gt;</code></pre>\n\nand copy the dlls to the bin\\Debug\\NetOffice folder, or add the dlls the the project\\NetOffice folder, add them into project, and build them into Debug folder automatically.\r<br />\n<br />\nit workes in a Windows Application (such as winform, wpf), however, this doesn't work when it comes a Assembly load error.\r<br />\n<br />\nWaiting for the reply.\r<br />\n<br />\nBest Regards,\r<br />\nPenn Ye.<br />\n",
+    "PostedDate": "2015-03-13T03:48:02.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1363085",
+    "ThreadId": "578629",
+    "Html": "I'm affraid that you can't use configuration files for addons. I've switched to code based configuration. Only configuration file that is loaded is the Office application file.<br />\n",
+    "PostedDate": "2015-03-13T04:07:59.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

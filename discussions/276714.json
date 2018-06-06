@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "687398",
+    "ThreadId": "276714",
+    "Html": "\r\n<p>Hello there...</p>\r\n<p>I want to add different content controls in word document. I have an object of&nbsp;NetOffice.WordApi.Document. Can you please paste some sample code snippet ?</p>\r\n<p>Some like.......?</p>\r\n<p>Dim oContentControl = DirectCast(CurrentDocument.ContentControls, NetOffice.WordApi.ContentControl)&nbsp; &nbsp; &nbsp; oContentControl.Application.ActiveDocument.ContentControls.Add(NetOffice.WordApi.Enums.WdContentControlType.wdContentControlText, oRange)</p>\r\n<p>Thanks in advance.</p>\r\n<p>Regards,</p>\r\n<p>Dharmesh</p>\r\n",
+    "PostedDate": "2011-10-21T06:04:34.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "687437",
+    "ThreadId": "276714",
+    "Html": "<p><span style=\"font-size: x-small;\"></span>of course.</p>\n<div style=\"background-color: white; color: black;\">\n<pre><span style=\"color: blue;\">Dim</span> oContentControl <span style=\"color: blue;\">As</span> Word.ContentControl = wordApplication.ActiveDocument.ContentControls.Add(NetOffice.WordApi.Enums.WdContentControlType.wdContentControlText, oRange)\r\n</pre>\n</div>\n<p>*regards<br />Sebastian</p>",
+    "PostedDate": "2011-10-21T07:12:02.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "688225",
+    "ThreadId": "276714",
+    "Html": "<p>Hey Sebastian,</p>\r\n<p>First would like to thank you for quick response.</p>\r\n<p>I am done with adding differnt kind of content control. Now only one thing is peniding which CheckBox conent control.</p>\r\n<p><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><font face=\"Consolas\" size=\"2\" color=\"#0000ff\">\r\n<p>Dim</p>\r\n</font></span></span></span></span></span></span></span></span></span></span></span><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">oContentControl = oContentControls.Add(</span></span><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">NetOffice.WordApi.Enums.</span></span></span><span style=\"font-family: Consolas; color: #2b91af; font-size: x-small;\"><span style=\"font-family: Consolas; color: #2b91af; font-size: x-small;\"><span style=\"font-family: Consolas; color: #2b91af; font-size: x-small;\">WdContentControlType</span></span></span><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">.wdContentControlCheckBox, </span></span><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">oRange).</span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>\r\n<p><span style=\"font-family: Consolas;\">This is resulting into adding text cotrol NOT checkbox contol :(. Except this every type of controls are added well. I read on one forum that it is introduced from 2010. I still see it is working fine in 2007. Can you please suggest me some code block so that I can add checkbox content control.</span></p>\r\n<p><span style=\"font-family: Consolas;\">Thanks in advance.</span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\"></span></span>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">&nbsp;</span></span>Regards,</p>\r\n<p>\r\n<p>Dharmesh</p>\r\n</p>\r\n<p>&nbsp;</p>\r\n</p>\r\n&nbsp;",
+    "PostedDate": "2011-10-23T23:07:57.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "688435",
+    "ThreadId": "276714",
+    "Html": "<p>i have bad news for you.</p>\n<p>wdContentContolCheckbox is a 2010 specific enum member.<br /><br />NetOffice helps you with IntelliSense Text to see which version supports a specific entity.<br />looks like this<br /><br /></p>\n<div style=\"background-color: white; color: black;\">\n<pre><span style=\"color: green;\">// Summary </span>\r\n<span style=\"color: green;\">// SupportByLibrary Word 12, 14 </span>\r\n<span style=\"color: blue;\">public</span> <span style=\"color: blue;\">enum</span> WdContentControlType \r\n{\r\n  \r\n  <span style=\"color: green;\">// Summary: </span>\r\n  <span style=\"color: green;\">// SupportByLibrary Word 14</span>\r\n  wdContentControlCheckBox = 8\r\n}\r\n\r\n\r\n</pre>\n</div>\n<p>moreover its possible to analyze your assembly which office version is&nbsp;compatible with your code with the netoffice developer toolbox.<br />[url:<a href=\"http://netoffice.codeplex.com/wikipage?title=DeveloperToolbox_English\">http://netoffice.codeplex.com/wikipage?title=DeveloperToolbox_English</a>]</p>\n<p><span style=\"font-size: x-small;\"><span style=\"font-size: x-small;\">&nbsp;</span></span></p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;*Sebastian</p>",
+    "PostedDate": "2011-10-24T07:02:31.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

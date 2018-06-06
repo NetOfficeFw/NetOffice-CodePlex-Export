@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1072331",
+    "ThreadId": "451079",
+    "Html": "Hey,\r<br />\n<br />\nI want to open a .csv file with Excel, using C#.\r<br />\n<br />\nI copied the ExcelApi.dll, NetOffice.dll, OfficeApi.dll and VBIDEApi.dll  into the debug folder of my Projekt and added the references to my Project. (Also set embed Interop Types to &quot;false&quot;)\r<br />\n<br />\nThe imports i added are:<br />\n<pre><code>using NetOffice;\nusing Excel = NetOffice.ExcelApi;\nusing NetOffice.ExcelApi.Enums;</code></pre>\n\nand the code i try to runs is:<br />\n<pre><code>String filename=@&quot;..\\..\\..\\..\\Results\\result.csv&quot;;\nExcel.Application excelApplication = new Excel.Application();\nexcelApplication.DisplayAlerts = false;\nExcel.Workbook workbook;\nworkbook = excelApplication.Workbooks.Open(\nfilename, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\nType.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,\nType.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);</code></pre>\n\nThe Programm i'm using is Visual Studio 2012 Ultimate, and if i try to run the code i get this message:\r<br />\n<br />\nprogId not found. Excel.Application\r<br />\nin the code line:<br />\n<pre><code>Excel.Application excelApplication = new Excel.Application();</code></pre>\n\nThe Project is set to .Net Framework 4.5 and i used the dll's from the Net4.5/assemblies/AnyCpu folder.\r<br />\n<br />\n I have the Microsoft Office Home and Student 2010 version installed at my Computer.\r<br />\n<br />\nDoes anybody know how to fix the problem?\r<br />\n<br />\nThanks in advance\r<br />\nStephan<br />\n",
+    "PostedDate": "2013-07-24T07:59:13.45-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1072498",
+    "ThreadId": "451079",
+    "Html": "hmm not sure the student version is accessible trough code or the progid is different. i dont have the student version to clearify the situation. please help me and perform a search in the registry for '00024500-0000-0000-C000-000000000046'\r<br />\nyou find something like that HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\CLSID{00024500-0000-0000-C000-000000000046}\r<br />\nyou will see a sub hkey called 'ProgID' and VersionIndependentProgID. please copy the default entry value to see whats the problem.\r<br />\n<br />\nthx*\r<br />\nSebastian<br />\n",
+    "PostedDate": "2013-07-24T14:47:19.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1072508",
+    "ThreadId": "451079",
+    "Html": "Hey, thanks for the reply.<br />\nI started the registry with &quot;regedit&quot; and searched for  '00024500-0000-0000-C000-000000000046' .<br />\nThe search finished without results.<br />\nBy the way, i got a german version of windows &amp; Office(but i think that shouldn't make a difference).<br />\n<br />\nUPDATE:<br />\nThe Error is gone now, I reinstalled Office. The first time i just upgraded the test version with a license key. So i had the click to run version. After the reinstallation the above mentioned key was in the registry.<br />\n<br />\nStephan<br />\n",
+    "PostedDate": "2013-07-24T15:09:52.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

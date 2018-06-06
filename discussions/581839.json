@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1355720",
+    "ThreadId": "581839",
+    "Html": "Hello,\r<br />\n<br />\nI am using NetOffice for a project where I have a VB macro in an access data base.  While I can call the macro, if there is an error, it does not propagate the error or return an error but instead prompts me with a dialog box to debug.  I would like to set this project to run unattended.  How can I accomplish this where I get an error from my VB Macro instead of a debug dialog.\r<br />\n<br />\nThank you,\r<br />\n<br />\nPS:\r<br />\n<br />\nHere is the code I am using<br />\n<pre><code>void Main()\n{\n\n    using(var accessDB = NetOffice.AccessApi.Application.GetActiveInstance() ?? new NetOffice.AccessApi.Application())\n    {\n        try\n        {\n            accessDB.OpenCurrentDatabase(@&quot;C:\\Database2.mdb&quot;);\n            using(var database = accessDB.CurrentDb())\n            {               \n                try\n                {\n                    accessDB.DoCmd.RunMacro(&quot;Macro1&quot;);\n                }\n                finally\n                {\n                    database.Close();\n                }\n            }\n        }\n        finally\n        {\n            accessDB.Quit();\n        }\n    }\n}</code></pre>\n\n",
+    "PostedDate": "2015-02-25T11:05:43.857-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "668099",
+    "ThreadId": "271628",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>i wonder if possibile fill the HWND (now throw an exception: {&quot;Member not found. (Exception from HRESULT: 0x80020003 (DISP_E_MEMBERNOTFOUND))&quot;})&nbsp;property of the SlidesShow Window because i need to interact with a wpf application.</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks in advance,</p>\r\n",
+    "PostedDate": "2011-09-06T07:05:54.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "668275",
+    "ThreadId": "271628",
+    "Html": "<p>this is a well known bug in power point, its also not usable with vba or interop.<br />the workarround for this problem you find here: <a href=\"http://support.microsoft.com/kb/302295\">http://support.microsoft.com/kb/302295</a><br />use the winapi function FindWindow, not realy funny i know... :-|</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-09-06T13:45:33.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1320904",
+    "ThreadId": "271628",
+    "Html": "Thanks a lot~<br />\n",
+    "PostedDate": "2014-11-11T06:41:31.76-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

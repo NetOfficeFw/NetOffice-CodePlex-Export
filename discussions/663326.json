@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1497221",
+    "ThreadId": "663326",
+    "Html": "Hello !\r<br />\n<br />\nThank you for your office toolbox, it's really cool !\r<br />\nI'm currently developping an Addin in C# for Excel with SharpDevelop. \r<br />\nSome of the interactions open some popups containing several controls where the user can enter some text. The problem is that I wanted to access the worksheets, cells etc... but the object Excel.Application isn't accessible from my popup class in any way. \r<br />\n(I noticed while browsing the net that Visual Studio automatically create a class called Globals with all the static objects from the package. Is there any mean to reproduce it ?)\r<br />\nMaybe some people have encountered the same issue ?\r<br />\nThank you for your help.\r<br />\n<br />\nBest regards,\r<br />\nImad. <br />\n",
+    "PostedDate": "2017-06-28T02:19:35.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

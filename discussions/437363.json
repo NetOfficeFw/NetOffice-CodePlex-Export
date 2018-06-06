@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1018357",
+    "ThreadId": "437363",
+    "Html": "I need to store Word documents within a DB as a BLOB and I would like to be able to directly open/display the contents without writing the BLOB out as a DOCx first.\r<br />\n<br />\nIs this possible?<br />\n",
+    "PostedDate": "2013-03-20T09:37:38.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1051080",
+    "ThreadId": "437363",
+    "Html": "I'm also very interested in finding a solution to open a Word/Excel/... document using a byte array without writing temporary files to disk.\r<br />\n<br />\nLooking at the NetOffice API there's the NetOffice.WordApi.Application().Documents.Open(...) method. This method requires a filename as its first parameter but I can see no way to get rid of binary data. Is this a misunderstanding of the COM proxy management or currently not supported by NetOffice?\r<br />\n<br />\nAny help would be very appreciative.<br />\n",
+    "PostedDate": "2013-05-31T01:35:26.357-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1256821",
+    "ThreadId": "437363",
+    "Html": "Same here, would love to be able to open and save workbooks without them having to touch disk. Can someone gice some pointers on how this could be possible? <br />\n",
+    "PostedDate": "2014-06-16T13:23:53.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

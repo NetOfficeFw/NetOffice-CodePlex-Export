@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1029431",
+    "ThreadId": "440040",
+    "Html": "If i am doing this, i am getting ComPlusException<br />\n<pre><code>                try \n                {           \n                    app = new Outlook.Application();\n                    ns = app.GetNamespace(&quot;MAPI&quot;);\n                    ns.Logon(null, null, false, false);\n\n                } catch (Exception ex) {\n                        Console.WriteLine(ex.Message);\n                }\n</code></pre>\n\nI have set the references to NetOffice, OfficeAPI and OutlookAPI and embedded Interop-Type for OfficeAPI. <br />\nTarget framework is .NET Framwork 4<br />\n<br />\nWhat's wrong with this?<br />\n",
+    "PostedDate": "2013-04-12T02:19:59.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1029609",
+    "ThreadId": "440040",
+    "Html": "In the end i have looked in the examples project and compared with mine, so i've got it done ;)<br />\nI have thrown away the try catch block, just to ease readability.<br />\n",
+    "PostedDate": "2013-04-12T07:53:10.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

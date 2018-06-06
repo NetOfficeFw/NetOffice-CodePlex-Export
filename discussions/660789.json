@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1491307",
+    "ThreadId": "660789",
+    "Html": "Hi,\r<br />\n<br />\nI created an outlook Add-In with NetOffice and Visual Studio Express 2013. It works fine on my development computer, but I'm scratching my head over how to deploy it to other computers. I googled a lot and found many sites, but none of them got me started for different reasons:\r<br />\nI only have Visual Studio Express which lacks the necessary features\r<br />\nThe explanations start at a very high level and presume basic knowledge about what needs to be done. I simply don't understand them.\r<br />\n<br />\nDoes anybody have a pointer where a complete Newbie with basic free tools can learn how to do it?\r<br />\n<br />\nTIA,\r<br />\nChristian<br />\n",
+    "PostedDate": "2017-01-18T12:15:19.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491546",
+    "ThreadId": "660789",
+    "Html": "You need to create a setup to deploy your solution and you have no idea how - right?\r<br />\nYou can create easily an .MSI or Wix project - unfortunately your VS 2013 Express Version do not support that.\r<br />\nYou have to 2 options - upgrade your Visual Studio to the Visual Studio Community Edition or downgrade your Visual Studio to VS 2010 Prof./Enterprise.\r<br />\n(I recommend the last option - but this is only my personal opinion)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2017-01-23T23:07:55.91-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1491854",
+    "ThreadId": "660789",
+    "Html": "Thanks Sebastian,\r<br />\n<br />\nI installed the Visual Studio 2015 Community Edition and Wix. So I'm at the starting point to create an installer.\r<br />\nThe questions now is, what do I have to add to my *.wxs file?\r<br />\nI found some help here: \r<br />\n<a href=\"wixtoolset.org\" rel=\"nofollow\">http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/add_a_file.html</a>\r<br />\n<br />\nWhen I compile my Outlook Addin, the following files are created in the &quot;Release&quot;-Folder:<br />\n<ul>\n<li>NetOffice.dll</li>\n<li>NetOffice.xml</li>\n<li>OfficeApi.dll</li>\n<li>OfficeApi.xml</li>\n<li>OutlookApi.dll</li>\n<li>OutlookApi.xml</li>\n<li>MyAddin.dll</li>\n<li>MyAddin.tlb</li>\n<li>\nstdole.dll<br />\n</li>\n</ul>\nDo I have to include all these files to the *.wxs file? Including the xml-files?\r<br />\nMore important: I have to register the addin in the registry. Which dll's do I have to register and to which registry key?\r<br />\n<br />\nIs there a NetOffice help which explains this in simple terms?\r<br />\n<br />\nChristian<br />\n",
+    "PostedDate": "2017-01-29T10:02:00.27-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

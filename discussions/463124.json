@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1110566",
+    "ThreadId": "463124",
+    "Html": "Hi,\r<br />\nI'm trying to deploy a small project I've made that works fine locally. All I'm doing so far is trying to read just the test out of Word docs. I'm making my project in VS 2012, and I have a solution with a few projects, and the console app is using NetOffice. I have references to NetOffice, OfficeAPI, VBIDE, and WordApi. I'm using .Net 4.5 framework locally and I installed it on the server as well, that was 4.51. I have Office 2010 installed in the web server, though I did that after I uploaded my solution there and saw it wasn't working. I have a try-catch sending this error to the Event Log: <a href=\"mailto:C:\\inetpub\\wwwroot\\Cognito2\\Uploads\\14-12-9@635180479299724267\\TGV.docxSystem.NullReferenceException:\" rel=\"nofollow\">C:\\inetpub\\wwwroot\\Cognito2\\Uploads\\14-12-9@635180479299724267\\TGV.docxSystem.NullReferenceException:</a> Object reference not set to an instance of an object.\r<br />\n   at ConvertFormatsToText.Program.WordToText(String strRootDir) in c:\\Users\\nikolsky\\Documents\\Visual Studio 2012\\Projects\\TextAnalyzer\\ConvertFormatsToText\\Program.cs:line 163 \r<br />\n<br />\nand the 4th line here is the one with the problem:\r<br />\nWord.Application wordApplication = new Word.Application();<br />\n<pre><code>            Word.Document newDocument = wordApplication.Documents.Open(strFilename);\n            StreamWriter WordToText;\n            string plainContent = newDocument.Content.Text;  &lt;------- this one fails\n\n</code></pre>\n\nCan you please tell me what to try next? It works fine locally. Thanks!\r<br />\n<br />\nOleg<br />\n",
+    "PostedDate": "2013-10-22T07:32:35.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112091",
+    "ThreadId": "463124",
+    "Html": "These had my answers:\r<br />\n<br />\n<a href=\"http://www.bloing.net/2011/01/how-to-make-iis7-play-nice-with-office-interop/\" rel=\"nofollow\">http://www.bloing.net/2011/01/how-to-make-iis7-play-nice-with-office-interop/</a>\r<br />\n<br />\n<a href=\"http://geekswithblogs.net/DavidHoerster/archive/2013/06/17/iis-7rsquos-sneaky-secret-to-get-com-interop-to-run.aspx\" rel=\"nofollow\">http://geekswithblogs.net/DavidHoerster/archive/2013/06/17/iis-7rsquos-sneaky-secret-to-get-com-interop-to-run.aspx</a><br />\n",
+    "PostedDate": "2013-10-25T06:43:18.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

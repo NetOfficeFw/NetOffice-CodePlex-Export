@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "817934",
+    "ThreadId": "350690",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>not sure it's a bug but even if macros are disabled in Office (Access, Excel, Word...),&nbsp;my function&nbsp;&quot;workbook_open&quot; is still executed... &nbsp;Weird&nbsp;isn't it..</p>\r\n<p>I tried to set the property AutomationSecurity&nbsp;to ForceDisable but unfortunately it blocks access to the VBA object model.</p>\r\n<p>Any solution?</p>\r\n<p>Thx</p>\r\n<p>S&eacute;b</p>\r\n<p>&nbsp;</p>\r\n<p>PS: great code by the way :) Very useful!</p>\r\n",
+    "PostedDate": "2012-03-30T13:27:31.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "818030",
+    "ThreadId": "350690",
+    "Html": "<p>hello,</p>\r\n<p>Accessing the COM Automation from all the office products is different to Macros, Macros means code inside of documents written in VBA.<br />I'm not sure what you want. Can you explaine a little bit more?<br /><br />Sebastian</p>",
+    "PostedDate": "2012-03-30T20:20:19.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "818081",
+    "ThreadId": "350690",
+    "Html": "<p>Thx for your answer seb :).</p>\r\n<p>Here is my use case: I have to estimate the complexity of tons of Office documents stored on a network share. Instead of opening all of them one after the other, I'm going to use a .NET app able to&nbsp;open this documents, analyse it,&nbsp;calculates&nbsp;metrics and finally close it... However, for&nbsp;some unknown reasons when i open a document using NETOffice, macros are enabled and thus&nbsp;functions like Workbook_Open are called... I don't want that to happen because they may modify the data or worse display a msgbox that would block my app...</p>\r\n<p>Is there a way to disable macros and still have access to VBOM?</p>\r\n<p><br />Thx,</p>\r\n<p>S&eacute;b</p>",
+    "PostedDate": "2012-03-31T01:23:58.63-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "818867",
+    "ThreadId": "350690",
+    "Html": "<p>hello!<br /><br />first: sorry for the delay (weekend)<br /><br />sounds strange! i have a lot of questions..., the documents are different? all .xls , xlsx or .xlsm? which excel version is ???&nbsp;let me explain... macros in excel... stupid functions, awaiting parameters, calculate a litle bit with the parameters&nbsp;and return a result. true macros has no relationship to VBA Projects model. otherwise you can use VBA functions in an attached VBA project as macros, this is a special service. a lot of more what i have to say about them but anyway.... the exceuted vba code in the open workbooks causes trouble? You need a kind of safe mode, start the application just for automation. this is not easy, please remember, NetOffice is an 1:1 Wrapper, no own ideas inside, only a little bit xtra stuff. its a logical office problem here.&nbsp; lets try the easiest way for you:<br /><br />Excel.Application application&nbsp;= new Excel.Application();<br />application.EnableEvents = false; // excel dont throw any events for VBA now.</p>\n<p><br />helps?</p>",
+    "PostedDate": "2012-04-02T10:16:22.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "819106",
+    "ThreadId": "350690",
+    "Html": "<p>Hi,</p>\r\n<p>I'm using MS Office 2010 SP1 with latest CU. It's strange, i don't understand why the security context defined in Office is not used when opening a doc though automation...</p>\r\n<p>How can i disable macros in Access/PowerPoint &amp; Word?&nbsp;As fas as i can see the \"EnableFunction\" property does not exist in the Word/PowerPoint/Access's VBOM :)...</p>\r\n<p>Moreover, I'm getting BSOD each time i try to release several types of handle (Excel.Application and then Access.application)</p>\r\n<p>Example:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LateBindingApi.Core.Factory.Initialize();</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dynamic appA = new NetOffice.AccessApi.Application();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appA.OpenCurrentDatabase(@\"D:\\XLS\\Facture_IHM.mdb\", true);</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dynamic = new NetOffice.ExcelApi.Application();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appE.Workbooks.Open(@\"D:\\XLS\\Macro_v24_2011.02.28.xlsm\");</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appA.CloseCurrentDatabase();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appA.Quit(); &lt;= Causes&nbsp;BSOD!!!<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appA.Dispose();</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appE.Quit();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appE.Dispose();</p>",
+    "PostedDate": "2012-04-03T00:32:04.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "820158",
+    "ThreadId": "350690",
+    "Html": "<p>i cant reproduce an error. its possible you do a test with the interop assemblies?<br />if the same error occurs you have an access issue.<br /><br />Sebastian</p>",
+    "PostedDate": "2012-04-04T20:40:32.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

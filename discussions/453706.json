@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1081771",
+    "ThreadId": "453706",
+    "Html": "I have been trying to select a range of data from my Excel solution using the Worksheet.AutoFilter.Range property.<br />\n<br />\nMuch to my disappointment, I discovered this still returned all cells, even ones I had filtered out.<br />\nI then used Worksheet.AutoFilter.Range.SpecialCells(Excel.Enume.xlCellTypeVisible) which returned a range of all visible cells, but that were contiguous (ie, next to each other). Any rows from the filter that were not adjacent, even though visible were not included in the returned range.<br />\n<br />\nIt seems the only way I can get the results I need is to perform a loop on all rows in a range from say Worksheet.UsedRange and check the Range.Hidden property for each row, using something like shown below:<br />\n<pre><code>foreach (Excel.Range row in worksheet.UsedRange.Rows)\n            {\n                if ((bool)row.Hidden == false)\n                {\n                    iCount++;\n                    filteredRange.Add(row);\n                }\n            }</code></pre>\n\nWhile this would work, I know it is very slow. Before I decided to update my code to allow for filtered results, I was previously using object[,] myValues = (object[,])worksheet.UsedRange.Value and looping through this to investigate my values - this was very fast.<br />\n<br />\nAny ideas as to how we can do this with similar performance to mySheet.UsedRange.Value?<br />\n<br />\n....as a side note, for some reason I seemed to get the same results with worksheet.UsedRange and worksheet.AutoFilter.Range - even with a filter applied in Excel.<br />\n",
+    "PostedDate": "2013-08-17T22:27:19.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082486",
+    "ThreadId": "453706",
+    "Html": "hey bob, not sure how i can help you. where you from?<br />\n",
+    "PostedDate": "2013-08-19T21:59:03.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082613",
+    "ThreadId": "453706",
+    "Html": "Hey Sebastian,\r<br />\n<br />\nOK, looks like I will have to opt for a 'slow' but workable solution for now and then maybe revisit my performance issues later.\r<br />\n<br />\nI am from Australia, how about you?\r<br />\n<br />\nI would also like to say how impressed I am with your NetOffice solution, very elegant and great to use!\r<br />\nYour provided examples and tutorials are also fantastic, great job.\r<br />\n<br />\nYou are a real asset to the open source community!<br />\n",
+    "PostedDate": "2013-08-20T03:51:06.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082627",
+    "ThreadId": "453706",
+    "Html": "sometimes its easier for me to talk in german. (thats wyh i ask) i start comunity thread in the excel community to see what i can do for you but without a good answsers. some people told me to check for the row height 0 instead of hidden but i think its not helpful for you.\r<br />\nnote sure the xlCellTypeVisible filter is not helpfull for you? as far i',m understand you want filtering any hidden rows and columns right ???<br />\n",
+    "PostedDate": "2013-08-20T04:23:27.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

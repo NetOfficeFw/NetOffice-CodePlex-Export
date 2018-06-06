@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "646858",
+    "ThreadId": "266389",
+    "Html": "\r\n<p>Hi!</p>\r\n<p>Great work at all!</p>\r\n<p>I tried to run your add-in examples using VS2010 on win7x64, Office 2010x64 but I didn't get it up and running.</p>\r\n<p>I Added some MessageBoxes to the source and it seams like the IDTExtensibility2.OnConnection handler is never called.</p>\r\n<p>I also tried to set the build platform target to x64 (from &quot;Any CPU&quot;) to make it work.</p>\r\n<p>Any ideas?</p>\r\n<p>I already read the existing post on that issue but could not find a solution!</p>\r\n<p>Thanks!</p>\r\n",
+    "PostedDate": "2011-07-24T15:22:12.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646861",
+    "ThreadId": "266389",
+    "Html": "<p>please check out the registry key: Sofware\\Office\\OfficeApp\\YourAddin <br />all keys are created?<br />what happens with LoadBehaviour after start?<br /><br />regards*<br />sebastian</p>",
+    "PostedDate": "2011-07-24T15:30:03.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "647198",
+    "ThreadId": "266389",
+    "Html": "<p>I tried again using the original setup. (any cpu)</p>\r\n<p>RegKeys are added, but LoadBehaviour is set to 2.</p>\r\n<p>I did also try to sign the assembly, turn off my antivirus software, ...</p>\r\n<p>Any further ideas?</p>\r\n<p>Regards,</p>\r\n<p>Wolfgang</p>",
+    "PostedDate": "2011-07-25T08:00:15.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "647208",
+    "ThreadId": "266389",
+    "Html": "<p>hello wolfgang,</p>\r\n<p>addins for x64 application must be compiled as x64<br /><a href=\"http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_32Bit_64Bit\">http://netoffice.codeplex.com/wikipage?title=Tec_Documentation_English_32Bit_64Bit</a><br /><br />i'm not an expert with all office 2010 applications. whats your app?<br />some apps has explicitly security settings for extension/addins.</p>\r\n<p>my test scenario in a virtual machine with win7x64 and excel x64 works fine.<br /> but i dont know i have made changes in security settings...<br />i will take a look at home (@work currently)<br /><br />sebastian</p>",
+    "PostedDate": "2011-07-25T08:20:16.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "649081",
+    "ThreadId": "266389",
+    "Html": "<p>Hi Sebastian!</p>\r\n<p>It works.. but i still don't really know what the problem was. Maybe the registry cleanup helped me out?</p>\r\n<p>I created a new vs2010 solution including:</p>\r\n<p>- COMAddinRibbonExample</p>\r\n<p>- LateBindingApi.Core</p>\r\n<p>- OfficeApi</p>\r\n<p>- Outlook Api</p>\r\n<p>to get it all in one solution.</p>\r\n<p>I also added a new class library \"Extensibility\" including the interface and enum files from IDTExtensibility2.cs.</p>\r\n<p>Further more.. i did exclude the RibbonInterface.cs from the Project and used the NetOffice.OfficeApi.&lt;interfaceName&gt; instead (duplicated code?)</p>\r\n<p>In VS2010 the libraries build platform target can be set to \"any cpu\". (not the executing lib due to registration problems)</p>\r\n<p>Great work - thanks for your help!</p>\r\n<p>Wolfgang</p>",
+    "PostedDate": "2011-07-28T10:47:31.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "649233",
+    "ThreadId": "266389",
+    "Html": "<p>Hello Wolfang,</p>\r\n<p>Sometimes i have problems in some of my projects&nbsp;if the RibbonInterfaces are defined in other Namespace as the addin.<br />I dont know why but these workarround helps.. thats the reason for duplicated code.<br />yes its as i said in the compatibility guide. NetOffice is also platform independent :)<br /><br />*regards</p>",
+    "PostedDate": "2011-07-28T15:19:35.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

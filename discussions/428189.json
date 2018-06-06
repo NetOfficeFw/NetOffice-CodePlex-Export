@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "982111",
+    "ThreadId": "428189",
+    "Html": "\r\n<p>Microsoft PIA contains interface <a href=\"http://msdn.microsoft.com/en-us/library/office/microsoft.office.interop.outlook._formregionstartup(v=office.12).aspx\" target=\"_blank\">\r\nMicrosoft.Office.Interop.Outlook.FormRegionStartup</a>&nbsp;but NetOffice doesn't. My&nbsp;Outlook addin should implement\r\n<a href=\"http://msdn.microsoft.com/en-us/library/office/bb176365(v=office.12).aspx\" target=\"_blank\">\r\nFormRegionStartup interface</a>&nbsp;but I can't do it with NetOffice.</p>\r\n<p>There are two classes:</p>\r\n<ul>\r\n<li>OutlookApi.FormRegionStartup </li><li>OutlookApi._FormRegionStartup </li></ul>\r\n<p>but no interface.</p>\r\n<p>How can I implement it with NetOffice?</p>\r\n",
+    "PostedDate": "2013-01-01T09:33:32.967-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "985610",
+    "ThreadId": "428189",
+    "Html": "\r\n<p>hey dude,<br>\r\nsorry, codeplex doesnt throw notications for new discussions at the moment.<br>\r\n<br>\r\nyou right, these interface are special because you have to implement these interfaces in a early bind way. i have no experience with outlook, thats the reason for in NetOffice these interfaces are not usable at the moment because NetOffice offers the interfaces\r\n as latebinding wrapper classes.<br>\r\nthe right way is to implement these interfaces is similar to IExtensiblity or ICustomRibbonUI(early bind). i change the markup in my codegenerator and create a new set of -lastest build- assemblies as fast as possible.<br>\r\n<br>\r\n(internal notice for project members) if you need special priority support, please contact me(mail, skype, whatever)<br>\r\n<br>\r\nSebastian<br>\r\n<br>\r\n</p>\r\n",
+    "PostedDate": "2013-01-11T11:44:43.83-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

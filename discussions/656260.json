@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1478563",
+    "ThreadId": "656260",
+    "Html": "I am playing around the COMAddin example.\r<br />\n<br />\nI have a dropDown in custom ribbon and a few controls in custom pane. I want the dropDown onAction event update those controls in the custom pane, but I don't know how. \r<br />\n<br />\nTried TaskPane[0].Pane but seems wrong direction.\r<br />\n<br />\nAnd vice versa, from msdn &gt; Globals.Ribbons.Ribbon1.dropDown\r<br />\nIn NetOffice, how can I access the dropDown from custom pane? GlobalHelperModules?\r<br />\n<br />\nPlease help. Thanks.<br />\n",
+    "PostedDate": "2016-07-10T19:21:19.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1478622",
+    "ThreadId": "656260",
+    "Html": "TaskPanes[0] works fine normaly. Please note: TaskPanes[0].Pane is not accessible in the addin .ctor and the OnConnection method.\r<br />\nYou can setTaskPanes[0].Visible/etc. before and this properties want be applied while creation.\r<br />\n(You can also implement the Tools.ITaskPane interface in your pane. for initialization)\r<br />\n<br />\nThere is no object model available for the Ribbon UI in NetOffice currently.<em>sry</em>\r<br />\nYou have to deal with the ribbon elements trough the hard way. with the xml defined event schema.\r<br />\n(Typical is invalidate the control to raise the controls events you need, see extended addin example)\r<br />\n<br />\n*Sebastian<br />\n",
+    "PostedDate": "2016-07-11T08:37:56.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1478800",
+    "ThreadId": "656260",
+    "Html": "I managed to communicate between custom pane and custom ui via variable to keep the stage, then invalidate the control, save the stage to settings and monitor change property event at ITaskPane. <br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2016-07-13T06:38:03.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
