@@ -1,0 +1,59 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   Shapes, WordArts, Pictures, 3D-Effects in Excel
+   taken from Example04.cs
+*/</span>
+<span style="color:blue">public</span> <span style="color:blue">void</span> Example04Main()
+{
+   <span style="color:green">// start excel and turn off msg boxes</span>
+   Excel.Application excelApplication = <span style="color:blue">new</span> Excel.Application();
+   excelApplication.DisplayAlerts = <span style="color:blue">false</span>;
+
+   <span style="color:green">// add a new workbook</span>
+   Excel.Workbook workBook = excelApplication.Workbooks.Add();
+   Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Worksheets[1];
+
+   workSheet.Cells[1, 1].Value = <span style="color:#a31515">&quot;these sample shapes was dynamicly created by code.&quot;</span>;
+
+   <span style="color:green">// create a star</span>
+   Excel.Shape starShape = workSheet.Shapes.AddShape(<br>                                 MsoAutoShapeType.msoShape32pointStar, 10, 50, 200, 20);
+            
+   <span style="color:green">// create a simple textbox</span>
+   Excel.Shape textBox = workSheet.Shapes.AddTextbox(<br>               MsoTextOrientation.msoTextOrientationHorizontal, 10, 150, 200, 50);
+   textBox.TextFrame.Characters.Text = <span style="color:#a31515">&quot;text&quot;</span>;
+   textBox.TextFrame.Characters.Font.Size = 14;
+            
+   <span style="color:green">// create a wordart</span>
+   Excel.Shape textEffect = workSheet.Shapes.AddTextEffect(<br>                         MsoPresetTextEffect.msoTextEffect14, <span style="color:#a31515">&quot;WordArt&quot;</span>, <span style="color:#a31515">&quot;Arial&quot;</span>, 12, 
+                         MsoTriState.msoTrue, MsoTriState.msoFalse, 10, 250);
+
+   <span style="color:green">// create text effect</span>
+   Excel.Shape textDiagram = workSheet.Shapes.AddTextEffect(<br>                         MsoPresetTextEffect.msoTextEffect11, <span style="color:#a31515">&quot;Effect&quot;</span>, <span style="color:#a31515">&quot;Arial&quot;</span>, 14, 
+                         MsoTriState.msoFalse, MsoTriState.msoFalse, 10, 350);    
+
+   <span style="color:green">// save the book </span>
+   <span style="color:blue">string</span> fileExtension = GetDefaultExtension(excelApplication);
+   <span style="color:blue">string</span> workbookFile = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}\\Example04{1}&quot;</span>, <br>                                Application.StartupPath, fileExtension);
+   <br>   workBook.SaveAs(workbookFile, Missing.Value, Missing.Value, Missing.Value, <br>                    Missing.Value, Missing.Value, XlSaveAsAccessMode.xlExclusive);
+
+   <span style="color:green">// close excel and dispose reference</span>
+   excelApplication.Quit();
+   excelApplication.Dispose();
+}
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> returns the valid file extension for the instance. for example &quot;.xls&quot; or &quot;.xlsx&quot;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;application&quot;&gt;</span><span style="color:green">the instance&lt;/param&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">the extension&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">string</span> GetDefaultExtension(Excel.Application application)
+{
+   <span style="color:blue">double</span> Version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);
+   <span style="color:blue">if</span> (Version &gt;= 12.00)
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.xlsx&quot;</span>;
+   <span style="color:blue">else</span>
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.xls&quot;</span>;
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

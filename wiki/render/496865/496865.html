@@ -1,0 +1,39 @@
+<div class="wikidoc">
+<p>Oftmals ist es hilfreich und sinnvoll zur Laufzeit zu pr&uuml;fen ob ein bestimmtes Property oder Methode von der aktuellen Office Version angeboten wird.
+<br>
+Daher bietet jedes Objekt in NetOffice die Methode 'bool EntityIsAvailable(string name);' an. Betrachten Sie dazu folgendes Beispiel:</p>
+<div style="color:black; background-color:white">
+<pre><span style="color:green">// Neue E-mail in Outlook erstellen </span>
+Outlook.MailItem mailItem = outlookApplication.CreateItem(OlItemType.olMailItem) <span style="color:blue">as</span> Outlook.MailItem;<br> 
+<span style="color:green">// BodyFormat ist nicht verf&uuml;gbar in Outlook 2000, wir pr&uuml;fen zur Laufzeit ob es zur Verf&uuml;gung steht </span>
+<span style="color:blue">if</span>(mailItem.EntityIsAvailable(<span style="color:#a31515">&quot;BodyFormat&quot;</span>)) 
+    mailItem.BodyFormat = OlBodyFormat.olFormatPlain;<br> 
+<br>mailItem.Body = &quot;dont type google into google&quot;; 
+mailItem.Subject = <span style="color:#a31515">&quot;Hello&quot;</span>; 
+mailItem.Display(); 
+mailItem.Close(OlInspectorClose.olDiscard);
+</pre>
+</div>
+<p><code><br>
+</code>Technische Zusammenfassung:</p>
+<div style="color:black; background-color:white">
+<pre><span style="color:green">// NetOffice method: returns information the proxy provides a method or property with given name at runtime</span>
+
+<span style="color:blue">bool</span> EntityIsAvailable(<span style="color:blue">string</span> name); 
+<span style="color:blue">bool</span> EntityIsAvailable(<span style="color:blue">string</span> name, SupportEntityType searchType); 
+
+<span style="color:green">// search parameter for the EntityIsAvailable method </span>
+<span style="color:blue">public</span> <span style="color:blue">enum</span> SupportEntityType 
+{
+      <span style="color:green">// looking for a method or a property </span>
+      Both = 0, 
+
+      <span style="color:green">// looking for a property only </span>
+      Property = 1, 
+
+      <span style="color:green">// looking for a method only </span>
+      Method = 2 
+}
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

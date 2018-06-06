@@ -1,0 +1,25 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:green">' send mail in outlook</span>
+<span style="color:green">' taken from Example03.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example03Main()
+
+   <span style="color:green">' start outlook</span>
+   <span style="color:blue">Dim</span> outlookApplication = <span style="color:blue">New</span> Outlook.Application()
+
+   <span style="color:green">' Create a new MailItem.</span>
+   <span style="color:blue">Dim</span> mailItem <span style="color:blue">As</span> Outlook.MailItem = outlookApplication.CreateItem(OlItemType.olMailItem)
+
+   <span style="color:green">' prepare item and send</span>
+   mailItem.Recipients.Add(<span style="color:#a31515">&quot;eric@cartman.com&quot;</span>)
+   mailItem.Subject = <span style="color:#a31515">&quot;hello eric&quot;</span>   <br>   mailItem.Body    = <span style="color:#a31515">&quot;Season Greetings from NetOffice. Kind Regards - Sebastian&quot;</span>   <br>   mailItem.Send()
+
+   <span style="color:green">' close outlook and dispose</span>
+   outlookApplication.Quit()
+   outlookApplication.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

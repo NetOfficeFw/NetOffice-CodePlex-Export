@@ -1,0 +1,65 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' Shapes, WordArts, Pictures, 3D-Effects in Excel</span>
+<span style="color:green">' taken from Example04.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example04Main()
+
+  <span style="color:green">' start excel and turn off msg boxes</span>
+  <span style="color:blue">Dim</span> excelApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Excel.Application()
+  excelApplication.DisplayAlerts = <span style="color:blue">False</span>
+
+  <span style="color:green">' add a new workbook</span>
+  <span style="color:blue">Dim</span> workBook <span style="color:blue">As</span> Excel.Workbook = excelApplication.Workbooks.Add()
+  <span style="color:blue">Dim</span> workSheet <span style="color:blue">As</span> Excel.Worksheet = workBook.Worksheets(1)
+
+  workSheet.Cells(1, 1).Value = <span style="color:#a31515">&quot;these sample shapes was dynamicly created by code.&quot;</span>
+
+  <span style="color:green">' create a star</span>
+  <span style="color:blue">Dim</span> starShape <span style="color:blue">As</span> Excel.Shape = workSheet.Shapes.AddShape( _<br>                       MsoAutoShapeType.msoShape32pointStar, 10, 50, 200, 20)
+
+  <span style="color:green">'create a simple textbox</span>
+  <span style="color:blue">Dim</span> textBox <span style="color:blue">As</span> Excel.Shape = workSheet.Shapes.AddTextbox( _<br>                   MsoTextOrientation.msoTextOrientationHorizontal, 10, 150, 200, 50)
+  TextBox.TextFrame.Characters.Text = <span style="color:#a31515">&quot;text&quot;</span>
+  TextBox.TextFrame.Characters.Font.Size = 14
+
+  <span style="color:green">' create a wordart</span>
+  <span style="color:blue">Dim</span> textEffect <span style="color:blue">As</span> Excel.Shape = workSheet.Shapes.AddTextEffect( _ <br>                          MsoPresetTextEffect.msoTextEffect14, <span style="color:#a31515">&quot;WordArt&quot;</span>, <span style="color:#a31515">&quot;Arial&quot;</span>, 12, _
+                          MsoTriState.msoTrue, MsoTriState.msoFalse, 10, 250)
+
+  <span style="color:green">' create text effect</span>
+  <span style="color:blue">Dim</span> textDiagram <span style="color:blue">As</span> Excel.Shape = workSheet.Shapes.AddTextEffect( _<br>                           MsoPresetTextEffect.msoTextEffect11, <span style="color:#a31515">&quot;Effect&quot;</span>, <span style="color:#a31515">&quot;Arial&quot;</span>, 14, _
+                           MsoTriState.msoFalse, MsoTriState.msoFalse, 10, 350)
+
+
+  <span style="color:green">' save the book </span>
+  <span style="color:blue">Dim</span> fileExtension <span style="color:blue">As</span> <span style="color:blue">String</span> = GetDefaultExtension(excelApplication)
+  <span style="color:blue">Dim</span> workbookFile <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}\Example04{1}&quot;</span>, _<br>                                    Application.StartupPath, fileExtension)<br>
+  workBook.SaveAs(workbookFile, Missing.Value, Missing.Value, Missing.Value, _<br>                      Missing.Value, Missing.Value, XlSaveAsAccessMode.xlExclusive)
+
+  <span style="color:green">' close excel and dispose reference</span>
+  excelApplication.Quit()
+  excelApplication.Dispose()
+
+  <span style="color:blue">Dim</span> fDialog <span style="color:blue">As</span> <span style="color:blue">New</span> FinishDialog(<span style="color:#a31515">&quot;Workbook saved.&quot;</span>, workbookFile)
+  fDialog.ShowDialog(<span style="color:blue">Me</span>)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:green">''' &lt;summary&gt;</span>
+<span style="color:green">''' returns the valid file extension for the instance. for example &quot;.xls&quot; or &quot;.xlsx&quot;</span>
+<span style="color:green">''' &lt;/summary&gt;</span>
+<span style="color:green">''' &lt;param name=&quot;application&quot;&gt;the instance&lt;/param&gt;</span>
+<span style="color:green">''' &lt;returns&gt;the extension&lt;/returns&gt;</span>
+<span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> GetDefaultExtension(<span style="color:blue">ByVal</span> app <span style="color:blue">As</span> Excel.Application) <span style="color:blue">As</span> <span style="color:blue">String</span>
+
+<span style="color:blue"><font color="#000000"> </font>Dim</span> version <span style="color:blue">As</span> <span style="color:blue">Double</span> = Convert.ToDouble(app.Version, CultureInfo.InvariantCulture)<br> <span style="color:blue">If</span> (version &gt;= 12.0) <span style="color:blue">Then</span>
+     <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.xlsx&quot;</span>
+ <span style="color:blue">Else</span>
+     <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.xls&quot;</span>
+ <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

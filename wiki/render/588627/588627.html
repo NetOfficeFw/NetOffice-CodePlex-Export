@@ -1,0 +1,50 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   using events in PowerPoint
+   taken from Example06.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example06Main()
+{
+   <span style="color:green">// start powerpoint and turn off msg boxes</span>
+   PowerPoint.Application powerApplication = <span style="color:blue">new</span> PowerPoint.Application();  
+   powerApplication.Visible = MsoTriState.msoTrue;
+
+   <span style="color:green">// PowerPoint 2000 doesnt support DisplayAlerts,<br>   // we check at runtime its available and set</span>
+   <span style="color:blue">if</span>(powerApplication.EntityIsAvailable(<span style="color:#a31515">&quot;DisplayAlerts&quot;</span>))
+      powerApplication.DisplayAlerts = PpAlertLevel.ppAlertsNone;
+<span style="color:green">
+   // we register some events. note: the event trigger was called from power point, <br>   // means an other Thread</span>
+   powerApplication.PresentationCloseEvent &#43;=<br> 	<span style="color:blue">new</span> NetOffice.PowerPointApi.Application_PresentationCloseEventHandler(<br>                                        powerApplication_PresentationCloseEvent);
+   powerApplication.AfterNewPresentationEvent &#43;=<br> 	<span style="color:blue">new</span> NetOffice.PowerPointApi.Application_AfterNewPresentationEventHandler(<br>                                        powerApplication_AfterNewPresentationEvent);
+             
+   <span style="color:green">// add a new presentation with one new slide</span>
+   PowerPoint.Presentation presentation = <br>                           powerApplication.Presentations.Add(MsoTriState.msoTrue);
+   PowerPoint.Slide slide = presentation.Slides.Add(1, PpSlideLayout.ppLayoutBlank);
+
+   <span style="color:green">// close the document</span>
+   presentation.Close();
+
+   <span style="color:green">// close power point and dispose reference</span>
+   powerApplication.Quit();
+   powerApplication.Dispose();
+}
+      
+<span style="color:blue">void</span> powerApplication_PresentationCloseEvent(NetOffice.PowerPointApi.Presentation Pres)
+{
+   textBoxEvents.BeginInvoke(_updateDelegate, <br>                             <span style="color:blue">new</span> <span style="color:blue">object</span>[] { <span style="color:#a31515">&quot;Event PresentationClose called.&quot;</span> });
+   Pres.Dispose();
+}
+
+<span style="color:blue">void</span> powerApplication_AfterNewPresentationEvent(NetOffice.PowerPointApi.Presentation Pres)
+{
+   textBoxEvents.BeginInvoke(_updateDelegate, <br>                             <span style="color:blue">new</span> <span style="color:blue">object</span>[] { <span style="color:#a31515">&quot;Event AfterNewPresentation called.&quot;</span> });
+   Pres.Dispose();
+}
+
+<span style="color:blue">private</span> <span style="color:blue">void</span> UpdateTextbox(<span style="color:blue">string</span> message)
+{
+   textBoxEvents.AppendText(message &#43; <span style="color:#a31515">&quot;\r\n&quot;</span>);
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

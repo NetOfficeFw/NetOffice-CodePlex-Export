@@ -1,0 +1,29 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   send and recieve with Outlook
+   taken from Example04.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example04Main()
+{
+   <span style="color:green">// start outlook </span>
+   Outlook.Application outlookApplication = <span style="color:blue">new</span> Outlook.Application();
+   
+   <span style="color:green">// SendAndReceive is supported from Outlook 2007 or higher</span>
+   <span style="color:green">// we check at runtime whether the feature is available</span>
+  <span style="color:blue">if</span>(outlookApplication.Session.EntityIsAvailable(<span style="color:#a31515">&quot;SendAndReceive&quot;</span>))
+  {
+       <span style="color:green">// one simple call</span>
+       outlookApplication.Session.SendAndReceive(<span style="color:blue">false</span>);
+  }
+  <span style="color:blue">else</span>
+  {
+       MessageBox.Show(<span style="color:blue">this</span>,<br>                       <span style="color:#a31515">&quot;Example&quot;</span>,<br>                       <span style="color:#a31515">&quot;This version of MS-Outlook doesnt support SendAndReceive.&quot;</span>,<br>                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+  }
+
+   <span style="color:green">// close outlook and dispose</span>
+   outlookApplication.Quit();
+   outlookApplication.Dispose();
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

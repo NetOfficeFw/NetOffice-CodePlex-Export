@@ -1,0 +1,16 @@
+<div class="wikidoc">
+<p align="justify"><strong>Frage</strong>: <u>Was muss ich tun um NetOffice mit meiner Anwendung auszuliefern?
+<br>
+</u><strong>Antwort</strong>: Nichts ausser die benötigten Assemblies auf das Zielsystem zu kopieren. Es ist keine Registrierung oder ähnliches notwendig. Falls Sie ein COM Addin erstellen möchten, muss dieses jedoch auf dem Zielsystem für COM registriert werden.
+ In vielen Setup Projekten, z.B. Windows Installer oder InstallShield, können Sie die Registrierung Ihres COM Addins automatisch vornehmen lassen. Visual Studio erledigt diese Registrierung autmatisch für Sie während des kompilierens wenn Sie die Option 'Register
+ for COM Interop' aktivieren. <br>
+<br>
+<strong>Frage</strong>: <u>COM Addins funktionieren ebenfalls versionsunabhängig?</u>
+<strong><br>
+Antwort</strong>: Ja, natürlich. Dies ist eine besondere Stärke von NetOffice. Beispiele dazu für alle Office Anwendungen finden Sie unter den Projektbeispielen.
+<br>
+<br>
+<br>
+<strong>Frage</strong>: <u>Wie migriere ich meinen Interop Assembly Code? </u><strong><br>
+Antwort</strong>: Ändern Sie die Referenzen sowie du using Anweisungen. Fallweise müssen sie einige Anpassungen in Event-Triggern, Enums und Constructor Aufrufen vornehmen.</p>
+</div><div class="ClearBoth"></div>

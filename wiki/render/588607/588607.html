@@ -1,0 +1,56 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   create some kind of shapes with PowerPoint
+   taken from Example02.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example02Main()
+{
+   <span style="color:green">// start powerpoint </span>
+   PowerPoint.Application powerApplication = <span style="color:blue">new</span> PowerPoint.Application();
+   
+   <span style="color:green">// add a new presentation with one new slide</span>
+   PowerPoint.Presentation presentation = <br>                           powerApplication.Presentations.Add(MsoTriState.msoTrue);
+   PowerPoint.Slide slide = presentation.Slides.Add(1, PpSlideLayout.ppLayoutBlank);
+
+   <span style="color:green">// add a label</span>
+   PowerPoint.Shape label = slide.Shapes.AddLabel(<br>                                         MsoTextOrientation.msoTextOrientationHorizontal,<br>                                         10, 10, 600, 20);
+   label.TextFrame.TextRange.Text = <br>                   <span style="color:#a31515">&quot;This slide and created Shapes are created by NetOffice example.&quot;</span>;
+
+   <span style="color:green">// add a line</span>
+   slide.Shapes.AddLine(10, 80, 700, 80);
+
+   <span style="color:green">// add a wordart</span>
+   slide.Shapes.AddTextEffect(MsoPresetTextEffect.msoTextEffect9, <span style="color:#a31515">&quot;This a WordArt&quot;</span>,<br>                                           <span style="color:#a31515">&quot;Arial&quot;</span>, 20, MsoTriState.msoTrue,<br>                                           MsoTriState.msoFalse, 10, 150);
+
+   <span style="color:green">// add a star</span>
+   slide.Shapes.AddShape(MsoAutoShapeType.msoShape24pointStar, 200, 200, 250, 250);  
+
+   <span style="color:green">// save the document </span>
+   <span style="color:blue">string</span> fileExtension = GetDefaultExtension(powerApplication);
+   <span style="color:blue">string</span> documentFile = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}\\Example02{1}&quot;</span>,<br>                                       Application.StartupPath,<br>                                       fileExtension);<br>
+   presentation.SaveAs(documentFile,<br>                       PpSaveAsFileType.ppSaveAsDefault,<br>                       MsoTriState.msoTrue);
+
+   <span style="color:green">// close power point and dispose reference</span>
+   powerApplication.Quit();
+   powerApplication.Dispose();
+
+   FinishDialog fDialog = <span style="color:blue">new</span> FinishDialog(<span style="color:#a31515">&quot;Presentation saved.&quot;</span>, documentFile);
+   fDialog.ShowDialog(<span style="color:blue">this</span>);
+}
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> returns the valid file extension for the instance. for example &quot;.ppt&quot; or &quot;.pptx&quot;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;application&quot;&gt;</span><span style="color:green">the instance&lt;/param&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">the extension&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">string</span> GetDefaultExtension(PowerPoint.Application application)
+{
+   <span style="color:blue">double</span> Version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);
+   <span style="color:blue">if</span> (Version &gt;= 12.00)
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.pptx&quot;</span>;
+   <span style="color:blue">else</span>
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.ppt&quot;</span>;
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

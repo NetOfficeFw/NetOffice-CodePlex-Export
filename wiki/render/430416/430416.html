@@ -1,0 +1,81 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> Creation Factory for COMObject and derived types</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">class</span> Factory
+{
+<span style="color:green">// Events</span>
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> notify info, the count of proxies there open are changed   </span>
+   <span style="color:gray">///</span><span style="color:green"> in case of notify comes from event trigger then the call comes from other thread</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:blue">static</span> <span style="color:blue">event</span> ProxyCountChangedHandler ProxyCountChanged; 
+
+<span style="color:green">//  Properties</span>
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green">  Returns count of open proxies</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:blue">static</span> <span style="color:blue">int</span> ProxyCount { <span style="color:blue">get</span>; }
+
+<span style="color:green">// Methods</span>
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> Must be called from client assembly for COMObject Support</span>
+   <span style="color:gray">///</span><span style="color:green"> Recieve FactoryInfos from all loaded LateBindingApi based Assemblies</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:blue">static</span> <span style="color:blue">void</span> Initialize()
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> clears factory informations List</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:blue">static</span> <span style="color:blue">void</span> Clear()
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> creates a new COMObject based on classType of comProxy </span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;caller&quot;&gt;</span><span style="color:green">parent there have created comProxy&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comProxy&quot;&gt;</span><span style="color:green">new created proxy&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">corresponding Wrapper class Instance or plain COMObject&lt;/returns&gt;</span>
+   <span style="color:blue">static</span> COMObject CreateObjectFromComProxy(COMObject caller, <span style="color:blue">object</span> comProxy)
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> creates a new COMObject based on classType of comProxy </span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;caller&quot;&gt;</span><span style="color:green">parent there have created comProxy&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comProxy&quot;&gt;</span><span style="color:green">new created proxy&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comProxyType&quot;&gt;</span><span style="color:green">Type of comProxy&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">corresponding Wrapper class Instance or plain COMObject&lt;&lt;/returns&gt;</span>
+   <span style="color:blue">static</span> COMObject CreateObjectFromComProxy(COMObject caller, <span style="color:blue">object</span> comProxy, Type comProxyType)
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> creates a new COMObject from factoryInfo</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;factoryInfo&quot;&gt;</span><span style="color:green">Factory Info from Wrapper Assemblies&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;caller&quot;&gt;</span><span style="color:green">parent there have created comProxy&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comProxy&quot;&gt;</span><span style="color:green">new created proxy&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comProxyType&quot;&gt;</span><span style="color:green">Type of comProxy&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;className&quot;&gt;</span><span style="color:green">name of COMServer proxy class&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;fullClassName&quot;&gt;</span><span style="color:green">full namespace and name of COMServer proxy class&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">corresponding Wrapper class Instance or plain COMObject&lt;/returns&gt;</span>
+   <span style="color:blue">static</span> COMObject CreateObjectFromComProxy(IFactoryInfo factoryInfo, COMObject caller, <span style="color:blue">object</span> comProxy, 	
+						Type comProxyType, <span style="color:blue">string</span> className, <span style="color:blue">string</span> fullClassName)
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green">  creates a new COMObject array</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;caller&quot;&gt;</span><span style="color:green">parent there have created comProxy&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comProxyArray&quot;&gt;</span><span style="color:green">new created proxy array&lt;/param&gt;</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">corresponding Wrapper class Instance array or plain COMObject array&lt;/&lt;/returns&gt;</span>
+   <span style="color:blue">static</span> COMObject[] CreateObjectArrayFromComProxy(COMObject caller, <span style="color:blue">object</span>[] comProxyArray)
+
+   <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+   <span style="color:gray">///</span><span style="color:green"> dispose all open objects</span>
+   <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+   <span style="color:blue">static</span> <span style="color:blue">void</span> DisposeAllCOMProxies()
+}
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,33 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   database informations with Access
+   taken from Example04.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> ShowDatabaseInfo(<span style="color:blue">string</span> filePath)
+{
+   <span style="color:green">// start access </span>
+   Access.Application accessApplication = <span style="color:blue">new</span> Access.Application();
+
+   <span style="color:green">// open database</span>
+   DAO.Database database = <br>                accessApplication.DBEngine.Workspaces[0].OpenDatabase(filePath);
+
+   TreeNode tnTableDefs = treeViewInfo.Nodes.Add(<span style="color:#a31515">&quot;Tables&quot;</span>);
+   <span style="color:blue">foreach</span> (DAO.TableDef item <span style="color:blue">in</span> database.TableDefs)
+       tnTableDefs.Nodes.Add(item.Name); 
+
+   TreeNode tnQueryDefs = treeViewInfo.Nodes.Add(<span style="color:#a31515">&quot;Queries&quot;</span>);
+   <span style="color:blue">foreach</span> (DAO.QueryDef item <span style="color:blue">in</span> database.QueryDefs)
+       tnQueryDefs.Nodes.Add(item.Name); 
+
+   TreeNode tnRelations = treeViewInfo.Nodes.Add(<span style="color:#a31515">&quot;Relations&quot;</span>);
+   <span style="color:blue">foreach</span> (DAO.Relation item <span style="color:blue">in</span> database.Relations)
+       tnRelations.Nodes.Add(item.Name); 
+   
+   TreeNode tnContainers = treeViewInfo.Nodes.Add(<span style="color:#a31515">&quot;Containers&quot;</span>);
+   <span style="color:blue">foreach</span> (DAO.Container item <span style="color:blue">in</span> database.Containers)
+       tnContainers.Nodes.Add(item.Name); 
+        
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

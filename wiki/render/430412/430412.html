@@ -1,0 +1,223 @@
+<div class="wikidoc">
+<div style="color:black; background-color:white">
+<pre><span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> class Invoker</span>
+<span style="color:gray">///</span><span style="color:green"> static class to accsessing COM Servers</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">class</span> Invoker
+{ 
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform method as latebind call without parameters </span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of method&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> Method(COMObject comObject, <span style="color:blue">string</span> name)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform method as latebind call without parameters </span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target proxy&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of method&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> Method(<span style="color:blue">object</span> comObject, <span style="color:blue">string</span> name)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform method as latebind call with parameters</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of method&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> Method(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform method as latebind call with parameters </span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target proxy&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of method&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> Method(<span style="color:blue">object</span> comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform method as latebind call with parameters</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of method&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramModifiers&quot;&gt;</span><span style="color:green">ararry with modifiers correspond paramsArray&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> Method(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray, ParameterModifier[] paramModifiers)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform method as latebind call with return value</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of method&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">any return value&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> MethodReturn(COMObject comObject, <span style="color:blue">string</span> name)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform method as latebind call with return value</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of method&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">any return value&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> MethodReturn(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray)
+
+      <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform method as latebind call with return value</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of method&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramModifiers&quot;&gt;</span><span style="color:green">ararry with modifiers correspond paramsArray&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">any return value&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> MethodReturn(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray, ParameterModifier[] paramModifiers)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property get as latebind call with return value</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">any return value&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> PropertyGet(<span style="color:blue">object</span> comObject, <span style="color:blue">string</span> name)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property get as latebind call with return value</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">any return value&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> PropertyGet(COMObject comObject, <span style="color:blue">string</span> name)
+  
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property get as latebind call with return value</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">any return value&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> PropertyGet(<span style="color:blue">object</span> comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray)
+ 
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property get as latebind call with return value</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">any return value&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> PropertyGet(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray)
+ 
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property get as latebind call with return value</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramModifiers&quot;&gt;</span><span style="color:green">ararry with modifiers correspond paramsArray&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">any return value&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> PropertyGet(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray, ParameterModifier[] paramModifiers)
+  
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property set as latebind call</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;value&quot;&gt;</span><span style="color:green">value to be set&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> PropertySet(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray, <span style="color:blue">object</span> value)
+  
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property set as latebind call</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;value&quot;&gt;</span><span style="color:green">value to be set&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramModifiers&quot;&gt;</span><span style="color:green">ararry with modifiers correspond paramsArray&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> PropertySet(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] paramsArray, <span style="color:blue">object</span> value, ParameterModifier[] paramModifiers)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property set as latebind call</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;value&quot;&gt;</span><span style="color:green">value to be set&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> PropertySet(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span> value)
+  
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property set as latebind call</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;value&quot;&gt;</span><span style="color:green">value to be set&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramModifiers&quot;&gt;</span><span style="color:green">ararry with modifiers correspond paramsArray&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> PropertySet(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span> value, ParameterModifier[] paramModifiers)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property set as latebind call</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;value&quot;&gt;</span><span style="color:green">value to be set&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramModifiers&quot;&gt;</span><span style="color:green">ararry with modifiers correspond paramsArray&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> PropertySet(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] value, ParameterModifier[] paramModifiers)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> perform property set as latebind call</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;comObject&quot;&gt;</span><span style="color:green">target object&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;name&quot;&gt;</span><span style="color:green">name of property&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;value&quot;&gt;</span><span style="color:green">value to be set&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> PropertySet(COMObject comObject, <span style="color:blue">string</span> name, <span style="color:blue">object</span>[] value)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> create parameter modifiers array</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;isRef&quot;&gt;</span><span style="color:green">parameter is given as ref(ByRef in Visual Basic)&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:gray">&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> ParameterModifier[] CreateParamModifiers(<span style="color:blue">params</span> <span style="color:blue">bool</span>[] isRef)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> replace null with Type.Missing, replace COMObject with COMObject.UnderlyingObject</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;param&quot;&gt;</span><span style="color:green">value to check&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">validated value&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span> ValidateParam(<span style="color:blue">object</span> param)
+ 
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> calls ValidateParam for every array item</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:gray">&lt;returns&gt;</span><span style="color:green">validated  array&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span>[] ValidateParamsArray(<span style="color:blue">params</span> <span style="color:blue">object</span>[] paramsArray)
+     
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> calls dipose in case if param is COMObject, calls Marshal.ReleaseComObject in case of param is a COM proxy</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;param&quot;&gt;</span><span style="color:green">any value&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> ReleaseParam(<span style="color:blue">object</span> param)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> calls ReleaseParam for every array item</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">any value array&lt;/param&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">void</span> ReleaseParamsArray(<span style="color:blue">params</span> <span style="color:blue">object</span>[] paramsArray)
+
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> copy the param array or returns null if paramsArray not set</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">array copy or null&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span>[] CreateEventParamsArray(<span style="color:blue">params</span> <span style="color:blue">object</span>[] paramsArray)
+     
+     <span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+     <span style="color:gray">///</span><span style="color:green"> copy the param array or returns null if paramsArray not set</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsModifier&quot;&gt;</span><span style="color:green">ararry with modifiers correspond paramsArray&lt;&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;paramsArray&quot;&gt;</span><span style="color:green">array with parameters&lt;/param&gt;</span>
+     <span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">array copy or null&lt;/returns&gt;</span>
+     <span style="color:blue">public</span> <span style="color:blue">static</span> <span style="color:blue">object</span>[] CreateEventParamsArray(<span style="color:blue">bool</span>[] paramsModifier, <span style="color:blue">params</span> <span style="color:blue">object</span>[] paramsArray)
+}
+
+</pre>
+</div>
+</div><div class="ClearBoth"></div>

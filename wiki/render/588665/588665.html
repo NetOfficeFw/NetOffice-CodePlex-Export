@@ -1,0 +1,68 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   write data to database with Access
+   taken from Example02.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example02Main()
+{
+   <span style="color:green">// start access </span>
+   Access.Application accessApplication = <span style="color:blue">new</span> Access.Application();
+            
+   <span style="color:green">// create database name </span>
+   <span style="color:blue">string</span> fileExtension = GetDefaultExtension(accessApplication);
+   <span style="color:blue">string</span> documentFile = <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}\\Example02{1}&quot;</span>, <br>                                       Application.StartupPath, <br>                                       fileExtension);
+
+   <span style="color:green">// delete old database if exists</span>
+   <span style="color:blue">if</span> (System.IO.File.Exists(documentFile))
+      System.IO.File.Delete(documentFile);
+
+   <span style="color:green">// create database </span>
+   DAO.Database newDatabase = accessApplication.DBEngine.Workspaces[0].CreateDatabase(<br>                                        documentFile, LanguageConstants.dbLangGeneral);
+   accessApplication.DBEngine.Workspaces[0].Close();
+
+   <span style="color:green">// setup database connection</span>
+   OleDbConnection oleConnection = <span style="color:blue">new</span> OleDbConnection(<br>                   <span style="color:#a31515">@&quot;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=&quot;</span> &#43; documentFile);
+   oleConnection.Open();
+
+   <span style="color:green">// create table</span>
+   OleDbCommand oleCreateCommand = <span style="color:blue">new</span> OleDbCommand(<br>                <span style="color:#a31515">&quot;CREATE TABLE NetOfficeTable(Column1 Text, Column2 Text)&quot;</span>, oleConnection);
+   oleCreateCommand.ExecuteReader().Close();
+
+   <span style="color:green">// write some data with plain sql &amp; close</span>
+   <span style="color:blue">for</span> (<span style="color:blue">int</span> i = 0; i &lt; 1000; i&#43;&#43;)
+   {
+      <span style="color:blue">string</span> insertCommand = <span style="color:blue">string</span>.Format(<br>             <span style="color:#a31515">&quot;INSERT INTO NetOfficeTable(Column1, Column2) VALUES(\&quot;{0}\&quot;, \&quot;{1}\&quot;)&quot;</span>,<br>             i, DateTime.Now.ToShortTimeString());
+      OleDbCommand oleInsertCommand = <span style="color:blue">new</span> OleDbCommand(insertCommand, oleConnection);
+      oleInsertCommand.ExecuteReader().Close();
+   }
+   oleConnection.Close();
+
+   <span style="color:green">// close access and dispose reference</span>
+   accessApplication.Quit(AcQuitOption.acQuitSaveAll);
+   accessApplication.Dispose();
+
+   FinishDialog fDialog = <span style="color:blue">new</span> FinishDialog(<span style="color:#a31515">&quot;Database saved.&quot;</span>, documentFile);
+   fDialog.ShowDialog(<span style="color:blue">this</span>);
+}
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> returns the valid file extension for the instance. for example &quot;.mdb&quot; or &quot;.accdb&quot;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;application&quot;&gt;</span><span style="color:green">the instance&lt;/param&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">the extension&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">string</span> GetDefaultExtension(Access.Application application)
+{
+    <span style="color:green">// Access 2000 doesnt have the Version property(unfortunately)</span>
+    <span style="color:green">// we check for support with the EntityIsAvailable method, implemented by NetOffice</span>
+    <span style="color:blue">if</span> (!application.EntityIsAvailable(<span style="color:#a31515">&quot;Version&quot;</span>))
+	<span style="color:blue">return</span> <span style="color:#a31515">&quot;.mdb&quot;</span>;
+
+    <span style="color:blue">double</span> Version = Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);
+    <span style="color:blue">if</span> (Version &gt;= 12.00)
+	<span style="color:blue">return</span> <span style="color:#a31515">&quot;.accdb&quot;</span>;
+    <span style="color:blue">else</span>
+	<span style="color:blue">return</span> <span style="color:#a31515">&quot;.mdb&quot;</span>;
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

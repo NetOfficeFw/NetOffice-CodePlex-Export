@@ -1,0 +1,72 @@
+<div class="wikidoc">
+<p><span style="font-family:verdana; font-size:small"><strong><font size="3">Das Problem:</font></strong></span></p>
+<p align="justify"><span style="font-family:verdana; font-size:small"><font size="3">In manchen Situationen kann es Ihnen passieren das eine Office Anwendung den programmatischen Zugriff ablehnt, in diesem Fall bekommen Sie typischerweise eine RPC_E_CALL_REJECTED
+ Exception. Gründe hierfür können sein das die Office Anwendung gerade ausgelastet ist oder sich in einem Zustand befindet in dem ein programmatischer Zugriff nicht erlaubt ist. Für Microsoft Excel gilt dies z.B. wenn der Anwender eine Zellenformel bearbeitet.
+ Während der Bearbeitung im Formel-Editor ist ein programmatischer Zugriff nicht erlaubt.
+<br>
+</font><br>
+<font size="3">Im Alltag des Office-Entwicklers sind es vor allem unvorsehbare Auslastungszustände der jeweiligen Office Anwendung die für einiges Kopfzerbrechen sorgen können. Ein möglicher Weg diesem Problem zu begegnen sind sogenannte Zeitfedern, d.h. man
+ gibt der Office Anwendung ein wenig Zeit und probiert es dann nochmal. In den gängigen Entwicklerforen finden sich viele Posts dazu.(Zum Beispiel
+</font></span><a href="http://stackoverflow.com/questions/5330289/is-there-a-better-way-to-handle-rpc-e-call-rejected-exceptions-when-doing-visual" target="_blank"><span style="font-family:verdana; font-size:small"><font size="3">hier</font></span></a><span style="font-family:verdana; font-size:small"><font size="3">)&#160;&#160;
+<br>
+</font><br>
+</span><span style="font-family:verdana"><span style="font-size:small"><strong><font size="3">Die Lösung:
+<br>
+</font></strong><br>
+</span><span style="font-size:small"><font size="3">Ein MessageFilter ist ein Vermittler der im Fall von abgelehnten Aufrufen(RPC_E_CALL_REJECTED) definiert wie Sie darauf reagieren möchten. Eine technische Einführung dazu finden Sie
+</font></span></span><a href="http://blogs.msdn.com/b/andreww/archive/2008/11/19/implementing-imessagefilter-in-an-office-add-in.aspx" target="_blank"><span style="font-family:verdana; font-size:small"><font size="3">hier</font></span></a><span style="font-family:verdana; font-size:small"><font size="3">.
+ Sie können den MessageFilter beispielsweise anweisen einen abgelehnten Aufruf zu wiederholen oder auch mit einer Verzögerung zu wiederholen. Sie müssen ihren bestehenden Code dafür nicht ändern und bekommen eine höhere Ausfallsicherheit gegen Auslastungszustände
+ der Office Anwendung. NetOffice bringt eine fertige MessageFilter Implementierung bereits mit.</font>&#160;
+<br>
+<br>
+</span><span style="font-family:verdana; font-size:small"><strong><br>
+<font size="3">Übersicht - NetOffice.Settings.MessageFilter <br>
+</font></strong></span></p>
+<table border="1" cellspacing="0" cellpadding="5" width="730">
+<tbody>
+<tr>
+<td valign="top" width="130"><span style="font-family:verdana; font-size:small"><span style="text-decoration:underline"><font size="3">Eigenschaft</font></span></span></td>
+<td valign="top" width="397"><span style="font-family:verdana; font-size:small"><span style="text-decoration:underline"><font size="3">Beschreibung</font></span></span></td>
+<td valign="top" width="201"><span style="font-family:verdana; font-size:small"><span style="text-decoration:underline"><font size="3">Default</font></span></span></td>
+</tr>
+<tr>
+<td valign="top" width="130"><span style="font-family:verdana; font-size:small"><font size="3">Enabled</font></span></td>
+<td valign="top" width="397"><span style="font-family:verdana; font-size:small"><font size="3">Schaltet den MessageFilter ein oder aus.</font></span></td>
+<td valign="top" width="201"><span style="font-family:verdana; font-size:small"><font size="3">false</font></span></td>
+</tr>
+<tr>
+<td valign="top" width="130"><span style="font-family:verdana; font-size:small"><font size="3">RetryMode</font></span></td>
+<td valign="top" width="397"><span style="font-family:verdana; font-size:small"><font size="3">Bestimmt das Verhalten des MessageFilters bei abgelehnten Aufrufen.</font></span></td>
+<td valign="top" width="201"><span style="font-family:verdana; font-size:small"><font size="3">Immediately – Der Aufruf wird sofort wiederholt</font></span></td>
+</tr>
+<tr>
+<td valign="top" width="130"><span style="font-family:verdana; font-size:small"><font size="3">LogMode</font></span></td>
+<td valign="top" width="397"><span style="font-family:verdana; font-size:small"><font size="3">Bestimmt ob der MessageFilter Einträge in der NetOffice.DebugConsole vornimmmt.</font></span></td>
+<td valign="top" width="201"><span style="font-family:verdana; font-size:small"><font size="3">None</font></span></td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<br>
+<span style="font-family:verdana; font-size:small"><font size="3"><strong>Beispielaufruf in Visual Basic</strong>
+<br>
+</font></span></p>
+<div style="background-color:white; color:black">
+<pre>NetOffice.Settings.MessageFilter.Enabled = <span style="color:blue">True</span>
+
+<span style="color:green">' set few milliseconds delay for retry </span>
+NetOffice.Settings.MessageFilter.RetryMode = NetOffice.RetryMessageFilterMode.Delayed</pre>
+</div>
+<span style="font-family:verdana; font-size:small"><span style="font-family:verdana; font-size:small"><font size="3" face="Verdana">
+<p>&#160;</p>
+</font></span></span>
+<p></p>
+<p></p>
+<p><span style="font-family:verdana; font-size:small"><strong><font size="3">Beispielaufruf in C#</font></strong></span>&#160;</p>
+<div style="background-color:white; color:black">
+<pre>NetOffice.Settings.MessageFilter.Enabled = <span style="color:blue">true</span>;
+
+<span style="color:green">// set few milliseconds delay for retry </span>
+NetOffice.Settings.MessageFilter.RetryMode = NetOffice.RetryMessageFilterMode.Delayed;</pre>
+</div>
+</div><div class="ClearBoth"></div>

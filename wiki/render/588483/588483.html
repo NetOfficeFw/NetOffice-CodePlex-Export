@@ -1,0 +1,121 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' customize classic ui in Word</span>
+<span style="color:green">' taken from Example07.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Public</span> <span style="color:blue">Class</span> Form1
+
+<span style="color:blue"><font color="#000000">   </font>Dim</span> _wordApplication <span style="color:blue">As</span> Word.Application
+   <span style="color:blue">Public</span> <span style="color:blue">Delegate</span> <span style="color:blue">Sub</span> UpdateEventTextDelegate(<span style="color:blue">ByVal</span> message <span style="color:blue">As</span> <span style="color:blue">String</span>)
+   <span style="color:blue">Dim</span> _updateDelegate <span style="color:blue">As</span> UpdateEventTextDelegate
+
+   <span style="color:blue">Public</span> <span style="color:blue">Sub</span> <span style="color:blue">New</span>()
+
+      <span style="color:green">' This call is required by the Windows Form Designer.</span>
+      InitializeComponent()
+
+      _updateDelegate = <span style="color:blue">New</span> UpdateEventTextDelegate(<span style="color:blue">AddressOf</span> UpdateTextbox)
+
+   <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+   <span style="color:blue">Private</span> <span style="color:blue">Sub</span> button1_Click(<span style="color:blue">ByVal</span> sender <span style="color:blue">As</span> System.Object, <span style="color:blue">ByVal</span> e <span style="color:blue">As</span> System.EventArgs) <span style="color:blue">Handles</span> button1.Click
+
+      <span style="color:blue">Dim</span> commandBar <span style="color:blue">As</span> Office.CommandBar = <span style="color:blue">Nothing</span>
+      D<span style="color:blue">im</span> commandBarBtn <span style="color:blue">As</span> Office.CommandBarButton = <span style="color:blue">Nothing</span>
+
+      <span style="color:green">' start word and turn off msg boxes</span>
+      _wordApplication = <span style="color:blue">New</span> Word.Application()
+      _wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone
+
+      <span style="color:green">' add a new document</span>
+      _wordApplication.Documents.Add()
+
+      <span style="color:green">' add a commandbar popup</span>
+      <span style="color:blue">Dim</span> commandBarPopup <span style="color:blue">As</span> Office.CommandBarPopup = _<br>      _wordApplication.CommandBars(<span style="color:#a31515">&quot;Menu Bar&quot;</span>).Controls.Add(MsoControlType.msoControlPopup)
+      commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>
+
+      <span style="color:green">' you can see we use an own icon via .PasteFace()</span>
+      <span style="color:green">' is not possible from outside process boundaries to use the PictureProperty directly</span>
+      <span style="color:green">' the reason for is IPictureDisp: http://support.microsoft.com/kb/286460/de</span>
+      <span style="color:green">' its not important is early or late binding or managed or unmanaged, <br>      <span style="color:green">'</span> the behaviour is always the same</span>
+      <span style="color:green">' For example, a COMAddin running as InProcServer and can access the Picture Property</span>
+
+      <span style="color:green">' add a button to the popup</span>
+      commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)
+      commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+      commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+      Clipboard.SetDataObject(<span style="color:blue">Me</span>.Icon.ToBitmap())
+      commandBarBtn.PasteFace()
+      <span style="color:blue">Dim</span> clickHandler <span style="color:blue">As</span> Office.CommandBarButton_ClickEventHandler = _<br>                                                    <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+      <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+      <span style="color:green">'add a new toolbar</span>
+      commandBar = _wordApplication.CommandBars.Add(<span style="color:#a31515">&quot;MyCommandBar&quot;</span>, MsoBarPosition.msoBarTop, <span style="color:blue">False</span>, <span style="color:blue">True</span>)
+      commandBar.Visible = <span style="color:blue">True</span>
+
+      <span style="color:green">' add a button to the toolbar</span>
+      commandBarBtn = commandBar.Controls.Add(MsoControlType.msoControlButton)
+      commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+      commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+      commandBarBtn.FaceId = 3
+      clickHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+      <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+      <span style="color:green">' add a dropdown box to the toolbar</span>
+      commandBarPopup = commandBar.Controls.Add(MsoControlType.msoControlPopup)
+      commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>
+
+      <span style="color:green">' add a button to the popup, we use an own icon for the button</span>
+      commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)
+      commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+      commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+      Clipboard.SetDataObject(<span style="color:blue">Me</span>.Icon.ToBitmap())
+      commandBarBtn.PasteFace()
+      clickHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+      <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+      <span style="color:green">' create context menu</span>
+      commandBarPopup = _<br>      _wordApplication.CommandBars(<span style="color:#a31515">&quot;Text&quot;</span>).Controls.Add(MsoControlType.msoControlPopup)
+      commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>
+
+      <span style="color:green">' add a button to the popup</span>
+      commandBarBtn = commandBarPopup.Controls.Add(MsoControlType.msoControlButton)
+      commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption
+      commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>
+      commandBarBtn.FaceId = 9
+      clickHandler = <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.commandBarBtn_Click
+      <span style="color:blue">AddHandler</span> commandBarBtn.ClickEvent, clickHandler
+
+      <span style="color:green">' make visible &amp; set buttons</span>
+      _wordApplication.Visible = MsoTriState.msoTrue
+      button1.Enabled = <span style="color:blue">False</span>
+      button2.Enabled = <span style="color:blue">True</span>
+
+   <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+   <span style="color:blue">Private</span> <span style="color:blue">Sub</span> button2_Click(<span style="color:blue">ByVal</span> sender <span style="color:blue">As</span> System.Object, <span style="color:blue">ByVal</span> e <span style="color:blue">As</span> System.EventArgs) <span style="color:blue">Handles</span> button2.Click
+
+      _wordApplication.Quit()
+      _wordApplication.Dispose()
+
+      button1.Enabled = <span style="color:blue">True</span>
+      button2.Enabled = <span style="color:blue">False</span>
+
+   <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+   <span style="color:blue">Private</span> <span style="color:blue">Sub</span> commandBarBtn_Click(<span style="color:blue">ByVal</span> Ctrl <span style="color:blue">As</span> Office.CommandBarButton, <span style="color:blue">ByRef</span> CancelDefault <span style="color:blue">As</span> <span style="color:blue">Boolean</span>)
+
+      textBoxEvents.BeginInvoke(_updateDelegate, <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Click called.&quot;</span>})
+      Ctrl.Dispose()
+
+   <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+   <span style="color:blue">Private</span> <span style="color:blue">Sub</span> UpdateTextbox(<span style="color:blue">ByVal</span> message <span style="color:blue">As</span> <span style="color:blue">String</span>)
+
+      textBoxEvents.AppendText(message &amp; vbNewLine)
+
+   <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Class</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

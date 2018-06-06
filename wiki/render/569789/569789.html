@@ -1,0 +1,35 @@
+<div class="wikidoc">
+<p align="justify"><font size="3"><font face="Verdana"><strong>Frage</strong>: </font>
+</font><font size="3"><font face="Verdana"><strong>Meine Programmiersprache unterstützt keine Properties mit Parametern ?
+<br>
+<br>
+<u>Antwort</u></strong><u>:</u></font></font></p>
+<p align="justify"><font size="3" face="Verdana">NetOffice konvertiert alle parametrisierten Properties zu Methoden. Nutzen Sie diese Properties so wie es von den Interop Assemblies oder VBA kennen. C# Entwickler müssen nicht die ungeliebten “get&quot;_” oder
+ “_set” Präfixe verwenden. Die Präfixe werden von NetOffice allerdings unterstützt, dabei allerdings im Intellisense von Visual Studio ausgeblendet da sie lediglich aus Kompatibilitätsgrunden implementiert sind um es Entwicklern zu erleichtern bestehende Interop
+ Lösungen auf NetOffice umzustellen. <br>
+<br>
+<br>
+<strong>Frage</strong>: </font><strong><font size="3" face="Verdana">Meine Programmiersprache unterstützt keine optionalen Parameter ?
+<br>
+</font></strong><u><br>
+<font size="3"><font face="Verdana"><strong>Antwort</strong>:</font></font></u></p>
+<p align="justify"><font size="3" face="Verdana">NetOffice verwendet keine optionalen Parameter sondern bietet stattdessen die maximal möglichen Überladungen für jedes Property oder Methode an. Für ein Property mit 2 optionalen Parametern sind dies demzufolge
+ genau 3 Überladungen. <br>
+<br>
+<br>
+<strong>Frage</strong>: </font><font size="3"><font face="Verdana"><strong>Habe ich Zugriff auf die nativen COM Proxies ?
+<br>
+<br>
+</strong><strong><u>Antwort</u></strong><u>: </u></font></font></p>
+<p align="justify"><font size="3" face="Verdana">Ja, jede Klasse in NetOffice implementiert das Property
+<em>UnderlyingObject</em>. <br>
+<br>
+<br>
+<strong>Frage</strong>: </font><font size="3"><font face="Verdana"><strong>Ich arbeite mit verschiedensprachigen Office Versionen und Systemen. Wie kann ich die ThreadCulture ändern ?
+<br>
+<br>
+</strong><strong><u>Antwort</u></strong><u>:</u> </font></font></p>
+<p align="justify"><font size="3" face="Verdana">Ändern Sie die Kultur nach Wunsch:
+<em>NetOffice.Settings.ThreadCulture</em> Die Vorseinstellung ist &quot;en-us&quot;.</font></p>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

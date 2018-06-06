@@ -1,0 +1,109 @@
+<div class="wikidoc">
+<p><strong><font size="3" face="Verdana">Tutorial01 - COM Proxy Management verstehen</font></strong></p>
+<p align="justify"><font size="3" face="Verdana">Alle Klassen in NetOffice kaspeln COM Proxies. Wenn Sie Lösungen für MS-Office basierend auf dem Office Automationsmodell entwickeln(unabhängig davon welche API Sie benutzen) bedeutet dies das alle Objekte die
+ Sie von MS-Office zur Verfügung gestellt bekommen keine wirklichen Objekte sind sondern lediglich Proxies. Ein Proxy ist eine leere Hülle ohne Funktion der sämtliche Anforderungen an das eigentliche Objekt weiterleitet. Dieses eigentliche Objekt hat den COM
+ Server(Office) nie verlassen. COM Proxies sind lediglich Schnitstellen die alle Kommunikation zwischen Ihnen und dem COM Server erledigen. Dadurch ensteht der gewollte Eindruck Sie hätten ein echtes Objekt innerhalb Ihre Anwendung aber dieser Eindruck täuscht.</font></p>
+<p><span style="text-decoration:underline"><font size="3" face="Verdana">Schaubild:
+<br>
+<a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=378455"><img title="ClientServer" border="0" alt="ClientServer" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=378456" width="544" height="242" style="border-bottom:0px; border-left:0px; display:inline; border-top:0px; border-right:0px"></a></font></span><font size="3" face="Verdana">&#160;</font></p>
+<p align="justify"><font size="3" face="Verdana">Der COM Server(Ihre Office Anwendung) verteilt Proxies für erzeugte Objekte und zählt die Anzahl der vergebenen COM Proxies genau mit. Dies bedeutet jedesmal wenn Sie eine Eigenschaft oder eine Methode mit Rückgabewert
+ für ein Objekt&#160; abfragen wird Ihnen Ihr COM Server(Office) einen neuen COM Proxy für das echte Objekt dahinter erstellen und zurückgeben. Ausnahme: Dies gilt nur für Referenz Typen(Typen basierend auf einer Klasse). Für Werte Typen z.B. string, int, oder
+ Aufzählungen bekommen Sie eine weitergeleitete Kopie erstellt die sich nicht von ihren eigenen erstellten lokalen Instanzen unterscheidet.</font></p>
+<p><font size="3" face="Verdana">Ein Beispiel dazu in MS Excel</font></p>
+<p><span style="text-decoration:underline"><font size="3" face="Verdana">Listing 1.0</font></span></p>
+<div style="background-color:white; color:black">
+<pre><font size="3" face="Verdana">Excel.Worksheet sheetRef1 = application.ActiveWorksheet; 
+Excel.Worksheet sheetRef2 = application.ActiveWorksheet; 
+Excel.Worksheet sheetRef3 = application.ActiveWorksheet;</font></pre>
+</div>
+<p align="justify"><font size="3" face="Verdana">Sie bekommen an dieser Stelle 3 COM Proxies für das gleiche Objekt auf dem COM Server. Dieses Objekt auf dem Server lebt nun solange bis Sie diese Proxies wieder freigeben. Sobald die Anzahl der vergebenen COM
+ Proxies auf 0 sinkt wird das Objekt vom COM Server verworfen und der benötigte Speicher wieder freigegeben. Durch dieses von COM definierte Verhalten ist es nötig dem Server zu signaliseren das Sie den Proxy freigeben wenn Sie keine Verwendung mehr für ihn
+ haben. Hinweis: Manche Objekte existieren bereits nach dem Start einer Office Anwendung, z.B. Addins, die allermeisten werden jedoch erst im Zuge der ersten Verwendung -on demand- erzeugt.</font></p>
+<p align="justify"><font size="3" face="Verdana">Wenn Sie bisher mit den MS Interop Assemblies gearbeitet haben kennen Sie vermutlich die Methode
+<em>Marshal.ReleaseComObject(object proxy)</em> um einen COM Proxy freizugeben. Sie müssen anhand unseres Beispiels alle 3 COM Proxies wieder freigeben um dem COM Server zu signalisieren das er das erstellte Objekt verwerfen darf, wenn keine Proxies mehr dafür
+ existieren. Dies bläht ihren Code sehr schnell auf und macht ihn unleserlich aber es besteht hierbei noch ein viel schwerwiegenderes Problem. Sie müssen jeden der 3 COM Proxies explizit in einer lokalen Variable speichern um ihn anschliessend auch wieder freigeben
+ zu können. Daraus ergibt sich das der folgende Aufruf nicht zu empfehlen ist:</font></p>
+<p><span style="text-decoration:underline"><font size="3" face="Verdana">Listing 1.1</font></span></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana"><span style="color:green">// Beispiel für die falsche implizite Verwendung </span>
+<span style="color:green">// von COM Proxies mit den MS Interop Assemblies </span>
+<span style="color:blue">string</span> sheetName = application.ActiveWorksheet.Name; </font></font></pre>
+</div>
+<p align="justify"><font size="3" face="Verdana">In diesem Codebeispiel wird das aktive Sheet der Anwendung aufgerufen und damit ein COMProxy an die Anwendung geliefert. Jedoch haben Sie keine Möglichkeit dem Server die Freigabe dieses Proxies zu signalisieren
+ da dieser nirgendwo lokal gespeichert wird. Sie müssen den Proxy ja schliesslich selbst für die Freigabe an Office übergeben. Richtig ist im Umgang mit dem MS Interop Assemblies daher folgendes Beispiel:</font></p>
+<p><font size="3"><font face="Verdana"><span style="text-decoration:underline">Listing 1.2</span>
+<br>
+</font></font></p>
+<div style="background-color:white; color:black">
+<pre><font size="3" face="Verdana">Excel.Worksheet activeSheet = application.ActiveWorksheet;
+<span style="color:blue">string</span> sheetName = activeSheet.Name;
+Marshal.ReleaseComObject(activeSheet);</font></pre>
+</div>
+<p align="justify"><br>
+<font size="3" face="Verdana">Zusätzlich müssen Sie darauf achten Ihre erzeugten COM Proxies in umgekehrter Reihenfolge zur Erstellung freizugeben um Freigabe-Probleme mit dem COM Server zu vermeiden. Einige Office Anwendungen&#160; lösen in bestimmten Situationenen
+ Ausnahmen aus wenn sie dies nicht tun. Daraus ergeben folgende Probleme: Das Verfahren ist untypisch für .NET Entwickler, Code bläht sich auf und wird unleserlich. COM Proxies werden schnell übersehen und ihre Office Anwendung beendet sich möglicherweise nicht
+ ordnungsgemäss. Es ensteht ein Gefühl der Unsicherheit, habe ich nichts übersehen?</font></p>
+<p><strong><font size="3" face="Verdana">NetOffice schafft diese Probleme ab: </font>
+</strong></p>
+<p align="justify"><font size="3" face="Verdana">In NetOffice verwenden Sie nicht die Methode
+<em>Marshal.ReleaseComObject(object proxy). </em>Stattdessen bietet Ihnen jedes Objekt die Methode
+<em>Dispose()</em> für die Freigabe an. Darüber hinaus ist eine Verwaltungstabelle für COM Proxies implementiert. Wenn Sie ein Objekt mittels
+<em>Dispose()</em> freigeben werden automatisch alle Objekte freigegeben die über dieses Objekt erzeugt wurden. Für Entwickler ohne Erfahrung mit dem COM Standard mag dies zuerst keinen Sinn ergeben oder zu kompliziert erscheinen. Eine kurzes praktisches Beispiel
+ soll verdeutlichen welchen Zweck dieser Mechanismus verfolgt. Beispielcode für NetOffice mit MS-Excel:</font></p>
+<p><font size="3"><font face="Verdana"><span style="text-decoration:underline">Listing 1.3</span>
+<br>
+</font></font></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana"><span style="color:green">// NetOffice Beispielcode für das ermitteln </span>
+<span style="color:green">// aller COMAddins in MS-Excel </span>
+
+Excel.Application application = <span style="color:blue">new</span> Excel.Application();
+<span style="color:blue">foreach</span>(Office.COMAddin addin <span style="color:blue">in</span> application.COMAddins)
+{
+   Console.WriteLine(addin.Name); 
+}
+
+application.Quit(); 
+application.Dispose(); </font></font></pre>
+</div>
+<p align="justify"><br>
+<font size="3" face="Verdana">Sie können erkennen das wir eine eigenständige Excel Instanz erstellen. Typischerweise ist die Anwendung das einzige Objekt das Sie eigenständig erstellen. Alle weiteren Objekte(COM Proxies) bekommen Sie über das Application Objekt
+ bzw. über Objekte die wiederum über Application oder über eines seiner (Kindes) Kinder erstellt wurde. Im obigen Beispielcode ergibt sich dadurch folgende COM Proxy Hierarchie wenn wir davon ausgehen das ihre Anwendung 3 COMAddins geladen hat.</font></p>
+<p><font size="3" face="Verdana">- Application <br>
+&#160;&#160;&#160;&#160; - COMAddins <br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160; - COMAddins Enumerator <br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; - COMAddin
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; - COMAddin
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; - COMAddin</font></p>
+<p align="justify"><font size="3" face="Verdana">Wenn Sie für ein Objekt in NetOffice die Methode
+<em>Dispose()</em> aufrufen wird NetOffice auomatisch für alle Kinder und Kindeskinder innerhalb dieser Hierachie die Methode
+<em>Dispose()</em> ausführen. In Listing 1.3 rufen wir in der letzten Zeile die Methode
+<em>Dispose()</em> für unsere Anwendung auf. Da application das oberste Element innerhalb der Hierarchie darstellt werden alle übrigen COM Proxies ebenfalls freigegeben. Durch dieses Feature müssen Sie erzeugte Proxies nicht explizit speichern da NetOffice
+ den erzeugten Proxy automatisch dem Proxy über den es erzeugt wurde zuordnet. Ein Aufruf wie der aus Listing 1.1 ist in NetOffice daher zulässig. Sie müssen lediglich einen übergeordneten Proxy nach der Verwendung freigeben. Sie müssen sich auch um die Reihenfolge
+ der Freigabe keine Gedanken machen und laufen nicht Gefahr eine COM Proxy zu übersehen. Der folgende Beispielcode verdeutlicht das COM Proxy Management anhand des durchlaufens der einzelnen Zellen einer Range in Excel.</font></p>
+<p><font size="3"><font face="Verdana"><em><span style="text-decoration:underline">Listing 1.4</span></em>
+<br>
+</font></font></p>
+<div style="background-color:white; color:black">
+<pre><font size="3" face="Verdana">Excel.Worksheet worksheet = application.ActiveWorksheet;
+
+<span style="color:blue">foreach</span>(Excel.Range cell <span style="color:blue">in</span> worksheet.Range(<span style="color:#a31515">&quot;A1:A100&quot;</span>))
+{
+    Console.WriteLine(cell .Value) 
+}
+
+worksheet.Dispose();</font></pre>
+</div>
+<p align="justify"><font size="3" face="Verdana">Im ersten Schritt erstellt der Code einen COM Proxy auf das derzeit aktive Worksheet in Excel. Anschliessend durchlaufen wir 100 Zellen und geben den Inhalt auf der Konsole aus. Wir haben damit 103 neue COM Proxies
+ erstellt 1 Worksheet ein RangeProperty, seinen Range Enumerator und 100 Zellen. Da unser aktives Worksheet das oberste Objekt in der COM Proxy Hierarchie bildet werden mit dem Dispose Aufruf auch die übrigen COM Proxies freigegeben. Sie können genau so innerhalb
+ der Schleife die Methode <em>Dispose()</em> für jedes Zellen Objekt aufrufen um die Anzahl an COM Proxies so gering als möglich zu halten. Dies obliegt Ihrer eigenen Abschätzung.
+<br>
+</font></p>
+<p><font size="3" face="Verdana"></font></p>
+<p align="justify"><font size="3" face="Verdana">NetOffice bietet noch weitere Möglichkeiten für die COM Proxy Verwaltung, mehr dazu in Tutorial02 und Tutorial03.</font></p>
+<div id="_mcePaste" style="width:1px; height:1px; overflow:hidden; top:0px; left:-10000px">
+<font size="3" face="Verdana">&#65279;</font></div>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

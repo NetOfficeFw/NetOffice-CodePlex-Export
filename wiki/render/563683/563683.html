@@ -1,0 +1,30 @@
+<div class="wikidoc">
+<p><strong><span style="text-decoration:underline">Was tut Office Compatibility für Sie?</span></strong></p>
+<p align="justify">Wenn Sie eine Office Lösung mit NetOffice(oder einer anderen API) entwickeln die mit einer bestimmen oder mehreren MS-Office Versionen kompatibel sein soll, müssen Sie gewährleisten das die von Ihnen genutzte Funktionalität(Objekte, Methoden,
+ etc.) von eben diesen MS-Office Versionen unterstützt werden. Aus diesem Grund bietet NetOffice diese Informationen für alle Office Objekte als IntelliSense Text an. Auch wenn dies eine grosse Hilfestellung für den Entwickler bedeutet, reicht dies jedoch für
+ umfangreiche Projekte nicht aus um sicherzustellen das Ihre Office Lösung mit den von Ihnen festgelegten MS-Office Versionen funktioniert. Der eigene Prüfungsaufwand und die damit verbundene Fehleranfälligkeit ist zu hoch. Die Office Compatibility Komponente
+ prüft ihr erstelltes Assembly darauf welche MS-Office Funktionalitäten diese via NetOffice anspricht und zeigt Ihnen auf mit welchen MS-Office Versionen Ihre Lösung kompatibel ist. Sie können damit gegenüber Ihren Kunden oder Benutzern eine geprüfte und verbindliche
+ Aussage bezüglich der Kompatibilität treffen. <br>
+<br>
+<span style="text-decoration:underline"><strong><font color="#ff0000">Wichtiger Hinweis</font></strong></span></p>
+<p align="justify">Prüfen Sie Ihr Assembly bite immer in der Debug Konfiguration. Agressive Optimerunen in der Release Einstellung können dazu führen das Detailinformationen für Wertetypen(Enums, Struct) nicht mehr zu analysieren sind.<span style="text-decoration:underline"><strong>
+<br>
+</strong></span><br>
+<strong><span style="text-decoration:underline">Screenshot</span></strong></p>
+<p>Beispiel für ein Assembly das Funktionalitäten nutzt die nur in Excel 2007 und 2010 angeboten werden.</p>
+<p>&#160;<a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=294818"><img title="OfficeCompatiblity" border="0" alt="OfficeCompatiblity" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=294819" width="820" height="488" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></a></p>
+<p align="justify"><strong><span style="text-decoration:underline">Möglichkeiten und Einstellungen im Detail
+<br>
+</span></strong><br>
+Im oberen Bereich haben Sie die Möglichkeit ein Assembly auszuwählen das NetOffice nutzt um MS-Office programmatisch anzusprechen. Die Übersichtstabelle gibt Ihnen einen Überblick welche Office Versionen den Code Ihres Assemblies unterstützen. Klicken Sie auf
+ den Button 'Bericht' wenn Sie eine detailiertere Übersicht benötigen welche Teile Ihres Codes mit einer bestimmten Office-Version funktionieren bzw. nicht funktionieren.</p>
+<span style="text-decoration:underline">
+<p align="justify"><br>
+<strong>Anmerkungen </strong></p>
+</span>
+<p align="justify">Wenn Sie das Office Compatibility Feature der Developer Toolbox nutzen wird Ihnen möglicherweise angezeigt das Ihr Assembly mit keiner Version Ihrer Office-Anwendung funktioniert. In diesem Fall handelt es sich nicht um einen Fehler des Programms
+ sondern ist darin begründet das sie unterschiedliche Funktionalitäten ansprechen die jeweils nur in bestimmten unterschiedlichen Versionen unterstützt werden. In anderen Worten: Wenn Sie eine Funktionaliät benutzen die lediglich in Office 2000 und Office 2002
+ unterstützt wird und darüber hinaus eine andere Funktionalität die ausschliesslich von Office 2003, 2007 und 2010 angeboten wird, bedeutet dies das Ihr Programm-Code in jedem Fall einen Fehler verursachen wird, unabhängig davon welche Office Version auf dem
+ System installiert ist. Office Compatibility zeigt Ihnen daher an das Ihr Assembly mit keiner MS-Office Version funktioniert.
+</p>
+</div><div class="ClearBoth"></div>

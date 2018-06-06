@@ -1,0 +1,36 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' database informations with Access</span>
+<span style="color:green">' taken from Example04.vb</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> ShowDatabaseInfo(<span style="color:blue">ByVal</span> filePath <span style="color:blue">As</span> <span style="color:blue">String</span>)
+
+   <span style="color:green">' start access </span>
+   <span style="color:blue">Dim</span> accessApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Access.Application()
+
+   <span style="color:green">'open database</span>
+   <span style="color:blue">Dim</span> database <span style="color:blue">As</span> DAO.Database = _<br>       accessApplication.DBEngine.Workspaces(0).OpenDatabase(filePath)
+
+   <span style="color:blue">Dim</span> tnTableDefs <span style="color:blue">As</span> TreeNode = treeViewInfo.Nodes.Add(<span style="color:#a31515">&quot;Tables&quot;</span>)
+   <span style="color:blue">For</span> <span style="color:blue">Each</span> item <span style="color:blue">As</span> DAO.TableDef <span style="color:blue">In</span> database.TableDefs
+       tnTableDefs.Nodes.Add(item.Name)
+   <span style="color:blue">Next</span> item
+
+   <span style="color:blue">Dim</span> tnQueryDefs <span style="color:blue">As</span> TreeNode = treeViewInfo.Nodes.Add(<span style="color:#a31515">&quot;Queries&quot;</span>)
+   <span style="color:blue">For</span> <span style="color:blue">Each</span> item <span style="color:blue">As</span> DAO.QueryDef <span style="color:blue">In</span> database.QueryDefs
+       tnQueryDefs.Nodes.Add(item.Name)
+   <span style="color:blue">Next</span> item
+
+   <span style="color:blue">Dim</span> tnRelations <span style="color:blue">As</span> TreeNode = treeViewInfo.Nodes.Add(<span style="color:#a31515">&quot;Relations&quot;</span>)
+   <span style="color:blue">For</span> <span style="color:blue">Each</span> item <span style="color:blue">As</span> DAO.Relation <span style="color:blue">In</span> database.Relations
+       tnRelations.Nodes.Add(item.Name)
+   <span style="color:blue">Next</span> item
+
+   <span style="color:blue">Dim</span> tnContainers <span style="color:blue">As</span> TreeNode = treeViewInfo.Nodes.Add(<span style="color:#a31515">&quot;Containers&quot;</span>)
+   <span style="color:blue">For</span> <span style="color:blue">Each</span> item <span style="color:blue">As</span> DAO.Container <span style="color:blue">In</span> database.Containers
+       tnContainers.Nodes.Add(item.Name)
+   <span style="color:blue">Next</span> item
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

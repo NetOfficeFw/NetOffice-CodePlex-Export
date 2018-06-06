@@ -1,0 +1,80 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">/*
+   customize classic UI in Excel
+   taken from Example09.cs
+*/</span>
+
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example09Main()
+{
+   Office.CommandBar commandBar;
+   Office.CommandBarButton commandBarBtn;
+ 
+   <span style="color:green">// start excel and turn off msg boxes</span>
+   _excelApplication = <span style="color:blue">new</span> Excel.Application();
+   _excelApplication.DisplayAlerts = <span style="color:blue">false</span>;
+         
+   <span style="color:green">// add a new workbook</span>
+   Excel.Workbook workBook = _excelApplication.Workbooks.Add();
+                        
+   <span style="color:green">// add a commandbar popup</span>
+   Office.CommandBarPopup  commandBarPopup = (Office.CommandBarPopup) _<br>  _excelApplication.CommandBars[<span style="color:#a31515">&quot;Worksheet Menu Bar&quot;</span>].Controls.Add( _<br>                                               MsoControlType.msoControlPopup);
+   commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>;
+             
+  <span style="color:blue">#region</span> few words, how to access the picture
+   <span style="color:green">/*
+    you can see we use an own icon via .PasteFace()
+    is not possible from outside process boundaries to use the PictureProperty directly
+    the reason for is IPictureDisp: http://support.microsoft.com/kb/286460/de
+    its not important is early or late binding or managed or unmanaged, <br>    the behaviour is always the same
+    For example, a COMAddin running as InProcServer can access the Picture Property
+  */</span>
+  <span style="color:blue">#endregion</span>
+
+  <span style="color:green">// add a button to the popup</span>
+  commandBarBtn = (Office.CommandBarButton)commandBarPopup.Controls.Add( _<br>                                                       MsoControlType.msoControlButton);
+  commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption;
+  commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>;
+  Clipboard.SetDataObject(<span style="color:blue">this</span>.Icon.ToBitmap());
+  commandBarBtn.PasteFace();
+  commandBarBtn.ClickEvent &#43;= <span style="color:blue">new</span> Office.CommandBarButton_ClickEventHandler( _<br>                                                                     commandBarBtn_Click);
+
+  <span style="color:green">// add a new toolbar</span>
+  commandBar = _excelApplication.CommandBars.Add(<span style="color:#a31515">&quot;MyCommandBar&quot;</span>, _<br>                                      MsoBarPosition.msoBarTop, <span style="color:blue">false</span>, <span style="color:blue">true</span>);
+  commandBar.Visible = <span style="color:blue">true</span>;
+
+  <span style="color:green">// add a button to the toolbar</span>
+  commandBarBtn = (Office.CommandBarButton)commandBar.Controls.Add( _<br>                                                       MsoControlType.msoControlButton);
+  commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption;
+  commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>;
+  commandBarBtn.FaceId = 3;
+  commandBarBtn.ClickEvent &#43;= <span style="color:blue">new</span> Office.CommandBarButton_ClickEventHandler( _<br>                                                                  commandBarBtn_Click);
+            
+  <span style="color:green">// add a dropdown box to the toolbar</span>
+  commandBarPopup = (Office.CommandBarPopup)commandBar.Controls.Add( _<br>                                               MsoControlType.msoControlPopup);
+  commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>;
+
+  <span style="color:green">// add a button to the popup, we use an own icon for the button</span>
+  commandBarBtn = (Office.CommandBarButton)commandBarPopup.Controls.Add( _<br>                                                 MsoControlType.msoControlButton);
+  commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption;
+  commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>;
+  Clipboard.SetDataObject(<span style="color:blue">this</span>.Icon.ToBitmap());
+  commandBarBtn.PasteFace();
+  commandBarBtn.ClickEvent &#43;= <span style="color:blue">new</span> Office.CommandBarButton_ClickEventHandler( _<br>                                                          commandBarBtn_Click);
+            
+   <span style="color:green">add a commandbar popup</span>
+   commandBarPopup = (Office.CommandBarPopup) _<br>   _excelApplication.CommandBars[<span style="color:#a31515">&quot;Cell&quot;</span>].Controls.Add(MsoControlType.msoControlPopup);
+   commandBarPopup.Caption = <span style="color:#a31515">&quot;commandBarPopup&quot;</span>;
+
+   <span style="color:green">// add a button to the popup</span>
+   commandBarBtn = (Office.CommandBarButton)commandBarPopup.Controls.Add( _<br>                                              MsoControlType.msoControlButton);
+   commandBarBtn.Style = MsoButtonStyle.msoButtonIconAndCaption;
+   commandBarBtn.Caption = <span style="color:#a31515">&quot;commandBarButton&quot;</span>;
+   commandBarBtn.FaceId = 9;
+   commandBarBtn.ClickEvent &#43;= <span style="color:blue">new</span> Office.CommandBarButton_ClickEventHandler( _<br>                                              commandBarBtn_Click);
+
+   <span style="color:green">// make visible</span>
+   _excelApplication.Visible = <span style="color:blue">true</span>;
+}</pre>
+</div>
+</div><div class="ClearBoth"></div>

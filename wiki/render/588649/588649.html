@@ -1,0 +1,59 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' using events in PowerPoint</span>
+<span style="color:green">' taken from Example06.vb</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example06Main()
+
+<span style="color:green">   ' start powerpoint and turn off msg boxes</span>
+   <span style="color:blue">Dim</span> powerApplication <span style="color:blue">As</span> <span style="color:blue">New</span> PowerPoint.Application()
+   powerApplication.Visible = MsoTriState.msoTrue
+
+   <span style="color:green">' PowerPoint 2000 doesnt support DisplayAlerts, <br>   <span style="color:green">'</span> we check at runtime its available and set</span>
+   <span style="color:blue">If</span> (powerApplication.EntityIsAvailable(<span style="color:#a31515">&quot;DisplayAlerts&quot;</span>)) <span style="color:blue">Then</span>
+      powerApplication.DisplayAlerts = PpAlertLevel.ppAlertsNone
+   <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+   <span style="color:green">' we register some events. note: the event trigger was called from power point,</span>
+   <span style="color:green">' means an other Thread<br></span>   <span style="color:blue">Dim</span> newCloseHandler <span style="color:blue">As</span> PowerPoint.Application_PresentationCloseEventHandler = _<br>                          <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.powerApplication_PresentationCloseEvent
+   <span style="color:blue">AddHandler</span> powerApplication.PresentationCloseEvent, newCloseHandler
+
+   <span style="color:blue">Dim</span> newAfterNewHandler <span style="color:blue">As</span> PowerPoint.Application_AfterNewPresentationEventHandler = _<br>                             <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.powerApplication_AfterNewPresentationEvent
+   <span style="color:blue">AddHandler</span> powerApplication.AfterNewPresentationEvent, newAfterNewHandler
+
+   <span style="color:green">' add a new presentation with one new slide</span>
+   <span style="color:blue">Dim</span> presentation <span style="color:blue">As</span> PowerPoint.Presentation = _<br>                       powerApplication.Presentations.Add(MsoTriState.msoTrue)
+   <span style="color:blue">Dim</span> slide <span style="color:blue">As</span> PowerPoint.Slide = presentation.Slides.Add(1, PpSlideLayout.ppLayoutBlank)
+
+   <span style="color:green">' close the document</span>
+   presentation.Close()
+
+   <span style="color:green">' close power point and dispose reference</span>
+   powerApplication.Quit()
+   powerApplication.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> powerApplication_PresentationCloseEvent(<span style="color:blue">ByVal</span> Pres <span style="color:blue">As</span> NetOffice.PowerPointApi.Presentation)
+
+   textBoxEvents.BeginInvoke(_updateDelegate, _<br>                             <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event PresentationClose called.&quot;</span>})
+   Pres.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> powerApplication_AfterNewPresentationEvent(<span style="color:blue">ByVal</span> Pres <span style="color:blue">As</span> NetOffice.PowerPointApi.Presentation)
+
+   textBoxEvents.BeginInvoke(_updateDelegate, _<br>                             <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event AfterNewPresentation called.&quot;</span>})
+   Pres.Dispose()
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> UpdateTextbox(<span style="color:blue">ByVal</span> message <span style="color:blue">As</span> <span style="color:blue">String</span>)
+
+   textBoxEvents.AppendText(message &amp; vbNewLine)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

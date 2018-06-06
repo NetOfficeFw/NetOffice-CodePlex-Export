@@ -1,0 +1,306 @@
+<div class="wikidoc">
+<p><strong><font size="3" face="Verdana">Tutorial07 - Versionsunabhängige Entwicklung
+</font></strong></p>
+<p align="justify"><font size="3" face="Verdana">Office Lösungen in .NET zu erstellen und dabei unabhängig von einer oder bestimmten Office Versionen zu bleiben ist ein wichtiges Anliegen von NetOffice. Darüber hinaus möchte NetOffice versionsunabhängige Entwicklung
+ mehr als einfach nur möglich zu machen. Als Entwickler bekommen Sie von NetOffice zusätzlich folgende Unterstützung.</font></p>
+<p><strong><font size="3" face="Verdana">IntelliSense Text </font></strong></p>
+<p align="justify"><font size="3" face="Verdana">Als Entwickler kennen Sie die IntelliSense Unterstützung von Visual Studio. Ein Tooltip Text der Ihnen hilfreich zur Seite steht, Ihnen die Bedeutung und richtige Verwendung von Parametern erklärt und Sie über
+ mögliche Exceptions informiert. NetOffice darf die Entwickler-Dokumentation von MS-Office aus rechtlichen Gründen nicht als IntelliSense anbieten. Jedoch bekommen Sie im IntelliSense für alle NetOffice Klasse, Enums, etc. angezeigt von welchen Office Versionen
+ die Funktionalität angeboten wird.</font></p>
+<p align="justify"><font size="3"><font face="Verdana"><u>Schaubild</u> <br>
+</font></font><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=370239"><font size="3" face="Verdana"><img title="IntelliSenseVB" border="0" alt="IntelliSenseVB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=370240" width="423" height="198" style="border-right-width:0px; display:inline; border-top-width:0px; border-bottom-width:0px; border-left-width:0px"></font></a><font size="3"><font face="Verdana">
+<br>
+<br>
+<br>
+<strong>Prüfung zur Laufzeit ob eine Methode oder Property in der Office Version verfügbar ist
+</strong></font></font></p>
+<p align="justify"><font size="3" face="Verdana">Wenn Sie wissen das ein bestimmtes Property von einer bestimmten Version Ihrer Office Anwendung nicht angeboten wird ist es hilfreich zur Laufzeit zu prüfen ob dieses Property oder Methode zur Verfügung steht.
+ Im simpelsten Fall können Sie dies einfach gegen die Version der Anwendung prüfen. In NetOffice bietet Ihnen jedoch jedes Objekt dafür die Methode EntityIsAvailable an.</font></p>
+<p><font size="3" face="Verdana">Betrachten Sie dazu folgendes Codebespiel mit MS-Outlook und NetOffice.</font></p>
+<p><span style="text-decoration:underline"><font size="3" face="Verdana">Listing 1.0</font></span></p>
+<div style="background-color:white; color:black">
+<pre><font size="3"><font face="Verdana"><span style="color:blue">Dim</span> outlookApplication <span style="color:blue">As</span> Outlook.Application = <span style="color:blue">new</span> Outlook.Application()
+<span style="color:blue">Dim</span> mailItem <span style="color:blue">As</span> Outlook.MailItem = outlookApplication.CreateItem(OlItemType.olMail)
+
+<span style="color:blue">If</span> mailItem.EntityIsAvailable(<span style="color:#a31515">&quot;BodyFormat&quot;</span>) <span style="color:blue">Then</span>
+    mailItem.BodyFormat = OlBodyFormat.olFormatPlain 
+<span style="color:blue">End</span> <span style="color:blue">If</span>
+
+mailItem.Display()</font></font></pre>
+</div>
+<p align="justify"><font size="3" face="Verdana">Sie können erkennen das wir die das Property BodyFormat zur Laufzeit prüfen da es von Outlook 2000 nicht unterstützt wird. Sofern dieses Property nicht unterstützt wird übergehen wir es einfach da dies sicher
+ kein grösseres Problem darstellt. Was macht diese Prüfung besser als eine Prüfung gegen die Version einer Anwendung?
+<span style="text-decoration:underline">Antwort:</span> Sollte ein Property oder Methode von mehreren Office Versionen nicht unterstützt sein müssen Sie mehr Code für eine Prüfung schreiben, ausserdem gibt es Fälle wo Microsoft bestimmte Funktionalitäten z.B.
+ im Rahmen eines Service Packs für ältere Office Versionen nachgerüstet hat. NetOffice prüft intern nicht gegen die Version einer Anwendung sondern fragt den zugrunde liegenden COM Server gezielt nach der gewünschten Funktionalität. In unserem Beispiel bekommen
+ damit möglicherweise mehr Benutzer das BodyFormat gesetzt als bei einer harten Prüfung gegen die Version.</font></p>
+<p><br>
+<strong><font size="3" face="Verdana">NetOffice Developer Toolbox </font></strong></p>
+<p align="justify"><font size="3" face="Verdana">Die </font><a href="http://netoffice.codeplex.com/wikipage?title=DeveloperToolbox_German" target="_blank"><font size="3" face="Verdana">NetOffice Developer Toolbox</font></a><font size="3" face="Verdana"> ist
+ ein Service Tool für .NET Entwickler das bei einigen typischen und alltäglichen Problemen hilfreich zur Seite steht. Die zentrale Motiation für die Toolbox ist jedoch eine Fuktionalität die es Ihnen erlaubt Ihr Assemly(*.dll oder .exe) von der Developer Toolbox
+ analyiseren zu lassen. Wenn Sie ein Addin erstellen z.B. MyAddin.dll wird die Toolbox Ihr Addin für Sie analysieren und Ihnen aufzeigen mit welchen Office Versionen Ihr Addin kompatibel ist. Das Programm durchsucht Ihren Code und analysiert alle Aufrufe die
+ mit NetOffice in Verbindung stehen. Sie bekommen einen detailierten Report an welcher Stelle Aufrufe zu NetOffice stattfinden und wo (sofern vorhanden) Inkompatibilitäten exisierten. Auch wenn die Developer Toolbox die Kompatibilitätsprüfung für Sie übernimmt,
+ befreit Sie das nicht davon Ihr Office Lösung mit&#160; den unterstützen Office Versionen zu testen. Möglicherweise reagiert eine Office Anwendung nicht exakt in der gleichen Weise wie eine frühere Office Version.</font></p>
+<p><strong><font size="3" face="Verdana">&#160;</font></strong></p>
+<p align="justify"><strong><font size="3" face="Verdana">Die 3 beschriebenen Funktionalitäten bieten Unterstützung für die Phasen Entwicklungszeit, Laufzeit und die Phase vor der Auslieferung einer Lösung.&#160;
+<br>
+</font></strong></p>
+<p><font size="3" face="Verdana">Nachstehend sehen Sie eine Übersicht der verschiedenen Versions-Attribute für das
+<em>SupportByVersion</em> Attribute.</font></p>
+<table border="0" cellspacing="0" cellpadding="2" width="686">
+<tbody>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Version</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">Attribute</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Type Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">Office</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Office 2000</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">09</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Office&#160;&#160; 9.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Office 2002</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">10</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Office&#160; 10.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Office 2003</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">11</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Office&#160; 11.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Office 2007</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">12</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Office&#160; 12.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Office 2010</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">14</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Office&#160; 14.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">Excel</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Excel 2000</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">09</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Excel&#160; 9.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Excel 2002</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">10</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Excel&#160; 10.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Excel 2003</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">11</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Excel&#160; 11.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Excel 2007</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">12</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Excel&#160; 12.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Excel 2010</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">14</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Excel&#160; 14.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">Word</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Word 2000</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">09</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Word&#160; 9.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Word 2002</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">10</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Word 10.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Word 2003</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">11</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Word 11.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Word 2007</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">12</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Word 12.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Word 2010</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">14</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Word 14.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">Outlook</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Outlook 2000</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">09</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Outlook&#160; 9.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Outlook 2002</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">10</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Outlook 10.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Outlook 2003</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">11</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Outlook 11.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Outlook 2007</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">12</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Outlook 12.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Outlook 2010</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">14</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Outlook 14.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">PowerPoint</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">PowerPoint 2000</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">09</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft PowerPoint&#160; 9.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">PowerPoint 2002</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">10</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft PowerPoint 10.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">PowerPoint 2003</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">11</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft PowerPoint 11.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">PowerPoint 2007</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">12</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft PowerPoint 12.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">PowerPoint 2010</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">14</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft PowerPoint 14.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">Access</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">&#160;</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Access 2000</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">09</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Access&#160; 9.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Access 2002</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">10</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Access 10.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Access 2003</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">11</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Access 11.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Access 2007</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">12</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Access 12.0 Object Library</font></td>
+</tr>
+<tr>
+<td valign="top" width="108"><font size="3" face="Verdana">&#160;</font></td>
+<td valign="top" width="128"><font size="3" face="Verdana">Access 2010</font></td>
+<td valign="top" width="66"><font size="3" face="Verdana">14</font></td>
+<td valign="top" width="382"><font size="3" face="Verdana">Microsoft Access 14.0 Object Library</font></td>
+</tr>
+</tbody>
+</table>
+<p><font size="3" face="Verdana"></font></p>
+</div><div class="ClearBoth"></div>

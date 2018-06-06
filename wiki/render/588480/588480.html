@@ -1,0 +1,67 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' using events in Word</span>
+<span style="color:green">' taken from Example06.vb</span>
+<span style="color:green">'</span>
+<span style="color:blue">Public</span> <span style="color:blue">Class</span> Form1
+
+<span style="color:blue">   Public</span> <span style="color:blue">Delegate</span> <span style="color:blue">Sub</span> UpdateEventTextDelegate(<span style="color:blue">ByVal</span> message <span style="color:blue">As</span> <span style="color:blue">String</span>)
+   <span style="color:blue">Dim</span> _updateDelegate <span style="color:blue">As</span> UpdateEventTextDelegate
+
+   <span style="color:blue">Public</span> <span style="color:blue">Sub</span> <span style="color:blue">New</span>()
+
+      <span style="color:green">' This call is required by the Windows Form Designer.</span>
+      InitializeComponent()
+
+      _updateDelegate = <span style="color:blue">New</span> UpdateEventTextDelegate(<span style="color:blue">AddressOf</span> UpdateTextbox)
+
+   <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+   <span style="color:blue">Private</span> <span style="color:blue">Sub</span> button1_Click(<span style="color:blue">ByVal</span> sender <span style="color:blue">As</span> System.Object, <span style="color:blue">ByVal</span> e <span style="color:blue">As</span> System.EventArgs) <span style="color:blue">Handles</span> button1.Click
+
+        <span style="color:green">' start word and turn off msg boxes</span>
+        <span style="color:blue">Dim</span> wordApplication <span style="color:blue">As</span> <span style="color:blue">New</span> Word.Application()
+        wordApplication.DisplayAlerts = <span style="color:blue">False</span>
+
+        <span style="color:green">' we register some events. note: the event trigger was called from word, <br>        <span style="color:green">'</span> means an other Thread</span>
+
+        <span style="color:blue">Dim</span> newHandler <span style="color:blue">As</span> Word.Application_NewDocumentEventHandler = _<br>                               <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.wordA_NewDocumentEvent
+        <span style="color:blue">AddHandler</span> wordApplication.NewDocumentEvent, newHandler
+
+        <span style="color:blue">Dim</span> newCloseHandler <span style="color:blue">As</span> Word.Application_DocumentBeforeCloseEventHandler = _<br>                               <span style="color:blue">AddressOf</span> <span style="color:blue">Me</span>.word_DocumentBeforeCloseEvent
+        <span style="color:blue">AddHandler</span> wordApplication.DocumentBeforeCloseEvent, newCloseHandler
+
+        <span style="color:green">' add a document and close</span>
+        <span style="color:blue">Dim</span> document <span style="color:blue">As</span> Word.Document = wordApplication.Documents.Add()
+        document.Close()
+
+        <span style="color:green">' close word and dispose reference</span>
+        wordApplication.Quit()
+        wordApplication.Dispose()
+
+    <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+    <span style="color:blue">Private</span> <span style="color:blue">Sub</span> word_NewDocumentEvent(<span style="color:blue">ByVal</span> Doc <span style="color:blue">As</span> Word.Document)
+
+        textBoxEvents.BeginInvoke(_updateDelegate, _<br>                                 <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event NewDocumentEvent called.&quot;</span>})
+        Doc.Dispose()
+
+    <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+
+    <span style="color:blue">Private</span> <span style="color:blue">Sub</span> word_DocumentBeforeCloseEvent(<span style="color:blue">ByVal</span> Doc <span style="color:blue">As</span> Word.Document, <span style="color:blue">ByRef</span> Cancel <span style="color:blue">As</span> <span style="color:blue">Boolean</span>)
+
+        textBoxEvents.BeginInvoke(_updateDelegate, _<br>                                 <span style="color:blue">New</span> <span style="color:blue">Object</span>() {<span style="color:#a31515">&quot;Event DocumentBeforeClose called.&quot;</span>})
+        Doc.Dispose()
+
+    <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+    <span style="color:blue">Private</span> <span style="color:blue">Sub</span> UpdateTextbox(<span style="color:blue">ByVal</span> message <span style="color:blue">As</span> <span style="color:blue">String</span>)
+
+        textBoxEvents.AppendText(message &amp; vbNewLine)
+
+    <span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Class</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,35 @@
+<div class="wikidoc">
+<p><strong><font size="3" face="Verdana">Tutorial05 – Der richtige Umgang mit unbekannten COM Objekten</font></strong></p>
+<p align="justify"><font size="3" face="Verdana">Viele Office Anwendungen bieten Ihnen Eigenschaften oder Methoden an, deren Rückgabewert zu Entwicklungszeit nicht fest typisiert ist, in anderen Worten Sie bekommen im IntelliSense Ihrer IDE lediglich den Typ
+<em>Object</em> angeboten. Dieses Tutorial beleuchtet die Hintergründe dieses ärgerlichen Problems.
+<br>
+<br>
+Auf der Detail-Ebene ist zwischen anonymen COM Objekten und dem Datentyp Variant zu unterscheiden. Keine Sorge: In der Praxis ist der Umgang mit COM Objekten und Variant Datentypen identisch und nicht sonderlich kompliziert.
+<br>
+</font><u><br>
+<font size="3" face="Verdana">Warum gibt es unbekannte COM Objekte in Office Anwendungen?</font></u></p>
+<p align="justify"><font size="3" face="Verdana">Der häufigste Fall ist auf eine Top-Down Abhängigkeit zwischen Office Anwendungen und der Office Kernkomponente zurückzuführen. Betrachten Sie dazu folgendes Schaubild.
+<br>
+<br>
+<u>Schaubild: Das Office Konzept</u>&#160;</font></p>
+<p align="justify"><font size="3" face="Verdana"><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=378230"><img title="TopDown" border="0" alt="TopDown" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=378231" width="556" height="211" style="border-bottom:0px; border-left:0px; display:inline; border-top:0px; border-right:0px"></a>&#160;&#160;
+<br>
+</font></p>
+<p align="justify"><font size="3" face="Verdana">Sie können erkennen das Office Anwendungen einen gemeinsamen Kern nutzen in dem unter anderem die Funktionalität für die Benutzeroberfläche oder COMAddins enthalten sind. Objekte die in dieser gemeinsamen Office
+ Bibliothek definiert sind stehen vor einem Problem wenn Sie einen Verweis auf Ihre Host-Anwendung anbieten wollen. Sie kennen die Host-Anwendung zur Entwicklungszeit nicht da viele Office Anwendungen auf diesen zentralen Kern zugreifen. Betrachten Sie dazu
+ folgenden Beispielcode: <br>
+<br>
+<u>Schaubild: Anonyme COM Objekte nutzen</u></font></p>
+<p align="justify"><a href="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=378232"><img title="UnkownScreenVB" border="0" alt="UnkownScreenVB" src="http://download.codeplex.com/Download?ProjectName=netoffice&DownloadId=378233" width="554" height="217" style="border-bottom:0px; border-left:0px; display:inline; border-top:0px; border-right:0px"></a>
+</p>
+<p align="justify"><font size="3" face="Verdana">Wir durchlaufen an dieser Stelle die COMAddins Auflistung von MS-Excel und ermitteln via Application Property die Hostanwendung. Die Funktionalität für COMAddins ist jedoch zentral in der Office Kernbibliothek
+ definiert. Daher kann die Eigenschaft Application zur Entwicklungszeit nicht stark typisiert angeboten werden. Da es sich beim Rückgabewert aber in jedem Fall um ein COM Objekt handelt, spricht man an dieser Stelle von unbekannten COM Objekten. In NetOffice
+ werden diese Objekte&#160; zusätzlich mit dem AnonymCOMProxy Attribute markiert und ein Hinweis im IntelliSense eingeblendet.
+<br>
+<br>
+Sie verlieren durch diese Anonymität zur Entwicklungszeit nicht das COM Proxy Management in NetOffice und können in Visual Basic auch den Latebinding Mechanismus nutzen. C# Entwickler müssen anyonyme Objekte zur Laufzeit casten oder mit dynamic arbeiten.
+</font></p>
+<p align="justify"><font size="3" face="Verdana">Lesen Sie in <a href="http://netoffice.codeplex.com/wikipage?title=Tutorial06_DE_VB">
+Tutorial06</a> wie Sie mit dem Variant Datentyp umgehen. <br>
+</font></p>
+</div><div class="ClearBoth"></div>

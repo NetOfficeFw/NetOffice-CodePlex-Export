@@ -1,0 +1,39 @@
+<div class="wikidoc"><b>Почему NetOffice?</b> <a href="https://netoffice.codeplex.com/documentation?referringTitle=Documentation_Russian">english</a> | <a href="https://netoffice.codeplex.com/wikipage?title=Documentation_German&referringTitle=Documentation_Russian">deutsch</a><br /><br />Обычно для доступа к Microsoft Office в .NET используются основные сборки взаимодействия (PIA) и VSTO. Оба метода имеют недостатки.<br />
+<ul><li>Привязка к одной или определённым версиям Office</li>
+<li>При переносе или установке на другой компьютер могут возникнуть проблемы</li>
+<li>Не предоставляются защитные механизмы управления заместителями объектов COM</li></ul>
+<br />NetOffice устраняет эти недостатки и является средством, синтаксически и семантически идентичным сборкам взаимодействия.<br /><a name="how"></a>
+<h5>Как работает NetOffice?</h5>NetOffice использует лишь &quot;позднее связывание&quot; COM Interop, но с удобством и простотой &quot;раннего связывания&quot;. Изящная архитектура и эффективный дизайн лишь незначительно замедляют работу по сравнению с &quot;ранним связыванием&quot; (не более, чем на 10%). События в NetOffice реализованы посредством техники, которую автор называет &quot;динамическое раннее связывание&quot;. <br /><a name="assemblies"></a>
+<h5>NetOffice содержит 16 сборок. Какие из них нужны для конкретного приложения Office?</h5>Все приложения Office используют типы, которые определены в библиотеках компонентов/типов. Библиотеки типов предсталены отдельной сборкой. Каждая сборка зависит от сборки NetOffice.dll. <br /><br /><u>Таблица развёртывания</u><br /><br /><table><tr><th> Приложение Office </th><th> Зависимости </th></tr>
+<tr><td> ExcelApi.dll </td><td> </td></tr>
+<tr><td> </td><td> OfficeApi.dll </td></tr>
+<tr><td> </td><td> VBIDEApi.dll </td></tr>
+<tr><td> </td><td> NetOffice.dll </td></tr>
+<tr><td> WordApi.dll </td><td> </td></tr>
+<tr><td> </td><td> OfficeApi.dll </td></tr>
+<tr><td> </td><td> VBIDEApi.dll </td></tr>
+<tr><td> </td><td> NetOffice.dll </td></tr>
+<tr><td> OutlookApi.dll </td><td> </td></tr>
+<tr><td> </td><td> OfficeApi.dll </td></tr>
+<tr><td> </td><td> NetOffice.dll </td></tr>
+<tr><td> PowerPointApi.dll </td><td> </td></tr>
+<tr><td> </td><td> OfficeApi.dll </td></tr>
+<tr><td> </td><td> VBIDEApi.dll </td></tr>
+<tr><td> </td><td> NetOffice.dll </td></tr>
+<tr><td> AccessApi.dll </td><td> </td></tr>
+<tr><td> </td><td> OfficeApi.dll </td></tr>
+<tr><td> </td><td> DAOApi.dll </td></tr>
+<tr><td> </td><td> VBIDEApi.dll </td></tr>
+<tr><td> </td><td> ADODBApi.dll </td></tr>
+<tr><td> </td><td> OWC10Api.dll </td></tr>
+<tr><td> </td><td> MSDATASRCApi.dll </td></tr>
+<tr><td> </td><td> MSComctlLibApi.dll </td></tr>
+<tr><td> </td><td> NetOffice.dll </td></tr>
+<tr><td> MSProjectApi.dll </td><td> </td></tr>
+<tr><td> </td><td> OfficeApi.dll </td></tr>
+<tr><td> </td><td> MSHTMLApi.dll </td></tr>
+<tr><td> </td><td> NetOffice.dll </td></tr>
+<tr><td> VisioApi.dll </td><td> </td></tr>
+<tr><td> </td><td> NetOffice.dll </td></tr></table><br /><a name="deploy"></a>
+<h5>Что нужно для распространения программы на базе NetOffice?</h5>Только скопировать сборки на целевой комьпютер. Регистрация требуется лишь для дополнений COM. Управляемые дополнения COM обычно регистрируются посредством утилиты RegAsm.exe или Windows Installer.<br /><a name="addins"></a>
+<h5>Зависят ли дополнения COM от версии Office? </h5>Нет, и в этом достоинство NetOffice. Доступны примеры для дополнений всех приложений Office. Для поддержки 32- и 64-разрядных приложений понадобятся 2 версии дополнений соответственно.</div><div class="ClearBoth"></div>

@@ -1,0 +1,78 @@
+<div class="wikidoc">
+<blockquote>
+<pre><span style="color:green">/*
+   create macro and connect with button action in PowerPoint
+   taken from Example03.cs
+*/</span>
+<span style="color:blue">private</span> <span style="color:blue">void</span> Example03Main()
+{
+   PowerPoint.Application powerApplication = <span style="color:blue">null</span>;
+   <span style="color:blue">try</span>
+   {
+       <span style="color:green">// start powerpoint </span>
+       powerApplication = <span style="color:blue">new</span> PowerPoint.Application();
+  
+       <span style="color:green">// add a new presentation with one new slide</span>
+       PowerPoint.Presentation presentation =<br>       powerApplication.Presentations.Add(MsoTriState.msoTrue);
+       PowerPoint.Slide slide = presentation.Slides.Add(1, <br>                                             PpSlideLayout.ppLayoutBlank);
+
+       <span style="color:green">// add new module and insert macro</span>
+       <span style="color:green">// the option &quot;Trust access to Visual Basic Project&quot; must be set</span>
+       VBE.CodeModule module = presentation.VBProject.VBComponents.Add(<br>                               vbext_ComponentType.vbext_ct_StdModule).CodeModule;
+       <span style="color:blue">string</span> macro = <span style="color:blue">string</span>.Format(<br>       <span style="color:#a31515">&quot;Sub NetOfficeTestMacro()\r\n   {0}\r\nEnd Sub&quot;</span>, <span style="color:#a31515">&quot;MsgBox \&quot;Thanks for click!\&quot;&quot;</span>);
+       module.InsertLines(1, macro);
+
+       <span style="color:green">// add button and connect with macro</span>
+       PowerPoint.Shape button = <br>       slide.Shapes.AddShape(MsoAutoShapeType.msoShapeActionButtonForwardorNext,<br>                                                      100, 100, 200, 200);<br>       button.ActionSettings[PpMouseActivation.ppMouseClick].AnimateAction =<br>                                                    MsoTriState.msoTrue;
+       button.ActionSettings[PpMouseActivation.ppMouseClick].Action = <br>                                                    PpActionType.ppActionRunMacro;
+       button.ActionSettings[PpMouseActivation.ppMouseClick].Run =<br>                                                    <span style="color:#a31515">&quot;NetOfficeTestMacro&quot;</span>;
+ 
+       <span style="color:green">// save the document </span>
+       <span style="color:blue">string</span> fileExtension = GetDefaultExtension(powerApplication);
+       <span style="color:blue">string</span> documentFile = <br>       <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}\\Example03{1}&quot;</span>, Application.StartupPath, fileExtension);
+       <br>       presentation.SaveAs(documentFile,<br>                           PpSaveAsFileType.ppSaveAsDefault,<br>                           MsoTriState.msoTrue);
+
+       FinishDialog fDialog = <span style="color:blue">new</span> FinishDialog(<span style="color:#a31515">&quot;Presentation saved.&quot;</span>, documentFile);
+       fDialog.ShowDialog(<span style="color:blue">this</span>);
+   }
+   <span style="color:blue">catch</span> (Exception throwedException)
+   {
+       <span style="color:green">// not trusted</span>
+       <span style="color:blue">string</span> message = <span style="color:blue">string</span>.Format(<br>       <span style="color:#a31515">&quot;An error is occured.{0}ExceptionTrace:{0}&quot;</span>, Environment.NewLine);
+
+       Exception exception = throwedException;
+       <span style="color:blue">while</span> (<span style="color:blue">null</span> != exception)
+       {
+           message &#43;= <span style="color:blue">string</span>.Format(<span style="color:#a31515">&quot;{0}{1}&quot;</span>,<br>                      exception.Message, Environment.NewLine);
+           exception = exception.InnerException;
+       }
+
+       MessageBox.Show(message); 
+    }
+    <span style="color:blue">finally</span>
+    { 
+        <span style="color:green">// close power point and dispose reference</span>
+        <span style="color:blue">if</span> (powerApplication != <span style="color:blue">null</span>)
+        {
+           powerApplication.Quit();
+           powerApplication.Dispose();
+           powerApplication = <span style="color:blue">null</span>;
+       }
+    }
+}
+
+<span style="color:gray">///</span> <span style="color:gray">&lt;summary&gt;</span>
+<span style="color:gray">///</span><span style="color:green"> returns the valid file extension for the instance. for example &quot;.ppt&quot; or &quot;.pptx&quot;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;/summary&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;param name=&quot;application&quot;&gt;</span><span style="color:green">the instance&lt;/param&gt;</span>
+<span style="color:gray">///</span> <span style="color:gray">&lt;returns&gt;</span><span style="color:green">the extension&lt;/returns&gt;</span>
+<span style="color:blue">private</span> <span style="color:blue">static</span> <span style="color:blue">string</span> GetDefaultExtension(PowerPoint.Application application)
+{
+   <span style="color:blue">double</span> Version = <br>          Convert.ToDouble(application.Version, CultureInfo.InvariantCulture);
+   <span style="color:blue">if</span> (Version &gt;= 12.00)
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.pptx&quot;</span>;
+   <span style="color:blue">else</span>
+      <span style="color:blue">return</span> <span style="color:#a31515">&quot;.ppt&quot;</span>;
+}</pre>
+</blockquote>
+</div><div class="ClearBoth"></div>

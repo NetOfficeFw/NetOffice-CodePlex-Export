@@ -1,0 +1,59 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' create some kind of shapes with PowerPoint</span>
+<span style="color:green">' taken from Example02.vb</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example02Main()
+
+<span style="color:green">   ' start powerpoint </span>
+   <span style="color:blue">Dim</span> powerApplication <span style="color:blue">As</span> PowerPoint.Application = <span style="color:blue">New</span> PowerPoint.Application()
+
+   <span style="color:green">' add a new presentation with one new slide        </span>
+   <span style="color:blue">Dim</span> presentation <span style="color:blue">As</span> PowerPoint.Presentation = <br>                   powerApplication.Presentations.Add(MsoTriState.msoTrue)
+   <span style="color:blue">Dim</span> slide <span style="color:blue">As</span> PowerPoint.Slide = <br>                   presentation.Slides.Add(1, PpSlideLayout.ppLayoutBlank)               
+
+<span style="color:green">   ' add a label        </span>
+<span style="color:blue">   Dim</span> label <span style="color:blue">As</span> PowerPoint.Shape = slide.Shapes.AddLabel( _<br>                MsoTextOrientation.msoTextOrientationHorizontal, 10, 10, 600, 20)
+   label.TextFrame.TextRange.Text = _<br>         <span style="color:#a31515">&quot;This slide and created Shapes are created by NetOffice example.&quot;</span>             
+ 
+<span style="color:green">   ' add a line       </span>
+   slide.Shapes.AddLine(10, 80, 700, 80)       
+
+<span style="color:green">   ' add a wordart       </span>
+   slide.Shapes.AddTextEffect(MsoPresetTextEffect.msoTextEffect9, _<br>                        <span style="color:#a31515">&quot;This a WordArt&quot;</span>, <span style="color:#a31515">&quot;Arial&quot;</span>, 20, _
+			MsoTriState.msoTrue, MsoTriState.msoFalse, 10, 150)       
+
+   <span style="color:green">' add a star      </span>
+   slide.Shapes.AddShape(MsoAutoShapeType.msoShape24pointStar, 200, 200, 250, 250)
+        
+   <span style="color:green">' save the document </span>
+   <span style="color:blue">Dim</span> fileExtension <span style="color:blue">As</span> <span style="color:blue">String</span> = GetDefaultExtension(powerApplication)
+   <span style="color:blue">Dim</span> documentFile <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}\\Example01{1}&quot;</span>, _<br>                                              Application.StartupPath, _<br>                                              fileExtension)
+   <br>   presentation.SaveAs(documentFile, _<br>                       PpSaveAsFileType.ppSaveAsDefault, _<br>                       MsoTriState.msoTrue)
+
+   <span style="color:green">' close power point and dispose reference</span>
+   powerApplication.Quit()
+   powerApplication.Dispose()
+
+   <span style="color:blue">Dim</span> fDialog <span style="color:blue">As</span> <span style="color:blue">New</span> FinishDialog(<span style="color:#a31515">&quot;Presentation saved.&quot;</span>, documentFile)
+   fDialog.ShowDialog(<span style="color:blue">Me</span>)
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:green">''' &lt;summary&gt;</span>
+<span style="color:green">''' returns the valid file extension for the instance. for example &quot;.ppt&quot; or &quot;.pptx&quot;</span>
+<span style="color:green">''' &lt;/summary&gt;</span>
+<span style="color:green">''' &lt;param name=&quot;application&quot;&gt;the instance&lt;/param&gt;</span>
+<span style="color:green">''' &lt;returns&gt;the extension&lt;/returns&gt;</span>
+<span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> GetDefaultExtension(<span style="color:blue">ByVal</span> application <span style="color:blue">As</span> PowerPoint.Application) <span style="color:blue">As</span> <span style="color:blue">String</span>
+
+<span style="color:blue">   Dim</span> version <span style="color:blue">As</span> <span style="color:blue">Double</span> = _<br>       Convert.ToDouble(application.Version, CultureInfo.InvariantCulture)<br><br>   <span style="color:blue">If</span> (version &gt;= 12.0) <span style="color:blue">Then</span>
+      <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.pptx&quot;</span>
+   <span style="color:blue">Else</span>
+      <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.ppt&quot;</span>
+   <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span></pre>
+</div>
+</div><div class="ClearBoth"></div>

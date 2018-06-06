@@ -1,0 +1,81 @@
+<div class="wikidoc">
+<div style="background-color:white; color:black">
+<pre><span style="color:green">' create macro and connect with button action in PowerPoint</span>
+<span style="color:green">' taken from Example03.vb</span>
+
+<span style="color:blue">Private</span> <span style="color:blue">Sub</span> Example03Main()
+
+        <span style="color:blue">Dim</span> powerApplication <span style="color:blue">As</span> PowerPoint.Application = <span style="color:blue">Nothing</span>
+        <span style="color:blue">Dim</span> documentFile <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">Nothing</span>
+        <span style="color:blue">Try</span>
+<br>            <span style="color:green">' start powerpoint  </span>
+            powerApplication = <span style="color:blue">New</span> PowerPoint.Application()
+
+            <span style="color:green">' add a new presentation with one new slide</span>
+            <span style="color:blue">Dim</span> presentation <span style="color:blue">As</span> PowerPoint.Presentation = _<br>            powerApplication.Presentations.Add(MsoTriState.msoTrue)
+            <span style="color:blue">Dim</span> slide <span style="color:blue">As</span> PowerPoint.Slide = presentation.Slides.Add(1, _<br>                                            PpSlideLayout.ppLayoutBlank)
+
+            <span style="color:green">' add new module and insert macro</span>
+            <span style="color:green">' the option &quot;Trust access to Visual Basic Project&quot; must be set</span>
+            <span style="color:blue">Dim</span> vbeModule <span style="color:blue">As</span> VBE.CodeModule = presentation.VBProject.VBComponents.Add( _<br>				      vbext_ComponentType.vbext_ct_StdModule).CodeModule
+
+            <span style="color:blue">Dim</span> macro <span style="color:blue">As</span> <span style="color:blue">String</span> = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;Sub NetOfficeTestMacro()&quot;</span> &amp; vbNewLine &amp; _<br>	              <span style="color:#a31515">&quot;   {0}&quot;</span> &amp; vbNewLine &amp; <span style="color:#a31515">&quot;End Sub&quot;</span>, <span style="color:#a31515">&quot;MsgBox &quot;&quot;Thanks for click!&quot;&quot;&quot;</span>)
+            vbeModule.InsertLines(1, macro)
+
+            <span style="color:green">' add button and connect with macro</span>
+            <span style="color:blue">Dim</span> button <span style="color:blue">As</span> PowerPoint.Shape = slide.Shapes.AddShape( _<br>                  MsoAutoShapeType.msoShapeActionButtonForwardorNext, 100, 100, 200, 200)
+            button.ActionSettings(PpMouseActivation.ppMouseClick).AnimateAction = _<br>                                                                MsoTriState.msoTrue
+            button.ActionSettings(PpMouseActivation.ppMouseClick).Action = _<br>                                                      PpActionType.ppActionRunMacro
+            button.ActionSettings(PpMouseActivation.ppMouseClick).Run = _<br>                                                                <span style="color:#a31515">&quot;NetOfficeTestMacro&quot;</span>
+
+            <span style="color:green">' save the document </span>
+            <span style="color:blue">Dim</span> fileExtension <span style="color:blue">As</span> <span style="color:blue">String</span> = GetDefaultExtension(powerApplication)
+            documentFile = <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}\\Example02{1}&quot;</span>, _<br>                                          Application.StartupPath, _<br>                                          fileExtension)
+            presentation.SaveAs(documentFile, _<br>                                PpSaveAsFileType.ppSaveAsDefault, _<br>                                MsoTriState.msoTrue)
+
+        <span style="color:blue">Catch</span> throwedException <span style="color:blue">As</span> Exception
+
+            <span style="color:green">' not trusted</span>
+            <span style="color:blue">Dim</span> message <span style="color:blue">As</span> <span style="color:blue">String</span> = _<br>            <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;An error is occured.{0}ExceptionTrace:{0}&quot;</span>, _<br>                          Environment.NewLine)
+
+            <span style="color:blue">Dim</span> exception <span style="color:blue">As</span> Exception = throwedException
+            <span style="color:blue">While</span> (<span style="color:blue">Not</span> IsNothing(exception))
+                message &#43;= <span style="color:blue">String</span>.Format(<span style="color:#a31515">&quot;{0}{1}&quot;</span>, _<br>                           exception.Message, Environment.NewLine)
+                exception = exception.InnerException
+            <span style="color:blue">End</span> <span style="color:blue">While</span>
+
+            MessageBox.Show(message)
+
+        <span style="color:blue">Finally</span>
+
+            <span style="color:green">' close excel and dispose reference</span>
+            powerApplication.Quit()
+            powerApplication.Dispose()
+
+            <span style="color:blue">If</span> (<span style="color:blue">Not</span> IsNothing(documentFile)) <span style="color:blue">Then</span>
+                <span style="color:blue">Dim</span> fDialog <span style="color:blue">As</span> FinishDialog = _<br>                <span style="color:blue">New</span> FinishDialog(<span style="color:#a31515">&quot;Presentation saved.&quot;</span>, documentFile)
+                fDialog.ShowDialog(<span style="color:blue">Me</span>)
+            <span style="color:blue">End</span> <span style="color:blue">If</span>
+
+        <span style="color:blue">End</span> <span style="color:blue">Try</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Sub</span>
+
+<span style="color:green">''' &lt;summary&gt;</span>
+<span style="color:green">''' returns the valid file extension for the instance. for example &quot;.ppt&quot; or &quot;.pptx&quot;</span>
+<span style="color:green">''' &lt;/summary&gt;</span>
+<span style="color:green">''' &lt;param name=&quot;application&quot;&gt;the instance&lt;/param&gt;</span>
+<span style="color:green">''' &lt;returns&gt;the extension&lt;/returns&gt;</span>
+<span style="color:green">''' &lt;remarks&gt;&lt;/remarks&gt;</span>
+<span style="color:blue">Private</span> <span style="color:blue">Function</span> GetDefaultExtension(<span style="color:blue">ByVal</span> application <span style="color:blue">As</span> PowerPoint.Application) <span style="color:blue">As</span> <span style="color:blue">String</span>
+
+   <span style="color:blue">Dim</span> version <span style="color:blue">As</span> <span style="color:blue">Double</span> = _<br>       Convert.ToDouble(application.Version, CultureInfo.InvariantCulture)<br>
+   <span style="color:blue">If</span> (version &gt;= 12.0) <span style="color:blue">Then</span>
+            <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.pptx&quot;</span>
+   <span style="color:blue">Else</span>
+            <span style="color:blue">Return</span> <span style="color:#a31515">&quot;.ppt&quot;</span>
+<span style="color:blue">   End</span> <span style="color:blue">If</span>
+
+<span style="color:blue">End</span> <span style="color:blue">Function</span></pre>
+</div>
+</div><div class="ClearBoth"></div>
